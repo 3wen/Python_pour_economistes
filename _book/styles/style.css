@@ -1,0 +1,10 @@
+div.remarque:before {
+	font-weight: bold;
+	content: "Remarque";
+}
+div.remarque {
+	background-color: #add8e6;
+}
+div.exframe {
+	background-color: #CFE3D1;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Python pour les économistes</title>
+  <meta name="description" content="Python pour les économistes">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Python pour les économistes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Python pour les économistes" />
+  
+  
+  
+
+<meta name="author" content="Ewen Gallic">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="operateurs.html">
+<link rel="next" href="boucles.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="styles/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#les-commentaires"><i class="fa fa-check"></i><b>1.5</b> Les commentaires</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="types-de-donnees.html"><a href="types-de-donnees.html"><i class="fa fa-check"></i><b>2</b> Types de données</a><ul>
+<li class="chapter" data-level="2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#concatenation-de-chaines"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#methodes-disponibles-avec-les-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversion-en-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#valeurs-numeriques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombre-a-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombres-complexes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#booleens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#stucture-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
+<li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
+<li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="structures.html"><a href="structures.html#extraction-des-elements"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
+<li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
+<li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="structures.html"><a href="structures.html#extraction-des-elements-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="structures.html"><a href="structures.html#cles-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
+<li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
+<li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
+<li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="operateurs.html"><a href="operateurs.html"><i class="fa fa-check"></i><b>4</b> Opérateurs</a><ul>
+<li class="chapter" data-level="4.1" data-path="operateurs.html"><a href="operateurs.html#operateurs-arithmetiques"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a></li>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a></li>
+<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions-numeriques"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions numériques</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>5</b> Conditions</a><ul>
+<li class="chapter" data-level="5.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>5.1</b> Les conditions <code>if... else</code></a></li>
+<li class="chapter" data-level="5.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>5.2</b> Switch ?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>6</b> Boucles</a><ul>
+<li class="chapter" data-level="6.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>6.1</b> Boucles avec <code>while()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>6.2</b> Boucles avec <code>for()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>7</b> Fonctions</a><ul>
+<li class="chapter" data-level="7.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>7.1</b> Définition</a></li>
+<li class="chapter" data-level="7.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>7.2</b> Portée</a></li>
+<li class="chapter" data-level="7.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>7.3</b> Fonctions lambda</a></li>
+<li class="chapter" data-level="7.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>7.4</b> Erreurs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="introduction-a-numpy.html"><a href="introduction-a-numpy.html"><i class="fa fa-check"></i><b>8</b> Introduction à Numpy</a></li>
+<li class="chapter" data-level="9" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html"><i class="fa fa-check"></i><b>9</b> Manipulation de données avec Pandas</a><ul>
+<li class="chapter" data-level="9.1" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#importation-et-exportation-de-donnees"><i class="fa fa-check"></i><b>9.1</b> Importation et exportation de données</a></li>
+<li class="chapter" data-level="9.2" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#selection"><i class="fa fa-check"></i><b>9.2</b> Sélection</a></li>
+<li class="chapter" data-level="9.3" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#filtrage"><i class="fa fa-check"></i><b>9.3</b> Filtrage</a></li>
+<li class="chapter" data-level="9.4" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>9.4</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="9.5" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#modification-des-colonnes"><i class="fa fa-check"></i><b>9.5</b> Modification des colonnes</a></li>
+<li class="chapter" data-level="9.6" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#tri-1"><i class="fa fa-check"></i><b>9.6</b> Tri</a></li>
+<li class="chapter" data-level="9.7" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#jointures"><i class="fa fa-check"></i><b>9.7</b> Jointures</a></li>
+<li class="chapter" data-level="9.8" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#agregation"><i class="fa fa-check"></i><b>9.8</b> Agrégation</a></li>
+<li class="chapter" data-level="9.9" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>9.9</b> Stacking et unstacking</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>10</b> Visualisation de données</a></li>
+<li class="chapter" data-level="11" data-path="programmation-parallele.html"><a href="programmation-parallele.html"><i class="fa fa-check"></i><b>11</b> Programmation parallèle</a></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python pour les économistes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conditions" class="section level1">
+<h1><span class="header-section-number">5</span> Conditions</h1>
+<div id="les-conditions-if...-else" class="section level2">
+<h2><span class="header-section-number">5.1</span> Les conditions <code>if... else</code></h2>
+</div>
+<div id="switch" class="section level2">
+<h2><span class="header-section-number">5.2</span> Switch ?</h2>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="operateurs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="boucles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/3wen/Python_pour_economistes/python_for_economists.Rmd",
+"text": "Edit"
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

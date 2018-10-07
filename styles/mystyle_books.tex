@@ -1,0 +1,300 @@
+\usepackage{etex} %vers l'infini et au-dela
+%\reserveinserts{28} % (et plus loin encore)
+
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} % pour taper les lettres accentuees
+\usepackage[french, english]{babel} %le rapport est en franÁais 
+\usepackage{amsthm,amssymb,amsbsy,amsmath,amsfonts,amssymb,amscd,mathrsfs}
+%Mise en page
+\usepackage{geometry} %pour la modification des marges
+\usepackage{fancyhdr} %pour modification des pieds de page
+\usepackage{lastpage} %numero de la derniËre page
+\usepackage{lscape} % Pour pouvoir activer le mode landscape
+\usepackage{lmodern}
+%Images, figures, etc.
+\usepackage{booktabs} %tableaux
+\usepackage{float}	%pour forcer le placement des images.
+\usepackage{graphicx} %pour afficher des images
+\usepackage{longtable} %tables sur plusieurs pages
+\usepackage{animate} %transformer des gifs
+\usepackage{caption}
+%\usepackage{subcaption}
+\captionsetup{labelformat=simple}
+\usepackage[scriptsize]{subfigure}
+\usepackage{multirow} 			%fusionner lignes
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usetikzlibrary{arrows,positioning}
+\usetikzlibrary{mindmap,trees,shadows,backgrounds}
+\usepackage{tabularx}
+%Code
+\usepackage{verbatim}%insertion de code
+\usepackage{listings}
+%Polices, format,couleurs
+\usepackage{dsfont} % Pour les lettres mathematiques
+
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{hyperref} %pour que les references soient des liens hypertextes
+\usepackage{natbib}
+\usepackage{bibentry}
+%\usepackage{color}
+\usepackage{xcolor,colortbl}
+\definecolor{light-gray}{gray}{0.85}
+\usepackage{ragged2e} % Pour justifier
+%Symboles, theoremes
+\newcommand{\iid}{\stackrel{\mathrm{iid}}{\sim}}
+\newtheorem{theorem}{Theorem}[part]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{hypothese}{Hypoth\`ese}
+\newtheorem{corollary}[theorem]{Corollary}
+\usepackage{enumerate}%listes
+\usepackage[subnum]{cases}% cas numerotes
+%\newtheorem{laRemarque}{Remarque}[section]
+ \newtheorem{rmarque}{Remarque}[section]
+\newtheorem{exmp}{Exemple}[section]
+\numberwithin{equation}{section}
+
+\usepackage[official,right]{eurosym} % symbols euro
+\usepackage{gensymb} % symbole degre \degre
+\usepackage{rotating}
+\usepackage{multicol}
+% Bibliographie
+%\usepackage{bib entry}
+%\nobibliography*
+%\let\newblock\relax
+
+%\usepackage[notocbib]{apacite}
+%\usepackage[style=apa]{biblatex}
+%\usepackage[round]{natbib}
+%\usepackage[style=authoryear]{biblatex}
+%\usepackage[backend=bibtex, style=authoryear-comp]{biblatex}
+%\usepackage{biblatex}
+\renewcommand*{\bibfont}{\scriptsize} % Pour avoir la biblio en plus petit
+%\usepackage{apacite}
+%\bibliographystyle{apacite}
+
+%\titlegraphic{
+%\centering
+%\includegraphics[height=2em]{/Users/ewengallic/Dropbox/Universite_Aix_Marseille/Enseignements/template/assets/images/logo_amu_rvb_blanc.png}\hskip 3em
+%%\colorbox{white}{\includegraphics[height=3em]{../../images/logo_feg.png}}
+%\includegraphics[height=2em]{/Users/ewengallic/Dropbox/Universite_Aix_Marseille/Enseignements/template/assets/images/logo_feg_blanc.png}\hskip 3em
+%%\colorbox{white}{\includegraphics[height=3em]{../../images/logo_amse.png}}
+%\includegraphics[height=2em]{/Users/ewengallic/Dropbox/Universite_Aix_Marseille/Enseignements/template/assets/images/logo_amse.png}
+%}
+
+\justifying %on justifie le texte du document
+
+
+% Pour les codes Python
+\lstset{
+language=Python,
+basicstyle=\small\ttfamily,
+commentstyle=\ttfamily\color{gray},
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=4,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+title=\lstname,
+escapeinside={},
+keywordstyle={},
+morekeywords={},
+literate=%
+         {á}{{\'a}}1
+         {à}{{\`a}}1
+         {^a}{{\^a}}1
+         {í}{{\'i}}1
+         {ï}{{\"\i}}1
+         {é}{{\'e}}1
+         {è}{{\`e}}1
+         {ê}{{\^e}}1
+         {ë}{{\"e}}1
+         {ý}{{\'y}}1
+         {ú}{{\'u}}1
+         {ù}{{\`u}}1
+         {ó}{{\'o}}1
+         {ô}{{\^o}}1         
+         {ě}{{\v{e}}}1
+         {š}{{\v{s}}}1
+         {č}{{\v{c}}}1
+         {ř}{{\v{r}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {É}{{\'E}}1
+         {È}{{\`E}}1
+         {Ê}{{\^E}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1 
+}
+
+
+
+
+%\graphicspath{{../images}}
+
+
+\usepackage{array,dcolumn}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+
+
+
+
+\definecolor{vert}{RGB}{0,157,87}
+\definecolor{Lime}{RGB}{191,255,0}
+\definecolor{limegreen}{RGB}{50,205,50}
+\definecolor{vertsombre}{RGB}{27,68,21}
+\definecolor{vertclair}{HTML}{06D6A0}
+
+%
+\definecolor{Camel}{RGB}{193,154,107}
+\definecolor{rouge}{HTML}{EF476F}
+\definecolor{orange}{RGB}{199,118,34}
+%
+\definecolor{ProcessYellow}{RGB}{255, 239, 0}
+\definecolor{jauneAMSE}{RGB}{240, 171, 0}
+\definecolor{jaune}{HTML}{FFD166}
+
+
+%
+\definecolor{bleu}{HTML}{118AB2}
+\definecolor{LBlue}{RGB}{173, 216, 230}
+\definecolor{bleusombre}{RGB}{18, 37, 67}
+\definecolor{bleufonce}{RGB}{91,112,170}
+\definecolor{bleuAMSE}{RGB}{0,101,189}
+%
+\definecolor{DPurple}{RGB}{48,25,52}
+\definecolor{Indigo}{RGB}{75, 0, 130}
+\definecolor{Periwinkle}{RGB}{204, 204, 255}
+\definecolor{ElectricViolet}{RGB}{143, 0, 255}
+\definecolor{AfricanViolet}{RGB}{178, 132, 190}
+\definecolor{ChineseViolet}{RGB}{133, 96, 136}
+\definecolor{Grape}{RGB}{111, 45, 168}
+\definecolor{RussianViolet}{RGB}{50, 23, 77}
+\definecolor{EnglishViolet}{RGB}{86, 60, 92}
+%
+
+\definecolor{bottomcolour}{rgb}{0.32,0.3,0.38}
+\definecolor{middlecolour}{rgb}{0.08,0.08,0.16}
+
+
+
+%\hypersetup{
+%    colorlinks = true,
+%    linkcolor = ProcessYellow
+%}
+
+
+
+
+\newcommand*\grasO[1]{\textbf{\textcolor{Camel}{#1}}} 
+\newcommand*\grasR[1]{\textbf{\textcolor{rouge}{#1}}}
+\newcommand*\grasV[1]{\textbf{\textcolor{vertclair}{#1}}} 
+\newcommand*\grasB[1]{\textbf{\textcolor{bleu}{#1}}} 
+\newcommand*\grasJ[1]{\textbf{\textcolor{jaune}{#1}}} 
+\newcommand*\grasP[1]{\textbf{\textcolor{AfricanViolet}{#1}}} 
+
+\definecolor{rcp26}{RGB}{39, 55, 122}
+\definecolor{rcp45}{RGB}{112, 159, 200}
+\definecolor{rcp60}{RGB}{222, 99, 43}
+\definecolor{rcp85}{RGB}{205, 16, 32}
+
+\newcommand*\grasRCPa[1]{\textbf{\textcolor{rcp26}{#1}}}
+\newcommand*\grasRCPb[1]{\textbf{\textcolor{rcp45}{#1}}} 
+\newcommand*\grasRCPc[1]{\textbf{\textcolor{rcp60}{#1}}} 
+\newcommand*\grasRCPd[1]{\textbf{\textcolor{rcp85}{#1}}}
+
+\usepackage{tcolorbox}
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+
+\definecolor{deepblue}{RGB}{0,110,160}
+
+
+
+\usepackage{xparse}
+\NewDocumentCommand\afun{v}{%
+\texttt{#1}\index[fonctions]{#1@\ifun{#1}}%
+}
+\NewDocumentCommand\afunDeux{v}{%
+\index[fonctions]{#1@\ifun{#1}}%
+}
+
+
+\NewDocumentCommand{\ifun}{v}{\texttt{#1}}
+
+
+ \newcounter{countremarque}
+
+
+\newenvironment{remarque}{%
+ \refstepcounter{countremarque}
+    \begin{tcolorbox}[width=\linewidth, colback=blue!3, boxrule=0.5pt,arc=0pt,title = Remarque \thecountremarque]
+    }%
+    {
+    \end{tcolorbox}
+    }
+\numberwithin{countremarque}{section}
+
+
+\newcounter{exercices}[section]
+
+\definecolor{shadecolorex}{HTML}{CFE3D1}
+\makeatletter
+\newenvironment{exframe}{%
+ \def\at@end@of@exframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@exframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolorex}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@exframe}
+\makeatother
+
+
+
+
+\hypersetup{
+bookmarks=true,
+pdfauthor={Ewen Gallic},
+unicode=false,
+pdftoolbar=true,
+pdfmenubar=true,
+pdffitwindow=false
+pdfnewwindow=true,
+colorlinks=true,
+linkcolor=bleuAMSE,
+citecolor=bleuAMSE,
+filecolor=bleuAMSE,
+urlcolor=bleuAMSE,}

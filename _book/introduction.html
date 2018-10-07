@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Python pour les économistes</title>
+  <meta name="description" content="Python pour les économistes">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Python pour les économistes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Python pour les économistes" />
+  
+  
+  
+
+<meta name="author" content="Ewen Gallic">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="propos-liminaires.html">
+<link rel="next" href="types-de-donnees.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="styles/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#les-commentaires"><i class="fa fa-check"></i><b>1.5</b> Les commentaires</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="types-de-donnees.html"><a href="types-de-donnees.html"><i class="fa fa-check"></i><b>2</b> Types de données</a><ul>
+<li class="chapter" data-level="2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#concatenation-de-chaines"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#methodes-disponibles-avec-les-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversion-en-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#valeurs-numeriques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombre-a-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombres-complexes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#booleens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#stucture-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
+<li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
+<li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="structures.html"><a href="structures.html#extraction-des-elements"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
+<li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
+<li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="structures.html"><a href="structures.html#extraction-des-elements-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="structures.html"><a href="structures.html#cles-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
+<li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
+<li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
+<li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="operateurs.html"><a href="operateurs.html"><i class="fa fa-check"></i><b>4</b> Opérateurs</a><ul>
+<li class="chapter" data-level="4.1" data-path="operateurs.html"><a href="operateurs.html#operateurs-arithmetiques"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a></li>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a></li>
+<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions-numeriques"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions numériques</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>5</b> Conditions</a><ul>
+<li class="chapter" data-level="5.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>5.1</b> Les conditions <code>if... else</code></a></li>
+<li class="chapter" data-level="5.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>5.2</b> Switch ?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>6</b> Boucles</a><ul>
+<li class="chapter" data-level="6.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>6.1</b> Boucles avec <code>while()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>6.2</b> Boucles avec <code>for()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>7</b> Fonctions</a><ul>
+<li class="chapter" data-level="7.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>7.1</b> Définition</a></li>
+<li class="chapter" data-level="7.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>7.2</b> Portée</a></li>
+<li class="chapter" data-level="7.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>7.3</b> Fonctions lambda</a></li>
+<li class="chapter" data-level="7.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>7.4</b> Erreurs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="introduction-a-numpy.html"><a href="introduction-a-numpy.html"><i class="fa fa-check"></i><b>8</b> Introduction à Numpy</a></li>
+<li class="chapter" data-level="9" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html"><i class="fa fa-check"></i><b>9</b> Manipulation de données avec Pandas</a><ul>
+<li class="chapter" data-level="9.1" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#importation-et-exportation-de-donnees"><i class="fa fa-check"></i><b>9.1</b> Importation et exportation de données</a></li>
+<li class="chapter" data-level="9.2" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#selection"><i class="fa fa-check"></i><b>9.2</b> Sélection</a></li>
+<li class="chapter" data-level="9.3" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#filtrage"><i class="fa fa-check"></i><b>9.3</b> Filtrage</a></li>
+<li class="chapter" data-level="9.4" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>9.4</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="9.5" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#modification-des-colonnes"><i class="fa fa-check"></i><b>9.5</b> Modification des colonnes</a></li>
+<li class="chapter" data-level="9.6" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#tri-1"><i class="fa fa-check"></i><b>9.6</b> Tri</a></li>
+<li class="chapter" data-level="9.7" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#jointures"><i class="fa fa-check"></i><b>9.7</b> Jointures</a></li>
+<li class="chapter" data-level="9.8" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#agregation"><i class="fa fa-check"></i><b>9.8</b> Agrégation</a></li>
+<li class="chapter" data-level="9.9" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>9.9</b> Stacking et unstacking</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>10</b> Visualisation de données</a></li>
+<li class="chapter" data-level="11" data-path="programmation-parallele.html"><a href="programmation-parallele.html"><i class="fa fa-check"></i><b>11</b> Programmation parallèle</a></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python pour les économistes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p>Ce document est construit principalement à l’aide de différentes références, parmi lesquelles :</p>
+<ul>
+<li>des livres : <span class="citation">Briggs (<a href="#ref-briggs_2013_python">2013</a>)</span>, <span class="citation">Grus (<a href="#ref-grus_2015_data">2015</a>)</span>, <span class="citation">VanderPlas (<a href="#ref-vanderplas2016python">2016</a>)</span>, <span class="citation">McKinney (<a href="#ref-mckinney_2017_python">2017</a>)</span> ;</li>
+<li>des (excellents) notebooks : <span class="citation">Navaro (<a href="#ref-navaro_python">2018</a>)</span>.</li>
+</ul>
+<div id="historique" class="section level2">
+<h2><span class="header-section-number">1.1</span> Historique</h2>
+<p>Python est un langage de programmation multi plates-formes, écrit en <code>C</code>, placé sous une licence libre. Il s’agit d’un langage interprété, c’est-à-dire qu’il nécessite un interprète pour exécuter les commandes, et n’a pas de phase de compilation. Sa première version publique date de 1991. L’auteur principal, <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> avait commencé à travailler sur ce langage de programmation durant la fin des années 1980. Le nom accordé au langage Python provient de l’intérêt de son créateur principal pour une série télévisée britannique diffusée sur la BBC intitulée “<em>Monty Python’s Flying Circus</em>”.</p>
+<p>La popularité de Python a connu une croissance forte ces dernières années, comme le confirment les résultats de sondages proposés par <a href="https://stackoverflow.com/">Stack Overflow</a> depuis 2011. Stack Overflow propose à ses utilisateurs de répondre à une enquête dans laquelle de nombreuses questions leur sont proposées, afin de décrire leur expérience en tant que développeur. <a href="https://insights.stackoverflow.com/survey/2018#technology">Les résultats de l’enquête de 2018</a> montrent une nouvelle avancée de l’utilisation de Python par les développeurs. En effet, comme le montre la Figure <a href="introduction.html#fig:intro-stack-langages">1.1</a>, 38.8% des répondants indiquent développer en Python, soit 6.8 points de pourcentage de plus qu’un an auparavant, ce qui fait de ce langage de programmation celui dont la croissance a été la plus importante entre 2017 et 2018.</p>
+<div class="figure" style="text-align: center"><span id="fig:intro-stack-langages"></span>
+<img src="_main_files/figure-html/intro-stack-langages-1.png" alt="Langages de programmation, de scripting et de balisage." width="672" />
+<p class="caption">
+Figure 1.1: Langages de programmation, de scripting et de balisage.
+</p>
+</div>
+</div>
+<div id="versions" class="section level2">
+<h2><span class="header-section-number">1.2</span> Versions</h2>
+<p>Ces notes de cours visent à fournir une introduction à Python, dans sa version 3.x. En ce sens, les exemples fournis corresponderont à cette version, non pas aux précédentes.</p>
+<p>Comparativement à la version 2.7, la version 3.0 a apporté des modofications profondes. Il faut noter que Python 2.7 prendra “<a href="https://pythonclock.org/">sa retraite</a>” le premier janvier 2020. Passée cette date, le support ne sera plus assuré.</p>
+</div>
+<div id="espace-de-travail" class="section level2">
+<h2><span class="header-section-number">1.3</span> Espace de travail</h2>
+<p>Il existe de nombreux environnements dans lesquels programmer en Python. Nous allons en présenter succinctement quelques uns.</p>
+<p>Il est supposé ici que vous vous avez installé <a href="https://www.anaconda.com/">Anaconda</a> sur votre poste. Anaconda est une distribution gratuite et open source des langages de programmation Python et R pour les applications en <em>data science</em> et apprentissage automatique. Par ailleurs, lorsqu’il est fait mention du terminal dans les notes, il est supposé que le système d’exploitation de votre machine est soit Linux, soit Mac OS.</p>
+<div id="python-dans-un-terminal" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Python dans un terminal</h3>
+<p>Il est possible d’appeler Python depuis un terminal, en exécutant la commande suivante (sous Windows : dans le menu démarrer, lancer le logiciel “Python 3.6”) :</p>
+<pre class="shell"><code>&gt; python</code></pre>
+<p>Ce qui donne le rendu visible sur la Figure <a href="introduction.html#fig:intro-python-terminal">1.2</a> :</p>
+<div class="figure" style="text-align: center"><span id="fig:intro-python-terminal"></span>
+<img src="figs/python_terminal.png" alt="Python dans un terminal." width="70%" />
+<p class="caption">
+Figure 1.2: Python dans un terminal.
+</p>
+</div>
+<p>On note la présence des caractères <code>&gt;&gt;&gt;</code> (<em>prompt</em>), qui invitent l’utilisateur à inscrie une commande. Les expressions sont évaluées une fois qu’elle sont soumises (à l’aide de la touche <code>ENTREE</code>) et le résultat est donné, lorsqu’il n’y a pas d’erreur dans le code.</p>
+<p>Par exemple, lorsque l’on évalue <code>2+1</code> :</p>
+<pre class="shell"><code>&gt; &gt;&gt;&gt; 2+1
++ 3
++ &gt;&gt;&gt;</code></pre>
+<p>On note la présence du <em>prompt</em> à la fin, indiquant que Python est prêt à recevoir de nouvelles instructions.</p>
+</div>
+<div id="ipython" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> IPython</h3>
+<p>Il existe un environnement un peu plus chaleureux que Python dans le terminal : IPython. Il s’agit également d’un terminal interactif, mais avec davantages de fonctionnalités, notamment la coloration syntaxique ou l’auto-complétion (en utilisant la touche de tabulation).</p>
+<p>Pour lancer IPython, on peut ouvrir un terminal et taper (puis valider) :</p>
+<pre class="shell"><code>&gt; ipython</code></pre>
+<p>On peut également lancer IPython depuis la fenêtre d’accueil d’Anaconda, en cliquant sur le bouton <code>Launch</code> de l’application <code>qtconsole</code>, visible sur la Figure <a href="introduction.html#fig:intro-anaconda-navigator">1.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:intro-anaconda-navigator"></span>
+<img src="figs/anaconda_navigator.png" alt="Fenêtre d'accueil d'Anaconda." width="100%" />
+<p class="caption">
+Figure 1.3: Fenêtre d’accueil d’Anaconda.
+</p>
+</div>
+La console IPython, une fois lancée, ressemble à ceci :
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="figs/ipython.png" alt="Console IPython." width="70%" />
+<p class="caption">
+Figure 1.4: Console IPython.
+</p>
+</div>
+<p>Soumettons une instruction simple pour évaluation à Python :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(<span class="st">&quot;Hello World&quot;</span>)</code></pre></div>
+<p>Le résultat donne :</p>
+<pre class="shell"><code>&gt; In [1]: print(&quot;Hello World&quot;)
++ Hello World
++ 
++ In [2]:</code></pre>
+<p>Plusieurs choses sont à noter. Premièrement, on note qu’à la fin de l’exécution de l’instruction, IPython nous indique qu’il est prêt à recevoir de nouvelles instruction, par la présence du <em>prompt</em> <code>In [2]:</code>. Le numéro entre les crochets désigne le numéro de l’instruction. On note qu’il est passé de 1 à 2 après l’exécution. Ensuite, on note que le résultat de l’appel à la fonction <code>print()</code>, avec la chaîne de caractères (délimitée par des guillemets), affiche à l’écran ce qui était contenu entre les parenthèses.</p>
+</div>
+<div id="spyder" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Spyder</h3>
+<p>Tandis que lorsqu’on utilise Python via un terminal, il est préférable d’avoir un éditeur de texte ouvert à côté (pour pouvoir sauvegarder les instructions), comme, par exemple, <a href="https://www.sublimetext.com/">Sublime Text</a> sous Linux ou Mac OS, ou <a href="https://notepad-plus-plus.org/">notepad++</a> sous Windows.</p>
+<p>Une autre alternative consiste à utiliser un environnement de développement (IDE, pour <em>Integrated development environment</em>) unique proposant notamment, à la fois un éditeur et une console. C’est ce que propose <a href="https://www.spyder-ide.org/">Spyder</a>, avec en outre de nombreuses fonctionnalités supplémentaires, comme la gestion de projet, un explorateur de fichier, un historique des commandes, un débugger, etc.</p>
+<p>Pour lancer Spyder, on peut passer par un terminal, en évaluant tout simplement <code>Spyder</code> (ou en lançant le logiciel depuis le menu démarrer sous Windows). Il est également possible de lancer Spyder depuis Anaconda.</p>
+<p>L’environnement de développement, comme visible sur la Figure <a href="introduction.html#fig:intro-spyder">1.5</a>, se décompose en plusieurs fenêtres :</p>
+<ul>
+<li>à gauche : l’éditeur de script ;</li>
+<li>en haut à droite : une fenêtre permettant d’afficher l’aide de Python, l’arborescence du système ou encore les variables créées ;</li>
+<li>en bas à droite : une ou plusieurs consoles.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:intro-spyder"></span>
+<img src="figs/spyder.png" alt="Spyder." width="100%" />
+<p class="caption">
+Figure 1.5: Spyder.
+</p>
+</div>
+</div>
+<div id="jupyter" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Jupyter</h3>
+<p>Il existe une interface graphique par navigateur d’IPython, appelée <a href="http://jupyter.org/">Jupyter Notebook</a>. Il s’agit d’une application en open-source permettant de créer et partager des documents qui contiennent du code, des équations, des représentations graphiques et du texte. Il est possible de faire figurer et exécuter des codes de langages différents dans les notebook Jupyter.</p>
+<p>Pour lancer Jupyter, on peut passer par Anaconda. Après avoir cliqué sur le bouton <code>Launch</code>, de Jupyter Notebook, le navigateur web se lance et propose une arborescence, comme montré sur la Figure <a href="introduction.html#fig:intro-jupyter">1.6</a>. Sans que l’on s’en rendiez compte, un serveur local web a été lancé ainsi qu’un processus Python (un <em>kernel</em>).</p>
+<p>Si le navigateur en se lance pas automatiquement, on peut accéder à la page qui aurait dû s’afficher, en se rendant à l’adresse suivante : <a href="http://localhost:8890/tree" class="uri">http://localhost:8890/tree</a>?.</p>
+<div class="figure" style="text-align: center"><span id="fig:intro-jupyter"></span>
+<img src="figs/jupyter.png" alt="Jupyter." width="100%" />
+<p class="caption">
+Figure 1.6: Jupyter.
+</p>
+</div>
+<p>Pour aborder les principales fonctions de Jupyter, nous allons créer un dossier <code>jupyter</code> dans un répertoire de notre choix. Une fois ce dossier créé, y naviguer à travers l’arborescence de Jupyter, dans le navigateur web.</p>
+<p>Une fois dans le dossier, créer un nouveau Notebook <code>Python 3</code> (en cliquant sur le bouton <code>New</code> en haut à gauche de la fenêtre, puis sur Python 3`).</p>
+<p>Un notebook intitulé <code>Untitled</code> vient d’être créé, la page affiche un document vide, comme visible sur la Figure <a href="introduction.html#fig:intro-jupyter-notebook">1.7</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:intro-jupyter-notebook"></span>
+<img src="figs/jupyter_notebook.png" alt="Un notebook vide." width="100%" />
+<p class="caption">
+Figure 1.7: Un notebook vide.
+</p>
+</div>
+<p>Si on regarde dans notre explorateur de fichier, dans le dossier <code>jupyter</code> fraîchement créé, un nouveau fichier est apparu : <code>Untitled.ipynb</code>.</p>
+<div id="evaluation-dune-instruction" class="section level4">
+<h4><span class="header-section-number">1.3.4.1</span> Évaluation d’une instruction</h4>
+<p>Retournons dans le navigateur web, sur la page affichant notre <em>notebook</em>.</p>
+<p>En dessous de la barre des menus, on note la présence d’une zone encadrée, <strong>une cellule</strong>, commençant, à l’instar de ce que l’on voyait dans la console sur IPython, par <code>IN []:</code>. À droite, la zone grisée nous invite à soumettre des instructions en Python.</p>
+<p>Inscrivons :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="dv">2</span><span class="op">+</span><span class="dv">1</span></code></pre></div>
+<p>Pour soumettre l’instruction à évaluation, il existe plusieurs manières (il s’assurer d’avoir cliqué à l’intérieur de la cellule) :</p>
+<ul>
+<li>dans la barre des menus : <code>Cell &gt; Run Cells</code> ;</li>
+<li>dans la barre des raccourcis : bouton <code>Run</code> ;</li>
+<li>avec le clavier : maintenir la touche <code>CTRL</code>et presser sur <code>Entree</code>.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="figs/jupyter_notebook_2.png" alt="Cellule évaluée." width="100%" />
+<p class="caption">
+Figure 1.8: Cellule évaluée.
+</p>
+</div>
+</div>
+<div id="cellules-de-texte" class="section level4">
+<h4><span class="header-section-number">1.3.4.2</span> Cellules de texte</h4>
+<p>Un des intérêts des <em>notebooks</em> est qu’il est possible d’ajouter des cellules de texte.</p>
+<p>Ajoutons une cellule en-dessous de la première. Pour ce faire, on peut procéder soit :</p>
+<ul>
+<li>par la barre de menu : <code>Insert &gt; Insert Cell Below</code> (pour insérer une cellule en-dessous ; si on désire une insertion au-dessus, il suffit de choisir <code>Insert Cell Above</code>) ;</li>
+<li>en cliquant dans le cadre de la cellule à partir de laquelle on désire faire un ajout (n’importe où, sauf dans la zone grisée de code, de manière à passer en mode <code>commande</code>), puis en appuyant sur la touche <code>B</code> du clavier (<code>A</code> pour une insertion au-dessus).</li>
+</ul>
+<p>La nouvelle cellule appelle à nouveau à inscrire une instruction en Python. Pour indiquer que le contenu doit être interprété comme du texte, il est nécessaire de le préciser. Encore une fois, plusieurs méthodes permettent de le faire :</p>
+<ul>
+<li>par la barre de menu : <code>Cell &gt; Cell Type &gt; Markdown</code> ;</li>
+<li>par la barre des raccourcis : dans le menu déroulant où est inscrit <code>Code</code>, en sélectionnant <code>Markdown</code> ;</li>
+<li>en mode commande (après avoir cliqué à l’intérieur du cadre de la cellule, mais pas dans la zone de code), en appuyant sur la touche <code>M</code> du clavier.</li>
+</ul>
+<p>La cellule est alors prête à recevoir du texte, rédigé en markdown. Pour plus d’informations sur la rédaction en Markdown, se référer à cette <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">antisèche</a> par exemple.</p>
+<p>Entrons quelques lignes de texte pour voir très rapidement le fonctionnement des cellules rédigées en Markdown.</p>
+<pre class="shell"><code>&gt; # Un titre de niveau 1
++ 
++ Je vais écrire *du texte en italique* et aussi **en gras**.
++ 
++ ## Un titre de niveau 2
++ 
++ Je peux faire des listes :
++ 
++ - avec un item ;
++ - un second ;
++ - et un troisième imbriquant une nouvelle liste :
++     - avec un sous-item,
++     - et un second ;
++ - un quatrième incluant une liste imbriquée numérotée :
++     1. avec un sous-item,
++     1. et un autre.
++ 
++ ## Un autre titre de niveau 2
++ 
++ 
++ Je peux même faire figurer des équation $\LaTeX$.
++ Comme par exemple $X \sim \mathcal{N}(0,1)$.
++ 
++ Pour en savoir plus sur $\LaTeX$, on peut se référer à cette :
++   [page Wikipédia](https://en.wikibooks.org/wiki/LaTeX/Mathematics).</code></pre>
+<p>Ce qui donne, dans Jupyter :</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<img src="figs/jupyter_notebook_3.png" alt="Cellule textuelle non évaluée." width="100%" />
+<p class="caption">
+Figure 1.9: Cellule textuelle non évaluée.
+</p>
+</div>
+<p>Reste alors à l’évaluer, comme s’il s’agissait d’une cellule contenant une instruction Python, pour basculer vers un affichage Markdown (<code>CTRL</code> et <code>ENTREE</code>).</p>
+<p>Pour <strong>éditer le texte</strong> une fois que l’on a basculé en markdown, un simple double-clic dans la zone de texte de la cellule fait l’affaire.</p>
+<p>Pour <strong>changer le type de la cellule pour qu’elle devienne du code</strong> :</p>
+<ul>
+<li>par la barre de menu : <code>Cell &gt; Cell Type &gt; Code</code> ;</li>
+<li>par la barre des raccourcis : dans le menu déroulant où est inscrit <code>Code</code>, en sélectionnant <code>Code</code> ;</li>
+<li>en mode commande, appuyer sur la touche du clavier <code>Y</code>.</li>
+</ul>
+</div>
+<div id="suppression-dune-cellule" class="section level4">
+<h4><span class="header-section-number">1.3.4.3</span> Suppression d’une cellule</h4>
+<p>Pour supprimer une cellule :</p>
+<ul>
+<li>par la barre de menu : <code>Edit &gt; Delete Cells</code> ;</li>
+<li>par la barre des raccourcis : icône en forme de ciseaux ;</li>
+<li>en mode commande, appuyer deux fois sur la touche du clavier <code>D</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="les-variables" class="section level2">
+<h2><span class="header-section-number">1.4</span> Les variables</h2>
+<div id="assignation-et-suppression" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Assignation et suppression</h3>
+<p>Lorsque nous avons évalué les instructions <code>2+1</code> précédemment, le résultat s’est affiché dans la console, mais il n’a pas été enregistré. Dans de nombreux cas, il est utile de conserver le contenu du résultat dans un objet, pour pouvoir le réutiliser par la suite. Pour ce faire, on utilise des <em>variables</em>. Pour créer une variable, on utilise le signe d’égalité (<code>=</code>), que l’on fait suivre par ce que l’on veut sauvegarder (du texte, un nombre, plusieurs nombres, etc.) et précéder par le nom que l’on utilisera pour désigner cette variable.</p>
+<p>Par exemple, si on souhaite stocker le résultat du calcul <code>2+1</code> dans une variable que l’on nommera <code>x</code>, il faudra écrire :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> x <span class="op">=</span> <span class="dv">2</span><span class="op">+</span><span class="dv">1</span></code></pre></div>
+<p>Pour afficher la valeur de notre variable <code>x</code>, on fait appel à la fonction <code>print()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 3</code></pre>
+<p>Pour changer la valeur de la variable, il suffit de faire une nouvelle assignation :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> x <span class="op">=</span> <span class="dv">4</span>
+<span class="op">+</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 4</code></pre>
+<p>Il est également possible de donner plus d’un nom à un même contenu (on réalise une copie de <code>x</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> x <span class="op">=</span> <span class="dv">4</span><span class="op">;</span>
+<span class="op">+</span> y <span class="op">=</span> x<span class="op">;</span>
+<span class="op">+</span> <span class="bu">print</span>(y)</code></pre></div>
+<pre><code>## 4</code></pre>
+<p>Si on modifie la copie, l’original ne sera pas affecté :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> y <span class="op">=</span> <span class="dv">0</span>
+<span class="op">+</span> <span class="bu">print</span>(y)</code></pre></div>
+<pre><code>## 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 4</code></pre>
+<p>Pour <strong>supprimer</strong> une variable, on utilise l’instruction <code>del</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="kw">del</span> y</code></pre></div>
+<p>L’affichage du contenu de <code>y</code> renvoit une erreur :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(y)</code></pre></div>
+<pre><code>## NameError: name &#39;y&#39; is not defined
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<p>Mais on note que la variable <code>x</code> n’a pas été supprimée :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 4</code></pre>
+</div>
+<div id="conventions-de-nommage" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Conventions de nommage</h3>
+<p>Le nom d’une variable peut être composé de caractères alphanumériques ainsi que du trait de soulignement (<code>_</code>) (il n’y a pas de limite sur la longueur du nom). Il est proscrit de faire commencer le nom de la variable par un nombre. Il est également interdit de faire figurer une espace dans le nom d’une variable.</p>
+<p>Pour accroitre la lisibilité du nom des variables, plusieurs méthodes existes. Nous adopterons la suivante :</p>
+<ul>
+<li>toutes les lettres en minuscule ;</li>
+<li>la séparation des termes par un trait de soulignement.</li>
+</ul>
+<p>Exemple, pour une variable contenant la valeur de l’identifiant d’un utilisateur : <code>id_utilisateur</code>.</p>
+<p>Il faut noter que le nom des variables est <strong>sensible à la casse</strong> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> x <span class="op">=</span> <span class="st">&quot;toto&quot;</span>
+<span class="op">+</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## toto</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="bu">print</span>(X)</code></pre></div>
+<pre><code>## NameError: name &#39;X&#39; is not defined
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+</div>
+</div>
+<div id="les-commentaires" class="section level2">
+<h2><span class="header-section-number">1.5</span> Les commentaires</h2>
+<p>Pour ajouter des commentaires en python, il existe plusieurs façons.</p>
+<p>Une des manières de faire est d’utiliser le symbole dièse (<code>#</code>) pour effectuer un <strong>commentaire sur une seule ligne</strong>. Tout ce qui suit le dièse jusqu’à la fin de la ligne ne sera pas évalué par Python. En revanche, ce qui vient avant le dièse le sera.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="co"># Un commentaire print(&quot;Bonjour&quot;)</span>
+<span class="op">+</span> <span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span>) <span class="co"># Un autre commentaire</span></code></pre></div>
+<pre><code>## Hello</code></pre>
+<p>L’introduction d’un <strong>bloc de commentaires</strong> (des commentaires sur plusieurs lignes) s’effectue quant à elle en entourant ce qui est ) commenter d’un délimiteur : trois guillemets simples ou doubles :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="st">&quot;&quot;&quot;</span>
+<span class="st">+ Un commentaire qui commencer sur une ligne</span>
+<span class="st">+ et qui continue sur une autre</span>
+<span class="st">+ et s&#39;arrête à la troisième</span>
+<span class="st">+ &quot;&quot;&quot;</span></code></pre></div>
+</div>
+<div id="les-modules-et-les-packages" class="section level2">
+<h2><span class="header-section-number">1.6</span> Les modules et les packages</h2>
+<p>Certaines fonctions de base en Python sont chargées par défaut. D’autres, nécessitent de charger un <strong>module</strong>. Ces modules sont des fichiers qui contiennent des <strong>définitions</strong> ainsi que des <strong>instructions</strong>.</p>
+<p>Lorsque plusieurs modules sont réunis pour offrir un ensemble de fonctions, on parle alors de <em><strong>package</strong></em>.</p>
+<p>Parmi les <em>packages</em> qui seront utilisés dans ces notes, on peut citer :</p>
+<ul>
+<li><a href="http://www.numpy.org/">NumPy</a>, un <em>package</em> fondamental pour effectuer des calculs scientifiques ;</li>
+<li><a href="https://pandas.pydata.org/">pandas</a>, un <em>package</em> permettant de manipuler facilement les données et de les analyser ;</li>
+<li><a href="https://matplotlib.org/">Matplotlib</a>, un <em>package</em> permettant de réaliser des graphiques.</li>
+</ul>
+<p>Pour charger un module (ou un <em>package</em>), on utilise la commande <code>import</code>. Par exemple, pour charger le <em>package</em> <code>pandas</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="im">import</span> pandas</code></pre></div>
+<p>Ce qui permet de faire appel à des fonctions contenues dans le module ou le <em>package</em>. Par exemple, ici, on peut faire appel à la fonction <code>Series()</code>, contenue dans le <em>package</em> <code>pandas</code>, permettant de créer un tableau de données indexées à une dimension :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> x <span class="op">=</span> pandas.Series([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>])
+<span class="op">+</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 0    1
+## 1    5
+## 2    4
+## dtype: int64</code></pre>
+<p>Il est possible de donner un alias au module ou au <em>package</em> que l’on importe, en le précisant à l’aide de la syntaxe suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="im">import</span> module <span class="im">as</span> alias</code></pre></div>
+<p>Cette pratique est courante pour abréger les noms des modules que l’on va être amené à utiliser beaucoup. Par exemple, pour <code>pandas</code>, il est coutume d’écourter le nom en <code>pd</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="im">import</span> pandas <span class="im">as</span> pd
+<span class="op">+</span> x <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>])
+<span class="op">+</span> <span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## 0    1
+## 1    5
+## 2    4
+## dtype: int64</code></pre>
+<p>On peut également importer une seule fonction d’un module, et lui attribuer (optionnellement) un alias. Par exemple, avec la fonction <code>pyplot</code> du <em>package</em> <code>matplotlib</code>, il est coutume de faire comme suit :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> <span class="im">import</span> matplotlib
+<span class="op">+</span> <span class="im">import</span> matplotlib.pyplot  <span class="im">as</span> plt
+<span class="op">+</span> <span class="im">import</span> numpy  <span class="im">as</span> np
+<span class="op">+</span> x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.1</span>)<span class="op">;</span>
+<span class="op">+</span> y <span class="op">=</span> np.sin(x)
+<span class="op">+</span> plt.plot(x, y)</code></pre></div>
+<p><img src="figs/intro_pyplot.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="laide" class="section level2">
+<h2><span class="header-section-number">1.7</span> L’aide</h2>
+<p>Pour conclure cette introduction, il semble important de mentionner la présence de l’<strong>aide</strong> et de la <strong>documentation</strong> en Python.</p>
+<p>Pour obtenir des informations sur des fonctions, il est possible de se référer à la <a href="https://docs.python.org/3/">documentation en ligne</a>. Il est également possible d’obtenir de l’aide à l’intérieur de l’environnement que l’on utilise, en utilisant le point d’interrogation (<code>?</code>).</p>
+<p>Par exemple, lorsque l’on utilise IPython (ce qui, rappelons-le, est le cas dans Jupyter), on peut accéder à l’aide à travers différentes syntaxes :</p>
+<ul>
+<li><code>?</code> : fournit une introduction et un aperçu des fonctionnalités offertes en Python (on la quitte avec la touche <code>ESC</code> par exemple);</li>
+<li><code>object?</code> : fournit des détails au sujet de <code>'object'</code> (par exemple <code>x?</code> ou encore <code>plt.plot?</code>) ;</li>
+<li><code>object??</code> : plus de détails à propos de <code>'object'</code> ;</li>
+<li><code>%quickref</code> : référence courte sur les syntaxes en Python ;</li>
+<li><code>help()</code> : accès à l’aide de Python.</li>
+</ul>
+<p><em>Note</em> : la touche de <strong>tabulation</strong> du clavier permet non seulement une <strong>autocomplétion</strong>, mais aussi une <strong>exploration du contenu</strong> d’un objet ou module.</p>
+<p>Par ailleurs, lorsqu’il s’agit de trouver de l’aide sur un problème plus complèxe, le bon réflèxe à adopter est de ne pas hésiter à chercher sur un moteur de recherche, dans des mailing-lists et bien évidemment sur les nombreuses questions sur <a href="https://stackoverflow.com">Stack Overflow</a>.</p>
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-briggs_2013_python">
+<p>Briggs, Jason R. 2013. <em>Python for Kids: A Playful Introduction to Programming</em>. no starch press.</p>
+</div>
+<div id="ref-grus_2015_data">
+<p>Grus, Joel. 2015. <em>Data Science from Scratch: First Principles with Python</em>. “ O’Reilly Media, Inc.”</p>
+</div>
+<div id="ref-vanderplas2016python">
+<p>VanderPlas, Jake. 2016. <em>Python Data Science Handbook: Essential Tools for Working with Data</em>. “ O’Reilly Media, Inc.”</p>
+</div>
+<div id="ref-mckinney_2017_python">
+<p>McKinney, Wes. 2017. <em>Python for Data Analysis: Data Wrangling with Pandas, Numpy, and Ipython (2nd Edition)</em>. “ O’Reilly Media, Inc.”</p>
+</div>
+<div id="ref-navaro_python">
+<p>Navaro, Pierre. 2018. “Python Notebooks.” <a href="https://github.com/pnavaro/python-notebooks" class="uri">https://github.com/pnavaro/python-notebooks</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="propos-liminaires.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="types-de-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/3wen/Python_pour_economistes/python_for_economists.Rmd",
+"text": "Edit"
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

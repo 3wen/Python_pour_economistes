@@ -25,12 +25,14 @@ output:
         before: null
         after: null
       search: yes
-      edit: https://github.com/3wen/Python_pour_economistes/%s
+      edit: https://github.com/3wen/Python_pour_economistes/edit/master/%s
   bookdown::pdf_book:
     highlight: tango
     keep_tex: yes
     includes:
       in_header: styles/mystyle_books.tex
+  bookdown::epub_book:
+    stylesheet: styles/style.css
 ---
 
 ```{r knitr_init, echo=FALSE, cache=FALSE, include=FALSE}
@@ -664,7 +666,7 @@ print(x, len(x))
 
 
 
-### Concaténation de chaînes
+### Concaténation de chaînes {#type-chaines-concatenation}
 
 Pour concaténer des chaînes de caractères, c'est-à-dire les mettre bout à bout, Python propose d'utiliser l'opérateur `+` :
 
@@ -2137,15 +2139,461 @@ print("d2: ", d2)
 
 # Opérateurs
 
-## Opérateurs arithmétiques
+Python comprend différents opérateurs, permettant d'effectuer des opérations entre les opérandes, c'est-à-dire entre des variables, des littéraux ou encore des expressions.
+
+## Opérateurs arithmétiques {#operateurs-arithmetiques}
+
+Les opérateurs arithmétiques de base sont intégrés dans Python.
+
+Nous avons déjà utilisé dans les chapitres précédents certains d'entre eux, pour effectuer des opérations sur les entiers ou les nombres à virgule flotante (addition, soustraction, etc.). Faisons un tour rapide des opérateurs arithmétiques les plus courants permettant de réaliser des opérations sur des nombres.
+
+### Addition
+
+On effectue une addition entre deux nombres à l'aide du symbole `+` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(1+1) # Addition
+```
+
+
+### Soustraction
+
+On effectue une soustraction entre deux nombres à l'aide du symbole `-` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(1+1) # Soustraction
+```
+
+
+### Multiplication
+
+On effectue une multiplication entre deux nombres à l'aide du symbole `*` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(2*2) # Multiplication
+```
+
+
+### Division
+
+On effectue une division (réelle) entre deux nombres à l'aide du symbole `/` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(3/2) # Division
+```
+
+Pour effectuer une division entière, on double la barre oblique :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(3//2) # Division entière
+```
+
+### Modulo
+
+Le modulo (reste de la division euclidienne) s'obtient à l'aide du symbole `%` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(12%10) # Modulo
+```
+
+### Puissance
+
+Pour élever un nombre à une puissance données, on utilise deux étoiles (`**`) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(2**3) # 2 élevé à la puissance 3
+```
+
+
+### Ordre
+
+L'ordre des opérations suit la règle PEMDAS (*Parentheses*, *Exponents*, *Multiplication and Division*, *Addition and Subtraction*).
+
+Par exemple, l'instruction suivante effectue d'abord le calcul $2\times 2$, puis ajoute $1$ :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(2*2+1) 
+```
+
+
+L'instruction suivante, grâce aux parenthèses, effectue d'abord le calcul $2+1$, puis la multiplication du résultat avec $2$ :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(2*(2+1)) 
+```
+
+
+### Opérateurs mathématiques sur des chaînes de caractères
+
+Certains opérateurs mathématiques présentés dans la Section\ \@ref(operateurs-arithmetiques) peuvent-être appliquées à des chaînes de caractères.
+
+
+Lorsque l'on utilise le symbole `+` entre deux chaînes de caractères, Python concatène ces deux chaînes (cf. Section\ \@ref(type-chaines-concatenation)) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+a = "euro"
+b = "dollar"
+print(a+b)
+```
+
+
+Lorsqu'on "multiplie" une chaîne par un scalaire $n$, Python répète la chaîne le nombre $n$ fois :
+```{python, eval=T, echo=TRUE, error=TRUE}
+2*a
+```
+
+### Opérateurs mathématiques sur des listes ou des n-uplets
+
+Certains opérateurs mathématiques peuvent également être appliquées à des listes.
+
+Lorsque l'on utilise le symble `+` entre deux listes, Python les concatène en une seule :
+```{python, eval=T, echo=TRUE, error=TRUE}
+l_1 = [1, "pomme", 5, 7]
+l_2 = [9, 11]
+print(l_1 + l_2)
+```
+
+Idem avec des n-uplets =
+```{python, eval=T, echo=TRUE, error=TRUE}
+t_1 = (1, "pomme", 5, 7)
+t_2 = (9, 11)
+print(t_1 + t_2)
+```
+
+En "multipliant" une liste par un scalaire $n$, Python répète $n$ fois cette liste :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(3*l_1)
+```
+
+Idem avec des n-uplets :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(3*t_1)
+```
 
 ## Opérateurs de comparaison
 
+
+Les opérateurs de comparaisons permettent de comparer entre eux des objets de tous les types de base. Le résultat d'un test de comparaison produit des valeurs booléennes.
+
+| Opérateur | Opérateur en Python | Description |
+| --------: | --------: | --------------------------------------: |
+| $=$ | `==` |  Égal à |
+| $\ne$ | `!=` (ou `<>`) |  Différent de |
+| $>$ | `>` |  Supérieur à |
+| $\geq$ | `>=` | & Supérieur ou égal à |
+| $<$ | `<`  |Inférieur à |
+| $\leq$ | `<=` | Inférieur ou égal à |
+| $\in$ | `in` | Dans  |
+| $\notin$ | `not in` | Exclu  |
+
+Table: Opérateurs de comparaison
+
+### Égalité, inégalité
+
+Pour tester l'égalité de contenu entre deux objets :
+```{python, eval=T, echo=TRUE, error=TRUE}
+a = "Hello"
+b = "World"
+c = "World"
+
+print(a == c)
+print(b == c)
+```
+
+L'inégalité entre deux objets :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = [1,2,3]
+y = [1,2,3]
+z = [1,3,4]
+
+print(x != y)
+print(x != z)
+```
+
+
+
+### Infériorité et supériorité, stricts ou larges
+
+Pour savoir si un objet est inférieur (strictement ou non) ou inférieur (strictement ou non) à un autre :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = 1
+y = 1
+z = 2
+
+print(x < y)
+print(x <= y)
+print(x > z)
+print(x >= z)
+```
+
+
+On peut également effectuer la comparaison entre deux chaînes de caractères. La comparaison s'effectue en fonction de l'ordre lexicographique :
+```{python, eval=T, echo=TRUE, error=TRUE}
+m_1 = "mange"
+m_2 = "manger"
+m_3 = "boire"
+print(m_1 < m_2) # mange avant manger
+print(m_3 > m_1) # boire avant manger
+```
+
+
+Lorsque l'on compare deux listes entre-elles, Python fonctionne pas à pas. Regardons à travers un exemple comment cette comparaison est effectuée.
+
+Créons deux listes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = [1, 3, 5, 7]
+y = [9, 11]
+```
+
+Python va commencer par comparer les premiers éléments de chaque liste (ici, c'est possible, les deux éléments sont comparables ; dans le cas contraire, une erreur serait retournée) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(x < y)
+```
+
+Comme `1<9`, Python retourne `True`.
+
+Changeons `x` pour que le premier élément soit supérieur au premier de `y`
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = [10, 3, 5, 7]
+y = [9, 11]
+print(x < y)
+```
+
+Cette fois, comme $10>9$, Python retourne `False`.
+
+Changeons à présent le premier élément de `x` pour qu'ils soit égal à celui de `y` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = [10, 3, 5, 7]
+y = [10, 11]
+print(x < y)
+```
+
+Cette fois, Python compare le premier élement de `x` avec celui de `y`, comme les deux sont identiques, les seconds éléments sont comparés. On peut s'en convaincre en évaluant le code suivant :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = [10, 12, 5, 7]
+y = [10, 11]
+print(x < y)
+```
+
+
+
+### Inclusion et exclusion
+
+Comme rencontré plusieurs fois dans le Chapitre\ \@ref(structures), les tests d'inclusions s'effectuent à l'aide de l'opérateur `in`.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(3 in [1,2, 3])
+```
+
+
+Pour tester si un élément est exclu d'une liste, d'un n-uplet, dictionnaire, etc., on utilise `not in` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(4 not in [1,2, 3])
+print(4 not in [1,2, 3, 4])
+```
+
+Avec un dictionnaire :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dictionnaire = {"nom": "Rockwell", "prenom": "Criquette"}
+"age" not in dictionnaire.keys()
+```
+
+
 ## Opérateurs logiques
 
-## Quelques fonctions numériques
+Les opérateurs logiques opèrent sur un ou plusieurs objets de type logique (des booléens).
 
-sum, mean, round, etc.
+### Et logique
+
+L'opérateur `and` permet d'effectuer des comparaisons "ET" logiques. On compare deux objets, `x` et `y` (ces objets peuvent résulter d'une comparaison préalable, il suffit juste que tous deux soient des booléens).
+
+Si l'un des deux objets `x` et `y` est vrai, la comparaison "ET" logique retourne vrai :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = True
+print(x and y)
+```
+
+Si au moins l'un des deux est faux, la comparaison "ET" logique retourne faux :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = False
+
+print(x and y)
+print(y and y)
+```
+
+Si un des deux objets comparés vaut la valeur vide (`None`), alors la comparaison "ET" logique retourne :
+
+- la valeur `None` si l'autre objet vaut `True` ou `None` ;
+- la valeur `False` si l'autre objet vaut `False`
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = False
+z = None
+print(x and z)
+print(y and z)
+print(z and z)
+```
+
+
+
+### Ou logique
+
+
+L'opérateur `or` permet d'effectuer des comparaisons "OU" logiques. À nouveau, on compare deux booléens, `x` et `y`.
+
+Si au moins un des deux objets `x` et `y` est vrai, la comparaison "OU" logique retourne vrai :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = False
+print(x or y)
+```
+
+Si les deux sont faux, la comparaison "OU" logique retourne faux :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = False
+y = False
+print(x or y)
+```
+
+Si l'un des deux objets vaut `None`, la comparaison "OU" logique retourne :
+
+- `True` si l'autre objet vaut `True` ;
+- `None` si l'autre objet vaut `False` ou `None`
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = False
+z = None
+print(x or z)
+print(y or z)
+print(z or z)
+```
+
+
+
+### Non logique
+
+
+L'opérateur `not`, lorsqu'appliqué à un booléen, évalue ce dernier à sa valeur opposée :
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = True
+y = False
+print(not x)
+print(not y)
+```
+
+
+Lorsque l'on utilise l'opérateur `not` sur une valeur vide (`None`), Python retourne `True` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = None
+not x
+```
+
+
+
+## Quelques fonctions
+
+
+Python dispose de nombreuses fonctions utiles pour manipuler les structures et données. Le tableau suivant en répertorie quelques-unes. Certaines nécessitent le chargement de la librairie `math`. Nous verrsons d'autres fonctions propres à la librairie `NumPy` au Chapitre\ \@ref(numpy).
+
+| Fonction | Description |
+| ---------: | --------------------------------------------: |
+| `math.ceil(x)` | Plus petits entier supérieur ou égal à `x` |
+| `math.copysign(x, y)` | Valeur absolue de `x` mais avec le signe de `y` |
+| `math.floor(x)` | Plus petits entier inférieur ou égal à `x` |
+| `math.round(x, ndigits)` | Arrondi de `x` à `ndigits` décimales près |
+| `math.fabs(x)` | Valeur absolue de `x` |
+| `math.exp(x)` | Exponentielle de `x` |
+| `math.log(x)` | Logarithme naturel de `x` (en base e) |
+| `math.log(x, b)` | Logarithme en base `b`  de `x` |
+| `math.log10(x)` | Logarithme en base 10  de `x` |
+| `math.pow(x,y)` | `x` élevé à la puissance `y` |
+| `math.sqrt(x)` | Racine carrée de `x` |
+| `math.fsum()` | Somme des valeurs de `x` |
+| `math.sin(x)` | Sinus de `x` |
+| `math.cos(x)` | Cosinus de `x` |
+| `math.tan(x)` | Tangente de `x` |
+| `math.asin(x)` | Arc-sinus de `x` |
+| `math.acos(x)` | Arc-cosinus de `x` |
+| `math.atan(x)` | Arc-tangente de `x` |
+| `math.sinh(x)` | Sinus hyperbolique de `x` |
+| `math.cosh(x)` | Cosinus hyperbolique de `x` |
+| `math.tanh(x)` | Tangente hyperbolique de `x` |
+| `math.asinh(x)` | Arc-sinus hyperbolique de `x` |
+| `math.acosh(x)` | Arc-cosinus hyperbolique de `x` |
+| `math.atanh(x)` | Arc-tangente hyperbolique de `x` |
+| `math.degree(x)` | Conversion de `x` de radians en degrés |
+| `math.radians(x)` | Conversion de `x` de degrés en radians |
+| `math.factorial()` | Factorielle de `x` |
+| `math.gcd(x, y)` | Plus grand commun diviseur de `x` et `y` |
+| `math.isclose(x, y, rel_tol=1e-09, abs_tol=0.0)` | Compare `x` et `y` et retourne s'ils sont proches au reard de la tolérance `rel_tol` (`abs_tol` est la tolérance minimum absolue) |
+| `math.isfinite(x)` | Retourne `True` si `x` est soit l'infini, soir `NaN`  |
+| `math.isinf(x)` | Retourne `True` si `x` est l'infini, `False` sinon |
+| `math.isnan(x)` | Retourne `True` si `x` est `NaN`, `False` sinon |
+
+Table: Quelques fonctions numériques
+
+## Quelques constantes
+
+La librairie `math` propose quelques constantes :
+
+| Fonction | Description |
+| ---------: | --------------------------------------------: |
+| `math.pi` | Le nombre Pi ($\pi$) |
+| `math.e` | La constante $e$  |
+| `math.tau` | La constante $\tau$, égale à $2\pi$ |
+| `math.inf` | L'infini ($\infty$) |
+| `-math.inf` | Moins l'infini ($-\infty$) |
+| `math.nan` | Nombre à virgule flotante *not a number* |
+
+Table: Quelques constantes intégrées dans Python
+
+## Exercice
+
+```{block2, type='remarque', echo=TRUE}
+1. Calculer le reste de la division euclidienne de 10 par 3.
+2. Afficher le plus grand commun diviseur entre 6209 et 4435.
+3. Soient deux objets : `a = 18` et `b = -4`. Tester si: 
+  
+  - `a` est inférieur à `b` strictement,
+  - `a` est supérieur ou égal à `b`,
+  - `a` est différent de `b`.
+4. Soit la liste `x = [1, 1, 2, 3, 5, 8]`. Regarder si :
+  
+  - `1` est dans `x` ;
+  - `0` est dans `x` ;
+  - `1` et `0` sont dans `x` ;
+  - `1` ou `0` sont dans `x` ;
+  - `1` ou `0` n'est pas présent dans `x`.
+
+```
+
+
+# Chargement et sauvegarde de données
+
+## Charger des données
+
+### Fichiers textes
+
+### Fichiers CSV
+
+### Fichiers Excel
+
+
+## Exporter des données
+
+### Fichiers textes
+
+### Fichiers CSV
+
 
 # Conditions
 
@@ -2182,7 +2630,7 @@ sum, mean, round, etc.
 
 
 
-# Introduction à Numpy
+# Introduction à Numpy {#numpy}
 
 
 

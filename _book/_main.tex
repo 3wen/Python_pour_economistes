@@ -1430,7 +1430,7 @@ propose la fonction \texttt{len()} :
 ## Hello World ! 13
 \end{lstlisting}
 
-\subsection{Concaténation de chaînes}\label{concatenation-de-chaines}
+\subsection{Concaténation de chaînes}\label{type-chaines-concatenation}
 
 Pour concaténer des chaînes de caractères, c'est-à-dire les mettre bout
 à bout, Python propose d'utiliser l'opérateur \texttt{+} :
@@ -3187,7 +3187,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-07 15:25:28.126678
+## 2018-10-07 19:31:35.988621
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3197,7 +3197,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-07 15:25:28.128627
+## 2018-10-07 19:31:35.990870
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4059,7 +4059,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4073,7 +4073,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4109,7 +4109,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4140,7 +4140,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Toulon', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Toulon', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4153,7 +4153,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Toulon', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Toulon', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4169,7 +4169,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4195,7 +4195,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4242,7 +4242,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Aix-en-Provence', 'Marseille', 'Toulon', 'Nice'}
+## y :  {'Nice', 'Marseille', 'Aix-en-Provence', 'Toulon'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4252,7 +4252,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Aix-en-Provence', 'Marseille', 'Nice'}
+## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4282,7 +4282,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille'}
+## {'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4293,7 +4293,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Aix-en-Provence', 'Marseille']
+## ['Marseille', 'Aix-en-Provence']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -4767,16 +4767,1023 @@ ensembles, une méthode \texttt{copy()} :
 
 \chapter{Opérateurs}\label{operateurs}
 
+Python comprend différents opérateurs, permettant d'effectuer des
+opérations entre les opérandes, c'est-à-dire entre des variables, des
+littéraux ou encore des expressions.
+
 \section{Opérateurs arithmétiques}\label{operateurs-arithmetiques}
+
+Les opérateurs arithmétiques de base sont intégrés dans Python.
+
+Nous avons déjà utilisé dans les chapitres précédents certains d'entre
+eux, pour effectuer des opérations sur les entiers ou les nombres à
+virgule flotante (addition, soustraction, etc.). Faisons un tour rapide
+des opérateurs arithmétiques les plus courants permettant de réaliser
+des opérations sur des nombres.
+
+\subsection{Addition}\label{addition}
+
+On effectue une addition entre deux nombres à l'aide du symbole
+\texttt{+} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Addition}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 2
+\end{lstlisting}
+
+\subsection{Soustraction}\label{soustraction}
+
+On effectue une soustraction entre deux nombres à l'aide du symbole
+\texttt{-} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Soustraction}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 2
+\end{lstlisting}
+
+\subsection{Multiplication}\label{multiplication}
+
+On effectue une multiplication entre deux nombres à l'aide du symbole
+\texttt{*} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\NormalTok{) }\CommentTok{# Multiplication}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4
+\end{lstlisting}
+
+\subsection{Division}\label{division}
+
+On effectue une division (réelle) entre deux nombres à l'aide du symbole
+\texttt{/} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{/}\DecValTok{2}\NormalTok{) }\CommentTok{# Division}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 1.5
+\end{lstlisting}
+
+Pour effectuer une division entière, on double la barre oblique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{//}\DecValTok{2}\NormalTok{) }\CommentTok{# Division entière}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 1
+\end{lstlisting}
+
+\subsection{Modulo}\label{modulo}
+
+Le modulo (reste de la division euclidienne) s'obtient à l'aide du
+symbole \texttt{\%} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{12}\OperatorTok{%}\DecValTok{10}\NormalTok{) }\CommentTok{# Modulo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 2
+\end{lstlisting}
+
+\subsection{Puissance}\label{puissance}
+
+Pour élever un nombre à une puissance données, on utilise deux étoiles
+(\texttt{**}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{**}\DecValTok{3}\NormalTok{) }\CommentTok{# 2 élevé à la puissance 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 8
+\end{lstlisting}
+
+\subsection{Ordre}\label{ordre}
+
+L'ordre des opérations suit la règle PEMDAS (\emph{Parentheses},
+\emph{Exponents}, \emph{Multiplication and Division}, \emph{Addition and
+Subtraction}).
+
+Par exemple, l'instruction suivante effectue d'abord le calcul
+\(2\times 2\), puis ajoute \(1\) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 5
+\end{lstlisting}
+
+L'instruction suivante, grâce aux parenthèses, effectue d'abord le
+calcul \(2+1\), puis la multiplication du résultat avec \(2\) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{(}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 6
+\end{lstlisting}
+
+\subsection{Opérateurs mathématiques sur des chaînes de
+caractères}\label{operateurs-mathematiques-sur-des-chaines-de-caracteres}
+
+Certains opérateurs mathématiques présentés dans la
+Section~\ref{operateurs-arithmetiques} peuvent-être appliquées à des
+chaînes de caractères.
+
+Lorsque l'on utilise le symbole \texttt{+} entre deux chaînes de
+caractères, Python concatène ces deux chaînes
+(cf.~Section~\ref{type-chaines-concatenation}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ a }\OperatorTok{=} \StringTok{"euro"}
+\OperatorTok{+}\NormalTok{ b }\OperatorTok{=} \StringTok{"dollar"}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(a}\OperatorTok{+}\NormalTok{b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## eurodollar
+\end{lstlisting}
+
+Lorsqu'on ``multiplie'' une chaîne par un scalaire \(n\), Python répète
+la chaîne le nombre \(n\) fois :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \DecValTok{2}\OperatorTok{*}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Opérateurs mathématiques sur des listes ou des
+n-uplets}\label{operateurs-mathematiques-sur-des-listes-ou-des-n-uplets}
+
+Certains opérateurs mathématiques peuvent également être appliquées à
+des listes.
+
+Lorsque l'on utilise le symble \texttt{+} entre deux listes, Python les
+concatène en une seule :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ l_1 }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ l_2 }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(l_1 }\OperatorTok{+}\NormalTok{ l_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [1, 'pomme', 5, 7, 9, 11]
+\end{lstlisting}
+
+Idem avec des n-uplets =
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ t_1 }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\OperatorTok{+}\NormalTok{ t_2 }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(t_1 }\OperatorTok{+}\NormalTok{ t_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## (1, 'pomme', 5, 7, 9, 11)
+\end{lstlisting}
+
+En ``multipliant'' une liste par un scalaire \(n\), Python répète \(n\)
+fois cette liste :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{l_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [1, 'pomme', 5, 7, 1, 'pomme', 5, 7, 1, 'pomme', 5, 7]
+\end{lstlisting}
+
+Idem avec des n-uplets :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{t_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## (1, 'pomme', 5, 7, 1, 'pomme', 5, 7, 1, 'pomme', 5, 7)
+\end{lstlisting}
 
 \section{Opérateurs de comparaison}\label{operateurs-de-comparaison}
 
+Les opérateurs de comparaisons permettent de comparer entre eux des
+objets de tous les types de base. Le résultat d'un test de comparaison
+produit des valeurs booléennes.
+
+\begin{longtable}[]{@{}rrr@{}}
+\caption{Opérateurs de comparaison}\tabularnewline
+\toprule
+Opérateur & Opérateur en Python & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Opérateur & Opérateur en Python & Description\tabularnewline
+\midrule
+\endhead
+\(=\) & \texttt{==} & Égal à\tabularnewline
+\(\ne\) & \texttt{!=} (ou \texttt{\textless{}\textgreater{}}) &
+Différent de\tabularnewline
+\(>\) & \texttt{\textgreater{}} & Supérieur à\tabularnewline
+\(\geq\) & \texttt{\textgreater{}=} & \& Supérieur ou égal
+à\tabularnewline
+\(<\) & \texttt{\textless{}} & Inférieur à\tabularnewline
+\(\leq\) & \texttt{\textless{}=} & Inférieur ou égal à\tabularnewline
+\(\in\) & \texttt{in} & Dans\tabularnewline
+\(\notin\) & \texttt{not\ in} & Exclu\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Égalité, inégalité}\label{egalite-inegalite}
+
+Pour tester l'égalité de contenu entre deux objets :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ a }\OperatorTok{=} \StringTok{"Hello"}
+\OperatorTok{+}\NormalTok{ b }\OperatorTok{=} \StringTok{"World"}
+\OperatorTok{+}\NormalTok{ c }\OperatorTok{=} \StringTok{"World"}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(b }\OperatorTok{==}\NormalTok{ c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+L'inégalité entre deux objets :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+\subsection{Infériorité et supériorité, stricts ou
+larges}\label{inferiorite-et-superiorite-stricts-ou-larges}
+
+Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
+(strictement ou non) à un autre :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{1}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \DecValTok{1}
+\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \DecValTok{2}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<=}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{>}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{>=}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+On peut également effectuer la comparaison entre deux chaînes de
+caractères. La comparaison s'effectue en fonction de l'ordre
+lexicographique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ m_1 }\OperatorTok{=} \StringTok{"mange"}
+\OperatorTok{+}\NormalTok{ m_2 }\OperatorTok{=} \StringTok{"manger"}
+\OperatorTok{+}\NormalTok{ m_3 }\OperatorTok{=} \StringTok{"boire"}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(m_1 }\OperatorTok{<}\NormalTok{ m_2) }\CommentTok{# mange avant manger}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(m_3 }\OperatorTok{>}\NormalTok{ m_1) }\CommentTok{# boire avant manger}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+Lorsque l'on compare deux listes entre-elles, Python fonctionne pas à
+pas. Regardons à travers un exemple comment cette comparaison est
+effectuée.
+
+Créons deux listes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Python va commencer par comparer les premiers éléments de chaque liste
+(ici, c'est possible, les deux éléments sont comparables ; dans le cas
+contraire, une erreur serait retournée) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Comme \texttt{1\textless{}9}, Python retourne \texttt{True}.
+
+Changeons \texttt{x} pour que le premier élément soit supérieur au
+premier de \texttt{y}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+Cette fois, comme \(10>9\), Python retourne \texttt{False}.
+
+Changeons à présent le premier élément de \texttt{x} pour qu'ils soit
+égal à celui de \texttt{y} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Cette fois, Python compare le premier élement de \texttt{x} avec celui
+de \texttt{y}, comme les deux sont identiques, les seconds éléments sont
+comparés. On peut s'en convaincre en évaluant le code suivant :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\subsection{Inclusion et exclusion}\label{inclusion-et-exclusion}
+
+Comme rencontré plusieurs fois dans le Chapitre~\ref{structures}, les
+tests d'inclusions s'effectuent à l'aide de l'opérateur \texttt{in}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Pour tester si un élément est exclu d'une liste, d'un n-uplet,
+dictionnaire, etc., on utilise \texttt{not\ in} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+Avec un dictionnaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ dictionnaire }\OperatorTok{=}\NormalTok{ \{}\StringTok{"nom"}\NormalTok{: }\StringTok{"Rockwell"}\NormalTok{, }\StringTok{"prenom"}\NormalTok{: }\StringTok{"Criquette"}\NormalTok{\}}
+\OperatorTok{+} \StringTok{"age"} \KeywordTok{not} \KeywordTok{in}\NormalTok{ dictionnaire.keys()}
+\end{Highlighting}
+\end{Shaded}
+
 \section{Opérateurs logiques}\label{operateurs-logiques}
 
-\section{Quelques fonctions
-numériques}\label{quelques-fonctions-numeriques}
+Les opérateurs logiques opèrent sur un ou plusieurs objets de type
+logique (des booléens).
 
-sum, mean, round, etc.
+\subsection{Et logique}\label{et-logique}
+
+L'opérateur \texttt{and} permet d'effectuer des comparaisons ``ET''
+logiques. On compare deux objets, \texttt{x} et \texttt{y} (ces objets
+peuvent résulter d'une comparaison préalable, il suffit juste que tous
+deux soient des booléens).
+
+Si l'un des deux objets \texttt{x} et \texttt{y} est vrai, la
+comparaison ``ET'' logique retourne vrai :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Si au moins l'un des deux est faux, la comparaison ``ET'' logique
+retourne faux :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+Si un des deux objets comparés vaut la valeur vide (\texttt{None}),
+alors la comparaison ``ET'' logique retourne :
+
+\begin{itemize}
+\tightlist
+\item
+  la valeur \texttt{None} si l'autre objet vaut \texttt{True} ou
+  \texttt{None} ;
+\item
+  la valeur \texttt{False} si l'autre objet vaut \texttt{False}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \VariableTok{None}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## None
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z }\KeywordTok{and}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## None
+\end{lstlisting}
+
+\subsection{Ou logique}\label{ou-logique}
+
+L'opérateur \texttt{or} permet d'effectuer des comparaisons ``OU''
+logiques. À nouveau, on compare deux booléens, \texttt{x} et \texttt{y}.
+
+Si au moins un des deux objets \texttt{x} et \texttt{y} est vrai, la
+comparaison ``OU'' logique retourne vrai :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Si les deux sont faux, la comparaison ``OU'' logique retourne faux :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+Si l'un des deux objets vaut \texttt{None}, la comparaison ``OU''
+logique retourne :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{True} si l'autre objet vaut \texttt{True} ;
+\item
+  \texttt{None} si l'autre objet vaut \texttt{False} ou \texttt{None}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \VariableTok{None}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{or}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## None
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z }\KeywordTok{or}\NormalTok{ z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## None
+\end{lstlisting}
+
+\subsection{Non logique}\label{non-logique}
+
+L'opérateur \texttt{not}, lorsqu'appliqué à un booléen, évalue ce
+dernier à sa valeur opposée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
+\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
+\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
+\end{lstlisting}
+
+Lorsque l'on utilise l'opérateur \texttt{not} sur une valeur vide
+(\texttt{None}), Python retourne \texttt{True} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{None}
+\OperatorTok{+} \KeywordTok{not}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Quelques fonctions}\label{quelques-fonctions}
+
+Python dispose de nombreuses fonctions utiles pour manipuler les
+structures et données. Le tableau suivant en répertorie quelques-unes.
+Certaines nécessitent le chargement de la librairie \texttt{math}. Nous
+verrsons d'autres fonctions propres à la librairie \texttt{NumPy} au
+Chapitre~\ref{numpy}.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{Quelques fonctions numériques}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.14\columnwidth}\raggedleft\strut
+Fonction\strut
+\end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.14\columnwidth}\raggedleft\strut
+Fonction\strut
+\end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.ceil(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Plus petits entier supérieur ou égal à \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.copysign(x,\ y)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Valeur absolue de \texttt{x} mais avec le signe de \texttt{y}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.floor(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Plus petits entier inférieur ou égal à \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.round(x,\ ndigits)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arrondi de \texttt{x} à \texttt{ndigits} décimales près\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.fabs(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Valeur absolue de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.exp(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Exponentielle de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.log(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Logarithme naturel de \texttt{x} (en base e)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.log(x,\ b)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Logarithme en base \texttt{b} de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.log10(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Logarithme en base 10 de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.pow(x,y)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+\texttt{x} élevé à la puissance \texttt{y}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.sqrt(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Racine carrée de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.fsum()}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Somme des valeurs de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.sin(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Sinus de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.cos(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Cosinus de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.tan(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Tangente de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.asin(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-sinus de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.acos(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-cosinus de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.atan(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-tangente de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.sinh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Sinus hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.cosh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Cosinus hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.tanh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Tangente hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.asinh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-sinus hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.acosh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-cosinus hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.atanh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Arc-tangente hyperbolique de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.degree(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Conversion de \texttt{x} de radians en degrés\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.radians(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Conversion de \texttt{x} de degrés en radians\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.factorial()}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Factorielle de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.gcd(x,\ y)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Plus grand commun diviseur de \texttt{x} et \texttt{y}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.isclose(x,\ y,\ rel\_tol=1e-09,\ abs\_tol=0.0)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Compare \texttt{x} et \texttt{y} et retourne s'ils sont proches au reard
+de la tolérance \texttt{rel\_tol} (\texttt{abs\_tol} est la tolérance
+minimum absolue)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.isfinite(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Retourne \texttt{True} si \texttt{x} est soit l'infini, soir
+\texttt{NaN}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.isinf(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Retourne \texttt{True} si \texttt{x} est l'infini, \texttt{False}
+sinon\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\texttt{math.isnan(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Retourne \texttt{True} si \texttt{x} est \texttt{NaN}, \texttt{False}
+sinon\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Quelques constantes}\label{quelques-constantes}
+
+La librairie \texttt{math} propose quelques constantes :
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{Quelques constantes intégrées dans Python}\tabularnewline
+\toprule
+Fonction & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Fonction & Description\tabularnewline
+\midrule
+\endhead
+\texttt{math.pi} & Le nombre Pi (\(\pi\))\tabularnewline
+\texttt{math.e} & La constante \(e\)\tabularnewline
+\texttt{math.tau} & La constante \(\tau\), égale à
+\(2\pi\)\tabularnewline
+\texttt{math.inf} & L'infini (\(\infty\))\tabularnewline
+\texttt{-math.inf} & Moins l'infini (\(-\infty\))\tabularnewline
+\texttt{math.nan} & Nombre à virgule flotante \emph{not a
+number}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Exercice}\label{exercice-2}
+
+\BeginKnitrBlock{remarque}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calculer le reste de la division euclidienne de 10 par 3.
+\item
+  Afficher le plus grand commun diviseur entre 6209 et 4435.
+\item
+  Soient deux objets : \texttt{a\ =\ 18} et \texttt{b\ =\ -4}. Tester
+  si:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{a} est inférieur à \texttt{b} strictement,
+\item
+  \texttt{a} est supérieur ou égal à \texttt{b},
+\item
+  \texttt{a} est différent de \texttt{b}.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Soit la liste \texttt{x\ =\ {[}1,\ 1,\ 2,\ 3,\ 5,\ 8{]}}. Regarder si
+  :
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{1} est dans \texttt{x} ;
+\item
+  \texttt{0} est dans \texttt{x} ;
+\item
+  \texttt{1} et \texttt{0} sont dans \texttt{x} ;
+\item
+  \texttt{1} ou \texttt{0} sont dans \texttt{x} ;
+\item
+  \texttt{1} ou \texttt{0} n'est pas présent dans \texttt{x}.
+\end{itemize}
+\EndKnitrBlock{remarque}
+
+\chapter{Chargement et sauvegarde de
+données}\label{chargement-et-sauvegarde-de-donnees}
+
+\section{Charger des données}\label{charger-des-donnees}
+
+\subsection{Fichiers textes}\label{fichiers-textes}
+
+\subsection{Fichiers CSV}\label{fichiers-csv}
+
+\subsection{Fichiers Excel}\label{fichiers-excel}
+
+\section{Exporter des données}\label{exporter-des-donnees}
+
+\subsection{Fichiers textes}\label{fichiers-textes-1}
+
+\subsection{Fichiers CSV}\label{fichiers-csv-1}
 
 \chapter{Conditions}\label{conditions}
 
@@ -4803,7 +5810,7 @@ sum, mean, round, etc.
 
 \section{Erreurs}\label{erreurs}
 
-\chapter{Introduction à Numpy}\label{introduction-a-numpy}
+\chapter{Introduction à Numpy}\label{numpy}
 
 \chapter{Manipulation de données avec
 Pandas}\label{manipulation-de-donnees-avec-pandas}

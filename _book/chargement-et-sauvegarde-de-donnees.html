@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="fonctions.html">
-<link rel="next" href="manipulation-de-donnees-avec-pandas.html">
+<link rel="prev" href="operateurs.html">
+<link rel="next" href="conditions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -183,8 +183,14 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
 <li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions-numeriques"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions numériques</a></li>
+<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="operateurs.html"><a href="operateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="operateurs.html"><a href="operateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="operateurs.html"><a href="operateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="operateurs.html"><a href="operateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="operateurs.html"><a href="operateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a><ul>
 <li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#charger-des-donnees"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a><ul>
@@ -211,7 +217,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="introduction-a-numpy.html"><a href="introduction-a-numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
 <li class="chapter" data-level="10" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
 <li class="chapter" data-level="10.1" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#importation-et-exportation-de-donnees"><i class="fa fa-check"></i><b>10.1</b> Importation et exportation de données</a></li>
 <li class="chapter" data-level="10.2" data-path="manipulation-de-donnees-avec-pandas.html"><a href="manipulation-de-donnees-avec-pandas.html#selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a></li>
@@ -243,16 +249,37 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-a-numpy" class="section level1">
-<h1><span class="header-section-number">9</span> Introduction à Numpy</h1>
+<div id="chargement-et-sauvegarde-de-donnees" class="section level1">
+<h1><span class="header-section-number">5</span> Chargement et sauvegarde de données</h1>
+<div id="charger-des-donnees" class="section level2">
+<h2><span class="header-section-number">5.1</span> Charger des données</h2>
+<div id="fichiers-textes" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Fichiers textes</h3>
+</div>
+<div id="fichiers-csv" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Fichiers CSV</h3>
+</div>
+<div id="fichiers-excel" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Fichiers Excel</h3>
+</div>
+</div>
+<div id="exporter-des-donnees" class="section level2">
+<h2><span class="header-section-number">5.2</span> Exporter des données</h2>
+<div id="fichiers-textes-1" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Fichiers textes</h3>
+</div>
+<div id="fichiers-csv-1" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Fichiers CSV</h3>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="fonctions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="manipulation-de-donnees-avec-pandas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="operateurs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conditions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -285,7 +312,7 @@ gitbook.start({
 "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
 "text": "Edit"
 },
-"download": ["_main.pdf"],
+"download": ["_main.pdf", "_main.epub"],
 "toc": {
 "collapse": "subsection",
 "scroll_highlight": true

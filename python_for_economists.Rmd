@@ -44,7 +44,7 @@ library(tidyverse)
 options(max.print="75")
 opts_chunk$set(echo=TRUE,
 	             cache=FALSE,
-               prompt=TRUE,
+               prompt=FALSE,
                tidy=TRUE,
                # comment=NA,
                message=FALSE,
@@ -99,14 +99,26 @@ options(bookdown.post.latex = function(x) {
 <!-- invisible(py_config()) -->
 <!-- ``` -->
 
-```{r}
-1+1
-```
 
 
-Ici, on va parler de ce qu'est un algorithme, et pourquoi c'est cool de savoir en rédiger.
 
 
+Ces notes de cours ont été réalisées dans le cadre d’un enseignement d’introduction à Python adressé à des étudiants du parcours Économétrie et Big Data de [l'École d'Economie d'Aix-Marseille / Aix-Marseille School of Economics (AMSE)](https://www.amse-aixmarseille.fr/) d'Aix-Marseille Université.
+
+
+## Objectifs
+
+Cet ouvrage a pour but l'initiation au langage de programmation Python, afin d’être capable de s'en servir de manière efficace et autonome. Le lecteur peut exécuter tous les exemples fournis (et est vivement encouragé à le faire). Des exercices viennent clore certains chapitres, pour mieux s'approprier les notions couvertes au fur et à mesure de la lecture.
+
+
+Bien évidemment, Python étant un langage très vaste, ces notes ne sauraient et n'ont pas pour vocation à être exhaustives de l'utilisation de ce langage informatique.
+
+
+
+
+## À qui s'adressent ces notes ?
+
+Dans un premier temps, cet ouvrage s'adresse aux débutants qui souhaientent apprendre les bases en Python. Il est à destination des étudiants de l'AMSE mais pourrait intéresser des individus ayant une approche de la donnée à travers la discipline économique désirant découvrir Python.
 
 # Introduction
 
@@ -2505,7 +2517,7 @@ not x
 Python dispose de nombreuses fonctions utiles pour manipuler les structures et données. Le tableau suivant en répertorie quelques-unes. Certaines nécessitent le chargement de la librairie `math`. Nous verrsons d'autres fonctions propres à la librairie `NumPy` au Chapitre\ \@ref(numpy).
 
 | Fonction | Description |
-| ---------: | --------------------------------------------: |
+| --------------: | --------------------------------------------: |
 | `math.ceil(x)` | Plus petits entier supérieur ou égal à `x` |
 | `math.copysign(x, y)` | Valeur absolue de `x` mais avec le signe de `y` |
 | `math.floor(x)` | Plus petits entier inférieur ou égal à `x` |
@@ -2546,7 +2558,7 @@ Table: Quelques fonctions numériques
 La librairie `math` propose quelques constantes :
 
 | Fonction | Description |
-| ---------: | --------------------------------------------: |
+| -----------: | --------------------------------------------: |
 | `math.pi` | Le nombre Pi ($\pi$) |
 | `math.e` | La constante $e$  |
 | `math.tau` | La constante $\tau$, égale à $2\pi$ |
@@ -2558,7 +2570,7 @@ Table: Quelques constantes intégrées dans Python
 
 ## Exercice
 
-```{block2, type='remarque', echo=TRUE}
+```{block2, type='exframe', echo=TRUE}
 1. Calculer le reste de la division euclidienne de 10 par 3.
 2. Afficher le plus grand commun diviseur entre 6209 et 4435.
 3. Soient deux objets : `a = 18` et `b = -4`. Tester si: 
@@ -2579,20 +2591,248 @@ Table: Quelques constantes intégrées dans Python
 
 # Chargement et sauvegarde de données
 
+Pour explorer des données et/ou réaliser des analyses statistiques ou économétriques, il est important de savoir importer et exporter des données.
+
+Avant toute chose, il convient d'évoquer la notion de répertoire courant (*working directory*). En informatique, le répertroire courant d'un processus désigne un répertoire du système de fichier associé à ce processus.
+
+Lorsqu'on lance Jupyter, une arborescence nous est proposée, et nous navigons à l'interieur de celle-ci pour créer ou ouvrir un *notebook*. Le répertoire contenant le *notebook* est le répertoire courant. Lorsqu'on indiquera à Python d'importer des données (ou d'exporter des objets), l'origine (ou la destination) sera indiquée **relativement** au répertoire courant, à moins d'avoir recours à des chemins absolus (c'est-à-dire un chemin d'accès à partir de la racine `/`).
+
+Si on lance un programme Python depuis un terminal, le répertoire courant est le répertoire dans lequel on se trouve dans le terminal au moment de lancer le programme.
+
+Pour afficher dans Python le répertoire courant, on peut utiliser le code suivant :
+```{python, eval=T, echo=TRUE, error=TRUE}
+import os
+cwd = os.getcwd()
+print(cwd)
+```
+
+
+```{block2, type='remarque', echo=TRUE}
+La fonction `listdir()` de la librairie `os` est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n’importe quel répertoire si le
+paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé la fonction (`from os import getcwd`), on peut l'appeler : `os.listdir()`.
+
+```
+
+
 ## Charger des données
 
-### Fichiers textes
+
+En fonction du format d'enregistrement des données, les techniques d'importation de données diffèrent.
+
+
+```{block2, type='remarque', echo=TRUE}
+Le Chapitre\ \@ref(pandas) propose d'autres manières d'importer les données, avec la libraririe `pandas`.
+```
+
+
+### Fichiers textes {#import-fichiers-texte}
+
+Lorsque les données sont présentes dans un fichier texte (ASCII), Python propose d'utiliser la fonction `open()`.
+
+La syntaxe (simplifiée) de la fonction `open()` est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+open(file, mode='r', buffering=-1,
+  encoding=None, errors=None, newline=None)
+```
+
+Voici à quoi correspondent les paramètres (il en existe d'autres) :
+
+- `file` : une chaîne de caractères indiquant le chemin et le nom du fichier à ouvrir ;
+- `mode` : spécifie la manière par laquelle le fichier est ouvert (c.f. juste après pour les valeurs possibles) ;
+- `buffering` : spécifie à l'aide d'un entier le comportement à adopter pour la mise en mémoire tampon (1 pour mettre en mémoire par ligne ; un entier $>1$ pour indiquer la taille en octets des morceaux à charger en mémoire tampon) ;
+- `encoding` : spécifie l'encodage du fichier ;
+- `errors` : spécifie la manière de gérer les erreurs d'encodage et de décodage (*e.g.*, `strict` retourne une erreur d'exception, `ignore` permet d'ignorer les erreurs, `replace` de les remplacer, `backslashreplace` de remplacer les données mal formées par des séquences d'échappement) ;
+- `newline` : contrôle la fin des lignes (`\n`, `\r`, etc.).
+
+| Valeur | Description |
+| -------: | ---------------------------------------------: |
+| `r` |	Ouverture pour lire (défaut) |
+| `w` |	Ouverture pour écrire |
+| `x` |	Ouverture pour créer un document, échoue si le fichier existe déjà |
+| `a` |	Ouverture pour écrire, en venant ajouter à la fin du fichier si celui-ci existe déjà |
+| `+` |	Ouverture pour mise à jour (lecture et écriture) |
+| `b` | À ajouter à un mode d'ouverture pour les fichiers binaires (`rb` ou `wb`) |
+| `t` | Mode texte (décodage automatique des octets en Unicode). Par défaut si non spécifié (s'ajoute au mode, comme `b`) |
+
+Table: Valeurs principales pour la manière d'ouvrir les fichiers.
+
+
+Il est important de bien penser à **fermer le fichier** une fois qu'on a terminé de l'utiliser. Pour ce faire, on utilise la méthode `close()`.
+
+
+Dans le dossier `fichiers_exemples` se trouve un fichier appelé `fichier_texte.txt` qui contient trois lignes de texte. Ouvrons ce fichier, et utilisons la méthode `.read()` pour afficher son contenu :
+```{python, eval=T, echo=TRUE, error=TRUE}
+path = "./fichiers_exemples/fichier_texte.txt"
+# Ouverture en mode lecture (par défaut)
+mon_fichier = open(path, mode = "r")
+print(mon_fichier.read())
+mon_fichier.close()
+```
+
+Une pratique courante en Python est d'ouvrir un fichier dans un bloc `with`. La raison de ce choix est qu'un fichier ouvert dans un tel bloc est automatiquement refermé à la fin du bloc.
+
+La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+# Ouverture en mode lecture (par défaut)
+with open(path, "r") as mon_fichier:
+  donnees = fonction_pour_recuperer_donnees_depuis_f()
+```
+
+Par exemple, pour récupérer chaque ligne comme un élément d'une liste, on peut utiliser une boucle parcourant chaque ligne du fichier. À chaque itération, on récupère la ligne :
+```{python, eval=T, echo=TRUE, error=TRUE}
+# Ouverture en mode lecture (par défaut)
+with open(path, "r") as mon_fichier:
+  donnees = [x for x in mon_fichier]
+print(donnees)
+```
+
+Note : à chaque itération, on peut appliquer la méthode `strip()`, qui retourne la chaîne de caractère de la ligne, en retirant les éventuels caractères blancs en début de chaîne :
+```{python, eval=T, echo=TRUE, error=TRUE}
+# Ouverture en mode lecture (par défaut)
+with open(path, "r") as mon_fichier:
+  donnees = [x.strip() for x in mon_fichier]
+print(donnees)
+```
+
+
+On peut également utiliser la méthode `readlines()` pour importer les lignes dans une liste :
+```{python, eval=T, echo=TRUE, error=TRUE}
+with open(path, "r") as mon_fichier:
+    donnees = mon_fichier.readlines()
+print(donnees)
+```
+
+
+Il se peut parfois que l'encodage des caractères pose problème lors de l'importation. Dans ce cas, il peut être une bonne idée de changer la valeur du paramètre `encoding` de la fonction `open()`. Les encodages disponibles sont fonction de la locale. Les valeurs disponibles s'obtiennent à l'aide de la méthode suivante (code non exécuté dans ces notes) :
+```{python, eval=F, echo=TRUE, error=TRUE}
+import locale
+locale.locale_alias()
+```
+
+
+
+#### Importation depuis internet
+
+Pour importer un fichier texte depuis Internet, on peut utiliser des méthodes de la librairie `urllib` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import urllib
+from urllib.request import urlopen
+url = "http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_texte.txt"
+with urllib.request.urlopen(url) as mon_fichier:
+   donnees = mon_fichier.read()
+print(donnees)
+```
+
+Comme on peut le constater, l'encodage des caractères pose souci ici. On peut appliquer la méthode `decode()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(donnees.decode())
+```
 
 ### Fichiers CSV
 
+Les fichier CSV (*comma separated value*) sont très répandus. De nombreuses bases de données exportent leurs données en CSV (*e.g.*, Banque Mondiale, FAO, Eurostat, etc.). Pour les importer dans Python, on peut uiliser le module `csv`.
+
+À nouveau, on utilise la fonction `open()`, avec les paramètres décrits dans la Section\ \@ref(import-fichiers-texte). Ensuite, on fait appel à la méthode `reader()` du module `csv` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import csv
+with open('./fichiers_exemples/fichier_csv.csv') as mon_fichier:
+  mon_fichier_reader = csv.reader(mon_fichier, delimiter=',', quotechar='"')
+  donnees = [x for x in mon_fichier_reader]
+
+print(donnees)
+```
+
+La méthode `reader()` peut prendre plusieurs paramètres, parmi lesquels :
+
+- `csvfile` : l'objet ouvert avec `open()` ;
+- `dialect` : paramètre spécifiant le 'dialect' du fichier CSV (e.g., `excel`, `excel-tab`, `unix`) ;
+- `delimiter` : le caractère délimitant les champs (*i.e.*, les valeurs des variables) ;
+- `quotechar` : caractère utilisé pour entourer les champs contenant des caractères spéciaux ;
+- `escapechar` : caractère d'échappement ;
+- `doublequote` : contrôle comment les *quotechar* apparaissent à l'intérieur d'un champ : quand `True`, le caractère est doublé, ; quand `False`, le caractère d'échappement est utilisé en préfixe au *quotechar* ;
+- `lineterminator` : chaîne de caractères utilisée pour terminer une ligne ;
+- `skipinitialspace` : quand `True`, le caractère blanc situé juste après le caractère de séparation des champs est ignoré ;
+- `strict` : quand `True`, retourne une erreur d'exception en cas de mauvais `input` de CSV.
+
+
+On peut aussi importer un fichier CSV en tant que dictionnaire, à l'aide de la méthode `csv.DictReader()` du module CSV :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import csv
+chemin = "./fichiers_exemples/fichier_csv.csv"
+with open(chemin) as mon_fichier:
+    mon_fichier_csv = csv.DictReader(mon_fichier)
+    donnees = [ligne for ligne in mon_fichier_csv]
+print(donnees)
+```
+
+
+
+#### Importation depuis internet
+
+Comme pour les fichiers `txt`, on peut charger un fichier CSV hébergé sur Internet :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import csv
+import urllib.request
+import codecs
+
+url = "http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"
+with urllib.request.urlopen(url) as mon_fichier:
+    mon_fochier_csv = csv.reader(codecs.iterdecode(mon_fichier, 'utf-8'))
+    donnees = [ligne for ligne in mon_fochier_csv]
+print(donnees)
+```
+
+### Fichier JSON
+
+Pour importer des fichiers au format JSON (*JavaScript Object Notation*), qui sont très utilisés dès lors qu'on communique avec une API, on peut utiliser la librairie `json`, et sa méthode `load()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import json
+lien = './fichiers_exemples/tweets.json'
+
+with open(lien) as mon_fichier_json:
+    data = json.load(mon_fichier_json)
+```
+
+Ensuite, on peut afficher le contenu importé à l'aide de la fonction `pprint()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+from pprint import pprint
+pprint(data)
+```
+
+#### Importation depuis Internet
+
+Encore une fois, il est possible d'importer des fichiers JSON depuis Internet :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import urllib
+from urllib.request import urlopen
+url = "http://egallic.fr/Enseignement/Python/fichiers_exemples/tweets.json"
+with urllib.request.urlopen(url) as mon_fichier:
+   donnees = json.load(mon_fichier)
+pprint(donnees)
+```
+
+
 ### Fichiers Excel
+
+Les fichiers Excel (`xls` ou `xlsx`) sont aussi très largement répandus en économie. Le lecteur est prié de se référer à la Section\ \@ref(pandas-importation-excel) pour une méthode d'importation des données Excel avec la librairie `pandas`.
 
 
 ## Exporter des données
 
 ### Fichiers textes
 
+### Fichier JSON
+
 ### Fichiers CSV
+
 
 
 # Conditions
@@ -2637,9 +2877,11 @@ Table: Quelques constantes intégrées dans Python
 
 
 
-# Manipulation de données avec Pandas
+# Manipulation de données avec Pandas {#pandas}
 
 ## Importation et exportation de données
+
+### Fichiers Excel {#pandas-importation-excel}
 
 ## Sélection
 

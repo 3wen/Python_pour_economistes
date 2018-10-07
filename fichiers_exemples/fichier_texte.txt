@@ -1,0 +1,3 @@
+Bonjour, je suis un fichier au format txt.
+Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.
+Trois lignes devraient suffir.

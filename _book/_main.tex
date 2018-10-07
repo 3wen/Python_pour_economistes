@@ -135,7 +135,7 @@
 
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc} % pour taper les lettres accentuees
-\usepackage[french, english]{babel} %le rapport est en franÁais 
+\usepackage[english, french]{babel}
 \usepackage{amsthm,amssymb,amsbsy,amsmath,amsfonts,amssymb,amscd,mathrsfs}
 %Mise en page
 \usepackage{geometry} %pour la modification des marges
@@ -445,18 +445,33 @@ urlcolor=bleuAMSE,}
 \chapter*{Propos liminaires}\label{propos-liminaires}
 \addcontentsline{toc}{chapter}{Propos liminaires}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
+Ces notes de cours ont été réalisées dans le cadre d'un enseignement
+d'introduction à Python adressé à des étudiants du parcours Économétrie
+et Big Data de \href{https://www.amse-aixmarseille.fr/}{l'École
+d'Economie d'Aix-Marseille / Aix-Marseille School of Economics (AMSE)}
+d'Aix-Marseille Université.
 
-\begin{lstlisting}
-## [1] 2
-\end{lstlisting}
+\section{Objectifs}\label{objectifs}
 
-Ici, on va parler de ce qu'est un algorithme, et pourquoi c'est cool de
-savoir en rédiger.
+Cet ouvrage a pour but l'initiation au langage de programmation Python,
+afin d'être capable de s'en servir de manière efficace et autonome. Le
+lecteur peut exécuter tous les exemples fournis (et est vivement
+encouragé à le faire). Des exercices viennent clore certains chapitres,
+pour mieux s'approprier les notions couvertes au fur et à mesure de la
+lecture.
+
+Bien évidemment, Python étant un langage très vaste, ces notes ne
+sauraient et n'ont pas pour vocation à être exhaustives de l'utilisation
+de ce langage informatique.
+
+\section{À qui s'adressent ces notes
+?}\label{a-qui-sadressent-ces-notes}
+
+Dans un premier temps, cet ouvrage s'adresse aux débutants qui
+souhaientent apprendre les bases en Python. Il est à destination des
+étudiants de l'AMSE mais pourrait intéresser des individus ayant une
+approche de la donnée à travers la discipline économique désirant
+découvrir Python.
 
 \chapter{Introduction}\label{introduction}
 
@@ -543,7 +558,7 @@ commande suivante (sous Windows : dans le menu démarrer, lancer le
 logiciel ``Python 3.6'') :
 
 \begin{lstlisting}
-> python
+python
 \end{lstlisting}
 
 Ce qui donne le rendu visible sur la
@@ -568,9 +583,9 @@ dans le code.
 Par exemple, lorsque l'on évalue \texttt{2+1} :
 
 \begin{lstlisting}
-> >>> 2+1
-+ 3
-+ >>>
+>>> 2+1
+3
+>>>
 \end{lstlisting}
 
 On note la présence du \emph{prompt} à la fin, indiquant que Python est
@@ -587,7 +602,7 @@ Pour lancer IPython, on peut ouvrir un terminal et taper (puis valider)
 :
 
 \begin{lstlisting}
-> ipython
+ipython
 \end{lstlisting}
 
 On peut également lancer IPython depuis la fenêtre d'accueil d'Anaconda,
@@ -612,24 +627,24 @@ La console IPython, une fois lancée, ressemble à ceci :
 
 }
 
-\caption{Console IPython.}\label{fig:unnamed-chunk-5}
+\caption{Console IPython.}\label{fig:unnamed-chunk-4}
 \end{figure}
 
 Soumettons une instruction simple pour évaluation à Python :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello World"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello World"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 Le résultat donne :
 
 \begin{lstlisting}
-> In [1]: print("Hello World")
-+ Hello World
-+ 
-+ In [2]:
+In [1]: print("Hello World")
+Hello World
+
+In [2]:
 \end{lstlisting}
 
 Plusieurs choses sont à noter. Premièrement, on note qu'à la fin de
@@ -756,7 +771,7 @@ Inscrivons :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \DecValTok{2}\OperatorTok{+}\DecValTok{1}
+\DecValTok{2}\OperatorTok{+}\DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -780,7 +795,7 @@ Pour soumettre l'instruction à évaluation, il existe plusieurs manières
 
 }
 
-\caption{Cellule évaluée.}\label{fig:unnamed-chunk-9}
+\caption{Cellule évaluée.}\label{fig:unnamed-chunk-8}
 \end{figure}
 
 \subsubsection{Cellules de texte}\label{cellules-de-texte}
@@ -834,31 +849,31 @@ Entrons quelques lignes de texte pour voir très rapidement le
 fonctionnement des cellules rédigées en Markdown.
 
 \begin{lstlisting}
-> # Un titre de niveau 1
-+ 
-+ Je vais écrire *du texte en italique* et aussi **en gras**.
-+ 
-+ ## Un titre de niveau 2
-+ 
-+ Je peux faire des listes :
-+ 
-+ - avec un item ;
-+ - un second ;
-+ - et un troisième imbriquant une nouvelle liste :
-+     - avec un sous-item,
-+     - et un second ;
-+ - un quatrième incluant une liste imbriquée numérotée :
-+     1. avec un sous-item,
-+     1. et un autre.
-+ 
-+ ## Un autre titre de niveau 2
-+ 
-+ 
-+ Je peux même faire figurer des équation $\LaTeX$.
-+ Comme par exemple $X \sim \mathcal{N}(0,1)$.
-+ 
-+ Pour en savoir plus sur $\LaTeX$, on peut se référer à cette :
-+   [page Wikipédia](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
+# Un titre de niveau 1
+
+Je vais écrire *du texte en italique* et aussi **en gras**.
+
+## Un titre de niveau 2
+
+Je peux faire des listes :
+
+- avec un item ;
+- un second ;
+- et un troisième imbriquant une nouvelle liste :
+    - avec un sous-item,
+    - et un second ;
+- un quatrième incluant une liste imbriquée numérotée :
+    1. avec un sous-item,
+    1. et un autre.
+
+## Un autre titre de niveau 2
+
+
+Je peux même faire figurer des équation $\LaTeX$.
+Comme par exemple $X \sim \mathcal{N}(0,1)$.
+
+Pour en savoir plus sur $\LaTeX$, on peut se référer à cette :
+  [page Wikipédia](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
 \end{lstlisting}
 
 Ce qui donne, dans Jupyter :
@@ -869,7 +884,7 @@ Ce qui donne, dans Jupyter :
 
 }
 
-\caption{Cellule textuelle non évaluée.}\label{fig:unnamed-chunk-11}
+\caption{Cellule textuelle non évaluée.}\label{fig:unnamed-chunk-10}
 \end{figure}
 
 Reste alors à l'évaluer, comme s'il s'agissait d'une cellule contenant
@@ -930,7 +945,7 @@ dans une variable que l'on nommera \texttt{x}, il faudra écrire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{2}\OperatorTok{+}\DecValTok{1}
+\NormalTok{x }\OperatorTok{=} \DecValTok{2}\OperatorTok{+}\DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -939,7 +954,7 @@ fonction \texttt{print()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -952,8 +967,8 @@ assignation :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{4}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{4}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -966,9 +981,9 @@ réalise une copie de \texttt{x}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{4}\OperatorTok{;}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{;}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(y)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{4}\OperatorTok{;}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{;}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -980,8 +995,8 @@ Si on modifie la copie, l'original ne sera pas affecté :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ y }\OperatorTok{=} \DecValTok{0}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(y)}
+\NormalTok{y }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -991,7 +1006,7 @@ Si on modifie la copie, l'original ne sera pas affecté :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1004,7 +1019,7 @@ Pour \textbf{supprimer} une variable, on utilise l'instruction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \KeywordTok{del}\NormalTok{ y}
+\KeywordTok{del}\NormalTok{ y}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1012,7 +1027,7 @@ L'affichage du contenu de \texttt{y} renvoit une erreur :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y)}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1027,7 +1042,7 @@ Mais on note que la variable \texttt{x} n'a pas été supprimée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1062,8 +1077,8 @@ Il faut noter que le nom des variables est \textbf{sensible à la casse}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"toto"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"toto"}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1073,7 +1088,7 @@ Il faut noter que le nom des variables est \textbf{sensible à la casse}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(X)}
+\BuiltInTok{print}\NormalTok{(X)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1095,8 +1110,8 @@ En revanche, ce qui vient avant le dièse le sera.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \CommentTok{# Un commentaire print("Bonjour")}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"}\NormalTok{) }\CommentTok{# Un autre commentaire}
+\CommentTok{# Un commentaire print("Bonjour")}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"}\NormalTok{) }\CommentTok{# Un autre commentaire}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1110,11 +1125,11 @@ commenter d'un délimiteur : trois guillemets simples ou doubles :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \StringTok{"""}
-\StringTok{+ Un commentaire qui commencer sur une ligne}
-\StringTok{+ et qui continue sur une autre}
-\StringTok{+ et s'arrête à la troisième}
-\StringTok{+ """}
+\CommentTok{"""}
+\CommentTok{Un commentaire qui commencer sur une ligne}
+\CommentTok{et qui continue sur une autre}
+\CommentTok{et s'arrête à la troisième}
+\CommentTok{"""}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1150,7 +1165,7 @@ Pour charger un module (ou un \emph{package}), on utilise la commande
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{import}\NormalTok{ pandas}
+\ImportTok{import}\NormalTok{ pandas}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1161,8 +1176,8 @@ permettant de créer un tableau de données indexées à une dimension :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ pandas.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{])}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ pandas.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1178,7 +1193,7 @@ l'on importe, en le précisant à l'aide de la syntaxe suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{import}\NormalTok{ module }\ImportTok{as}\NormalTok{ alias}
+\ImportTok{import}\NormalTok{ module }\ImportTok{as}\NormalTok{ alias}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1188,9 +1203,9 @@ est coutume d'écourter le nom en \texttt{pd} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
-\OperatorTok{+}\NormalTok{ x }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{])}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1208,12 +1223,12 @@ faire comme suit :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{import}\NormalTok{ matplotlib}
-\OperatorTok{+} \ImportTok{import}\NormalTok{ matplotlib.pyplot  }\ImportTok{as}\NormalTok{ plt}
-\OperatorTok{+} \ImportTok{import}\NormalTok{ numpy  }\ImportTok{as}\NormalTok{ np}
-\OperatorTok{+}\NormalTok{ x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}\OperatorTok{;}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ np.sin(x)}
-\OperatorTok{+}\NormalTok{ plt.plot(x, y)}
+\ImportTok{import}\NormalTok{ matplotlib}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot  }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ numpy  }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}\OperatorTok{;}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.sin(x)}
+\NormalTok{plt.plot(x, y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1283,7 +1298,7 @@ Voici un exemple :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Hello World"}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Hello World"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1293,7 +1308,7 @@ contenant la chaîne de caractères, on fait appel à la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1306,8 +1321,8 @@ pour créer une chaîne de caractères :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ y }\OperatorTok{=} \StringTok{'How are you?'}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(y)}
+\NormalTok{y }\OperatorTok{=} \StringTok{'How are you?'}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1321,8 +1336,8 @@ d'échappement : une barre oblique inversée (\texttt{\textbackslash{}}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=} \StringTok{'I}\CharTok{\textbackslash{}'}\StringTok{m fine'}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z)}
+\NormalTok{z }\OperatorTok{=} \StringTok{'I}\CharTok{\textbackslash{}'}\StringTok{m fine'}
+\BuiltInTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1336,8 +1351,8 @@ d'échappement :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=} \StringTok{"I'm }\CharTok{\textbackslash{}"}\StringTok{fine}\CharTok{\textbackslash{}"}\StringTok{"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z)}
+\NormalTok{z }\OperatorTok{=} \StringTok{"I'm }\CharTok{\textbackslash{}"}\StringTok{fine}\CharTok{\textbackslash{}"}\StringTok{"}
+\BuiltInTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1350,8 +1365,8 @@ Pour indiquer un retour à la ligne, on utilise la chaîne
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Hello, }\CharTok{\textbackslash{}n}\StringTok{World"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Hello, }\CharTok{\textbackslash{}n}\StringTok{World"}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1370,9 +1385,9 @@ en début et fin de chaîne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"""Hello,}
-\StringTok{+ World"""}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"""Hello,}
+\StringTok{World"""}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1411,8 +1426,8 @@ propose la fonction \texttt{len()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Hello World !"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(x))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Hello World !"}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1422,7 +1437,7 @@ propose la fonction \texttt{len()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x, }\BuiltInTok{len}\NormalTok{(x))}
+\BuiltInTok{print}\NormalTok{(x, }\BuiltInTok{len}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1437,7 +1452,7 @@ Pour concaténer des chaînes de caractères, c'est-à-dire les mettre bout
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"} \OperatorTok{+} \StringTok{" World"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"} \OperatorTok{+} \StringTok{" World"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1450,7 +1465,7 @@ chaîne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{( }\DecValTok{3} \OperatorTok{*} \StringTok{"Go Habs Go! "} \OperatorTok{+} \StringTok{"Woo Hoo!"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{( }\DecValTok{3} \OperatorTok{*} \StringTok{"Go Habs Go! "} \OperatorTok{+} \StringTok{"Woo Hoo!"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1463,8 +1478,8 @@ Lorsque deux littéraux de chaînes sont côte à côte, Python les concatène
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ (}\StringTok{'You shall '} \StringTok{'not '} \StringTok{"pass!"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ (}\StringTok{'You shall '} \StringTok{'not '} \StringTok{"pass!"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1477,11 +1492,11 @@ le contenu d'une variable}, à l'aide du marqueur \texttt{\%s} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{"}
-\OperatorTok{+}\NormalTok{ langage_1 }\OperatorTok{=} \StringTok{"R"}
-\OperatorTok{+}\NormalTok{ langage_2 }\OperatorTok{=} \StringTok{"Python"}
-\OperatorTok{+}\NormalTok{ preference_1 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_1}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(preference_1)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{"}
+\NormalTok{langage_1 }\OperatorTok{=} \StringTok{"R"}
+\NormalTok{langage_2 }\OperatorTok{=} \StringTok{"Python"}
+\NormalTok{preference_1 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_1}
+\BuiltInTok{print}\NormalTok{(preference_1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1491,8 +1506,8 @@ le contenu d'une variable}, à l'aide du marqueur \texttt{\%s} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ preference_2 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_2}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(preference_2)}
+\NormalTok{preference_2 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_2}
+\BuiltInTok{print}\NormalTok{(preference_2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1506,9 +1521,9 @@ variable} dans une chaîne de caractères, toujours avec le marqueur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{ et en }\SpecialCharTok{%s}\StringTok{"}
-\OperatorTok{+}\NormalTok{ preference_3 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ (langage_1, langage_2)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(preference_3)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{ et en }\SpecialCharTok{%s}\StringTok{"}
+\NormalTok{preference_3 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ (langage_1, langage_2)}
+\BuiltInTok{print}\NormalTok{(preference_3)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1526,7 +1541,7 @@ syntaxe est la suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x[i}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{x[i}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1535,8 +1550,8 @@ chaîne \texttt{Hello} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Hello"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{])}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Hello"}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1546,7 +1561,7 @@ chaîne \texttt{Hello} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1562,7 +1577,7 @@ Par exemple, pour afficher l'avant-dernier caractère de notre chaîne
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{2}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{2}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1577,9 +1592,9 @@ suffit de préciser les deux valeurs d'indices :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"You shall not pass!"}
-\OperatorTok{+} \CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
+\NormalTok{x }\OperatorTok{=} \StringTok{"You shall not pass!"}
+\CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1593,12 +1608,12 @@ chaîne est prise par défaut.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \CommentTok{# Du 4e caractère (non inclus) à la fin de la chaîne}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:])}
-\OperatorTok{+} \CommentTok{# Du début de la chaîne à l'avant dernier caractère (inclus)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[:}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
-\OperatorTok{+} \CommentTok{# Du 3e caractère avant la fin (inclus) jusqu'à la fin}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{5}\NormalTok{:])}
+\CommentTok{# Du 4e caractère (non inclus) à la fin de la chaîne}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:])}
+\CommentTok{# Du début de la chaîne à l'avant dernier caractère (inclus)}
+\BuiltInTok{print}\NormalTok{(x[:}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\CommentTok{# Du 3e caractère avant la fin (inclus) jusqu'à la fin}
+\BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{5}\NormalTok{:])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1619,9 +1634,9 @@ Il est possible de rajouter un troisième indice dans les crochets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \CommentTok{# Du 4e caractère (non inclus), jusqu'à la fin de la chaîne,}
-\OperatorTok{+} \CommentTok{# par pas de 3.}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{::}\DecValTok{3}\NormalTok{])}
+\CommentTok{# Du 4e caractère (non inclus), jusqu'à la fin de la chaîne,}
+\CommentTok{# par pas de 3.}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{::}\DecValTok{3}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1633,7 +1648,7 @@ Pour obtenir la chaîne en dans le sens opposé :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[::}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x[::}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1655,8 +1670,8 @@ d'occurrence de \texttt{in} dans la chaîne suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"le train de tes injures roule sur le rail de mon indifférence"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.count(}\StringTok{"in"}\NormalTok{))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"le train de tes injures roule sur le rail de mon indifférence"}
+\BuiltInTok{print}\NormalTok{(x.count(}\StringTok{"in"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1679,9 +1694,9 @@ respectivement.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"le train de tes injures roule sur le rail de mon indifférence"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.lower())}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.upper())}
+\NormalTok{x }\OperatorTok{=} \StringTok{"le train de tes injures roule sur le rail de mon indifférence"}
+\BuiltInTok{print}\NormalTok{(x.lower())}
+\BuiltInTok{print}\NormalTok{(x.upper())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1704,8 +1719,8 @@ n'est pas retrouvé, la valeur retournée est \texttt{-1}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{))}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"bonjour"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"bonjour"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1723,7 +1738,7 @@ de début et de fin :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{20}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1736,7 +1751,7 @@ est utilisée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"in"}\NormalTok{, }\DecValTok{20}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1755,8 +1770,8 @@ on peut utiliser la méthode \texttt{capitalize()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Mademoiselle Deray, il est interdit de manger de la choucroute ici."}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"deray"}\NormalTok{))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Mademoiselle Deray, il est interdit de manger de la choucroute ici."}
+\BuiltInTok{print}\NormalTok{(x.find(}\StringTok{"deray"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1766,7 +1781,7 @@ on peut utiliser la méthode \texttt{capitalize()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.capitalize().find(}\StringTok{"deray"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.capitalize().find(}\StringTok{"deray"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1784,7 +1799,7 @@ exemple une virgule, ou une espace), on utilise la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.split(}\StringTok{" "}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.split(}\StringTok{" "}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1797,8 +1812,8 @@ nombre de sous-chaînes retournées :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \CommentTok{# Le nombre de sous-chaînes maximum sera de 3}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.split(}\StringTok{" "}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\CommentTok{# Le nombre de sous-chaînes maximum sera de 3}
+\BuiltInTok{print}\NormalTok{(x.split(}\StringTok{" "}\NormalTok{, }\DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1812,11 +1827,11 @@ de ligne, comme un saut de ligne ou un retour chariot par exemple.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{'''"Luke, je suis ton pere !}
-\StringTok{+ - Non... ce n'est pas vrai ! C'est impossible !}
-\StringTok{+ - Lis dans ton coeur, tu sauras que c'est vrai.}
-\StringTok{+ - Noooooooon ! Noooon !"'''}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.splitlines())}
+\NormalTok{x }\OperatorTok{=} \StringTok{'''"Luke, je suis ton pere !}
+\StringTok{- Non... ce n'est pas vrai ! C'est impossible !}
+\StringTok{- Lis dans ton coeur, tu sauras que c'est vrai.}
+\StringTok{- Noooooooon ! Noooon !"'''}
+\BuiltInTok{print}\NormalTok{(x.splitlines())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1833,8 +1848,8 @@ nettoyer des chaînes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{    Pardon, du sucre ?     }\CharTok{\textbackslash{}n}\StringTok{  }\CharTok{\textbackslash{}n}\StringTok{"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.strip())}
+\NormalTok{x }\OperatorTok{=} \StringTok{"}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{    Pardon, du sucre ?     }\CharTok{\textbackslash{}n}\StringTok{  }\CharTok{\textbackslash{}n}\StringTok{"}
+\BuiltInTok{print}\NormalTok{(x.strip())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1847,8 +1862,8 @@ de chaîne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"www.egallic.fr"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.strip(}\StringTok{"wrf."}\NormalTok{))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"www.egallic.fr"}
+\BuiltInTok{print}\NormalTok{(x.strip(}\StringTok{"wrf."}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1872,8 +1887,8 @@ nécessaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ longitude }\OperatorTok{=} \StringTok{"48.11"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.rjust(}\DecValTok{7}\NormalTok{,}\StringTok{" "}\NormalTok{))}
+\NormalTok{longitude }\OperatorTok{=} \StringTok{"48.11"}
+\BuiltInTok{print}\NormalTok{(x.rjust(}\DecValTok{7}\NormalTok{,}\StringTok{" "}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1888,8 +1903,8 @@ La méthode \texttt{replace()} permet d'effectuer des
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"Criquette ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x.replace(}\StringTok{"Criquette"}\NormalTok{, }\StringTok{"Ridge"}\NormalTok{))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"Criquette ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !"}
+\BuiltInTok{print}\NormalTok{(x.replace(}\StringTok{"Criquette"}\NormalTok{, }\StringTok{"Ridge"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1902,7 +1917,7 @@ exemple :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.replace(}\StringTok{" "}\NormalTok{, }\StringTok{""}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x.replace(}\StringTok{" "}\NormalTok{, }\StringTok{""}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1988,8 +2003,8 @@ Python retourne une erreur.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ nb_followers }\OperatorTok{=} \DecValTok{0}
-\OperatorTok{+}\NormalTok{ message }\OperatorTok{=} \StringTok{"He has "} \OperatorTok{+}\NormalTok{ nb_followers }\OperatorTok{+} \StringTok{"followers."}
+\NormalTok{nb_followers }\OperatorTok{=} \DecValTok{0}
+\NormalTok{message }\OperatorTok{=} \StringTok{"He has "} \OperatorTok{+}\NormalTok{ nb_followers }\OperatorTok{+} \StringTok{"followers."}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2002,7 +2017,7 @@ Python retourne une erreur.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(message)}
+\BuiltInTok{print}\NormalTok{(message)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2019,8 +2034,8 @@ fonction \texttt{str()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ message }\OperatorTok{=} \StringTok{"He has "} \OperatorTok{+} \BuiltInTok{str}\NormalTok{(nb_followers) }\OperatorTok{+} \StringTok{" followers."}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(message)}
+\NormalTok{message }\OperatorTok{=} \StringTok{"He has "} \OperatorTok{+} \BuiltInTok{str}\NormalTok{(nb_followers) }\OperatorTok{+} \StringTok{" followers."}
+\BuiltInTok{print}\NormalTok{(message)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2093,9 +2108,9 @@ Python.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{2}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \OperatorTok{-}\DecValTok{2}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
+\NormalTok{x }\OperatorTok{=} \DecValTok{2}
+\NormalTok{y }\OperatorTok{=} \OperatorTok{-}\DecValTok{2}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2105,7 +2120,7 @@ Python.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(y))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(y))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2122,9 +2137,9 @@ distinguer la partie entière de la partie décimale du nombre.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \FloatTok{2.0}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \FloatTok{48.15162342}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
+\NormalTok{x }\OperatorTok{=} \FloatTok{2.0}
+\NormalTok{y }\OperatorTok{=} \FloatTok{48.15162342}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2134,7 +2149,7 @@ distinguer la partie entière de la partie décimale du nombre.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(y))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(y))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2148,9 +2163,9 @@ Par exemple, pour écrire \(3,2^12\), on procèdera comme suit :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \FloatTok{3.2E12}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \FloatTok{3.2e12}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \FloatTok{3.2E12}
+\NormalTok{y }\OperatorTok{=} \FloatTok{3.2e12}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2160,7 +2175,7 @@ Par exemple, pour écrire \(3,2^12\), on procèdera comme suit :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y)}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2181,8 +2196,8 @@ En python, l'unité imaginaire \(i\) est dénotée par la lettre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=} \DecValTok{1}\OperatorTok{+}\NormalTok{3j}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z)}
+\NormalTok{z }\OperatorTok{=} \DecValTok{1}\OperatorTok{+}\NormalTok{3j}
+\BuiltInTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2192,7 +2207,7 @@ En python, l'unité imaginaire \(i\) est dénotée par la lettre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(z))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(z))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2205,8 +2220,8 @@ demande deux paramètres (la partie réelle et la partie imaginaire) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z)}
+\NormalTok{z }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2216,7 +2231,7 @@ demande deux paramètres (la partie réelle et la partie imaginaire) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(z))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(z))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2230,7 +2245,7 @@ exemple, pour accéder au conjugué, Python fournit la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z.conjugate())}
+\BuiltInTok{print}\NormalTok{(z.conjugate())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2244,8 +2259,8 @@ respectivement.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z.real())}
+\NormalTok{z }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(z.real())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2258,7 +2273,7 @@ respectivement.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z.imag())}
+\BuiltInTok{print}\NormalTok{(z.imag())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2281,9 +2296,9 @@ entier} s'effectue à l'aide de la fonction \texttt{int()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"3"}
-\OperatorTok{+}\NormalTok{ x_int }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"3"}
+\NormalTok{x_int }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2296,9 +2311,9 @@ nombre pour ne garder que la partie entière :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \FloatTok{3.6}
-\OperatorTok{+}\NormalTok{ x_int }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_int)}
+\NormalTok{x }\OperatorTok{=} \FloatTok{3.6}
+\NormalTok{x_int }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x_int)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2315,9 +2330,9 @@ virgule flottante} (si possible), Python propose d'utiliser la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"3.6"}
-\OperatorTok{+}\NormalTok{ x_float }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_float))}
+\NormalTok{x }\OperatorTok{=} \StringTok{"3.6"}
+\NormalTok{x_float }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_float))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2329,9 +2344,9 @@ Avec un entier à l'origine :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{3}
-\OperatorTok{+}\NormalTok{ x_float }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_float)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{3}
+\NormalTok{x_float }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x_float)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2346,9 +2361,9 @@ complèxe s'effectue avec la fonction \texttt{complex()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \StringTok{"2"}
-\OperatorTok{+}\NormalTok{ x_complex }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_complex)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"2"}
+\NormalTok{x_complex }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x_complex)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2360,9 +2375,9 @@ Avec un \emph{float} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \FloatTok{2.4}
-\OperatorTok{+}\NormalTok{ x_complex }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(x)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_complex)}
+\NormalTok{x }\OperatorTok{=} \FloatTok{2.4}
+\NormalTok{x_complex }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x_complex)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2378,9 +2393,9 @@ faire attention à bien respecter la casse.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x, y)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\BuiltInTok{print}\NormalTok{(x, y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2395,8 +2410,8 @@ exemple.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ res }\OperatorTok{=} \VariableTok{True} \OperatorTok{+} \VariableTok{True} \OperatorTok{+} \VariableTok{False} \OperatorTok{+} \VariableTok{True}\OperatorTok{*}\VariableTok{True}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(res)}
+\NormalTok{res }\OperatorTok{=} \VariableTok{True} \OperatorTok{+} \VariableTok{True} \OperatorTok{+} \VariableTok{False} \OperatorTok{+} \VariableTok{True}\OperatorTok{*}\VariableTok{True}
+\BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2412,8 +2427,8 @@ attention à la casse :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{None}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{None}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2423,7 +2438,7 @@ attention à la casse :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2438,9 +2453,9 @@ Pour tester si un objet est l'objet \texttt{None}, on procède comme suit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{1}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{None}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{is} \VariableTok{None}\NormalTok{)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{1}
+\NormalTok{y }\OperatorTok{=} \VariableTok{None}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{is} \VariableTok{None}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2450,7 +2465,7 @@ Pour tester si un objet est l'objet \texttt{None}, on procède comme suit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{is} \VariableTok{None}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(y }\KeywordTok{is} \VariableTok{None}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2504,7 +2519,7 @@ Pour créer un objet \texttt{date}, la syntaxe est la suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ date(year, month, day)}
+\NormalTok{date(year, month, day)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2512,9 +2527,9 @@ Par exemple, pour créer la date renseignant le 23 avril 2013 :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ date}
-\OperatorTok{+}\NormalTok{ debut }\OperatorTok{=}\NormalTok{ date(year }\OperatorTok{=} \DecValTok{2013}\NormalTok{, month }\OperatorTok{=} \DecValTok{4}\NormalTok{, day }\OperatorTok{=} \DecValTok{23}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(debut)}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ date}
+\NormalTok{debut }\OperatorTok{=}\NormalTok{ date(year }\OperatorTok{=} \DecValTok{2013}\NormalTok{, month }\OperatorTok{=} \DecValTok{4}\NormalTok{, day }\OperatorTok{=} \DecValTok{23}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(debut)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2524,7 +2539,7 @@ Par exemple, pour créer la date renseignant le 23 avril 2013 :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(debut))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(debut))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2543,7 +2558,7 @@ entiers) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.year) }\CommentTok{# Extraire l'année}
+\BuiltInTok{print}\NormalTok{(debut.year) }\CommentTok{# Extraire l'année}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2553,7 +2568,7 @@ entiers) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.month) }\CommentTok{# Extraire le mois}
+\BuiltInTok{print}\NormalTok{(debut.month) }\CommentTok{# Extraire le mois}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2563,7 +2578,7 @@ entiers) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.day) }\CommentTok{# Extraire le jour}
+\BuiltInTok{print}\NormalTok{(debut.day) }\CommentTok{# Extraire le jour}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2581,7 +2596,7 @@ caractères.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.ctime()}
+\NormalTok{debut.ctime()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2592,7 +2607,7 @@ La méthode \texttt{weekday()} retourne la position du jour de la semaine
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.weekday()}
+\NormalTok{debut.weekday()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2609,7 +2624,7 @@ attribuant cette fois la valeur 1 au lundi et 7 au dimanche.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.isoweekday()}
+\NormalTok{debut.isoweekday()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2620,7 +2635,7 @@ comme référence la valeur 1 pour le premier jour de l'an 1.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.toordinal()}
+\NormalTok{debut.toordinal()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2632,7 +2647,7 @@ ISO}, sous forme d'une chaîne de caractères.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.isoformat()}
+\NormalTok{debut.isoformat()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2645,7 +2660,7 @@ ISO).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut.isocalendar()}
+\NormalTok{debut.isocalendar()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2656,10 +2671,10 @@ modification
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ debut.replace(year}\OperatorTok{=}\DecValTok{2014}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ debut.replace(month}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ z }\OperatorTok{=}\NormalTok{ debut.replace(day}\OperatorTok{=}\DecValTok{24}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x, y, z)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ debut.replace(year}\OperatorTok{=}\DecValTok{2014}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ debut.replace(month}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ debut.replace(day}\OperatorTok{=}\DecValTok{24}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x, y, z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2671,7 +2686,7 @@ Cela n'a pas d'incidence sur l'objet d'origine :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut)}
+\BuiltInTok{print}\NormalTok{(debut)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2683,8 +2698,8 @@ Il est possible de modifier plusieurs éléments en même temps :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ debut.replace(day}\OperatorTok{=}\DecValTok{24}\NormalTok{, month}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ debut.replace(day}\OperatorTok{=}\DecValTok{24}\NormalTok{, month}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2703,7 +2718,7 @@ année sur 4) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"}\SpecialCharTok{%d}\StringTok{-%m-%Y"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"}\SpecialCharTok{%d}\StringTok{-%m-%Y"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2721,7 +2736,7 @@ des barres obliques, ou même d'autres chaînes de caractères :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"}\SpecialCharTok{%d}\StringTok{/%m/%Y"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"}\SpecialCharTok{%d}\StringTok{/%m/%Y"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2731,7 +2746,7 @@ des barres obliques, ou même d'autres chaînes de caractères :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"Jour : }\SpecialCharTok{%d}\StringTok{, Mois : %m, Annee : %Y"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(debut.strftime(}\StringTok{"Jour : }\SpecialCharTok{%d}\StringTok{, Mois : %m, Annee : %Y"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3026,7 +3041,7 @@ Pour créer un objet \texttt{time}, la syntaxe est la suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ time(hour, minute, second)}
+\NormalTok{time(hour, minute, second)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3035,9 +3050,9 @@ minutes et cinquante-neuf secondes) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ time}
-\OperatorTok{+}\NormalTok{ moment }\OperatorTok{=}\NormalTok{ time(hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(moment)}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ time}
+\NormalTok{moment }\OperatorTok{=}\NormalTok{ time(hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(moment)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3047,7 +3062,7 @@ minutes et cinquante-neuf secondes) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(moment))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(moment))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3060,8 +3075,8 @@ On peut rajouter des informations sur la microseconde. Sa valeur doit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ moment }\OperatorTok{=}\NormalTok{ time(hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{, microsecond }\OperatorTok{=} \DecValTok{230}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(moment)}
+\NormalTok{moment }\OperatorTok{=}\NormalTok{ time(hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{, microsecond }\OperatorTok{=} \DecValTok{230}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(moment)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3071,7 +3086,7 @@ On peut rajouter des informations sur la microseconde. Sa valeur doit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(moment))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(moment))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3084,7 +3099,7 @@ entiers), parmi lesquels :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(moment.hour) }\CommentTok{# Extraire l'heure}
+\BuiltInTok{print}\NormalTok{(moment.hour) }\CommentTok{# Extraire l'heure}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3094,7 +3109,7 @@ entiers), parmi lesquels :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(moment.minute) }\CommentTok{# Extraire la minute}
+\BuiltInTok{print}\NormalTok{(moment.minute) }\CommentTok{# Extraire la minute}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3104,7 +3119,7 @@ entiers), parmi lesquels :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(moment.second) }\CommentTok{# Extraire la seconde}
+\BuiltInTok{print}\NormalTok{(moment.second) }\CommentTok{# Extraire la seconde}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3114,7 +3129,7 @@ entiers), parmi lesquels :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(moment.microsecond) }\CommentTok{# Extraire la microseconde}
+\BuiltInTok{print}\NormalTok{(moment.microsecond) }\CommentTok{# Extraire la microseconde}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3137,7 +3152,7 @@ Pour créer un objet \texttt{datetime}, la syntaxe est la suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ datetime(year, month, day, hour, minute, second, microsecond)}
+\NormalTok{datetime(year, month, day, hour, minute, second, microsecond)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3145,10 +3160,10 @@ Par exemple, pour créer la date 23-04-2013 à 17:10:00 :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ datetime}
-\OperatorTok{+}\NormalTok{ x }\OperatorTok{=}\NormalTok{ datetime(year }\OperatorTok{=} \DecValTok{2013}\NormalTok{, month }\OperatorTok{=} \DecValTok{4}\NormalTok{, day }\OperatorTok{=} \DecValTok{23}\NormalTok{,}
-\OperatorTok{+}\NormalTok{   hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ datetime}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ datetime(year }\OperatorTok{=} \DecValTok{2013}\NormalTok{, month }\OperatorTok{=} \DecValTok{4}\NormalTok{, day }\OperatorTok{=} \DecValTok{23}\NormalTok{,}
+\NormalTok{  hour }\OperatorTok{=} \DecValTok{23}\NormalTok{, minute }\OperatorTok{=} \DecValTok{4}\NormalTok{, second }\OperatorTok{=} \DecValTok{59}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3158,7 +3173,7 @@ Par exemple, pour créer la date 23-04-2013 à 17:10:00 :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3182,22 +3197,22 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.today())}
+\BuiltInTok{print}\NormalTok{(x.today())}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-07 19:31:35.988621
+## 2018-10-08 01:22:52.727224
 \end{lstlisting}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(datetime.today())}
+\BuiltInTok{print}\NormalTok{(datetime.today())}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-07 19:31:35.990870
+## 2018-10-08 01:22:52.729740
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -3215,7 +3230,7 @@ janvier 1970, à 00:00:00 UTC.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x.timestamp())}
+\BuiltInTok{print}\NormalTok{(x.timestamp())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3231,8 +3246,8 @@ l'objet :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x_date }\OperatorTok{=}\NormalTok{ x.date()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_date)}
+\NormalTok{x_date }\OperatorTok{=}\NormalTok{ x.date()}
+\BuiltInTok{print}\NormalTok{(x_date)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3242,7 +3257,7 @@ l'objet :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_date))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_date))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3258,8 +3273,8 @@ ceux de l'objet :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x_time }\OperatorTok{=}\NormalTok{ x.time()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x_time)}
+\NormalTok{x_time }\OperatorTok{=}\NormalTok{ x.time()}
+\BuiltInTok{print}\NormalTok{(x_time)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3269,7 +3284,7 @@ ceux de l'objet :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_time))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(x_time))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3287,7 +3302,7 @@ suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ timedelta(days, hours, minutes, seconds, microseconds)}
+\NormalTok{timedelta(days, hours, minutes, seconds, microseconds)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3300,15 +3315,15 @@ secondes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ timedelta}
-\OperatorTok{+}\NormalTok{ duree }\OperatorTok{=}\NormalTok{ timedelta(days }\OperatorTok{=} \DecValTok{1}\NormalTok{, seconds }\OperatorTok{=} \DecValTok{30}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ duree}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ timedelta}
+\NormalTok{duree }\OperatorTok{=}\NormalTok{ timedelta(days }\OperatorTok{=} \DecValTok{1}\NormalTok{, seconds }\OperatorTok{=} \DecValTok{30}\NormalTok{)}
+\NormalTok{duree}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ datetime.timedelta(}\DecValTok{1}\NormalTok{, }\DecValTok{30}\NormalTok{)}
+\NormalTok{datetime.timedelta(}\DecValTok{1}\NormalTok{, }\DecValTok{30}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3317,13 +3332,13 @@ pour accéder au nombre de jours que représente la durée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ duree.days}
+\NormalTok{duree.days}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \DecValTok{1}
+\DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3332,9 +3347,9 @@ en secondes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ duree }\OperatorTok{=}\NormalTok{ timedelta(days }\OperatorTok{=} \DecValTok{1}\NormalTok{, seconds }\OperatorTok{=} \DecValTok{30}\NormalTok{, hours }\OperatorTok{=} \DecValTok{20}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ duree.total_seconds()}
-\OperatorTok{+} \FloatTok{158430.0}
+\NormalTok{duree }\OperatorTok{=}\NormalTok{ timedelta(days }\OperatorTok{=} \DecValTok{1}\NormalTok{, seconds }\OperatorTok{=} \DecValTok{30}\NormalTok{, hours }\OperatorTok{=} \DecValTok{20}\NormalTok{)}
+\NormalTok{duree.total_seconds()}
+\FloatTok{158430.0}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3347,11 +3362,11 @@ type \texttt{timedelta} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ timedelta}
-\OperatorTok{+}\NormalTok{ debut }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ fin }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ nb_jours }\OperatorTok{=}\NormalTok{ fin}\OperatorTok{-}\NormalTok{debut}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(nb_jours))}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ timedelta}
+\NormalTok{debut }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{fin }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{nb_jours }\OperatorTok{=}\NormalTok{ fin}\OperatorTok{-}\NormalTok{debut}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(nb_jours))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3361,7 +3376,7 @@ type \texttt{timedelta} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(nb_jours)}
+\BuiltInTok{print}\NormalTok{(nb_jours)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3375,10 +3390,10 @@ ces deux dates, sous la forme d'un objet de type \texttt{timedelta} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{230}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ fin }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{31}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ duree }\OperatorTok{=}\NormalTok{ fin}\OperatorTok{-}\NormalTok{debut}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(duree))}
+\NormalTok{debut }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{230}\NormalTok{)}
+\NormalTok{fin }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{31}\NormalTok{)}
+\NormalTok{duree }\OperatorTok{=}\NormalTok{ fin}\OperatorTok{-}\NormalTok{debut}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(duree))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3388,7 +3403,7 @@ ces deux dates, sous la forme d'un objet de type \texttt{timedelta} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(duree)}
+\BuiltInTok{print}\NormalTok{(duree)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3402,16 +3417,16 @@ de jours séparant le 28 février du premier mars :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2021}\NormalTok{, }\DecValTok{2}\NormalTok{,}\DecValTok{28}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ fin }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2021}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ duree }\OperatorTok{=}\NormalTok{ fin }\OperatorTok{-}\NormalTok{ debut}
-\OperatorTok{+}\NormalTok{ duree}
+\NormalTok{debut }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2021}\NormalTok{, }\DecValTok{2}\NormalTok{,}\DecValTok{28}\NormalTok{)}
+\NormalTok{fin }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2021}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{duree }\OperatorTok{=}\NormalTok{ fin }\OperatorTok{-}\NormalTok{ debut}
+\NormalTok{duree}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ datetime.timedelta(}\DecValTok{1}\NormalTok{)}
+\NormalTok{datetime.timedelta(}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3420,16 +3435,16 @@ bissextile :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut_biss }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2020}\NormalTok{, }\DecValTok{2}\NormalTok{,}\DecValTok{28}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ fin_biss }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2020}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ duree_biss }\OperatorTok{=}\NormalTok{ fin_biss }\OperatorTok{-}\NormalTok{ debut_biss}
-\OperatorTok{+}\NormalTok{ duree_biss}
+\NormalTok{debut_biss }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2020}\NormalTok{, }\DecValTok{2}\NormalTok{,}\DecValTok{28}\NormalTok{)}
+\NormalTok{fin_biss }\OperatorTok{=}\NormalTok{ date(}\DecValTok{2020}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{duree_biss }\OperatorTok{=}\NormalTok{ fin_biss }\OperatorTok{-}\NormalTok{ debut_biss}
+\NormalTok{duree_biss}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ datetime.timedelta(}\DecValTok{2}\NormalTok{)}
+\NormalTok{datetime.timedelta(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3437,8 +3452,8 @@ Il est également possible d'\textbf{ajouter des durées à une date} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ debut }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{59}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(debut }\OperatorTok{+}\NormalTok{ timedelta(seconds }\OperatorTok{=} \DecValTok{1}\NormalTok{))}
+\NormalTok{debut }\OperatorTok{=}\NormalTok{ datetime(}\DecValTok{2018}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{59}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(debut }\OperatorTok{+}\NormalTok{ timedelta(seconds }\OperatorTok{=} \DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3502,8 +3517,8 @@ l'ensemble par des crochets (\texttt{{[}} et \texttt{{]}}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\StringTok{"Pascaline"}\NormalTok{, }\StringTok{"Gauthier"}\NormalTok{, }\StringTok{"Xuan"}\NormalTok{, }\StringTok{"Jimmy"}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\StringTok{"Pascaline"}\NormalTok{, }\StringTok{"Gauthier"}\NormalTok{, }\StringTok{"Xuan"}\NormalTok{, }\StringTok{"Jimmy"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3515,8 +3530,8 @@ Le contenu d'une liste n'est pas forcément du texte :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(y)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3529,8 +3544,8 @@ dans une liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ z }\OperatorTok{=}\NormalTok{ [}\StringTok{"Piketty"}\NormalTok{, }\StringTok{"Thomas"}\NormalTok{, }\DecValTok{1971}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(z)}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ [}\StringTok{"Piketty"}\NormalTok{, }\StringTok{"Thomas"}\NormalTok{, }\DecValTok{1971}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3542,10 +3557,10 @@ Une liste peut contenir une autre liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ tweets }\OperatorTok{=}\NormalTok{ [}\StringTok{"aaa"}\NormalTok{, }\StringTok{"bbb"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ followers }\OperatorTok{=}\NormalTok{ [}\StringTok{"Anne"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Irma"}\NormalTok{, }\StringTok{"John"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ compte }\OperatorTok{=}\NormalTok{ [tweets, followers]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(compte)}
+\NormalTok{tweets }\OperatorTok{=}\NormalTok{ [}\StringTok{"aaa"}\NormalTok{, }\StringTok{"bbb"}\NormalTok{]}
+\NormalTok{followers }\OperatorTok{=}\NormalTok{ [}\StringTok{"Anne"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Irma"}\NormalTok{, }\StringTok{"John"}\NormalTok{]}
+\NormalTok{compte }\OperatorTok{=}\NormalTok{ [tweets, followers]}
+\BuiltInTok{print}\NormalTok{(compte)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3560,7 +3575,7 @@ du premier élément est 0) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{]) }\CommentTok{# Le premier élément de x}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{]) }\CommentTok{# Le premier élément de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3570,7 +3585,7 @@ du premier élément est 0) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{1}\NormalTok{]) }\CommentTok{# Le second élément de x}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{1}\NormalTok{]) }\CommentTok{# Le second élément de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3585,7 +3600,7 @@ figurer le signe moins (\texttt{-}) devant l'indice : L'accès aux
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{1}\NormalTok{]) }\CommentTok{# Le dernier élément de x}
+\BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{1}\NormalTok{]) }\CommentTok{# Le dernier élément de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3595,7 +3610,7 @@ figurer le signe moins (\texttt{-}) devant l'indice : L'accès aux
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{2}\NormalTok{]) }\CommentTok{# L'avant dernier élément de x}
+\BuiltInTok{print}\NormalTok{(x[}\OperatorTok{-}\DecValTok{2}\NormalTok{]) }\CommentTok{# L'avant dernier élément de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3608,7 +3623,7 @@ liste s'effectue avec les deux points (\texttt{:}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{]) }\CommentTok{# Les premiers et seconds éléments de x}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{]) }\CommentTok{# Les premiers et seconds éléments de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3618,7 +3633,7 @@ liste s'effectue avec les deux points (\texttt{:}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{2}\NormalTok{:]) }\CommentTok{# Du second (non inclus) à la fin de x}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{2}\NormalTok{:]) }\CommentTok{# Du second (non inclus) à la fin de x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3628,7 +3643,7 @@ liste s'effectue avec les deux points (\texttt{:}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[:}\OperatorTok{-}\DecValTok{2}\NormalTok{]) }\CommentTok{# Du premier à l'avant dernier (non inclus)}
+\BuiltInTok{print}\NormalTok{(x[:}\OperatorTok{-}\DecValTok{2}\NormalTok{]) }\CommentTok{# Du premier à l'avant dernier (non inclus)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3645,7 +3660,7 @@ est possible de rajouter un troisième paramètre, le pas :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[::}\DecValTok{2}\NormalTok{]) }\CommentTok{# Un élément sur deux}
+\BuiltInTok{print}\NormalTok{(x[::}\DecValTok{2}\NormalTok{]) }\CommentTok{# Un élément sur deux}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3658,10 +3673,10 @@ les crochets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ tweets }\OperatorTok{=}\NormalTok{ [}\StringTok{"aaa"}\NormalTok{, }\StringTok{"bbb"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ followers }\OperatorTok{=}\NormalTok{ [}\StringTok{"Anne"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Irma"}\NormalTok{, }\StringTok{"John"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ compte }\OperatorTok{=}\NormalTok{ [tweets, followers]}
-\OperatorTok{+}\NormalTok{ res }\OperatorTok{=}\NormalTok{ compte[}\DecValTok{1}\NormalTok{][}\DecValTok{3}\NormalTok{] }\CommentTok{# Le 4e élément du 2e élément de la liste compte}
+\NormalTok{tweets }\OperatorTok{=}\NormalTok{ [}\StringTok{"aaa"}\NormalTok{, }\StringTok{"bbb"}\NormalTok{]}
+\NormalTok{followers }\OperatorTok{=}\NormalTok{ [}\StringTok{"Anne"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Irma"}\NormalTok{, }\StringTok{"John"}\NormalTok{]}
+\NormalTok{compte }\OperatorTok{=}\NormalTok{ [tweets, followers]}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ compte[}\DecValTok{1}\NormalTok{][}\DecValTok{3}\NormalTok{] }\CommentTok{# Le 4e élément du 2e élément de la liste compte}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3670,7 +3685,7 @@ Le \textbf{nombre d'éléments d'une liste} s'obtient avec la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(compte))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(compte))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3680,7 +3695,7 @@ Le \textbf{nombre d'éléments d'une liste} s'obtient avec la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(compte[}\DecValTok{1}\NormalTok{]))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(compte[}\DecValTok{1}\NormalTok{]))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3700,9 +3715,9 @@ Pour \textbf{modifier} un élément dans une liste, on utilise l'indiçage
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{9}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x[}\DecValTok{3}\NormalTok{] }\OperatorTok{=} \DecValTok{7} \CommentTok{# Remplacement du 4e élément}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{9}\NormalTok{]}
+\NormalTok{x[}\DecValTok{3}\NormalTok{] }\OperatorTok{=} \DecValTok{7} \CommentTok{# Remplacement du 4e élément}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3717,8 +3732,8 @@ Pour \textbf{ajouter des éléments à une liste}, on utilise la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x.append(}\DecValTok{11}\NormalTok{) }\CommentTok{# Ajout de la valeur 11 en fin de liste}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x.append(}\DecValTok{11}\NormalTok{) }\CommentTok{# Ajout de la valeur 11 en fin de liste}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3731,9 +3746,9 @@ concaténer des listes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x.extend(y)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{]}
+\NormalTok{x.extend(y)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3748,8 +3763,8 @@ Pour \textbf{retirer un élément d'une liste}, on utilise la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x.remove(}\DecValTok{3}\NormalTok{) }\CommentTok{# Retire le 4e élément}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x.remove(}\DecValTok{3}\NormalTok{) }\CommentTok{# Retire le 4e élément}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3761,9 +3776,9 @@ On peut aussi utiliser la commande \texttt{del} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{9}\NormalTok{]}
-\OperatorTok{+} \KeywordTok{del}\NormalTok{ x[}\DecValTok{3}\NormalTok{] }\CommentTok{# Retire le 4e élément}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{9}\NormalTok{]}
+\KeywordTok{del}\NormalTok{ x[}\DecValTok{3}\NormalTok{] }\CommentTok{# Retire le 4e élément}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3777,9 +3792,9 @@ On peut modifier plusieurs valeurs en même temps :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{10}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x[}\DecValTok{3}\NormalTok{:}\DecValTok{5}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{] }\CommentTok{# Remplace les 4e et 5e valeurs}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{10}\NormalTok{]}
+\NormalTok{x[}\DecValTok{3}\NormalTok{:}\DecValTok{5}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{] }\CommentTok{# Remplace les 4e et 5e valeurs}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3791,9 +3806,9 @@ La modification peut agrandir la taille de la liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x[}\DecValTok{2}\NormalTok{:}\DecValTok{3}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{'a'}\NormalTok{, }\StringTok{'b'}\NormalTok{, }\StringTok{'c'}\NormalTok{, }\StringTok{'d'}\NormalTok{] }\CommentTok{# Remplace la 3e valeur}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
+\NormalTok{x[}\DecValTok{2}\NormalTok{:}\DecValTok{3}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{'a'}\NormalTok{, }\StringTok{'b'}\NormalTok{, }\StringTok{'c'}\NormalTok{, }\StringTok{'d'}\NormalTok{] }\CommentTok{# Remplace la 3e valeur}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3805,9 +3820,9 @@ On peut supprimer plusieurs valeurs en même temps :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x[}\DecValTok{3}\NormalTok{:}\DecValTok{5}\NormalTok{] }\OperatorTok{=}\NormalTok{ [] }\CommentTok{# Retire les 4e et 5e valeurs}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
+\NormalTok{x[}\DecValTok{3}\NormalTok{:}\DecValTok{5}\NormalTok{] }\OperatorTok{=}\NormalTok{ [] }\CommentTok{# Retire les 4e et 5e valeurs}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3822,8 +3837,8 @@ objet à une liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\DecValTok{1} \KeywordTok{in}\NormalTok{ x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{1} \KeywordTok{in}\NormalTok{ x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3838,8 +3853,8 @@ exemple.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ x}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3848,8 +3863,8 @@ Modifions le premier élément de \texttt{y}, et observons le contenu de
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(y)}
+\NormalTok{y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3859,7 +3874,7 @@ Modifions le premier élément de \texttt{y}, et observons le contenu de
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3875,10 +3890,10 @@ elles, l'utilisation de la fonction \texttt{list()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(x)}
-\OperatorTok{+}\NormalTok{ y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\StringTok{"x : "}\NormalTok{, x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(x)}
+\NormalTok{y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x : "}\NormalTok{, x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3888,7 +3903,7 @@ elles, l'utilisation de la fonction \texttt{list()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3901,10 +3916,10 @@ créé, pas une référence :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ x[:}\DecValTok{2}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\StringTok{"x : "}\NormalTok{, x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x[:}\DecValTok{2}\NormalTok{]}
+\NormalTok{y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x : "}\NormalTok{, x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3914,7 +3929,7 @@ créé, pas une référence :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3929,9 +3944,9 @@ propose la méthode \texttt{sort()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x.sort()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{x.sort()}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3944,9 +3959,9 @@ ordre alphabétique :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"a"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x.sort()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"a"}\NormalTok{]}
+\NormalTok{x.sort()}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3963,9 +3978,9 @@ texte, retourne le nombre de caractères :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\StringTok{"aa"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"aaaaa"}\NormalTok{, }\StringTok{"aa"}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ x.sort(key}\OperatorTok{=}\BuiltInTok{len}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\StringTok{"aa"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"aaaaa"}\NormalTok{, }\StringTok{"aa"}\NormalTok{]}
+\NormalTok{x.sort(key}\OperatorTok{=}\BuiltInTok{len}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3981,8 +3996,8 @@ Pour créer un n-uplet, on liste les valeurs, séparées par des virgules :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{25}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{25}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4000,7 +4015,7 @@ listes (c.f. Section~\ref{structures-listes}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{0}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4015,7 +4030,7 @@ Contrairement aux listes, les n-uplets sont \textbf{inaltérables}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{1}
+\NormalTok{x[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4032,8 +4047,8 @@ parenthèses :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ ((}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{16}\NormalTok{), (}\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{64}\NormalTok{))}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ ((}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{16}\NormalTok{), (}\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{64}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4053,13 +4068,13 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\})}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\})}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4067,13 +4082,13 @@ De manière équivalent, on peut ne pas utiliser la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\}}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\}}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4082,8 +4097,8 @@ d'utiliser la fonction set :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble_vide }\OperatorTok{=}\NormalTok{ \{\}}
-\OperatorTok{+} \BuiltInTok{type}\NormalTok{(ensemble_vide)}
+\NormalTok{ensemble_vide }\OperatorTok{=}\NormalTok{ \{\}}
+\BuiltInTok{type}\NormalTok{(ensemble_vide)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4093,8 +4108,8 @@ l'ensemble vide, on utilise \texttt{set()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble_vide }\OperatorTok{=} \BuiltInTok{set}\NormalTok{()}
-\OperatorTok{+} \BuiltInTok{type}\NormalTok{(ensemble_vide)}
+\NormalTok{ensemble_vide }\OperatorTok{=} \BuiltInTok{set}\NormalTok{()}
+\BuiltInTok{type}\NormalTok{(ensemble_vide)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4103,13 +4118,13 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\})}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{\})}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4117,7 +4132,7 @@ La longueur d'un ensemble s'obtient à l'aide de la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(ensemble))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(ensemble))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4134,26 +4149,26 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble.add(}\StringTok{"Toulon"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble.add(}\StringTok{"Toulon"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Toulon', 'Aix-en-Provence'}
+## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon', 'Nice'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble.add(}\StringTok{"Toulon"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble.add(}\StringTok{"Toulon"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Toulon', 'Aix-en-Provence'}
+## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon', 'Nice'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4163,13 +4178,13 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble.remove(}\StringTok{"Toulon"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ensemble)}
+\NormalTok{ensemble.remove(}\StringTok{"Toulon"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
+## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Nice'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4177,7 +4192,7 @@ message d'erreur :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble.remove(}\StringTok{"Toulon"}\NormalTok{)}
+\NormalTok{ensemble.remove(}\StringTok{"Toulon"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4190,12 +4205,12 @@ message d'erreur :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(ensemble)}
+\BuiltInTok{print}\NormalTok{(ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
+## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Nice'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4207,7 +4222,7 @@ listes, les tests d'appartenance s'effectuent à l'aide de l'opérateur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"Marseille"} \KeywordTok{in}\NormalTok{ ensemble)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Marseille"} \KeywordTok{in}\NormalTok{ ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4217,7 +4232,7 @@ listes, les tests d'appartenance s'effectuent à l'aide de l'opérateur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"Paris"} \KeywordTok{in}\NormalTok{ ensemble)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Paris"} \KeywordTok{in}\NormalTok{ ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4234,25 +4249,25 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{\})}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ ensemble.copy()}
-\OperatorTok{+}\NormalTok{ y.add(}\StringTok{"Toulon"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
+\NormalTok{ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(\{}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Nice"}\NormalTok{\})}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ ensemble.copy()}
+\NormalTok{y.add(}\StringTok{"Toulon"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Nice', 'Marseille', 'Aix-en-Provence', 'Toulon'}
+## y :  {'Marseille', 'Toulon', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"ensemble : "}\NormalTok{, ensemble)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"ensemble : "}\NormalTok{, ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
+## ensemble :  {'Marseille', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4265,8 +4280,8 @@ fonction \texttt{list()}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ma_liste }\OperatorTok{=}\NormalTok{ [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ma_liste)}
+\NormalTok{ma_liste }\OperatorTok{=}\NormalTok{ [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix-en-Provence"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(ma_liste)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4276,8 +4291,8 @@ fonction \texttt{list()}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ mon_ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(ma_liste)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_ensemble)}
+\NormalTok{mon_ensemble }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(ma_liste)}
+\BuiltInTok{print}\NormalTok{(mon_ensemble)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4287,8 +4302,8 @@ fonction \texttt{list()}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ ma_nouvelle_liste }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(mon_ensemble)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(ma_nouvelle_liste)}
+\NormalTok{ma_nouvelle_liste }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(mon_ensemble)}
+\BuiltInTok{print}\NormalTok{(ma_nouvelle_liste)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4311,8 +4326,8 @@ obtient un dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ dict_vide }\OperatorTok{=}\NormalTok{ \{\}}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(dict_vide))}
+\NormalTok{dict_vide }\OperatorTok{=}\NormalTok{ \{\}}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(dict_vide))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4326,11 +4341,11 @@ clé de la valeur associée par deux points (\texttt{:}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ mon_dict }\OperatorTok{=}\NormalTok{ \{ }\StringTok{"nom"}\NormalTok{: }\StringTok{"Kyrie"}\NormalTok{,}
-\OperatorTok{+}   \StringTok{"prenom"}\NormalTok{: }\StringTok{"John"}\NormalTok{,}
-\OperatorTok{+}   \StringTok{"naissance"}\NormalTok{: }\DecValTok{1992}\NormalTok{,}
-\OperatorTok{+}   \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\NormalTok{mon_dict }\OperatorTok{=}\NormalTok{ \{ }\StringTok{"nom"}\NormalTok{: }\StringTok{"Kyrie"}\NormalTok{,}
+  \StringTok{"prenom"}\NormalTok{: }\StringTok{"John"}\NormalTok{,}
+  \StringTok{"naissance"}\NormalTok{: }\DecValTok{1992}\NormalTok{,}
+  \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4343,9 +4358,9 @@ Il est aussi possible de créer un dictionnaire à l'aide de la fonction
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{([(}\StringTok{"Julien-Yacine"}\NormalTok{, }\StringTok{"Data-scientist"}\NormalTok{),}
-\OperatorTok{+}\NormalTok{   (}\StringTok{"Sonia"}\NormalTok{, }\StringTok{"Directrice"}\NormalTok{)])}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x)}
+\NormalTok{x }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{([(}\StringTok{"Julien-Yacine"}\NormalTok{, }\StringTok{"Data-scientist"}\NormalTok{),}
+\NormalTok{  (}\StringTok{"Sonia"}\NormalTok{, }\StringTok{"Directrice"}\NormalTok{)])}
+\BuiltInTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4363,7 +4378,7 @@ le dictionnaire, mais par sa clé :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"prenom"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"prenom"}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4373,7 +4388,7 @@ le dictionnaire, mais par sa clé :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"equipes"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"equipes"}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4386,7 +4401,7 @@ dictionnaire, une erreur sera retournée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"age"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(mon_dict[}\StringTok{"age"}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4401,7 +4416,7 @@ On peut tester la présence d'une clé avec l'opérateur \texttt{in} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"prenom"} \KeywordTok{in}\NormalTok{ mon_dict)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"prenom"} \KeywordTok{in}\NormalTok{ mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4411,7 +4426,7 @@ On peut tester la présence d'une clé avec l'opérateur \texttt{in} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"age"} \KeywordTok{in}\NormalTok{ mon_dict)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"age"} \KeywordTok{in}\NormalTok{ mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4425,7 +4440,7 @@ pas présente :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict.get(}\StringTok{"prenom"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(mon_dict.get(}\StringTok{"prenom"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4435,7 +4450,7 @@ pas présente :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict.get(}\StringTok{"age"}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(mon_dict.get(}\StringTok{"age"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4450,8 +4465,8 @@ dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ les_cles }\OperatorTok{=}\NormalTok{ mon_dict.keys()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(les_cles)}
+\NormalTok{les_cles }\OperatorTok{=}\NormalTok{ mon_dict.keys()}
+\BuiltInTok{print}\NormalTok{(les_cles)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4461,7 +4476,7 @@ dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_cles))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_cles))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4474,8 +4489,8 @@ liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ les_cles_liste }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(les_cles)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(les_cles_liste)}
+\NormalTok{les_cles_liste }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(les_cles)}
+\BuiltInTok{print}\NormalTok{(les_cles_liste)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4488,8 +4503,8 @@ dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ les_valeurs }\OperatorTok{=}\NormalTok{ mon_dict.values()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(les_valeurs)}
+\NormalTok{les_valeurs }\OperatorTok{=}\NormalTok{ mon_dict.values()}
+\BuiltInTok{print}\NormalTok{(les_valeurs)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4499,7 +4514,7 @@ dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_valeurs))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_valeurs))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4512,8 +4527,8 @@ sous forme de n-uplets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ les_items }\OperatorTok{=}\NormalTok{ mon_dict.items()}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(les_items)}
+\NormalTok{les_items }\OperatorTok{=}\NormalTok{ mon_dict.items()}
+\BuiltInTok{print}\NormalTok{(les_items)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4523,7 +4538,7 @@ sous forme de n-uplets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_items))}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(les_items))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4539,7 +4554,7 @@ dictionnaire.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"age"} \KeywordTok{in}\NormalTok{ les_cles)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"age"} \KeywordTok{in}\NormalTok{ les_cles)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4549,7 +4564,7 @@ dictionnaire.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"nom"} \KeywordTok{in}\NormalTok{ les_cles)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nom"} \KeywordTok{in}\NormalTok{ les_cles)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4559,7 +4574,7 @@ dictionnaire.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{([}\StringTok{'Cleveland'}\NormalTok{, }\StringTok{'Boston'}\NormalTok{] }\KeywordTok{in}\NormalTok{ les_valeurs)}
+\BuiltInTok{print}\NormalTok{([}\StringTok{'Cleveland'}\NormalTok{, }\StringTok{'Boston'}\NormalTok{] }\KeywordTok{in}\NormalTok{ les_valeurs)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4579,9 +4594,9 @@ Par exemple, pour remplacer les valeurs associées à la clé
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ mon_dict[}\StringTok{"equipes"}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{"Montclair Kimberley Academy"}\NormalTok{,}
-\OperatorTok{+}   \StringTok{"Cleveland Cavaliers"}\NormalTok{, }\StringTok{"Boston Celtics"}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\NormalTok{mon_dict[}\StringTok{"equipes"}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{"Montclair Kimberley Academy"}\NormalTok{,}
+  \StringTok{"Cleveland Cavaliers"}\NormalTok{, }\StringTok{"Boston Celtics"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4596,8 +4611,8 @@ crochets (\texttt{{[}{]}}) et le signe d'égalité (\texttt{=}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ mon_dict[}\StringTok{"taille_cm"}\NormalTok{] }\OperatorTok{=} \DecValTok{191}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\NormalTok{mon_dict[}\StringTok{"taille_cm"}\NormalTok{] }\OperatorTok{=} \DecValTok{191}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4612,8 +4627,8 @@ Créons un second dictionnaire dans un premier temps :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ second_dict }\OperatorTok{=}\NormalTok{ \{}\StringTok{"masse_kg"}\NormalTok{ : }\DecValTok{88}\NormalTok{, }\StringTok{"debut_nba"}\NormalTok{ : }\DecValTok{2011}\NormalTok{\}}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(second_dict)}
+\NormalTok{second_dict }\OperatorTok{=}\NormalTok{ \{}\StringTok{"masse_kg"}\NormalTok{ : }\DecValTok{88}\NormalTok{, }\StringTok{"debut_nba"}\NormalTok{ : }\DecValTok{2011}\NormalTok{\}}
+\BuiltInTok{print}\NormalTok{(second_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4625,8 +4640,8 @@ Ajoutons le contenu de ce second dictionnaire au premier :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ mon_dict.update(second_dict)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\NormalTok{mon_dict.update(second_dict)}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4639,8 +4654,8 @@ d'incidence sur le premier :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ second_dict[}\StringTok{"poste"}\NormalTok{] }\OperatorTok{=} \StringTok{"PG"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(second_dict)}
+\NormalTok{second_dict[}\StringTok{"poste"}\NormalTok{] }\OperatorTok{=} \StringTok{"PG"}
+\BuiltInTok{print}\NormalTok{(second_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4650,7 +4665,7 @@ d'incidence sur le premier :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4665,8 +4680,8 @@ plusieurs manières. Par exemple, avec l'opérateur \texttt{del} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \KeywordTok{del}\NormalTok{ mon_dict[}\StringTok{"debut_nba"}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\KeywordTok{del}\NormalTok{ mon_dict[}\StringTok{"debut_nba"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4678,8 +4693,8 @@ Il est également possible d'utiliser la méthode \texttt{pop()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ res }\OperatorTok{=}\NormalTok{ mon_dict.pop(}\StringTok{"masse_kg"}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(mon_dict)}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ mon_dict.pop(}\StringTok{"masse_kg"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(mon_dict)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4695,7 +4710,7 @@ associée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(res)}
+\BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4711,10 +4726,10 @@ ensembles, une méthode \texttt{copy()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ d }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Marseille"}\NormalTok{: }\DecValTok{13}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{ : }\DecValTok{35}\NormalTok{\}}
-\OperatorTok{+}\NormalTok{ d2 }\OperatorTok{=}\NormalTok{ d.copy()}
-\OperatorTok{+}\NormalTok{ d2[}\StringTok{"Paris"}\NormalTok{] }\OperatorTok{=} \DecValTok{75}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\StringTok{"d: "}\NormalTok{, d)}
+\NormalTok{d }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Marseille"}\NormalTok{: }\DecValTok{13}\NormalTok{, }\StringTok{"Rennes"}\NormalTok{ : }\DecValTok{35}\NormalTok{\}}
+\NormalTok{d2 }\OperatorTok{=}\NormalTok{ d.copy()}
+\NormalTok{d2[}\StringTok{"Paris"}\NormalTok{] }\OperatorTok{=} \DecValTok{75}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"d: "}\NormalTok{, d)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4724,7 +4739,7 @@ ensembles, une méthode \texttt{copy()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\StringTok{"d2: "}\NormalTok{, d2)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"d2: "}\NormalTok{, d2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4788,7 +4803,7 @@ On effectue une addition entre deux nombres à l'aide du symbole
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Addition}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Addition}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4803,7 +4818,7 @@ On effectue une soustraction entre deux nombres à l'aide du symbole
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Soustraction}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\CommentTok{# Soustraction}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4818,7 +4833,7 @@ On effectue une multiplication entre deux nombres à l'aide du symbole
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\NormalTok{) }\CommentTok{# Multiplication}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\NormalTok{) }\CommentTok{# Multiplication}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4833,7 +4848,7 @@ On effectue une division (réelle) entre deux nombres à l'aide du symbole
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{/}\DecValTok{2}\NormalTok{) }\CommentTok{# Division}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{/}\DecValTok{2}\NormalTok{) }\CommentTok{# Division}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4845,7 +4860,7 @@ Pour effectuer une division entière, on double la barre oblique :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{//}\DecValTok{2}\NormalTok{) }\CommentTok{# Division entière}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{//}\DecValTok{2}\NormalTok{) }\CommentTok{# Division entière}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4860,7 +4875,7 @@ symbole \texttt{\%} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{12}\OperatorTok{%}\DecValTok{10}\NormalTok{) }\CommentTok{# Modulo}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{12}\OperatorTok{%}\DecValTok{10}\NormalTok{) }\CommentTok{# Modulo}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4875,7 +4890,7 @@ Pour élever un nombre à une puissance données, on utilise deux étoiles
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{**}\DecValTok{3}\NormalTok{) }\CommentTok{# 2 élevé à la puissance 3}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{**}\DecValTok{3}\NormalTok{) }\CommentTok{# 2 élevé à la puissance 3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4894,7 +4909,7 @@ Par exemple, l'instruction suivante effectue d'abord le calcul
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{) }
+\BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -4907,7 +4922,7 @@ calcul \(2+1\), puis la multiplication du résultat avec \(2\) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{(}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{)) }
+\BuiltInTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{(}\DecValTok{2}\OperatorTok{+}\DecValTok{1}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -4928,9 +4943,9 @@ caractères, Python concatène ces deux chaînes
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ a }\OperatorTok{=} \StringTok{"euro"}
-\OperatorTok{+}\NormalTok{ b }\OperatorTok{=} \StringTok{"dollar"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(a}\OperatorTok{+}\NormalTok{b)}
+\NormalTok{a }\OperatorTok{=} \StringTok{"euro"}
+\NormalTok{b }\OperatorTok{=} \StringTok{"dollar"}
+\BuiltInTok{print}\NormalTok{(a}\OperatorTok{+}\NormalTok{b)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4943,7 +4958,7 @@ la chaîne le nombre \(n\) fois :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \DecValTok{2}\OperatorTok{*}\NormalTok{a}
+\DecValTok{2}\OperatorTok{*}\NormalTok{a}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4958,9 +4973,9 @@ concatène en une seule :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ l_1 }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ l_2 }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(l_1 }\OperatorTok{+}\NormalTok{ l_2)}
+\NormalTok{l_1 }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\NormalTok{l_2 }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(l_1 }\OperatorTok{+}\NormalTok{ l_2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4972,9 +4987,9 @@ Idem avec des n-uplets =
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ t_1 }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
-\OperatorTok{+}\NormalTok{ t_2 }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{)}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(t_1 }\OperatorTok{+}\NormalTok{ t_2)}
+\NormalTok{t_1 }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\NormalTok{t_2 }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(t_1 }\OperatorTok{+}\NormalTok{ t_2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4987,7 +5002,7 @@ fois cette liste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{l_1)}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{l_1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4999,7 +5014,7 @@ Idem avec des n-uplets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{t_1)}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{3}\OperatorTok{*}\NormalTok{t_1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5042,10 +5057,10 @@ Pour tester l'égalité de contenu entre deux objets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ a }\OperatorTok{=} \StringTok{"Hello"}
-\OperatorTok{+}\NormalTok{ b }\OperatorTok{=} \StringTok{"World"}
-\OperatorTok{+}\NormalTok{ c }\OperatorTok{=} \StringTok{"World"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
+\NormalTok{a }\OperatorTok{=} \StringTok{"Hello"}
+\NormalTok{b }\OperatorTok{=} \StringTok{"World"}
+\NormalTok{c }\OperatorTok{=} \StringTok{"World"}
+\BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5055,7 +5070,7 @@ Pour tester l'égalité de contenu entre deux objets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(b }\OperatorTok{==}\NormalTok{ c)}
+\BuiltInTok{print}\NormalTok{(b }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5067,10 +5082,10 @@ L'inégalité entre deux objets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5080,7 +5095,7 @@ L'inégalité entre deux objets :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5096,10 +5111,10 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \DecValTok{1}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \DecValTok{1}
-\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \DecValTok{2}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=} \DecValTok{1}
+\NormalTok{y }\OperatorTok{=} \DecValTok{1}
+\NormalTok{z }\OperatorTok{=} \DecValTok{2}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5109,7 +5124,7 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<=}\NormalTok{ y)}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5119,7 +5134,7 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{>}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{>}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5129,7 +5144,7 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{>=}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{>=}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5143,10 +5158,10 @@ lexicographique :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ m_1 }\OperatorTok{=} \StringTok{"mange"}
-\OperatorTok{+}\NormalTok{ m_2 }\OperatorTok{=} \StringTok{"manger"}
-\OperatorTok{+}\NormalTok{ m_3 }\OperatorTok{=} \StringTok{"boire"}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(m_1 }\OperatorTok{<}\NormalTok{ m_2) }\CommentTok{# mange avant manger}
+\NormalTok{m_1 }\OperatorTok{=} \StringTok{"mange"}
+\NormalTok{m_2 }\OperatorTok{=} \StringTok{"manger"}
+\NormalTok{m_3 }\OperatorTok{=} \StringTok{"boire"}
+\BuiltInTok{print}\NormalTok{(m_1 }\OperatorTok{<}\NormalTok{ m_2) }\CommentTok{# mange avant manger}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5156,7 +5171,7 @@ lexicographique :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(m_3 }\OperatorTok{>}\NormalTok{ m_1) }\CommentTok{# boire avant manger}
+\BuiltInTok{print}\NormalTok{(m_3 }\OperatorTok{>}\NormalTok{ m_1) }\CommentTok{# boire avant manger}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5172,8 +5187,8 @@ Créons deux listes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5183,7 +5198,7 @@ contraire, une erreur serait retournée) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5198,9 +5213,9 @@ premier de \texttt{y}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5215,9 +5230,9 @@ Changeons à présent le premier élément de \texttt{x} pour qu'ils soit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5231,9 +5246,9 @@ comparés. On peut s'en convaincre en évaluant le code suivant :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5248,7 +5263,7 @@ tests d'inclusions s'effectuent à l'aide de l'opérateur \texttt{in}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{3} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{3} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5261,7 +5276,7 @@ dictionnaire, etc., on utilise \texttt{not\ in} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5271,7 +5286,7 @@ dictionnaire, etc., on utilise \texttt{not\ in} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\DecValTok{4} \KeywordTok{not} \KeywordTok{in}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5283,8 +5298,8 @@ Avec un dictionnaire :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ dictionnaire }\OperatorTok{=}\NormalTok{ \{}\StringTok{"nom"}\NormalTok{: }\StringTok{"Rockwell"}\NormalTok{, }\StringTok{"prenom"}\NormalTok{: }\StringTok{"Criquette"}\NormalTok{\}}
-\OperatorTok{+} \StringTok{"age"} \KeywordTok{not} \KeywordTok{in}\NormalTok{ dictionnaire.keys()}
+\NormalTok{dictionnaire }\OperatorTok{=}\NormalTok{ \{}\StringTok{"nom"}\NormalTok{: }\StringTok{"Rockwell"}\NormalTok{, }\StringTok{"prenom"}\NormalTok{: }\StringTok{"Criquette"}\NormalTok{\}}
+\CommentTok{"age"} \KeywordTok{not} \KeywordTok{in}\NormalTok{ dictionnaire.keys()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5305,9 +5320,9 @@ comparaison ``ET'' logique retourne vrai :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{True}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5320,9 +5335,9 @@ retourne faux :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5332,7 +5347,7 @@ retourne faux :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ y)}
+\BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5354,10 +5369,10 @@ alors la comparaison ``ET'' logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \VariableTok{None}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ z)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\NormalTok{z }\OperatorTok{=} \VariableTok{None}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5367,7 +5382,7 @@ alors la comparaison ``ET'' logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(y }\KeywordTok{and}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5377,7 +5392,7 @@ alors la comparaison ``ET'' logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z }\KeywordTok{and}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(z }\KeywordTok{and}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5395,9 +5410,9 @@ comparaison ``OU'' logique retourne vrai :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5409,9 +5424,9 @@ Si les deux sont faux, la comparaison ``OU'' logique retourne faux :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{False}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5432,10 +5447,10 @@ logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+}\NormalTok{ z }\OperatorTok{=} \VariableTok{None}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ z)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\NormalTok{z }\OperatorTok{=} \VariableTok{None}
+\BuiltInTok{print}\NormalTok{(x }\KeywordTok{or}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5445,7 +5460,7 @@ logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(y }\KeywordTok{or}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(y }\KeywordTok{or}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5455,7 +5470,7 @@ logique retourne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(z }\KeywordTok{or}\NormalTok{ z)}
+\BuiltInTok{print}\NormalTok{(z }\KeywordTok{or}\NormalTok{ z)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5470,9 +5485,9 @@ dernier à sa valeur opposée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{True}
-\OperatorTok{+}\NormalTok{ y }\OperatorTok{=} \VariableTok{False}
-\OperatorTok{+} \BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ x)}
+\NormalTok{x }\OperatorTok{=} \VariableTok{True}
+\NormalTok{y }\OperatorTok{=} \VariableTok{False}
+\BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5482,7 +5497,7 @@ dernier à sa valeur opposée :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>} \BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ y)}
+\BuiltInTok{print}\NormalTok{(}\KeywordTok{not}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5495,8 +5510,8 @@ Lorsque l'on utilise l'opérateur \texttt{not} sur une valeur vide
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{ x }\OperatorTok{=} \VariableTok{None}
-\OperatorTok{+} \KeywordTok{not}\NormalTok{ x}
+\NormalTok{x }\OperatorTok{=} \VariableTok{None}
+\KeywordTok{not}\NormalTok{ x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5511,7 +5526,7 @@ Chapitre~\ref{numpy}.
 \begin{longtable}[]{@{}rr@{}}
 \caption{Quelques fonctions numériques}\tabularnewline
 \toprule
-\begin{minipage}[b]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[b]{0.21\columnwidth}\raggedleft\strut
 Fonction\strut
 \end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedleft\strut
 Description\strut
@@ -5519,173 +5534,173 @@ Description\strut
 \midrule
 \endfirsthead
 \toprule
-\begin{minipage}[b]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[b]{0.21\columnwidth}\raggedleft\strut
 Fonction\strut
 \end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedleft\strut
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.ceil(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Plus petits entier supérieur ou égal à \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.copysign(x,\ y)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Valeur absolue de \texttt{x} mais avec le signe de \texttt{y}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.floor(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Plus petits entier inférieur ou égal à \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.round(x,\ ndigits)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arrondi de \texttt{x} à \texttt{ndigits} décimales près\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.fabs(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Valeur absolue de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.exp(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Exponentielle de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.log(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Logarithme naturel de \texttt{x} (en base e)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.log(x,\ b)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Logarithme en base \texttt{b} de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.log10(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Logarithme en base 10 de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.pow(x,y)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 \texttt{x} élevé à la puissance \texttt{y}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.sqrt(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Racine carrée de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.fsum()}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Somme des valeurs de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.sin(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Sinus de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.cos(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Cosinus de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.tan(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Tangente de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.asin(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-sinus de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.acos(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-cosinus de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.atan(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-tangente de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.sinh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Sinus hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.cosh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Cosinus hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.tanh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Tangente hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.asinh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-sinus hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.acosh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-cosinus hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.atanh(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Arc-tangente hyperbolique de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.degree(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Conversion de \texttt{x} de radians en degrés\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.radians(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Conversion de \texttt{x} de degrés en radians\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.factorial()}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Factorielle de \texttt{x}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.gcd(x,\ y)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Plus grand commun diviseur de \texttt{x} et \texttt{y}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.isclose(x,\ y,\ rel\_tol=1e-09,\ abs\_tol=0.0)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Compare \texttt{x} et \texttt{y} et retourne s'ils sont proches au reard
 de la tolérance \texttt{rel\_tol} (\texttt{abs\_tol} est la tolérance
 minimum absolue)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.isfinite(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Retourne \texttt{True} si \texttt{x} est soit l'infini, soir
 \texttt{NaN}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.isinf(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Retourne \texttt{True} si \texttt{x} est l'infini, \texttt{False}
 sinon\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedleft\strut
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
 \texttt{math.isnan(x)}\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Retourne \texttt{True} si \texttt{x} est \texttt{NaN}, \texttt{False}
@@ -5721,7 +5736,7 @@ number}\tabularnewline
 
 \section{Exercice}\label{exercice-2}
 
-\BeginKnitrBlock{remarque}
+\BeginKnitrBlock{exframe}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -5766,22 +5781,485 @@ number}\tabularnewline
 \item
   \texttt{1} ou \texttt{0} n'est pas présent dans \texttt{x}.
 \end{itemize}
-\EndKnitrBlock{remarque}
+\EndKnitrBlock{exframe}
 
 \chapter{Chargement et sauvegarde de
 données}\label{chargement-et-sauvegarde-de-donnees}
 
+Pour explorer des données et/ou réaliser des analyses statistiques ou
+économétriques, il est important de savoir importer et exporter des
+données.
+
+Avant toute chose, il convient d'évoquer la notion de répertoire courant
+(\emph{working directory}). En informatique, le répertroire courant d'un
+processus désigne un répertoire du système de fichier associé à ce
+processus.
+
+Lorsqu'on lance Jupyter, une arborescence nous est proposée, et nous
+navigons à l'interieur de celle-ci pour créer ou ouvrir un
+\emph{notebook}. Le répertoire contenant le \emph{notebook} est le
+répertoire courant. Lorsqu'on indiquera à Python d'importer des données
+(ou d'exporter des objets), l'origine (ou la destination) sera indiquée
+\textbf{relativement} au répertoire courant, à moins d'avoir recours à
+des chemins absolus (c'est-à-dire un chemin d'accès à partir de la
+racine \texttt{/}).
+
+Si on lance un programme Python depuis un terminal, le répertoire
+courant est le répertoire dans lequel on se trouve dans le terminal au
+moment de lancer le programme.
+
+Pour afficher dans Python le répertoire courant, on peut utiliser le
+code suivant :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ os}
+\NormalTok{cwd }\OperatorTok{=}\NormalTok{ os.getcwd()}
+\BuiltInTok{print}\NormalTok{(cwd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## /Users/ewengallic/Dropbox/Universite_Aix_Marseille/Magistere_2_Programming_for_big_data/Cours/chapters/python/Python_pour_economistes
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+La fonction \texttt{listdir()} de la librairie \texttt{os} est très
+pratique : elle permet de lister tous les documents et répertoires
+contenus dans le répertoire couant, ou dans n'importe quel répertoire si
+le paramètre \texttt{path} renseigne le chemin (absolu ou relatif).
+Après avoir importé la fonction (\texttt{from\ os\ import\ getcwd}), on
+peut l'appeler : \texttt{os.listdir()}.
+\EndKnitrBlock{remarque}
+
 \section{Charger des données}\label{charger-des-donnees}
 
-\subsection{Fichiers textes}\label{fichiers-textes}
+En fonction du format d'enregistrement des données, les techniques
+d'importation de données diffèrent.
+
+\BeginKnitrBlock{remarque}
+Le Chapitre~\ref{pandas} propose d'autres manières d'importer les
+données, avec la libraririe \texttt{pandas}.
+\EndKnitrBlock{remarque}
+
+\subsection{Fichiers textes}\label{import-fichiers-texte}
+
+Lorsque les données sont présentes dans un fichier texte (ASCII), Python
+propose d'utiliser la fonction \texttt{open()}.
+
+La syntaxe (simplifiée) de la fonction \texttt{open()} est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{open}\NormalTok{(}\BuiltInTok{file}\NormalTok{, mode}\OperatorTok{=}\StringTok{'r'}\NormalTok{, buffering}\OperatorTok{=-}\DecValTok{1}\NormalTok{,}
+\NormalTok{  encoding}\OperatorTok{=}\VariableTok{None}\NormalTok{, errors}\OperatorTok{=}\VariableTok{None}\NormalTok{, newline}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Voici à quoi correspondent les paramètres (il en existe d'autres) :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{file} : une chaîne de caractères indiquant le chemin et le nom
+  du fichier à ouvrir ;
+\item
+  \texttt{mode} : spécifie la manière par laquelle le fichier est ouvert
+  (c.f. juste après pour les valeurs possibles) ;
+\item
+  \texttt{buffering} : spécifie à l'aide d'un entier le comportement à
+  adopter pour la mise en mémoire tampon (1 pour mettre en mémoire par
+  ligne ; un entier \(>1\) pour indiquer la taille en octets des
+  morceaux à charger en mémoire tampon) ;
+\item
+  \texttt{encoding} : spécifie l'encodage du fichier ;
+\item
+  \texttt{errors} : spécifie la manière de gérer les erreurs d'encodage
+  et de décodage (\emph{e.g.}, \texttt{strict} retourne une erreur
+  d'exception, \texttt{ignore} permet d'ignorer les erreurs,
+  \texttt{replace} de les remplacer, \texttt{backslashreplace} de
+  remplacer les données mal formées par des séquences d'échappement) ;
+\item
+  \texttt{newline} : contrôle la fin des lignes
+  (\texttt{\textbackslash{}n}, \texttt{\textbackslash{}r}, etc.).
+\end{itemize}
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{Valeurs principales pour la manière d'ouvrir les
+fichiers.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Valeur\strut
+\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Valeur\strut
+\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{r}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Ouverture pour lire (défaut)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{w}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Ouverture pour écrire\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{x}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Ouverture pour créer un document, échoue si le fichier existe déjà\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{a}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Ouverture pour écrire, en venant ajouter à la fin du fichier si celui-ci
+existe déjà\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{+}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Ouverture pour mise à jour (lecture et écriture)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{b}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+À ajouter à un mode d'ouverture pour les fichiers binaires (\texttt{rb}
+ou \texttt{wb})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+\texttt{t}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Mode texte (décodage automatique des octets en Unicode). Par défaut si
+non spécifié (s'ajoute au mode, comme \texttt{b})\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Il est important de bien penser à \textbf{fermer le fichier} une fois
+qu'on a terminé de l'utiliser. Pour ce faire, on utilise la méthode
+\texttt{close()}.
+
+Dans le dossier \texttt{fichiers\_exemples} se trouve un fichier appelé
+\texttt{fichier\_texte.txt} qui contient trois lignes de texte. Ouvrons
+ce fichier, et utilisons la méthode \texttt{.read()} pour afficher son
+contenu :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{path }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_texte.txt"}
+\CommentTok{# Ouverture en mode lecture (par défaut)}
+\NormalTok{mon_fichier }\OperatorTok{=} \BuiltInTok{open}\NormalTok{(path, mode }\OperatorTok{=} \StringTok{"r"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(mon_fichier.read())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Bonjour, je suis un fichier au format txt.
+## Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.
+## Trois lignes devraient suffir.
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mon_fichier.close()}
+\end{Highlighting}
+\end{Shaded}
+
+Une pratique courante en Python est d'ouvrir un fichier dans un bloc
+\texttt{with}. La raison de ce choix est qu'un fichier ouvert dans un
+tel bloc est automatiquement refermé à la fin du bloc.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ouverture en mode lecture (par défaut)}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ fonction_pour_recuperer_donnees_depuis_f()}
+\end{Highlighting}
+\end{Shaded}
+
+Par exemple, pour récupérer chaque ligne comme un élément d'une liste,
+on peut utiliser une boucle parcourant chaque ligne du fichier. À chaque
+itération, on récupère la ligne :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ouverture en mode lecture (par défaut)}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier]}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ['Bonjour, je suis un fichier au format txt.\n', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\n", 'Trois lignes devraient suffir.']
+\end{lstlisting}
+
+Note : à chaque itération, on peut appliquer la méthode
+\texttt{strip()}, qui retourne la chaîne de caractère de la ligne, en
+retirant les éventuels caractères blancs en début de chaîne :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ouverture en mode lecture (par défaut)}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x.strip() }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier]}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ['Bonjour, je suis un fichier au format txt.', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.", 'Trois lignes devraient suffir.']
+\end{lstlisting}
+
+On peut également utiliser la méthode \texttt{readlines()} pour importer
+les lignes dans une liste :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{    donnees }\OperatorTok{=}\NormalTok{ mon_fichier.readlines()}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ['Bonjour, je suis un fichier au format txt.\n', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\n", 'Trois lignes devraient suffir.']
+\end{lstlisting}
+
+Il se peut parfois que l'encodage des caractères pose problème lors de
+l'importation. Dans ce cas, il peut être une bonne idée de changer la
+valeur du paramètre \texttt{encoding} de la fonction \texttt{open()}.
+Les encodages disponibles sont fonction de la locale. Les valeurs
+disponibles s'obtiennent à l'aide de la méthode suivante (code non
+exécuté dans ces notes) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ locale}
+\NormalTok{locale.locale_alias()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Importation depuis
+internet}\label{importation-depuis-internet}
+
+Pour importer un fichier texte depuis Internet, on peut utiliser des
+méthodes de la librairie \texttt{urllib} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ urllib}
+\ImportTok{from}\NormalTok{ urllib.request }\ImportTok{import}\NormalTok{ urlopen}
+\NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_texte.txt"}
+\ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{   donnees }\OperatorTok{=}\NormalTok{ mon_fichier.read()}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## b"Bonjour, je suis un fichier au format txt.\nJe contiens plusieurs lignes, l'id\xc3\xa9e \xc3\xa9tant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\nTrois lignes devraient suffir."
+\end{lstlisting}
+
+Comme on peut le constater, l'encodage des caractères pose souci ici. On
+peut appliquer la méthode \texttt{decode()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(donnees.decode())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Bonjour, je suis un fichier au format txt.
+## Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.
+## Trois lignes devraient suffir.
+\end{lstlisting}
 
 \subsection{Fichiers CSV}\label{fichiers-csv}
 
+Les fichier CSV (\emph{comma separated value}) sont très répandus. De
+nombreuses bases de données exportent leurs données en CSV (\emph{e.g.},
+Banque Mondiale, FAO, Eurostat, etc.). Pour les importer dans Python, on
+peut uiliser le module \texttt{csv}.
+
+À nouveau, on utilise la fonction \texttt{open()}, avec les paramètres
+décrits dans la Section~\ref{import-fichiers-texte}. Ensuite, on fait
+appel à la méthode \texttt{reader()} du module \texttt{csv} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ csv}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./fichiers_exemples/fichier_csv.csv'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  mon_fichier_reader }\OperatorTok{=}\NormalTok{ csv.reader(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{, quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{)}
+\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier_reader]}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [['nom', 'prénom', 'équipe'], ['Irving', ' "Kyrie"', ' "Celtics"'], ['James', ' "Lebron"', ' "Lakers"', ''], ['Curry', ' "Stephen"', ' "Golden State Warriors"']]
+\end{lstlisting}
+
+La méthode \texttt{reader()} peut prendre plusieurs paramètres, parmi
+lesquels :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{csvfile} : l'objet ouvert avec \texttt{open()} ;
+\item
+  \texttt{dialect} : paramètre spécifiant le `dialect' du fichier CSV
+  (e.g., \texttt{excel}, \texttt{excel-tab}, \texttt{unix}) ;
+\item
+  \texttt{delimiter} : le caractère délimitant les champs (\emph{i.e.},
+  les valeurs des variables) ;
+\item
+  \texttt{quotechar} : caractère utilisé pour entourer les champs
+  contenant des caractères spéciaux ;
+\item
+  \texttt{escapechar} : caractère d'échappement ;
+\item
+  \texttt{doublequote} : contrôle comment les \emph{quotechar}
+  apparaissent à l'intérieur d'un champ : quand \texttt{True}, le
+  caractère est doublé, ; quand \texttt{False}, le caractère
+  d'échappement est utilisé en préfixe au \emph{quotechar} ;
+\item
+  \texttt{lineterminator} : chaîne de caractères utilisée pour terminer
+  une ligne ;
+\item
+  \texttt{skipinitialspace} : quand \texttt{True}, le caractère blanc
+  situé juste après le caractère de séparation des champs est ignoré ;
+\item
+  \texttt{strict} : quand \texttt{True}, retourne une erreur d'exception
+  en cas de mauvais \texttt{input} de CSV.
+\end{itemize}
+
+On peut aussi importer un fichier CSV en tant que dictionnaire, à l'aide
+de la méthode \texttt{csv.DictReader()} du module CSV :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ csv}
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_csv.csv"}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{    mon_fichier_csv }\OperatorTok{=}\NormalTok{ csv.DictReader(mon_fichier)}
+\NormalTok{    donnees }\OperatorTok{=}\NormalTok{ [ligne }\ControlFlowTok{for}\NormalTok{ ligne }\KeywordTok{in}\NormalTok{ mon_fichier_csv]}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [OrderedDict([('nom', 'Irving'), ('prénom', ' "Kyrie"'), ('équipe', ' "Celtics"')]), OrderedDict([('nom', 'James'), ('prénom', ' "Lebron"'), ('équipe', ' "Lakers"'), (None, [''])]), OrderedDict([('nom', 'Curry'), ('prénom', ' "Stephen"'), ('équipe', ' "Golden State Warriors"')])]
+\end{lstlisting}
+
+\subsubsection{Importation depuis
+internet}\label{importation-depuis-internet-1}
+
+Comme pour les fichiers \texttt{txt}, on peut charger un fichier CSV
+hébergé sur Internet :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ csv}
+\ImportTok{import}\NormalTok{ urllib.request}
+\ImportTok{import}\NormalTok{ codecs}
+\NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"}
+\ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{    mon_fochier_csv }\OperatorTok{=}\NormalTok{ csv.reader(codecs.iterdecode(mon_fichier, }\StringTok{'utf-8'}\NormalTok{))}
+\NormalTok{    donnees }\OperatorTok{=}\NormalTok{ [ligne }\ControlFlowTok{for}\NormalTok{ ligne }\KeywordTok{in}\NormalTok{ mon_fochier_csv]}
+\BuiltInTok{print}\NormalTok{(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [['nom', 'prénom', 'équipe'], ['Irving', ' "Kyrie"', ' "Celtics"'], ['James', ' "Lebron"', ' "Lakers"', ''], ['Curry', ' "Stephen"', ' "Golden State Warriors"']]
+\end{lstlisting}
+
+\subsection{Fichier JSON}\label{fichier-json}
+
+Pour importer des fichiers au format JSON (\emph{JavaScript Object
+Notation}), qui sont très utilisés dès lors qu'on communique avec une
+API, on peut utiliser la librairie \texttt{json}, et sa méthode
+\texttt{load()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ json}
+\NormalTok{lien }\OperatorTok{=} \StringTok{'./fichiers_exemples/tweets.json'}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(lien) }\ImportTok{as}\NormalTok{ mon_fichier_json:}
+\NormalTok{    data }\OperatorTok{=}\NormalTok{ json.load(mon_fichier_json)}
+\end{Highlighting}
+\end{Shaded}
+
+Ensuite, on peut afficher le contenu importé à l'aide de la fonction
+\texttt{pprint()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ pprint }\ImportTok{import}\NormalTok{ pprint}
+\NormalTok{pprint(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## {'created_at': 'Wed Sep 26 07:38:05 +0000 2018',
+##  'id': 11,
+##  'loc': [{'long': 5.3698}, {'lat': 43.2965}],
+##  'text': 'Un tweet !',
+##  'user_mentions': [{'id': 111, 'screen_name': 'nom_twittos1'},
+##                    {'id': 112, 'screen_name': 'nom_twittos2'}]}
+\end{lstlisting}
+
+\subsubsection{Importation depuis
+Internet}\label{importation-depuis-internet-2}
+
+Encore une fois, il est possible d'importer des fichiers JSON depuis
+Internet :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ urllib}
+\ImportTok{from}\NormalTok{ urllib.request }\ImportTok{import}\NormalTok{ urlopen}
+\NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/tweets.json"}
+\ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{   donnees }\OperatorTok{=}\NormalTok{ json.load(mon_fichier)}
+\NormalTok{pprint(donnees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## {'created_at': 'Wed Sep 26 07:38:05 +0000 2018',
+##  'id': 11,
+##  'loc': [{'long': 5.3698}, {'lat': 43.2965}],
+##  'text': 'Un tweet !',
+##  'user_mentions': [{'id': 111, 'screen_name': 'nom_twittos1'},
+##                    {'id': 112, 'screen_name': 'nom_twittos2'}]}
+\end{lstlisting}
+
 \subsection{Fichiers Excel}\label{fichiers-excel}
+
+Les fichiers Excel (\texttt{xls} ou \texttt{xlsx}) sont aussi très
+largement répandus en économie. Le lecteur est prié de se référer à la
+Section~\ref{pandas-importation-excel} pour une méthode d'importation
+des données Excel avec la librairie \texttt{pandas}.
 
 \section{Exporter des données}\label{exporter-des-donnees}
 
-\subsection{Fichiers textes}\label{fichiers-textes-1}
+\subsection{Fichiers textes}\label{fichiers-textes}
+
+\subsection{Fichier JSON}\label{fichier-json-1}
 
 \subsection{Fichiers CSV}\label{fichiers-csv-1}
 
@@ -5812,11 +6290,12 @@ données}\label{chargement-et-sauvegarde-de-donnees}
 
 \chapter{Introduction à Numpy}\label{numpy}
 
-\chapter{Manipulation de données avec
-Pandas}\label{manipulation-de-donnees-avec-pandas}
+\chapter{Manipulation de données avec Pandas}\label{pandas}
 
 \section{Importation et exportation de
 données}\label{importation-et-exportation-de-donnees}
+
+\subsection{Fichiers Excel}\label{pandas-importation-excel}
 
 \section{Sélection}\label{selection}
 

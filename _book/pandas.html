@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="operateurs.html">
-<link rel="next" href="conditions.html">
+<link rel="prev" href="numpy.html">
+<link rel="next" href="visualisation-de-donnees.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -256,233 +256,37 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chargement-et-sauvegarde-de-donnees" class="section level1">
-<h1><span class="header-section-number">5</span> Chargement et sauvegarde de données</h1>
-<p>Pour explorer des données et/ou réaliser des analyses statistiques ou économétriques, il est important de savoir importer et exporter des données.</p>
-<p>Avant toute chose, il convient d’évoquer la notion de répertoire courant (<em>working directory</em>). En informatique, le répertroire courant d’un processus désigne un répertoire du système de fichier associé à ce processus.</p>
-<p>Lorsqu’on lance Jupyter, une arborescence nous est proposée, et nous navigons à l’interieur de celle-ci pour créer ou ouvrir un <em>notebook</em>. Le répertoire contenant le <em>notebook</em> est le répertoire courant. Lorsqu’on indiquera à Python d’importer des données (ou d’exporter des objets), l’origine (ou la destination) sera indiquée <strong>relativement</strong> au répertoire courant, à moins d’avoir recours à des chemins absolus (c’est-à-dire un chemin d’accès à partir de la racine <code>/</code>).</p>
-<p>Si on lance un programme Python depuis un terminal, le répertoire courant est le répertoire dans lequel on se trouve dans le terminal au moment de lancer le programme.</p>
-<p>Pour afficher dans Python le répertoire courant, on peut utiliser le code suivant :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> os
-cwd <span class="op">=</span> os.getcwd()
-<span class="bu">print</span>(cwd)</code></pre></div>
-<pre><code>## /Users/ewengallic/Dropbox/Universite_Aix_Marseille/Magistere_2_Programming_for_big_data/Cours/chapters/python/Python_pour_economistes</code></pre>
-
-<div class="remarque">
-<p>La fonction <code>listdir()</code> de la librairie <code>os</code> est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n’importe quel répertoire si le paramètre <code>path</code> renseigne le chemin (absolu ou relatif). Après avoir importé la fonction (<code>from os import getcwd</code>), on peut l’appeler : <code>os.listdir()</code>.</p>
-</div>
-
-<div id="charger-des-donnees" class="section level2">
-<h2><span class="header-section-number">5.1</span> Charger des données</h2>
-<p>En fonction du format d’enregistrement des données, les techniques d’importation de données diffèrent.</p>
-
-<div class="remarque">
-Le Chapitre <a href="pandas.html#pandas">10</a> propose d’autres manières d’importer les données, avec la libraririe <code>pandas</code>.
-</div>
-
-<div id="import-fichiers-texte" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Fichiers textes</h3>
-<p>Lorsque les données sont présentes dans un fichier texte (ASCII), Python propose d’utiliser la fonction <code>open()</code>.</p>
-<p>La syntaxe (simplifiée) de la fonction <code>open()</code> est la suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">open</span>(<span class="bu">file</span>, mode<span class="op">=</span><span class="st">&#39;r&#39;</span>, buffering<span class="op">=-</span><span class="dv">1</span>,
-  encoding<span class="op">=</span><span class="va">None</span>, errors<span class="op">=</span><span class="va">None</span>, newline<span class="op">=</span><span class="va">None</span>)</code></pre></div>
-<p>Voici à quoi correspondent les paramètres (il en existe d’autres) :</p>
-<ul>
-<li><code>file</code> : une chaîne de caractères indiquant le chemin et le nom du fichier à ouvrir ;</li>
-<li><code>mode</code> : spécifie la manière par laquelle le fichier est ouvert (c.f. juste après pour les valeurs possibles) ;</li>
-<li><code>buffering</code> : spécifie à l’aide d’un entier le comportement à adopter pour la mise en mémoire tampon (1 pour mettre en mémoire par ligne ; un entier <span class="math inline">\(&gt;1\)</span> pour indiquer la taille en octets des morceaux à charger en mémoire tampon) ;</li>
-<li><code>encoding</code> : spécifie l’encodage du fichier ;</li>
-<li><code>errors</code> : spécifie la manière de gérer les erreurs d’encodage et de décodage (<em>e.g.</em>, <code>strict</code> retourne une erreur d’exception, <code>ignore</code> permet d’ignorer les erreurs, <code>replace</code> de les remplacer, <code>backslashreplace</code> de remplacer les données mal formées par des séquences d’échappement) ;</li>
-<li><code>newline</code> : contrôle la fin des lignes (<code>\n</code>, <code>\r</code>, etc.).</li>
-</ul>
-<table style="width:78%;">
-<caption>Valeurs principales pour la manière d’ouvrir les fichiers.</caption>
-<colgroup>
-<col width="12%" />
-<col width="65%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="right">Valeur</th>
-<th align="right">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right"><code>r</code></td>
-<td align="right">Ouverture pour lire (défaut)</td>
-</tr>
-<tr class="even">
-<td align="right"><code>w</code></td>
-<td align="right">Ouverture pour écrire</td>
-</tr>
-<tr class="odd">
-<td align="right"><code>x</code></td>
-<td align="right">Ouverture pour créer un document, échoue si le fichier existe déjà</td>
-</tr>
-<tr class="even">
-<td align="right"><code>a</code></td>
-<td align="right">Ouverture pour écrire, en venant ajouter à la fin du fichier si celui-ci existe déjà</td>
-</tr>
-<tr class="odd">
-<td align="right"><code>+</code></td>
-<td align="right">Ouverture pour mise à jour (lecture et écriture)</td>
-</tr>
-<tr class="even">
-<td align="right"><code>b</code></td>
-<td align="right">À ajouter à un mode d’ouverture pour les fichiers binaires (<code>rb</code> ou <code>wb</code>)</td>
-</tr>
-<tr class="odd">
-<td align="right"><code>t</code></td>
-<td align="right">Mode texte (décodage automatique des octets en Unicode). Par défaut si non spécifié (s’ajoute au mode, comme <code>b</code>)</td>
-</tr>
-</tbody>
-</table>
-<p>Il est important de bien penser à <strong>fermer le fichier</strong> une fois qu’on a terminé de l’utiliser. Pour ce faire, on utilise la méthode <code>close()</code>.</p>
-<p>Dans le dossier <code>fichiers_exemples</code> se trouve un fichier appelé <code>fichier_texte.txt</code> qui contient trois lignes de texte. Ouvrons ce fichier, et utilisons la méthode <code>.read()</code> pour afficher son contenu :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">path <span class="op">=</span> <span class="st">&quot;./fichiers_exemples/fichier_texte.txt&quot;</span>
-<span class="co"># Ouverture en mode lecture (par défaut)</span>
-mon_fichier <span class="op">=</span> <span class="bu">open</span>(path, mode <span class="op">=</span> <span class="st">&quot;r&quot;</span>)
-<span class="bu">print</span>(mon_fichier.read())</code></pre></div>
-<pre><code>## Bonjour, je suis un fichier au format txt.
-## Je contiens plusieurs lignes, l&#39;idée étant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.
-## Trois lignes devraient suffir.</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_fichier.close()</code></pre></div>
-<p>Une pratique courante en Python est d’ouvrir un fichier dans un bloc <code>with</code>. La raison de ce choix est qu’un fichier ouvert dans un tel bloc est automatiquement refermé à la fin du bloc.</p>
-<p>La syntaxe est la suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Ouverture en mode lecture (par défaut)</span>
-<span class="cf">with</span> <span class="bu">open</span>(path, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> mon_fichier:
-  donnees <span class="op">=</span> fonction_pour_recuperer_donnees_depuis_f()</code></pre></div>
-<p>Par exemple, pour récupérer chaque ligne comme un élément d’une liste, on peut utiliser une boucle parcourant chaque ligne du fichier. À chaque itération, on récupère la ligne :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Ouverture en mode lecture (par défaut)</span>
-<span class="cf">with</span> <span class="bu">open</span>(path, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> mon_fichier:
-  donnees <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> mon_fichier]
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [&#39;Bonjour, je suis un fichier au format txt.\n&#39;, &quot;Je contiens plusieurs lignes, l&#39;idée étant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.\n&quot;, &#39;Trois lignes devraient suffir.&#39;]</code></pre>
-<p>Note : à chaque itération, on peut appliquer la méthode <code>strip()</code>, qui retourne la chaîne de caractère de la ligne, en retirant les éventuels caractères blancs en début de chaîne :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Ouverture en mode lecture (par défaut)</span>
-<span class="cf">with</span> <span class="bu">open</span>(path, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> mon_fichier:
-  donnees <span class="op">=</span> [x.strip() <span class="cf">for</span> x <span class="kw">in</span> mon_fichier]
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [&#39;Bonjour, je suis un fichier au format txt.&#39;, &quot;Je contiens plusieurs lignes, l&#39;idée étant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.&quot;, &#39;Trois lignes devraient suffir.&#39;]</code></pre>
-<p>On peut également utiliser la méthode <code>readlines()</code> pour importer les lignes dans une liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">with</span> <span class="bu">open</span>(path, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> mon_fichier:
-    donnees <span class="op">=</span> mon_fichier.readlines()
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [&#39;Bonjour, je suis un fichier au format txt.\n&#39;, &quot;Je contiens plusieurs lignes, l&#39;idée étant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.\n&quot;, &#39;Trois lignes devraient suffir.&#39;]</code></pre>
-<p>Il se peut parfois que l’encodage des caractères pose problème lors de l’importation. Dans ce cas, il peut être une bonne idée de changer la valeur du paramètre <code>encoding</code> de la fonction <code>open()</code>. Les encodages disponibles sont fonction de la locale. Les valeurs disponibles s’obtiennent à l’aide de la méthode suivante (code non exécuté dans ces notes) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> locale
-locale.locale_alias()</code></pre></div>
-<div id="importation-depuis-internet" class="section level4">
-<h4><span class="header-section-number">5.1.1.1</span> Importation depuis internet</h4>
-<p>Pour importer un fichier texte depuis Internet, on peut utiliser des méthodes de la librairie <code>urllib</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> urllib
-<span class="im">from</span> urllib.request <span class="im">import</span> urlopen
-url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_texte.txt&quot;</span>
-<span class="cf">with</span> urllib.request.urlopen(url) <span class="im">as</span> mon_fichier:
-   donnees <span class="op">=</span> mon_fichier.read()
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## b&quot;Bonjour, je suis un fichier au format txt.\nJe contiens plusieurs lignes, l&#39;id\xc3\xa9e \xc3\xa9tant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.\nTrois lignes devraient suffir.&quot;</code></pre>
-<p>Comme on peut le constater, l’encodage des caractères pose souci ici. On peut appliquer la méthode <code>decode()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(donnees.decode())</code></pre></div>
-<pre><code>## Bonjour, je suis un fichier au format txt.
-## Je contiens plusieurs lignes, l&#39;idée étant de montrer comment fonctionne l&#39;importation d&#39;un tel fichier dans Python.
-## Trois lignes devraient suffir.</code></pre>
+<div id="pandas" class="section level1">
+<h1><span class="header-section-number">10</span> Manipulation de données avec Pandas</h1>
+<div id="importation-et-exportation-de-donnees" class="section level2">
+<h2><span class="header-section-number">10.1</span> Importation et exportation de données</h2>
+<div id="pandas-importation-excel" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Fichiers Excel</h3>
 </div>
 </div>
-<div id="fichiers-csv" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Fichiers CSV</h3>
-<p>Les fichier CSV (<em>comma separated value</em>) sont très répandus. De nombreuses bases de données exportent leurs données en CSV (<em>e.g.</em>, Banque Mondiale, FAO, Eurostat, etc.). Pour les importer dans Python, on peut uiliser le module <code>csv</code>.</p>
-<p>À nouveau, on utilise la fonction <code>open()</code>, avec les paramètres décrits dans la Section <a href="chargement-et-sauvegarde-de-donnees.html#import-fichiers-texte">5.1.1</a>. Ensuite, on fait appel à la méthode <code>reader()</code> du module <code>csv</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> csv
-<span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;./fichiers_exemples/fichier_csv.csv&#39;</span>) <span class="im">as</span> mon_fichier:
-  mon_fichier_reader <span class="op">=</span> csv.reader(mon_fichier, delimiter<span class="op">=</span><span class="st">&#39;,&#39;</span>, quotechar<span class="op">=</span><span class="st">&#39;&quot;&#39;</span>)
-  donnees <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> mon_fichier_reader]
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [[&#39;nom&#39;, &#39;prénom&#39;, &#39;équipe&#39;], [&#39;Irving&#39;, &#39; &quot;Kyrie&quot;&#39;, &#39; &quot;Celtics&quot;&#39;], [&#39;James&#39;, &#39; &quot;Lebron&quot;&#39;, &#39; &quot;Lakers&quot;&#39;, &#39;&#39;], [&#39;Curry&#39;, &#39; &quot;Stephen&quot;&#39;, &#39; &quot;Golden State Warriors&quot;&#39;]]</code></pre>
-<p>La méthode <code>reader()</code> peut prendre plusieurs paramètres, parmi lesquels :</p>
-<ul>
-<li><code>csvfile</code> : l’objet ouvert avec <code>open()</code> ;</li>
-<li><code>dialect</code> : paramètre spécifiant le ‘dialect’ du fichier CSV (e.g., <code>excel</code>, <code>excel-tab</code>, <code>unix</code>) ;</li>
-<li><code>delimiter</code> : le caractère délimitant les champs (<em>i.e.</em>, les valeurs des variables) ;</li>
-<li><code>quotechar</code> : caractère utilisé pour entourer les champs contenant des caractères spéciaux ;</li>
-<li><code>escapechar</code> : caractère d’échappement ;</li>
-<li><code>doublequote</code> : contrôle comment les <em>quotechar</em> apparaissent à l’intérieur d’un champ : quand <code>True</code>, le caractère est doublé, ; quand <code>False</code>, le caractère d’échappement est utilisé en préfixe au <em>quotechar</em> ;</li>
-<li><code>lineterminator</code> : chaîne de caractères utilisée pour terminer une ligne ;</li>
-<li><code>skipinitialspace</code> : quand <code>True</code>, le caractère blanc situé juste après le caractère de séparation des champs est ignoré ;</li>
-<li><code>strict</code> : quand <code>True</code>, retourne une erreur d’exception en cas de mauvais <code>input</code> de CSV.</li>
-</ul>
-<p>On peut aussi importer un fichier CSV en tant que dictionnaire, à l’aide de la méthode <code>csv.DictReader()</code> du module CSV :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> csv
-chemin <span class="op">=</span> <span class="st">&quot;./fichiers_exemples/fichier_csv.csv&quot;</span>
-<span class="cf">with</span> <span class="bu">open</span>(chemin) <span class="im">as</span> mon_fichier:
-    mon_fichier_csv <span class="op">=</span> csv.DictReader(mon_fichier)
-    donnees <span class="op">=</span> [ligne <span class="cf">for</span> ligne <span class="kw">in</span> mon_fichier_csv]
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [OrderedDict([(&#39;nom&#39;, &#39;Irving&#39;), (&#39;prénom&#39;, &#39; &quot;Kyrie&quot;&#39;), (&#39;équipe&#39;, &#39; &quot;Celtics&quot;&#39;)]), OrderedDict([(&#39;nom&#39;, &#39;James&#39;), (&#39;prénom&#39;, &#39; &quot;Lebron&quot;&#39;), (&#39;équipe&#39;, &#39; &quot;Lakers&quot;&#39;), (None, [&#39;&#39;])]), OrderedDict([(&#39;nom&#39;, &#39;Curry&#39;), (&#39;prénom&#39;, &#39; &quot;Stephen&quot;&#39;), (&#39;équipe&#39;, &#39; &quot;Golden State Warriors&quot;&#39;)])]</code></pre>
-<div id="importation-depuis-internet-1" class="section level4">
-<h4><span class="header-section-number">5.1.2.1</span> Importation depuis internet</h4>
-<p>Comme pour les fichiers <code>txt</code>, on peut charger un fichier CSV hébergé sur Internet :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> csv
-<span class="im">import</span> urllib.request
-<span class="im">import</span> codecs
-url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv&quot;</span>
-<span class="cf">with</span> urllib.request.urlopen(url) <span class="im">as</span> mon_fichier:
-    mon_fochier_csv <span class="op">=</span> csv.reader(codecs.iterdecode(mon_fichier, <span class="st">&#39;utf-8&#39;</span>))
-    donnees <span class="op">=</span> [ligne <span class="cf">for</span> ligne <span class="kw">in</span> mon_fochier_csv]
-<span class="bu">print</span>(donnees)</code></pre></div>
-<pre><code>## [[&#39;nom&#39;, &#39;prénom&#39;, &#39;équipe&#39;], [&#39;Irving&#39;, &#39; &quot;Kyrie&quot;&#39;, &#39; &quot;Celtics&quot;&#39;], [&#39;James&#39;, &#39; &quot;Lebron&quot;&#39;, &#39; &quot;Lakers&quot;&#39;, &#39;&#39;], [&#39;Curry&#39;, &#39; &quot;Stephen&quot;&#39;, &#39; &quot;Golden State Warriors&quot;&#39;]]</code></pre>
+<div id="selection" class="section level2">
+<h2><span class="header-section-number">10.2</span> Sélection</h2>
 </div>
+<div id="filtrage" class="section level2">
+<h2><span class="header-section-number">10.3</span> Filtrage</h2>
 </div>
-<div id="fichier-json" class="section level3">
-<h3><span class="header-section-number">5.1.3</span> Fichier JSON</h3>
-<p>Pour importer des fichiers au format JSON (<em>JavaScript Object Notation</em>), qui sont très utilisés dès lors qu’on communique avec une API, on peut utiliser la librairie <code>json</code>, et sa méthode <code>load()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> json
-lien <span class="op">=</span> <span class="st">&#39;./fichiers_exemples/tweets.json&#39;</span>
-<span class="cf">with</span> <span class="bu">open</span>(lien) <span class="im">as</span> mon_fichier_json:
-    data <span class="op">=</span> json.load(mon_fichier_json)</code></pre></div>
-<p>Ensuite, on peut afficher le contenu importé à l’aide de la fonction <code>pprint()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> pprint <span class="im">import</span> pprint
-pprint(data)</code></pre></div>
-<pre><code>## {&#39;created_at&#39;: &#39;Wed Sep 26 07:38:05 +0000 2018&#39;,
-##  &#39;id&#39;: 11,
-##  &#39;loc&#39;: [{&#39;long&#39;: 5.3698}, {&#39;lat&#39;: 43.2965}],
-##  &#39;text&#39;: &#39;Un tweet !&#39;,
-##  &#39;user_mentions&#39;: [{&#39;id&#39;: 111, &#39;screen_name&#39;: &#39;nom_twittos1&#39;},
-##                    {&#39;id&#39;: 112, &#39;screen_name&#39;: &#39;nom_twittos2&#39;}]}</code></pre>
-<div id="importation-depuis-internet-2" class="section level4">
-<h4><span class="header-section-number">5.1.3.1</span> Importation depuis Internet</h4>
-<p>Encore une fois, il est possible d’importer des fichiers JSON depuis Internet :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> urllib
-<span class="im">from</span> urllib.request <span class="im">import</span> urlopen
-url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignement/Python/fichiers_exemples/tweets.json&quot;</span>
-<span class="cf">with</span> urllib.request.urlopen(url) <span class="im">as</span> mon_fichier:
-   donnees <span class="op">=</span> json.load(mon_fichier)
-pprint(donnees)</code></pre></div>
-<pre><code>## {&#39;created_at&#39;: &#39;Wed Sep 26 07:38:05 +0000 2018&#39;,
-##  &#39;id&#39;: 11,
-##  &#39;loc&#39;: [{&#39;long&#39;: 5.3698}, {&#39;lat&#39;: 43.2965}],
-##  &#39;text&#39;: &#39;Un tweet !&#39;,
-##  &#39;user_mentions&#39;: [{&#39;id&#39;: 111, &#39;screen_name&#39;: &#39;nom_twittos1&#39;},
-##                    {&#39;id&#39;: 112, &#39;screen_name&#39;: &#39;nom_twittos2&#39;}]}</code></pre>
+<div id="retrait-des-valeurs-dupliquees" class="section level2">
+<h2><span class="header-section-number">10.4</span> Retrait des valeurs dupliquées</h2>
 </div>
+<div id="modification-des-colonnes" class="section level2">
+<h2><span class="header-section-number">10.5</span> Modification des colonnes</h2>
 </div>
-<div id="fichiers-excel" class="section level3">
-<h3><span class="header-section-number">5.1.4</span> Fichiers Excel</h3>
-<p>Les fichiers Excel (<code>xls</code> ou <code>xlsx</code>) sont aussi très largement répandus en économie. Le lecteur est prié de se référer à la Section <a href="pandas.html#pandas-importation-excel">10.1.1</a> pour une méthode d’importation des données Excel avec la librairie <code>pandas</code>.</p>
+<div id="tri-1" class="section level2">
+<h2><span class="header-section-number">10.6</span> Tri</h2>
 </div>
+<div id="jointures" class="section level2">
+<h2><span class="header-section-number">10.7</span> Jointures</h2>
 </div>
-<div id="exporter-des-donnees" class="section level2">
-<h2><span class="header-section-number">5.2</span> Exporter des données</h2>
-<div id="fichiers-textes" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Fichiers textes</h3>
+<div id="agregation" class="section level2">
+<h2><span class="header-section-number">10.8</span> Agrégation</h2>
 </div>
-<div id="fichier-json-1" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Fichier JSON</h3>
-</div>
-<div id="fichiers-csv-1" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Fichiers CSV</h3>
-</div>
+<div id="stacking-et-unstacking" class="section level2">
+<h2><span class="header-section-number">10.9</span> Stacking et unstacking</h2>
 </div>
 </div>
             </section>
@@ -490,8 +294,8 @@ pprint(donnees)</code></pre></div>
           </div>
         </div>
       </div>
-<a href="operateurs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conditions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="numpy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualisation-de-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

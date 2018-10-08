@@ -953,7 +953,7 @@ Voici un tableau répertoriant quelques méthodes disponibles ([liste exhaustive
 | `upper()` | Retourne la chaîne en ayant passé chaque caractère alphabétique en majuscules |
 
 
-### Conversion en chaînes de caractères
+### Conversion en chaînes de caractères {#conversion-chaines-caracteres}
 
 Lorsque l'on veut concaténer une chaîne de caractères avec un nombre, Python retourne une erreur.
 ```{python, eval=T, echo=TRUE, error=TRUE}
@@ -1343,7 +1343,7 @@ Concernant les directives de formatage, elles correspondent aux codes requis par
 | `%z`| offset en heures et minutes par rapport au temps UTC  |  |
 | `%Z`| Abréviation du fuseau horaire (en output seulement) CEST |  |
 
-Table: Codes de formatages
+Table: (#tab:codes-formatage) Codes de formatages
 
 
 #### Time {#type-time}
@@ -2294,7 +2294,7 @@ Les opérateurs de comparaisons permettent de comparer entre eux des objets de t
 | $\in$ | `in` | Dans  |
 | $\notin$ | `not in` | Exclu  |
 
-Table: Opérateurs de comparaison
+Table: (#tab:operateurs-comparaison) Opérateurs de comparaison
 
 ### Égalité, inégalité
 
@@ -2551,7 +2551,7 @@ Python dispose de nombreuses fonctions utiles pour manipuler les structures et d
 | `math.isinf(x)` | Retourne `True` si `x` est l'infini, `False` sinon |
 | `math.isnan(x)` | Retourne `True` si `x` est `NaN`, `False` sinon |
 
-Table: Quelques fonctions numériques
+Table: (#tab:fonctions-numeriques) Quelques fonctions numériques
 
 ## Quelques constantes
 
@@ -2566,7 +2566,7 @@ La librairie `math` propose quelques constantes :
 | `-math.inf` | Moins l'infini ($-\infty$) |
 | `math.nan` | Nombre à virgule flotante *not a number* |
 
-Table: Quelques constantes intégrées dans Python
+Table: (#tab:constantes-base) Quelques constantes intégrées dans Python
 
 ## Exercice
 
@@ -2614,7 +2614,7 @@ paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé
 ```
 
 
-## Charger des données
+## Charger des données {#charger-donnees}
 
 
 En fonction du format d'enregistrement des données, les techniques d'importation de données diffèrent.
@@ -2645,7 +2645,7 @@ Voici à quoi correspondent les paramètres (il en existe d'autres) :
 - `newline` : contrôle la fin des lignes (`\n`, `\r`, etc.).
 
 | Valeur | Description |
-| -------: | ---------------------------------------------: |
+| -------: | ---------------------------------------------------: |
 | `r` |	Ouverture pour lire (défaut) |
 | `w` |	Ouverture pour écrire |
 | `x` |	Ouverture pour créer un document, échoue si le fichier existe déjà |
@@ -2654,7 +2654,7 @@ Voici à quoi correspondent les paramètres (il en existe d'autres) :
 | `b` | À ajouter à un mode d'ouverture pour les fichiers binaires (`rb` ou `wb`) |
 | `t` | Mode texte (décodage automatique des octets en Unicode). Par défaut si non spécifié (s'ajoute au mode, comme `b`) |
 
-Table: Valeurs principales pour la manière d'ouvrir les fichiers.
+Table: (#tab:open-mode-ouverture) Valeurs principales pour la manière d'ouvrir les fichiers.
 
 
 Il est important de bien penser à **fermer le fichier** une fois qu'on a terminé de l'utiliser. Pour ce faire, on utilise la méthode `close()`.
@@ -2675,7 +2675,7 @@ La syntaxe est la suivante :
 ```{python, eval=F, echo=TRUE, error=TRUE}
 # Ouverture en mode lecture (par défaut)
 with open(path, "r") as mon_fichier:
-  donnees = fonction_pour_recuperer_donnees_depuis_f()
+  donnees = fonction_pour_recuperer_donnees_depuis_mon_fichier()
 ```
 
 Par exemple, pour récupérer chaque ligne comme un élément d'une liste, on peut utiliser une boucle parcourant chaque ligne du fichier. À chaque itération, on récupère la ligne :
@@ -2706,7 +2706,7 @@ print(donnees)
 Il se peut parfois que l'encodage des caractères pose problème lors de l'importation. Dans ce cas, il peut être une bonne idée de changer la valeur du paramètre `encoding` de la fonction `open()`. Les encodages disponibles sont fonction de la locale. Les valeurs disponibles s'obtiennent à l'aide de la méthode suivante (code non exécuté dans ces notes) :
 ```{python, eval=F, echo=TRUE, error=TRUE}
 import locale
-locale.locale_alias()
+locale.locale_alias
 ```
 
 
@@ -2730,7 +2730,7 @@ Comme on peut le constater, l'encodage des caractères pose souci ici. On peut a
 print(donnees.decode())
 ```
 
-### Fichiers CSV
+### Fichiers CSV {#importation-fichiers-csv}
 
 Les fichier CSV (*comma separated value*) sont très répandus. De nombreuses bases de données exportent leurs données en CSV (*e.g.*, Banque Mondiale, FAO, Eurostat, etc.). Pour les importer dans Python, on peut uiliser le module `csv`.
 
@@ -2745,17 +2745,21 @@ with open('./fichiers_exemples/fichier_csv.csv') as mon_fichier:
 print(donnees)
 ```
 
-La méthode `reader()` peut prendre plusieurs paramètres, parmi lesquels :
+La méthode `reader()` peut prendre plusieurs paramètres, décrits dans le Tableau\ \@ref(tab:parametres-reader-csv).
 
-- `csvfile` : l'objet ouvert avec `open()` ;
-- `dialect` : paramètre spécifiant le 'dialect' du fichier CSV (e.g., `excel`, `excel-tab`, `unix`) ;
-- `delimiter` : le caractère délimitant les champs (*i.e.*, les valeurs des variables) ;
-- `quotechar` : caractère utilisé pour entourer les champs contenant des caractères spéciaux ;
-- `escapechar` : caractère d'échappement ;
-- `doublequote` : contrôle comment les *quotechar* apparaissent à l'intérieur d'un champ : quand `True`, le caractère est doublé, ; quand `False`, le caractère d'échappement est utilisé en préfixe au *quotechar* ;
-- `lineterminator` : chaîne de caractères utilisée pour terminer une ligne ;
-- `skipinitialspace` : quand `True`, le caractère blanc situé juste après le caractère de séparation des champs est ignoré ;
-- `strict` : quand `True`, retourne une erreur d'exception en cas de mauvais `input` de CSV.
+| Paramètre | Description |
+| ------------------: | ---------------------------------------------: |
+| `csvfile` | L'objet ouvert avec `open()` |
+| `dialect` | Paramètre spécifiant le 'dialect' du fichier CSV (e.g., `excel`, `excel-tab`, `unix`) |
+| `delimiter` | Le caractère délimitant les champs (*i.e.*, les valeurs des variables) |
+| `quotechar` | Caractère utilisé pour entourer les champs contenant des caractères spéciaux |
+| `escapechar` | Caractère d'échappement |
+| `doublequote` | Contrôle comment les *quotechar* apparaissent à l'intérieur d'un champ : quand `True`, le caractère est doublé, ; quand `False`, le caractère d'échappement est utilisé en préfixe au *quotechar* |
+| `lineterminator` | Chaîne de caractères utilisée pour terminer une ligne |
+| `skipinitialspace` | Quand `True`, le caractère blanc situé juste après le caractère de séparation des champs est ignoré |
+| `strict` | Quand `True`, retourne une erreur d'exception en cas de mauvais `input` de CSV |
+
+Table: (#tab:parametres-reader-csv) Paramètres de la fonction `reader()`
 
 
 On peut aussi importer un fichier CSV en tant que dictionnaire, à l'aide de la méthode `csv.DictReader()` du module CSV :
@@ -2827,11 +2831,170 @@ Les fichiers Excel (`xls` ou `xlsx`) sont aussi très largement répandus en éc
 
 ## Exporter des données
 
+Il n'est pas rare de devoir exporter ses données, ne serait-ce que pour les partager. À nouveau, la fonction `open()` est mise à contribution, en jouant avec la valeur du paramètre `mode` (c.f. Tableau\ \@ref(tab:open-mode-ouverture)).
+
 ### Fichiers textes
+
+Admettons que nous ayons besoin d'exporter des lignes de texte dans un fichier. Avant de donner un exemple avec la fonction `open()`, regardons deux fonctions importantes pour convertir les contenus de certains objets en texte.
+
+La première, `str()`, retourne une version en chaînes de caractères d'un objet. Nous l'avons déjà appliquée à des nombres que l'on désirait concaténer en Section\ \@ref(conversion-chaines-caracteres).
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = ["pomme", 1, 3]
+str(x)
+```
+
+Le résultat de cette instruction retourne la liste sous la forme d'une chaîne de caractères : `"['pomme', 1, 3]"`.
+
+
+La seconde fonction qu'il semble important d'aborder est `repr()`. Cette fonction retourne une chaîne contenant une représentation imprimable à l'écran d'un objet. De plus, cette chaîne peut être lue par l'interprète.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+y = "Fromage, tu veux du fromage ?\n"
+repr(y)
+```
+
+Le résultat donne : `"'Fromage, tu veux du fromage ?\\n'"`.
+
+
+Admettons que nous souhaitons exporter deux lignes :
+
+- la première, un texte qui indique un titre ("Caractéristiques de Kyrie Irving") ;
+- la seconde, un dictionnaire contenant des informations sur Kyrie Irving (c.f. ci-dessous).
+
+
+Définissions ce dictionnaire :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+z = { "nom": "Kyrie",
+  "prenom": "John",
+  "naissance": 1992,
+  "equipes": ["Cleveland", "Boston"]}
+```
+
+Une des syntaxes pour exporter les données au format `txt` est :
+```{python, eval=F, echo=TRUE, error=TRUE}
+# Ouverture en mode lecture (par défaut)
+chemin = "chemin/vers/fichier.txt"
+with open(chemin, "w") as mon_fichier:
+  fonction_pour_exporter()
+```
+
+On créé une variable indiquant le chemin vers le fichier. On ouvre ensuite le fichier en mode écriture en précisant le paramètre `mode = "w"`. Puis, il reste à écrire nos lignes dans le fichier.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/Irving.txt"
+with open(chemin, mode = "w") as mon_fichier:
+  mon_fichier.write("Caractéristiques de Kyrie Irving\n")
+  mon_fichier.writelines(repr(z))
+```
+
+Si le fichier est déjà existant, en ayant utilisé `mode="w"`, l'ancien fichier sera écrasé par le nouveau. Si on souhaite ajouter des lignes au fichier existant, on utilisera `mode="a"` par exemple :
+```{python, eval=T, echo=TRUE, error=TRUE}
+with open(chemin, mode = "a") as mon_fichier:
+  mon_fichier.writelines("\nUne autre ligne\n")
+```
+
+
+Si on souhaite être prévenu si le fichier est déjà existant, et faire échouer l'écriture si tel est le cas, on peut utiliser `mode="x"` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+with open(chemin, mode = "x") as mon_fichier:
+  mon_fichier.writelines("Une nouvelle ligne qui ne sera pas ajoutée\n")
+```
+
+
+### Fichiers CSV
+
+
+En tant qu'économiste, il est plus fréquent d'avoir à exporter les données au format CSV plutôt que texte, du fait de la structure en rectangle des données que l'on manipule. Comme pour l'importation de CSV (c.f. Section\ \@ref(importation-fichiers-csv)), on utilise le module `csv`. Pour écrire dans le fichier, on utilise la méthode `writer()`. Les paramètres de formatage de cette fonction sont les mêmes que ceux de la fonction `reader()` (c.f. Tableau\ \@ref(tab:parametres-reader-csv)).
+
+
+Exemple de création d'un fichier CSV :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import csv
+chemin = "./fichiers_exemples/fichier_export.csv"
+
+with open(chemin, mode='w') as mon_fichier:
+    mon_fichier_ecrire = csv.writer(mon_fichier, delimiter=',',
+                                    quotechar='"',
+                                    quoting=csv.QUOTE_MINIMAL)
+
+    mon_fichier_ecrire.writerow(['Pays', 'Année', 'Trimestre', 'TC_PIB'])
+    mon_fichier_ecrire.writerow(['France', '2017', 'Q4', 0.7])
+    mon_fichier_ecrire.writerow(['France', '2018', 'Q1', 0.2])
+```
+
+
+Bien évidemment, la plupart du temps, nous n'écrivons pas à la main chaque entrée. Nous exportons les données contenues dans une structure. La Section\ \@ref(pandas-importation-excel) donne des exemples de ce type d'export, lorsque les données sont contenues dans des tableaux à deux dimension créés avec la librairie `Pandas`.
+
 
 ### Fichier JSON
 
-### Fichiers CSV
+Il peut être nécessaire de sauvegarder des données structurées au format JSON, par exemple lorsqu'on a fait appel à une API (*e.g.*, l'API de Twitter) qui retourne des objets au format JSON.
+
+Pour ce faire, nous allons utiliser la librairire `json`, et sa méthode `dump()`. Cette méthode permet de sérialiser un objet (par exemple une liste, comme ce que l'on obtient avec l'API Twitter interrogée avec la libraririe `twitter-python`) en JSON.
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import json
+x = [1, "pomme", ["pépins", "rouge"]]
+y = { "nom": "Kyrie",
+  "prenom": "John",
+  "naissance": 1992,
+  "equipes": ["Cleveland", "Boston"]}
+x_json = json.dumps(x)
+y_json = json.dumps(y)
+
+print("x_json: ", x_json)
+print("y_json: ", y_json)
+```
+
+
+Comme on peut le constater, on rencontre quelques petite problèmes d'affichage des caractères accentués. On peut préciser, à l'aide du paramètre `ensure_ascii` évalué à `False` que l'on ne désire pas s'assurer que les caractères non-ascii soient échappés par des séquences de type `\uXXXX`.
+```{python, eval=T, echo=TRUE, error=TRUE}
+x_json = json.dumps(x, ensure_ascii=False)
+y_json = json.dumps(y, ensure_ascii=False)
+
+print("x_json: ", x_json)
+print("y_json: ", y_json)
+```
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/export_json.json"
+
+with open(chemin, 'w') as f:
+    json.dump(json.dumps(x, ensure_ascii=False), f)
+    f.write('\n')
+    json.dump(json.dumps(y, ensure_ascii=False), f)
+```
+
+
+Si on souhaite réimporter dans Python le contenu du fichier `export_json.json` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/export_json.json"
+with open(chemin, "r") as f:
+    data = []
+    for line in f:
+        data.append(json.loads(line, encoding="utf-8"))
+
+print(data)
+```
+
+
+
+### Exercice
+
+```{block2, type='exframe', echo=TRUE}
+1. Créer une liste nommée `a` contenant des informations sur le taux de chômage en France au deuxième trimestre 2018. Cette liste doit contenir trois éléments :
+    - l'année ;
+    - le trimestre ;
+    - la valeur du taux de chômage ($9.1\%$).
+2. Exporter au format CSV le contenu de la liste `a`, en le faisant précéder d'une ligne précisant les noms des champs. Utiliser le point virgule comme séparateur de champs.
+3. Importer le fichier créé dans la question précédente dans Python.
+
+```
 
 
 

@@ -1232,7 +1232,7 @@ faire comme suit :
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=9.03in]{figs/intro_pyplot} \end{center}
+\begin{center}\includegraphics{figs/intro_pyplot} \end{center}
 
 \section{L'aide}\label{laide}
 
@@ -1593,6 +1593,7 @@ suffit de préciser les deux valeurs d'indices :
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \StringTok{"You shall not pass!"}
+
 \CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
 \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
 \end{Highlighting}
@@ -1996,7 +1997,7 @@ majuscules\strut
 \end{longtable}
 
 \subsection{Conversion en chaînes de
-caractères}\label{conversion-en-chaines-de-caracteres}
+caractères}\label{conversion-chaines-caracteres}
 
 Lorsque l'on veut concaténer une chaîne de caractères avec un nombre,
 Python retourne une erreur.
@@ -2760,7 +2761,7 @@ requis par le standard C (c.f. la
 de Python}). En voici quelques-uns :
 
 \begin{longtable}[]{@{}rrr@{}}
-\caption{Codes de formatages}\tabularnewline
+\caption{\label{tab:codes-formatage} Codes de formatages}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 Code\strut
@@ -3202,7 +3203,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 01:22:52.727224
+## 2018-10-08 12:27:04.202235
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3212,7 +3213,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 01:22:52.729740
+## 2018-10-08 12:27:04.203846
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4074,7 +4075,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
+## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4088,7 +4089,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
+## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4124,7 +4125,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Nice', 'Rennes', 'Aix-en-Provence'}
+## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4155,7 +4156,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon', 'Nice'}
+## {'Nice', 'Marseille', 'Toulon', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4168,7 +4169,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon', 'Nice'}
+## {'Nice', 'Marseille', 'Toulon', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4184,7 +4185,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4210,7 +4211,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Aix-en-Provence', 'Marseille', 'Nice'}
+## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4257,7 +4258,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Marseille', 'Toulon', 'Nice', 'Aix-en-Provence'}
+## y :  {'Nice', 'Aix-en-Provence', 'Marseille', 'Toulon'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4267,7 +4268,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Marseille', 'Nice', 'Aix-en-Provence'}
+## ensemble :  {'Nice', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4297,7 +4298,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4308,7 +4309,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Marseille', 'Aix-en-Provence']
+## ['Aix-en-Provence', 'Marseille']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -5029,7 +5030,8 @@ objets de tous les types de base. Le résultat d'un test de comparaison
 produit des valeurs booléennes.
 
 \begin{longtable}[]{@{}rrr@{}}
-\caption{Opérateurs de comparaison}\tabularnewline
+\caption{\label{tab:operateurs-comparaison} Opérateurs de
+comparaison}\tabularnewline
 \toprule
 Opérateur & Opérateur en Python & Description\tabularnewline
 \midrule
@@ -5060,6 +5062,7 @@ Pour tester l'égalité de contenu entre deux objets :
 \NormalTok{a }\OperatorTok{=} \StringTok{"Hello"}
 \NormalTok{b }\OperatorTok{=} \StringTok{"World"}
 \NormalTok{c }\OperatorTok{=} \StringTok{"World"}
+
 \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
@@ -5085,6 +5088,7 @@ L'inégalité entre deux objets :
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5114,6 +5118,7 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 \NormalTok{x }\OperatorTok{=} \DecValTok{1}
 \NormalTok{y }\OperatorTok{=} \DecValTok{1}
 \NormalTok{z }\OperatorTok{=} \DecValTok{2}
+
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5337,6 +5342,7 @@ retourne faux :
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \VariableTok{True}
 \NormalTok{y }\OperatorTok{=} \VariableTok{False}
+
 \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5524,7 +5530,8 @@ verrsons d'autres fonctions propres à la librairie \texttt{NumPy} au
 Chapitre~\ref{numpy}.
 
 \begin{longtable}[]{@{}rr@{}}
-\caption{Quelques fonctions numériques}\tabularnewline
+\caption{\label{tab:fonctions-numeriques} Quelques fonctions
+numériques}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.21\columnwidth}\raggedleft\strut
 Fonction\strut
@@ -5714,7 +5721,8 @@ sinon\strut
 La librairie \texttt{math} propose quelques constantes :
 
 \begin{longtable}[]{@{}rr@{}}
-\caption{Quelques constantes intégrées dans Python}\tabularnewline
+\caption{\label{tab:constantes-base} Quelques constantes intégrées dans
+Python}\tabularnewline
 \toprule
 Fonction & Description\tabularnewline
 \midrule
@@ -5832,7 +5840,7 @@ Après avoir importé la fonction (\texttt{from\ os\ import\ getcwd}), on
 peut l'appeler : \texttt{os.listdir()}.
 \EndKnitrBlock{remarque}
 
-\section{Charger des données}\label{charger-des-donnees}
+\section{Charger des données}\label{charger-donnees}
 
 En fonction du format d'enregistrement des données, les techniques
 d'importation de données diffèrent.
@@ -5885,12 +5893,12 @@ Voici à quoi correspondent les paramètres (il en existe d'autres) :
 \end{itemize}
 
 \begin{longtable}[]{@{}rr@{}}
-\caption{Valeurs principales pour la manière d'ouvrir les
-fichiers.}\tabularnewline
+\caption{\label{tab:open-mode-ouverture} Valeurs principales pour la manière
+d'ouvrir les fichiers.}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
 Valeur\strut
-\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[b]{0.69\columnwidth}\raggedleft\strut
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
@@ -5898,46 +5906,46 @@ Description\strut
 \toprule
 \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
 Valeur\strut
-\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[b]{0.69\columnwidth}\raggedleft\strut
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{r}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Ouverture pour lire (défaut)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{w}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Ouverture pour écrire\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{x}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Ouverture pour créer un document, échoue si le fichier existe déjà\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{a}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Ouverture pour écrire, en venant ajouter à la fin du fichier si celui-ci
 existe déjà\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{+}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Ouverture pour mise à jour (lecture et écriture)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{b}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 À ajouter à un mode d'ouverture pour les fichiers binaires (\texttt{rb}
 ou \texttt{wb})\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 \texttt{t}\strut
-\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedleft\strut
 Mode texte (décodage automatique des octets en Unicode). Par défaut si
 non spécifié (s'ajoute au mode, comme \texttt{b})\strut
 \end{minipage}\tabularnewline
@@ -5984,7 +5992,7 @@ La syntaxe est la suivante :
 \begin{Highlighting}[]
 \CommentTok{# Ouverture en mode lecture (par défaut)}
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(path, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
-\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ fonction_pour_recuperer_donnees_depuis_f()}
+\NormalTok{  donnees }\OperatorTok{=}\NormalTok{ fonction_pour_recuperer_donnees_depuis_mon_fichier()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6047,7 +6055,7 @@ exécuté dans ces notes) :
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ locale}
-\NormalTok{locale.locale_alias()}
+\NormalTok{locale.locale_alias}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6087,7 +6095,7 @@ peut appliquer la méthode \texttt{decode()} :
 ## Trois lignes devraient suffir.
 \end{lstlisting}
 
-\subsection{Fichiers CSV}\label{fichiers-csv}
+\subsection{Fichiers CSV}\label{importation-fichiers-csv}
 
 Les fichier CSV (\emph{comma separated value}) sont très répandus. De
 nombreuses bases de données exportent leurs données en CSV (\emph{e.g.},
@@ -6104,6 +6112,7 @@ appel à la méthode \texttt{reader()} du module \texttt{csv} :
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./fichiers_exemples/fichier_csv.csv'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{  mon_fichier_reader }\OperatorTok{=}\NormalTok{ csv.reader(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{, quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{)}
 \NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier_reader]}
+
 \BuiltInTok{print}\NormalTok{(donnees)}
 \end{Highlighting}
 \end{Shaded}
@@ -6112,39 +6121,83 @@ appel à la méthode \texttt{reader()} du module \texttt{csv} :
 ## [['nom', 'prénom', 'équipe'], ['Irving', ' "Kyrie"', ' "Celtics"'], ['James', ' "Lebron"', ' "Lakers"', ''], ['Curry', ' "Stephen"', ' "Golden State Warriors"']]
 \end{lstlisting}
 
-La méthode \texttt{reader()} peut prendre plusieurs paramètres, parmi
-lesquels :
+La méthode \texttt{reader()} peut prendre plusieurs paramètres, décrits
+dans le Tableau~\ref{tab:parametres-reader-csv}.
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{csvfile} : l'objet ouvert avec \texttt{open()} ;
-\item
-  \texttt{dialect} : paramètre spécifiant le `dialect' du fichier CSV
-  (e.g., \texttt{excel}, \texttt{excel-tab}, \texttt{unix}) ;
-\item
-  \texttt{delimiter} : le caractère délimitant les champs (\emph{i.e.},
-  les valeurs des variables) ;
-\item
-  \texttt{quotechar} : caractère utilisé pour entourer les champs
-  contenant des caractères spéciaux ;
-\item
-  \texttt{escapechar} : caractère d'échappement ;
-\item
-  \texttt{doublequote} : contrôle comment les \emph{quotechar}
-  apparaissent à l'intérieur d'un champ : quand \texttt{True}, le
-  caractère est doublé, ; quand \texttt{False}, le caractère
-  d'échappement est utilisé en préfixe au \emph{quotechar} ;
-\item
-  \texttt{lineterminator} : chaîne de caractères utilisée pour terminer
-  une ligne ;
-\item
-  \texttt{skipinitialspace} : quand \texttt{True}, le caractère blanc
-  situé juste après le caractère de séparation des champs est ignoré ;
-\item
-  \texttt{strict} : quand \texttt{True}, retourne une erreur d'exception
-  en cas de mauvais \texttt{input} de CSV.
-\end{itemize}
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:parametres-reader-csv} Paramètres de la fonction
+\texttt{reader()}}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.26\columnwidth}\raggedleft\strut
+Paramètre\strut
+\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.26\columnwidth}\raggedleft\strut
+Paramètre\strut
+\end{minipage} & \begin{minipage}[b]{0.61\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{csvfile}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+L'objet ouvert avec \texttt{open()}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{dialect}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Paramètre spécifiant le `dialect' du fichier CSV (e.g., \texttt{excel},
+\texttt{excel-tab}, \texttt{unix})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{delimiter}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Le caractère délimitant les champs (\emph{i.e.}, les valeurs des
+variables)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{quotechar}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Caractère utilisé pour entourer les champs contenant des caractères
+spéciaux\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{escapechar}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Caractère d'échappement\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{doublequote}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Contrôle comment les \emph{quotechar} apparaissent à l'intérieur d'un
+champ : quand \texttt{True}, le caractère est doublé, ; quand
+\texttt{False}, le caractère d'échappement est utilisé en préfixe au
+\emph{quotechar}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{lineterminator}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Chaîne de caractères utilisée pour terminer une ligne\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{skipinitialspace}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Quand \texttt{True}, le caractère blanc situé juste après le caractère
+de séparation des champs est ignoré\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedleft\strut
+\texttt{strict}\strut
+\end{minipage} & \begin{minipage}[t]{0.61\columnwidth}\raggedleft\strut
+Quand \texttt{True}, retourne une erreur d'exception en cas de mauvais
+\texttt{input} de CSV\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 On peut aussi importer un fichier CSV en tant que dictionnaire, à l'aide
 de la méthode \texttt{csv.DictReader()} du module CSV :
@@ -6175,6 +6228,7 @@ hébergé sur Internet :
 \ImportTok{import}\NormalTok{ csv}
 \ImportTok{import}\NormalTok{ urllib.request}
 \ImportTok{import}\NormalTok{ codecs}
+
 \NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"}
 \ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fochier_csv }\OperatorTok{=}\NormalTok{ csv.reader(codecs.iterdecode(mon_fichier, }\StringTok{'utf-8'}\NormalTok{))}
@@ -6198,6 +6252,7 @@ API, on peut utiliser la librairie \texttt{json}, et sa méthode
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ json}
 \NormalTok{lien }\OperatorTok{=} \StringTok{'./fichiers_exemples/tweets.json'}
+
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(lien) }\ImportTok{as}\NormalTok{ mon_fichier_json:}
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ json.load(mon_fichier_json)}
 \end{Highlighting}
@@ -6257,11 +6312,287 @@ des données Excel avec la librairie \texttt{pandas}.
 
 \section{Exporter des données}\label{exporter-des-donnees}
 
+Il n'est pas rare de devoir exporter ses données, ne serait-ce que pour
+les partager. À nouveau, la fonction \texttt{open()} est mise à
+contribution, en jouant avec la valeur du paramètre \texttt{mode} (c.f.
+Tableau~\ref{tab:open-mode-ouverture}).
+
 \subsection{Fichiers textes}\label{fichiers-textes}
+
+Admettons que nous ayons besoin d'exporter des lignes de texte dans un
+fichier. Avant de donner un exemple avec la fonction \texttt{open()},
+regardons deux fonctions importantes pour convertir les contenus de
+certains objets en texte.
+
+La première, \texttt{str()}, retourne une version en chaînes de
+caractères d'un objet. Nous l'avons déjà appliquée à des nombres que
+l'on désirait concaténer en Section~\ref{conversion-chaines-caracteres}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\StringTok{"pomme"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\BuiltInTok{str}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+Le résultat de cette instruction retourne la liste sous la forme d'une
+chaîne de caractères :
+\texttt{"{[}\textquotesingle{}pomme\textquotesingle{},\ 1,\ 3{]}"}.
+
+La seconde fonction qu'il semble important d'aborder est
+\texttt{repr()}. Cette fonction retourne une chaîne contenant une
+représentation imprimable à l'écran d'un objet. De plus, cette chaîne
+peut être lue par l'interprète.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OperatorTok{=} \StringTok{"Fromage, tu veux du fromage ?}\CharTok{\textbackslash{}n}\StringTok{"}
+\BuiltInTok{repr}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+Le résultat donne :
+\texttt{"\textquotesingle{}Fromage,\ tu\ veux\ du\ fromage\ ?\textbackslash{}\textbackslash{}n\textquotesingle{}"}.
+
+Admettons que nous souhaitons exporter deux lignes :
+
+\begin{itemize}
+\tightlist
+\item
+  la première, un texte qui indique un titre (``Caractéristiques de
+  Kyrie Irving'') ;
+\item
+  la seconde, un dictionnaire contenant des informations sur Kyrie
+  Irving (c.f. ci-dessous).
+\end{itemize}
+
+Définissions ce dictionnaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OperatorTok{=}\NormalTok{ \{ }\StringTok{"nom"}\NormalTok{: }\StringTok{"Kyrie"}\NormalTok{,}
+  \StringTok{"prenom"}\NormalTok{: }\StringTok{"John"}\NormalTok{,}
+  \StringTok{"naissance"}\NormalTok{: }\DecValTok{1992}\NormalTok{,}
+  \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
+\end{Highlighting}
+\end{Shaded}
+
+Une des syntaxes pour exporter les données au format \texttt{txt} est :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ouverture en mode lecture (par défaut)}
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"chemin/vers/fichier.txt"}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{"w"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  fonction_pour_exporter()}
+\end{Highlighting}
+\end{Shaded}
+
+On créé une variable indiquant le chemin vers le fichier. On ouvre
+ensuite le fichier en mode écriture en précisant le paramètre
+\texttt{mode\ =\ "w"}. Puis, il reste à écrire nos lignes dans le
+fichier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/Irving.txt"}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode }\OperatorTok{=} \StringTok{"w"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  mon_fichier.write(}\StringTok{"Caractéristiques de Kyrie Irving}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  mon_fichier.writelines(}\BuiltInTok{repr}\NormalTok{(z))}
+\end{Highlighting}
+\end{Shaded}
+
+Si le fichier est déjà existant, en ayant utilisé \texttt{mode="w"},
+l'ancien fichier sera écrasé par le nouveau. Si on souhaite ajouter des
+lignes au fichier existant, on utilisera \texttt{mode="a"} par exemple :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode }\OperatorTok{=} \StringTok{"a"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  mon_fichier.writelines(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Une autre ligne}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si on souhaite être prévenu si le fichier est déjà existant, et faire
+échouer l'écriture si tel est le cas, on peut utiliser \texttt{mode="x"}
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode }\OperatorTok{=} \StringTok{"x"}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{  mon_fichier.writelines(}\StringTok{"Une nouvelle ligne qui ne sera pas ajoutée}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## FileExistsError: [Errno 17] File exists: './fichiers_exemples/Irving.txt'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\subsection{Fichiers CSV}\label{fichiers-csv}
+
+En tant qu'économiste, il est plus fréquent d'avoir à exporter les
+données au format CSV plutôt que texte, du fait de la structure en
+rectangle des données que l'on manipule. Comme pour l'importation de CSV
+(c.f. Section~\ref{importation-fichiers-csv}), on utilise le module
+\texttt{csv}. Pour écrire dans le fichier, on utilise la méthode
+\texttt{writer()}. Les paramètres de formatage de cette fonction sont
+les mêmes que ceux de la fonction \texttt{reader()} (c.f.
+Tableau~\ref{tab:parametres-reader-csv}).
+
+Exemple de création d'un fichier CSV :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ csv}
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_export.csv"}
+
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
+\NormalTok{    mon_fichier_ecrire }\OperatorTok{=}\NormalTok{ csv.writer(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{,}
+\NormalTok{                                    quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{,}
+\NormalTok{                                    quoting}\OperatorTok{=}\NormalTok{csv.QUOTE_MINIMAL)}
+
+\NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'Pays'}\NormalTok{, }\StringTok{'Année'}\NormalTok{, }\StringTok{'Trimestre'}\NormalTok{, }\StringTok{'TC_PIB'}\NormalTok{])}
+\NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2017'}\NormalTok{, }\StringTok{'Q4'}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
+\NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2018'}\NormalTok{, }\StringTok{'Q1'}\NormalTok{, }\FloatTok{0.2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+Bien évidemment, la plupart du temps, nous n'écrivons pas à la main
+chaque entrée. Nous exportons les données contenues dans une structure.
+La Section~\ref{pandas-importation-excel} donne des exemples de ce type
+d'export, lorsque les données sont contenues dans des tableaux à deux
+dimension créés avec la librairie \texttt{Pandas}.
 
 \subsection{Fichier JSON}\label{fichier-json-1}
 
-\subsection{Fichiers CSV}\label{fichiers-csv-1}
+Il peut être nécessaire de sauvegarder des données structurées au format
+JSON, par exemple lorsqu'on a fait appel à une API (\emph{e.g.}, l'API
+de Twitter) qui retourne des objets au format JSON.
+
+Pour ce faire, nous allons utiliser la librairire \texttt{json}, et sa
+méthode \texttt{dump()}. Cette méthode permet de sérialiser un objet
+(par exemple une liste, comme ce que l'on obtient avec l'API Twitter
+interrogée avec la libraririe \texttt{twitter-python}) en JSON.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ json}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\StringTok{"pomme"}\NormalTok{, [}\StringTok{"pépins"}\NormalTok{, }\StringTok{"rouge"}\NormalTok{]]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ \{ }\StringTok{"nom"}\NormalTok{: }\StringTok{"Kyrie"}\NormalTok{,}
+  \StringTok{"prenom"}\NormalTok{: }\StringTok{"John"}\NormalTok{,}
+  \StringTok{"naissance"}\NormalTok{: }\DecValTok{1992}\NormalTok{,}
+  \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
+\NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x)}
+\NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## x_json:  [1, "pomme", ["p\u00e9pins", "rouge"]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y_json: "}\NormalTok{, y_json)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## y_json:  {"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}
+\end{lstlisting}
+
+Comme on peut le constater, on rencontre quelques petite problèmes
+d'affichage des caractères accentués. On peut préciser, à l'aide du
+paramètre \texttt{ensure\_ascii} évalué à \texttt{False} que l'on ne
+désire pas s'assurer que les caractères non-ascii soient échappés par
+des séquences de type \texttt{\textbackslash{}uXXXX}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## x_json:  [1, "pomme", ["pépins", "rouge"]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y_json: "}\NormalTok{, y_json)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## y_json:  {"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/export_json.json"}
+
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{    json.dump(json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{), f)}
+\NormalTok{    f.write(}\StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
+\NormalTok{    json.dump(json.dumps(y, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{), f)}
+\end{Highlighting}
+\end{Shaded}
+
+Si on souhaite réimporter dans Python le contenu du fichier
+\texttt{export\_json.json} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/export_json.json"}
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{    data }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ f:}
+\NormalTok{        data.append(json.loads(line, encoding}\OperatorTok{=}\StringTok{"utf-8"}\NormalTok{))}
+
+\BuiltInTok{print}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ['[1, "pomme", ["pépins", "rouge"]]', '{"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}']
+\end{lstlisting}
+
+\subsection{Exercice}\label{exercice-3}
+
+\BeginKnitrBlock{exframe}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Créer une liste nommée \texttt{a} contenant des informations sur le
+  taux de chômage en France au deuxième trimestre 2018. Cette liste doit
+  contenir trois éléments :
+
+  \begin{itemize}
+  \tightlist
+  \item
+    l'année ;
+  \item
+    le trimestre ;
+  \item
+    la valeur du taux de chômage (\(9.1\%\)).
+  \end{itemize}
+\item
+  Exporter au format CSV le contenu de la liste \texttt{a}, en le
+  faisant précéder d'une ligne précisant les noms des champs. Utiliser
+  le point virgule comme séparateur de champs.
+\item
+  Importer le fichier créé dans la question précédente dans Python.
+\end{enumerate}
+\EndKnitrBlock{exframe}
 
 \chapter{Conditions}\label{conditions}
 

@@ -1,0 +1,3 @@
+Caractéristiques de Kyrie Irving
+{'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Cleveland', 'Boston']}
+Une autre ligne

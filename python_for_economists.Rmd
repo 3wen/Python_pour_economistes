@@ -103,12 +103,12 @@ options(bookdown.post.latex = function(x) {
 
 
 
-Ces notes de cours ont été réalisées dans le cadre d’un enseignement d’introduction à Python adressé à des étudiants du parcours Économétrie et Big Data de [l'École d'Economie d'Aix-Marseille / Aix-Marseille School of Economics (AMSE)](https://www.amse-aixmarseille.fr/) d'Aix-Marseille Université.
+Ces notes de cours ont été réalisées dans le cadre d'un enseignement d'introduction à Python adressé à des étudiants du parcours Économétrie et Big Data de [l'École d'Economie d'Aix-Marseille / Aix-Marseille School of Economics (AMSE)](https://www.amse-aixmarseille.fr/) d'Aix-Marseille Université.
 
 
 ## Objectifs
 
-Cet ouvrage a pour but l'initiation au langage de programmation Python, afin d’être capable de s'en servir de manière efficace et autonome. Le lecteur peut exécuter tous les exemples fournis (et est vivement encouragé à le faire). Des exercices viennent clore certains chapitres, pour mieux s'approprier les notions couvertes au fur et à mesure de la lecture.
+Cet ouvrage a pour but l'initiation au langage de programmation Python, afin d'être capable de s'en servir de manière efficace et autonome. Le lecteur peut exécuter tous les exemples fournis (et est vivement encouragé à le faire). Des exercices viennent clore certains chapitres, pour mieux s'approprier les notions couvertes au fur et à mesure de la lecture.
 
 
 Bien évidemment, Python étant un langage très vaste, ces notes ne sauraient et n'ont pas pour vocation à être exhaustives de l'utilisation de ce langage informatique.
@@ -1313,7 +1313,7 @@ Concernant les directives de formatage, elles correspondent aux codes requis par
 | `%b` | Abréviation du mois (dépend du lieu) | `Apr` |
 | `%B` | Nom du mois complet (dépend du lieu) octobre | `April` |
 | `%c`| Date et heure (dépend du lieu) au format %a %e %b %H:%M:%S:%Y | `Tue Apr 23 00:00:00 2013` |
-| `%C`| Siècle (00-99) -1 (partie entière de la division de l’année par 100) | `20` |
+| `%C`| Siècle (00-99) -1 (partie entière de la division de l'année par 100) | `20` |
 | `%d`| Jour du mois (01–31) | `23` |
 | `%D`| Date au format %m/%d/%y | `04/23/13` |
 | `%e`| Jour du mois en nombre décimal (1–31) | `23` |
@@ -1321,7 +1321,7 @@ Concernant les directives de formatage, elles correspondent aux codes requis par
 | `%h`| Même chose que %b | `Apr` |
 | `%H`| Heure (00–24) | `00` |
 | `%I`| Heure (01–12) | `12` |
-| `%j`| Jour de l’année (001–366) | `113` |
+| `%j`| Jour de l'année (001–366) | `113` |
 | `%m`| Mois (01–12)  | `04` |
 | `%M`| Minute (00-59)  | `00` |
 | `%n`| Retour à la ligne en output, caractère blanc en input | `\n` |
@@ -1332,10 +1332,10 @@ Concernant les directives de formatage, elles correspondent aux codes requis par
 | `%t`| Tabulation en output, caractère blanc en input | `\t` |
 | `%T`| Même chose que %H:%M:%S | `00:00:00` |
 | `%u`| Jour de la semaine (1–7), commence le lundi | `2` |
-| `%U`| Semaine de l’anné (00–53), dimanche comme début de semaine, et le premier dimanche de l’année définit la semaine | `16` |
-| `%V`| Semaine de l’année (00-53). Si la semaine (qui commence un lundi) qui contient le 1 er janvier a quatre jours ou plus dans la nouvelle année, alors elle est considérée comme la semaine 1. Sinon, elle est considérée comme la dernière de l’année précédente, et la semaine suivante est considérée comme semaine 1 (norme ISO 8601) | `17` |
+| `%U`| Semaine de l'anné (00–53), dimanche comme début de semaine, et le premier dimanche de l'année définit la semaine | `16` |
+| `%V`| Semaine de l'année (00-53). Si la semaine (qui commence un lundi) qui contient le 1 er janvier a quatre jours ou plus dans la nouvelle année, alors elle est considérée comme la semaine 1. Sinon, elle est considérée comme la dernière de l'année précédente, et la semaine suivante est considérée comme semaine 1 (norme ISO 8601) | `17` |
 | `%w`| Jour de la semaine (0–6), dimanche étant 0  | `2` |
-| `%W`| Semaine de l’année (00–53), le lundi étant le premier jour de la semaine, et typiquement, le premier lundi de l’année définit la semaine 1 (conviention G.B.) | `16` |
+| `%W`| Semaine de l'année (00–53), le lundi étant le premier jour de la semaine, et typiquement, le premier lundi de l'année définit la semaine 1 (conviention G.B.) | `16` |
 | `%x`| Date (dépend du lieu) | `04/23/13` |
 | `%X`| Heure (dépend du lieu) | `00:00:00'` |
 | `%y`| Année sans le "siècle"" (00–99)  | `13` |
@@ -1559,9 +1559,9 @@ Si la gestion des dates revêt une importance particulière, une librairie propo
 ### Exercices
 
 ```{block2, type='exframe', echo=TRUE}
-1. En utilisant la fonction appropriée, stocker la date du 29 août 2019 dans un objet que l’on appellera
-`d` puis afficher le type de l’objet.
-2. À l’aide de la fonction appropriée, afficher la date du jour.
+1. En utilisant la fonction appropriée, stocker la date du 29 août 2019 dans un objet que l'on appellera
+`d` puis afficher le type de l'objet.
+2. À l'aide de la fonction appropriée, afficher la date du jour.
 3. Stocker la date suivante dans un objet nommé `d2` : "2019-08-29 20:30:56". Puis, afficher dans la console avec la fonction `print()` les attributs d'année, de minute et de seconde de `d2`.
 4. Ajouter 2 jours, 3 heures et 4 minutes à `d2`, et stocker le résultat dans un objet appelé `d3`.
 5. Afficher la différence en secondes entre `d3` et `d2`.
@@ -1818,7 +1818,7 @@ On note que les n-uplets sont repérés par une suite de valeurs, entourées dan
 
 ### Extraction des éléments
 
-Les éléments d'un n-uplet s'extraient de la même manière que ceux des listes (c.f. Section\ \@ref(structures-listes)).
+Les éléments d'un n-uplet s'extraient de la même manière que ceux des listes (c.f. Section\ \@ref(stucture-liste-extraction)).
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 print(x[0])
@@ -2514,7 +2514,7 @@ not x
 ## Quelques fonctions
 
 
-Python dispose de nombreuses fonctions utiles pour manipuler les structures et données. Le tableau suivant en répertorie quelques-unes. Certaines nécessitent le chargement de la librairie `math`. Nous verrsons d'autres fonctions propres à la librairie `NumPy` au Chapitre\ \@ref(numpy).
+Python dispose de nombreuses fonctions utiles pour manipuler les structures et données. Le tableau suivant en répertorie quelques-unes. Certaines nécessitent le chargement de la librairie `math`, d'autres la librairie `statistics`. Nous verrsons d'autres fonctions propres à la librairie `NumPy` au Chapitre\ \@ref(numpy).
 
 | Fonction | Description |
 | --------------: | --------------------------------------------: |
@@ -2550,6 +2550,12 @@ Python dispose de nombreuses fonctions utiles pour manipuler les structures et d
 | `math.isfinite(x)` | Retourne `True` si `x` est soit l'infini, soir `NaN`  |
 | `math.isinf(x)` | Retourne `True` si `x` est l'infini, `False` sinon |
 | `math.isnan(x)` | Retourne `True` si `x` est `NaN`, `False` sinon |
+| `statistics.mean(x)` | Moyenne de x |
+| `statistics.median(x)` | Médiane de x |
+| `statistics.mode(x)` | Mode de x |
+| `statistics.stdev(x)` | Écart-type de x |
+| `statistics.variance(x)` | Variance de x |
+
 
 Table: (#tab:fonctions-numeriques) Quelques fonctions numériques
 
@@ -2608,7 +2614,7 @@ print(cwd)
 
 
 ```{block2, type='remarque', echo=TRUE}
-La fonction `listdir()` de la librairie `os` est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n’importe quel répertoire si le
+La fonction `listdir()` de la librairie `os` est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n'importe quel répertoire si le
 paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé la fonction (`from os import getcwd`), on peut l'appeler : `os.listdir()`.
 
 ```
@@ -3125,7 +3131,6 @@ elif expression_2:
   instructions_2
 elif expression_3:
   instructions_3
-...
 else:
   autres_instruction
 ```
@@ -3328,11 +3333,11 @@ print(j)
     1. définir une variable `nombre` contenant un entier naturel de votre choix (pas trop grand),
     2. à l'aide d'une boucle, vérifier si chaque entier jusqu'à la racine carrée de votre nombre, est un diviseur de votre nombre (s'arrêter si jamais c'est le cas)
     3. en sortie de boucle, écrire une instruction conditionnelle indiquant si le nombre est premier ou non.
-2. Choisir un nombre mystère entre 1 et 100, et le stocker dans un objet que l'on nommera `nombre_mystere`. Ensuite, créer une boucle qui à chaque itération effectue un tirage aléatoire d'un entier compris entre 1 et 100. Tant que le nombre tiré est différent du nombre mystère, la boucle doit continuer. À la sortie de la boucle, une variable que l’on appellera `nb_tirages` contiendra le nombre de tirages réalisés pour obtenir le nombre mystère.
+2. Choisir un nombre mystère entre 1 et 100, et le stocker dans un objet que l'on nommera `nombre_mystere`. Ensuite, créer une boucle qui à chaque itération effectue un tirage aléatoire d'un entier compris entre 1 et 100. Tant que le nombre tiré est différent du nombre mystère, la boucle doit continuer. À la sortie de la boucle, une variable que l'on appellera `nb_tirages` contiendra le nombre de tirages réalisés pour obtenir le nombre mystère.
 
 *Note : pour tirer un nombre aléatoirement entre 1 et 100, on peut utiliser la méthode `randint()` du module `random`).*
 
-3. Parcourir les entiers de 1 à 20 à l’aide d’une boucle for en affichant dans la console à chaque itération si le nombre courant est pair.
+3. Parcourir les entiers de 1 à 20 à l'aide d'une boucle for en affichant dans la console à chaque itération si le nombre courant est pair.
 4. Utiliser une boucle `for()` pour reprouire la suite de Fibonacci jusqu'à son dixième terme (la séquence $F_n$ est définie par la relation de récurrence suivante : $F_n = F_{n-1} + F_{n-2}$ ; les valeurs initiales sont $F_0 = 0$ et $F_1 = 1$).
 
 ```
@@ -3350,29 +3355,329 @@ Une fonction est déclarée à l'aide du mot clé `keyword`. Ce qu'elle renvoie 
 
 La syntaxe est la suivante :
 ```{python, eval=F, echo=TRUE, error=TRUE}
-def nom_fonction(paramètres):
-  corps de la fonction
+def nom_fonction(parametres):
+  corps_de_la_fonction
+```
+
+Une fois que la fonction est définie, on l'appelle en faisant référence à son nom :
+```{python, eval=F, echo=TRUE, error=TRUE}
+nom_fonction()
+```
+
+
+Il suffit donc de rajouter des parenthèses au nom de la fonction pour l'appeler. En effet, `nom_fonction` désigne l'objet qui contient la fonction qui est appelée à l'aide de l'expression `nom_fonction()`.
+Par exemple, si on souhaite définir la fonction qui calcule le carré d'un nombre, voici ce que l'on peut écrire :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def carre(x):
+  return x**2
+```
+
+On peut ensuite l'appeler :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(carre(2))
+print(carre(-3))
+```
+
+### Ajout d'une description
+
+Il est possible (et fortement recommandé) d'ajouter une description de ce que la fonction fait :
+```{python, eval=T, echo=TRUE, error=TRUE}
+def carre(x):
+  """retourne le carré de x"""
+  return x**2
+```
+
+De fait, quand on évalue ensuite l'instruction suivante, la description de la fonction s'affiche :
+```{r, eval=F, echo=TRUE, error=TRUE}
+?carre
+```
+
+Dans Jupyter Notebook, après avoir écrit le nom de la fonction, on peut aussi afficher la description en appuyant sur les touches du clavier `Shift` et `Tabulation`.
+
+### Paramètres d'une fonction
+
+Dans l'exemple de la fonction `carre()` que nous avons créée, nous avons renseigné un seul paramètre, appelé `x`. Si la fonction que l'on souhaite créer nécessite plusieurs paramètres, il faut les séparer par une virgule.
+
+Considérons par exemple le problème suivant. Nous disposons d'une fonction de production $Y(L, K, M)$, qui dépend du nombre de travailleurs $L$ et de la quantité de capital $K$, et du matériel $M$, telle que $Y(L, K, M) = L^{0.3} K^{0.5}M^2$. Cette fonction pourra s'écrire en Python de la manière suivante :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def production(l, k, m):
+  """
+  @param l (float) travail
+  @param k (float) capital
+  @param m (float) matériel
+  @desc Retourne la valeur de la production en fonction
+    du travail, du capital et du matériel.
+  """
+  return l**0.3 * k**0.5 * m**(0.2)
+```
+
+#### Appel sans noms de paramètres
+
+En reprenant l'exemple précédent, si on nous donne $L = 60$ et $K = 42$ et $M = 40$, on peut en déduire la production :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+prod_val = production(60, 42, 40)
+print(prod_val)
+```
+
+On peut noter que le nom des paramètres n'a pas été mentionné ici. Lors de l'appel de la fonction, la valeur du premier paramètre a été attribué au paramètre défini en premier (`l`), celle du second au second paramètre (`k`) et enfin celle du troisième au troisième paramètre (`m`).
+
+
+#### Paramètres positionnels paramètres par mots-clés
+
+Il existe deux types de paramètres que l'on peut donner à une fonction en Python : 
+
+- les paramètres positionnels ;
+- les paramètres par mots-clés.
+
+
+Contrairement aux paramètres positionnels, les paramètres par mot clé ont une valeur attribuée par défaut. On parle de paramètre formel pour désigner les paramètres de la fonction (les variables utilisées dans le corps de la fonction) et de paramètre effectif pour désigner la valeur que l'on souhaite donner au paramètre formel. Pour définir la valeur à donner à un paramètre formel, on utilise le symbol d'égalité. Lors de l'appel de la fonction, si l'utilisateur ne définit pas explicitement une valeur, celle par défaut sera affectée. Ainsi, il n'est pas forcément nécessaire de préciser les paramètres par mots-clés lors de l'appel de la fonction.
+
+Il est important de noter que les arguments positionnels (ceux qui n'ont pas de valeur par défaut) doivent apparaître en premier dans la liste des paramètres.
+
+Prenons un exemple avec deux paramètres positionnels (`l` et `m`) et un paramètre par mot-clé (`k`) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def production_2(l, m, k=42):
+  """
+  @param l (float) travail
+  @param m (float) matériel
+  @param k (float) capital (defaut : 42)
+  @desc Retourne la valeur de la production en fonction
+    du travail, du capital et du matériel.
+  """
+  return l**0.3 * k**0.5 * m**(0.2)
+```
+
+La fonction `production_2()` peut s'appeler, pour donner le même résultat, des trois manières suivantes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+# En nommant tous les paramètres, en ommettant k
+prod_val_1 = production_2(l = 42, m = 40)
+# En nommant tous les paramètres et en précisant k
+prod_val_2 = production_2(l = 42, m = 40, k = 42)
+# En nommant uniquement le paramètre mot-clé k
+prod_val_3 = production_2(42, 40, k = 42)
+# En ne nommant aucun paramètre
+prod_val_4 = production_2(42, 40, 42)
+
+res = [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
+print(res)
+```
+
+```{block2, type='remarque', echo=TRUE}
+Si la fonction contient plusieurs paramètres positionnels ; lors de l'appel :
+
+- soit on nomme tous les paramètres positonnels par leur nom ;
+- soit aucun ;
+- il n'y a pas d'entre deux.
+
+```
+
+
+Du moment que tous les paramètres positionnels sont nommés lors de l'appel, on peut les faire figurer dans des ordres différents :
+```{python, eval=T, echo=TRUE, error=TRUE}
+def production_3(a, l, m = 40, k=42):
+  """
+  @param a (float) productivité totale des facteurs
+  @param l (float) travail
+  @param m (float) matériel (défaut : 40)
+  @param k (float) capital (défaut : 42)
+  @desc Retourne la valeur de la production en fonction
+    du travail, du capital et du matériel.
+  """
+  return a * l**0.3 * k**0.5 * m**(0.2)
+  
+prod_val_1 = production_3(1, 42, m = 38)
+prod_val_2 = production_3(a = 1, l = 42)
+prod_val_3 = production_3(l = 42, a = 1)
+prod_val_4 = production_3(m = 40, l = 42, a = 1)
+
+res = [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
+print(res)
+```
+
+#### Fonction comme paramètre
+
+Une fonction peut être fournie en paramètre à une autre fonction.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def carre(x):
+  """Retourne le carré de x"""
+  return x**2
+  
+def appliquer_carre_4(fun):
+  """Applique la fonction `fun` à 4"""
+  return fun(4)
+
+print(appliquer_carre_4(carre))
 ```
 
 
 ## Portée
 
+Lorsque une fonction est appelée, le corps de cette fonction est interprété. Les variables ayant été définies dans le corps de la fonction sont assignées à un *namespace* local. C'est-à-dire qu'elles ne vivent qu'à l'intérieur ce cet espace local, qui est créé au moment de l'appel de la fonction et détruit à la fin de celui ci. On parle alors de portée des variables. Ainsi, une variable ayant une portée locale (assignée dans l'espace local) peut avoir le même nom qu'une variable globale (définie dans l'espace de travail global), sans pour autant désigner le même objet, ou écraser cet objet.
+
+Regardons cela à travers un exemple.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+# Définition d'une variable globale :
+valeur = 1
+
+# Définition d'une variable locale à la fonction f
+def f(x):
+  valeur = 2
+  nouvelle_valeur = 3
+  print("valeur vaut :", valeur)
+  print("nouvelle_valeur vaut :", nouvelle_valeur)
+  return x + valeur
+```
+
+Appelons la fonction `f()`, puis regardons la valeur de `valeur` et celle de `nouvelle_valeur` après l'exécution de la fonction.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+res = f(3)
+print("valeur vaut :", valeur)
+print("nouvelle_valeur vaut :", nouvelle_valeur)
+```
+
+Comme on peut le constater, durant l'appel, la variable locale du nom `valeur` valait 2. Cette variable ne faisait pas référence à la variable du même nom définie dans l'environnement global. À l'issue de l'exécution de la fonction `f()`, cette variable `valeur` locale est supprimée, et il en est de même pour la variable locale `nouvelle_valeur`, qui n'existe pas dans l'environnement gloabl (d'où l'erreur retournée).
+
+
+Sans trop rentrer trop dans les détails, il semble important de connaître quelques principes à propos de la portée des variables. Les variables sont définies dans des environnements, qui sont embriqués les uns dans les autres. Si une variable n'est pas définie dans le corps d'une fonction, Python ira chercher dans un environnement parent.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+valeur = 1
+def f(x):
+  return x + valeur
+  
+print(f(2))
+```
+
+Si on définit une fonction à l'intérieur d'une autre fonction, et qu'on appelle une variable non définie dans le corps de cette fonction, Python ira chercher dans l'environnement directement supérieur. S'il ne trouve pas, il ira chercher dans l'environnement encore supérieur, et ainsi de suite jusqu'à l'environnement global.
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+# La variable valeur n'est pas définie dans
+# l'environnement local de g().
+# Python va alors chercher dans f().
+valeur = 1
+def f():
+  valeur = 2
+  def g(x):
+    return x + valeur
+
+  return g(2)
+
+print(f())
+```
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+# La variable valeur n'est définie ni dans g() ni dans f()
+# mais dans l'environnement supérieur (ici, global)
+valeur = 1
+def f():
+  def g(x):
+    return x + valeur
+
+  return g(2)
+
+print(f())
+```
+
+Si on définit une variable dans le corps d'une fonction et que l'on souhaite qu'elle soit accessible dans l'environnement global, on peut utiliser le mot-clé `global` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def f(x):
+  global y
+  y = x+1
+
+f(3)
+print(y)
+```
+
+```{block2, type='remarque', echo=TRUE}
+La variable que l'on souhaite définir de manière globale depuis un espace local de la fonction ne doit pas avoir le même nom d'un des paramètres.
+
+```
+
+
 ## Fonctions lambda
 
-## Erreurs
+Python propose ce que l'on appelle des fonctions lambdas, ou encore des fonctions anonymes. Une fonction lambda ne possède qu'une seule instruction dont le résultat est celui de la fonction.
+
+On les définit à l'aide du mot-clé `lambda`. La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+nom_fonction = lambda parametres : retour
+```
+
+Les paramètres sont à séparer par des virugles.
+
+Reprenons la fonction `carre()` créée précédemment :
+```{python, eval=T, echo=TRUE, error=TRUE}
+def carre(x):
+  return x**2
+```
+
+La fonction lambda équivalent s'écrit :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+carre_2 = lambda x: x**2
+print(carre_2(4))
+```
+
+Avec plusieurs paramètres, regardons la fonction lambda équivalente à la fonction `produduction()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+def production(l, k, m):
+  """
+  @param l (float) travail
+  @param k (float) capital
+  @param m (float) matériel
+  @desc Retourne la valeur de la production en fonction
+    du travail, du capital et du matériel.
+  """
+  return l**0.3 * k**0.5 * m**(0.2)
+```
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+production_2 = lambda l,k,m : l**0.3 * k**0.5 * m**(0.2)
+print(production(42, 40, 42))
+print(production_2(42, 40, 42))
+```
+
+
+## Retour de plusieurs valeurs
+
+Il peut parfois être pratique de retourner plusieurs éléments en retour d'une fonction. Bien que la liste se porte candidate à cette fonctionnalité, il peut-être plus avisé d'utiliser un dictionnaire, pour pouvoir accéder aux valeurs grâce à leur clé !
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import statistics
+def stat_des(x):
+  """Retourne la moyenne et l'écart-type de `x`"""
+  return {"moyenne": statistics.mean(x),
+  "ecart_type": statistics.stdev(x)}
+
+x = [1,3,2,6,4,1,8,9,3,2]
+res = stat_des(x)
+print(res)
+print("La moyenne vaut %s et l'écart-type vaut %s" % 
+      (res["moyenne"], res["ecart_type"]))
+```
 
 
 ## Exercice
 
 ```{block2, type='exframe', echo=TRUE}
-1. Question 1
+1. Créer une fonction nommée `somme_n_entiers` qui retourne la somme des $n$ premiers entiers. Son seul paramètre sera `n`.
+2. À l'aide d'une boucle, afficher la somme des 2 premiers entiers, puis 3 premiers entiers, puis 4 premiers entiers, etc. jusqu'à 10.
+3. Créer une fonction qui à partir de deux points représentés par des couples de coordonnées ($x_1$, $y_1$) et ($x_2$, $y_2$) retourne la distance euclidienne entre ces deux points. Proposer une seconde solution à l'aide d'une fonction lambda.
 
 ```
-
-
-
-
-
 
 
 

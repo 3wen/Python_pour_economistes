@@ -221,10 +221,13 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
-<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
+<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
+<li class="chapter" data-level="8.1.2" data-path="fonctions.html"><a href="fonctions.html#parametres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
-<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
 <li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
@@ -268,24 +271,244 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">8.1</span> Définition</h2>
 <p>Une fonction est déclarée à l’aide du mot clé <code>keyword</code>. Ce qu’elle renvoie est retourné à l’aide du mot clé <code>return</code>.</p>
 <p>La syntaxe est la suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> nom_fonction(paramètres):
-  corps de la fonction</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> nom_fonction(parametres):
+  corps_de_la_fonction</code></pre></div>
+<p>Une fois que la fonction est définie, on l’appelle en faisant référence à son nom :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">nom_fonction()</code></pre></div>
+<p>Il suffit donc de rajouter des parenthèses au nom de la fonction pour l’appeler. En effet, <code>nom_fonction</code> désigne l’objet qui contient la fonction qui est appelée à l’aide de l’expression <code>nom_fonction()</code>. Par exemple, si on souhaite définir la fonction qui calcule le carré d’un nombre, voici ce que l’on peut écrire :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
+  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<p>On peut ensuite l’appeler :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(carre(<span class="dv">2</span>))</code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(carre(<span class="op">-</span><span class="dv">3</span>))</code></pre></div>
+<pre><code>## 9</code></pre>
+<div id="ajout-dune-description" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Ajout d’une description</h3>
+<p>Il est possible (et fortement recommandé) d’ajouter une description de ce que la fonction fait :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
+  <span class="co">&quot;&quot;&quot;retourne le carré de x&quot;&quot;&quot;</span>
+  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<p>De fait, quand on évalue ensuite l’instruction suivante, la description de la fonction s’affiche :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(carre)</code></pre></div>
+<p>Dans Jupyter Notebook, après avoir écrit le nom de la fonction, on peut aussi afficher la description en appuyant sur les touches du clavier <code>Shift</code> et <code>Tabulation</code>.</p>
+</div>
+<div id="parametres-dune-fonction" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Paramètres d’une fonction</h3>
+<p>Dans l’exemple de la fonction <code>carre()</code> que nous avons créée, nous avons renseigné un seul paramètre, appelé <code>x</code>. Si la fonction que l’on souhaite créer nécessite plusieurs paramètres, il faut les séparer par une virgule.</p>
+<p>Considérons par exemple le problème suivant. Nous disposons d’une fonction de production <span class="math inline">\(Y(L, K, M)\)</span>, qui dépend du nombre de travailleurs <span class="math inline">\(L\)</span> et de la quantité de capital <span class="math inline">\(K\)</span>, et du matériel <span class="math inline">\(M\)</span>, telle que <span class="math inline">\(Y(L, K, M) = L^{0.3} K^{0.5}M^2\)</span>. Cette fonction pourra s’écrire en Python de la manière suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production(l, k, m):
+  <span class="co">&quot;&quot;&quot;</span>
+<span class="co">  @param l (float) travail</span>
+<span class="co">  @param k (float) capital</span>
+<span class="co">  @param m (float) matériel</span>
+<span class="co">  @desc Retourne la valeur de la production en fonction</span>
+<span class="co">    du travail, du capital et du matériel.</span>
+<span class="co">  &quot;&quot;&quot;</span>
+  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
+<div id="appel-sans-noms-de-parametres" class="section level4">
+<h4><span class="header-section-number">8.1.2.1</span> Appel sans noms de paramètres</h4>
+<p>En reprenant l’exemple précédent, si on nous donne <span class="math inline">\(L = 60\)</span> et <span class="math inline">\(K = 42\)</span> et <span class="math inline">\(M = 40\)</span>, on peut en déduire la production :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">prod_val <span class="op">=</span> production(<span class="dv">60</span>, <span class="dv">42</span>, <span class="dv">40</span>)
+<span class="bu">print</span>(prod_val)</code></pre></div>
+<pre><code>## 46.289449781254994</code></pre>
+<p>On peut noter que le nom des paramètres n’a pas été mentionné ici. Lors de l’appel de la fonction, la valeur du premier paramètre a été attribué au paramètre défini en premier (<code>l</code>), celle du second au second paramètre (<code>k</code>) et enfin celle du troisième au troisième paramètre (<code>m</code>).</p>
+</div>
+<div id="parametres-positionnels-parametres-par-mots-cles" class="section level4">
+<h4><span class="header-section-number">8.1.2.2</span> Paramètres positionnels paramètres par mots-clés</h4>
+<p>Il existe deux types de paramètres que l’on peut donner à une fonction en Python :</p>
+<ul>
+<li>les paramètres positionnels ;</li>
+<li>les paramètres par mots-clés.</li>
+</ul>
+<p>Contrairement aux paramètres positionnels, les paramètres par mot clé ont une valeur attribuée par défaut. On parle de paramètre formel pour désigner les paramètres de la fonction (les variables utilisées dans le corps de la fonction) et de paramètre effectif pour désigner la valeur que l’on souhaite donner au paramètre formel. Pour définir la valeur à donner à un paramètre formel, on utilise le symbol d’égalité. Lors de l’appel de la fonction, si l’utilisateur ne définit pas explicitement une valeur, celle par défaut sera affectée. Ainsi, il n’est pas forcément nécessaire de préciser les paramètres par mots-clés lors de l’appel de la fonction.</p>
+<p>Il est important de noter que les arguments positionnels (ceux qui n’ont pas de valeur par défaut) doivent apparaître en premier dans la liste des paramètres.</p>
+<p>Prenons un exemple avec deux paramètres positionnels (<code>l</code> et <code>m</code>) et un paramètre par mot-clé (<code>k</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production_2(l, m, k<span class="op">=</span><span class="dv">42</span>):
+  <span class="co">&quot;&quot;&quot;</span>
+<span class="co">  @param l (float) travail</span>
+<span class="co">  @param m (float) matériel</span>
+<span class="co">  @param k (float) capital (defaut : 42)</span>
+<span class="co">  @desc Retourne la valeur de la production en fonction</span>
+<span class="co">    du travail, du capital et du matériel.</span>
+<span class="co">  &quot;&quot;&quot;</span>
+  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
+<p>La fonction <code>production_2()</code> peut s’appeler, pour donner le même résultat, des trois manières suivantes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># En nommant tous les paramètres, en ommettant k</span>
+prod_val_1 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>)
+<span class="co"># En nommant tous les paramètres et en précisant k</span>
+prod_val_2 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)
+<span class="co"># En nommant uniquement le paramètre mot-clé k</span>
+prod_val_3 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)
+<span class="co"># En ne nommant aucun paramètre</span>
+prod_val_4 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>)
+res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
+<span class="bu">print</span>(res)</code></pre></div>
+<pre><code>## [41.59215573604822, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
+
+<div class="remarque">
+<p>Si la fonction contient plusieurs paramètres positionnels ; lors de l’appel :</p>
+<ul>
+<li>soit on nomme tous les paramètres positonnels par leur nom ;</li>
+<li>soit aucun ;</li>
+<li>il n’y a pas d’entre deux.</li>
+</ul>
+</div>
+
+<p>Du moment que tous les paramètres positionnels sont nommés lors de l’appel, on peut les faire figurer dans des ordres différents :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production_3(a, l, m <span class="op">=</span> <span class="dv">40</span>, k<span class="op">=</span><span class="dv">42</span>):
+  <span class="co">&quot;&quot;&quot;</span>
+<span class="co">  @param a (float) productivité totale des facteurs</span>
+<span class="co">  @param l (float) travail</span>
+<span class="co">  @param m (float) matériel (défaut : 40)</span>
+<span class="co">  @param k (float) capital (défaut : 42)</span>
+<span class="co">  @desc Retourne la valeur de la production en fonction</span>
+<span class="co">    du travail, du capital et du matériel.</span>
+<span class="co">  &quot;&quot;&quot;</span>
+  <span class="cf">return</span> a <span class="op">*</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)
+  
+prod_val_1 <span class="op">=</span> production_3(<span class="dv">1</span>, <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">38</span>)
+prod_val_2 <span class="op">=</span> production_3(a <span class="op">=</span> <span class="dv">1</span>, l <span class="op">=</span> <span class="dv">42</span>)
+prod_val_3 <span class="op">=</span> production_3(l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
+prod_val_4 <span class="op">=</span> production_3(m <span class="op">=</span> <span class="dv">40</span>, l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
+res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
+<span class="bu">print</span>(res)</code></pre></div>
+<pre><code>## [41.16765711449734, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
+</div>
+<div id="fonction-comme-parametre" class="section level4">
+<h4><span class="header-section-number">8.1.2.3</span> Fonction comme paramètre</h4>
+<p>Une fonction peut être fournie en paramètre à une autre fonction.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
+  <span class="co">&quot;&quot;&quot;Retourne le carré de x&quot;&quot;&quot;</span>
+  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span>
+  
+<span class="kw">def</span> appliquer_carre_4(fun):
+  <span class="co">&quot;&quot;&quot;Applique la fonction `fun` à 4&quot;&quot;&quot;</span>
+  <span class="cf">return</span> fun(<span class="dv">4</span>)
+<span class="bu">print</span>(appliquer_carre_4(carre))</code></pre></div>
+<pre><code>## 16</code></pre>
+</div>
+</div>
 </div>
 <div id="portee" class="section level2">
 <h2><span class="header-section-number">8.2</span> Portée</h2>
+<p>Lorsque une fonction est appelée, le corps de cette fonction est interprété. Les variables ayant été définies dans le corps de la fonction sont assignées à un <em>namespace</em> local. C’est-à-dire qu’elles ne vivent qu’à l’intérieur ce cet espace local, qui est créé au moment de l’appel de la fonction et détruit à la fin de celui ci. On parle alors de portée des variables. Ainsi, une variable ayant une portée locale (assignée dans l’espace local) peut avoir le même nom qu’une variable globale (définie dans l’espace de travail global), sans pour autant désigner le même objet, ou écraser cet objet.</p>
+<p>Regardons cela à travers un exemple.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Définition d&#39;une variable globale :</span>
+valeur <span class="op">=</span> <span class="dv">1</span>
+<span class="co"># Définition d&#39;une variable locale à la fonction f</span>
+<span class="kw">def</span> f(x):
+  valeur <span class="op">=</span> <span class="dv">2</span>
+  nouvelle_valeur <span class="op">=</span> <span class="dv">3</span>
+  <span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)
+  <span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)
+  <span class="cf">return</span> x <span class="op">+</span> valeur</code></pre></div>
+<p>Appelons la fonction <code>f()</code>, puis regardons la valeur de <code>valeur</code> et celle de <code>nouvelle_valeur</code> après l’exécution de la fonction.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">res <span class="op">=</span> f(<span class="dv">3</span>)</code></pre></div>
+<pre><code>## valeur vaut : 2
+## nouvelle_valeur vaut : 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)</code></pre></div>
+<pre><code>## valeur vaut : 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)</code></pre></div>
+<pre><code>## NameError: name &#39;nouvelle_valeur&#39; is not defined
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<p>Comme on peut le constater, durant l’appel, la variable locale du nom <code>valeur</code> valait 2. Cette variable ne faisait pas référence à la variable du même nom définie dans l’environnement global. À l’issue de l’exécution de la fonction <code>f()</code>, cette variable <code>valeur</code> locale est supprimée, et il en est de même pour la variable locale <code>nouvelle_valeur</code>, qui n’existe pas dans l’environnement gloabl (d’où l’erreur retournée).</p>
+<p>Sans trop rentrer trop dans les détails, il semble important de connaître quelques principes à propos de la portée des variables. Les variables sont définies dans des environnements, qui sont embriqués les uns dans les autres. Si une variable n’est pas définie dans le corps d’une fonction, Python ira chercher dans un environnement parent.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">valeur <span class="op">=</span> <span class="dv">1</span>
+<span class="kw">def</span> f(x):
+  <span class="cf">return</span> x <span class="op">+</span> valeur
+  
+<span class="bu">print</span>(f(<span class="dv">2</span>))</code></pre></div>
+<pre><code>## 3</code></pre>
+<p>Si on définit une fonction à l’intérieur d’une autre fonction, et qu’on appelle une variable non définie dans le corps de cette fonction, Python ira chercher dans l’environnement directement supérieur. S’il ne trouve pas, il ira chercher dans l’environnement encore supérieur, et ainsi de suite jusqu’à l’environnement global.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># La variable valeur n&#39;est pas définie dans</span>
+<span class="co"># l&#39;environnement local de g().</span>
+<span class="co"># Python va alors chercher dans f().</span>
+valeur <span class="op">=</span> <span class="dv">1</span>
+<span class="kw">def</span> f():
+  valeur <span class="op">=</span> <span class="dv">2</span>
+  <span class="kw">def</span> g(x):
+    <span class="cf">return</span> x <span class="op">+</span> valeur
+  <span class="cf">return</span> g(<span class="dv">2</span>)
+<span class="bu">print</span>(f())</code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># La variable valeur n&#39;est définie ni dans g() ni dans f()</span>
+<span class="co"># mais dans l&#39;environnement supérieur (ici, global)</span>
+valeur <span class="op">=</span> <span class="dv">1</span>
+<span class="kw">def</span> f():
+  <span class="kw">def</span> g(x):
+    <span class="cf">return</span> x <span class="op">+</span> valeur
+  <span class="cf">return</span> g(<span class="dv">2</span>)
+<span class="bu">print</span>(f())</code></pre></div>
+<pre><code>## 3</code></pre>
+<p>Si on définit une variable dans le corps d’une fonction et que l’on souhaite qu’elle soit accessible dans l’environnement global, on peut utiliser le mot-clé <code>global</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> f(x):
+  <span class="kw">global</span> y
+  y <span class="op">=</span> x<span class="op">+</span><span class="dv">1</span>
+f(<span class="dv">3</span>)
+<span class="bu">print</span>(y)</code></pre></div>
+<pre><code>## 4</code></pre>
+
+<div class="remarque">
+<p>La variable que l’on souhaite définir de manière globale depuis un espace local de la fonction ne doit pas avoir le même nom d’un des paramètres.</p>
+</div>
+
 </div>
 <div id="fonctions-lambda" class="section level2">
 <h2><span class="header-section-number">8.3</span> Fonctions lambda</h2>
+<p>Python propose ce que l’on appelle des fonctions lambdas, ou encore des fonctions anonymes. Une fonction lambda ne possède qu’une seule instruction dont le résultat est celui de la fonction.</p>
+<p>On les définit à l’aide du mot-clé <code>lambda</code>. La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">nom_fonction <span class="op">=</span> <span class="kw">lambda</span> parametres : retour</code></pre></div>
+<p>Les paramètres sont à séparer par des virugles.</p>
+<p>Reprenons la fonction <code>carre()</code> créée précédemment :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
+  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<p>La fonction lambda équivalent s’écrit :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">carre_2 <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>
+<span class="bu">print</span>(carre_2(<span class="dv">4</span>))</code></pre></div>
+<pre><code>## 16</code></pre>
+<p>Avec plusieurs paramètres, regardons la fonction lambda équivalente à la fonction <code>produduction()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production(l, k, m):
+  <span class="co">&quot;&quot;&quot;</span>
+<span class="co">  @param l (float) travail</span>
+<span class="co">  @param k (float) capital</span>
+<span class="co">  @param m (float) matériel</span>
+<span class="co">  @desc Retourne la valeur de la production en fonction</span>
+<span class="co">    du travail, du capital et du matériel.</span>
+<span class="co">  &quot;&quot;&quot;</span>
+  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">production_2 <span class="op">=</span> <span class="kw">lambda</span> l,k,m : l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)
+<span class="bu">print</span>(production(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</code></pre></div>
+<pre><code>## 40.987803063838406</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</code></pre></div>
+<pre><code>## 40.987803063838406</code></pre>
 </div>
-<div id="erreurs" class="section level2">
-<h2><span class="header-section-number">8.4</span> Erreurs</h2>
+<div id="retour-de-plusieurs-valeurs" class="section level2">
+<h2><span class="header-section-number">8.4</span> Retour de plusieurs valeurs</h2>
+<p>Il peut parfois être pratique de retourner plusieurs éléments en retour d’une fonction. Bien que la liste se porte candidate à cette fonctionnalité, il peut-être plus avisé d’utiliser un dictionnaire, pour pouvoir accéder aux valeurs grâce à leur clé !</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> statistics
+<span class="kw">def</span> stat_des(x):
+  <span class="co">&quot;&quot;&quot;Retourne la moyenne et l&#39;écart-type de `x`&quot;&quot;&quot;</span>
+  <span class="cf">return</span> {<span class="st">&quot;moyenne&quot;</span>: statistics.mean(x),
+  <span class="st">&quot;ecart_type&quot;</span>: statistics.stdev(x)}
+x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">2</span>]
+res <span class="op">=</span> stat_des(x)
+<span class="bu">print</span>(res)</code></pre></div>
+<pre><code>## {&#39;moyenne&#39;: 3.9, &#39;ecart_type&#39;: 2.8460498941515415}</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;La moyenne vaut </span><span class="sc">%s</span><span class="st"> et l&#39;écart-type vaut </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> 
+      (res[<span class="st">&quot;moyenne&quot;</span>], res[<span class="st">&quot;ecart_type&quot;</span>]))</code></pre></div>
+<pre><code>## La moyenne vaut 3.9 et l&#39;écart-type vaut 2.8460498941515415</code></pre>
 </div>
 <div id="exercice-6" class="section level2">
 <h2><span class="header-section-number">8.5</span> Exercice</h2>
 
 <div class="exframe">
 <ol style="list-style-type: decimal">
-<li>Question 1</li>
+<li>Créer une fonction nommée <code>somme_n_entiers</code> qui retourne la somme des <span class="math inline">\(n\)</span> premiers entiers. Son seul paramètre sera <code>n</code>.</li>
+<li>À l’aide d’une boucle, afficher la somme des 2 premiers entiers, puis 3 premiers entiers, puis 4 premiers entiers, etc. jusqu’à 10.</li>
+<li>Créer une fonction qui à partir de deux points représentés par des couples de coordonnées (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(y_1\)</span>) et (<span class="math inline">\(x_2\)</span>, <span class="math inline">\(y_2\)</span>) retourne la distance euclidienne entre ces deux points. Proposer une seconde solution à l’aide d’une fonction lambda.</li>
 </ol>
 </div>
 

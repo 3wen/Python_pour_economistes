@@ -1232,7 +1232,7 @@ faire comme suit :
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{figs/intro_pyplot} \end{center}
+\begin{center}\includegraphics[width=9.03in]{figs/intro_pyplot} \end{center}
 
 \section{L'aide}\label{laide}
 
@@ -1593,7 +1593,6 @@ suffit de préciser les deux valeurs d'indices :
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \StringTok{"You shall not pass!"}
-
 \CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
 \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
 \end{Highlighting}
@@ -3203,7 +3202,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 17:53:26.118916
+## 2018-10-08 22:38:37.319853
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3213,7 +3212,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 17:53:26.120310
+## 2018-10-08 22:38:37.324472
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4012,7 +4011,7 @@ entourées dans deux parenthèses.
 \subsection{Extraction des éléments}\label{extraction-des-elements}
 
 Les éléments d'un n-uplet s'extraient de la même manière que ceux des
-listes (c.f. Section~\ref{structures-listes}).
+listes (c.f. Section~\ref{stucture-liste-extraction}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4075,7 +4074,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4089,7 +4088,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4125,7 +4124,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4156,7 +4155,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Toulon', 'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
+## {'Rennes', 'Nice', 'Toulon', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4169,7 +4168,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Toulon', 'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
+## {'Rennes', 'Nice', 'Toulon', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4185,7 +4184,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
+## {'Rennes', 'Nice', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4211,7 +4210,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
+## {'Rennes', 'Nice', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -5062,7 +5061,6 @@ Pour tester l'égalité de contenu entre deux objets :
 \NormalTok{a }\OperatorTok{=} \StringTok{"Hello"}
 \NormalTok{b }\OperatorTok{=} \StringTok{"World"}
 \NormalTok{c }\OperatorTok{=} \StringTok{"World"}
-
 \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
@@ -5088,7 +5086,6 @@ L'inégalité entre deux objets :
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
-
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5118,7 +5115,6 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 \NormalTok{x }\OperatorTok{=} \DecValTok{1}
 \NormalTok{y }\OperatorTok{=} \DecValTok{1}
 \NormalTok{z }\OperatorTok{=} \DecValTok{2}
-
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5342,7 +5338,6 @@ retourne faux :
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \VariableTok{True}
 \NormalTok{y }\OperatorTok{=} \VariableTok{False}
-
 \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5525,9 +5520,9 @@ Lorsque l'on utilise l'opérateur \texttt{not} sur une valeur vide
 
 Python dispose de nombreuses fonctions utiles pour manipuler les
 structures et données. Le tableau suivant en répertorie quelques-unes.
-Certaines nécessitent le chargement de la librairie \texttt{math}. Nous
-verrsons d'autres fonctions propres à la librairie \texttt{NumPy} au
-Chapitre~\ref{numpy}.
+Certaines nécessitent le chargement de la librairie \texttt{math},
+d'autres la librairie \texttt{statistics}. Nous verrsons d'autres
+fonctions propres à la librairie \texttt{NumPy} au Chapitre~\ref{numpy}.
 
 \begin{longtable}[]{@{}rr@{}}
 \caption{\label{tab:fonctions-numeriques} Quelques fonctions
@@ -5712,6 +5707,31 @@ sinon\strut
 \end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
 Retourne \texttt{True} si \texttt{x} est \texttt{NaN}, \texttt{False}
 sinon\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
+\texttt{statistics.mean(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Moyenne de x\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
+\texttt{statistics.median(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Médiane de x\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
+\texttt{statistics.mode(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Mode de x\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
+\texttt{statistics.stdev(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Écart-type de x\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedleft\strut
+\texttt{statistics.variance(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedleft\strut
+Variance de x\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -6112,7 +6132,6 @@ appel à la méthode \texttt{reader()} du module \texttt{csv} :
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./fichiers_exemples/fichier_csv.csv'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{  mon_fichier_reader }\OperatorTok{=}\NormalTok{ csv.reader(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{, quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{)}
 \NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier_reader]}
-
 \BuiltInTok{print}\NormalTok{(donnees)}
 \end{Highlighting}
 \end{Shaded}
@@ -6228,7 +6247,6 @@ hébergé sur Internet :
 \ImportTok{import}\NormalTok{ csv}
 \ImportTok{import}\NormalTok{ urllib.request}
 \ImportTok{import}\NormalTok{ codecs}
-
 \NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"}
 \ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fochier_csv }\OperatorTok{=}\NormalTok{ csv.reader(codecs.iterdecode(mon_fichier, }\StringTok{'utf-8'}\NormalTok{))}
@@ -6252,7 +6270,6 @@ API, on peut utiliser la librairie \texttt{json}, et sa méthode
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ json}
 \NormalTok{lien }\OperatorTok{=} \StringTok{'./fichiers_exemples/tweets.json'}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(lien) }\ImportTok{as}\NormalTok{ mon_fichier_json:}
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ json.load(mon_fichier_json)}
 \end{Highlighting}
@@ -6448,12 +6465,10 @@ Exemple de création d'un fichier CSV :
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ csv}
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_export.csv"}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fichier_ecrire }\OperatorTok{=}\NormalTok{ csv.writer(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{,}
 \NormalTok{                                    quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{,}
 \NormalTok{                                    quoting}\OperatorTok{=}\NormalTok{csv.QUOTE_MINIMAL)}
-
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'Pays'}\NormalTok{, }\StringTok{'Année'}\NormalTok{, }\StringTok{'Trimestre'}\NormalTok{, }\StringTok{'TC_PIB'}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2017'}\NormalTok{, }\StringTok{'Q4'}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2018'}\NormalTok{, }\StringTok{'Q1'}\NormalTok{, }\FloatTok{0.2}\NormalTok{])}
@@ -6487,7 +6502,6 @@ interrogée avec la libraririe \texttt{twitter-python}) en JSON.
   \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6516,7 +6530,6 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Highlighting}[]
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6538,7 +6551,6 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/export_json.json"}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
 \NormalTok{    json.dump(json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{), f)}
 \NormalTok{    f.write(}\StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
@@ -6556,7 +6568,6 @@ Si on souhaite réimporter dans Python le contenu du fichier
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ []}
     \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ f:}
 \NormalTok{        data.append(json.loads(line, encoding}\OperatorTok{=}\StringTok{"utf-8"}\NormalTok{))}
-
 \BuiltInTok{print}\NormalTok{(data)}
 \end{Highlighting}
 \end{Shaded}
@@ -6733,12 +6744,10 @@ Admettons que la température est de 26 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{26}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6753,12 +6762,10 @@ Si la température est à présent de 32 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{32}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6787,7 +6794,6 @@ La syntaxe est la suivante :
 \NormalTok{  instructions_2}
 \ControlFlowTok{elif}\NormalTok{ expression_3:}
 \NormalTok{  instructions_3}
-\NormalTok{...}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  autres_instruction}
 \end{Highlighting}
@@ -6801,7 +6807,6 @@ nuances :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \OperatorTok{-}\DecValTok{4}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaude"}
 \ControlFlowTok{elif}\NormalTok{ temperature }\OperatorTok{<=} \DecValTok{28} \KeywordTok{and}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{15}\NormalTok{:}
@@ -6810,7 +6815,6 @@ nuances :
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froide"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"très froide"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"La température est "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -7265,16 +7269,536 @@ La syntaxe est la suivante :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ nom_fonction(paramètres):}
-\NormalTok{  corps de la fonction}
+\KeywordTok{def}\NormalTok{ nom_fonction(parametres):}
+\NormalTok{  corps_de_la_fonction}
 \end{Highlighting}
 \end{Shaded}
 
+Une fois que la fonction est définie, on l'appelle en faisant référence
+à son nom :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nom_fonction()}
+\end{Highlighting}
+\end{Shaded}
+
+Il suffit donc de rajouter des parenthèses au nom de la fonction pour
+l'appeler. En effet, \texttt{nom\_fonction} désigne l'objet qui contient
+la fonction qui est appelée à l'aide de l'expression
+\texttt{nom\_fonction()}. Par exemple, si on souhaite définir la
+fonction qui calcule le carré d'un nombre, voici ce que l'on peut écrire
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ carre(x):}
+  \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+On peut ensuite l'appeler :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(carre(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(carre(}\OperatorTok{-}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 9
+\end{lstlisting}
+
+\subsection{Ajout d'une description}\label{ajout-dune-description}
+
+Il est possible (et fortement recommandé) d'ajouter une description de
+ce que la fonction fait :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ carre(x):}
+  \CommentTok{"""retourne le carré de x"""}
+  \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+De fait, quand on évalue ensuite l'instruction suivante, la description
+de la fonction s'affiche :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{`}\DataTypeTok{?}\StringTok{`}\NormalTok{(carre)}
+\end{Highlighting}
+\end{Shaded}
+
+Dans Jupyter Notebook, après avoir écrit le nom de la fonction, on peut
+aussi afficher la description en appuyant sur les touches du clavier
+\texttt{Shift} et \texttt{Tabulation}.
+
+\subsection{Paramètres d'une fonction}\label{parametres-dune-fonction}
+
+Dans l'exemple de la fonction \texttt{carre()} que nous avons créée,
+nous avons renseigné un seul paramètre, appelé \texttt{x}. Si la
+fonction que l'on souhaite créer nécessite plusieurs paramètres, il faut
+les séparer par une virgule.
+
+Considérons par exemple le problème suivant. Nous disposons d'une
+fonction de production \(Y(L, K, M)\), qui dépend du nombre de
+travailleurs \(L\) et de la quantité de capital \(K\), et du matériel
+\(M\), telle que \(Y(L, K, M) = L^{0.3} K^{0.5}M^2\). Cette fonction
+pourra s'écrire en Python de la manière suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ production(l, k, m):}
+  \CommentTok{"""}
+\CommentTok{  @param l (float) travail}
+\CommentTok{  @param k (float) capital}
+\CommentTok{  @param m (float) matériel}
+\CommentTok{  @desc Retourne la valeur de la production en fonction}
+\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  """}
+  \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Appel sans noms de
+paramètres}\label{appel-sans-noms-de-parametres}
+
+En reprenant l'exemple précédent, si on nous donne \(L = 60\) et
+\(K = 42\) et \(M = 40\), on peut en déduire la production :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prod_val }\OperatorTok{=}\NormalTok{ production(}\DecValTok{60}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(prod_val)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 46.289449781254994
+\end{lstlisting}
+
+On peut noter que le nom des paramètres n'a pas été mentionné ici. Lors
+de l'appel de la fonction, la valeur du premier paramètre a été attribué
+au paramètre défini en premier (\texttt{l}), celle du second au second
+paramètre (\texttt{k}) et enfin celle du troisième au troisième
+paramètre (\texttt{m}).
+
+\subsubsection{Paramètres positionnels paramètres par
+mots-clés}\label{parametres-positionnels-parametres-par-mots-cles}
+
+Il existe deux types de paramètres que l'on peut donner à une fonction
+en Python :
+
+\begin{itemize}
+\tightlist
+\item
+  les paramètres positionnels ;
+\item
+  les paramètres par mots-clés.
+\end{itemize}
+
+Contrairement aux paramètres positionnels, les paramètres par mot clé
+ont une valeur attribuée par défaut. On parle de paramètre formel pour
+désigner les paramètres de la fonction (les variables utilisées dans le
+corps de la fonction) et de paramètre effectif pour désigner la valeur
+que l'on souhaite donner au paramètre formel. Pour définir la valeur à
+donner à un paramètre formel, on utilise le symbol d'égalité. Lors de
+l'appel de la fonction, si l'utilisateur ne définit pas explicitement
+une valeur, celle par défaut sera affectée. Ainsi, il n'est pas
+forcément nécessaire de préciser les paramètres par mots-clés lors de
+l'appel de la fonction.
+
+Il est important de noter que les arguments positionnels (ceux qui n'ont
+pas de valeur par défaut) doivent apparaître en premier dans la liste
+des paramètres.
+
+Prenons un exemple avec deux paramètres positionnels (\texttt{l} et
+\texttt{m}) et un paramètre par mot-clé (\texttt{k}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ production_2(l, m, k}\OperatorTok{=}\DecValTok{42}\NormalTok{):}
+  \CommentTok{"""}
+\CommentTok{  @param l (float) travail}
+\CommentTok{  @param m (float) matériel}
+\CommentTok{  @param k (float) capital (defaut : 42)}
+\CommentTok{  @desc Retourne la valeur de la production en fonction}
+\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  """}
+  \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La fonction \texttt{production\_2()} peut s'appeler, pour donner le même
+résultat, des trois manières suivantes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# En nommant tous les paramètres, en ommettant k}
+\NormalTok{prod_val_1 }\OperatorTok{=}\NormalTok{ production_2(l }\OperatorTok{=} \DecValTok{42}\NormalTok{, m }\OperatorTok{=} \DecValTok{40}\NormalTok{)}
+\CommentTok{# En nommant tous les paramètres et en précisant k}
+\NormalTok{prod_val_2 }\OperatorTok{=}\NormalTok{ production_2(l }\OperatorTok{=} \DecValTok{42}\NormalTok{, m }\OperatorTok{=} \DecValTok{40}\NormalTok{, k }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
+\CommentTok{# En nommant uniquement le paramètre mot-clé k}
+\NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, k }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
+\CommentTok{# En ne nommant aucun paramètre}
+\NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{)}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
+\BuiltInTok{print}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [41.59215573604822, 41.59215573604822, 41.59215573604822, 41.59215573604822]
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+Si la fonction contient plusieurs paramètres positionnels ; lors de
+l'appel :
+
+\begin{itemize}
+\tightlist
+\item
+  soit on nomme tous les paramètres positonnels par leur nom ;
+\item
+  soit aucun ;
+\item
+  il n'y a pas d'entre deux.
+\end{itemize}
+\EndKnitrBlock{remarque}
+
+Du moment que tous les paramètres positionnels sont nommés lors de
+l'appel, on peut les faire figurer dans des ordres différents :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ production_3(a, l, m }\OperatorTok{=} \DecValTok{40}\NormalTok{, k}\OperatorTok{=}\DecValTok{42}\NormalTok{):}
+  \CommentTok{"""}
+\CommentTok{  @param a (float) productivité totale des facteurs}
+\CommentTok{  @param l (float) travail}
+\CommentTok{  @param m (float) matériel (défaut : 40)}
+\CommentTok{  @param k (float) capital (défaut : 42)}
+\CommentTok{  @desc Retourne la valeur de la production en fonction}
+\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  """}
+  \ControlFlowTok{return}\NormalTok{ a }\OperatorTok{*}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
+  
+\NormalTok{prod_val_1 }\OperatorTok{=}\NormalTok{ production_3(}\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{, m }\OperatorTok{=} \DecValTok{38}\NormalTok{)}
+\NormalTok{prod_val_2 }\OperatorTok{=}\NormalTok{ production_3(a }\OperatorTok{=} \DecValTok{1}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
+\NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_3(l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_3(m }\OperatorTok{=} \DecValTok{40}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
+\BuiltInTok{print}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [41.16765711449734, 41.59215573604822, 41.59215573604822, 41.59215573604822]
+\end{lstlisting}
+
+\subsubsection{Fonction comme paramètre}\label{fonction-comme-parametre}
+
+Une fonction peut être fournie en paramètre à une autre fonction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ carre(x):}
+  \CommentTok{"""Retourne le carré de x"""}
+  \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+  
+\KeywordTok{def}\NormalTok{ appliquer_carre_4(fun):}
+  \CommentTok{"""Applique la fonction `fun` à 4"""}
+  \ControlFlowTok{return}\NormalTok{ fun(}\DecValTok{4}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(appliquer_carre_4(carre))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 16
+\end{lstlisting}
+
 \section{Portée}\label{portee}
+
+Lorsque une fonction est appelée, le corps de cette fonction est
+interprété. Les variables ayant été définies dans le corps de la
+fonction sont assignées à un \emph{namespace} local. C'est-à-dire
+qu'elles ne vivent qu'à l'intérieur ce cet espace local, qui est créé au
+moment de l'appel de la fonction et détruit à la fin de celui ci. On
+parle alors de portée des variables. Ainsi, une variable ayant une
+portée locale (assignée dans l'espace local) peut avoir le même nom
+qu'une variable globale (définie dans l'espace de travail global), sans
+pour autant désigner le même objet, ou écraser cet objet.
+
+Regardons cela à travers un exemple.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Définition d'une variable globale :}
+\NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
+\CommentTok{# Définition d'une variable locale à la fonction f}
+\KeywordTok{def}\NormalTok{ f(x):}
+\NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
+\NormalTok{  nouvelle_valeur }\OperatorTok{=} \DecValTok{3}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"valeur vaut :"}\NormalTok{, valeur)}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"nouvelle_valeur vaut :"}\NormalTok{, nouvelle_valeur)}
+  \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+\end{Highlighting}
+\end{Shaded}
+
+Appelons la fonction \texttt{f()}, puis regardons la valeur de
+\texttt{valeur} et celle de \texttt{nouvelle\_valeur} après l'exécution
+de la fonction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OperatorTok{=}\NormalTok{ f(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## valeur vaut : 2
+## nouvelle_valeur vaut : 3
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"valeur vaut :"}\NormalTok{, valeur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## valeur vaut : 1
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nouvelle_valeur vaut :"}\NormalTok{, nouvelle_valeur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## NameError: name 'nouvelle_valeur' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+Comme on peut le constater, durant l'appel, la variable locale du nom
+\texttt{valeur} valait 2. Cette variable ne faisait pas référence à la
+variable du même nom définie dans l'environnement global. À l'issue de
+l'exécution de la fonction \texttt{f()}, cette variable \texttt{valeur}
+locale est supprimée, et il en est de même pour la variable locale
+\texttt{nouvelle\_valeur}, qui n'existe pas dans l'environnement gloabl
+(d'où l'erreur retournée).
+
+Sans trop rentrer trop dans les détails, il semble important de
+connaître quelques principes à propos de la portée des variables. Les
+variables sont définies dans des environnements, qui sont embriqués les
+uns dans les autres. Si une variable n'est pas définie dans le corps
+d'une fonction, Python ira chercher dans un environnement parent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
+\KeywordTok{def}\NormalTok{ f(x):}
+  \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+  
+\BuiltInTok{print}\NormalTok{(f(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 3
+\end{lstlisting}
+
+Si on définit une fonction à l'intérieur d'une autre fonction, et qu'on
+appelle une variable non définie dans le corps de cette fonction, Python
+ira chercher dans l'environnement directement supérieur. S'il ne trouve
+pas, il ira chercher dans l'environnement encore supérieur, et ainsi de
+suite jusqu'à l'environnement global.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# La variable valeur n'est pas définie dans}
+\CommentTok{# l'environnement local de g().}
+\CommentTok{# Python va alors chercher dans f().}
+\NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
+\KeywordTok{def}\NormalTok{ f():}
+\NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
+  \KeywordTok{def}\NormalTok{ g(x):}
+    \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+  \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(f())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# La variable valeur n'est définie ni dans g() ni dans f()}
+\CommentTok{# mais dans l'environnement supérieur (ici, global)}
+\NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
+\KeywordTok{def}\NormalTok{ f():}
+  \KeywordTok{def}\NormalTok{ g(x):}
+    \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+  \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(f())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 3
+\end{lstlisting}
+
+Si on définit une variable dans le corps d'une fonction et que l'on
+souhaite qu'elle soit accessible dans l'environnement global, on peut
+utiliser le mot-clé \texttt{global} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ f(x):}
+  \KeywordTok{global}\NormalTok{ y}
+\NormalTok{  y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{+}\DecValTok{1}
+\NormalTok{f(}\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+La variable que l'on souhaite définir de manière globale depuis un
+espace local de la fonction ne doit pas avoir le même nom d'un des
+paramètres.
+\EndKnitrBlock{remarque}
 
 \section{Fonctions lambda}\label{fonctions-lambda}
 
-\section{Erreurs}\label{erreurs}
+Python propose ce que l'on appelle des fonctions lambdas, ou encore des
+fonctions anonymes. Une fonction lambda ne possède qu'une seule
+instruction dont le résultat est celui de la fonction.
+
+On les définit à l'aide du mot-clé \texttt{lambda}. La syntaxe est la
+suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nom_fonction }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ parametres : retour}
+\end{Highlighting}
+\end{Shaded}
+
+Les paramètres sont à séparer par des virugles.
+
+Reprenons la fonction \texttt{carre()} créée précédemment :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ carre(x):}
+  \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+La fonction lambda équivalent s'écrit :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carre_2 }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ x: x}\OperatorTok{**}\DecValTok{2}
+\BuiltInTok{print}\NormalTok{(carre_2(}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 16
+\end{lstlisting}
+
+Avec plusieurs paramètres, regardons la fonction lambda équivalente à la
+fonction \texttt{produduction()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ production(l, k, m):}
+  \CommentTok{"""}
+\CommentTok{  @param l (float) travail}
+\CommentTok{  @param k (float) capital}
+\CommentTok{  @param m (float) matériel}
+\CommentTok{  @desc Retourne la valeur de la production en fonction}
+\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  """}
+  \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{production_2 }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ l,k,m : l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(production(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 40.987803063838406
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 40.987803063838406
+\end{lstlisting}
+
+\section{Retour de plusieurs valeurs}\label{retour-de-plusieurs-valeurs}
+
+Il peut parfois être pratique de retourner plusieurs éléments en retour
+d'une fonction. Bien que la liste se porte candidate à cette
+fonctionnalité, il peut-être plus avisé d'utiliser un dictionnaire, pour
+pouvoir accéder aux valeurs grâce à leur clé !
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ statistics}
+\KeywordTok{def}\NormalTok{ stat_des(x):}
+  \CommentTok{"""Retourne la moyenne et l'écart-type de `x`"""}
+  \ControlFlowTok{return}\NormalTok{ \{}\StringTok{"moyenne"}\NormalTok{: statistics.mean(x),}
+  \StringTok{"ecart_type"}\NormalTok{: statistics.stdev(x)\}}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ stat_des(x)}
+\BuiltInTok{print}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## {'moyenne': 3.9, 'ecart_type': 2.8460498941515415}
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"La moyenne vaut }\SpecialCharTok{%s}\StringTok{ et l'écart-type vaut }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%} 
+\NormalTok{      (res[}\StringTok{"moyenne"}\NormalTok{], res[}\StringTok{"ecart_type"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## La moyenne vaut 3.9 et l'écart-type vaut 2.8460498941515415
+\end{lstlisting}
 
 \section{Exercice}\label{exercice-6}
 
@@ -7283,7 +7807,16 @@ La syntaxe est la suivante :
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Question 1
+  Créer une fonction nommée \texttt{somme\_n\_entiers} qui retourne la
+  somme des \(n\) premiers entiers. Son seul paramètre sera \texttt{n}.
+\item
+  À l'aide d'une boucle, afficher la somme des 2 premiers entiers, puis
+  3 premiers entiers, puis 4 premiers entiers, etc. jusqu'à 10.
+\item
+  Créer une fonction qui à partir de deux points représentés par des
+  couples de coordonnées (\(x_1\), \(y_1\)) et (\(x_2\), \(y_2\))
+  retourne la distance euclidienne entre ces deux points. Proposer une
+  seconde solution à l'aide d'une fonction lambda.
 \end{enumerate}
 \EndKnitrBlock{exframe}
 

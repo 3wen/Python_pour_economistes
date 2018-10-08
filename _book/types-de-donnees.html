@@ -221,10 +221,13 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
-<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
+<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
+<li class="chapter" data-level="8.1.2" data-path="fonctions.html"><a href="fonctions.html#parametres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
-<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
 <li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
@@ -388,7 +391,6 @@ preference_3 <span class="op">=</span> x <span class="op">%</span> (langage_1, l
 <pre><code>## l</code></pre>
 <p>L’extraction d’une sous-chaîne en précisant sa position de début et de fin (implicitement ou non) s’effectue avec les crochets également. Il suffit de préciser les deux valeurs d’indices : <code>[debut:fin]</code>.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="st">&quot;You shall not pass!&quot;</span>
-
 <span class="co"># Du quatrième caractère (non inclus) au neuvième (inclus)</span>
 <span class="bu">print</span>(x[<span class="dv">4</span>:<span class="dv">9</span>])</code></pre></div>
 <pre><code>## shall</code></pre>
@@ -1076,9 +1078,9 @@ x <span class="op">=</span> datetime(year <span class="op">=</span> <span class=
 <h5><span class="header-section-number">2.5.1.3.1</span> <code>today()</code> et <code>now()</code></h5>
 <p>Les méthodes <code>today()</code> et <code>now()</code> retournent le <code>datetime</code> courant, celui au moment où est évaluée l’instruction :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x.today())</code></pre></div>
-<pre><code>## 2018-10-08 17:55:44.336448</code></pre>
+<pre><code>## 2018-10-08 22:39:13.084268</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(datetime.today())</code></pre></div>
-<pre><code>## 2018-10-08 17:55:44.338009</code></pre>
+<pre><code>## 2018-10-08 22:39:13.086616</code></pre>
 <p>La distinction entre les deux réside dans le fuseau horaire. Avec <code>today()</code>, l’attribut <code>tzinfo</code> est mis à <code>None</code>, tandis qu’avec <code>now()</code>, l’attribut <code>tzinfo</code>, s’il est indiqué, est pris en compte.</p>
 </div>
 <div id="timestamp" class="section level5">

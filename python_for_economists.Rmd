@@ -2278,7 +2278,7 @@ Idem avec des n-uplets :
 print(3*t_1)
 ```
 
-## Opérateurs de comparaison
+## Opérateurs de comparaison {#operateurs-comparaison}
 
 
 Les opérateurs de comparaisons permettent de comparer entre eux des objets de tous les types de base. Le résultat d'un test de comparaison produit des valeurs booléennes.
@@ -2998,36 +2998,379 @@ print(data)
 
 
 
-# Conditions
-
-## Les conditions `if... else`
-
-## Switch ?
 
 
-# Boucles
+# Conditions {#conditions}
+
+Souvent, en fonction de l'évaluation d'une expression, on désire réaliser une opération plutôt qu'une autre. Par exemple, lorsqu'on créé une nouvelle variable dans une analyse statistique, et que cette variable prend ses valeurs en fonction d'une autre, on peut être amené à utiliser des **instructions conditionnelles** : "si la valeur est inférieur à $x$, alors... sinon, ...".
+
+Dans ce court chapitre, nous regardons comment rédiger les instructions conditionnelles.
+
+## Les instructions conditionnelles `if`
+
+L'instruction conditionnelle la plus simple que l'on peut rencontrer est `if`. Si et seulement si une expression est évaluée à `True`, alors une instruction sera évaluée. 
+
+
+La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+if expression:
+  instruction
+```
+
+Les lignes après les deux points (`:`) doivent être placées dans un bloc, en utilisant un taquet de tabulation.
+
+```{block2, type='remarque', echo=TRUE}
+Un bloc de code est un regroupement d'instructions. Des codes imbriqués indentés à la même position font partie du même bloc :
+
+    ligne du bloc 1
+    ligne du bloc 1
+      ligne du bloc2
+      ligne du bloc2
+    ligne du bloc1
+
+```
+
+
+
+
+Dans le code ci-dessous, nous définissons une variable `x` contenant l'entier $2$. L'instruction suivante évalue l'expression `x == 2` (cf. Section\ \@red(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est `Vrai`, alors le contenu du bloc est évalué.
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = 2
+if x == 2:
+  print("Hello")
+```
+
+Si on change la valeur de `x` de manière à ce que l'expression `x == 2` retourne `False` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = 3
+if x == 2:
+  print("Hello")
+```
+
+
+À l'intérieur du bloc, on peut écrire plusieurs instructions qui seront évaluées si l'expression est `True` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = 2
+if x == 2:
+  y = "Hello"
+  print(y + ", x vaut : " + str(x))
+```
+
+
+
+```{block2, type='remarque', echo=TRUE}
+Lorsqu'on rédige son code, il peut-être pratique d'utiliser des instructions conditionnelles `if` pour évaluer ou non certaines parties du code. Par exemple, quand on régide un script, il arrive des moments où nous devons réévaluer le début, mais que certaines parties ne nécessitent pas d'être réévaluées à chaque fois, comme des sorties graphiques (ce qui prend du temps). Il est possible de commenter ces parties de codes ne nécessitant pas une nouvelle évaluation, ou alors on peut les placer dans un bloc conditionnel :
+
+- au début du script, on créé une variable `graph = False` ;
+- avant de créer un graphique, on le place dans un bloc `if graphe:`
+
+Au moment de l'exécution du script, on peut choisir de créer et exporter les graphiques des blocs `if graphe:` en modifiant à sa guise la variable `graph`.
+```
+
+## Les instructions conditionnelles `if-else`
+
+
+Si la condition n'est pas vérifiée, on peut proposer des instructions à effectuer, à l'aide des instructions `if-else`.
+
+
+La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+if expression:
+  instructions
+else:
+  autres_instruction
+```
+
+
+Par exemple, admettons qu'on veuille créer une variable de chaleur prenant la valeur `chaud` si la valeur de la variable `temperature` dépasse 28 degrés C, `froid` sinon. Admettons que la température est de 26 degrés C :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+temperature = 26
+chaleur = ""
+
+if temperature > 28:
+  chaleur = "chaud"
+else:
+  chaleur = "froid"
+
+print("Il fait " + chaleur)
+```
+
+Si la température est à présent de 32 degrés C :
+```{python, eval=T, echo=TRUE, error=TRUE}
+temperature = 32
+chaleur = ""
+
+if temperature > 28:
+  chaleur = "chaud"
+else:
+  chaleur = "froid"
+
+print("Il fait " + chaleur)
+```
+
+
+## Les instructions conditionnelles `if-elif`
+
+
+Si la condition n'est pas vérifiée, on peut en tester une autre et alors évaluer d'autres instructions si cette seconde est vérifiée. Sinon, on peut en tester encore une autre, et ainsi de suite. On peut aussi proposer des instructions si aucune des conditions n'a été évaluée à `True`. Pour ce faire, on peut utiliser des instructions conditionnelles `if-elif`.
+
+
+La syntaxe est la suivante :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+if expression:
+  instructions
+elif expression_2:
+  instructions_2
+elif expression_3:
+  instructions_3
+...
+else:
+  autres_instruction
+```
+
+
+L'exemple précédent manque un peu de sens commun. Peut-on dire que lordqu'il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques nuances :
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+temperature = -4
+chaleur = ""
+
+if temperature > 28:
+  chaleur = "chaude"
+elif temperature <= 28 and temperature > 15:
+  chaleur = "tempérée"
+elif temperature <= 15 and temperature > 0:
+  chaleur = "froide"
+else:
+  chaleur = "très froide"
+
+print("La température est " + chaleur)
+```
+
+
+
+```{block2, type='remarque', echo=TRUE}
+L'avantage d'utiliser des instructions conditionnelles `if-elif` par rapport à écrire plusieurs instructions conditionnelles `if` à la suite est qu'avec la première manière de faire, les comparaisons s'arrêtent dès qu'une est remplie, ce qui est plus efficace.
+```
+
+
+## Exercice
+
+```{block2, type='exframe', echo=TRUE}
+Soit une liste nommée `europe` contenant les valeurs suivantes, sous forme de chaînes de caractères : "Allemagne", "France" et "Espagne".
+
+Soit une seconde liste, nommée `asie`, contenant sous forme de chaînes de caractères : "Vietnam", "Chine" et "Inde".
+
+L'objectif va être de créer une variable `continent` qui va indiquer soit `Europe`, `Asie` ou autre à l'issue de l'exécution du code.
+
+À l'aide d'instructions conditionnelles de type `if-elif`, rédiger un code qui vérifie la valeur d'une variable `pays`, et définit la valeur d'une autre variable nommée `continent` en fonction du contenu observé dans `pays` tel que :
+
+- si la valeur de pays est présente dans la liste `europe`, `pays` vaudra `Europe` ;
+- si la valeur de pays est présente dans la liste `asie`, `pays` vaudra `Asie` ;
+- si la valeur de pays n'est présente ni dans `europe` ni dans `asie`, la variable `pays` vaudra `Autre`.
+  
+
+Pour ce faire :
+
+1. Créer les deux listes `europe` et `asie` ainsi que la variable `pays` (valant "Espagne") et la variable `continent` (initiée avec une chaîne de caractères vide).
+2. Rédiger le code permettant de réaliser l'objectif expliqué, et afficher le contenu de la variable `continent` à l'issue de l'exécution.
+3. Changer la valeur de `pays` à `Chine` puis à `Brésil` et dans chacun des cas, exécuter le code rédigé dans la question précédente.
+
+```
+
+
+# Boucles {#boucles}
+
+Quand on doit répéter plusieurs fois la même opération, pour un nombre déterminé de fois ou tant qu'une condition est vérifiée (ou tant qu'elle n'est pas vérifiée), on peut utiliser des boucles, ce qui est bien moins pénible que d'évaluer à la main ou à coups de copier/coller la même instruction.
+
+Nous allons aborder deux types de boucles dans ce chapitre :
+
+- celles pour lesquelles nous ne savons pas `a priori` le nombre d'itérations (le nombre de répétitions) à effectuer : les boucles `while()`
+- celles pour lesquelles nous savons `a priori` combien d'itérations sont nécessaires : les boucles `for()`
+
+
+```{block2, type='remarque', echo=TRUE}
+Il est possible d'arrêter une boucle `for()` avant un nombre d'itérations prédéfini ; dans le même esprit, il est possible d'utiliser une boucle `while()` en sachant d'avance le nombre d'itérations à effectuer.
+
+```
+
 
 ## Boucles avec `while()`
+
+Le principe d'une boucle `while()` est que les instructions à l'intérieur de la boucle seront répétées tant qu'une condition est respectée. L'idée est de faire dépendre cette condition d'un ou plusieurs objets qui seront modifiés au cours des itérations (sans cela, la boucle tournerait à l'infini).
+
+La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+while condition:
+  instructions
+```
+
+Comme pour les instructions conditionnelles (c.f. Section\ \@ref(conditions)), les instructions sont placées à l'intérieur d'un bloc.
+
+Regardons un exemple de boucle `while()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = 100
+while x/3 > 1:
+  print(x/3)
+  x = x/3
+
+print(x/3>1)
+print(x/3)
+```
+
+Dans cette boucle, à chaque itération, la valeur de `x` divisé par 3 est affichée, puis la valeur de `x` est remplacée par le tiers de sa valeur courante. Cette opération est répétée tant que l'expression `x/3 > 1` retourne `True`.
+
+
+
+
 
 ## Boucles avec `for()`
 
 
+Quand on connaît le nombre d'itérations à l'avance, on pourra utiliser une boucle `for()`. La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+for objet in valeurs_possibles:
+  instructions
+```
+
+avec `objet` le nom d'une variable locale à la fonction `for()`, `valeurs_possibles` un objet comprenant $n$ éléments définissant les valeurs que prendra `objet` pour chacun des $n$ tours, et `instructions` les instructions qui seront exécutées à chaque itération.
+
+Nous allons, dans l'exemple qui suit, calculer le carré des $n$ premiers entiers. Les valeurs que vont prendre notre variable `objet` (que nous allons appeler `i`) seront les entiers de 1 à $n$. Pour obtenir une séquence d'entiers en Python, on peut utiliser la fonction `range()`, qui prend les paramètres suivants :
+
+- `start` : (optionnel, par défaut, 0) valeur de début pour la séquence (inclue) ;
+- `stop` : valeur de fin de la séquence (non inclue) ;
+- `step` : (optionnel, par défaut 1) le pas.
+
+Avant de calculer la suite des $n$ premiers carrés, regardons un exemple de fonctionnement de la fonction `range()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(list(range(0, 4))) # Les entiers de 0 à 3
+print(list(range(4))) # Les entiers de 0 à 3
+print(list(range(2, 10))) # Les entiers de 2 à 9
+print(list(range(2, 10, 3))) # Les entiers de 2 à 9 par pas de 3
+```
+
+Aussi, pour afficher la suite des $10$ premiers carrés :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+n=10
+for i in range(0, n+1):
+  print("Le carré de %s est %s" % (i,i**2))
+```
+
+Lors de la première itération, `i` vaut 0. Lors de la seconde, `i` vaut 1. Lors de la troisième, `i` vaut 2, etc.
+
+
+Si on veut stocker le résultat dans une liste :
+```{python, eval=T, echo=TRUE, error=TRUE}
+n=10
+n_entiers_carres = []
+for i in range(0, n+1):
+  n_entiers_carres.append(i**2)
+  
+print(n_entiers_carres)
+```
+
+
+Il n'est pas obligatoire d'utiliser la fonction `range()` dans une boucle `for()`, on peut définir les valeurs "à la main" :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+for i in [0, 1, 2, 8, 9, 10]:
+  print("Le carré de %s est %s" % (i,i**2))
+```
+
+
+Dans le même esprit, il n'est pas obligatoire d'itérer sur des valeurs numériques :
+```{python, eval=T, echo=TRUE, error=TRUE}
+for prenom in ["Pascaline", "Gauthier", "Xuan", "Jimmy"]:
+  print("Il y a %s lettre(s) dans le prénom %s" % (len(prenom), prenom))
+```
 
 
 
+Rien n'empêche de faire des boucles à l'intérieur de boucles :
+```{python, eval=T, echo=TRUE, error=TRUE}
+for i in range(0,3):
+    for j in range(0,3):
+        print("i vaut %s et j vaut %s" % (i, j))
+```
+
+Comme on peut le constater, l'itération se fait pour chaque valeur de `i`, et pour chacune de ces valeurs, une seconde itération est effectuée sur les valeurs de `j`.
+
+
+```{block2, type='remarque', echo=TRUE}
+On utilise souvent les lettres `i` et `j` pour désigner un compteur dans une boucle `for()`, mais ce n'est évidemment pas une obligation.
+
+```
+
+Dans une boucle, si on désire incrémenter un comteur, on peut utiliser le symbole `+=` plutôt que d'écrire `compteur = compteur + ...` :
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+j = 10
+for i in range(0, 4):
+  j += 5
+  print("Nouvelle valeur pour j : %s" % j)
+  
+print(j)
+```
+
+
+
+
+## Exercice
+
+```{block2, type='exframe', echo=TRUE}
+1. Rédiger un programme très naïf visant à déterminer si un nombre est premier ou non. Pour ce faire : 
+
+    1. définir une variable `nombre` contenant un entier naturel de votre choix (pas trop grand),
+    2. à l'aide d'une boucle, vérifier si chaque entier jusqu'à la racine carrée de votre nombre, est un diviseur de votre nombre (s'arrêter si jamais c'est le cas)
+    3. en sortie de boucle, écrire une instruction conditionnelle indiquant si le nombre est premier ou non.
+2. Choisir un nombre mystère entre 1 et 100, et le stocker dans un objet que l'on nommera `nombre_mystere`. Ensuite, créer une boucle qui à chaque itération effectue un tirage aléatoire d'un entier compris entre 1 et 100. Tant que le nombre tiré est différent du nombre mystère, la boucle doit continuer. À la sortie de la boucle, une variable que l’on appellera `nb_tirages` contiendra le nombre de tirages réalisés pour obtenir le nombre mystère.
+
+*Note : pour tirer un nombre aléatoirement entre 1 et 100, on peut utiliser la méthode `randint()` du module `random`).*
+
+3. Parcourir les entiers de 1 à 20 à l’aide d’une boucle for en affichant dans la console à chaque itération si le nombre courant est pair.
+4. Utiliser une boucle `for()` pour reprouire la suite de Fibonacci jusqu'à son dixième terme (la séquence $F_n$ est définie par la relation de récurrence suivante : $F_n = F_{n-1} + F_{n-2}$ ; les valeurs initiales sont $F_0 = 0$ et $F_1 = 1$).
+
+```
 
 
 
 # Fonctions
 
+La plupart du temps, on utilise les fonctions de base ou contenues dans des modules. Cela dit, lorsque l'on récupère des données en ligne ou qu'on doit mettre en forme des données importées depuis diverses sources, il arrive qu'il soit nécessaire de créer ses propres fonctions. L'avantage de créer ses fonctions se révèle dès lors qu'on doit effectuer une suite d'instruction de manière répétée, avec quelques légères différences (on peut alors appliquer les fonctions au sein d'une boucle, comme nous l'avons abordé dans le Chapitre\ \@ref(boucles)).
+
 
 ## Définition
+
+Une fonction est déclarée à l'aide du mot clé `keyword`. Ce qu'elle renvoie est retourné à l'aide du mot clé `return`.
+
+La syntaxe est la suivante :
+```{python, eval=F, echo=TRUE, error=TRUE}
+def nom_fonction(paramètres):
+  corps de la fonction
+```
+
 
 ## Portée
 
 ## Fonctions lambda
 
 ## Erreurs
+
+
+## Exercice
+
+```{block2, type='exframe', echo=TRUE}
+1. Question 1
+
+```
+
+
+
 
 
 

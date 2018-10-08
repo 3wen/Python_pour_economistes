@@ -181,7 +181,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
 <li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
 <li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
 <li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
@@ -210,18 +210,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
-<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>6.1</b> Les conditions <code>if... else</code></a></li>
-<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>6.2</b> Switch ?</a></li>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
 <li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
 <li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
@@ -259,11 +263,137 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="conditions" class="section level1">
 <h1><span class="header-section-number">6</span> Conditions</h1>
-<div id="les-conditions-if...-else" class="section level2">
-<h2><span class="header-section-number">6.1</span> Les conditions <code>if... else</code></h2>
+<p>Souvent, en fonction de l’évaluation d’une expression, on désire réaliser une opération plutôt qu’une autre. Par exemple, lorsqu’on créé une nouvelle variable dans une analyse statistique, et que cette variable prend ses valeurs en fonction d’une autre, on peut être amené à utiliser des <strong>instructions conditionnelles</strong> : “si la valeur est inférieur à <span class="math inline">\(x\)</span>, alors… sinon, …”.</p>
+<p>Dans ce court chapitre, nous regardons comment rédiger les instructions conditionnelles.</p>
+<div id="les-instructions-conditionnelles-if" class="section level2">
+<h2><span class="header-section-number">6.1</span> Les instructions conditionnelles <code>if</code></h2>
+<p>L’instruction conditionnelle la plus simple que l’on peut rencontrer est <code>if</code>. Si et seulement si une expression est évaluée à <code>True</code>, alors une instruction sera évaluée.</p>
+<p>La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> expression:
+  instruction</code></pre></div>
+<p>Les lignes après les deux points (<code>:</code>) doivent être placées dans un bloc, en utilisant un taquet de tabulation.</p>
+
+<div class="remarque">
+<p>Un bloc de code est un regroupement d’instructions. Des codes imbriqués indentés à la même position font partie du même bloc :</p>
+<pre><code>ligne du bloc 1
+ligne du bloc 1
+  ligne du bloc2
+  ligne du bloc2
+ligne du bloc1</code></pre>
 </div>
-<div id="switch" class="section level2">
-<h2><span class="header-section-number">6.2</span> Switch ?</h2>
+
+<p>Dans le code ci-dessous, nous définissons une variable <code>x</code> contenant l’entier <span class="math inline">\(2\)</span>. L’instruction suivante évalue l’expression <code>x == 2</code> (cf. Section @red(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est <code>Vrai</code>, alors le contenu du bloc est évalué.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">2</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:
+  <span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span>)</code></pre></div>
+<pre><code>## Hello</code></pre>
+<p>Si on change la valeur de <code>x</code> de manière à ce que l’expression <code>x == 2</code> retourne <code>False</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">3</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:
+  <span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span>)</code></pre></div>
+<p>À l’intérieur du bloc, on peut écrire plusieurs instructions qui seront évaluées si l’expression est <code>True</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">2</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:
+  y <span class="op">=</span> <span class="st">&quot;Hello&quot;</span>
+  <span class="bu">print</span>(y <span class="op">+</span> <span class="st">&quot;, x vaut : &quot;</span> <span class="op">+</span> <span class="bu">str</span>(x))</code></pre></div>
+<pre><code>## Hello, x vaut : 2</code></pre>
+
+<div class="remarque">
+<p>Lorsqu’on rédige son code, il peut-être pratique d’utiliser des instructions conditionnelles <code>if</code> pour évaluer ou non certaines parties du code. Par exemple, quand on régide un script, il arrive des moments où nous devons réévaluer le début, mais que certaines parties ne nécessitent pas d’être réévaluées à chaque fois, comme des sorties graphiques (ce qui prend du temps). Il est possible de commenter ces parties de codes ne nécessitant pas une nouvelle évaluation, ou alors on peut les placer dans un bloc conditionnel :</p>
+<ul>
+<li>au début du script, on créé une variable <code>graph = False</code> ;</li>
+<li>avant de créer un graphique, on le place dans un bloc <code>if graphe:</code></li>
+</ul>
+Au moment de l’exécution du script, on peut choisir de créer et exporter les graphiques des blocs <code>if graphe:</code> en modifiant à sa guise la variable <code>graph</code>.
+</div>
+
+</div>
+<div id="les-instructions-conditionnelles-if-else" class="section level2">
+<h2><span class="header-section-number">6.2</span> Les instructions conditionnelles <code>if-else</code></h2>
+<p>Si la condition n’est pas vérifiée, on peut proposer des instructions à effectuer, à l’aide des instructions <code>if-else</code>.</p>
+<p>La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> expression:
+  instructions
+<span class="cf">else</span>:
+  autres_instruction</code></pre></div>
+<p>Par exemple, admettons qu’on veuille créer une variable de chaleur prenant la valeur <code>chaud</code> si la valeur de la variable <code>temperature</code> dépasse 28 degrés C, <code>froid</code> sinon. Admettons que la température est de 26 degrés C :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">26</span>
+chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
+<span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
+<span class="cf">else</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
+
+<span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
+<pre><code>## Il fait froid</code></pre>
+<p>Si la température est à présent de 32 degrés C :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">32</span>
+chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
+<span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
+<span class="cf">else</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
+
+<span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
+<pre><code>## Il fait chaud</code></pre>
+</div>
+<div id="les-instructions-conditionnelles-if-elif" class="section level2">
+<h2><span class="header-section-number">6.3</span> Les instructions conditionnelles <code>if-elif</code></h2>
+<p>Si la condition n’est pas vérifiée, on peut en tester une autre et alors évaluer d’autres instructions si cette seconde est vérifiée. Sinon, on peut en tester encore une autre, et ainsi de suite. On peut aussi proposer des instructions si aucune des conditions n’a été évaluée à <code>True</code>. Pour ce faire, on peut utiliser des instructions conditionnelles <code>if-elif</code>.</p>
+<p>La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> expression:
+  instructions
+<span class="cf">elif</span> expression_2:
+  instructions_2
+<span class="cf">elif</span> expression_3:
+  instructions_3
+...
+<span class="cf">else</span>:
+  autres_instruction</code></pre></div>
+<p>L’exemple précédent manque un peu de sens commun. Peut-on dire que lordqu’il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques nuances :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="op">-</span><span class="dv">4</span>
+chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
+<span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;chaude&quot;</span>
+<span class="cf">elif</span> temperature <span class="op">&lt;=</span> <span class="dv">28</span> <span class="kw">and</span> temperature <span class="op">&gt;</span> <span class="dv">15</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;tempérée&quot;</span>
+<span class="cf">elif</span> temperature <span class="op">&lt;=</span> <span class="dv">15</span> <span class="kw">and</span> temperature <span class="op">&gt;</span> <span class="dv">0</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;froide&quot;</span>
+<span class="cf">else</span>:
+  chaleur <span class="op">=</span> <span class="st">&quot;très froide&quot;</span>
+
+<span class="bu">print</span>(<span class="st">&quot;La température est &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
+<pre><code>## La température est très froide</code></pre>
+
+<div class="remarque">
+L’avantage d’utiliser des instructions conditionnelles <code>if-elif</code> par rapport à écrire plusieurs instructions conditionnelles <code>if</code> à la suite est qu’avec la première manière de faire, les comparaisons s’arrêtent dès qu’une est remplie, ce qui est plus efficace.
+</div>
+
+</div>
+<div id="exercice-4" class="section level2">
+<h2><span class="header-section-number">6.4</span> Exercice</h2>
+
+<div class="exframe">
+<p>Soit une liste nommée <code>europe</code> contenant les valeurs suivantes, sous forme de chaînes de caractères : “Allemagne”, “France” et “Espagne”.</p>
+<p>Soit une seconde liste, nommée <code>asie</code>, contenant sous forme de chaînes de caractères : “Vietnam”, “Chine” et “Inde”.</p>
+<p>L’objectif va être de créer une variable <code>continent</code> qui va indiquer soit <code>Europe</code>, <code>Asie</code> ou autre à l’issue de l’exécution du code.</p>
+<p>À l’aide d’instructions conditionnelles de type <code>if-elif</code>, rédiger un code qui vérifie la valeur d’une variable <code>pays</code>, et définit la valeur d’une autre variable nommée <code>continent</code> en fonction du contenu observé dans <code>pays</code> tel que :</p>
+<ul>
+<li>si la valeur de pays est présente dans la liste <code>europe</code>, <code>pays</code> vaudra <code>Europe</code> ;</li>
+<li>si la valeur de pays est présente dans la liste <code>asie</code>, <code>pays</code> vaudra <code>Asie</code> ;</li>
+<li>si la valeur de pays n’est présente ni dans <code>europe</code> ni dans <code>asie</code>, la variable <code>pays</code> vaudra <code>Autre</code>.</li>
+</ul>
+<p>Pour ce faire :</p>
+<ol style="list-style-type: decimal">
+<li>Créer les deux listes <code>europe</code> et <code>asie</code> ainsi que la variable <code>pays</code> (valant “Espagne”) et la variable <code>continent</code> (initiée avec une chaîne de caractères vide).</li>
+<li>Rédiger le code permettant de réaliser l’objectif expliqué, et afficher le contenu de la variable <code>continent</code> à l’issue de l’exécution.</li>
+<li>Changer la valeur de <code>pays</code> à <code>Chine</code> puis à <code>Brésil</code> et dans chacun des cas, exécuter le code rédigé dans la question précédente.</li>
+</ol>
+</div>
+
 </div>
 </div>
             </section>

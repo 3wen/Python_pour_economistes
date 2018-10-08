@@ -181,7 +181,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
 <li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
 <li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
 <li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
@@ -210,18 +210,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
-<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>6.1</b> Les conditions <code>if... else</code></a></li>
-<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>6.2</b> Switch ?</a></li>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
 <li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
 <li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
@@ -259,11 +263,152 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="boucles" class="section level1">
 <h1><span class="header-section-number">7</span> Boucles</h1>
+<p>Quand on doit répéter plusieurs fois la même opération, pour un nombre déterminé de fois ou tant qu’une condition est vérifiée (ou tant qu’elle n’est pas vérifiée), on peut utiliser des boucles, ce qui est bien moins pénible que d’évaluer à la main ou à coups de copier/coller la même instruction.</p>
+<p>Nous allons aborder deux types de boucles dans ce chapitre :</p>
+<ul>
+<li>celles pour lesquelles nous ne savons pas <code>a priori</code> le nombre d’itérations (le nombre de répétitions) à effectuer : les boucles <code>while()</code></li>
+<li>celles pour lesquelles nous savons <code>a priori</code> combien d’itérations sont nécessaires : les boucles <code>for()</code></li>
+</ul>
+
+<div class="remarque">
+<p>Il est possible d’arrêter une boucle <code>for()</code> avant un nombre d’itérations prédéfini ; dans le même esprit, il est possible d’utiliser une boucle <code>while()</code> en sachant d’avance le nombre d’itérations à effectuer.</p>
+</div>
+
 <div id="boucles-avec-while" class="section level2">
 <h2><span class="header-section-number">7.1</span> Boucles avec <code>while()</code></h2>
+<p>Le principe d’une boucle <code>while()</code> est que les instructions à l’intérieur de la boucle seront répétées tant qu’une condition est respectée. L’idée est de faire dépendre cette condition d’un ou plusieurs objets qui seront modifiés au cours des itérations (sans cela, la boucle tournerait à l’infini).</p>
+<p>La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">while</span> condition:
+  instructions</code></pre></div>
+<p>Comme pour les instructions conditionnelles (c.f. Section <a href="conditions.html#conditions">6</a>), les instructions sont placées à l’intérieur d’un bloc.</p>
+<p>Regardons un exemple de boucle <code>while()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">100</span>
+<span class="cf">while</span> x<span class="op">/</span><span class="dv">3</span> <span class="op">&gt;</span> <span class="dv">1</span>:
+  <span class="bu">print</span>(x<span class="op">/</span><span class="dv">3</span>)
+  x <span class="op">=</span> x<span class="op">/</span><span class="dv">3</span></code></pre></div>
+<pre><code>## 33.333333333333336
+## 11.111111111111112
+## 3.703703703703704
+## 1.234567901234568</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x<span class="op">/</span><span class="dv">3</span><span class="op">&gt;</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x<span class="op">/</span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## 0.41152263374485604</code></pre>
+<p>Dans cette boucle, à chaque itération, la valeur de <code>x</code> divisé par 3 est affichée, puis la valeur de <code>x</code> est remplacée par le tiers de sa valeur courante. Cette opération est répétée tant que l’expression <code>x/3 &gt; 1</code> retourne <code>True</code>.</p>
 </div>
 <div id="boucles-avec-for" class="section level2">
 <h2><span class="header-section-number">7.2</span> Boucles avec <code>for()</code></h2>
+<p>Quand on connaît le nombre d’itérations à l’avance, on pourra utiliser une boucle <code>for()</code>. La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> objet <span class="kw">in</span> valeurs_possibles:
+  instructions</code></pre></div>
+<p>avec <code>objet</code> le nom d’une variable locale à la fonction <code>for()</code>, <code>valeurs_possibles</code> un objet comprenant <span class="math inline">\(n\)</span> éléments définissant les valeurs que prendra <code>objet</code> pour chacun des <span class="math inline">\(n\)</span> tours, et <code>instructions</code> les instructions qui seront exécutées à chaque itération.</p>
+<p>Nous allons, dans l’exemple qui suit, calculer le carré des <span class="math inline">\(n\)</span> premiers entiers. Les valeurs que vont prendre notre variable <code>objet</code> (que nous allons appeler <code>i</code>) seront les entiers de 1 à <span class="math inline">\(n\)</span>. Pour obtenir une séquence d’entiers en Python, on peut utiliser la fonction <code>range()</code>, qui prend les paramètres suivants :</p>
+<ul>
+<li><code>start</code> : (optionnel, par défaut, 0) valeur de début pour la séquence (inclue) ;</li>
+<li><code>stop</code> : valeur de fin de la séquence (non inclue) ;</li>
+<li><code>step</code> : (optionnel, par défaut 1) le pas.</li>
+</ul>
+<p>Avant de calculer la suite des <span class="math inline">\(n\)</span> premiers carrés, regardons un exemple de fonctionnement de la fonction <code>range()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">4</span>))) <span class="co"># Les entiers de 0 à 3</span></code></pre></div>
+<pre><code>## [0, 1, 2, 3]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">4</span>))) <span class="co"># Les entiers de 0 à 3</span></code></pre></div>
+<pre><code>## [0, 1, 2, 3]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>))) <span class="co"># Les entiers de 2 à 9</span></code></pre></div>
+<pre><code>## [2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">3</span>))) <span class="co"># Les entiers de 2 à 9 par pas de 3</span></code></pre></div>
+<pre><code>## [2, 5, 8]</code></pre>
+<p>Aussi, pour afficher la suite des <span class="math inline">\(10\)</span> premiers carrés :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">n<span class="op">=</span><span class="dv">10</span>
+<span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>):
+  <span class="bu">print</span>(<span class="st">&quot;Le carré de </span><span class="sc">%s</span><span class="st"> est </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> (i,i<span class="op">**</span><span class="dv">2</span>))</code></pre></div>
+<pre><code>## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 3 est 9
+## Le carré de 4 est 16
+## Le carré de 5 est 25
+## Le carré de 6 est 36
+## Le carré de 7 est 49
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100</code></pre>
+<p>Lors de la première itération, <code>i</code> vaut 0. Lors de la seconde, <code>i</code> vaut 1. Lors de la troisième, <code>i</code> vaut 2, etc.</p>
+<p>Si on veut stocker le résultat dans une liste :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">n<span class="op">=</span><span class="dv">10</span>
+n_entiers_carres <span class="op">=</span> []
+<span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>):
+  n_entiers_carres.append(i<span class="op">**</span><span class="dv">2</span>)
+  
+<span class="bu">print</span>(n_entiers_carres)</code></pre></div>
+<pre><code>## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></pre>
+<p>Il n’est pas obligatoire d’utiliser la fonction <code>range()</code> dans une boucle <code>for()</code>, on peut définir les valeurs “à la main” :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]:
+  <span class="bu">print</span>(<span class="st">&quot;Le carré de </span><span class="sc">%s</span><span class="st"> est </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> (i,i<span class="op">**</span><span class="dv">2</span>))</code></pre></div>
+<pre><code>## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100</code></pre>
+<p>Dans le même esprit, il n’est pas obligatoire d’itérer sur des valeurs numériques :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> prenom <span class="kw">in</span> [<span class="st">&quot;Pascaline&quot;</span>, <span class="st">&quot;Gauthier&quot;</span>, <span class="st">&quot;Xuan&quot;</span>, <span class="st">&quot;Jimmy&quot;</span>]:
+  <span class="bu">print</span>(<span class="st">&quot;Il y a </span><span class="sc">%s</span><span class="st"> lettre(s) dans le prénom </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> (<span class="bu">len</span>(prenom), prenom))</code></pre></div>
+<pre><code>## Il y a 9 lettre(s) dans le prénom Pascaline
+## Il y a 8 lettre(s) dans le prénom Gauthier
+## Il y a 4 lettre(s) dans le prénom Xuan
+## Il y a 5 lettre(s) dans le prénom Jimmy</code></pre>
+<p>Rien n’empêche de faire des boucles à l’intérieur de boucles :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">3</span>):
+    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">3</span>):
+        <span class="bu">print</span>(<span class="st">&quot;i vaut </span><span class="sc">%s</span><span class="st"> et j vaut </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> (i, j))</code></pre></div>
+<pre><code>## i vaut 0 et j vaut 0
+## i vaut 0 et j vaut 1
+## i vaut 0 et j vaut 2
+## i vaut 1 et j vaut 0
+## i vaut 1 et j vaut 1
+## i vaut 1 et j vaut 2
+## i vaut 2 et j vaut 0
+## i vaut 2 et j vaut 1
+## i vaut 2 et j vaut 2</code></pre>
+<p>Comme on peut le constater, l’itération se fait pour chaque valeur de <code>i</code>, et pour chacune de ces valeurs, une seconde itération est effectuée sur les valeurs de <code>j</code>.</p>
+
+<div class="remarque">
+<p>On utilise souvent les lettres <code>i</code> et <code>j</code> pour désigner un compteur dans une boucle <code>for()</code>, mais ce n’est évidemment pas une obligation.</p>
+</div>
+
+<p>Dans une boucle, si on désire incrémenter un comteur, on peut utiliser le symbole <code>+=</code> plutôt que d’écrire <code>compteur = compteur + ...</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">j <span class="op">=</span> <span class="dv">10</span>
+<span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">4</span>):
+  j <span class="op">+=</span> <span class="dv">5</span>
+  <span class="bu">print</span>(<span class="st">&quot;Nouvelle valeur pour j : </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> j)
+  </code></pre></div>
+<pre><code>## Nouvelle valeur pour j : 15
+## Nouvelle valeur pour j : 20
+## Nouvelle valeur pour j : 25
+## Nouvelle valeur pour j : 30</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(j)</code></pre></div>
+<pre><code>## 30</code></pre>
+</div>
+<div id="exercice-5" class="section level2">
+<h2><span class="header-section-number">7.3</span> Exercice</h2>
+
+<div class="exframe">
+<ol style="list-style-type: decimal">
+<li><p>Rédiger un programme très naïf visant à déterminer si un nombre est premier ou non. Pour ce faire :</p>
+<ol style="list-style-type: decimal">
+<li>définir une variable <code>nombre</code> contenant un entier naturel de votre choix (pas trop grand),</li>
+<li>à l’aide d’une boucle, vérifier si chaque entier jusqu’à la racine carrée de votre nombre, est un diviseur de votre nombre (s’arrêter si jamais c’est le cas)</li>
+<li>en sortie de boucle, écrire une instruction conditionnelle indiquant si le nombre est premier ou non.</li>
+</ol></li>
+<li><p>Choisir un nombre mystère entre 1 et 100, et le stocker dans un objet que l’on nommera <code>nombre_mystere</code>. Ensuite, créer une boucle qui à chaque itération effectue un tirage aléatoire d’un entier compris entre 1 et 100. Tant que le nombre tiré est différent du nombre mystère, la boucle doit continuer. À la sortie de la boucle, une variable que l’on appellera <code>nb_tirages</code> contiendra le nombre de tirages réalisés pour obtenir le nombre mystère.</p></li>
+</ol>
+<p><em>Note : pour tirer un nombre aléatoirement entre 1 et 100, on peut utiliser la méthode <code>randint()</code> du module <code>random</code>).</em></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Parcourir les entiers de 1 à 20 à l’aide d’une boucle for en affichant dans la console à chaque itération si le nombre courant est pair.</li>
+<li>Utiliser une boucle <code>for()</code> pour reprouire la suite de Fibonacci jusqu’à son dixième terme (la séquence <span class="math inline">\(F_n\)</span> est définie par la relation de récurrence suivante : <span class="math inline">\(F_n = F_{n-1} + F_{n-2}\)</span> ; les valeurs initiales sont <span class="math inline">\(F_0 = 0\)</span> et <span class="math inline">\(F_1 = 1\)</span>).</li>
+</ol>
+</div>
+
 </div>
 </div>
             </section>

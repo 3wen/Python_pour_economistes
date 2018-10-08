@@ -3203,7 +3203,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 12:27:04.202235
+## 2018-10-08 17:53:26.118916
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3213,7 +3213,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 12:27:04.203846
+## 2018-10-08 17:53:26.120310
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4075,7 +4075,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4089,7 +4089,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4125,7 +4125,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
+## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4156,7 +4156,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Toulon', 'Rennes', 'Aix-en-Provence'}
+## {'Toulon', 'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4169,7 +4169,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Toulon', 'Rennes', 'Aix-en-Provence'}
+## {'Toulon', 'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4185,7 +4185,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
+## {'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4211,7 +4211,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Rennes', 'Aix-en-Provence'}
+## {'Rennes', 'Marseille', 'Nice', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4258,7 +4258,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Nice', 'Aix-en-Provence', 'Marseille', 'Toulon'}
+## y :  {'Nice', 'Toulon', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4268,7 +4268,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Nice', 'Aix-en-Provence', 'Marseille'}
+## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4298,7 +4298,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Marseille'}
+## {'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4309,7 +4309,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Aix-en-Provence', 'Marseille']
+## ['Marseille', 'Aix-en-Provence']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -5023,7 +5023,7 @@ Idem avec des n-uplets :
 ## (1, 'pomme', 5, 7, 1, 'pomme', 5, 7, 1, 'pomme', 5, 7)
 \end{lstlisting}
 
-\section{Opérateurs de comparaison}\label{operateurs-de-comparaison}
+\section{Opérateurs de comparaison}\label{operateurs-comparaison}
 
 Les opérateurs de comparaisons permettent de comparer entre eux des
 objets de tous les types de base. Le résultat d'un test de comparaison
@@ -6596,28 +6596,696 @@ Si on souhaite réimporter dans Python le contenu du fichier
 
 \chapter{Conditions}\label{conditions}
 
-\section{\texorpdfstring{Les conditions
-\texttt{if...\ else}}{Les conditions if... else}}\label{les-conditions-if...-else}
+Souvent, en fonction de l'évaluation d'une expression, on désire
+réaliser une opération plutôt qu'une autre. Par exemple, lorsqu'on créé
+une nouvelle variable dans une analyse statistique, et que cette
+variable prend ses valeurs en fonction d'une autre, on peut être amené à
+utiliser des \textbf{instructions conditionnelles} : ``si la valeur est
+inférieur à \(x\), alors\ldots{} sinon, \ldots{}''.
 
-\section{Switch ?}\label{switch}
+Dans ce court chapitre, nous regardons comment rédiger les instructions
+conditionnelles.
+
+\section{\texorpdfstring{Les instructions conditionnelles
+\texttt{if}}{Les instructions conditionnelles if}}\label{les-instructions-conditionnelles-if}
+
+L'instruction conditionnelle la plus simple que l'on peut rencontrer est
+\texttt{if}. Si et seulement si une expression est évaluée à
+\texttt{True}, alors une instruction sera évaluée.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ expression:}
+\NormalTok{  instruction}
+\end{Highlighting}
+\end{Shaded}
+
+Les lignes après les deux points (\texttt{:}) doivent être placées dans
+un bloc, en utilisant un taquet de tabulation.
+
+\BeginKnitrBlock{remarque}
+Un bloc de code est un regroupement d'instructions. Des codes imbriqués
+indentés à la même position font partie du même bloc :
+
+\begin{lstlisting}
+ligne du bloc 1
+ligne du bloc 1
+  ligne du bloc2
+  ligne du bloc2
+ligne du bloc1
+\end{lstlisting}
+\EndKnitrBlock{remarque}
+
+Dans le code ci-dessous, nous définissons une variable \texttt{x}
+contenant l'entier \(2\). L'instruction suivante évalue l'expression
+\texttt{x\ ==\ 2} (cf.~Section~@red(\#operateurs-comparaison) pour des
+rappels sur les opérateurs de comparaison). Si le résultat de cette
+expression est \texttt{Vrai}, alors le contenu du bloc est évalué.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{2}
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Hello
+\end{lstlisting}
+
+Si on change la valeur de \texttt{x} de manière à ce que l'expression
+\texttt{x\ ==\ 2} retourne \texttt{False} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{3}
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+À l'intérieur du bloc, on peut écrire plusieurs instructions qui seront
+évaluées si l'expression est \texttt{True} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{2}
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+\NormalTok{  y }\OperatorTok{=} \StringTok{"Hello"}
+  \BuiltInTok{print}\NormalTok{(y }\OperatorTok{+} \StringTok{", x vaut : "} \OperatorTok{+} \BuiltInTok{str}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Hello, x vaut : 2
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+Lorsqu'on rédige son code, il peut-être pratique d'utiliser des
+instructions conditionnelles \texttt{if} pour évaluer ou non certaines
+parties du code. Par exemple, quand on régide un script, il arrive des
+moments où nous devons réévaluer le début, mais que certaines parties ne
+nécessitent pas d'être réévaluées à chaque fois, comme des sorties
+graphiques (ce qui prend du temps). Il est possible de commenter ces
+parties de codes ne nécessitant pas une nouvelle évaluation, ou alors on
+peut les placer dans un bloc conditionnel :
+
+\begin{itemize}
+\tightlist
+\item
+  au début du script, on créé une variable \texttt{graph\ =\ False} ;
+\item
+  avant de créer un graphique, on le place dans un bloc
+  \texttt{if\ graphe:}
+\end{itemize}
+
+Au moment de l'exécution du script, on peut choisir de créer et exporter
+les graphiques des blocs \texttt{if\ graphe:} en modifiant à sa guise la
+variable \texttt{graph}.
+\EndKnitrBlock{remarque}
+
+\section{\texorpdfstring{Les instructions conditionnelles
+\texttt{if-else}}{Les instructions conditionnelles if-else}}\label{les-instructions-conditionnelles-if-else}
+
+Si la condition n'est pas vérifiée, on peut proposer des instructions à
+effectuer, à l'aide des instructions \texttt{if-else}.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ expression:}
+\NormalTok{  instructions}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{  autres_instruction}
+\end{Highlighting}
+\end{Shaded}
+
+Par exemple, admettons qu'on veuille créer une variable de chaleur
+prenant la valeur \texttt{chaud} si la valeur de la variable
+\texttt{temperature} dépasse 28 degrés C, \texttt{froid} sinon.
+Admettons que la température est de 26 degrés C :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temperature }\OperatorTok{=} \DecValTok{26}
+\NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
+\ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Il fait froid
+\end{lstlisting}
+
+Si la température est à présent de 32 degrés C :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temperature }\OperatorTok{=} \DecValTok{32}
+\NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
+\ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Il fait chaud
+\end{lstlisting}
+
+\section{\texorpdfstring{Les instructions conditionnelles
+\texttt{if-elif}}{Les instructions conditionnelles if-elif}}\label{les-instructions-conditionnelles-if-elif}
+
+Si la condition n'est pas vérifiée, on peut en tester une autre et alors
+évaluer d'autres instructions si cette seconde est vérifiée. Sinon, on
+peut en tester encore une autre, et ainsi de suite. On peut aussi
+proposer des instructions si aucune des conditions n'a été évaluée à
+\texttt{True}. Pour ce faire, on peut utiliser des instructions
+conditionnelles \texttt{if-elif}.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ expression:}
+\NormalTok{  instructions}
+\ControlFlowTok{elif}\NormalTok{ expression_2:}
+\NormalTok{  instructions_2}
+\ControlFlowTok{elif}\NormalTok{ expression_3:}
+\NormalTok{  instructions_3}
+\NormalTok{...}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{  autres_instruction}
+\end{Highlighting}
+\end{Shaded}
+
+L'exemple précédent manque un peu de sens commun. Peut-on dire que
+lordqu'il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques
+nuances :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temperature }\OperatorTok{=} \OperatorTok{-}\DecValTok{4}
+\NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
+\ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaude"}
+\ControlFlowTok{elif}\NormalTok{ temperature }\OperatorTok{<=} \DecValTok{28} \KeywordTok{and}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{15}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"tempérée"}
+\ControlFlowTok{elif}\NormalTok{ temperature }\OperatorTok{<=} \DecValTok{15} \KeywordTok{and}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{0}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froide"}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{  chaleur }\OperatorTok{=} \StringTok{"très froide"}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"La température est "} \OperatorTok{+}\NormalTok{ chaleur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## La température est très froide
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+L'avantage d'utiliser des instructions conditionnelles \texttt{if-elif}
+par rapport à écrire plusieurs instructions conditionnelles \texttt{if}
+à la suite est qu'avec la première manière de faire, les comparaisons
+s'arrêtent dès qu'une est remplie, ce qui est plus efficace.
+\EndKnitrBlock{remarque}
+
+\section{Exercice}\label{exercice-4}
+
+\BeginKnitrBlock{exframe}
+Soit une liste nommée \texttt{europe} contenant les valeurs suivantes,
+sous forme de chaînes de caractères : ``Allemagne'', ``France'' et
+``Espagne''.
+
+Soit une seconde liste, nommée \texttt{asie}, contenant sous forme de
+chaînes de caractères : ``Vietnam'', ``Chine'' et ``Inde''.
+
+L'objectif va être de créer une variable \texttt{continent} qui va
+indiquer soit \texttt{Europe}, \texttt{Asie} ou autre à l'issue de
+l'exécution du code.
+
+À l'aide d'instructions conditionnelles de type \texttt{if-elif},
+rédiger un code qui vérifie la valeur d'une variable \texttt{pays}, et
+définit la valeur d'une autre variable nommée \texttt{continent} en
+fonction du contenu observé dans \texttt{pays} tel que :
+
+\begin{itemize}
+\tightlist
+\item
+  si la valeur de pays est présente dans la liste \texttt{europe},
+  \texttt{pays} vaudra \texttt{Europe} ;
+\item
+  si la valeur de pays est présente dans la liste \texttt{asie},
+  \texttt{pays} vaudra \texttt{Asie} ;
+\item
+  si la valeur de pays n'est présente ni dans \texttt{europe} ni dans
+  \texttt{asie}, la variable \texttt{pays} vaudra \texttt{Autre}.
+\end{itemize}
+
+Pour ce faire :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Créer les deux listes \texttt{europe} et \texttt{asie} ainsi que la
+  variable \texttt{pays} (valant ``Espagne'') et la variable
+  \texttt{continent} (initiée avec une chaîne de caractères vide).
+\item
+  Rédiger le code permettant de réaliser l'objectif expliqué, et
+  afficher le contenu de la variable \texttt{continent} à l'issue de
+  l'exécution.
+\item
+  Changer la valeur de \texttt{pays} à \texttt{Chine} puis à
+  \texttt{Brésil} et dans chacun des cas, exécuter le code rédigé dans
+  la question précédente.
+\end{enumerate}
+\EndKnitrBlock{exframe}
 
 \chapter{Boucles}\label{boucles}
+
+Quand on doit répéter plusieurs fois la même opération, pour un nombre
+déterminé de fois ou tant qu'une condition est vérifiée (ou tant qu'elle
+n'est pas vérifiée), on peut utiliser des boucles, ce qui est bien moins
+pénible que d'évaluer à la main ou à coups de copier/coller la même
+instruction.
+
+Nous allons aborder deux types de boucles dans ce chapitre :
+
+\begin{itemize}
+\tightlist
+\item
+  celles pour lesquelles nous ne savons pas \texttt{a\ priori} le nombre
+  d'itérations (le nombre de répétitions) à effectuer : les boucles
+  \texttt{while()}
+\item
+  celles pour lesquelles nous savons \texttt{a\ priori} combien
+  d'itérations sont nécessaires : les boucles \texttt{for()}
+\end{itemize}
+
+\BeginKnitrBlock{remarque}
+Il est possible d'arrêter une boucle \texttt{for()} avant un nombre
+d'itérations prédéfini ; dans le même esprit, il est possible d'utiliser
+une boucle \texttt{while()} en sachant d'avance le nombre d'itérations à
+effectuer.
+\EndKnitrBlock{remarque}
 
 \section{\texorpdfstring{Boucles avec
 \texttt{while()}}{Boucles avec while()}}\label{boucles-avec-while}
 
+Le principe d'une boucle \texttt{while()} est que les instructions à
+l'intérieur de la boucle seront répétées tant qu'une condition est
+respectée. L'idée est de faire dépendre cette condition d'un ou
+plusieurs objets qui seront modifiés au cours des itérations (sans cela,
+la boucle tournerait à l'infini).
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{while}\NormalTok{ condition:}
+\NormalTok{  instructions}
+\end{Highlighting}
+\end{Shaded}
+
+Comme pour les instructions conditionnelles (c.f.
+Section~\ref{conditions}), les instructions sont placées à l'intérieur
+d'un bloc.
+
+Regardons un exemple de boucle \texttt{while()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{100}
+\ControlFlowTok{while}\NormalTok{ x}\OperatorTok{/}\DecValTok{3} \OperatorTok{>} \DecValTok{1}\NormalTok{:}
+  \BuiltInTok{print}\NormalTok{(x}\OperatorTok{/}\DecValTok{3}\NormalTok{)}
+\NormalTok{  x }\OperatorTok{=}\NormalTok{ x}\OperatorTok{/}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 33.333333333333336
+## 11.111111111111112
+## 3.703703703703704
+## 1.234567901234568
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x}\OperatorTok{/}\DecValTok{3}\OperatorTok{>}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## False
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x}\OperatorTok{/}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0.41152263374485604
+\end{lstlisting}
+
+Dans cette boucle, à chaque itération, la valeur de \texttt{x} divisé
+par 3 est affichée, puis la valeur de \texttt{x} est remplacée par le
+tiers de sa valeur courante. Cette opération est répétée tant que
+l'expression \texttt{x/3\ \textgreater{}\ 1} retourne \texttt{True}.
+
 \section{\texorpdfstring{Boucles avec
 \texttt{for()}}{Boucles avec for()}}\label{boucles-avec-for}
 
+Quand on connaît le nombre d'itérations à l'avance, on pourra utiliser
+une boucle \texttt{for()}. La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ objet }\KeywordTok{in}\NormalTok{ valeurs_possibles:}
+\NormalTok{  instructions}
+\end{Highlighting}
+\end{Shaded}
+
+avec \texttt{objet} le nom d'une variable locale à la fonction
+\texttt{for()}, \texttt{valeurs\_possibles} un objet comprenant \(n\)
+éléments définissant les valeurs que prendra \texttt{objet} pour chacun
+des \(n\) tours, et \texttt{instructions} les instructions qui seront
+exécutées à chaque itération.
+
+Nous allons, dans l'exemple qui suit, calculer le carré des \(n\)
+premiers entiers. Les valeurs que vont prendre notre variable
+\texttt{objet} (que nous allons appeler \texttt{i}) seront les entiers
+de 1 à \(n\). Pour obtenir une séquence d'entiers en Python, on peut
+utiliser la fonction \texttt{range()}, qui prend les paramètres suivants
+:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{start} : (optionnel, par défaut, 0) valeur de début pour la
+  séquence (inclue) ;
+\item
+  \texttt{stop} : valeur de fin de la séquence (non inclue) ;
+\item
+  \texttt{step} : (optionnel, par défaut 1) le pas.
+\end{itemize}
+
+Avant de calculer la suite des \(n\) premiers carrés, regardons un
+exemple de fonctionnement de la fonction \texttt{range()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{))) }\CommentTok{# Les entiers de 0 à 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0, 1, 2, 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{))) }\CommentTok{# Les entiers de 0 à 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0, 1, 2, 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{10}\NormalTok{))) }\CommentTok{# Les entiers de 2 à 9}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [2, 3, 4, 5, 6, 7, 8, 9]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{))) }\CommentTok{# Les entiers de 2 à 9 par pas de 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [2, 5, 8]
+\end{lstlisting}
+
+Aussi, pour afficher la suite des \(10\) premiers carrés :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OperatorTok{=}\DecValTok{10}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, n}\OperatorTok{+}\DecValTok{1}\NormalTok{):}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Le carré de }\SpecialCharTok{%s}\StringTok{ est }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 3 est 9
+## Le carré de 4 est 16
+## Le carré de 5 est 25
+## Le carré de 6 est 36
+## Le carré de 7 est 49
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100
+\end{lstlisting}
+
+Lors de la première itération, \texttt{i} vaut 0. Lors de la seconde,
+\texttt{i} vaut 1. Lors de la troisième, \texttt{i} vaut 2, etc.
+
+Si on veut stocker le résultat dans une liste :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OperatorTok{=}\DecValTok{10}
+\NormalTok{n_entiers_carres }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, n}\OperatorTok{+}\DecValTok{1}\NormalTok{):}
+\NormalTok{  n_entiers_carres.append(i}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+  
+\BuiltInTok{print}\NormalTok{(n_entiers_carres)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+\end{lstlisting}
+
+Il n'est pas obligatoire d'utiliser la fonction \texttt{range()} dans
+une boucle \texttt{for()}, on peut définir les valeurs ``à la main'' :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ [}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{]:}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Le carré de }\SpecialCharTok{%s}\StringTok{ est }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100
+\end{lstlisting}
+
+Dans le même esprit, il n'est pas obligatoire d'itérer sur des valeurs
+numériques :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ prenom }\KeywordTok{in}\NormalTok{ [}\StringTok{"Pascaline"}\NormalTok{, }\StringTok{"Gauthier"}\NormalTok{, }\StringTok{"Xuan"}\NormalTok{, }\StringTok{"Jimmy"}\NormalTok{]:}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Il y a }\SpecialCharTok{%s}\StringTok{ lettre(s) dans le prénom }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (}\BuiltInTok{len}\NormalTok{(prenom), prenom))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Il y a 9 lettre(s) dans le prénom Pascaline
+## Il y a 8 lettre(s) dans le prénom Gauthier
+## Il y a 4 lettre(s) dans le prénom Xuan
+## Il y a 5 lettre(s) dans le prénom Jimmy
+\end{lstlisting}
+
+Rien n'empêche de faire des boucles à l'intérieur de boucles :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{):}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"i vaut }\SpecialCharTok{%s}\StringTok{ et j vaut }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i, j))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## i vaut 0 et j vaut 0
+## i vaut 0 et j vaut 1
+## i vaut 0 et j vaut 2
+## i vaut 1 et j vaut 0
+## i vaut 1 et j vaut 1
+## i vaut 1 et j vaut 2
+## i vaut 2 et j vaut 0
+## i vaut 2 et j vaut 1
+## i vaut 2 et j vaut 2
+\end{lstlisting}
+
+Comme on peut le constater, l'itération se fait pour chaque valeur de
+\texttt{i}, et pour chacune de ces valeurs, une seconde itération est
+effectuée sur les valeurs de \texttt{j}.
+
+\BeginKnitrBlock{remarque}
+On utilise souvent les lettres \texttt{i} et \texttt{j} pour désigner un
+compteur dans une boucle \texttt{for()}, mais ce n'est évidemment pas
+une obligation.
+\EndKnitrBlock{remarque}
+
+Dans une boucle, si on désire incrémenter un comteur, on peut utiliser
+le symbole \texttt{+=} plutôt que d'écrire
+\texttt{compteur\ =\ compteur\ +\ ...} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{j }\OperatorTok{=} \DecValTok{10}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{):}
+\NormalTok{  j }\OperatorTok{+=} \DecValTok{5}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"Nouvelle valeur pour j : }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ j)}
+  
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Nouvelle valeur pour j : 15
+## Nouvelle valeur pour j : 20
+## Nouvelle valeur pour j : 25
+## Nouvelle valeur pour j : 30
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(j)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 30
+\end{lstlisting}
+
+\section{Exercice}\label{exercice-5}
+
+\BeginKnitrBlock{exframe}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Rédiger un programme très naïf visant à déterminer si un nombre est
+  premier ou non. Pour ce faire :
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    définir une variable \texttt{nombre} contenant un entier naturel de
+    votre choix (pas trop grand),
+  \item
+    à l'aide d'une boucle, vérifier si chaque entier jusqu'à la racine
+    carrée de votre nombre, est un diviseur de votre nombre (s'arrêter
+    si jamais c'est le cas)
+  \item
+    en sortie de boucle, écrire une instruction conditionnelle indiquant
+    si le nombre est premier ou non.
+  \end{enumerate}
+\item
+  Choisir un nombre mystère entre 1 et 100, et le stocker dans un objet
+  que l'on nommera \texttt{nombre\_mystere}. Ensuite, créer une boucle
+  qui à chaque itération effectue un tirage aléatoire d'un entier
+  compris entre 1 et 100. Tant que le nombre tiré est différent du
+  nombre mystère, la boucle doit continuer. À la sortie de la boucle,
+  une variable que l'on appellera \texttt{nb\_tirages} contiendra le
+  nombre de tirages réalisés pour obtenir le nombre mystère.
+\end{enumerate}
+
+\emph{Note : pour tirer un nombre aléatoirement entre 1 et 100, on peut
+utiliser la méthode \texttt{randint()} du module \texttt{random}).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Parcourir les entiers de 1 à 20 à l'aide d'une boucle for en affichant
+  dans la console à chaque itération si le nombre courant est pair.
+\item
+  Utiliser une boucle \texttt{for()} pour reprouire la suite de
+  Fibonacci jusqu'à son dixième terme (la séquence \(F_n\) est définie
+  par la relation de récurrence suivante : \(F_n = F_{n-1} + F_{n-2}\) ;
+  les valeurs initiales sont \(F_0 = 0\) et \(F_1 = 1\)).
+\end{enumerate}
+\EndKnitrBlock{exframe}
+
 \chapter{Fonctions}\label{fonctions}
 
+La plupart du temps, on utilise les fonctions de base ou contenues dans
+des modules. Cela dit, lorsque l'on récupère des données en ligne ou
+qu'on doit mettre en forme des données importées depuis diverses
+sources, il arrive qu'il soit nécessaire de créer ses propres fonctions.
+L'avantage de créer ses fonctions se révèle dès lors qu'on doit
+effectuer une suite d'instruction de manière répétée, avec quelques
+légères différences (on peut alors appliquer les fonctions au sein d'une
+boucle, comme nous l'avons abordé dans le Chapitre~\ref{boucles}).
+
 \section{Définition}\label{definition}
+
+Une fonction est déclarée à l'aide du mot clé \texttt{keyword}. Ce
+qu'elle renvoie est retourné à l'aide du mot clé \texttt{return}.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ nom_fonction(paramètres):}
+\NormalTok{  corps de la fonction}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Portée}\label{portee}
 
 \section{Fonctions lambda}\label{fonctions-lambda}
 
 \section{Erreurs}\label{erreurs}
+
+\section{Exercice}\label{exercice-6}
+
+\BeginKnitrBlock{exframe}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Question 1
+\end{enumerate}
+\EndKnitrBlock{exframe}
 
 \chapter{Introduction à Numpy}\label{numpy}
 

@@ -181,7 +181,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
 <li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
 <li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
 <li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
@@ -210,18 +210,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
-<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>6.1</b> Les conditions <code>if... else</code></a></li>
-<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>6.2</b> Switch ?</a></li>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
 <li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
 <li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
@@ -461,11 +465,11 @@ x.sort(key<span class="op">=</span><span class="bu">len</span>)
 <p>Pour créer un ensemble, Python fournit la fonction <code>set()</code>. On fournit un ou plusieurs éléments constituant l’ensemble, en les séparant par des virgules et en entourant l’ensemble d’accolades (<code>{}</code>) :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;}</code></pre>
 <p>De manière équivalent, on peut ne pas utiliser la fonction <code>set()</code> et définir l’ensemble uniquement à l’aide des crochets :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> {<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>}
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;}</code></pre>
 <p>En revanche, si l’ensemble est vide, Python retourne un erreur si la fonction <code>set()</code> n’est pas utilisée : il est nécessaire d’utiliser la fonction set :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble_vide <span class="op">=</span> {}
 <span class="bu">type</span>(ensemble_vide)</code></pre></div>
@@ -475,7 +479,7 @@ x.sort(key<span class="op">=</span><span class="bu">len</span>)
 <p>Lors de la création, s’il existe des doublons dans les valeurs fournies, ils seront supprimés pour ne garder qu’une seule valeur :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;}</code></pre>
 <p>La longueur d’un ensemble s’obtient à l’aide de la fonction <code>len()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">len</span>(ensemble))</code></pre></div>
 <pre><code>## 4</code></pre>
@@ -486,18 +490,18 @@ x.sort(key<span class="op">=</span><span class="bu">len</span>)
 <p>Pour ajouter un élément à un ensemble, Python offre la méthode <code>add()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.add(<span class="st">&quot;Toulon&quot;</span>)
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Toulon&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Marseille&#39;, &#39;Toulon&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
 <p>Si l’élément est déjà présent, il ne sera pas ajouté :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.add(<span class="st">&quot;Toulon&quot;</span>)
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Toulon&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Marseille&#39;, &#39;Toulon&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
 </div>
 <div id="suppression" class="section level4">
 <h4><span class="header-section-number">3.3.1.2</span> Suppression</h4>
 <p>Pour supprimer une valeur d’un ensemble, Python propose la méthode <code>remove()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)
 <span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
 <p>Si la valeur n’est pas présente dans l’ensemble, Python retourne un message d’erreur :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)</code></pre></div>
 <pre><code>## KeyError: &#39;Toulon&#39;
@@ -505,7 +509,7 @@ x.sort(key<span class="op">=</span><span class="bu">len</span>)
 ## Detailed traceback: 
 ##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Rennes&#39;}</code></pre>
+<pre><code>## {&#39;Rennes&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
 </div>
 </div>
 <div id="test-dappartenance-1" class="section level3">
@@ -523,9 +527,9 @@ x.sort(key<span class="op">=</span><span class="bu">len</span>)
 y <span class="op">=</span> ensemble.copy()
 y.add(<span class="st">&quot;Toulon&quot;</span>)
 <span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</code></pre></div>
-<pre><code>## y :  {&#39;Nice&#39;, &#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Toulon&#39;}</code></pre>
+<pre><code>## y :  {&#39;Toulon&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;}</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;ensemble : &quot;</span>, ensemble)</code></pre></div>
-<pre><code>## ensemble :  {&#39;Nice&#39;, &#39;Marseille&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<pre><code>## ensemble :  {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;}</code></pre>
 </div>
 <div id="conversion-en-liste" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Conversion en liste</h3>
@@ -535,10 +539,10 @@ y.add(<span class="st">&quot;Toulon&quot;</span>)
 <pre><code>## [&#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Marseille&#39;]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_ensemble <span class="op">=</span> <span class="bu">set</span>(ma_liste)
 <span class="bu">print</span>(mon_ensemble)</code></pre></div>
-<pre><code>## {&#39;Marseille&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;}</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ma_nouvelle_liste <span class="op">=</span> <span class="bu">list</span>(mon_ensemble)
 <span class="bu">print</span>(ma_nouvelle_liste)</code></pre></div>
-<pre><code>## [&#39;Marseille&#39;, &#39;Aix-en-Provence&#39;]</code></pre>
+<pre><code>## [&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;]</code></pre>
 </div>
 </div>
 <div id="type-dict" class="section level2">

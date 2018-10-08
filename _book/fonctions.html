@@ -181,7 +181,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
 <li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-de-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
+<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
 <li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
 <li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
@@ -210,18 +210,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
-<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-conditions-if...-else"><i class="fa fa-check"></i><b>6.1</b> Les conditions <code>if... else</code></a></li>
-<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#switch"><i class="fa fa-check"></i><b>6.2</b> Switch ?</a></li>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
 <li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a></li>
 <li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#erreurs"><i class="fa fa-check"></i><b>8.4</b> Erreurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a></li>
 <li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
@@ -259,8 +263,13 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="fonctions" class="section level1">
 <h1><span class="header-section-number">8</span> Fonctions</h1>
+<p>La plupart du temps, on utilise les fonctions de base ou contenues dans des modules. Cela dit, lorsque l’on récupère des données en ligne ou qu’on doit mettre en forme des données importées depuis diverses sources, il arrive qu’il soit nécessaire de créer ses propres fonctions. L’avantage de créer ses fonctions se révèle dès lors qu’on doit effectuer une suite d’instruction de manière répétée, avec quelques légères différences (on peut alors appliquer les fonctions au sein d’une boucle, comme nous l’avons abordé dans le Chapitre <a href="boucles.html#boucles">7</a>).</p>
 <div id="definition" class="section level2">
 <h2><span class="header-section-number">8.1</span> Définition</h2>
+<p>Une fonction est déclarée à l’aide du mot clé <code>keyword</code>. Ce qu’elle renvoie est retourné à l’aide du mot clé <code>return</code>.</p>
+<p>La syntaxe est la suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> nom_fonction(paramètres):
+  corps de la fonction</code></pre></div>
 </div>
 <div id="portee" class="section level2">
 <h2><span class="header-section-number">8.2</span> Portée</h2>
@@ -270,6 +279,16 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="erreurs" class="section level2">
 <h2><span class="header-section-number">8.4</span> Erreurs</h2>
+</div>
+<div id="exercice-6" class="section level2">
+<h2><span class="header-section-number">8.5</span> Exercice</h2>
+
+<div class="exframe">
+<ol style="list-style-type: decimal">
+<li>Question 1</li>
+</ol>
+</div>
+
 </div>
 </div>
             </section>

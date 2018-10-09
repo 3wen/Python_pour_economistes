@@ -16,6 +16,7 @@ monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
+    keep_md: true
     css: styles/style.css
     highlight: tango
     config:
@@ -35,61 +36,7 @@ output:
     stylesheet: styles/style.css
 ---
 
-```{r knitr_init, echo=FALSE, cache=FALSE, include=FALSE}
 
-library(knitr)
-library(tidyverse)
-
-## Global options
-options(max.print="75")
-opts_chunk$set(echo=TRUE,
-	             cache=FALSE,
-               prompt=FALSE,
-               tidy=TRUE,
-               # comment=NA,
-               message=FALSE,
-               warning=FALSE,
-               size="scriptsize",
-               tidy.opts=list(width.cutoff=80))
-opts_knit$set(width=80)
-
-
-# library(reticulate)
-# use_python('/anaconda3/bin/python')
-
-knitr::opts_chunk$set(engine.path = list(
-  python = '/anaconda3/bin/python'
-))
-knitr::knit_engines$set(python = reticulate::eng_python)
-# use_python("/anaconda3/bin/python/")
-# py_config()
-
-
-# toto <- import("pandas")
-
-# ## a common hook for messages, warnings and errors
-# hook_lst_bf = function(x, options) {
-#     paste("\\begin{lstlisting}[basicstyle={\\bfseries}]\n", x, 
-#         "\\end{lstlisting}\n", sep = "")
-# }
-# knit_hooks$set(source = function(x, options) {
-#     paste("\\begin{lstlisting}\n", x, 
-#         "\\end{lstlisting}\n", sep = "")
-# }, output = function(x, options) {
-#     paste("\\begin{lstlisting}[basicstyle={\\ttfamily}]\n", x, 
-#         "\\end{lstlisting}\n", sep = "")
-# }, warning = hook_lst_bf, message = hook_lst_bf, error = hook_lst_bf)
-# 
-# ## empty highlight header since it is not useful any more
-# set_header(highlight = "")
-
-options(bookdown.post.latex = function(x) {
-  # x is the content of the LaTeX output file
-  gsub('^\\\\(begin|end)\\{verbatim\\}$', '\\\\\\1{lstlisting}', x)
-})
-
-
-```
 
 
 
@@ -137,50 +84,10 @@ Python est un langage de programmation multi plates-formes, écrit en `C`, plac�
 
 La popularité de Python a connu une croissance forte ces dernières années, comme le confirment les résultats de sondages proposés par [Stack Overflow](https://stackoverflow.com/) depuis 2011. Stack Overflow propose à ses utilisateurs de répondre à une enquête dans laquelle de nombreuses questions leur sont proposées, afin de décrire leur expérience en tant que développeur. [Les résultats de l'enquête de 2018](https://insights.stackoverflow.com/survey/2018#technology) montrent une nouvelle avancée de l'utilisation de Python par les développeurs. En effet, comme le montre la Figure\ \@ref(fig:intro-stack-langages), 38.8% des répondants indiquent développer en Python, soit 6.8 points de pourcentage de plus qu'un an auparavant, ce qui fait de ce langage de programmation celui dont la croissance a été la plus importante entre 2017 et 2018.
 
-```{r intro-stack-langages, echo=FALSE, fig.cap="Langages de programmation, de scripting et de balisage.", fig.align='center'}
-df_stack <-
-  c("JavaScript", 69.8,
-"HTML", 68.5,
-"CSS",65.1,
-"SQL",57.0,
-"Java",45.3,
-"Bash/Shell",39.8,
-"Python",38.8,
-"C#",34.4,
-"PHP",30.7,
-"C++",25.4,
-"C",23.0,
-"TypeScript",17.4,
-"Ruby",10.1,
-"Swift",8.1,
-"Assembly",7.4,
-"Go",7.1,
-"Objective-C",7.0,
-"VB.NET",6.7,
-"R",6.1,
-"Matlab",5.8,
-"VBA",4.9,
-"Kotlin",4.5,
-"Scala",4.4,
-"Groovy",4.3,
-"Perl",4.2) %>%
-  matrix(ncol=2, byrow = TRUE) %>%
-  data.frame(stringsAsFactors = FALSE) %>%
-  magrittr::set_colnames(c("Langage", "Pourcentage"))
-
-df_stack <-
-  df_stack %>%
-  mutate(Langage = factor(Langage, levels = df_stack$Langage),
-         Pourcentage = as.numeric(Pourcentage),
-         py = Langage == "Python")
-
-ggplot(df_stack, aes(x = Langage, y = Pourcentage, fill = py)) +
-  geom_bar(stat="identity") +
-  xlab(NULL) +
-  ylab("Pourcentage de répondants") +
-  coord_flip() +
-  scale_fill_manual(values = c("TRUE" = "#0065bd", "FALSE" = "grey"), guide = "none")
-```
+<div class="figure" style="text-align: center">
+<img src="_main_files/figure-html/intro-stack-langages-1.png" alt="Langages de programmation, de scripting et de balisage."  />
+<p class="caption">(\#fig:intro-stack-langages)Langages de programmation, de scripting et de balisage.</p>
+</div>
 
 ## Versions
 
@@ -197,20 +104,23 @@ Il est supposé ici que vous vous avez installé [Anaconda](https://www.anaconda
 ### Python dans un terminal
 
 Il est possible d'appeler Python depuis un terminal, en exécutant la commande suivante (sous Windows : dans le menu démarrer, lancer le logiciel "Python 3.6") :
-```{shell, echo=T, eval=F}
+
+```shell
 python
 ```
 
 Ce qui donne le rendu visible sur la Figure\ \@ref(fig:intro-python-terminal) :
 
-```{r intro-python-terminal, echo=F, out.width = "70%", fig.cap="Python dans un terminal.", fig.align='center', fig.pos='H'}
-include_graphics("figs/python_terminal.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/python_terminal.png" alt="Python dans un terminal." width="70%" />
+<p class="caption">(\#fig:intro-python-terminal)Python dans un terminal.</p>
+</div>
 
 On note la présence des caractères `>>>` (*prompt*), qui invitent l'utilisateur à inscrie une commande. Les expressions sont évaluées une fois qu'elle sont soumises (à l'aide de la touche `ENTREE`) et le résultat est donné, lorsqu'il n'y a pas d'erreur dans le code.
 
 Par exemple, lorsque l'on évalue `2+1` :
-```{shell, echo=TRUE, eval=FALSE}
+
+```shell
 >>> 2+1
 3
 >>>
@@ -224,31 +134,36 @@ On note la présence du *prompt* à la fin, indiquant que Python est prêt à re
 Il existe un environnement un peu plus chaleureux que Python dans le terminal : IPython. Il s'agit également d'un terminal interactif, mais avec davantages de fonctionnalités, notamment la coloration syntaxique ou l'auto-complétion (en utilisant la touche de tabulation).
 
 Pour lancer IPython, on peut ouvrir un terminal et taper (puis valider) :
-```{shell, echo=T, eval=F}
+
+```shell
 ipython
 ```
 
 On peut également lancer IPython depuis la fenêtre d'accueil d'Anaconda, en cliquant sur le bouton `Launch` de l'application `qtconsole`, visible sur la Figure\ \@ref(fig:intro-anaconda-navigator).
 
 
-```{r intro-anaconda-navigator, echo=F, out.width = "100%", fig.cap="Fenêtre d'accueil d'Anaconda.", fig.align='center', fig.pos='H'}
-include_graphics("figs/anaconda_navigator.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/anaconda_navigator.png" alt="Fenêtre d'accueil d'Anaconda." width="100%" />
+<p class="caption">(\#fig:intro-anaconda-navigator)Fenêtre d'accueil d'Anaconda.</p>
+</div>
 
 
 La console IPython, une fois lancée, ressemble à ceci :
-```{r, echo=F, out.width = "70%", fig.cap="Console IPython.", fig.align='center', fig.pos='H'}
-include_graphics("figs/ipython.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/ipython.png" alt="Console IPython." width="70%" />
+<p class="caption">(\#fig:unnamed-chunk-4)Console IPython.</p>
+</div>
 
 Soumettons une instruction simple pour évaluation à Python :
-```{python, echo=TRUE, eval=FALSE}
+
+```python
 print("Hello World")
 ```
 
 
 Le résultat donne :
-```{shell, echo=T,eval=FALSE}
+
+```shell
 In [1]: print("Hello World")
 Hello World
 
@@ -274,9 +189,10 @@ L'environnement de développement, comme visible sur la Figure\ \@ref(fig:intro-
 - en bas à droite : une ou plusieurs consoles.
 
 
-```{r intro-spyder, echo=F, out.width = "100%", fig.cap="Spyder.", fig.align='center', fig.pos='H'}
-include_graphics("figs/spyder.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/spyder.png" alt="Spyder." width="100%" />
+<p class="caption">(\#fig:intro-spyder)Spyder.</p>
+</div>
 
 ### Jupyter
 
@@ -287,9 +203,10 @@ Pour lancer Jupyter, on peut passer par Anaconda. Après avoir cliqué sur le bo
 
 Si le navigateur en se lance pas automatiquement, on peut accéder à la page qui aurait dû s'afficher, en se rendant à l'adresse suivante : http://localhost:8890/tree?.
 
-```{r intro-jupyter, echo=F, out.width = "100%", fig.cap="Jupyter.", fig.align='center', fig.pos='H'}
-include_graphics("figs/jupyter.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/jupyter.png" alt="Jupyter." width="100%" />
+<p class="caption">(\#fig:intro-jupyter)Jupyter.</p>
+</div>
 
 
 Pour aborder les principales fonctions de Jupyter, nous allons créer un dossier `jupyter` dans un répertoire de notre choix. Une fois ce dossier créé, y naviguer à travers l'arborescence de Jupyter, dans le navigateur web.
@@ -301,9 +218,10 @@ Une fois dans le dossier, créer un nouveau Notebook `Python 3` (en cliquant sur
 Un notebook intitulé `Untitled` vient d'être créé, la page affiche un document vide, comme visible sur la Figure\ \@ref(fig:intro-jupyter-notebook).
 
 
-```{r intro-jupyter-notebook, echo=F, out.width = "100%", fig.cap="Un notebook vide.", fig.align="center", fig.pos="H"}
-include_graphics("figs/jupyter_notebook.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/jupyter_notebook.png" alt="Un notebook vide." width="100%" />
+<p class="caption">(\#fig:intro-jupyter-notebook)Un notebook vide.</p>
+</div>
 
 
 Si on regarde dans notre explorateur de fichier, dans le dossier `jupyter` fraîchement créé, un nouveau fichier est apparu : `Untitled.ipynb`.
@@ -319,7 +237,8 @@ Retournons dans le navigateur web, sur la page affichant notre *notebook*.
 En dessous de la barre des menus, on note la présence d'une zone encadrée, **une cellule**, commençant, à l'instar de ce que l'on voyait dans la console sur IPython, par `IN []:`. À droite, la zone grisée nous invite à soumettre des instructions en Python.
 
 Inscrivons :
-```{python, echo=T,eval=F}
+
+```python
 2+1
 ```
 
@@ -329,9 +248,10 @@ Pour soumettre l'instruction à évaluation, il existe plusieurs manières (il s
 - dans la barre des raccourcis : bouton `Run` ;
 - avec le clavier : maintenir la touche `CTRL`et presser sur `Entree`.
 
-```{r, echo=F, out.width = "100%", fig.cap="Cellule évaluée.", fig.pos="H", fig.align="center"}
-include_graphics("figs/jupyter_notebook_2.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/jupyter_notebook_2.png" alt="Cellule évaluée." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-8)Cellule évaluée.</p>
+</div>
 
 #### Cellules de texte
 
@@ -352,7 +272,8 @@ La cellule est alors prête à recevoir du texte, rédigé en markdown. Pour plu
 
 Entrons quelques lignes de texte pour voir très rapidement le fonctionnement des cellules rédigées en Markdown.
 
-```{shell, echo=T, eval=F}
+
+```shell
 # Un titre de niveau 1
 
 Je vais écrire *du texte en italique* et aussi **en gras**.
@@ -382,9 +303,10 @@ Pour en savoir plus sur $\LaTeX$, on peut se référer à cette :
 
 Ce qui donne, dans Jupyter :
 
-```{r, echo=F, out.width = "100%", fig.cap="Cellule textuelle non évaluée.", fig.align="center", fig.pos="h"}
-include_graphics("figs/jupyter_notebook_3.png")
-```
+<div class="figure" style="text-align: center">
+<img src="figs/jupyter_notebook_3.png" alt="Cellule textuelle non évaluée." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-10)Cellule textuelle non évaluée.</p>
+</div>
 
 Reste alors à l'évaluer, comme s'il s'agissait d'une cellule contenant une instruction Python, pour basculer vers un affichage Markdown (`CTRL` et `ENTREE`).
 
@@ -413,53 +335,93 @@ Pour supprimer une cellule :
 Lorsque nous avons évalué les instructions `2+1` précédemment, le résultat s'est affiché dans la console, mais il n'a pas été enregistré. Dans de nombreux cas, il est utile de conserver le contenu du résultat dans un objet, pour pouvoir le réutiliser par la suite. Pour ce faire, on utilise des *variables*. Pour créer une variable, on utilise le signe d'égalité (`=`), que l'on fait suivre par ce que l'on veut sauvegarder (du texte, un nombre, plusieurs nombres, etc.) et précéder par le nom que l'on utilisera pour désigner cette variable.
 
 Par exemple, si on souhaite stocker le résultat du calcul `2+1` dans une variable que l'on nommera `x`, il faudra écrire :
-```{python, eval=T, echo=T}
+
+```python
 x = 2+1
 ```
 
 Pour afficher la valeur de notre variable `x`, on fait appel à la fonction `print()` :
-```{python, eval=T, echo=T}
+
+```python
 print(x)
+```
+
+```
+## 3
 ```
 
 
 Pour changer la valeur de la variable, il suffit de faire une nouvelle assignation :
-```{python, eval=T, echo=T}
+
+```python
 x = 4
 print(x)
 ```
 
+```
+## 4
+```
+
 Il est également possible de donner plus d'un nom à un même contenu (on réalise une copie de `x`) :
-```{python, eval=T, echo=T}
+
+```python
 x = 4;
 y = x;
 print(y)
 ```
 
+```
+## 4
+```
+
 
 Si on modifie la copie, l'original ne sera pas affecté :
-```{python, eval=T, echo=T}
+
+```python
 y = 0
 print(y)
 ```
 
-```{python, eval=T, echo=T}
+```
+## 0
+```
+
+
+```python
 print(x)
 ```
 
+```
+## 4
+```
+
 Pour **supprimer** une variable, on utilise l'instruction `del` :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 del y
 ```
 
 L'affichage du contenu de `y` renvoit une erreur :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 print(y)
 ```
 
+```
+## NameError: name 'y' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+```
+
 Mais on note que la variable `x` n'a pas été supprimée :
-```{python, eval=T, echo=T}
+
+```python
 print(x)
+```
+
+```
+## 4
 ```
 
 ### Conventions de nommage
@@ -474,13 +436,26 @@ Pour accroitre la lisibilité du nom des variables, plusieurs méthodes existes.
 Exemple, pour une variable contenant la valeur de l'identifiant d'un utilisateur : `id_utilisateur`.
 
 Il faut noter que le nom des variables est **sensible à la casse** :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 x = "toto"
 print(x)
 ```
 
-```{python, eval=T, echo=T, error=TRUE}
+```
+## toto
+```
+
+
+```python
 print(X)
+```
+
+```
+## NameError: name 'X' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 ## Les commentaires
@@ -490,13 +465,19 @@ Pour ajouter des commentaires en python, il existe plusieurs façons.
 
 
 Une des manières de faire est d'utiliser le symbole dièse (`#`) pour effectuer un **commentaire sur une seule ligne**. Tout ce qui suit le dièse jusqu'à la fin de la ligne ne sera pas évalué par Python. En revanche, ce qui vient avant le dièse le sera.
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 # Un commentaire print("Bonjour")
 print("Hello") # Un autre commentaire
 ```
 
+```
+## Hello
+```
+
 L'introduction d'un **bloc de commentaires** (des commentaires sur plusieurs lignes) s'effectue quant à elle en entourant ce qui est ) commenter d'un délimiteur : trois guillemets simples ou doubles :
-```{python, eval=F, echo=T, error=TRUE}
+
+```python
 """
 Un commentaire qui commencer sur une ligne
 et qui continue sur une autre
@@ -518,33 +499,52 @@ Parmi les *packages* qui seront utilisés dans ces notes, on peut citer :
 - [Matplotlib](https://matplotlib.org/), un *package* permettant de réaliser des graphiques.
 
 Pour charger un module (ou un *package*), on utilise la commande `import`. Par exemple, pour charger le *package* `pandas` :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 import pandas
 ```
 
 Ce qui permet de faire appel à des fonctions contenues dans le module ou le *package*. Par exemple, ici, on peut faire appel à la fonction `Series()`, contenue dans le *package* `pandas`, permettant de créer un tableau de données indexées à une dimension :
 
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 x = pandas.Series([1, 5, 4])
 print(x)
 ```
 
+```
+## 0    1
+## 1    5
+## 2    4
+## dtype: int64
+```
+
 Il est possible de donner un alias au module ou au *package* que l'on importe, en le précisant à l'aide de la syntaxe suivante :
-```{python, echo=T, eval=F}
+
+```python
 import module as alias
 ```
 
 Cette pratique est courante pour abréger les noms des modules que l'on va être amené à utiliser beaucoup. Par exemple, pour `pandas`, il est coutume d'écourter le nom en `pd` :
 
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 import pandas as pd
 x = pd.Series([1, 5, 4])
 print(x)
 ```
 
+```
+## 0    1
+## 1    5
+## 2    4
+## dtype: int64
+```
+
 On peut également importer une seule fonction d'un module, et lui attribuer (optionnellement) un alias. Par exemple, avec la fonction `pyplot` du *package* `matplotlib`, il est coutume de faire comme suit :
 
-```{python, eval=F, echo=T, error=TRUE}
+
+```python
 import matplotlib
 import matplotlib.pyplot  as plt
 import numpy  as np
@@ -553,24 +553,10 @@ y = np.sin(x)
 plt.plot(x, y)
 ```
 
-```{python, eval=T, echo=FALSE, error=TRUE}
-import matplotlib
-import matplotlib.pyplot  as plt
-import numpy  as np
-
-x = np.arange(0, 5, 0.1);
-y = np.sin(x)
-
-fig, ax = plt.subplots()
-ax.plot(x, y)
-fig.savefig("figs/intro_pyplot.png")
-plt.close(fig)
-```
 
 
-```{r, echo=FALSE, fig.pos="H", fig.align="center"}
-knitr::include_graphics("figs/intro_pyplot.png")
-```
+
+<img src="figs/intro_pyplot.png" style="display: block; margin: auto;" />
 
 
 
@@ -611,53 +597,85 @@ Les chaînes de caractères sont repérées à l'aide de guillemets simples, dou
 
 Voici un exemple :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Hello World"
 ```
 
 Pour afficher dans la console le contenu de notre variable `x` contenant la chaîne de caractères, on fait appel à la fonction `print()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x)
+```
+
+```
+## Hello World
 ```
 
 
 Comme indiqué juste avant, des guillemets simples peuvent être utilisés pour créer une chaîne de caractères :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y = 'How are you?'
 print(y)
 ```
 
+```
+## How are you?
+```
+
 
 Pour faire figurer des apostrophes dans une chaîne de caractères créée à l'aide de guillemets simples, il est nécessaire d'utiliser un caracrère d'échappement : une barre oblique inversée (`\`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = 'I\'m fine'
 print(z)
 ```
 
+```
+## I'm fine
+```
+
 On peut noter que si la chaîne de caractères est créée à l'aide de guillemets doubles, il n'est pas nécessaire d'avoir recours au caractère d'échappement :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = "I'm \"fine\""
 print(z)
+```
+
+```
+## I'm "fine"
 ```
 
 
 Pour indiquer un retour à la ligne, on utilise la chaîne `\n` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Hello, \nWorld"
 print(x)
 ```
 
+```
+## Hello, 
+## World
+```
+
 Dans le cas de chaînes de caractères sur **plusieurs lignes**, le fait d'utiliser des guillemets simples ou doubles renverra une erreur (*EOL while scanning trial literal*, *i.e.*, détection d'une erreur de syntaxe, Python s'attendait à quelque chose d'autre à la fin de la ligne). Pour écrire une chaîne de caractères sur plusieurs lignes, Python propose d'utiliser trois fois des guillemets (simples ou doubles) en début et fin de chaîne :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = """Hello,
 World"""
 print(x)
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Le caractère `\` (barre oblique inversée, ou *backslash*) est le caractère d'échappement. Il permet d'afficher certains caractères, comme les guillemets dans une chaîne elle-même définie à l'aide de guillemets, ou bien les caractères de contrôle, comme la tabulation, le saut de ligne, etc. Voici quelques exemples courants :
+```
+## Hello,
+## World
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">Le caractère `\` (barre oblique inversée, ou *backslash*) est le caractère d'échappement. Il permet d'afficher certains caractères, comme les guillemets dans une chaîne elle-même définie à l'aide de guillemets, ou bien les caractères de contrôle, comme la tabulation, le saut de ligne, etc. Voici quelques exemples courants :
 
 | Code  | Description | Code | Description |
 | :---: |:-----------:| :---:|:-----------:|
@@ -665,15 +683,26 @@ Le caractère `\` (barre oblique inversée, ou *backslash*) est le caractère d'
 | `\t` | Tabulation | `\b` | Retour arrière |
 | `\` | Barre oblique inversée | `\'` | Apostrophe |
 | `\"` | Apostrophe double | `` \` `` | Accent grave |
-
-```
+</div>\EndKnitrBlock{remarque}
 
 
 Pour récupérer la **longueur d'une chaîne de caractères**, Python propose la fonction `len()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Hello World !"
 print(len(x))
+```
+
+```
+## 13
+```
+
+```python
 print(x, len(x))
+```
+
+```
+## Hello World ! 13
 ```
 
 
@@ -682,40 +711,72 @@ print(x, len(x))
 
 Pour concaténer des chaînes de caractères, c'est-à-dire les mettre bout à bout, Python propose d'utiliser l'opérateur `+` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("Hello" + " World")
+```
+
+```
+## Hello World
 ```
 
 L'opérateur `*` permet quant à lui de répéter plusieurs fois une chaîne :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( 3 * "Go Habs Go! " + "Woo Hoo!")
 ```
 
+```
+## Go Habs Go! Go Habs Go! Go Habs Go! Woo Hoo!
+```
+
 Lorsque deux littéraux de chaînes sont côte à côte, Python les concatène :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ('You shall ' 'not ' "pass!")
 print(x)
+```
+
+```
+## You shall not pass!
 ```
 
 
 
 Il est également possible d'**ajouter à une chaîne de caractères le contenu d'une variable**, à l'aide du marqueur `%s` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "J'aime coder en %s"
 langage_1 = "R"
 langage_2 = "Python"
 preference_1 = x % langage_1
 print(preference_1)
+```
+
+```
+## J'aime coder en R
+```
+
+```python
 preference_2 = x % langage_2
 print(preference_2)
 ```
 
+```
+## J'aime coder en Python
+```
+
 Il est tout à fait possible d'ajouter **plus d'un contenu de variable** dans une chaîne de caractères, toujours avec le marqueur `%s` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "J'aime coder en %s et en %s"
 preference_3 = x % (langage_1, langage_2)
 print(preference_3)
+```
+
+```
+## J'aime coder en R et en Python
 ```
 
 
@@ -725,39 +786,63 @@ print(preference_3)
 Les chaînes de caractères peuvent être indexées. Attention, **l'indice du premier caractère commence à 0*.
 
 Pour obtenir le ie caractère d'une chaîne, on utilise des crochets. La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 x[i-1]
 ```
 
 Par exemple, pour afficher le premier caractère, puis le cinquième de la chaîne `Hello` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Hello"
 print(x[0])
+```
+
+```
+## H
+```
+
+```python
 print(x[4])
+```
+
+```
+## o
 ```
 
 L'extraction peut s'effectuer en partant par la fin de la chaîne, en faisant précéder la veleur de l'indice par le signe moins (`-`).
 
 Par exemple, pour afficher l'avant-dernier caractère de notre chaîne `x` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[-2])
+```
+
+```
+## l
 ```
 
 
 L'extraction d'une sous-chaîne en précisant sa position de début et de fin (implicitement ou non) s'effectue avec les crochets également. Il suffit de préciser les deux valeurs d'indices : `[debut:fin]`.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "You shall not pass!"
 
 # Du quatrième caractère (non inclus) au neuvième (inclus)
 print(x[4:9])
 ```
 
+```
+## shall
+```
+
 Lorsque l'on ne précise pas la première valeur, le début de la chaîne est pris par défaut ; lorsque le second n'est pas précisé, la fin de la chaîne est prise par défaut.
 
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 # Du 4e caractère (non inclus) à la fin de la chaîne
 print(x[4:])
 # Du début de la chaîne à l'avant dernier caractère (inclus)
@@ -766,27 +851,41 @@ print(x[:-1])
 print(x[-5:])
 ```
 
-```{python, eval=T, echo=FALSE, error=TRUE}
-# Du 4e caractère (non inclus) à la fin de la chaîne
-print(x[4:])
-# Du début de la chaîne à l'avant dernier caractère (inclus)
-print(x[:-1])
-# Du 3e caractère avant la fin (inclus) jusqu'à la fin
-print(x[-5:])
+
+```
+## shall not pass!
+```
+
+```
+## You shall not pass
+```
+
+```
+## pass!
 ```
 
 
 Il est possible de rajouter un troisième indice dans les crochets : **le pas**.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Du 4e caractère (non inclus), jusqu'à la fin de la chaîne,
 # par pas de 3.
 print(x[4::3])
 ```
 
+```
+## sln s
+```
+
 
 Pour obtenir la chaîne en dans le sens opposé :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[::-1])
+```
+
+```
+## !ssap ton llahs uoY
 ```
 
 
@@ -797,31 +896,38 @@ De nombreuses méthodes sont disponibles pour les chaînes de caractères. En aj
 
 
 Par exemple, la méthode `count()` permet de compter le nombre d'occurrences d'un motif dans la chaîne. Pour compter le nombre d'occurrence de `in` dans la chaîne suivante :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "le train de tes injures roule sur le rail de mon indifférence"
 print(x.count("in"))
 ```
 
-
-```{block2, type='remarque', echo=TRUE}
-Une fois l'appel à méthode écrit, en plaçant le curseur à la fin de la ligne et en appuyant sur les touches `Shift` et `Tabulation`, on peut afficher des explications.
 ```
+## 3
+```
+
+
+\BeginKnitrBlock{remarque}<div class="remarque">Une fois l'appel à méthode écrit, en plaçant le curseur à la fin de la ligne et en appuyant sur les touches `Shift` et `Tabulation`, on peut afficher des explications.</div>\EndKnitrBlock{remarque}
 
 
 #### Conversion en majuscules ou en minuscules
 
 
 Les méthodes `lower()` et `upper()` permettent de passer une chaîne de caractères en caractères minuscules et majuscules, respectivement.
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 x = "le train de tes injures roule sur le rail de mon indifférence"
 print(x.lower())
 print(x.upper())
 ```
 
-```{python, eval=T, echo=F, error=TRUE}
-x = "le train de tes injures roule sur le rail de mon indifférence"
-print(x.lower())
-print(x.upper())
+
+```
+## le train de tes injures roule sur le rail de mon indifférence
+```
+
+```
+## LE TRAIN DE TES INJURES ROULE SUR LE RAIL DE MON INDIFFÉRENCE
 ```
 
 #### Recherche de chaînes de caractères
@@ -830,61 +936,101 @@ print(x.upper())
 Quand on souhaite **retrouver un motif** dans une chaîne de caractères, on peut utiliser la méthode `find()`. On fournit en paramètres un motif à rechercher. La méthode `find()` retourne le plus petit indice dans la chaîne où le motif est trouvé. Si le motif n'est pas retrouvé, la valeur retournée est `-1`.
 
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 print(x.find("in"))
 print(x.find("bonjour"))
 ```
 
-```{python, eval=T, echo=F, error=TRUE}
-print(x.find("in"))
-print(x.find("bonjour"))
+
+```
+## 6
+```
+
+```
+## -1
 ```
 
 
 Il est possible d'ajouter en option une indication permettant de **limiter la recherche sur une sous-chaîne**, en précisant l'indice de début et de fin :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 print(x.find("in", 7, 20))
 ```
 
+```
+## 16
+```
+
 Note : on peut omettre l'indice de fin ; en ce cas, la fin de la chaîne est utilisée :
-```{python, eval=T, echo=T, error=TRUE}
+
+```python
 print(x.find("in", 20))
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Si on ne désire pas connaître la position de la sous-chaîne, mais uniquement sa présence ou son absence, on peut utiliser l'opérateur `in` : `print("train" in x)`
 ```
+## 49
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">Si on ne désire pas connaître la position de la sous-chaîne, mais uniquement sa présence ou son absence, on peut utiliser l'opérateur `in` : `print("train" in x)`</div>\EndKnitrBlock{remarque}
 
 Pour effectuer une recherche **sans prêter attention à la casse**, on peut utiliser la méthode `capitalize()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Mademoiselle Deray, il est interdit de manger de la choucroute ici."
 print(x.find("deray"))
+```
+
+```
+## -1
+```
+
+```python
 print(x.capitalize().find("deray"))
+```
+
+```
+## 13
 ```
 
 
 #### Découpage en sous-chaînes
 
 Pour **découper une chaîne de caractères en sous-chaînes**, en fonction d'un motif servant à la délimitation des sous-chaînes (par exemple une virgule, ou une espace), on utilise la méthode `split()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x.split(" "))
 ```
 
+```
+## ['Mademoiselle', 'Deray,', 'il', 'est', 'interdit', 'de', 'manger', 'de', 'la', 'choucroute', 'ici.']
+```
+
 En indiquant en paramètres une valeur numérique, on peut limiter le nombre de sous-chaînes retournées :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Le nombre de sous-chaînes maximum sera de 3
 print(x.split(" ", 3))
 ```
 
+```
+## ['Mademoiselle', 'Deray,', 'il', 'est interdit de manger de la choucroute ici.']
+```
+
 La méthode `splitlines()` permet également de séparer une chaîne de caractères en fonction d'un motif, ce motif étant un caractère de fin de ligne, comme un saut de ligne ou un retour chariot par exemple.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = '''"Luke, je suis ton pere !
 - Non... ce n'est pas vrai ! C'est impossible !
 - Lis dans ton coeur, tu sauras que c'est vrai.
 - Noooooooon ! Noooon !"'''
 print(x.splitlines())
+```
+
+```
+## ['"Luke, je suis ton pere !', "- Non... ce n'est pas vrai ! C'est impossible !", "- Lis dans ton coeur, tu sauras que c'est vrai.", '- Noooooooon ! Noooon !"']
 ```
 
 
@@ -893,25 +1039,40 @@ print(x.splitlines())
 
 Pour retirer des caractères blancs (*e.g.*, des espaces, sauts de ligne, quadratins, etc.) présents en début et fin de chaîne, on peut utiliser la méthode `strip()`, ce qui est parfois très utile pour nettoyer des chaînes.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "\n\n    Pardon, du sucre ?     \n  \n"
 print(x.strip())
 ```
 
+```
+## Pardon, du sucre ?
+```
+
 On peut préciser en paramètre quels caractères retirer en début et fin de chaîne :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "www.egallic.fr"
 print(x.strip("wrf."))
+```
+
+```
+## egallic
 ```
 
 
 Parfois, il est nécessaire de s'assurer d'obtenir une **chaîne d'une longueur donnée** (lorsque l'on doit fournir un fichier avec des largeurs fixes pour chaque colonne par exemple). La méthode `rjust()` est alors d'un grand secours. En lui renseignant une longueur de chaîne et un caractère de remplissage, elle retourne la chaîne de caractères avec une complétion éventuelle (si la longueur de la chaîne retournée n'est pas assez longue au regard de la valeur demandée), en répétant le caractère de remplissage autant de fois que nécessaire.
 
 Par exemple, pour avoir une coordonnée de longitude, stockée dans une chaîne de caractères de longueur 7, en rajoutant des espaces si nécessaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 longitude = "48.11"
 print(x.rjust(7," "))
+```
+
+```
+## www.egallic.fr
 ```
 
 
@@ -923,15 +1084,25 @@ print(x.rjust(7," "))
 
 La méthode `replace()` permet d'effectuer des **remplacements de motifs** dans une chaîne de caractères.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "Criquette ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !"
 print(x.replace("Criquette", "Ridge"))
 ```
 
+```
+## Ridge ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !
+```
+
 Cette méthode est très pratique pour **retirer des espaces** par exemple :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x.replace(" ", ""))
+```
+
+```
+## Criquette!Vous,ici?Dansvotrepropresalledebain?Quellesurprise!
 ```
 
 
@@ -956,25 +1127,47 @@ Voici un tableau répertoriant quelques méthodes disponibles ([liste exhaustive
 ### Conversion en chaînes de caractères {#conversion-chaines-caracteres}
 
 Lorsque l'on veut concaténer une chaîne de caractères avec un nombre, Python retourne une erreur.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 nb_followers = 0
 message = "He has " + nb_followers + "followers."
+```
+
+```
+## TypeError: must be str, not int
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+```
+
+```python
 print(message)
+```
+
+```
+## NameError: name 'message' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 
 Il est alors nécessaire de convertir au préalable l'objet n'étant pas une chaîne en une chaîne de caractères. Pour ce faire, Python propose la fonction `str()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 message = "He has " + str(nb_followers) + " followers."
 print(message)
+```
+
+```
+## He has 0 followers.
 ```
 
 
 ### Exercice
 
 
-```{block2, type='exframe', echo=TRUE}
-1. Créer deux variables nommées `a` et `b` afin qu'elles contiennent respectivement les chaînes de caractères suivantes : `23 à 0` et `C'est la piquette, Jack!`.
+\BeginKnitrBlock{exframe}<div class="exframe">1. Créer deux variables nommées `a` et `b` afin qu'elles contiennent respectivement les chaînes de caractères suivantes : `23 à 0` et `C'est la piquette, Jack!`.
 2. Afficher le nombre de caractères de `a`, puis de `b`.
 3. Concaténer `a` et `b` dans une seule chaîne de caractères, en ajoutant une virgule comme caractère de séparation.
 4. Même question en choisissant une séparation permettant un retour à la ligne entre les deux phrases.
@@ -986,8 +1179,7 @@ print(message)
 10. Remplacer les occurrences du motif `a` par le motif `Z` dans la sous-chaîne `b`.
 11. Séparer la chaîne `b` en utilisant la virgule comme séparateur de sous-chaînes.
 12. (Bonus) Retirer tous les caractères de ponctuation de la chaîne b, puis utiliser une méthode appropriée pour retirer les caractères blancs en début et fin de chaîne. (Utiliser la librairie `regex`).
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 
@@ -1000,34 +1192,68 @@ Il existe quatre catégories de nombres en Python : les entiers, les nombres à 
 
 Les entiers (`ints`), en Python, sont des nombres entiers signés.
 
-```{block2, type='remarque', echo=TRUE}
-On accède au type d'un objet à l'aide de la fonction `type()` en Python.
-```
+\BeginKnitrBlock{remarque}<div class="remarque">On accède au type d'un objet à l'aide de la fonction `type()` en Python.</div>\EndKnitrBlock{remarque}
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 2
 y = -2
 print(type(x))
+```
+
+```
+## <class 'int'>
+```
+
+```python
 print(type(y))
+```
+
+```
+## <class 'int'>
 ```
 
 ### Nombre à virgule flottante
 
 Les nombres à virgule flottante (`floats`) représentent les nombres réels. Ils sont écrits à l'aide d'un point permettant de distinguer la partie entière de la partie décimale du nombre.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 2.0
 y = 48.15162342
 print(type(x))
+```
+
+```
+## <class 'float'>
+```
+
+```python
 print(type(y))
 ```
 
+```
+## <class 'float'>
+```
+
 Il est également possible d'avoir recours aux notations scientifiques, en utilisant `E` ou `e` pour indiquer une puissance de 10. Par exemple, pour écrire $3,2^12$, on procèdera comme suit :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 3.2E12
 y = 3.2e12
 print(x)
+```
+
+```
+## 3200000000000.0
+```
+
+```python
 print(y)
+```
+
+```
+## 3200000000000.0
 ```
 
 ### Nombres complèxes
@@ -1036,30 +1262,77 @@ Python permet nativement de manipuler des nombres complèxes, de la forme $z=a+i
 
 En python, l'unité imaginaire $i$ est dénotée par la lettre `j`.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = 1+3j
 print(z)
+```
+
+```
+## (1+3j)
+```
+
+```python
 print(type(z))
+```
+
+```
+## <class 'complex'>
 ```
 
 
 Il est également possible d'utiliser la fonction `complex()`, qui demande deux paramètres (la partie réelle et la partie imaginaire) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = complex(1, 3)
 print(z)
+```
+
+```
+## (1+3j)
+```
+
+```python
 print(type(z))
 ```
 
+```
+## <class 'complex'>
+```
+
 Plusieurs méthodes sont disponibles avec les nombres complèxes. Par exemple, pour accéder au conjugué, Python fournit la méthode `conjugate()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(z.conjugate())
 ```
 
+```
+## (1-3j)
+```
+
 L'accès à la partie réelle d'un complèxe ou à sa partie imaginaire s'effectue à l'aide des méthodes `real()` et `imag()`, respectivement.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = complex(1, 3)
 print(z.real())
+```
+
+```
+## TypeError: 'float' object is not callable
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+```
+
+```python
 print(z.imag())
+```
+
+```
+## TypeError: 'float' object is not callable
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 ### Conversions
@@ -1070,17 +1343,27 @@ Pour convertir un nombre dans un autre format numérique, Python dispose de quel
 #### Conversion en entier
 
 La **conversion d'un nombre ou d'une chaîne de caractères en entier** s'effectue à l'aide de la fonction `int()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "3"
 x_int = int(x)
 print(type(x))
 ```
 
+```
+## <class 'str'>
+```
+
 On note que la conversion d'un nombre à virgule flottante tronque le nombre pour ne garder que la partie entière :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 3.6
 x_int = int(x)
 print(x_int)
+```
+
+```
+## 3
 ```
 
 
@@ -1088,18 +1371,28 @@ print(x_int)
 
 Pour **convertir un nombre ou une chaîne de caractères en nombre à virgule flottante** (si possible), Python propose d'utiliser la fonction `float()`.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "3.6"
 x_float = float(x)
 print(type(x_float))
 ```
 
+```
+## <class 'float'>
+```
+
 Avec un entier à l'origine :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 3
 x_float = float(x)
 print(x_float)
+```
+
+```
+## 3.0
 ```
 
 #### Conversion en complèxe
@@ -1107,18 +1400,28 @@ print(x_float)
 
 La conversion d'un nombre ou d'une chaîne de caractères en nombre complèxe s'effectue avec la fonction `complex()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = "2"
 x_complex = complex(x)
 print(x_complex)
 ```
 
+```
+## (2+0j)
+```
+
 Avec un *float* :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 2.4
 x_complex = complex(x)
 print(x_complex)
+```
+
+```
+## (2.4+0j)
 ```
 
 
@@ -1127,39 +1430,73 @@ print(x_complex)
 Les données de type logique peuvent prendre deux valeurs : `True` ou `False`. Elles répondent
 à une condition logique. Il faut faire attention à bien respecter la casse.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 print(x, y)
 ```
 
+```
+## True False
+```
+
 
 `True` peut être converti automatiquement en 1 ;  `False` en 0. Cela peut s'avérer très pratique, pour faire des comptages de valeurs vraies ou fausses dans les colonnes d'un tableau de données, par exemple.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 res = True + True + False + True*True
 print(res)
+```
+
+```
+## 3
 ```
 
 
 ## Objet vide
 
 L'objet vide, communément appelé `null`, possède un équivalent en Python : `None`. Pour l'assigner à une variable, il faut faire attention à la casse :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = None
 print(x)
+```
+
+```
+## None
+```
+
+```python
 print(type(x))
+```
+
+```
+## <class 'NoneType'>
 ```
 
 
 L'objet `None` est une variable neutre, au comportement "null".
 
 Pour tester si un objet est l'objet `None`, on procède comme suit (le résultat est un booléen) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 1
 y = None
 print(x is None)
+```
+
+```
+## False
+```
+
+```python
 print(y is None)
+```
+
+```
+## True
 ```
 
 
@@ -1188,28 +1525,58 @@ Il existe plusieurs types d'objets désignant des dates :
 Les objets de type `date` désignent des dates du calendrier grégorien, pour lesquelles sont mentionnées les caractéristiques suivantes : l'année, le mois et le jour.
 
 Pour créer un objet `date`, la syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 date(year, month, day)
 ```
 
 Par exemple, pour créer la date renseignant le 23 avril 2013 :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from datetime import date
 debut = date(year = 2013, month = 4, day = 23)
 print(debut)
+```
+
+```
+## 2013-04-23
+```
+
+```python
 print(type(debut))
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Il n'est pas obligatoire de préciser le nom des paramètres dans l'appel à la fonction `date`. L'ordre à respecter devra toutefois être le suivant : année, mois, jour.
 ```
+## <class 'datetime.date'>
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">Il n'est pas obligatoire de préciser le nom des paramètres dans l'appel à la fonction `date`. L'ordre à respecter devra toutefois être le suivant : année, mois, jour.</div>\EndKnitrBlock{remarque}
 
 On peut ensuite accéder aux attributs de la date créée (ce sont des entiers) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(debut.year) # Extraire l'année
+```
+
+```
+## 2013
+```
+
+```python
 print(debut.month) # Extraire le mois
+```
+
+```
+## 4
+```
+
+```python
 print(debut.day) # Extraire le jour
+```
+
+```
+## 23
 ```
 
 
@@ -1218,25 +1585,26 @@ Les objets du type `date` possèdent quelques méthodes. Nous allons passer en r
 ##### `ctime()`
 
 La méthode `ctime()` retourne la date sous forme d'une chaîne de caractères.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.ctime()
 ```
 
 ##### `weekday()`
 
 La méthode `weekday()` retourne la position du jour de la semaine (lundi valant 0, dimanche 6)
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.weekday()
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Cette méthode peut être très pratique lors d'une analyse des données, pour explorer les aspects de saisonnalité hebdomadaire.
-```
+\BeginKnitrBlock{remarque}<div class="remarque">Cette méthode peut être très pratique lors d'une analyse des données, pour explorer les aspects de saisonnalité hebdomadaire.</div>\EndKnitrBlock{remarque}
 
 ##### `isoweekday()`
 
 Dans la même veine que `weekday()`, la méthode `isoweekday()` retourne la position du jour de la semaine, en attribuant cette fois la valeur 1 au lundi et 7 au dimanche.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.isoweekday()
 ```
 
@@ -1244,14 +1612,16 @@ debut.isoweekday()
 
 La méthode `toordinal()` retourne le numéro du jour, en prenant comme référence la valeur 1 pour le premier jour de l'an 1.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.toordinal()
 ```
 
 ##### `isoformat()`
 
 La méthode `isoformat()` retourne la date en [numérotation ISO](https://fr.wikipedia.org/wiki/Num%C3%A9rotation_ISO_des_semaines), sous forme d'une chaîne de caractères.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.isoformat()
 ```
 
@@ -1260,7 +1630,8 @@ debut.isoformat()
 
 La méthode `isocalendar()` retourne un nuplet (c.f. Section\ \@ref(n-uplets-tuples)) comprenant trois éléments : l'année, le numéro de la semaine et le jour de la semaine (les trois en numérotation ISO).
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut.isocalendar()
 ```
 
@@ -1269,22 +1640,37 @@ debut.isocalendar()
 
 La méthode `replace()` retourne la date après avoir effectué une modification
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = debut.replace(year=2014)
 y = debut.replace(month=5)
 z = debut.replace(day=24)
 print(x, y, z)
 ```
 
+```
+## 2014-04-23 2013-05-23 2013-04-24
+```
+
 Cela n'a pas d'incidence sur l'objet d'origine :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(debut)
 ```
 
+```
+## 2013-04-23
+```
+
 Il est possible de modifier plusieurs éléments en même temps :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = debut.replace(day=24, month=5)
 print(x)
+```
+
+```
+## 2013-05-24
 ```
 
 
@@ -1294,14 +1680,31 @@ La méthode `strftime()` retourne, sous la forme d'une chaîne de caractères, u
 
 Par exemple, pour que la date soit représentée sous la forme `DD-MM-YYYY` (jour sur deux chiffres, mois sur deux chiffres et année sur 4) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(debut.strftime("%d-%m-%Y"))
 ```
 
+```
+## 23-04-2013
+```
+
 Dans l'exemple précédent, on note deux choses : la présence de directives de formatage (qui commencent par le symbole de pourcentage) et des caractères autres (ici, les tirets). On peut noter que les caractères peuvent être remplacés par d'autres, il s'agit ici d'un choix pour représenter la date en séparant ses éléments par ddes tirets. Il est tout à fait possible d'adopter une autre écriture, par exemple avec des barres obliques, ou même d'autres chaînes de caractères :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(debut.strftime("%d/%m/%Y"))
+```
+
+```
+## 23/04/2013
+```
+
+```python
 print(debut.strftime("Jour : %d, Mois : %m, Annee : %Y"))
+```
+
+```
+## Jour : 23, Mois : 04, Annee : 2013
 ```
 
 Concernant les directives de formatage, elles correspondent aux codes requis par le standard C (c.f. la [documentation de Python](https://docs.python.org/fr/3/library/datetime.html#strftime-strptime-behavior)). En voici quelques-uns :
@@ -1352,34 +1755,85 @@ Table: (#tab:codes-formatage) Codes de formatages
 Les objets de type `time` désignent des temps précis sans prise en compte d'un jour particulier. Ils renseignant l'heure, la minute, la seconde (possiblement la microseconde et le fuseau horaire également).
 
 Pour créer un objet `time`, la syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 time(hour, minute, second)
 ```
 
 Par exemple, pour créer le moment 23:04:59 (vingt-trois heures, quatre minutes et cinquante-neuf secondes) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from datetime import time
 moment = time(hour = 23, minute = 4, second = 59)
 print(moment)
+```
+
+```
+## 23:04:59
+```
+
+```python
 print(type(moment))
+```
+
+```
+## <class 'datetime.time'>
 ```
 
 
 On peut rajouter des informations sur la microseconde. Sa valeur doit être comprise entre zéro et un million.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 moment = time(hour = 23, minute = 4, second = 59, microsecond = 230)
 print(moment)
+```
+
+```
+## 23:04:59.000230
+```
+
+```python
 print(type(moment))
+```
+
+```
+## <class 'datetime.time'>
 ```
 
 On peut ensuite accéder aux attributs de la date créée (ce sont des entiers), parmi lesquels :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(moment.hour) # Extraire l'heure
+```
+
+```
+## 23
+```
+
+```python
 print(moment.minute) # Extraire la minute
+```
+
+```
+## 4
+```
+
+```python
 print(moment.second) # Extraire la seconde
+```
+
+```
+## 59
+```
+
+```python
 print(moment.microsecond) # Extraire la microseconde
+```
+
+```
+## 230
 ```
 
 
@@ -1393,19 +1847,32 @@ Les objets du type `time` possèdent quelques méthodes, dont l'utilisation est 
 Les objets de type `datetime` combinent les éléments des objets de type `date` et `time`. Ils renseignant le jour dans le calendrier grégorien ainsi que l'heure, la minute, la seconde (possiblement la microseconde et le fuseau horaire).
 
 Pour créer un objet `datetime`, la syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 datetime(year, month, day, hour, minute, second, microsecond)
 ```
 
 
 Par exemple, pour créer la date 23-04-2013 à 17:10:00 :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from datetime import datetime
 x = datetime(year = 2013, month = 4, day = 23,
   hour = 23, minute = 4, second = 59)
 print(x)
+```
+
+```
+## 2013-04-23 23:04:59
+```
+
+```python
 print(type(x))
+```
+
+```
+## <class 'datetime.datetime'>
 ```
 
 Les objets de type `datetime` disposent des attributs des objets de type `date` (c.f. Section\ \@ref(type-date)) et de type `time` (c.f. Section\ \@ref(type-time)).
@@ -1416,9 +1883,21 @@ Pour ce qui est des méthodes, davantage sont disponibles. Nous allons en commen
 ##### `today()` et `now()`
 
 Les méthodes `today()` et `now()` retournent le `datetime` courant, celui au moment où est évaluée l'instruction :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x.today())
+```
+
+```
+## 2018-10-09 15:56:24.220697
+```
+
+```python
 print(datetime.today())
+```
+
+```
+## 2018-10-09 15:56:24.228003
 ```
 
 La distinction entre les deux réside dans le fuseau horaire. Avec `today()`, l'attribut `tzinfo` est mis à `None`, tandis qu'avec `now()`, l'attribut `tzinfo`, s'il est indiqué, est pris en compte.
@@ -1427,28 +1906,57 @@ La distinction entre les deux réside dans le fuseau horaire. Avec `today()`, l'
 ##### `timestamp()`
 
 La méthode `timestamp()` retourne, sous forme d'un nombre à virgule flottante, le *timestamp* POSIX correspondant à l'objet de type `datetime`. Le *timestamp* POSIX correspond à l'heure Posix, équivalent au nombre de secondes écoulées depuis le premier janvier 1970, à 00:00:00 UTC.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x.timestamp())
+```
+
+```
+## 1366751099.0
 ```
 
 
 ##### `date()`
 
 La méthode `date()` retourne un objet de type `date` dont les attributs d'année, de mois et de jour sont identiques à ceux de l'objet :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x_date = x.date()
 print(x_date)
+```
+
+```
+## 2013-04-23
+```
+
+```python
 print(type(x_date))
+```
+
+```
+## <class 'datetime.date'>
 ```
 
 
 ##### `time()`
 
 La méthode `time()` retourne un objet de type `time` dont les attributs d'heure, minute, seconde, microseconde sont identiques à ceux de l'objet :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x_time = x.time()
 print(x_time)
+```
+
+```
+## 23:04:59
+```
+
+```python
 print(type(x_time))
+```
+
+```
+## <class 'datetime.time'>
 ```
 
 
@@ -1459,36 +1967,42 @@ print(type(x_time))
 Les objets de type `timedelta` représentent des durées séparant deux dates ou heures.
 
 Pour créer un objet de type `timedelta`, la syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 timedelta(days, hours, minutes, seconds, microseconds)
 ```
 
 Il n'est pas obligatoire de fournir une valeur à chaque paramètre. Lorsque qu'un paramètre ne reçoit pas de valeur, celle qui lui est attribuée par défaut est 0.
 
 Par exemple, pour créer un objet indiquant une durée de 1 jour et 30 secondes :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from datetime import timedelta
 duree = timedelta(days = 1, seconds = 30)
 duree
 ```
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 datetime.timedelta(1, 30)
 ```
 
 On peut accéder ensuite aux attributs (ayant été définis). Par exemple, pour accéder au nombre de jours que représente la durée :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 duree.days
 ```
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 1
 ```
 
 
 La méthode `total_seconds()` permet d'obtenir la durée exprimée en secondes :
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 duree = timedelta(days = 1, seconds = 30, hours = 20)
 duree.total_seconds()
 158430.0
@@ -1498,58 +2012,91 @@ duree.total_seconds()
 ##### Durée séparant deux objets `date` ou `datetime`
 
 Lorsqu'on soustrait deux objets de type `date`, on obtient le nombre de jours séparant ces deux dates, sous la forme d'un objet de type `timedelta` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from datetime import timedelta
 debut = date(2018, 1, 1)
 fin = date(2018, 1, 2)
 nb_jours = fin-debut
 print(type(nb_jours))
+```
+
+```
+## <class 'datetime.timedelta'>
+```
+
+```python
 print(nb_jours)
+```
+
+```
+## 1 day, 0:00:00
 ```
 
 
 
 Lorsqu'on soustrait deux objets de type `datetime`, on obtient le nombre de jours, secondes (et microsecondes, si renseignées) séparant ces deux dates, sous la forme d'un objet de type `timedelta` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut = datetime(2018, 1, 1, 12, 26, 30, 230)
 fin = datetime(2018, 1, 2, 11, 14, 31)
 duree = fin-debut
 print(type(duree))
+```
+
+```
+## <class 'datetime.timedelta'>
+```
+
+```python
 print(duree)
+```
+
+```
+## 22:48:00.999770
 ```
 
 
 
 On peut noter que les durée données prennent en compte les années bissextiles. Regardons d'abord pour une année non-bissextile, le nombre de jours séparant le 28 février du premier mars :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 debut = date(2021, 2,28)
 fin = date(2021, 3, 1)
 duree = fin - debut
 duree
 ```
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 datetime.timedelta(1)
 ```
 
 Regardons à présent la même chose, mais dans le cas d'une année bissextile :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 debut_biss = date(2020, 2,28)
 fin_biss = date(2020, 3, 1)
 duree_biss = fin_biss - debut_biss
 duree_biss
 ```
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 datetime.timedelta(2)
 ```
 
 
 
 Il est également possible d'**ajouter des durées à une date** :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 debut = datetime(2018, 12, 31, 23, 59, 59)
 print(debut + timedelta(seconds = 1))
+```
+
+```
+## 2019-01-01 00:00:00
 ```
 
 ### Module `pytz`
@@ -1558,16 +2105,14 @@ Si la gestion des dates revêt une importance particulière, une librairie propo
 
 ### Exercices
 
-```{block2, type='exframe', echo=TRUE}
-1. En utilisant la fonction appropriée, stocker la date du 29 août 2019 dans un objet que l'on appellera
+\BeginKnitrBlock{exframe}<div class="exframe">1. En utilisant la fonction appropriée, stocker la date du 29 août 2019 dans un objet que l'on appellera
 `d` puis afficher le type de l'objet.
 2. À l'aide de la fonction appropriée, afficher la date du jour.
 3. Stocker la date suivante dans un objet nommé `d2` : "2019-08-29 20:30:56". Puis, afficher dans la console avec la fonction `print()` les attributs d'année, de minute et de seconde de `d2`.
 4. Ajouter 2 jours, 3 heures et 4 minutes à `d2`, et stocker le résultat dans un objet appelé `d3`.
 5. Afficher la différence en secondes entre `d3` et `d2`.
 6. À partir de l'objet `d2`, afficher sous forme de chaîne de caractères la date de `d2` de manière à ce qu'elle respecte la syntaxe suivante : "Mois Jour, Année", avec "Mois" le nom du mois (August), "Jour" le numéro du jour sur deux chiffres (29) et "Année" l'année de la date (2019).
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 # Structures
@@ -1579,31 +2124,51 @@ Python dispose de plusieurs structures différentes intégrées de base. Nous al
 
 Une des structures les plus flexibles en Python est la liste. Il s'agit d'un regroupement de valeurs. La création d'une liste s'effectue en écrivant les valeurs en les séparant par une virgule et en entourant l'ensemble par des crochets (`[` et `]`).
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ["Pascaline", "Gauthier", "Xuan", "Jimmy"]
 print(x)
+```
+
+```
+## ['Pascaline', 'Gauthier', 'Xuan', 'Jimmy']
 ```
 
 
 Le contenu d'une liste n'est pas forcément du texte :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y = [1, 2, 3, 4, 5]
 print(y)
 ```
 
+```
+## [1, 2, 3, 4, 5]
+```
+
 Il est même possible de faire figurer des éléments de type différent dans une liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = ["Piketty", "Thomas", 1971]
 print(z)
 ```
 
+```
+## ['Piketty', 'Thomas', 1971]
+```
+
 Une liste peut contenir une autre liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tweets = ["aaa", "bbb"]
 followers = ["Anne", "Bob", "Irma", "John"]
 compte = [tweets, followers]
 print(compte)
+```
+
+```
+## [['aaa', 'bbb'], ['Anne', 'Bob', 'Irma', 'John']]
 ```
 
 
@@ -1611,40 +2176,87 @@ print(compte)
 ### Extraction des éléments {#structure-liste-extraction}
 
 L'accès aux éléments se fait grace à son indexation (attention, l'indice du premier élément est 0) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[0]) # Le premier élément de x
+```
+
+```
+## Pascaline
+```
+
+```python
 print(x[1]) # Le second élément de x
+```
+
+```
+## Gauthier
 ```
 
 L'accès à un élément peut aussi se faire en parant de la fin, en faisant figurer le signe moins (`-`) devant l'indice :
 L'accès aux éléments se fait grace à son indexation (attention, l'indice du premier élément est 0) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[-1]) # Le dernier élément de x
+```
+
+```
+## Jimmy
+```
+
+```python
 print(x[-2]) # L'avant dernier élément de x
+```
+
+```
+## Xuan
 ```
 
 Le découpage d'une liste de manière à obtenir un sous-ensemble de la liste s'effectue avec les deux points (`:`) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[1:2]) # Les premiers et seconds éléments de x
+```
+
+```
+## ['Gauthier']
+```
+
+```python
 print(x[2:]) # Du second (non inclus) à la fin de x
+```
+
+```
+## ['Xuan', 'Jimmy']
+```
+
+```python
 print(x[:-2]) # Du premier à l'avant dernier (non inclus)
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Le découpage retourne également une liste.
 ```
+## ['Pascaline', 'Gauthier']
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">Le découpage retourne également une liste.</div>\EndKnitrBlock{remarque}
 
 
 Lors de l'extraction des éléments de la liste à l'aide des crochets, il est possible de rajouter un troisième paramètre, le pas :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[::2]) # Un élément sur deux
+```
+
+```
+## ['Pascaline', 'Xuan']
 ```
 
 
 L'accès à des listes imbriquées s'effectue en utilisant plusieurs fois les crochets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tweets = ["aaa", "bbb"]
 followers = ["Anne", "Bob", "Irma", "John"]
 compte = [tweets, followers]
@@ -1653,9 +2265,21 @@ res = compte[1][3] # Le 4e élément du 2e élément de la liste compte
 
 
 Le **nombre d'éléments d'une liste** s'obtient avec la fonction `len()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(len(compte))
+```
+
+```
+## 2
+```
+
+```python
 print(len(compte[1]))
+```
+
+```
+## 4
 ```
 
 
@@ -1666,41 +2290,66 @@ Les listes sont mutables, c'est-à-dire que leur contenu peut être modifié une
 #### Remplacement
 
 Pour **modifier** un élément dans une liste, on utilise l'indiçage :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 3, 5, 6, 9]
 x[3] = 7 # Remplacement du 4e élément
 print(x)
 ```
 
+```
+## [1, 3, 5, 7, 9]
+```
+
 #### Ajout d'éléments
 
 Pour **ajouter des éléments à une liste**, on utilise la méthode `append()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x.append(11) # Ajout de la valeur 11 en fin de liste
 print(x)
 ```
 
+```
+## [1, 3, 5, 7, 9, 11]
+```
+
 Il est aussi possible d'utiliser la méthode `extend()`, pour concaténer des listes :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y = [13, 15]
 x.extend(y)
 print(x)
+```
+
+```
+## [1, 3, 5, 7, 9, 11, 13, 15]
 ```
 
 
 #### Suppression d'éléments
 
 Pour **retirer un élément d'une liste**, on utilise la méthode `remove()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x.remove(3) # Retire le 4e élément
 print(x)
 ```
 
+```
+## [1, 5, 7, 9, 11, 13, 15]
+```
+
 On peut aussi utiliser la commande `del` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 3, 5, 6, 9]
 del x[3] # Retire le 4e élément
 print(x)
+```
+
+```
+## [1, 3, 5, 9]
 ```
 
 
@@ -1708,99 +2357,171 @@ print(x)
 
 On peut modifier plusieurs valeurs en même temps :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 3, 5, 6, 10]
 x[3:5] = [7, 9] # Remplace les 4e et 5e valeurs
 print(x)
 ```
 
+```
+## [1, 3, 5, 7, 9]
+```
+
 La modification peut agrandir la taille de la liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3, 4, 5]
 x[2:3] = ['a', 'b', 'c', 'd'] # Remplace la 3e valeur
 print(x)
 ```
 
+```
+## [1, 2, 'a', 'b', 'c', 'd', 4, 5]
+```
+
 
 On peut supprimer plusieurs valeurs en même temps :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3, 4, 5]
 x[3:5] = [] # Retire les 4e et 5e valeurs
 print(x)
+```
+
+```
+## [1, 2, 3]
 ```
 
 ### Test d'appartenance
 
 En utilisant l'opérateur `in`, on peut tester l'appartenance d'un objet à une liste :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3, 4, 5]
 print(1 in x)
+```
+
+```
+## True
 ```
 
 
 ### Copie de liste {#copie-de-liste}
 
 Attention, la copie d'une liste n'est pas triviale en Python. Prenons un exemple.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3]
 y = x
 ```
 
 Modifions le premier élément de `y`, et observons le contenu de `y` et de `x` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y[0] = 0
 print(y)
+```
+
+```
+## [0, 2, 3]
+```
+
+```python
 print(x)
+```
+
+```
+## [0, 2, 3]
 ```
 
 
 Comme on peut le constater, le fait d'avoir utilisé le signe égal a simplement créé une référence et non pas une copie.
 
 Pour effectuer une copie de liste, plusieurs façons existent. Parmi elles, l'utilisation de la fonction `list()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3]
 y = list(x)
 y[0] = 0
 print("x : ", x)
+```
+
+```
+## x :  [1, 2, 3]
+```
+
+```python
 print("y : ", y)
+```
+
+```
+## y :  [0, 2, 3]
 ```
 
 On peut noter que lorsque l'on fait un découpement, un nouvel objet est créé, pas une référence :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 2, 3, 4]
 y = x[:2]
 y[0] = 0
 print("x : ", x)
+```
+
+```
+## x :  [1, 2, 3, 4]
+```
+
+```python
 print("y : ", y)
+```
+
+```
+## y :  [0, 2]
 ```
 
 ### Tri
 
 Pour trier les objets de la liste (sans en créer une nouvelle), Python propose la méthode `sort()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [2, 1, 4, 3]
 x.sort()
 print(x)
 ```
 
+```
+## [1, 2, 3, 4]
+```
+
 Cela fonctionne également avec des valeurs textuelles, en triant par ordre alphabétique :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ["c", "b", "a", "a"]
 x.sort()
 print(x)
 ```
 
+```
+## ['a', 'a', 'b', 'c']
+```
+
 Il est possible de fournir à la méthode `sort()` des paramètres. Parmi ces paramètres, il en est un, `key`, qui permet de fournir une fonction pour effectuer le tri. Cette fonction doit retourner une valeur pour chaque objet de la liste, sur laquelle le tri sera effectué. Par exemple, avec la fonction `len()`, qui, lorsqu'appliquée à du texte, retourne le nombre de caractères  :
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ["aa", "a", "aaaaa", "aa"]
 x.sort(key=len)
 print(x)
+```
+
+```
+## ['a', 'aa', 'aa', 'aaaaa']
 ```
 
 
@@ -1809,9 +2530,14 @@ print(x)
 Les n-uplets, ou *tuples* sont des séquences d'objets Python.
 
 Pour créer un n-uplet, on liste les valeurs, séparées par des virgules :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 1, 4, 9, 16, 25
 print(x)
+```
+
+```
+## (1, 4, 9, 16, 25)
 ```
 
 On note que les n-uplets sont repérés par une suite de valeurs, entourées dans deux parenthèses.
@@ -1820,22 +2546,40 @@ On note que les n-uplets sont repérés par une suite de valeurs, entourées dan
 
 Les éléments d'un n-uplet s'extraient de la même manière que ceux des listes (c.f. Section\ \@ref(structure-liste-extraction)).
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x[0])
+```
+
+```
+## 1
 ```
 
 ### Modification
 
 Contrairement aux listes, les n-uplets sont **inaltérables** (c'est-à-dire ne pouvant pas être modifés après avoir été créés) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x[0] = 1
+```
+
+```
+## TypeError: 'tuple' object does not support item assignment
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 
 Il est possible d'**imbriquer des n-uplets** à l'intérieur d'un autre n-uplet. Pour ce faire, on a recours à l'utilisation de parenthèses :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ((1, 4, 9, 16), (1, 8, 26, 64))
 print(x)
+```
+
+```
+## ((1, 4, 9, 16), (1, 8, 26, 64))
 ```
 
 
@@ -1844,27 +2588,39 @@ print(x)
 Les ensembles (*sets*) sont des collections non ordonnée d'éléments uniques. Les ensembles sont inaltérables, et non indexés.
 
 Pour créer un ensemble, Python fournit la fonction `set()`. On fournit un ou plusieurs éléments constituant l'ensemble, en les séparant par des virgules et en entourant l'ensemble d'accolades (`{}`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble = set({"Marseille", "Aix-en-Provence", "Nice", "Rennes"})
 print(ensemble)
 ```
 
+```
+## {'Marseille', 'Rennes', 'Aix-en-Provence', 'Nice'}
+```
+
 De manière équivalent, on peut ne pas utiliser la fonction `set()` et définir l'ensemble uniquement à l'aide des crochets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble = {"Marseille", "Aix-en-Provence", "Nice", "Rennes"}
 print(ensemble)
 ```
 
+```
+## {'Marseille', 'Rennes', 'Aix-en-Provence', 'Nice'}
+```
+
 En revanche, si l'ensemble est vide, Python retourne un erreur si la fonction `set()` n'est pas utilisée :
 il est nécessaire d'utiliser la fonction set :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble_vide = {}
 type(ensemble_vide)
 ```
 
 Le type de l'objet que l'on vient de créer n'est pas `set` mais `dict` (c.f. Section\ \@ref(type-dict)). Aussi, pour créer l'ensemble vide, on utilise `set()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble_vide = set()
 type(ensemble_vide)
 ```
@@ -1872,14 +2628,24 @@ type(ensemble_vide)
 
 Lors de la création, s'il existe des doublons dans les valeurs fournies, ils seront supprimés pour ne garder qu'une seule valeur :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble = set({"Marseille", "Aix-en-Provence", "Nice", "Marseille", "Rennes"})
 print(ensemble)
 ```
 
+```
+## {'Marseille', 'Rennes', 'Aix-en-Provence', 'Nice'}
+```
+
 La longueur d'un ensemble s'obtient à l'aide de la fonction `len()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(len(ensemble))
+```
+
+```
+## 4
 ```
 
 ### Modifications
@@ -1887,38 +2653,80 @@ print(len(ensemble))
 #### Ajout
 
 Pour ajouter un élément à un ensemble, Python offre la méthode `add()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble.add("Toulon")
 print(ensemble)
 ```
 
+```
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Toulon', 'Rennes'}
+```
+
 Si l'élément est déjà présent, il ne sera pas ajouté :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble.add("Toulon")
 print(ensemble)
+```
+
+```
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Toulon', 'Rennes'}
 ```
 
 
 #### Suppression
 
 Pour supprimer une valeur d'un ensemble, Python propose la méthode `remove()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble.remove("Toulon")
 print(ensemble)
 ```
 
+```
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
+```
+
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un message d'erreur :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble.remove("Toulon")
+```
+
+```
+## KeyError: 'Toulon'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+```
+
+```python
 print(ensemble)
+```
+
+```
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
 ```
 
 ### Test d'appartenance
 
 Un des intérêts des ensembles est la recherche rapide de présence ou absence de valeurs (plus rapide que dans une liste). Comme pour les listes, les tests d'appartenance s'effectuent à l'aide de l'opérateur `in` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("Marseille" in ensemble)
+```
+
+```
+## True
+```
+
+```python
 print("Paris" in ensemble)
+```
+
+```
+## False
 ```
 
 
@@ -1926,27 +2734,56 @@ print("Paris" in ensemble)
 
 
 Pour copier un ensemble, comme pour les listes (c.f. Section\ \@ref(copie-de-liste)), il ne faut pas utiliser le signe d'égalité. La copie d'un ensemble se fait à l'aide de la méthode `copy()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ensemble = set({"Marseille", "Aix-en-Provence", "Nice"})
 y = ensemble.copy()
 y.add("Toulon")
 print("y : ", y)
+```
+
+```
+## y :  {'Marseille', 'Toulon', 'Aix-en-Provence', 'Nice'}
+```
+
+```python
 print("ensemble : ", ensemble)
+```
+
+```
+## ensemble :  {'Marseille', 'Aix-en-Provence', 'Nice'}
 ```
 
 
 ### Conversion en liste
 
 Un des intérêts des ensembles est est qu'ils contiennent des éléments uniques. Aussi, lorsque l'on souhaite obtenir les éléments distincts d'une liste, il est possible de la convertir en ensemble (avec la fonction `set()`), puis de convertir l'ensemble en liste (avec la fonction `list()`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 ma_liste = ["Marseille", "Aix-en-Provence", "Marseille", "Marseille"]
 print(ma_liste)
+```
 
+```
+## ['Marseille', 'Aix-en-Provence', 'Marseille', 'Marseille']
+```
+
+```python
 mon_ensemble = set(ma_liste)
 print(mon_ensemble)
+```
 
+```
+## {'Marseille', 'Aix-en-Provence'}
+```
+
+```python
 ma_nouvelle_liste = list(mon_ensemble)
 print(ma_nouvelle_liste)
+```
+
+```
+## ['Marseille', 'Aix-en-Provence']
 ```
 
 
@@ -1958,13 +2795,19 @@ Les clés sont souvent du texte, les valeurs peuvent être de différents types 
 
 
 Pour créer un dictionnaire, on peut procéder en utilisant des accolades (`{}`). Comme rencontré dans la Section\ \@ref(structure-ensembles), si on évalue le code suivant, on obtient un dictionnaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 dict_vide = {}
 print(type(dict_vide))
 ```
 
+```
+## <class 'dict'>
+```
+
 Pour créer un dictionnaire avec des entrée, on peut utiliser les accolades, on sépare chaque entrée par des virgules, et on distingue la clé de la valeur associée par deux points (`:`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 mon_dict = { "nom": "Kyrie",
   "prenom": "John",
   "naissance": 1992,
@@ -1972,40 +2815,93 @@ mon_dict = { "nom": "Kyrie",
 print(mon_dict)
 ```
 
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Cleveland', 'Boston']}
+```
+
 
 Il est aussi possible de créer un dictionnaire à l'aide de la fonction `dict()`, en fournissant une séquence de clés-valeurs :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = dict([("Julien-Yacine", "Data-scientist"),
   ("Sonia", "Directrice")])
 print(x)
+```
+
+```
+## {'Julien-Yacine': 'Data-scientist', 'Sonia': 'Directrice'}
 ```
 
 
 ### Extraction des éléments
 
 L'extraction dans les dictionnaires repose sur le même principe que pour les listes et les n-uplets (c.f. Section\ \@ref(#structure-liste-extraction)). Toutefois, l'extraction d'un élément d'un dictionnaire ne se fait pas en fonction de sa position dans le dictionnaire, mais par sa clé :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(mon_dict["prenom"])
+```
+
+```
+## John
+```
+
+```python
 print(mon_dict["equipes"])
+```
+
+```
+## ['Cleveland', 'Boston']
 ```
 
 
 Si l'extraction s'effectue par une clé non présente dans le dictionnaire, une erreur sera retournée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(mon_dict["age"])
+```
+
+```
+## KeyError: 'age'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 
 On peut tester la présence d'une clé avec l'opérateur `in` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("prenom" in mon_dict)
+```
+
+```
+## True
+```
+
+```python
 print("age" in mon_dict)
 ```
 
+```
+## False
+```
+
 L'extraction de valeurs peut aussi se faire à l'aide de la méthode `get()`, qui retourne une valeur `None` si la clé n'est pas présente :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(mon_dict.get("prenom"))
+```
+
+```
+## John
+```
+
+```python
 print(mon_dict.get("age"))
+```
+
+```
+## None
 ```
 
 
@@ -2013,32 +2909,73 @@ print(mon_dict.get("age"))
 ### Clés et valeurs
 
 À l'aide de la méthode `key()`, on peut accéder aux clés du dictionnaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 les_cles = mon_dict.keys()
 print(les_cles)
+```
+
+```
+## dict_keys(['nom', 'prenom', 'naissance', 'equipes'])
+```
+
+```python
 print(type(les_cles))
 ```
 
+```
+## <class 'dict_keys'>
+```
+
 Il est possible par la suite de transformer cette énumération de clés en liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 les_cles_liste = list(les_cles)
 print(les_cles_liste)
 ```
 
+```
+## ['nom', 'prenom', 'naissance', 'equipes']
+```
+
 
 La méthode `values()` fournit quand à elle les valeurs du dictionnaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 les_valeurs = mon_dict.values()
 print(les_valeurs)
+```
+
+```
+## dict_values(['Kyrie', 'John', 1992, ['Cleveland', 'Boston']])
+```
+
+```python
 print(type(les_valeurs))
+```
+
+```
+## <class 'dict_values'>
 ```
 
 
 La méthode `items()` fournit quand à elle les clés et valeurs sous forme de n-uplets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 les_items = mon_dict.items()
 print(les_items)
+```
+
+```
+## dict_items([('nom', 'Kyrie'), ('prenom', 'John'), ('naissance', 1992), ('equipes', ['Cleveland', 'Boston'])])
+```
+
+```python
 print(type(les_items))
+```
+
+```
+## <class 'dict_items'>
 ```
 
 
@@ -2046,10 +2983,29 @@ print(type(les_items))
 
 Grâce aux méthodes `keys()`, `values()` et `items()`, il est aisé de rechercher la présence d'objets dans un dictionnaire.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("age" in les_cles)
+```
+
+```
+## False
+```
+
+```python
 print("nom" in les_cles)
+```
+
+```
+## True
+```
+
+```python
 print(['Cleveland', 'Boston'] in les_valeurs)
+```
+
+```
+## True
 ```
 
 
@@ -2060,10 +3016,15 @@ print(['Cleveland', 'Boston'] in les_valeurs)
 Pour remplacer la valeur associée à une clé, on peut utiliser les crochets (`[]`) et le signe d'égalité (`=`).
 
 Par exemple, pour remplacer les valeurs associées à la clé `equipes` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 mon_dict["equipes"] = ["Montclair Kimberley Academy",
   "Cleveland Cavaliers", "Boston Celtics"]
 print(mon_dict)
+```
+
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics']}
 ```
 
 
@@ -2071,31 +3032,58 @@ print(mon_dict)
 
 L'ajout d'un élément dans un dictionnaire peut s'effectuer avec les crochets (`[]`) et le signe d'égalité (`=`) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 mon_dict["taille_cm"] = 191
 print(mon_dict)
+```
+
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics'], 'taille_cm': 191}
 ```
 
 
 Pour ajouter le contenu d'un autre dictionnaire à un dictionnaire, Python propose la méthode `update()`.
 
 Créons un second dictionnaire dans un premier temps :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 second_dict = {"masse_kg" : 88, "debut_nba" : 2011}
 print(second_dict)
 ```
 
+```
+## {'masse_kg': 88, 'debut_nba': 2011}
+```
+
 Ajoutons le contenu de ce second dictionnaire au premier :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 mon_dict.update(second_dict)
 print(mon_dict)
 ```
 
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics'], 'taille_cm': 191, 'masse_kg': 88, 'debut_nba': 2011}
+```
+
 Si on modifie par la suite le second dictionnaire, cela n'aura pas d'incidence sur le premier :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 second_dict["poste"] = "PG"
 print(second_dict)
+```
+
+```
+## {'masse_kg': 88, 'debut_nba': 2011, 'poste': 'PG'}
+```
+
+```python
 print(mon_dict)
+```
+
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics'], 'taille_cm': 191, 'masse_kg': 88, 'debut_nba': 2011}
 ```
 
 
@@ -2104,21 +3092,36 @@ print(mon_dict)
 
 
 La suppression d'un élément dans un dictionnaire peut s'effectuer de plusieurs manières. Par exemple, avec l'opérateur `del` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 del mon_dict["debut_nba"]
 print(mon_dict)
 ```
 
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics'], 'taille_cm': 191, 'masse_kg': 88}
+```
+
 Il est également possible d'utiliser la méthode `pop()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 res = mon_dict.pop("masse_kg")
 print(mon_dict)
 ```
 
+```
+## {'nom': 'Kyrie', 'prenom': 'John', 'naissance': 1992, 'equipes': ['Montclair Kimberley Academy', 'Cleveland Cavaliers', 'Boston Celtics'], 'taille_cm': 191}
+```
+
 Dans l'instruction précédente, nous avons ajouté une assignation du résultat de l'appliation de la méthode `pop()` à une variable nommée `res`. Comme on peut le constater, la méthode `pop()`, en plus d'avoir supprimé la clé, a retourné la valeur associée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(res)
+```
+
+```
+## 88
 ```
 
 ### Copie de dictionnaire
@@ -2126,18 +3129,29 @@ print(res)
 
 Pour copier un dictionnaire, et non créer une référence (ce qui est le cas si on utilise le signe d'égalité), Python fournit comme pour les ensembles, une méthode `copy()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 d = {"Marseille": 13, "Rennes" : 35}
 d2 = d.copy()
 d2["Paris"] = 75
 print("d: ", d)
+```
+
+```
+## d:  {'Marseille': 13, 'Rennes': 35}
+```
+
+```python
 print("d2: ", d2)
+```
+
+```
+## d2:  {'Marseille': 13, 'Rennes': 35, 'Paris': 75}
 ```
 
 ### Exercice
 
-```{block2, type='exframe', echo=TRUE}
-1. Créer un dictionnaire nommé `photo`, comprenant les couples clés-valeurs suivants :
+\BeginKnitrBlock{exframe}<div class="exframe">1. Créer un dictionnaire nommé `photo`, comprenant les couples clés-valeurs suivants :
   1. clé : `id`, valeur : `1`,
   2. clé : `description`, valeur : `Une photo du Vieux-port de Marseille`,
   3. clé : `loc`, valeur : une liste dans laquelle sont données les coordonnées suivantes `5.3772133`, `43.302424`.
@@ -2145,8 +3159,7 @@ print("d2: ", d2)
 3. Rechercher s'il existe une entrée dont la clé vaut `description` dans le dictionnaire `photo`. Si tel est le cas, afficher l'entrée correspondante (clé et valeur).
 4. Supprimer l'entrée dans `photo` dont la clé vaut `utilisateur`.
 5. Modifier la valeur de l'entrée `loc` dans le dictionnaire `photo`, pour proposer une nouvelle liste, dont les coordonnées sont les suivantes : `5.3692712` et `43.2949627`.
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 # Opérateurs
@@ -2163,8 +3176,13 @@ Nous avons déjà utilisé dans les chapitres précédents certains d'entre eux,
 
 On effectue une addition entre deux nombres à l'aide du symbole `+` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(1+1) # Addition
+```
+
+```
+## 2
 ```
 
 
@@ -2172,8 +3190,13 @@ print(1+1) # Addition
 
 On effectue une soustraction entre deux nombres à l'aide du symbole `-` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(1+1) # Soustraction
+```
+
+```
+## 2
 ```
 
 
@@ -2181,8 +3204,13 @@ print(1+1) # Soustraction
 
 On effectue une multiplication entre deux nombres à l'aide du symbole `*` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(2*2) # Multiplication
+```
+
+```
+## 4
 ```
 
 
@@ -2190,28 +3218,48 @@ print(2*2) # Multiplication
 
 On effectue une division (réelle) entre deux nombres à l'aide du symbole `/` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(3/2) # Division
 ```
 
+```
+## 1.5
+```
+
 Pour effectuer une division entière, on double la barre oblique :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(3//2) # Division entière
+```
+
+```
+## 1
 ```
 
 ### Modulo
 
 Le modulo (reste de la division euclidienne) s'obtient à l'aide du symbole `%` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(12%10) # Modulo
+```
+
+```
+## 2
 ```
 
 ### Puissance
 
 Pour élever un nombre à une puissance données, on utilise deux étoiles (`**`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(2**3) # 2 élevé à la puissance 3
+```
+
+```
+## 8
 ```
 
 
@@ -2221,14 +3269,24 @@ L'ordre des opérations suit la règle PEMDAS (*Parentheses*, *Exponents*, *Mult
 
 Par exemple, l'instruction suivante effectue d'abord le calcul $2\times 2$, puis ajoute $1$ :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(2*2+1) 
+```
+
+```
+## 5
 ```
 
 
 L'instruction suivante, grâce aux parenthèses, effectue d'abord le calcul $2+1$, puis la multiplication du résultat avec $2$ :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(2*(2+1)) 
+```
+
+```
+## 6
 ```
 
 
@@ -2238,15 +3296,21 @@ Certains opérateurs mathématiques présentés dans la Section\ \@ref(operateur
 
 
 Lorsque l'on utilise le symbole `+` entre deux chaînes de caractères, Python concatène ces deux chaînes (cf. Section\ \@ref(type-chaines-concatenation)) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 a = "euro"
 b = "dollar"
 print(a+b)
 ```
 
+```
+## eurodollar
+```
+
 
 Lorsqu'on "multiplie" une chaîne par un scalaire $n$, Python répète la chaîne le nombre $n$ fois :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 2*a
 ```
 
@@ -2255,27 +3319,47 @@ Lorsqu'on "multiplie" une chaîne par un scalaire $n$, Python répète la chaîn
 Certains opérateurs mathématiques peuvent également être appliquées à des listes.
 
 Lorsque l'on utilise le symble `+` entre deux listes, Python les concatène en une seule :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 l_1 = [1, "pomme", 5, 7]
 l_2 = [9, 11]
 print(l_1 + l_2)
 ```
 
+```
+## [1, 'pomme', 5, 7, 9, 11]
+```
+
 Idem avec des n-uplets =
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_1 = (1, "pomme", 5, 7)
 t_2 = (9, 11)
 print(t_1 + t_2)
 ```
 
+```
+## (1, 'pomme', 5, 7, 9, 11)
+```
+
 En "multipliant" une liste par un scalaire $n$, Python répète $n$ fois cette liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(3*l_1)
 ```
 
+```
+## [1, 'pomme', 5, 7, 1, 'pomme', 5, 7, 1, 'pomme', 5, 7]
+```
+
 Idem avec des n-uplets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(3*t_1)
+```
+
+```
+## (1, 'pomme', 5, 7, 1, 'pomme', 5, 7, 1, 'pomme', 5, 7)
 ```
 
 ## Opérateurs de comparaison {#operateurs-comparaison}
@@ -2299,23 +3383,47 @@ Table: (#tab:operateurs-comparaison) Opérateurs de comparaison
 ### Égalité, inégalité
 
 Pour tester l'égalité de contenu entre deux objets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 a = "Hello"
 b = "World"
 c = "World"
 
 print(a == c)
+```
+
+```
+## False
+```
+
+```python
 print(b == c)
 ```
 
+```
+## True
+```
+
 L'inégalité entre deux objets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1,2,3]
 y = [1,2,3]
 z = [1,3,4]
 
 print(x != y)
+```
+
+```
+## False
+```
+
+```python
 print(x != z)
+```
+
+```
+## True
 ```
 
 
@@ -2324,66 +3432,125 @@ print(x != z)
 
 Pour savoir si un objet est inférieur (strictement ou non) ou inférieur (strictement ou non) à un autre :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 1
 y = 1
 z = 2
 
 print(x < y)
+```
+
+```
+## False
+```
+
+```python
 print(x <= y)
+```
+
+```
+## True
+```
+
+```python
 print(x > z)
+```
+
+```
+## False
+```
+
+```python
 print(x >= z)
+```
+
+```
+## False
 ```
 
 
 On peut également effectuer la comparaison entre deux chaînes de caractères. La comparaison s'effectue en fonction de l'ordre lexicographique :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 m_1 = "mange"
 m_2 = "manger"
 m_3 = "boire"
 print(m_1 < m_2) # mange avant manger
+```
+
+```
+## True
+```
+
+```python
 print(m_3 > m_1) # boire avant manger
+```
+
+```
+## False
 ```
 
 
 Lorsque l'on compare deux listes entre-elles, Python fonctionne pas à pas. Regardons à travers un exemple comment cette comparaison est effectuée.
 
 Créons deux listes :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [1, 3, 5, 7]
 y = [9, 11]
 ```
 
 Python va commencer par comparer les premiers éléments de chaque liste (ici, c'est possible, les deux éléments sont comparables ; dans le cas contraire, une erreur serait retournée) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(x < y)
+```
+
+```
+## True
 ```
 
 Comme `1<9`, Python retourne `True`.
 
 Changeons `x` pour que le premier élément soit supérieur au premier de `y`
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [10, 3, 5, 7]
 y = [9, 11]
 print(x < y)
 ```
 
+```
+## False
+```
+
 Cette fois, comme $10>9$, Python retourne `False`.
 
 Changeons à présent le premier élément de `x` pour qu'ils soit égal à celui de `y` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [10, 3, 5, 7]
 y = [10, 11]
 print(x < y)
 ```
 
+```
+## True
+```
+
 Cette fois, Python compare le premier élement de `x` avec celui de `y`, comme les deux sont identiques, les seconds éléments sont comparés. On peut s'en convaincre en évaluant le code suivant :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = [10, 12, 5, 7]
 y = [10, 11]
 print(x < y)
+```
+
+```
+## False
 ```
 
 
@@ -2392,20 +3559,38 @@ print(x < y)
 
 Comme rencontré plusieurs fois dans le Chapitre\ \@ref(structures), les tests d'inclusions s'effectuent à l'aide de l'opérateur `in`.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(3 in [1,2, 3])
+```
+
+```
+## True
 ```
 
 
 Pour tester si un élément est exclu d'une liste, d'un n-uplet, dictionnaire, etc., on utilise `not in` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(4 not in [1,2, 3])
+```
+
+```
+## True
+```
+
+```python
 print(4 not in [1,2, 3, 4])
 ```
 
+```
+## False
+```
+
 Avec un dictionnaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 dictionnaire = {"nom": "Rockwell", "prenom": "Criquette"}
 "age" not in dictionnaire.keys()
 ```
@@ -2421,33 +3606,69 @@ L'opérateur `and` permet d'effectuer des comparaisons "ET" logiques. On compare
 
 Si l'un des deux objets `x` et `y` est vrai, la comparaison "ET" logique retourne vrai :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = True
 print(x and y)
 ```
 
+```
+## True
+```
+
 Si au moins l'un des deux est faux, la comparaison "ET" logique retourne faux :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 
 print(x and y)
+```
+
+```
+## False
+```
+
+```python
 print(y and y)
+```
+
+```
+## False
 ```
 
 Si un des deux objets comparés vaut la valeur vide (`None`), alors la comparaison "ET" logique retourne :
 
 - la valeur `None` si l'autre objet vaut `True` ou `None` ;
 - la valeur `False` si l'autre objet vaut `False`
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 z = None
 print(x and z)
+```
+
+```
+## None
+```
+
+```python
 print(y and z)
+```
+
+```
+## False
+```
+
+```python
 print(z and z)
+```
+
+```
+## None
 ```
 
 
@@ -2459,18 +3680,28 @@ L'opérateur `or` permet d'effectuer des comparaisons "OU" logiques. À nouveau,
 
 Si au moins un des deux objets `x` et `y` est vrai, la comparaison "OU" logique retourne vrai :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 print(x or y)
 ```
 
+```
+## True
+```
+
 Si les deux sont faux, la comparaison "OU" logique retourne faux :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = False
 y = False
 print(x or y)
+```
+
+```
+## False
 ```
 
 Si l'un des deux objets vaut `None`, la comparaison "OU" logique retourne :
@@ -2478,13 +3709,32 @@ Si l'un des deux objets vaut `None`, la comparaison "OU" logique retourne :
 - `True` si l'autre objet vaut `True` ;
 - `None` si l'autre objet vaut `False` ou `None`
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 z = None
 print(x or z)
+```
+
+```
+## True
+```
+
+```python
 print(y or z)
+```
+
+```
+## None
+```
+
+```python
 print(z or z)
+```
+
+```
+## None
 ```
 
 
@@ -2495,16 +3745,29 @@ print(z or z)
 L'opérateur `not`, lorsqu'appliqué à un booléen, évalue ce dernier à sa valeur opposée :
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = True
 y = False
 print(not x)
+```
+
+```
+## False
+```
+
+```python
 print(not y)
+```
+
+```
+## True
 ```
 
 
 Lorsque l'on utilise l'opérateur `not` sur une valeur vide (`None`), Python retourne `True` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = None
 not x
 ```
@@ -2576,8 +3839,7 @@ Table: (#tab:constantes-base) Quelques constantes intégrées dans Python
 
 ## Exercice
 
-```{block2, type='exframe', echo=TRUE}
-1. Calculer le reste de la division euclidienne de 10 par 3.
+\BeginKnitrBlock{exframe}<div class="exframe">1. Calculer le reste de la division euclidienne de 10 par 3.
 2. Afficher le plus grand commun diviseur entre 6209 et 4435.
 3. Soient deux objets : `a = 18` et `b = -4`. Tester si: 
   
@@ -2591,8 +3853,7 @@ Table: (#tab:constantes-base) Quelques constantes intégrées dans Python
   - `1` et `0` sont dans `x` ;
   - `1` ou `0` sont dans `x` ;
   - `1` ou `0` n'est pas présent dans `x`.
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 # Chargement et sauvegarde de données
@@ -2606,18 +3867,21 @@ Lorsqu'on lance Jupyter, une arborescence nous est proposée, et nous navigons �
 Si on lance un programme Python depuis un terminal, le répertoire courant est le répertoire dans lequel on se trouve dans le terminal au moment de lancer le programme.
 
 Pour afficher dans Python le répertoire courant, on peut utiliser le code suivant :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import os
 cwd = os.getcwd()
 print(cwd)
 ```
 
-
-```{block2, type='remarque', echo=TRUE}
-La fonction `listdir()` de la librairie `os` est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n'importe quel répertoire si le
-paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé la fonction (`from os import getcwd`), on peut l'appeler : `os.listdir()`.
-
 ```
+## /Users/ewengallic/Dropbox/Universite_Aix_Marseille/Magistere_2_Programming_for_big_data/Cours/chapters/python/Python_pour_economistes
+```
+
+
+\BeginKnitrBlock{remarque}<div class="remarque">La fonction `listdir()` de la librairie `os` est très pratique : elle permet de lister tous les documents et répertoires contenus dans le répertoire couant, ou dans n'importe quel répertoire si le
+paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé la fonction (`from os import getcwd`), on peut l'appeler : `os.listdir()`.
+</div>\EndKnitrBlock{remarque}
 
 
 ## Charger des données {#charger-donnees}
@@ -2626,9 +3890,7 @@ paramètre `path` renseigne le chemin (absolu ou relatif). Après avoir importé
 En fonction du format d'enregistrement des données, les techniques d'importation de données diffèrent.
 
 
-```{block2, type='remarque', echo=TRUE}
-Le Chapitre\ \@ref(pandas) propose d'autres manières d'importer les données, avec la libraririe `pandas`.
-```
+\BeginKnitrBlock{remarque}<div class="remarque">Le Chapitre\ \@ref(pandas) propose d'autres manières d'importer les données, avec la libraririe `pandas`.</div>\EndKnitrBlock{remarque}
 
 
 ### Fichiers textes {#import-fichiers-texte}
@@ -2636,7 +3898,8 @@ Le Chapitre\ \@ref(pandas) propose d'autres manières d'importer les données, a
 Lorsque les données sont présentes dans un fichier texte (ASCII), Python propose d'utiliser la fonction `open()`.
 
 La syntaxe (simplifiée) de la fonction `open()` est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 open(file, mode='r', buffering=-1,
   encoding=None, errors=None, newline=None)
 ```
@@ -2667,50 +3930,77 @@ Il est important de bien penser à **fermer le fichier** une fois qu'on a termin
 
 
 Dans le dossier `fichiers_exemples` se trouve un fichier appelé `fichier_texte.txt` qui contient trois lignes de texte. Ouvrons ce fichier, et utilisons la méthode `.read()` pour afficher son contenu :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 path = "./fichiers_exemples/fichier_texte.txt"
 # Ouverture en mode lecture (par défaut)
 mon_fichier = open(path, mode = "r")
 print(mon_fichier.read())
+```
+
+```
+## Bonjour, je suis un fichier au format txt.
+## Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.
+## Trois lignes devraient suffir.
+```
+
+```python
 mon_fichier.close()
 ```
 
 Une pratique courante en Python est d'ouvrir un fichier dans un bloc `with`. La raison de ce choix est qu'un fichier ouvert dans un tel bloc est automatiquement refermé à la fin du bloc.
 
 La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 # Ouverture en mode lecture (par défaut)
 with open(path, "r") as mon_fichier:
   donnees = fonction_pour_recuperer_donnees_depuis_mon_fichier()
 ```
 
 Par exemple, pour récupérer chaque ligne comme un élément d'une liste, on peut utiliser une boucle parcourant chaque ligne du fichier. À chaque itération, on récupère la ligne :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Ouverture en mode lecture (par défaut)
 with open(path, "r") as mon_fichier:
   donnees = [x for x in mon_fichier]
 print(donnees)
 ```
 
+```
+## ['Bonjour, je suis un fichier au format txt.\n', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\n", 'Trois lignes devraient suffir.']
+```
+
 Note : à chaque itération, on peut appliquer la méthode `strip()`, qui retourne la chaîne de caractère de la ligne, en retirant les éventuels caractères blancs en début de chaîne :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Ouverture en mode lecture (par défaut)
 with open(path, "r") as mon_fichier:
   donnees = [x.strip() for x in mon_fichier]
 print(donnees)
 ```
 
+```
+## ['Bonjour, je suis un fichier au format txt.', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.", 'Trois lignes devraient suffir.']
+```
+
 
 On peut également utiliser la méthode `readlines()` pour importer les lignes dans une liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 with open(path, "r") as mon_fichier:
     donnees = mon_fichier.readlines()
 print(donnees)
 ```
 
+```
+## ['Bonjour, je suis un fichier au format txt.\n', "Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\n", 'Trois lignes devraient suffir.']
+```
+
 
 Il se peut parfois que l'encodage des caractères pose problème lors de l'importation. Dans ce cas, il peut être une bonne idée de changer la valeur du paramètre `encoding` de la fonction `open()`. Les encodages disponibles sont fonction de la locale. Les valeurs disponibles s'obtiennent à l'aide de la méthode suivante (code non exécuté dans ces notes) :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 import locale
 locale.locale_alias
 ```
@@ -2721,7 +4011,8 @@ locale.locale_alias
 
 Pour importer un fichier texte depuis Internet, on peut utiliser des méthodes de la librairie `urllib` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import urllib
 from urllib.request import urlopen
 url = "http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_texte.txt"
@@ -2730,10 +4021,21 @@ with urllib.request.urlopen(url) as mon_fichier:
 print(donnees)
 ```
 
+```
+## b"Bonjour, je suis un fichier au format txt.\nJe contiens plusieurs lignes, l'id\xc3\xa9e \xc3\xa9tant de montrer comment fonctionne l'importation d'un tel fichier dans Python.\nTrois lignes devraient suffir."
+```
+
 Comme on peut le constater, l'encodage des caractères pose souci ici. On peut appliquer la méthode `decode()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(donnees.decode())
+```
+
+```
+## Bonjour, je suis un fichier au format txt.
+## Je contiens plusieurs lignes, l'idée étant de montrer comment fonctionne l'importation d'un tel fichier dans Python.
+## Trois lignes devraient suffir.
 ```
 
 ### Fichiers CSV {#importation-fichiers-csv}
@@ -2742,13 +4044,18 @@ Les fichier CSV (*comma separated value*) sont très répandus. De nombreuses ba
 
 À nouveau, on utilise la fonction `open()`, avec les paramètres décrits dans la Section\ \@ref(import-fichiers-texte). Ensuite, on fait appel à la méthode `reader()` du module `csv` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import csv
 with open('./fichiers_exemples/fichier_csv.csv') as mon_fichier:
   mon_fichier_reader = csv.reader(mon_fichier, delimiter=',', quotechar='"')
   donnees = [x for x in mon_fichier_reader]
 
 print(donnees)
+```
+
+```
+## [['nom', 'prénom', 'équipe'], ['Irving', ' "Kyrie"', ' "Celtics"'], ['James', ' "Lebron"', ' "Lakers"', ''], ['Curry', ' "Stephen"', ' "Golden State Warriors"']]
 ```
 
 La méthode `reader()` peut prendre plusieurs paramètres, décrits dans le Tableau\ \@ref(tab:parametres-reader-csv).
@@ -2770,7 +4077,8 @@ Table: (#tab:parametres-reader-csv) Paramètres de la fonction `reader()`
 
 On peut aussi importer un fichier CSV en tant que dictionnaire, à l'aide de la méthode `csv.DictReader()` du module CSV :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import csv
 chemin = "./fichiers_exemples/fichier_csv.csv"
 with open(chemin) as mon_fichier:
@@ -2779,13 +4087,18 @@ with open(chemin) as mon_fichier:
 print(donnees)
 ```
 
+```
+## [OrderedDict([('nom', 'Irving'), ('prénom', ' "Kyrie"'), ('équipe', ' "Celtics"')]), OrderedDict([('nom', 'James'), ('prénom', ' "Lebron"'), ('équipe', ' "Lakers"'), (None, [''])]), OrderedDict([('nom', 'Curry'), ('prénom', ' "Stephen"'), ('équipe', ' "Golden State Warriors"')])]
+```
+
 
 
 #### Importation depuis internet
 
 Comme pour les fichiers `txt`, on peut charger un fichier CSV hébergé sur Internet :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import csv
 import urllib.request
 import codecs
@@ -2797,11 +4110,16 @@ with urllib.request.urlopen(url) as mon_fichier:
 print(donnees)
 ```
 
+```
+## [['nom', 'prénom', 'équipe'], ['Irving', ' "Kyrie"', ' "Celtics"'], ['James', ' "Lebron"', ' "Lakers"', ''], ['Curry', ' "Stephen"', ' "Golden State Warriors"']]
+```
+
 ### Fichier JSON
 
 Pour importer des fichiers au format JSON (*JavaScript Object Notation*), qui sont très utilisés dès lors qu'on communique avec une API, on peut utiliser la librairie `json`, et sa méthode `load()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import json
 lien = './fichiers_exemples/tweets.json'
 
@@ -2811,22 +4129,42 @@ with open(lien) as mon_fichier_json:
 
 Ensuite, on peut afficher le contenu importé à l'aide de la fonction `pprint()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from pprint import pprint
 pprint(data)
+```
+
+```
+## {'created_at': 'Wed Sep 26 07:38:05 +0000 2018',
+##  'id': 11,
+##  'loc': [{'long': 5.3698}, {'lat': 43.2965}],
+##  'text': 'Un tweet !',
+##  'user_mentions': [{'id': 111, 'screen_name': 'nom_twittos1'},
+##                    {'id': 112, 'screen_name': 'nom_twittos2'}]}
 ```
 
 #### Importation depuis Internet
 
 Encore une fois, il est possible d'importer des fichiers JSON depuis Internet :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import urllib
 from urllib.request import urlopen
 url = "http://egallic.fr/Enseignement/Python/fichiers_exemples/tweets.json"
 with urllib.request.urlopen(url) as mon_fichier:
    donnees = json.load(mon_fichier)
 pprint(donnees)
+```
+
+```
+## {'created_at': 'Wed Sep 26 07:38:05 +0000 2018',
+##  'id': 11,
+##  'loc': [{'long': 5.3698}, {'lat': 43.2965}],
+##  'text': 'Un tweet !',
+##  'user_mentions': [{'id': 111, 'screen_name': 'nom_twittos1'},
+##                    {'id': 112, 'screen_name': 'nom_twittos2'}]}
 ```
 
 
@@ -2845,7 +4183,8 @@ Admettons que nous ayons besoin d'exporter des lignes de texte dans un fichier. 
 
 La première, `str()`, retourne une version en chaînes de caractères d'un objet. Nous l'avons déjà appliquée à des nombres que l'on désirait concaténer en Section\ \@ref(conversion-chaines-caracteres).
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = ["pomme", 1, 3]
 str(x)
 ```
@@ -2855,7 +4194,8 @@ Le résultat de cette instruction retourne la liste sous la forme d'une chaîne 
 
 La seconde fonction qu'il semble important d'aborder est `repr()`. Cette fonction retourne une chaîne contenant une représentation imprimable à l'écran d'un objet. De plus, cette chaîne peut être lue par l'interprète.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y = "Fromage, tu veux du fromage ?\n"
 repr(y)
 ```
@@ -2871,7 +4211,8 @@ Admettons que nous souhaitons exporter deux lignes :
 
 Définissions ce dictionnaire :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 z = { "nom": "Kyrie",
   "prenom": "John",
   "naissance": 1992,
@@ -2879,7 +4220,8 @@ z = { "nom": "Kyrie",
 ```
 
 Une des syntaxes pour exporter les données au format `txt` est :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 # Ouverture en mode lecture (par défaut)
 chemin = "chemin/vers/fichier.txt"
 with open(chemin, "w") as mon_fichier:
@@ -2888,7 +4230,8 @@ with open(chemin, "w") as mon_fichier:
 
 On créé une variable indiquant le chemin vers le fichier. On ouvre ensuite le fichier en mode écriture en précisant le paramètre `mode = "w"`. Puis, il reste à écrire nos lignes dans le fichier.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 chemin = "./fichiers_exemples/Irving.txt"
 with open(chemin, mode = "w") as mon_fichier:
   mon_fichier.write("Caractéristiques de Kyrie Irving\n")
@@ -2896,16 +4239,25 @@ with open(chemin, mode = "w") as mon_fichier:
 ```
 
 Si le fichier est déjà existant, en ayant utilisé `mode="w"`, l'ancien fichier sera écrasé par le nouveau. Si on souhaite ajouter des lignes au fichier existant, on utilisera `mode="a"` par exemple :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 with open(chemin, mode = "a") as mon_fichier:
   mon_fichier.writelines("\nUne autre ligne\n")
 ```
 
 
 Si on souhaite être prévenu si le fichier est déjà existant, et faire échouer l'écriture si tel est le cas, on peut utiliser `mode="x"` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 with open(chemin, mode = "x") as mon_fichier:
   mon_fichier.writelines("Une nouvelle ligne qui ne sera pas ajoutée\n")
+```
+
+```
+## FileExistsError: [Errno 17] File exists: './fichiers_exemples/Irving.txt'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 
@@ -2917,7 +4269,8 @@ En tant qu'économiste, il est plus fréquent d'avoir à exporter les données a
 
 Exemple de création d'un fichier CSV :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import csv
 chemin = "./fichiers_exemples/fichier_export.csv"
 
@@ -2942,7 +4295,8 @@ Il peut être nécessaire de sauvegarder des données structurées au format JSO
 Pour ce faire, nous allons utiliser la librairire `json`, et sa méthode `dump()`. Cette méthode permet de sérialiser un objet (par exemple une liste, comme ce que l'on obtient avec l'API Twitter interrogée avec la libraririe `twitter-python`) en JSON.
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import json
 x = [1, "pomme", ["pépins", "rouge"]]
 y = { "nom": "Kyrie",
@@ -2953,21 +4307,45 @@ x_json = json.dumps(x)
 y_json = json.dumps(y)
 
 print("x_json: ", x_json)
+```
+
+```
+## x_json:  [1, "pomme", ["p\u00e9pins", "rouge"]]
+```
+
+```python
 print("y_json: ", y_json)
+```
+
+```
+## y_json:  {"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}
 ```
 
 
 Comme on peut le constater, on rencontre quelques petite problèmes d'affichage des caractères accentués. On peut préciser, à l'aide du paramètre `ensure_ascii` évalué à `False` que l'on ne désire pas s'assurer que les caractères non-ascii soient échappés par des séquences de type `\uXXXX`.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x_json = json.dumps(x, ensure_ascii=False)
 y_json = json.dumps(y, ensure_ascii=False)
 
 print("x_json: ", x_json)
+```
+
+```
+## x_json:  [1, "pomme", ["pépins", "rouge"]]
+```
+
+```python
 print("y_json: ", y_json)
 ```
 
+```
+## y_json:  {"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}
+```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+
+```python
 chemin = "./fichiers_exemples/export_json.json"
 
 with open(chemin, 'w') as f:
@@ -2978,7 +4356,8 @@ with open(chemin, 'w') as f:
 
 
 Si on souhaite réimporter dans Python le contenu du fichier `export_json.json` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 chemin = "./fichiers_exemples/export_json.json"
 with open(chemin, "r") as f:
     data = []
@@ -2988,19 +4367,21 @@ with open(chemin, "r") as f:
 print(data)
 ```
 
+```
+## ['[1, "pomme", ["pépins", "rouge"]]', '{"nom": "Kyrie", "prenom": "John", "naissance": 1992, "equipes": ["Cleveland", "Boston"]}']
+```
+
 
 
 ### Exercice
 
-```{block2, type='exframe', echo=TRUE}
-1. Créer une liste nommée `a` contenant des informations sur le taux de chômage en France au deuxième trimestre 2018. Cette liste doit contenir trois éléments :
+\BeginKnitrBlock{exframe}<div class="exframe">1. Créer une liste nommée `a` contenant des informations sur le taux de chômage en France au deuxième trimestre 2018. Cette liste doit contenir trois éléments :
     - l'année ;
     - le trimestre ;
     - la valeur du taux de chômage ($9.1\%$).
 2. Exporter au format CSV le contenu de la liste `a`, en le faisant précéder d'une ligne précisant les noms des champs. Utiliser le point virgule comme séparateur de champs.
 3. Importer le fichier créé dans la question précédente dans Python.
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 
@@ -3018,36 +4399,41 @@ L'instruction conditionnelle la plus simple que l'on peut rencontrer est `if`. S
 
 
 La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 if expression:
   instruction
 ```
 
 Les lignes après les deux points (`:`) doivent être placées dans un bloc, en utilisant un taquet de tabulation.
 
-```{block2, type='remarque', echo=TRUE}
-Un bloc de code est un regroupement d'instructions. Des codes imbriqués indentés à la même position font partie du même bloc :
+\BeginKnitrBlock{remarque}<div class="remarque">Un bloc de code est un regroupement d'instructions. Des codes imbriqués indentés à la même position font partie du même bloc :
 
     ligne du bloc 1
     ligne du bloc 1
       ligne du bloc2
       ligne du bloc2
     ligne du bloc1
-
-```
+</div>\EndKnitrBlock{remarque}
 
 
 
 
 Dans le code ci-dessous, nous définissons une variable `x` contenant l'entier $2$. L'instruction suivante évalue l'expression `x == 2` (cf. Section\ \@red(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est `Vrai`, alors le contenu du bloc est évalué.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 2
 if x == 2:
   print("Hello")
 ```
 
+```
+## Hello
+```
+
 Si on change la valeur de `x` de manière à ce que l'expression `x == 2` retourne `False` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 3
 if x == 2:
   print("Hello")
@@ -3055,23 +4441,26 @@ if x == 2:
 
 
 À l'intérieur du bloc, on peut écrire plusieurs instructions qui seront évaluées si l'expression est `True` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 2
 if x == 2:
   y = "Hello"
   print(y + ", x vaut : " + str(x))
 ```
 
+```
+## Hello, x vaut : 2
+```
 
 
-```{block2, type='remarque', echo=TRUE}
-Lorsqu'on rédige son code, il peut-être pratique d'utiliser des instructions conditionnelles `if` pour évaluer ou non certaines parties du code. Par exemple, quand on régide un script, il arrive des moments où nous devons réévaluer le début, mais que certaines parties ne nécessitent pas d'être réévaluées à chaque fois, comme des sorties graphiques (ce qui prend du temps). Il est possible de commenter ces parties de codes ne nécessitant pas une nouvelle évaluation, ou alors on peut les placer dans un bloc conditionnel :
+
+\BeginKnitrBlock{remarque}<div class="remarque">Lorsqu'on rédige son code, il peut-être pratique d'utiliser des instructions conditionnelles `if` pour évaluer ou non certaines parties du code. Par exemple, quand on régide un script, il arrive des moments où nous devons réévaluer le début, mais que certaines parties ne nécessitent pas d'être réévaluées à chaque fois, comme des sorties graphiques (ce qui prend du temps). Il est possible de commenter ces parties de codes ne nécessitant pas une nouvelle évaluation, ou alors on peut les placer dans un bloc conditionnel :
 
 - au début du script, on créé une variable `graph = False` ;
 - avant de créer un graphique, on le place dans un bloc `if graphe:`
 
-Au moment de l'exécution du script, on peut choisir de créer et exporter les graphiques des blocs `if graphe:` en modifiant à sa guise la variable `graph`.
-```
+Au moment de l'exécution du script, on peut choisir de créer et exporter les graphiques des blocs `if graphe:` en modifiant à sa guise la variable `graph`.</div>\EndKnitrBlock{remarque}
 
 ## Les instructions conditionnelles `if-else`
 
@@ -3080,7 +4469,8 @@ Si la condition n'est pas vérifiée, on peut proposer des instructions à effec
 
 
 La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 if expression:
   instructions
 else:
@@ -3090,7 +4480,8 @@ else:
 
 Par exemple, admettons qu'on veuille créer une variable de chaleur prenant la valeur `chaud` si la valeur de la variable `temperature` dépasse 28 degrés C, `froid` sinon. Admettons que la température est de 26 degrés C :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 temperature = 26
 chaleur = ""
 
@@ -3102,8 +4493,13 @@ else:
 print("Il fait " + chaleur)
 ```
 
+```
+## Il fait froid
+```
+
 Si la température est à présent de 32 degrés C :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 temperature = 32
 chaleur = ""
 
@@ -3115,6 +4511,10 @@ else:
 print("Il fait " + chaleur)
 ```
 
+```
+## Il fait chaud
+```
+
 
 ## Les instructions conditionnelles `if-elif`
 
@@ -3124,7 +4524,8 @@ Si la condition n'est pas vérifiée, on peut en tester une autre et alors éval
 
 La syntaxe est la suivante :
 
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 if expression:
   instructions
 elif expression_2:
@@ -3139,7 +4540,8 @@ else:
 L'exemple précédent manque un peu de sens commun. Peut-on dire que lordqu'il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques nuances :
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 temperature = -4
 chaleur = ""
 
@@ -3155,17 +4557,18 @@ else:
 print("La température est " + chaleur)
 ```
 
-
-
-```{block2, type='remarque', echo=TRUE}
-L'avantage d'utiliser des instructions conditionnelles `if-elif` par rapport à écrire plusieurs instructions conditionnelles `if` à la suite est qu'avec la première manière de faire, les comparaisons s'arrêtent dès qu'une est remplie, ce qui est plus efficace.
 ```
+## La température est très froide
+```
+
+
+
+\BeginKnitrBlock{remarque}<div class="remarque">L'avantage d'utiliser des instructions conditionnelles `if-elif` par rapport à écrire plusieurs instructions conditionnelles `if` à la suite est qu'avec la première manière de faire, les comparaisons s'arrêtent dès qu'une est remplie, ce qui est plus efficace.</div>\EndKnitrBlock{remarque}
 
 
 ## Exercice
 
-```{block2, type='exframe', echo=TRUE}
-Soit une liste nommée `europe` contenant les valeurs suivantes, sous forme de chaînes de caractères : "Allemagne", "France" et "Espagne".
+\BeginKnitrBlock{exframe}<div class="exframe">Soit une liste nommée `europe` contenant les valeurs suivantes, sous forme de chaînes de caractères : "Allemagne", "France" et "Espagne".
 
 Soit une seconde liste, nommée `asie`, contenant sous forme de chaînes de caractères : "Vietnam", "Chine" et "Inde".
 
@@ -3183,8 +4586,7 @@ Pour ce faire :
 1. Créer les deux listes `europe` et `asie` ainsi que la variable `pays` (valant "Espagne") et la variable `continent` (initiée avec une chaîne de caractères vide).
 2. Rédiger le code permettant de réaliser l'objectif expliqué, et afficher le contenu de la variable `continent` à l'issue de l'exécution.
 3. Changer la valeur de `pays` à `Chine` puis à `Brésil` et dans chacun des cas, exécuter le code rédigé dans la question précédente.
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 # Boucles {#boucles}
@@ -3197,10 +4599,8 @@ Nous allons aborder deux types de boucles dans ce chapitre :
 - celles pour lesquelles nous savons `a priori` combien d'itérations sont nécessaires : les boucles `for()`
 
 
-```{block2, type='remarque', echo=TRUE}
-Il est possible d'arrêter une boucle `for()` avant un nombre d'itérations prédéfini ; dans le même esprit, il est possible d'utiliser une boucle `while()` en sachant d'avance le nombre d'itérations à effectuer.
-
-```
+\BeginKnitrBlock{remarque}<div class="remarque">Il est possible d'arrêter une boucle `for()` avant un nombre d'itérations prédéfini ; dans le même esprit, il est possible d'utiliser une boucle `while()` en sachant d'avance le nombre d'itérations à effectuer.
+</div>\EndKnitrBlock{remarque}
 
 
 ## Boucles avec `while()`
@@ -3208,7 +4608,8 @@ Il est possible d'arrêter une boucle `for()` avant un nombre d'itérations pré
 Le principe d'une boucle `while()` est que les instructions à l'intérieur de la boucle seront répétées tant qu'une condition est respectée. L'idée est de faire dépendre cette condition d'un ou plusieurs objets qui seront modifiés au cours des itérations (sans cela, la boucle tournerait à l'infini).
 
 La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 while condition:
   instructions
 ```
@@ -3216,14 +4617,35 @@ while condition:
 Comme pour les instructions conditionnelles (c.f. Section\ \@ref(conditions)), les instructions sont placées à l'intérieur d'un bloc.
 
 Regardons un exemple de boucle `while()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = 100
 while x/3 > 1:
   print(x/3)
   x = x/3
+```
 
+```
+## 33.333333333333336
+## 11.111111111111112
+## 3.703703703703704
+## 1.234567901234568
+```
+
+```python
 print(x/3>1)
+```
+
+```
+## False
+```
+
+```python
 print(x/3)
+```
+
+```
+## 0.41152263374485604
 ```
 
 Dans cette boucle, à chaque itération, la valeur de `x` divisé par 3 est affichée, puis la valeur de `x` est remplacée par le tiers de sa valeur courante. Cette opération est répétée tant que l'expression `x/3 > 1` retourne `True`.
@@ -3236,7 +4658,8 @@ Dans cette boucle, à chaque itération, la valeur de `x` divisé par 3 est affi
 
 
 Quand on connaît le nombre d'itérations à l'avance, on pourra utiliser une boucle `for()`. La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 for objet in valeurs_possibles:
   instructions
 ```
@@ -3250,26 +4673,68 @@ Nous allons, dans l'exemple qui suit, calculer le carré des $n$ premiers entier
 - `step` : (optionnel, par défaut 1) le pas.
 
 Avant de calculer la suite des $n$ premiers carrés, regardons un exemple de fonctionnement de la fonction `range()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(list(range(0, 4))) # Les entiers de 0 à 3
+```
+
+```
+## [0, 1, 2, 3]
+```
+
+```python
 print(list(range(4))) # Les entiers de 0 à 3
+```
+
+```
+## [0, 1, 2, 3]
+```
+
+```python
 print(list(range(2, 10))) # Les entiers de 2 à 9
+```
+
+```
+## [2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+```python
 print(list(range(2, 10, 3))) # Les entiers de 2 à 9 par pas de 3
+```
+
+```
+## [2, 5, 8]
 ```
 
 Aussi, pour afficher la suite des $10$ premiers carrés :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 n=10
 for i in range(0, n+1):
   print("Le carré de %s est %s" % (i,i**2))
+```
+
+```
+## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 3 est 9
+## Le carré de 4 est 16
+## Le carré de 5 est 25
+## Le carré de 6 est 36
+## Le carré de 7 est 49
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100
 ```
 
 Lors de la première itération, `i` vaut 0. Lors de la seconde, `i` vaut 1. Lors de la troisième, `i` vaut 2, etc.
 
 
 Si on veut stocker le résultat dans une liste :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 n=10
 n_entiers_carres = []
 for i in range(0, n+1):
@@ -3278,48 +4743,96 @@ for i in range(0, n+1):
 print(n_entiers_carres)
 ```
 
+```
+## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
 
 Il n'est pas obligatoire d'utiliser la fonction `range()` dans une boucle `for()`, on peut définir les valeurs "à la main" :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 for i in [0, 1, 2, 8, 9, 10]:
   print("Le carré de %s est %s" % (i,i**2))
 ```
 
+```
+## Le carré de 0 est 0
+## Le carré de 1 est 1
+## Le carré de 2 est 4
+## Le carré de 8 est 64
+## Le carré de 9 est 81
+## Le carré de 10 est 100
+```
+
 
 Dans le même esprit, il n'est pas obligatoire d'itérer sur des valeurs numériques :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 for prenom in ["Pascaline", "Gauthier", "Xuan", "Jimmy"]:
   print("Il y a %s lettre(s) dans le prénom %s" % (len(prenom), prenom))
+```
+
+```
+## Il y a 9 lettre(s) dans le prénom Pascaline
+## Il y a 8 lettre(s) dans le prénom Gauthier
+## Il y a 4 lettre(s) dans le prénom Xuan
+## Il y a 5 lettre(s) dans le prénom Jimmy
 ```
 
 
 
 Rien n'empêche de faire des boucles à l'intérieur de boucles :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 for i in range(0,3):
     for j in range(0,3):
         print("i vaut %s et j vaut %s" % (i, j))
 ```
 
+```
+## i vaut 0 et j vaut 0
+## i vaut 0 et j vaut 1
+## i vaut 0 et j vaut 2
+## i vaut 1 et j vaut 0
+## i vaut 1 et j vaut 1
+## i vaut 1 et j vaut 2
+## i vaut 2 et j vaut 0
+## i vaut 2 et j vaut 1
+## i vaut 2 et j vaut 2
+```
+
 Comme on peut le constater, l'itération se fait pour chaque valeur de `i`, et pour chacune de ces valeurs, une seconde itération est effectuée sur les valeurs de `j`.
 
 
-```{block2, type='remarque', echo=TRUE}
-On utilise souvent les lettres `i` et `j` pour désigner un compteur dans une boucle `for()`, mais ce n'est évidemment pas une obligation.
-
-```
+\BeginKnitrBlock{remarque}<div class="remarque">On utilise souvent les lettres `i` et `j` pour désigner un compteur dans une boucle `for()`, mais ce n'est évidemment pas une obligation.
+</div>\EndKnitrBlock{remarque}
 
 Dans une boucle, si on désire incrémenter un comteur, on peut utiliser le symbole `+=` plutôt que d'écrire `compteur = compteur + ...` :
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 j = 10
 for i in range(0, 4):
   j += 5
   print("Nouvelle valeur pour j : %s" % j)
   
+```
+
+```
+## Nouvelle valeur pour j : 15
+## Nouvelle valeur pour j : 20
+## Nouvelle valeur pour j : 25
+## Nouvelle valeur pour j : 30
+```
+
+```python
 print(j)
+```
+
+```
+## 30
 ```
 
 
@@ -3327,8 +4840,7 @@ print(j)
 
 ## Exercice
 
-```{block2, type='exframe', echo=TRUE}
-1. Rédiger un programme très naïf visant à déterminer si un nombre est premier ou non. Pour ce faire : 
+\BeginKnitrBlock{exframe}<div class="exframe">1. Rédiger un programme très naïf visant à déterminer si un nombre est premier ou non. Pour ce faire : 
 
     1. définir une variable `nombre` contenant un entier naturel de votre choix (pas trop grand),
     2. à l'aide d'une boucle, vérifier si chaque entier jusqu'à la racine carrée de votre nombre, est un diviseur de votre nombre (s'arrêter si jamais c'est le cas)
@@ -3339,8 +4851,7 @@ print(j)
 
 3. Parcourir les entiers de 1 à 20 à l'aide d'une boucle for en affichant dans la console à chaque itération si le nombre courant est pair.
 4. Utiliser une boucle `for()` pour reprouire la suite de Fibonacci jusqu'à son dixième terme (la séquence $F_n$ est définie par la relation de récurrence suivante : $F_n = F_{n-1} + F_{n-2}$ ; les valeurs initiales sont $F_0 = 0$ et $F_1 = 1$).
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 
@@ -3354,13 +4865,15 @@ La plupart du temps, on utilise les fonctions de base ou contenues dans des modu
 Une fonction est déclarée à l'aide du mot clé `keyword`. Ce qu'elle renvoie est retourné à l'aide du mot clé `return`.
 
 La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 def nom_fonction(parametres):
   corps_de_la_fonction
 ```
 
 Une fois que la fonction est définie, on l'appelle en faisant référence à son nom :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 nom_fonction()
 ```
 
@@ -3368,28 +4881,43 @@ nom_fonction()
 Il suffit donc de rajouter des parenthèses au nom de la fonction pour l'appeler. En effet, `nom_fonction` désigne l'objet qui contient la fonction qui est appelée à l'aide de l'expression `nom_fonction()`.
 Par exemple, si on souhaite définir la fonction qui calcule le carré d'un nombre, voici ce que l'on peut écrire :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def carre(x):
   return x**2
 ```
 
 On peut ensuite l'appeler :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(carre(2))
+```
+
+```
+## 4
+```
+
+```python
 print(carre(-3))
+```
+
+```
+## 9
 ```
 
 ### Ajout d'une description
 
 Il est possible (et fortement recommandé) d'ajouter une description de ce que la fonction fait :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def carre(x):
   """retourne le carré de x"""
   return x**2
 ```
 
 De fait, quand on évalue ensuite l'instruction suivante, la description de la fonction s'affiche :
-```{r, eval=F, echo=TRUE, error=TRUE}
+
+```r
 ?carre
 ```
 
@@ -3401,7 +4929,8 @@ Dans l'exemple de la fonction `carre()` que nous avons créée, nous avons rense
 
 Considérons par exemple le problème suivant. Nous disposons d'une fonction de production $Y(L, K, M)$, qui dépend du nombre de travailleurs $L$ et de la quantité de capital $K$, et du matériel $M$, telle que $Y(L, K, M) = L^{0.3} K^{0.5}M^2$. Cette fonction pourra s'écrire en Python de la manière suivante :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def production(l, k, m):
   """
   @param l (float) travail
@@ -3417,9 +4946,14 @@ def production(l, k, m):
 
 En reprenant l'exemple précédent, si on nous donne $L = 60$ et $K = 42$ et $M = 40$, on peut en déduire la production :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 prod_val = production(60, 42, 40)
 print(prod_val)
+```
+
+```
+## 46.289449781254994
 ```
 
 On peut noter que le nom des paramètres n'a pas été mentionné ici. Lors de l'appel de la fonction, la valeur du premier paramètre a été attribué au paramètre défini en premier (`l`), celle du second au second paramètre (`k`) et enfin celle du troisième au troisième paramètre (`m`).
@@ -3439,7 +4973,8 @@ Il est important de noter que les arguments positionnels (ceux qui n'ont pas de 
 
 Prenons un exemple avec deux paramètres positionnels (`l` et `m`) et un paramètre par mot-clé (`k`) :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def production_2(l, m, k=42):
   """
   @param l (float) travail
@@ -3453,7 +4988,8 @@ def production_2(l, m, k=42):
 
 La fonction `production_2()` peut s'appeler, pour donner le même résultat, des trois manières suivantes :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # En nommant tous les paramètres, en ommettant k
 prod_val_1 = production_2(l = 42, m = 40)
 # En nommant tous les paramètres et en précisant k
@@ -3467,18 +5003,21 @@ res = [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 print(res)
 ```
 
-```{block2, type='remarque', echo=TRUE}
-Si la fonction contient plusieurs paramètres positionnels ; lors de l'appel :
+```
+## [41.59215573604822, 41.59215573604822, 41.59215573604822, 41.59215573604822]
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">Si la fonction contient plusieurs paramètres positionnels ; lors de l'appel :
 
 - soit on nomme tous les paramètres positonnels par leur nom ;
 - soit aucun ;
 - il n'y a pas d'entre deux.
-
-```
+</div>\EndKnitrBlock{remarque}
 
 
 Du moment que tous les paramètres positionnels sont nommés lors de l'appel, on peut les faire figurer dans des ordres différents :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def production_3(a, l, m = 40, k=42):
   """
   @param a (float) productivité totale des facteurs
@@ -3499,11 +5038,16 @@ res = [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 print(res)
 ```
 
+```
+## [41.16765711449734, 41.59215573604822, 41.59215573604822, 41.59215573604822]
+```
+
 #### Fonction comme paramètre
 
 Une fonction peut être fournie en paramètre à une autre fonction.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def carre(x):
   """Retourne le carré de x"""
   return x**2
@@ -3515,6 +5059,10 @@ def appliquer_carre_4(fun):
 print(appliquer_carre_4(carre))
 ```
 
+```
+## 16
+```
+
 
 ## Portée
 
@@ -3522,7 +5070,8 @@ Lorsque une fonction est appelée, le corps de cette fonction est interprété. 
 
 Regardons cela à travers un exemple.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Définition d'une variable globale :
 valeur = 1
 
@@ -3537,10 +5086,33 @@ def f(x):
 
 Appelons la fonction `f()`, puis regardons la valeur de `valeur` et celle de `nouvelle_valeur` après l'exécution de la fonction.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 res = f(3)
+```
+
+```
+## valeur vaut : 2
+## nouvelle_valeur vaut : 3
+```
+
+```python
 print("valeur vaut :", valeur)
+```
+
+```
+## valeur vaut : 1
+```
+
+```python
 print("nouvelle_valeur vaut :", nouvelle_valeur)
+```
+
+```
+## NameError: name 'nouvelle_valeur' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 Comme on peut le constater, durant l'appel, la variable locale du nom `valeur` valait 2. Cette variable ne faisait pas référence à la variable du même nom définie dans l'environnement global. À l'issue de l'exécution de la fonction `f()`, cette variable `valeur` locale est supprimée, et il en est de même pour la variable locale `nouvelle_valeur`, qui n'existe pas dans l'environnement gloabl (d'où l'erreur retournée).
@@ -3548,7 +5120,8 @@ Comme on peut le constater, durant l'appel, la variable locale du nom `valeur` v
 
 Sans trop rentrer trop dans les détails, il semble important de connaître quelques principes à propos de la portée des variables. Les variables sont définies dans des environnements, qui sont embriqués les uns dans les autres. Si une variable n'est pas définie dans le corps d'une fonction, Python ira chercher dans un environnement parent.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 valeur = 1
 def f(x):
   return x + valeur
@@ -3556,10 +5129,15 @@ def f(x):
 print(f(2))
 ```
 
+```
+## 3
+```
+
 Si on définit une fonction à l'intérieur d'une autre fonction, et qu'on appelle une variable non définie dans le corps de cette fonction, Python ira chercher dans l'environnement directement supérieur. S'il ne trouve pas, il ira chercher dans l'environnement encore supérieur, et ainsi de suite jusqu'à l'environnement global.
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # La variable valeur n'est pas définie dans
 # l'environnement local de g().
 # Python va alors chercher dans f().
@@ -3574,8 +5152,13 @@ def f():
 print(f())
 ```
 
+```
+## 4
+```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+
+```python
 # La variable valeur n'est définie ni dans g() ni dans f()
 # mais dans l'environnement supérieur (ici, global)
 valeur = 1
@@ -3588,9 +5171,14 @@ def f():
 print(f())
 ```
 
+```
+## 3
+```
+
 Si on définit une variable dans le corps d'une fonction et que l'on souhaite qu'elle soit accessible dans l'environnement global, on peut utiliser le mot-clé `global` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def f(x):
   global y
   y = x+1
@@ -3599,10 +5187,12 @@ f(3)
 print(y)
 ```
 
-```{block2, type='remarque', echo=TRUE}
-La variable que l'on souhaite définir de manière globale depuis un espace local de la fonction ne doit pas avoir le même nom d'un des paramètres.
-
 ```
+## 4
+```
+
+\BeginKnitrBlock{remarque}<div class="remarque">La variable que l'on souhaite définir de manière globale depuis un espace local de la fonction ne doit pas avoir le même nom d'un des paramètres.
+</div>\EndKnitrBlock{remarque}
 
 
 ## Fonctions lambda
@@ -3610,28 +5200,36 @@ La variable que l'on souhaite définir de manière globale depuis un espace loca
 Python propose ce que l'on appelle des fonctions lambdas, ou encore des fonctions anonymes. Une fonction lambda ne possède qu'une seule instruction dont le résultat est celui de la fonction.
 
 On les définit à l'aide du mot-clé `lambda`. La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 nom_fonction = lambda parametres : retour
 ```
 
 Les paramètres sont à séparer par des virugles.
 
 Reprenons la fonction `carre()` créée précédemment :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def carre(x):
   return x**2
 ```
 
 La fonction lambda équivalent s'écrit :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 carre_2 = lambda x: x**2
 print(carre_2(4))
 ```
 
+```
+## 16
+```
+
 Avec plusieurs paramètres, regardons la fonction lambda équivalente à la fonction `produduction()` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 def production(l, k, m):
   """
   @param l (float) travail
@@ -3644,10 +5242,22 @@ def production(l, k, m):
 ```
 
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 production_2 = lambda l,k,m : l**0.3 * k**0.5 * m**(0.2)
 print(production(42, 40, 42))
+```
+
+```
+## 40.987803063838406
+```
+
+```python
 print(production_2(42, 40, 42))
+```
+
+```
+## 40.987803063838406
 ```
 
 
@@ -3655,7 +5265,8 @@ print(production_2(42, 40, 42))
 
 Il peut parfois être pratique de retourner plusieurs éléments en retour d'une fonction. Bien que la liste se porte candidate à cette fonctionnalité, il peut-être plus avisé d'utiliser un dictionnaire, pour pouvoir accéder aux valeurs grâce à leur clé !
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import statistics
 def stat_des(x):
   """Retourne la moyenne et l'écart-type de `x`"""
@@ -3665,19 +5276,28 @@ def stat_des(x):
 x = [1,3,2,6,4,1,8,9,3,2]
 res = stat_des(x)
 print(res)
+```
+
+```
+## {'moyenne': 3.9, 'ecart_type': 2.8460498941515415}
+```
+
+```python
 print("La moyenne vaut %s et l'écart-type vaut %s" % 
       (res["moyenne"], res["ecart_type"]))
+```
+
+```
+## La moyenne vaut 3.9 et l'écart-type vaut 2.8460498941515415
 ```
 
 
 ## Exercice
 
-```{block2, type='exframe', echo=TRUE}
-1. Créer une fonction nommée `somme_n_entiers` qui retourne la somme des $n$ premiers entiers. Son seul paramètre sera `n`.
+\BeginKnitrBlock{exframe}<div class="exframe">1. Créer une fonction nommée `somme_n_entiers` qui retourne la somme des $n$ premiers entiers. Son seul paramètre sera `n`.
 2. À l'aide d'une boucle, afficher la somme des 2 premiers entiers, puis 3 premiers entiers, puis 4 premiers entiers, etc. jusqu'à 10.
 3. Créer une fonction qui à partir de deux points représentés par des couples de coordonnées ($x_1$, $y_1$) et ($x_2$, $y_2$) retourne la distance euclidienne entre ces deux points. Proposer une seconde solution à l'aide d'une fonction lambda.
-
-```
+</div>\EndKnitrBlock{exframe}
 
 
 
@@ -3687,7 +5307,8 @@ Ce chapitre est consacré à une librairie importante pour les calculs numériqu
 
 Il est coutume d'importer `NumPy` en lui attribuant l'alias `np` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 import numpy as np
 ```
 
@@ -3699,7 +5320,8 @@ NumPy propose une structure de données populaire, les tableaux (de type *array*
 La stucture des tableaux ressemble à celle des listes, mais ces dernières sont moins rapides à être traitées et utilisent davantage de mémoire. Le gain de vitesse de traitement des tableaux en `NumPy` vient du fait que les données sont stockées dans des blocs contigus de mémoire, facilitant ainsi les accès en lecture.
 
 Pour s'en convaincre, on peut reprendre l'exemple de Pierre Navaro [donné dans son *notebook* sur `NumPy`](https://github.com/pnavaro/python-notebooks/blob/master/13.Numpy.ipynb). Créons deux listes de longueur 1000 chacune, avec des nombres tirés aléatoirement à l'aide de la fonction `random()` du module `random`. Divisons chaque élément de la première liste par l'élément à la même position dans la seconde ligne, puis calculons la somme de ces 1000 divisions. Regardons ensuite le temps d'exécution à l'aide de la fonction magique `%timeit` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 from random import random
 from operator import truediv
 l1 = [random() for i in range(1000)]
@@ -3710,7 +5332,8 @@ l2 = [random() for i in range(1000)]
 (décommenter la dernière ligne et tester sur un Jupyter Notebook)
 
 À présent, transformons les deux listes en tableaux `NumPy` avec la méthode `array()`, et effectuons le même calcul à l'aide d'une méthode `NumPy` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 a1 = np.array(l1)
 a2 = np.array(l2)
 # %timeit s = np.sum(a1/a2)
@@ -3721,36 +5344,80 @@ Comme on peut le constater en exécutant ces codes dans un environnement IPython
 ### Création
 
 La création d'un tableau peut s'effectuer avec la méthode `array()`, à partir d'une liste, comme nous venon de le faire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 liste = [1,2,4]
 tableau = np.array(liste)
 print(tableau)
+```
+
+```
+## [1 2 4]
+```
+
+```python
 print(type(tableau))
 ```
 
+```
+## <class 'numpy.ndarray'>
+```
+
 Si on fournit à `array()` une liste de listes imbriquées de même longueur, un tableau multidimensionnel sera créé :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 liste_2 = [ [1,2,3], [4,5,6] ]
 tableau_2 = np.array(liste_2)
 print(tableau_2)
+```
+
+```
+## [[1 2 3]
+##  [4 5 6]]
+```
+
+```python
 print(type(tableau_2))
+```
+
+```
+## <class 'numpy.ndarray'>
 ```
 
 
 Les tableaux peuvent aussi être créés à partir de n-uplets :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 nuplet = (1, 2, 3)
 tableau = np.array(nuplet)
 print(tableau)
+```
+
+```
+## [1 2 3]
+```
+
+```python
 print(type(tableau))
+```
+
+```
+## <class 'numpy.ndarray'>
 ```
 
 
 Un tableau en dimension 1 peut être changé en tableau en dimension 2 (si possible), en modifiant son attribut `shape` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([3, 2, 5, 1, 6, 5])
 tableau.shape = (3,2)
 print(tableau)
+```
+
+```
+## [[3 2]
+##  [5 1]
+##  [6 5]]
 ```
 
 
@@ -3758,103 +5425,258 @@ print(tableau)
 #### Quelques fonctions générant des `array`
 
 Certaines fonctions de `NumPy` produisent des tableaux pré-remplis. C'est le cas de la fonction `zeros()`. Quand on lui fournit une valeur entière $n$, la fonction `zeros()` créé un tableau à une dimension, avec $n$ 0 :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.zeros(4) )
 ```
 
+```
+## [0. 0. 0. 0.]
+```
+
 On peut préciser le type des zéros (par exemple `int`, `int32`, `int64`, `float`, `float32`, `float64`, etc.), à l'aide du paramètre `dtype` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.zeros(4, dtype = "int") )
+```
+
+```
+## [0 0 0 0]
 ```
 
 D'avantage d'explications sur les types de données avec `NumPy` sont disponibles [sur la documentation en ligne](https://docs.scipy.org/doc/numpy-1.15.1/reference/arrays.dtypes.html).
 
 
 Le type des éléments d'un tableau est indiqué dans l'attribut `dtype` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 x = np.zeros(4, dtype = "int")
 print(x, x.dtype)
 ```
 
+```
+## [0 0 0 0] int64
+```
+
 Il est par ailleurs possible de convertir le type des éléments dans un un autre type, à l'aide de la méthode `astype()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 y = x.astype("float")
 print(x, x.dtype)
+```
+
+```
+## [0 0 0 0] int64
+```
+
+```python
 print(y, y.dtype)
+```
+
+```
+## [0. 0. 0. 0.] float64
 ```
 
 
 Quand on lui fournit un n-uplet de longueur supérieure à 1, `zeros()` créé un tableau à plusieurs dimensions : 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.zeros((2, 3)) )
+```
+
+```
+## [[0. 0. 0.]
+##  [0. 0. 0.]]
+```
+
+```python
 print( np.zeros((2, 3, 4)) )
+```
+
+```
+## [[[0. 0. 0. 0.]
+##   [0. 0. 0. 0.]
+##   [0. 0. 0. 0.]]
+## 
+##  [[0. 0. 0. 0.]
+##   [0. 0. 0. 0.]
+##   [0. 0. 0. 0.]]]
 ```
 
 
 La fonction `empty()` de `Numpy` retourne également un tableau sur le même principe que `zeros()`, mais sans initialiser les valeurs à l'intérieur.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.empty((2, 3), dtype = "int") )
 ```
 
+```
+## [[0 0 0]
+##  [0 0 0]]
+```
+
 La fonction `ones()` de `Numpy` retourne le même genre de tableaux, avec des 1 en valeurs initialisées :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.ones((2, 3), dtype = "float") )
 ```
 
+```
+## [[1. 1. 1.]
+##  [1. 1. 1.]]
+```
+
 Pour choisir une valeur spécifique pour l'initialisation, on peut utiliser la fonction `full()` de `Numpy` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.full((2, 3), 10, dtype = "float") )
+```
+
+```
+## [[10. 10. 10.]
+##  [10. 10. 10.]]
+```
+
+```python
 print( np.full((2, 3), np.inf) )
 ```
 
+```
+## [[inf inf inf]
+##  [inf inf inf]]
+```
+
 La fonction `eye()` de `Numpy` créé un tableau à deux dimensions dans laquelle tous les éléments sont initalisés à zéro, sauf ceux de la diagonale initialisés à 1 :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.eye(2, dtype="int64") )
 ```
 
+```
+## [[1 0]
+##  [0 1]]
+```
+
 En modifiant le paramètre mot-clé `k`, on peut décaler la diagonale :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.eye(3, k=-1) )
 ```
 
+```
+## [[0. 0. 0.]
+##  [1. 0. 0.]
+##  [0. 1. 0.]]
+```
+
 La fonction `identity()` de `Numpy` créé quant à elle une matrice identité sous la forme d'un tableau :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.identity(3, dtype = "int") )
+```
+
+```
+## [[1 0 0]
+##  [0 1 0]
+##  [0 0 1]]
 ```
 
 
 La fonction `arange()` de `Numpy` permet de générer une séquence de nombres séparés par un interval fixe, le tout stocké dans un tableau. La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 np.arange( start, stop, step, dtype )
 ```
 
 avec `start` la valeur de départ, `stop` celle d'arrivée, `step` le pas, l'espacement entre les nombres de la séquence et `dtype` le type des nombres :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print( np.arange(5) )
+```
+
+```
+## [0 1 2 3 4]
+```
+
+```python
 print( np.arange(2, 5) )
+```
+
+```
+## [2 3 4]
+```
+
+```python
 print( np.arange(2, 10, 2) )
+```
+
+```
+## [2 4 6 8]
 ```
 
 
 ### Dimensions
 
 Pour connaître la dimension d'un tableau, on peut afficher la valeur de l'attribut `ndim` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("ndim tableau : ", tableau.ndim)
+```
+
+```
+## ndim tableau :  2
+```
+
+```python
 print("ndim tableau_2 : ", tableau_2.ndim)
 ```
 
+```
+## ndim tableau_2 :  2
+```
+
 Le nombre d'éléments dans le tableau peut s'obtenir par l'attribut `size` ou par la fonction `size()` de `Numpy` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("size tableau : ", tableau.size)
+```
+
+```
+## size tableau :  6
+```
+
+```python
 print("size tableau_2 : ", tableau_2.size)
+```
+
+```
+## size tableau_2 :  6
+```
+
+```python
 print("np.size(tableau) :", np.size(tableau))
 ```
 
+```
+## np.size(tableau) : 6
+```
+
 L'attribut `shape` retourne un n-uplet indiquant la longueur pour chaque dimension du tableau :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("size tableau : ", tableau.shape)
+```
+
+```
+## size tableau :  (3, 2)
+```
+
+```python
 print("size tableau_2 : ", tableau_2.shape)
+```
+
+```
+## size tableau_2 :  (2, 3)
 ```
 
 
@@ -3862,7 +5684,8 @@ print("size tableau_2 : ", tableau_2.shape)
 ### Extraction des éléments d'un tableau
 
 L'accès aux éléments d'un tableau se fait de la même manière que pour les listes  (c.f. Section\ \@ref(stucture-liste-extraction)), grâce à l'indiçage. La syntaxe est la suivante :
-```{python, eval=F, echo=TRUE, error=TRUE}
+
+```python
 tableau[lower:upper:step]
 ```
 
@@ -3874,41 +5697,93 @@ avec `lower` la borne inférieur de la plage d'indices, `upper` la plage supéri
 
 Reprenons rapidement quelques exemples, en s'appuyant sur deux objets : un tableau de dimension 1, et un second de dimension 2.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_1 = np.arange(1,13)
 tableau_2 = [ [1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
 tableau_2 = np.array(tableau_2)
 ```
 
 L'accès au premier élément :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("tableau_1[0] : %s (type : %s)" %
       (tableau_1[0], type(tableau_1[0])))
+```
+
+```
+## tableau_1[0] : 1 (type : <class 'numpy.int64'>)
+```
+
+```python
 print("tableau_2[0] : %s (type : %s)" %
       (tableau_2[0], type(tableau_2[0])))
 ```
 
+```
+## tableau_2[0] : [1 2 3] (type : <class 'numpy.ndarray'>)
+```
+
 
 L'accès aux éléments peut se faire en partant par la fin :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("tableau_1[-1] : ", tableau_1[-1]) # dernier élément
+```
+
+```
+## tableau_1[-1] :  12
+```
+
+```python
 print("tableau_2[-1] : ", tableau_2[-1]) # dernier élément
+```
+
+```
+## tableau_2[-1] :  [10 11 12]
 ```
 
 
 Le découpage est possible :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # les éléments du 2e (non inclus) au 4e
 print("Slice Tableau 1 : \n", tableau_1[2:4])
+```
+
+```
+## Slice Tableau 1 : 
+##  [3 4]
+```
+
+```python
 print("Sclie Tableau 2 : \n", tableau_2[2:4])
 ```
 
+```
+## Sclie Tableau 2 : 
+##  [[ 7  8  9]
+##  [10 11 12]]
+```
+
 Pour les tableaux à deux dimensions, on peut accéder aux éléments de la manière suivante, de manière équivalente :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 # Dans le 3e élément, accéder au 1er élément
 print(tableau_2[2][0])
+```
+
+```
+## 7
+```
+
+```python
 print(tableau_2[2,0])
+```
+
+```
+## 7
 ```
 
 
@@ -3917,25 +5792,47 @@ print(tableau_2[2,0])
 
 Pour extraire ou non des éléments d'un tableu, on peut utiliser des tableaux de booléens en tant que masques. L'idée est de fournir un tableau de booléens (un masque) de même dimension que celui pour lequel on désire extraire des éléments sous certaines conditions. Lorsque la valeur du booléen dans le masque vaut `True`, l'élément correspondant du tableau est retourné ; sinon, il ne l'est pas.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([0, 3, 2, 5, 1, 4])
 res = tableau[[True, False, True, False, True, True]]
 print(res)
+```
+
+```
+## [0 2 1 4]
 ```
 
 Seuls les éléments en position 1, 3, 5 et 6 on été retournés.
 
 En pratique, le masque n'est que très rarement créé par l'utilisateur, il est plutôt issu d'une instruction logique appliquée au tableau d'intérêt. Par exemple, dans notre tableau, nous pouvons dans un premier temps créer un masque de manière à identifier les éléments pairs :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 masque = tableau % 2 == 0
 print(masque)
+```
+
+```
+## [ True False  True False False  True]
+```
+
+```python
 print(type(masque))
 ```
 
+```
+## <class 'numpy.ndarray'>
+```
+
 Une fois ce masque créé, on peut l'appliquer au tableau pour extraire uniquement les éléments pour lesquels la valeur correspondante dans le masque vaut `True` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(tableau[masque])
+```
+
+```
+## [0 2 4]
 ```
 
 
@@ -3943,136 +5840,291 @@ print(tableau[masque])
 ### Modification
 
 Pour remplacer les valeurs d'un tableau, on utilise le signe égal (`=`) :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([ [1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
 tableau[0] = [11, 22, 33]
 print(tableau)
 ```
 
+```
+## [[11 22 33]
+##  [ 4  5  6]
+##  [ 7  8  9]
+##  [10 11 12]]
+```
+
 
 Si on fournit un scalaire lors du remplacement, la valeur sera répétée pour tous les éléments de la dimension :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau[0] = 100
 print(tableau)
 ```
 
+```
+## [[100 100 100]
+##  [  4   5   6]
+##  [  7   8   9]
+##  [ 10  11  12]]
+```
+
 Idem avec un découpage :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau[0:2] = 100
 print(tableau)
 ```
 
+```
+## [[100 100 100]
+##  [100 100 100]
+##  [  7   8   9]
+##  [ 10  11  12]]
+```
+
 D'ailleurs, un découpage avec juste les deux points sans préciser les paramètres de début et de fin du découpage suivi d'un signe égal et d'un nombre remplace toutes les valeurs du tableau par ce nombre :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau[:] = 0
 print(tableau)
+```
+
+```
+## [[0 0 0]
+##  [0 0 0]
+##  [0 0 0]
+##  [0 0 0]]
 ```
 
 ### Copie de tableau
 
 La copie d'un tableau, comme pour les listes (c.f. Section\ \@ref(copie-de-liste)), ne doit pas se faire avec le symbole égal (`=`).
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_1 = np.array([1, 2, 3])
 tableau_2 = tableau_1
 ```
 
 Modifions le premier élément de `tableau_2`, et observons le contenu de `tableau_2` et de `tableau_1` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_2[0] = 0
 print("Tableau 1 : \n", tableau_1)
+```
+
+```
+## Tableau 1 : 
+##  [0 2 3]
+```
+
+```python
 print("Tableau 2 : \n", tableau_2)
+```
+
+```
+## Tableau 2 : 
+##  [0 2 3]
 ```
 
 
 Comme on peut le constater, le fait d'avoir utilisé le signe égal a simplement créé une référence et non pas une copie.
 
 Pour effectuer une copie de tableaux, plusieurs façons existent. Parmi elles, l'utilisation de la fonction `np.array()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_1 = np.array([1, 2, 3])
 tableau_2 = np.array(tableau_1)
 tableau_2[0] = 0
 print("tableau_1 : ", tableau_1)
+```
+
+```
+## tableau_1 :  [1 2 3]
+```
+
+```python
 print("tableau_2 : ", tableau_2)
 ```
 
+```
+## tableau_2 :  [0 2 3]
+```
+
 On peut également utiliser la méthode `copy()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_1 = np.array([1, 2, 3])
 tableau_2 = tableau_1.copy()
 tableau_2[0] = 0
 print("tableau_1 : ", tableau_1)
+```
+
+```
+## tableau_1 :  [1 2 3]
+```
+
+```python
 print("tableau_2 : ", tableau_2)
+```
+
+```
+## tableau_2 :  [0 2 3]
 ```
 
 On peut noter que lorsque l'on fait un découpement, un nouvel objet est créé, pas une référence :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_1 = np.array([1, 2, 3, 4])
 tableau_2 = tableau_1[:2]
 tableau_2[0] = 0
 print("tableau_1 : ", tableau_1)
+```
+
+```
+## tableau_1 :  [0 2 3 4]
+```
+
+```python
 print("tableau_2 : ", tableau_2)
+```
+
+```
+## tableau_2 :  [0 2]
 ```
 
 
 ### Tri
 
 La librairie `NumPy` fournit une fonction pour trier les tableaux : `sort()`.
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([3, 2, 5, 1, 6, 5])
 print("Tableau trié : ", np.sort(tableau))
+```
+
+```
+## Tableau trié :  [1 2 3 5 5 6]
+```
+
+```python
 print("Tableau : ", tableau)
 ```
 
+```
+## Tableau :  [3 2 5 1 6 5]
+```
+
 Comme on peut le constater, la fonction `sort()` de `NumPy` propose une vue : le tableau n'est pas modifié, ce qui n'est  pas le cas si on utilise la méthode `sort()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([3, 2, 5, 1, 6, 5])
 tableau.sort()
 print("Le tableau a été modifié : ", tableau)
+```
+
+```
+## Le tableau a été modifié :  [1 2 3 5 5 6]
 ```
 
 ### Transposition {#transposition-tableau}
 
 Pour obtenir la transposée d'un tableau, on fait appel à l'attribut `T`. Il faut noter que l'on obtient une vue de l'objet, que cela ne le modifie pas.
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau = np.array([3, 2, 5, 1, 6, 5])
 tableau.shape = (3,2)
 print("Tableau : \n", tableau)
+```
+
+```
+## Tableau : 
+##  [[3 2]
+##  [5 1]
+##  [6 5]]
+```
+
+```python
 print("Tableau transposé : \n", tableau.T)
 ```
 
+```
+## Tableau transposé : 
+##  [[3 5 6]
+##  [2 1 5]]
+```
+
 On peut également utiliser la fonction `transpose()` de `NumPy` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print(np.transpose(tableau))
 ```
 
+```
+## [[3 5 6]
+##  [2 1 5]]
+```
+
 Attention, si on assigne un nom à la transposée, que ce soit en utilisant l'attribut `T` ou la méthode `np.transpose()`, cela créé une référence, pas une copie d'élément...
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 tableau_transpose = np.transpose(tableau)
 tableau_transpose[0,0] = 99
 print("tableau : \n", tableau)
+```
+
+```
+## tableau : 
+##  [[99  2]
+##  [ 5  1]
+##  [ 6  5]]
+```
+
+```python
 print("tableau_transpose : \n", tableau_transpose)
 ```
 
+```
+## tableau_transpose : 
+##  [[99  5  6]
+##  [ 2  1  5]]
+```
+
 Pour savoir si un tableau est une vue ou non, on peut afficher l'attribut `base`, qui retourne `None` si ce n'est pas le cas :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("tableau : ", tableau.base)
+```
+
+```
+## tableau :  None
+```
+
+```python
 print("tableau_transpose : ", tableau_transpose.base)
 ```
 
+```
+## tableau_transpose :  [[99  2]
+##  [ 5  1]
+##  [ 6  5]]
+```
 
-### Opérations sur les tableaux {#operations-tableaux}
+
+### Opérations sur les tableaux
 
 Il est possible d'utiliser des opérateurs sur les tableaux. Leur effet nécessite quelques explications.
 
 #### Opérateurs `+` et `-`
 
 Lorsque l'opérateur `+` (`-`) est utilisé entre deux tableaux de même dimension, une addition (soustraction) terme à terme est effectuée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_1 = np.array([1, 2, 3, 4])
 t_2 = np.array([5, 6, 7, 8])
 t_3 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
@@ -4080,50 +6132,109 @@ t_4 = np.array([[13, 14, 15, 16], [17, 18, 19, 20], [21, 22, 23, 24]])
 t_1 + t_2
 ```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_3 + t_4
 ```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_1 - t_2
 ```
 
 Lorsque l'opérateur `+` (`-`) est utilisé entre un scalaire et un tableau, le scalaire est ajouté (soustrait) à tous les éléments du tableau :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("t_1 + 3 : \n", t_1 + 3)
+```
+
+```
+## t_1 + 3 : 
+##  [4 5 6 7]
+```
+
+```python
 print("t_1 + 3. : \n", t_1 + 3.)
+```
+
+```
+## t_1 + 3. : 
+##  [4. 5. 6. 7.]
+```
+
+```python
 print("t_3 + 3 : \n", t_3 + 3)
+```
+
+```
+## t_3 + 3 : 
+##  [[ 4  5  6  7]
+##  [ 8  9 10 11]
+##  [12 13 14 15]]
+```
+
+```python
 print("t_3 - 3 : \n", t_3 - 3)
+```
+
+```
+## t_3 - 3 : 
+##  [[-2 -1  0  1]
+##  [ 2  3  4  5]
+##  [ 6  7  8  9]]
 ```
 
 #### Opérateurs `*` et `/`
 
 Lorsque l'opérateur `*` (`/`) est utilisé entre deux tableaux de même dimension, une multiplication (division) terme à terme est effectuée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_1 * t_2
 ```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_3 * t_4
 ```
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_3 / t_4
 ```
 
 
 Lorsque l'opérateur `*` (`/`) est utilisé entre un scalaire et un tableau, tous les éléments du tableau sont multipliés (divisés) par ce scalaire :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("t_1 * 3 : \n", t_1 * 3)
+```
+
+```
+## t_1 * 3 : 
+##  [ 3  6  9 12]
+```
+
+```python
 print("t_1 / 3 : \n", t_1 / 3)
+```
+
+```
+## t_1 / 3 : 
+##  [0.33333333 0.66666667 1.         1.33333333]
 ```
 
 
 #### Puissance
 
 Il est également possible d'élever chaque nombre d'un tableau à une puissance donnée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 print("t_1 ** 3 : \n", t_1 ** 3)
+```
+
+```
+## t_1 ** 3 : 
+##  [ 1  8 27 64]
 ```
 
 
@@ -4134,23 +6245,34 @@ En plus des opérations/soustraction/multiplication/division terme à terme ou p
 Nous avons déjà vu la tranposée en Section\ \@ref(transposition-tableau).
 
 Pour effectuer un produit matriciel, `NumPy` fournit la fonction `dot()` :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 np.dot(t_3, t_4.T)
 ```
 
 Il faut bien s'assurer d'avoir des matrices compatibles, sinon, une erreur sera retournée :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 np.dot(t_3, t_4)
+```
+
+```
+## ValueError: shapes (3,4) and (3,4) not aligned: 4 (dim 1) != 3 (dim 0)
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
 ```
 
 Le produit matriciel peut également s'obtenir à l'aide de l'opérateur `@` :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 t_3 @ t_4.T
 ```
 
 Le produit d'un vecteur avec une matrice est également possible :
-```{python, eval=T, echo=TRUE, error=TRUE}
+
+```python
 np.dot(t_1, t_3.T)
 ```
 
@@ -4171,265 +6293,14 @@ np.dot(t_1, t_3.T)
 Table: (#tab:constantes-numpy) Codes de formatages
 
 
-### Fonctions universelles
-
-Les fonctions universelles (*ufunc* pour *universal functions*) sont des fonctions qui peuvent être appliquées terme à terme aux éléments d'un tableau. On distingue deux types de fonctions universelles : les fonctions unaires, qui effectuent une opération sur une seule, et les fonctions binaires qui effectuent une opération sur deux opérandes.
+## Statistiques descriptives
 
 
-Parmi les *ufuncs*, on retrouve des opérations arithmétiques (addition, multiplication, puissance, valeur absolue, etc.) et des fonctions mathématiques usuelles (fonctions trigonométriques, exponentielle, logarithme, etc.). Le Tableau\ \@ref(tab:ufuncs-unaires) répertorie quelques fonctions universelles unaires, tandis que le Tableau\ \@ref(tab:ufuncs-binaires) répertories quelques fonctions universelles binaires.
-
-| Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `negative(x)` | Opposés des éléments de `x` |
-| `absolute(x)` | Valeurs absolues des éléments de `x` |
-| `sign(x)` | Signes des éléments de `x` (0, 1 ou -1) |
-| `rint(x)` | Arrondi de `x` à l'entier |
-| `floor(x)` | Troncature de `x` à l'entier inférieur |
-| `ceil(x)` | Troncature de `x` à l'entier supérieur |
-| `sqrt(x)` | Racine carrée de `x` |
-| `square(x)` | Carré de `x` |
-| `sin(x)`, `cos(x)`, `tan(x)` | Sinus (cosinus, et tangente) de ``x |
-| `sinh(x)`, `cosh(x)`, `tanh(x)` | Sinus (cosinus, et tangente) hyperbolique de `x`  |
-| `arcsin(x)`, `arccos(x)`, `arctan(x)` | Arc-sinus (arc-cosinus, et arc-tangente) de ``x |
-| `arcsinh(x)`, `arccosh(x)`, `arctanh(x)` | Arc-sinus (arc-cosinus, et arc-tangente) hyperbolique de ``x |
-| `hypoth(x,y)` | Hypoténuse $\sqrt{x^2+y^2}$ |
-| `degrees(x)` | Conversion des angles `x` de radians en degrés |
-| `radians(x)` | Conversion des angles `x` de degrés en radians |
-| `exp(x)` | Exponentielle de `x` |
-| `expm1(x)` | $e^x-1$ |
-| `log(x)` | Logarithme népérien des éléments de `x` |
-| `log10(x)` | Logatithme des éléments de `x` en base 10 |
-| `log2(x)` | Logarithme des éléments de `x` en base 2 |
-| `log1p(x)` | $ln(1+x$ |
-| `exp2(x)` | $2^x$ |
-| `isnan(x)` | Tableau de booléens indiquant `True` pour les éléments `NaN` |
-| `isfinite(x)` | Tableau de booléens indiquant `True` pour les éléments non infinis et non-NaN |
-| `isinf(x)` | Tableau de booléens indiquant `True` pour les éléments infinis |
+`NumP` propose des fonctions et méthodes pour effectuer des statistiques descriptives (moyenne, )
 
 
-Table: (#tab:ufuncs-unaires) Fonctions universelles unaires
+### Génération de nombres aléatoires
 
-
-| Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `add(x,y)` | Addition terme à terme de `x` et `y` |
-| `substract(x,y)` | Soustraction terme à terme de `x` et `y` |
-| `multiply(x,y)` | Multiplication terme à terme de `x` et `y` |
-| `divide(x,y)` | Division terme à terme de `x` et `y` |
-| `floor_divide(x,y)` | Quotients entiers des divisions terme à terme de `x` et `y`|
-| `power(x,y)` | Élévation des éléments de `x` à la puissance des éléments de `y` |
-| `mod(x,y)` | Restes des divisions eucliennes des éléments de `x` par ceux de `y` |
-| `round(x,n)` | Arrondi de `x` à $n$ décimales |
-| `arctan2(x,y)` | Angles polaires de `x` et `y` |
-
-Table: (#tab:ufuncs-binaires) Fonctions universelles binaires
-
-
-Pour utiliser ses fonctions, procéder comme dans l'exemple suivant :
-```{python, eval=T, echo=TRUE, error=TRUE}
-t_1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
-t_2 = np.array([[13, 14, 15, 16], [17, 18, 19, 20], [21, 22, 23, 24]])
-np.log(t_1) # Logarithme népérien
-np.substract(t_1, t_2) # Soustraction des éléments de t_1 par ceux de t_2
-```
-
-
-### Méthodes et fonctions mathématiques et statistiques
-
-`NumPy` fournit de nombreuses méthodes pour calculer des statistiques sur l'ensemble des valeurs des tableaux, ou sur un des axes des tableaux (par exemple sur l'équivalent de lignes ou des colonnes dans les tableaux à deux dimensions). Certaines sont reportées dans le Tableau\ \@ref(tab:numpy-maths-methodes).
-
-
-
-| Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `sum()` | Retourne la somme des éléments |
-| `prod()` | Retourne le produit des éléments |
-| `cumsum()` | Retourne la somme cumulée des éléments |
-| `cumprod()` | Retourne le produit cumulé des éléments |
-| `mean()` | Retourne la moyenne |
-| `var()` | Retourne la variance |
-| `std()` | Retourne l'écart-type |
-| `min()` | Retourne la valeur minimale |
-| `max()` | Retourne la valeur maximale |
-| `argmin()` | Retourne l'indice du premier élément à la plus petite valeur |
-| `argmax()` | Retourne l'indice du premier élément à la plus grande valeur |
-
-Table: (#tab:numpy-maths-methodes) Méthodes mathématiques et statistiques
-
-
-Donnons un exemple de l'utilisation de ces méthodes :
-```{python, eval=T, echo=TRUE, error=TRUE}
-t_1 = np.array([[1, 2, 3, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
-print("t_1 : \n", t_1)
-print("Somme des éléments : ", t_1.sum())
-print("Covariance des éléments : ", t_1.cov())
-```
-
-Pour appliquer ces fonctions sur un axe donné, on modifie la valeur du paramètre ` axis` :
-```{python, eval=T, echo=TRUE, error=TRUE}
-print("Somme par colonne: ", t_1.sum(axis=0))
-print("Somme par ligne: ", t_1.sum(axis=1))
-```
-
-
-`NumPy` offre aussi certaines fonctions spécifiques aux statistiques, dont certaines sont répertoriées dans le Tableau\ \@ref(tab:numpy-stats-fonctions).
-
-| Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `mean(x)` | Moyenne de `x` |
-| `average(x)` | Moyenne de `x` (possibilité d'utiliser des poids à l'aide du paramètre `weight`) |
-| `median(x)` | Médiane de `x` |
-| `percentile(x,p)` | P-ème percentile de `x` |
-| `var(x)` | Variance de `x` |
-| `std(x)` | Écart-type de `x` |
-| `cov(x)` | Covariance de `x` |
-| `corrcoef(x)` | Coefficients de corrélation |
-
-Table: (#tab:numpy-stats-fonctions) Fonctions statistiques
-
-Pour utiliser les fonctions statistiques :
-```{python, eval=T, echo=TRUE, error=TRUE}
-t_1 = np.array([[1, 2, 3, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
-print("t_1 : \n", t_1)
-print("Variance: ", np.var(t_1))
-```
-
-Pour calculer une moyenne pondérée (prenons un vecteur)
-```{python, eval=T, echo=TRUE, error=TRUE}
-v_1 = np.array([1, 1, 4, 2])
-w = np.array([1, 1, .5, 1])
-print("Moyenne pondérée : ", np.average(v_1, weights=w))
-```
-
-
-## Génération de nombres pseudo-aléatoires
-
-
-La génération de nombres pseudo-aléatoires est permise par le module `random` de `Numpy`. Le lecteur intéressé par les aspects plus statistiques pourra trouver davantage de notions abordées dans le sous-module `stats` de `SciPy`.
-
-
-```{python, eval=T, echo=TRUE, error=TRUE}
-from numpy import random
-```
-
-
-Le Tableau\ \@ref(tab:numpy-pseudo-aleatoires) répertorie quelques fonctions permettant de tirer de manière pseudo-aléatoire des nombres avec le module `random` de `Numpy` (en évaluant `??random`, on obtient une liste exhaustive).
-
-
-| Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `rand(size)` | Tirage de `size` valeurs selon une Uniforme $[0,1]$ |
-| `uniform(a,b,size)` | Tirage de `size` valeurs selon une Uniforme $[a ; b]$ |
-| `randint(a,b,size)` | Tirage de `size` valeurs selon une Uniforme $[a ; b[$ |
-| `randn(size)` | Tirage de `size` valeurs selon une Normale centrée réduite |
-| `normal(mu, std, size)` | Tirage de `size` valeurs selon une Normale d'espérance `mu` et d'écart-type `std` |
-| `binomial(size)` | Tirage de `size` valeurs selon une $\mathcal{B}in(n,p)$  |
-| `beta(alpha, beta, size)` | Tirage de `size` valeurs selon une loi bêta de paramètres alpha et beta |
-| `poisson(lambda, size)` | Tirage de `size` valeurs selon une loi de Poisson de paramètre lambda |
-| `f(size)` | Tirage de `size` valeurs selon une |
-| `standard_t(df, size)` | Tirage de `size` valeurs selon une loi de Student à `df` degrés de liberté |
-
-
-Table: (#tab:numpy-pseudo-aleatoires) Quelques fonctions de génération de nombres pseudo-aléatoires
-
-
-Voici un exemple de génération de nombres pseudo aléatoires selon une distribution Gaussienne :
-```{python, eval=T, echo=TRUE, error=TRUE}
-x = np.random.normal(size=10)
-print(x)
-```
-
-La génération des nombres s'effectue en fonction d'une graine (*seed*), c'est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode `seed()`, à qui on indique une valeur en paramètre :
-```{python, eval=T, echo=TRUE, error=TRUE}
-np.random.seed(1234)
-x = np.random.normal(size=10)
-print(x)
-```
-
-En fixant à nouveau la graîne, on obtiendra exactement le même tirage :
-```{python, eval=T, echo=TRUE, error=TRUE}
-np.random.seed(1234)
-x = np.random.normal(size=10)
-print(x)
-```
-
-
-Pour éviter d'affecter l'environnement global par la graine aléatoire, on peut utiliser la méthode `RandomState`du sous-module `random` de `NumPy` :
-```{python, eval=T, echo=TRUE, error=TRUE}
-from numpy.random import RandomState
-rs = RandomState(123)
-x = rs.normal(10)
-print(x)
-```
-
-
-Par ailleurs, la fonction `permutation()` du sous-module `random` permet d'effectuer une permutation aléatoire :
-```{python, eval=T, echo=TRUE, error=TRUE}
-x = np.arange(10)
-y = np.random.permutation(x)
-print("x : ", x)
-print("y : ", y)
-```
-
-
-La fonction `shuffle()` du sous-module `random` permet quant à elle d'effectuer une permutation aléatoire des éléments :
-```{python, eval=T, echo=TRUE, error=TRUE}
-x = np.arange(10)
-print("x avant permutation : ", x)
-np.random.permutation(x)
-print("x après permutation : ", x)
-```
-
-
-## Exercice
-
-```{block2, type='exframe', echo=TRUE}
-
-*Premier exercice*
-
-Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmatrix}$
-
-  1. Créer ce vecteur à l'aide d'un tableau que l'on appellera `x`.
-  2. Afficher le type de `x` puis sa longueur.
-  3. Extraire le premier élément, puis en faire de même avec le dernier.
-  4. Extraire les trois premiers éléments et les stocker dans un vecteur que l'on nommera `a`.
-  5. Extraire les éléments en position 1, 3, 5 ; les stocker dans un vecteur que l'on nommera `b`.
-  6. Additionner le nombre 10 au vecteur `x`, puis multiplier le résultat par 2.
-  7. Effectuer l'addition de `a` et `b`, commenter le résultat.
-  8. Effectuer l'addition suivante : `x+a` ; commenter le résultat, puis regarder le résultat de `a+x`.
-  9. Multiplier le vecteur par le scalaire `c` que l'on fixera à 2.
-  10. Effectuer la multiplication de `a` et `b` ; commenter le résultat.
-  11. Effectier la multiplication suivante : `x*a` ; commenter le résultats.
-  12. Récupérer les positions des multiples de 2 et les stocker dans un vecteur que l'on nommera `ind`, piuis conserver uniquement les multiples de 2 de `x` dans un vecteur que l'on nommera `mult_2`.
-  13. Afficher les éléments de `x` qui sont multiples de 3 *et* multiples de 2.
-  14. Afficher les éléments de `x` qui sont multiples de 3 *ou* multiples de 2.
-  15. Calculer la somme des éléments de `x`.
-  16. Remplacer le premier élément de `x` par un 4.
-  17. Remplacer le premier élément de `x` par la valeur `NaN`, puis calculer la somme des éléments de `x`.
-  18 Supprimer le vecteur `x`.
-
-*Deuxième exercice*
-
-  1. Créer la matrice suivante : \(A = \begin{bmatrix} -3 & 5 & 6 \\ -1 & 2 & 2 \\ 1 & -1 & -1 \end{bmatrix}\).
-  2. Afficher la dimension de \texttt{A}, son nombre de colonnes, son nombre de lignes et sa longueur.
-  3. Extraire la seconde colonne de \texttt{A}, puis la premi\`ere ligne.
-  4.Extraire l'élément en troisième position à la première ligne.
-  5. Extraire la sous-matrice de dimension \(2\times 2\) du coin inférieur de \texttt{A}, c'est-à-dire \(\begin{bmatrix} 2 & 2 \\ -1 & -1 \end{bmatrix}\).
-  6. Calculer la somme des colonnes puis des lignes de \texttt{A}.
-  7. Afficher la diagonale de \texttt{A}.
-  8. Rajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à droite de la matrice \texttt{A} et stocker le résultat dans un objet appelé \texttt{B}.
-  9. Retirer le quatrième vecteur de \texttt{B}.
-  10. Retirer la première et la troisième ligne de \texttt{B}.
-  11. Ajouter le scalaire \texttt{10} à \texttt{A}.
-  12. Ajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à A.
-  13. Ajouter la matrice identité \(I_3\) à \texttt{A}.
-  14. Diviser tous les éléments de la matrice \texttt{A} par 2.
-  15. Multiplier la matrice \texttt{A} par le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\).
-  16. Afficher la transposée de \texttt{A}.
-  17. Effectuer le produit avec transposition \(A^\top A\).
-  
-
-```
 
 
 # Manipulation de données avec Pandas {#pandas}
@@ -4469,4 +6340,7 @@ Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmat
 
 
 
+
+
+<!--chapter:end:python_for_economists.Rmd-->
 

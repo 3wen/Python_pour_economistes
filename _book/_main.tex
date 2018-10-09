@@ -1232,7 +1232,7 @@ faire comme suit :
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=9.03in]{figs/intro_pyplot} \end{center}
+\begin{center}\includegraphics{figs/intro_pyplot} \end{center}
 
 \section{L'aide}\label{laide}
 
@@ -1593,6 +1593,7 @@ suffit de préciser les deux valeurs d'indices :
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \StringTok{"You shall not pass!"}
+
 \CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
 \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
 \end{Highlighting}
@@ -3202,7 +3203,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 22:38:37.319853
+## 2018-10-09 19:17:36.522934
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3212,7 +3213,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-08 22:38:37.324472
+## 2018-10-09 19:17:36.528438
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -3568,7 +3569,7 @@ Une liste peut contenir une autre liste :
 ## [['aaa', 'bbb'], ['Anne', 'Bob', 'Irma', 'John']]
 \end{lstlisting}
 
-\subsection{Extraction des éléments}\label{stucture-liste-extraction}
+\subsection{Extraction des éléments}\label{structure-liste-extraction}
 
 L'accès aux éléments se fait grace à son indexation (attention, l'indice
 du premier élément est 0) :
@@ -4011,7 +4012,7 @@ entourées dans deux parenthèses.
 \subsection{Extraction des éléments}\label{extraction-des-elements}
 
 Les éléments d'un n-uplet s'extraient de la même manière que ceux des
-listes (c.f. Section~\ref{stucture-liste-extraction}).
+listes (c.f. Section~\ref{structure-liste-extraction}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4074,7 +4075,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4088,7 +4089,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4124,7 +4125,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4155,7 +4156,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Toulon', 'Aix-en-Provence', 'Marseille'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4168,7 +4169,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Toulon', 'Aix-en-Provence', 'Marseille'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille', 'Toulon'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4184,7 +4185,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Aix-en-Provence', 'Marseille'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4210,7 +4211,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Aix-en-Provence', 'Marseille'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4257,7 +4258,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Nice', 'Toulon', 'Marseille', 'Aix-en-Provence'}
+## y :  {'Nice', 'Aix-en-Provence', 'Marseille', 'Toulon'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4267,7 +4268,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
+## ensemble :  {'Nice', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4297,7 +4298,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4308,7 +4309,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Marseille', 'Aix-en-Provence']
+## ['Aix-en-Provence', 'Marseille']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -4372,9 +4373,9 @@ Il est aussi possible de créer un dictionnaire à l'aide de la fonction
 
 L'extraction dans les dictionnaires repose sur le même principe que pour
 les listes et les n-uplets (c.f.
-Section~@ref(\#stucture-liste-extraction)). Toutefois, l'extraction d'un
-élément d'un dictionnaire ne se fait pas en fonction de sa position dans
-le dictionnaire, mais par sa clé :
+Section~@ref(\#structure-liste-extraction)). Toutefois, l'extraction
+d'un élément d'un dictionnaire ne se fait pas en fonction de sa position
+dans le dictionnaire, mais par sa clé :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5061,6 +5062,7 @@ Pour tester l'égalité de contenu entre deux objets :
 \NormalTok{a }\OperatorTok{=} \StringTok{"Hello"}
 \NormalTok{b }\OperatorTok{=} \StringTok{"World"}
 \NormalTok{c }\OperatorTok{=} \StringTok{"World"}
+
 \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
@@ -5086,6 +5088,7 @@ L'inégalité entre deux objets :
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5115,6 +5118,7 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 \NormalTok{x }\OperatorTok{=} \DecValTok{1}
 \NormalTok{y }\OperatorTok{=} \DecValTok{1}
 \NormalTok{z }\OperatorTok{=} \DecValTok{2}
+
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5338,6 +5342,7 @@ retourne faux :
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \VariableTok{True}
 \NormalTok{y }\OperatorTok{=} \VariableTok{False}
+
 \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -6132,6 +6137,7 @@ appel à la méthode \texttt{reader()} du module \texttt{csv} :
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./fichiers_exemples/fichier_csv.csv'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{  mon_fichier_reader }\OperatorTok{=}\NormalTok{ csv.reader(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{, quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{)}
 \NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier_reader]}
+
 \BuiltInTok{print}\NormalTok{(donnees)}
 \end{Highlighting}
 \end{Shaded}
@@ -6247,6 +6253,7 @@ hébergé sur Internet :
 \ImportTok{import}\NormalTok{ csv}
 \ImportTok{import}\NormalTok{ urllib.request}
 \ImportTok{import}\NormalTok{ codecs}
+
 \NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"}
 \ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fochier_csv }\OperatorTok{=}\NormalTok{ csv.reader(codecs.iterdecode(mon_fichier, }\StringTok{'utf-8'}\NormalTok{))}
@@ -6270,6 +6277,7 @@ API, on peut utiliser la librairie \texttt{json}, et sa méthode
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ json}
 \NormalTok{lien }\OperatorTok{=} \StringTok{'./fichiers_exemples/tweets.json'}
+
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(lien) }\ImportTok{as}\NormalTok{ mon_fichier_json:}
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ json.load(mon_fichier_json)}
 \end{Highlighting}
@@ -6465,10 +6473,12 @@ Exemple de création d'un fichier CSV :
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ csv}
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_export.csv"}
+
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fichier_ecrire }\OperatorTok{=}\NormalTok{ csv.writer(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{,}
 \NormalTok{                                    quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{,}
 \NormalTok{                                    quoting}\OperatorTok{=}\NormalTok{csv.QUOTE_MINIMAL)}
+
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'Pays'}\NormalTok{, }\StringTok{'Année'}\NormalTok{, }\StringTok{'Trimestre'}\NormalTok{, }\StringTok{'TC_PIB'}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2017'}\NormalTok{, }\StringTok{'Q4'}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2018'}\NormalTok{, }\StringTok{'Q1'}\NormalTok{, }\FloatTok{0.2}\NormalTok{])}
@@ -6502,6 +6512,7 @@ interrogée avec la libraririe \texttt{twitter-python}) en JSON.
   \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y)}
+
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6530,6 +6541,7 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Highlighting}[]
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6551,6 +6563,7 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/export_json.json"}
+
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
 \NormalTok{    json.dump(json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{), f)}
 \NormalTok{    f.write(}\StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
@@ -6568,6 +6581,7 @@ Si on souhaite réimporter dans Python le contenu du fichier
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ []}
     \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ f:}
 \NormalTok{        data.append(json.loads(line, encoding}\OperatorTok{=}\StringTok{"utf-8"}\NormalTok{))}
+
 \BuiltInTok{print}\NormalTok{(data)}
 \end{Highlighting}
 \end{Shaded}
@@ -6744,10 +6758,12 @@ Admettons que la température est de 26 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{26}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
+
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6762,10 +6778,12 @@ Si la température est à présent de 32 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{32}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
+
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6807,6 +6825,7 @@ nuances :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \OperatorTok{-}\DecValTok{4}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
+
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaude"}
 \ControlFlowTok{elif}\NormalTok{ temperature }\OperatorTok{<=} \DecValTok{28} \KeywordTok{and}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{15}\NormalTok{:}
@@ -6815,6 +6834,7 @@ nuances :
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froide"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"très froide"}
+
 \BuiltInTok{print}\NormalTok{(}\StringTok{"La température est "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -7454,6 +7474,7 @@ résultat, des trois manières suivantes :
 \NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, k }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
 \CommentTok{# En ne nommant aucun paramètre}
 \NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{)}
+
 \NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
 \BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
@@ -7498,6 +7519,7 @@ l'appel, on peut les faire figurer dans des ordres différents :
 \NormalTok{prod_val_2 }\OperatorTok{=}\NormalTok{ production_3(a }\OperatorTok{=} \DecValTok{1}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
 \NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_3(l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
 \NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_3(m }\OperatorTok{=} \DecValTok{40}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+
 \NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
 \BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
@@ -7520,6 +7542,7 @@ Une fonction peut être fournie en paramètre à une autre fonction.
 \KeywordTok{def}\NormalTok{ appliquer_carre_4(fun):}
   \CommentTok{"""Applique la fonction `fun` à 4"""}
   \ControlFlowTok{return}\NormalTok{ fun(}\DecValTok{4}\NormalTok{)}
+
 \BuiltInTok{print}\NormalTok{(appliquer_carre_4(carre))}
 \end{Highlighting}
 \end{Shaded}
@@ -7546,6 +7569,7 @@ Regardons cela à travers un exemple.
 \begin{Highlighting}[]
 \CommentTok{# Définition d'une variable globale :}
 \NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
+
 \CommentTok{# Définition d'une variable locale à la fonction f}
 \KeywordTok{def}\NormalTok{ f(x):}
 \NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
@@ -7638,7 +7662,9 @@ suite jusqu'à l'environnement global.
 \NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
   \KeywordTok{def}\NormalTok{ g(x):}
     \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+
   \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
+
 \BuiltInTok{print}\NormalTok{(f())}
 \end{Highlighting}
 \end{Shaded}
@@ -7655,7 +7681,9 @@ suite jusqu'à l'environnement global.
 \KeywordTok{def}\NormalTok{ f():}
   \KeywordTok{def}\NormalTok{ g(x):}
     \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
+
   \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
+
 \BuiltInTok{print}\NormalTok{(f())}
 \end{Highlighting}
 \end{Shaded}
@@ -7673,6 +7701,7 @@ utiliser le mot-clé \texttt{global} :
 \KeywordTok{def}\NormalTok{ f(x):}
   \KeywordTok{global}\NormalTok{ y}
 \NormalTok{  y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{+}\DecValTok{1}
+
 \NormalTok{f(}\DecValTok{3}\NormalTok{)}
 \BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
@@ -7779,6 +7808,7 @@ pouvoir accéder aux valeurs grâce à leur clé !
   \CommentTok{"""Retourne la moyenne et l'écart-type de `x`"""}
   \ControlFlowTok{return}\NormalTok{ \{}\StringTok{"moyenne"}\NormalTok{: statistics.mean(x),}
   \StringTok{"ecart_type"}\NormalTok{: statistics.stdev(x)\}}
+
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]}
 \NormalTok{res }\OperatorTok{=}\NormalTok{ stat_des(x)}
 \BuiltInTok{print}\NormalTok{(res)}
@@ -7822,6 +7852,1958 @@ pouvoir accéder aux valeurs grâce à leur clé !
 
 \chapter{Introduction à Numpy}\label{numpy}
 
+Ce chapitre est consacré à une librairie importante pour les calculs
+numérique : \texttt{NumPy} (abréviation de \emph{Numerical Python}).
+
+Il est coutume d'importer \texttt{NumPy} en lui attribuant l'alias
+\texttt{np} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Tableaux}\label{tableaux}
+
+NumPy propose une structure de données populaire, les tableaux (de type
+\emph{array}), sur lesquels il est possible d'effectuer de manière
+efficace des calculs. Les tableaux sont une structure notamment utile
+pour effectuer des opérations statistiques basiques ainsi que de la
+génération pseudo-aléatoire de nombres.
+
+La stucture des tableaux ressemble à celle des listes, mais ces
+dernières sont moins rapides à être traitées et utilisent davantage de
+mémoire. Le gain de vitesse de traitement des tableaux en \texttt{NumPy}
+vient du fait que les données sont stockées dans des blocs contigus de
+mémoire, facilitant ainsi les accès en lecture.
+
+Pour s'en convaincre, on peut reprendre l'exemple de Pierre Navaro
+\href{https://github.com/pnavaro/python-notebooks/blob/master/13.Numpy.ipynb}{donné
+dans son \emph{notebook} sur \texttt{NumPy}}. Créons deux listes de
+longueur 1000 chacune, avec des nombres tirés aléatoirement à l'aide de
+la fonction \texttt{random()} du module \texttt{random}. Divisons chaque
+élément de la première liste par l'élément à la même position dans la
+seconde ligne, puis calculons la somme de ces 1000 divisions. Regardons
+ensuite le temps d'exécution à l'aide de la fonction magique
+\texttt{\%timeit} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ random }\ImportTok{import}\NormalTok{ random}
+\ImportTok{from}\NormalTok{ operator }\ImportTok{import}\NormalTok{ truediv}
+\NormalTok{l1 }\OperatorTok{=}\NormalTok{ [random() }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1000}\NormalTok{)]}
+\NormalTok{l2 }\OperatorTok{=}\NormalTok{ [random() }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1000}\NormalTok{)]}
+\CommentTok{# %timeit s = sum(map(truediv,l1,l2))}
+\end{Highlighting}
+\end{Shaded}
+
+(décommenter la dernière ligne et tester sur un Jupyter Notebook)
+
+À présent, transformons les deux listes en tableaux \texttt{NumPy} avec
+la méthode \texttt{array()}, et effectuons le même calcul à l'aide d'une
+méthode \texttt{NumPy} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1 }\OperatorTok{=}\NormalTok{ np.array(l1)}
+\NormalTok{a2 }\OperatorTok{=}\NormalTok{ np.array(l2)}
+\CommentTok{# %timeit s = np.sum(a1/a2)}
+\end{Highlighting}
+\end{Shaded}
+
+Comme on peut le constater en exécutant ces codes dans un environnement
+IPython, le temps d'exécution est bien plus rapide avec les méthodes de
+\texttt{NumPy} pour ce calcul.
+
+\subsection{Création}\label{creation}
+
+La création d'un tableau peut s'effectuer avec la méthode
+\texttt{array()}, à partir d'une liste, comme nous venon de le faire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{liste }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array(liste)}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [1 2 4]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(tableau))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Si on fournit à \texttt{array()} une liste de listes imbriquées de même
+longueur, un tableau multidimensionnel sera créé :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{liste_2 }\OperatorTok{=}\NormalTok{ [ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{], [}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{] ]}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ np.array(liste_2)}
+\BuiltInTok{print}\NormalTok{(tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[1 2 3]
+##  [4 5 6]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(tableau_2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Les tableaux peuvent aussi être créés à partir de n-uplets :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nuplet }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array(nuplet)}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [1 2 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(tableau))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Un tableau en dimension 1 peut être changé en tableau en dimension 2 (si
+possible), en modifiant son attribut \texttt{shape} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{])}
+\NormalTok{tableau.shape }\OperatorTok{=}\NormalTok{ (}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[3 2]
+##  [5 1]
+##  [6 5]]
+\end{lstlisting}
+
+\subsubsection{\texorpdfstring{Quelques fonctions générant des
+\texttt{array}}{Quelques fonctions générant des array}}\label{quelques-fonctions-generant-des-array}
+
+Certaines fonctions de \texttt{NumPy} produisent des tableaux
+pré-remplis. C'est le cas de la fonction \texttt{zeros()}. Quand on lui
+fournit une valeur entière \(n\), la fonction \texttt{zeros()} créé un
+tableau à une dimension, avec \(n\) 0 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.zeros(}\DecValTok{4}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0. 0. 0. 0.]
+\end{lstlisting}
+
+On peut préciser le type des zéros (par exemple \texttt{int},
+\texttt{int32}, \texttt{int64}, \texttt{float}, \texttt{float32},
+\texttt{float64}, etc.), à l'aide du paramètre \texttt{dtype} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.zeros(}\DecValTok{4}\NormalTok{, dtype }\OperatorTok{=} \StringTok{"int"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 0 0 0]
+\end{lstlisting}
+
+D'avantage d'explications sur les types de données avec \texttt{NumPy}
+sont disponibles
+\href{https://docs.scipy.org/doc/numpy-1.15.1/reference/arrays.dtypes.html}{sur
+la documentation en ligne}.
+
+Le type des éléments d'un tableau est indiqué dans l'attribut
+\texttt{dtype} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.zeros(}\DecValTok{4}\NormalTok{, dtype }\OperatorTok{=} \StringTok{"int"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x, x.dtype)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 0 0 0] int64
+\end{lstlisting}
+
+Il est par ailleurs possible de convertir le type des éléments dans un
+un autre type, à l'aide de la méthode \texttt{astype()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x.astype(}\StringTok{"float"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x, x.dtype)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 0 0 0] int64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(y, y.dtype)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0. 0. 0. 0.] float64
+\end{lstlisting}
+
+Quand on lui fournit un n-uplet de longueur supérieure à 1,
+\texttt{zeros()} créé un tableau à plusieurs dimensions :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.zeros((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[0. 0. 0.]
+##  [0. 0. 0.]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.zeros((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[[0. 0. 0. 0.]
+##   [0. 0. 0. 0.]
+##   [0. 0. 0. 0.]]
+## 
+##  [[0. 0. 0. 0.]
+##   [0. 0. 0. 0.]
+##   [0. 0. 0. 0.]]]
+\end{lstlisting}
+
+La fonction \texttt{empty()} de \texttt{Numpy} retourne également un
+tableau sur le même principe que \texttt{zeros()}, mais sans initialiser
+les valeurs à l'intérieur.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.empty((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), dtype }\OperatorTok{=} \StringTok{"int"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[0 0 0]
+##  [0 0 0]]
+\end{lstlisting}
+
+La fonction \texttt{ones()} de \texttt{Numpy} retourne le même genre de
+tableaux, avec des 1 en valeurs initialisées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.ones((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), dtype }\OperatorTok{=} \StringTok{"float"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[1. 1. 1.]
+##  [1. 1. 1.]]
+\end{lstlisting}
+
+Pour choisir une valeur spécifique pour l'initialisation, on peut
+utiliser la fonction \texttt{full()} de \texttt{Numpy} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.full((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DecValTok{10}\NormalTok{, dtype }\OperatorTok{=} \StringTok{"float"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[10. 10. 10.]
+##  [10. 10. 10.]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.full((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), np.inf) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[inf inf inf]
+##  [inf inf inf]]
+\end{lstlisting}
+
+La fonction \texttt{eye()} de \texttt{Numpy} créé un tableau à deux
+dimensions dans laquelle tous les éléments sont initalisés à zéro, sauf
+ceux de la diagonale initialisés à 1 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.eye(}\DecValTok{2}\NormalTok{, dtype}\OperatorTok{=}\StringTok{"int64"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[1 0]
+##  [0 1]]
+\end{lstlisting}
+
+En modifiant le paramètre mot-clé \texttt{k}, on peut décaler la
+diagonale :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.eye(}\DecValTok{3}\NormalTok{, k}\OperatorTok{=-}\DecValTok{1}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[0. 0. 0.]
+##  [1. 0. 0.]
+##  [0. 1. 0.]]
+\end{lstlisting}
+
+La fonction \texttt{identity()} de \texttt{Numpy} créé quant à elle une
+matrice identité sous la forme d'un tableau :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.identity(}\DecValTok{3}\NormalTok{, dtype }\OperatorTok{=} \StringTok{"int"}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[1 0 0]
+##  [0 1 0]
+##  [0 0 1]]
+\end{lstlisting}
+
+La fonction \texttt{arange()} de \texttt{Numpy} permet de générer une
+séquence de nombres séparés par un interval fixe, le tout stocké dans un
+tableau. La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.arange( start, stop, step, dtype )}
+\end{Highlighting}
+\end{Shaded}
+
+avec \texttt{start} la valeur de départ, \texttt{stop} celle d'arrivée,
+\texttt{step} le pas, l'espacement entre les nombres de la séquence et
+\texttt{dtype} le type des nombres :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.arange(}\DecValTok{5}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 1 2 3 4]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.arange(}\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [2 3 4]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{( np.arange(}\DecValTok{2}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [2 4 6 8]
+\end{lstlisting}
+
+\subsection{Dimensions}\label{dimensions}
+
+Pour connaître la dimension d'un tableau, on peut afficher la valeur de
+l'attribut \texttt{ndim} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"ndim tableau : "}\NormalTok{, tableau.ndim)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ndim tableau :  2
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"ndim tableau_2 : "}\NormalTok{, tableau_2.ndim)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ndim tableau_2 :  2
+\end{lstlisting}
+
+Le nombre d'éléments dans le tableau peut s'obtenir par l'attribut
+\texttt{size} ou par la fonction \texttt{size()} de \texttt{Numpy} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"size tableau : "}\NormalTok{, tableau.size)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## size tableau :  6
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"size tableau_2 : "}\NormalTok{, tableau_2.size)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## size tableau_2 :  6
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"np.size(tableau) :"}\NormalTok{, np.size(tableau))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## np.size(tableau) : 6
+\end{lstlisting}
+
+L'attribut \texttt{shape} retourne un n-uplet indiquant la longueur pour
+chaque dimension du tableau :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"size tableau : "}\NormalTok{, tableau.shape)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## size tableau :  (3, 2)
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"size tableau_2 : "}\NormalTok{, tableau_2.shape)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## size tableau_2 :  (2, 3)
+\end{lstlisting}
+
+\subsection{Extraction des éléments d'un
+tableau}\label{extraction-des-elements-dun-tableau}
+
+L'accès aux éléments d'un tableau se fait de la même manière que pour
+les listes (c.f. Section~\ref{stucture-liste-extraction}), grâce à
+l'indiçage. La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau[lower:upper:step]}
+\end{Highlighting}
+\end{Shaded}
+
+avec \texttt{lower} la borne inférieur de la plage d'indices,
+\texttt{upper} la plage supérieur, et \texttt{step} l'espacement entre
+les valeurs.
+
+\begin{itemize}
+\tightlist
+\item
+  Lorsque \texttt{lower} n'est pas précisé, le premier élément (indicé
+  0) est considéré comme la valeur attribuée à \texttt{lower}.
+\item
+  Lorsque \texttt{upper} n'est pas précisé, le dernier élément est
+  considéré comme la valeur attribuée à \texttt{upper}.
+\item
+  Lorsque \texttt{step} n'est pas précisé, un pas de 1 est attribué par
+  défaut.
+\end{itemize}
+
+Reprenons rapidement quelques exemples, en s'appuyant sur deux objets :
+un tableau de dimension 1, et un second de dimension 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_1 }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ [ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{], [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{], [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{], [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]]}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ np.array(tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+L'accès au premier élément :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1[0] : }\SpecialCharTok{%s}\StringTok{ (type : }\SpecialCharTok{%s}\StringTok{)"} \OperatorTok{%}
+\NormalTok{      (tableau_1[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_1[}\DecValTok{0}\NormalTok{])))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_1[0] : 1 (type : <class 'numpy.int64'>)
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2[0] : }\SpecialCharTok{%s}\StringTok{ (type : }\SpecialCharTok{%s}\StringTok{)"} \OperatorTok{%}
+\NormalTok{      (tableau_2[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_2[}\DecValTok{0}\NormalTok{])))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_2[0] : [1 2 3] (type : <class 'numpy.ndarray'>)
+\end{lstlisting}
+
+L'accès aux éléments peut se faire en partant par la fin :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1[-1] : "}\NormalTok{, tableau_1[}\OperatorTok{-}\DecValTok{1}\NormalTok{]) }\CommentTok{# dernier élément}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_1[-1] :  12
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2[-1] : "}\NormalTok{, tableau_2[}\OperatorTok{-}\DecValTok{1}\NormalTok{]) }\CommentTok{# dernier élément}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_2[-1] :  [10 11 12]
+\end{lstlisting}
+
+Le découpage est possible :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# les éléments du 2e (non inclus) au 4e}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Slice Tableau 1 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau_1[}\DecValTok{2}\NormalTok{:}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Slice Tableau 1 : 
+##  [3 4]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Sclie Tableau 2 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau_2[}\DecValTok{2}\NormalTok{:}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Sclie Tableau 2 : 
+##  [[ 7  8  9]
+##  [10 11 12]]
+\end{lstlisting}
+
+Pour les tableaux à deux dimensions, on peut accéder aux éléments de la
+manière suivante, de manière équivalente :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Dans le 3e élément, accéder au 1er élément}
+\BuiltInTok{print}\NormalTok{(tableau_2[}\DecValTok{2}\NormalTok{][}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 7
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(tableau_2[}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 7
+\end{lstlisting}
+
+\subsubsection{Extraction à l'aide de
+booléens}\label{extraction-a-laide-de-booleens}
+
+Pour extraire ou non des éléments d'un tableu, on peut utiliser des
+tableaux de booléens en tant que masques. L'idée est de fournir un
+tableau de booléens (un masque) de même dimension que celui pour lequel
+on désire extraire des éléments sous certaines conditions. Lorsque la
+valeur du booléen dans le masque vaut \texttt{True}, l'élément
+correspondant du tableau est retourné ; sinon, il ne l'est pas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ tableau[[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{, }\VariableTok{True}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 2 1 4]
+\end{lstlisting}
+
+Seuls les éléments en position 1, 3, 5 et 6 on été retournés.
+
+En pratique, le masque n'est que très rarement créé par l'utilisateur,
+il est plutôt issu d'une instruction logique appliquée au tableau
+d'intérêt. Par exemple, dans notre tableau, nous pouvons dans un premier
+temps créer un masque de manière à identifier les éléments pairs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{masque }\OperatorTok{=}\NormalTok{ tableau }\OperatorTok{%} \DecValTok{2} \OperatorTok{==} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(masque)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [ True False  True False False  True]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(masque))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Une fois ce masque créé, on peut l'appliquer au tableau pour extraire
+uniquement les éléments pour lesquels la valeur correspondante dans le
+masque vaut \texttt{True} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(tableau[masque])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [0 2 4]
+\end{lstlisting}
+
+\subsection{Modification}\label{modification-3}
+
+Pour remplacer les valeurs d'un tableau, on utilise le signe égal
+(\texttt{=}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{], [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{], [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{], [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]])}
+\NormalTok{tableau[}\DecValTok{0}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\DecValTok{11}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{33}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[11 22 33]
+##  [ 4  5  6]
+##  [ 7  8  9]
+##  [10 11 12]]
+\end{lstlisting}
+
+Si on fournit un scalaire lors du remplacement, la valeur sera répétée
+pour tous les éléments de la dimension :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{100}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[100 100 100]
+##  [  4   5   6]
+##  [  7   8   9]
+##  [ 10  11  12]]
+\end{lstlisting}
+
+Idem avec un découpage :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{] }\OperatorTok{=} \DecValTok{100}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[100 100 100]
+##  [100 100 100]
+##  [  7   8   9]
+##  [ 10  11  12]]
+\end{lstlisting}
+
+D'ailleurs, un découpage avec juste les deux points sans préciser les
+paramètres de début et de fin du découpage suivi d'un signe égal et d'un
+nombre remplace toutes les valeurs du tableau par ce nombre :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau[:] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[0 0 0]
+##  [0 0 0]
+##  [0 0 0]
+##  [0 0 0]]
+\end{lstlisting}
+
+\subsection{Copie de tableau}\label{copie-de-tableau}
+
+La copie d'un tableau, comme pour les listes (c.f.
+Section~\ref{copie-de-liste}), ne doit pas se faire avec le symbole égal
+(\texttt{=}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ tableau_1}
+\end{Highlighting}
+\end{Shaded}
+
+Modifions le premier élément de \texttt{tableau\_2}, et observons le
+contenu de \texttt{tableau\_2} et de \texttt{tableau\_1} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_2[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau 1 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau 1 : 
+##  [0 2 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau 2 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau 2 : 
+##  [0 2 3]
+\end{lstlisting}
+
+Comme on peut le constater, le fait d'avoir utilisé le signe égal a
+simplement créé une référence et non pas une copie.
+
+Pour effectuer une copie de tableaux, plusieurs façons existent. Parmi
+elles, l'utilisation de la fonction \texttt{np.array()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ np.array(tableau_1)}
+\NormalTok{tableau_2[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1 : "}\NormalTok{, tableau_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_1 :  [1 2 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2 : "}\NormalTok{, tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_2 :  [0 2 3]
+\end{lstlisting}
+
+On peut également utiliser la méthode \texttt{copy()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ tableau_1.copy()}
+\NormalTok{tableau_2[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1 : "}\NormalTok{, tableau_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_1 :  [1 2 3]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2 : "}\NormalTok{, tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_2 :  [0 2 3]
+\end{lstlisting}
+
+On peut noter que lorsque l'on fait un découpement, un nouvel objet est
+créé, pas une référence :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\NormalTok{tableau_2 }\OperatorTok{=}\NormalTok{ tableau_1[:}\DecValTok{2}\NormalTok{]}
+\NormalTok{tableau_2[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{0}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1 : "}\NormalTok{, tableau_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_1 :  [0 2 3 4]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2 : "}\NormalTok{, tableau_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_2 :  [0 2]
+\end{lstlisting}
+
+\subsection{Tri}\label{tri-1}
+
+La librairie \texttt{NumPy} fournit une fonction pour trier les tableaux
+: \texttt{sort()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau trié : "}\NormalTok{, np.sort(tableau))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau trié :  [1 2 3 5 5 6]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau : "}\NormalTok{, tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau :  [3 2 5 1 6 5]
+\end{lstlisting}
+
+Comme on peut le constater, la fonction \texttt{sort()} de
+\texttt{NumPy} propose une vue : le tableau n'est pas modifié, ce qui
+n'est pas le cas si on utilise la méthode \texttt{sort()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{])}
+\NormalTok{tableau.sort()}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Le tableau a été modifié : "}\NormalTok{, tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Le tableau a été modifié :  [1 2 3 5 5 6]
+\end{lstlisting}
+
+\subsection{Transposition}\label{transposition-tableau}
+
+Pour obtenir la transposée d'un tableau, on fait appel à l'attribut
+\texttt{T}. Il faut noter que l'on obtient une vue de l'objet, que cela
+ne le modifie pas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{])}
+\NormalTok{tableau.shape }\OperatorTok{=}\NormalTok{ (}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau : 
+##  [[3 2]
+##  [5 1]
+##  [6 5]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Tableau transposé : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau.T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Tableau transposé : 
+##  [[3 5 6]
+##  [2 1 5]]
+\end{lstlisting}
+
+On peut également utiliser la fonction \texttt{transpose()} de
+\texttt{NumPy} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(np.transpose(tableau))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [[3 5 6]
+##  [2 1 5]]
+\end{lstlisting}
+
+Attention, si on assigne un nom à la transposée, que ce soit en
+utilisant l'attribut \texttt{T} ou la méthode \texttt{np.transpose()},
+cela créé une référence, pas une copie d'élément\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_transpose }\OperatorTok{=}\NormalTok{ np.transpose(tableau)}
+\NormalTok{tableau_transpose[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{99}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau : 
+##  [[99  2]
+##  [ 5  1]
+##  [ 6  5]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_transpose : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, tableau_transpose)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_transpose : 
+##  [[99  5  6]
+##  [ 2  1  5]]
+\end{lstlisting}
+
+Pour savoir si un tableau est une vue ou non, on peut afficher
+l'attribut \texttt{base}, qui retourne \texttt{None} si ce n'est pas le
+cas :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau : "}\NormalTok{, tableau.base)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau :  None
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_transpose : "}\NormalTok{, tableau_transpose.base)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## tableau_transpose :  [[99  2]
+##  [ 5  1]
+##  [ 6  5]]
+\end{lstlisting}
+
+\subsection{Opérations sur les tableaux}\label{operations-tableaux}
+
+Il est possible d'utiliser des opérateurs sur les tableaux. Leur effet
+nécessite quelques explications.
+
+\subsubsection{\texorpdfstring{Opérateurs \texttt{+} et
+\texttt{-}}{Opérateurs + et -}}\label{operateurs-et--}
+
+Lorsque l'opérateur \texttt{+} (\texttt{-}) est utilisé entre deux
+tableaux de même dimension, une addition (soustraction) terme à terme
+est effectuée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\NormalTok{t_2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{])}
+\NormalTok{t_3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]])}
+\NormalTok{t_4 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{], [}\DecValTok{17}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{], [}\DecValTok{21}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{24}\NormalTok{]])}
+\NormalTok{t_1 }\OperatorTok{+}\NormalTok{ t_2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_3 }\OperatorTok{+}\NormalTok{ t_4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{-}\NormalTok{ t_2}
+\end{Highlighting}
+\end{Shaded}
+
+Lorsque l'opérateur \texttt{+} (\texttt{-}) est utilisé entre un
+scalaire et un tableau, le scalaire est ajouté (soustrait) à tous les
+éléments du tableau :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 + 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1 }\OperatorTok{+} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 + 3 : 
+##  [4 5 6 7]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 + 3. : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1 }\OperatorTok{+} \DecValTok{3}\NormalTok{.)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 + 3. : 
+##  [4. 5. 6. 7.]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_3 + 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_3 }\OperatorTok{+} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_3 + 3 : 
+##  [[ 4  5  6  7]
+##  [ 8  9 10 11]
+##  [12 13 14 15]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_3 - 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_3 }\OperatorTok{-} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_3 - 3 : 
+##  [[-2 -1  0  1]
+##  [ 2  3  4  5]
+##  [ 6  7  8  9]]
+\end{lstlisting}
+
+\subsubsection{\texorpdfstring{Opérateurs \texttt{*} et
+\texttt{/}}{Opérateurs * et /}}\label{operateurs-et}
+
+Lorsque l'opérateur \texttt{*} (\texttt{/}) est utilisé entre deux
+tableaux de même dimension, une multiplication (division) terme à terme
+est effectuée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{*}\NormalTok{ t_2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_3 }\OperatorTok{*}\NormalTok{ t_4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_3 }\OperatorTok{/}\NormalTok{ t_4}
+\end{Highlighting}
+\end{Shaded}
+
+Lorsque l'opérateur \texttt{*} (\texttt{/}) est utilisé entre un
+scalaire et un tableau, tous les éléments du tableau sont multipliés
+(divisés) par ce scalaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 * 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1 }\OperatorTok{*} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 * 3 : 
+##  [ 3  6  9 12]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 / 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1 }\OperatorTok{/} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 / 3 : 
+##  [0.33333333 0.66666667 1.         1.33333333]
+\end{lstlisting}
+
+\subsubsection{Puissance}\label{puissance-1}
+
+Il est également possible d'élever chaque nombre d'un tableau à une
+puissance donnée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 ** 3 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1 }\OperatorTok{**} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 ** 3 : 
+##  [ 1  8 27 64]
+\end{lstlisting}
+
+\subsubsection{Opérations sur des
+matrices}\label{operations-sur-des-matrices}
+
+En plus des opérations/soustraction/multiplication/division terme à
+terme ou par un scalaire, il est possible d'effectuer certains calculs
+sur des tableaux à deux dimension.
+
+Nous avons déjà vu la tranposée en Section~\ref{transposition-tableau}.
+
+Pour effectuer un produit matriciel, \texttt{NumPy} fournit la fonction
+\texttt{dot()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.dot(t_3, t_4.T)}
+\end{Highlighting}
+\end{Shaded}
+
+Il faut bien s'assurer d'avoir des matrices compatibles, sinon, une
+erreur sera retournée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.dot(t_3, t_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ValueError: shapes (3,4) and (3,4) not aligned: 4 (dim 1) != 3 (dim 0)
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+Le produit matriciel peut également s'obtenir à l'aide de l'opérateur
+\texttt{@} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_3 }\OperatorTok{@}\NormalTok{ t_4.T}
+\end{Highlighting}
+\end{Shaded}
+
+Le produit d'un vecteur avec une matrice est également possible :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.dot(t_1, t_3.T)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Quelques constantes}\label{quelques-constantes-1}
+
+\texttt{NumPy} propose quelques constantes, dont certaines sont
+reportées dans le Tableau~\ref{tab:constantes-numpy}.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:constantes-numpy} Codes de formatages}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{np.inf}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Infini (on obtient \(-\infty\) en écrivant \texttt{-np.inf} ou
+\texttt{np.NINF})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{np.nan}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Représentation en tant que nombre à virgule flottante de Not a
+Number\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{np.e}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Constante d'Euler (\(e\))\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{np.euler\_gamma}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Constante d'Euler-Mascheroni (\(\gamma\))\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{np.pi}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Nombre Pi (\(\pi\))\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Fonctions universelles}\label{fonctions-universelles}
+
+Les fonctions universelles (\emph{ufunc} pour \emph{universal
+functions}) sont des fonctions qui peuvent être appliquées terme à terme
+aux éléments d'un tableau. On distingue deux types de fonctions
+universelles : les fonctions unaires, qui effectuent une opération sur
+une seule, et les fonctions binaires qui effectuent une opération sur
+deux opérandes.
+
+Parmi les \emph{ufuncs}, on retrouve des opérations arithmétiques
+(addition, multiplication, puissance, valeur absolue, etc.) et des
+fonctions mathématiques usuelles (fonctions trigonométriques,
+exponentielle, logarithme, etc.). Le Tableau~\ref{tab:ufuncs-unaires}
+répertorie quelques fonctions universelles unaires, tandis que le
+Tableau~\ref{tab:ufuncs-binaires} répertories quelques fonctions
+universelles binaires.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:ufuncs-unaires} Fonctions universelles
+unaires}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{negative(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Opposés des éléments de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{absolute(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Valeurs absolues des éléments de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{sign(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Signes des éléments de \texttt{x} (0, 1 ou -1)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{rint(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Arrondi de \texttt{x} à l'entier\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{floor(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Troncature de \texttt{x} à l'entier inférieur\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{ceil(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Troncature de \texttt{x} à l'entier supérieur\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{sqrt(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Racine carrée de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{square(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Carré de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{sin(x)}, \texttt{cos(x)}, \texttt{tan(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Sinus (cosinus, et tangente) de
+\texttt{x\ \textbar{}\ \textbar{}\ \textasciigrave{}sinh(x)\textasciigrave{},\ \textasciigrave{}cosh(x)\textasciigrave{},\ \textasciigrave{}tanh(x)\textasciigrave{}\ \textbar{}\ Sinus\ (cosinus,\ et\ tangente)\ hyperbolique\ de\ \textasciigrave{}x\textasciigrave{}\ \ \textbar{}\ \textbar{}\ \textasciigrave{}arcsin(x)\textasciigrave{},\ \textasciigrave{}arccos(x)\textasciigrave{},\ \textasciigrave{}arctan(x)\textasciigrave{}\ \textbar{}\ Arc-sinus\ (arc-cosinus,\ et\ arc-tangente)\ de}x\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{arcsinh(x)}, \texttt{arccosh(x)}, \texttt{arctanh(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Arc-sinus (arc-cosinus, et arc-tangente) hyperbolique de
+`\texttt{x\ \textbar{}\ \textbar{}}hypoth(x,y)\texttt{\textbar{}\ Hypoténuse\ \$\textbackslash{}sqrt\{x\^{}2+y\^{}2\}\$\ \textbar{}\ \textbar{}}degrees(x)\texttt{\textbar{}\ Conversion\ des\ angles}x\texttt{de\ radians\ en\ degrés\ \textbar{}\ \textbar{}}radians(x)\texttt{\textbar{}\ Conversion\ des\ angles}x\texttt{de\ degrés\ en\ radians\ \textbar{}\ \textbar{}}exp(x)\texttt{\textbar{}\ Exponentielle\ de}x\texttt{\textbar{}\ \textbar{}}expm1(x)\texttt{\textbar{}\ \$e\^{}x-1\$\ \textbar{}\ \textbar{}}log(x)\texttt{\textbar{}\ Logarithme\ népérien\ des\ éléments\ de}x\texttt{\textbar{}\ \textbar{}}log10(x)\texttt{\textbar{}\ Logatithme\ des\ éléments\ de}x\texttt{en\ base\ 10\ \textbar{}\ \textbar{}}log2(x)\texttt{\textbar{}\ Logarithme\ des\ éléments\ de}x\texttt{en\ base\ 2\ \textbar{}\ \textbar{}}log1p(x)\texttt{\textbar{}\ \$ln(1+x\$\ \textbar{}\ \textbar{}}exp2(x)\texttt{\textbar{}\ \$2\^{}x\$\ \textbar{}\ \textbar{}}isnan(x)\texttt{\textbar{}\ Tableau\ de\ booléens\ indiquant}True\texttt{pour\ les\ éléments}NaN\texttt{\textbar{}\ \textbar{}}isfinite(x)\texttt{\textbar{}\ Tableau\ de\ booléens\ indiquant}True\texttt{pour\ les\ éléments\ non\ infinis\ et\ non-NaN\ \textbar{}\ \textbar{}}isinf(x)\texttt{\textbar{}\ Tableau\ de\ booléens\ indiquant}True`
+pour les éléments infinis\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:ufuncs-binaires} Fonctions universelles
+binaires}\tabularnewline
+\toprule
+Code & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Code & Description\tabularnewline
+\midrule
+\endhead
+\texttt{add(x,y)} & Addition terme à terme de \texttt{x} et
+\texttt{y}\tabularnewline
+\texttt{substract(x,y)} & Soustraction terme à terme de \texttt{x} et
+\texttt{y}\tabularnewline
+\texttt{multiply(x,y)} & Multiplication terme à terme de \texttt{x} et
+\texttt{y}\tabularnewline
+\texttt{divide(x,y)} & Division terme à terme de \texttt{x} et
+\texttt{y}\tabularnewline
+\texttt{floor\_divide(x,y)} & Quotients entiers des divisions terme à
+terme de \texttt{x} et \texttt{y}\tabularnewline
+\texttt{power(x,y)} & Élévation des éléments de \texttt{x} à la
+puissance des éléments de \texttt{y}\tabularnewline
+\texttt{mod(x,y)} & Restes des divisions eucliennes des éléments de
+\texttt{x} par ceux de \texttt{y}\tabularnewline
+\texttt{round(x,n)} & Arrondi de \texttt{x} à \(n\)
+décimales\tabularnewline
+\texttt{arctan2(x,y)} & Angles polaires de \texttt{x} et
+\texttt{y}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Pour utiliser ses fonctions, procéder comme dans l'exemple suivant :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]])}
+\NormalTok{t_2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{], [}\DecValTok{17}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{], [}\DecValTok{21}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{24}\NormalTok{]])}
+\NormalTok{np.log(t_1) }\CommentTok{# Logarithme népérien}
+\NormalTok{np.substract(t_1, t_2) }\CommentTok{# Soustraction des éléments de t_1 par ceux de t_2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## AttributeError: module 'numpy' has no attribute 'substract'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\subsection{Méthodes et fonctions mathématiques et
+statistiques}\label{methodes-et-fonctions-mathematiques-et-statistiques}
+
+\texttt{NumPy} fournit de nombreuses méthodes pour calculer des
+statistiques sur l'ensemble des valeurs des tableaux, ou sur un des axes
+des tableaux (par exemple sur l'équivalent de lignes ou des colonnes
+dans les tableaux à deux dimensions). Certaines sont reportées dans le
+Tableau~\ref{tab:numpy-maths-methodes}.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:numpy-maths-methodes} Méthodes mathématiques et
+statistiques}\tabularnewline
+\toprule
+Code & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Code & Description\tabularnewline
+\midrule
+\endhead
+\texttt{sum()} & Retourne la somme des éléments\tabularnewline
+\texttt{prod()} & Retourne le produit des éléments\tabularnewline
+\texttt{cumsum()} & Retourne la somme cumulée des
+éléments\tabularnewline
+\texttt{cumprod()} & Retourne le produit cumulé des
+éléments\tabularnewline
+\texttt{mean()} & Retourne la moyenne\tabularnewline
+\texttt{var()} & Retourne la variance\tabularnewline
+\texttt{std()} & Retourne l'écart-type\tabularnewline
+\texttt{min()} & Retourne la valeur minimale\tabularnewline
+\texttt{max()} & Retourne la valeur maximale\tabularnewline
+\texttt{argmin()} & Retourne l'indice du premier élément à la plus
+petite valeur\tabularnewline
+\texttt{argmax()} & Retourne l'indice du premier élément à la plus
+grande valeur\tabularnewline
+\bottomrule
+\end{longtable}
+
+Donnons un exemple de l'utilisation de ces méthodes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 : 
+##  [[ 1  2  3  4]
+##  [-1  6  7  8]
+##  [ 9 -1 11 12]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Somme des éléments : "}\NormalTok{, t_1.}\BuiltInTok{sum}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Somme des éléments :  61
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Covariance des éléments : "}\NormalTok{, t_1.cov())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## AttributeError: 'numpy.ndarray' object has no attribute 'cov'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+Pour appliquer ces fonctions sur un axe donné, on modifie la valeur du
+paramètre \texttt{axis} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Somme par colonne: "}\NormalTok{, t_1.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Somme par colonne:  [ 9  7 21 24]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Somme par ligne: "}\NormalTok{, t_1.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Somme par ligne:  [10 20 31]
+\end{lstlisting}
+
+\texttt{NumPy} offre aussi certaines fonctions spécifiques aux
+statistiques, dont certaines sont répertoriées dans le
+Tableau~\ref{tab:numpy-stats-fonctions}.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:numpy-stats-fonctions} Fonctions
+statistiques}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{mean(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Moyenne de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{average(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Moyenne de \texttt{x} (possibilité d'utiliser des poids à l'aide du
+paramètre \texttt{weight})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{median(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Médiane de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{percentile(x,p)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+P-ème percentile de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{var(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Variance de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{std(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Écart-type de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{cov(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Covariance de \texttt{x}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{corrcoef(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Coefficients de corrélation\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Pour utiliser les fonctions statistiques :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"t_1 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, t_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## t_1 : 
+##  [[ 1  2  3  4]
+##  [-1  6  7  8]
+##  [ 9 -1 11 12]]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Variance: "}\NormalTok{, np.var(t_1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Variance:  18.07638888888889
+\end{lstlisting}
+
+Pour calculer une moyenne pondérée (prenons un vecteur)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v_1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{])}
+\NormalTok{w }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Moyenne pondérée : "}\NormalTok{, np.average(v_1, weights}\OperatorTok{=}\NormalTok{w))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Moyenne pondérée :  1.7142857142857142
+\end{lstlisting}
+
+\section{Génération de nombres
+pseudo-aléatoires}\label{generation-de-nombres-pseudo-aleatoires}
+
+La génération de nombres pseudo-aléatoires est permise par le module
+\texttt{random} de \texttt{Numpy}. Le lecteur intéressé par les aspects
+plus statistiques pourra trouver davantage de notions abordées dans le
+sous-module \texttt{stats} de \texttt{SciPy}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ numpy }\ImportTok{import}\NormalTok{ random}
+\end{Highlighting}
+\end{Shaded}
+
+Le Tableau~\ref{tab:numpy-pseudo-aleatoires} répertorie quelques
+fonctions permettant de tirer de manière pseudo-aléatoire des nombres
+avec le module \texttt{random} de \texttt{Numpy} (en évaluant
+\texttt{??random}, on obtient une liste exhaustive).
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:numpy-pseudo-aleatoires} Quelques fonctions de
+génération de nombres pseudo-aléatoires}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedleft\strut
+Code\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{rand(size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une Uniforme \([0,1]\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{uniform(a,b,size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une Uniforme \([a ; b]\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{randint(a,b,size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une Uniforme \([a ; b[\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{randn(size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une Normale centrée réduite\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{normal(mu,\ std,\ size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une Normale d'espérance
+\texttt{mu} et d'écart-type \texttt{std}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{binomial(size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une \(\mathcal{B}in(n,p)\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{beta(alpha,\ beta,\ size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une loi bêta de paramètres alpha
+et beta\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{poisson(lambda,\ size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une loi de Poisson de paramètre
+lambda\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{f(size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedleft\strut
+\texttt{standard\_t(df,\ size)}\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedleft\strut
+Tirage de \texttt{size} valeurs selon une loi de Student à \texttt{df}
+degrés de liberté\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Voici un exemple de génération de nombres pseudo aléatoires selon une
+distribution Gaussienne :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.normal(size}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [-0.12772234  0.35163633  0.18592678 -1.46397035 -1.86116383 -2.41272194
+##   0.82396757 -0.6682351   0.27508324  1.4180606 ]
+\end{lstlisting}
+
+La génération des nombres s'effectue en fonction d'une graine
+(\emph{seed}), c'est-à-dire un nombre initiant le générateur de nombres
+pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir
+avoir des résultats reproductibles par exemple. Pour ce faire, on peut
+faire appel à la méthode \texttt{seed()}, à qui on indique une valeur en
+paramètre :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.random.seed(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.normal(size}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [ 0.47143516 -1.19097569  1.43270697 -0.3126519  -0.72058873  0.88716294
+##   0.85958841 -0.6365235   0.01569637 -2.24268495]
+\end{lstlisting}
+
+En fixant à nouveau la graîne, on obtiendra exactement le même tirage :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.random.seed(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.normal(size}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [ 0.47143516 -1.19097569  1.43270697 -0.3126519  -0.72058873  0.88716294
+##   0.85958841 -0.6365235   0.01569637 -2.24268495]
+\end{lstlisting}
+
+Pour éviter d'affecter l'environnement global par la graine aléatoire,
+on peut utiliser la méthode \texttt{RandomState}du sous-module
+\texttt{random} de \texttt{NumPy} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ numpy.random }\ImportTok{import}\NormalTok{ RandomState}
+\NormalTok{rs }\OperatorTok{=}\NormalTok{ RandomState(}\DecValTok{123}\NormalTok{)}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ rs.normal(}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 8.914369396699438
+\end{lstlisting}
+
+Par ailleurs, la fonction \texttt{permutation()} du sous-module
+\texttt{random} permet d'effectuer une permutation aléatoire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{10}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.random.permutation(x)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x : "}\NormalTok{, x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## x :  [0 1 2 3 4 5 6 7 8 9]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"y : "}\NormalTok{, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## y :  [9 7 4 3 8 2 6 1 0 5]
+\end{lstlisting}
+
+La fonction \texttt{shuffle()} du sous-module \texttt{random} permet
+quant à elle d'effectuer une permutation aléatoire des éléments :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x avant permutation : "}\NormalTok{, x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## x avant permutation :  [0 1 2 3 4 5 6 7 8 9]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.random.permutation(x)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"x après permutation : "}\NormalTok{, x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## x après permutation :  [0 1 2 3 4 5 6 7 8 9]
+\end{lstlisting}
+
+\section{Exercice}\label{exercice-7}
+
+\BeginKnitrBlock{exframe}
+\emph{Premier exercice}
+
+Considérons le vecteur suivant :
+\(x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmatrix}\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Créer ce vecteur à l'aide d'un tableau que l'on appellera \texttt{x}.
+\item
+  Afficher le type de \texttt{x} puis sa longueur.
+\item
+  Extraire le premier élément, puis en faire de même avec le dernier.
+\item
+  Extraire les trois premiers éléments et les stocker dans un vecteur
+  que l'on nommera \texttt{a}.
+\item
+  Extraire les éléments en position 1, 3, 5 ; les stocker dans un
+  vecteur que l'on nommera \texttt{b}.
+\item
+  Additionner le nombre 10 au vecteur \texttt{x}, puis multiplier le
+  résultat par 2.
+\item
+  Effectuer l'addition de \texttt{a} et \texttt{b}, commenter le
+  résultat.
+\item
+  Effectuer l'addition suivante : \texttt{x+a} ; commenter le résultat,
+  puis regarder le résultat de \texttt{a+x}.
+\item
+  Multiplier le vecteur par le scalaire \texttt{c} que l'on fixera à 2.
+\item
+  Effectuer la multiplication de \texttt{a} et \texttt{b} ; commenter le
+  résultat.
+\item
+  Effectier la multiplication suivante : \texttt{x*a} ; commenter le
+  résultats.
+\item
+  Récupérer les positions des multiples de 2 et les stocker dans un
+  vecteur que l'on nommera \texttt{ind}, piuis conserver uniquement les
+  multiples de 2 de \texttt{x} dans un vecteur que l'on nommera
+  \texttt{mult\_2}.
+\item
+  Afficher les éléments de \texttt{x} qui sont multiples de 3 \emph{et}
+  multiples de 2.
+\item
+  Afficher les éléments de \texttt{x} qui sont multiples de 3 \emph{ou}
+  multiples de 2.
+\item
+  Calculer la somme des éléments de \texttt{x}.
+\item
+  Remplacer le premier élément de \texttt{x} par un 4.
+\item
+  Remplacer le premier élément de \texttt{x} par la valeur \texttt{NaN},
+  puis calculer la somme des éléments de \texttt{x}. 18 Supprimer le
+  vecteur \texttt{x}.
+\end{enumerate}
+
+\emph{Deuxième exercice}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Créer la matrice suivante :
+  \(A = \begin{bmatrix} -3 & 5 & 6 \\ -1 & 2 & 2 \\ 1 & -1 & -1 \end{bmatrix}\).
+\item
+  Afficher la dimension de \texttt{A}, son nombre de colonnes, son
+  nombre de lignes et sa longueur.
+\item
+  Extraire la seconde colonne de \texttt{A}, puis la premi`ere ligne.
+  4.Extraire l'élément en troisième position à la première ligne.
+\item
+  Extraire la sous-matrice de dimension \(2\times 2\) du coin inférieur
+  de \texttt{A}, c'est-à-dire
+  \(\begin{bmatrix} 2 & 2 \\ -1 & -1 \end{bmatrix}\).
+\item
+  Calculer la somme des colonnes puis des lignes de \texttt{A}.
+\item
+  Afficher la diagonale de \texttt{A}.
+\item
+  Rajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à
+  droite de la matrice \texttt{A} et stocker le résultat dans un objet
+  appelé \texttt{B}.
+\item
+  Retirer le quatrième vecteur de \texttt{B}.
+\item
+  Retirer la première et la troisième ligne de \texttt{B}.
+\item
+  Ajouter le scalaire \texttt{10} à \texttt{A}.
+\item
+  Ajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à
+  A.
+\item
+  Ajouter la matrice identité \(I_3\) à \texttt{A}.
+\item
+  Diviser tous les éléments de la matrice \texttt{A} par 2.
+\item
+  Multiplier la matrice \texttt{A} par le vecteur
+  \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\).
+\item
+  Afficher la transposée de \texttt{A}.
+\item
+  Effectuer le produit avec transposition \(A^\top A\).
+\end{enumerate}
+\EndKnitrBlock{exframe}
+
 \chapter{Manipulation de données avec Pandas}\label{pandas}
 
 \section{Importation et exportation de
@@ -7838,7 +9820,7 @@ dupliquées}\label{retrait-des-valeurs-dupliquees}
 
 \section{Modification des colonnes}\label{modification-des-colonnes}
 
-\section{Tri}\label{tri-1}
+\section{Tri}\label{tri-2}
 
 \section{Jointures}\label{jointures}
 

@@ -240,9 +240,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.9</b> Quelques constantes</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.10</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.11</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#operateurs-logiques-1"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
@@ -464,6 +465,25 @@ tableau_2 <span class="op">=</span> np.array(tableau_2)</code></pre></div>
 <pre><code>## 7</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(tableau_2[<span class="dv">2</span>,<span class="dv">0</span>])</code></pre></div>
 <pre><code>## 7</code></pre>
+<p>Pour extraire des colonnes d’un tableau à deux entrées :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Deuxième colonne : </span><span class="ch">\n</span><span class="st">&quot;</span>, tableau_2[:, [<span class="dv">1</span>]])</code></pre></div>
+<pre><code>## Deuxième colonne : 
+##  [[ 2]
+##  [ 5]
+##  [ 8]
+##  [11]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Deuxièmes et troisièmes colonnes : </span><span class="ch">\n</span><span class="st">&quot;</span>, tableau_2[:, [<span class="dv">1</span>,<span class="dv">2</span>]])</code></pre></div>
+<pre><code>## Deuxièmes et troisièmes colonnes : 
+##  [[ 2  3]
+##  [ 5  6]
+##  [ 8  9]
+##  [11 12]]</code></pre>
+<p>Pour cette dernière instruction, on indique avec le premier paramètre non renseigné (avant les deux points) que l’on désire tous les éléments de la première dimension, puis, avec la virgule, on indique qu’on regarde à l’intérieur de chaque élément de la première dimension, et qu’on veut les valeurs aux positions 1 et 2 (donc les éléments des colonnes 2 et 3).</p>
+<p>Pour extraire seulement certains éléments d’un tableau à 1 dimension, on peut indiquer les indices des éléments à récupérer :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;2e et 4e éléments : </span><span class="ch">\n</span><span class="st">&quot;</span>, tableau_2[[<span class="dv">1</span>,<span class="dv">3</span>]])</code></pre></div>
+<pre><code>## 2e et 4e éléments : 
+##  [[ 4  5  6]
+##  [10 11 12]]</code></pre>
 <div id="extraction-a-laide-de-booleens" class="section level4">
 <h4><span class="header-section-number">9.1.3.1</span> Extraction à l’aide de booléens</h4>
 <p>Pour extraire ou non des éléments d’un tableu, on peut utiliser des tableaux de booléens en tant que masques. L’idée est de fournir un tableau de booléens (un masque) de même dimension que celui pour lequel on désire extraire des éléments sous certaines conditions. Lorsque la valeur du booléen dans le masque vaut <code>True</code>, l’élément correspondant du tableau est retourné ; sinon, il ne l’est pas.</p>
@@ -514,6 +534,80 @@ tableau[<span class="dv">0</span>] <span class="op">=</span> [<span class="dv">1
 ##  [0 0 0]
 ##  [0 0 0]
 ##  [0 0 0]]</code></pre>
+<div id="ajout-delements-2" class="section level4">
+<h4><span class="header-section-number">9.1.4.1</span> Ajout d’éléments</h4>
+<p>Pour ajouter des éléments, on utilise la fonction <code>append()</code> de <code>NumPy</code>. Il faut noter que l’appel à cette fonction ne modifie pas l’objet auquel on ajoute les valeurs. Si on désire que les modifications sont apportées à cet objet, il faut l’écraser :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>])
+<span class="bu">print</span>(<span class="st">&quot;t_1 : &quot;</span>, t_1)</code></pre></div>
+<pre><code>## t_1 :  [1 3 5]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> np.append(t_1, <span class="dv">1</span>)
+<span class="bu">print</span>(<span class="st">&quot;t_1 après l&#39;ajout : &quot;</span>, t_1)</code></pre></div>
+<pre><code>## t_1 après l&#39;ajout :  [1 3 5 1]</code></pre>
+<p>Pour ajouter une colonne à un tableau à deux dimensions :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_2 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]])
+<span class="bu">print</span>(<span class="st">&quot;t_2 : </span><span class="ch">\n</span><span class="st">&quot;</span>, t_2)</code></pre></div>
+<pre><code>## t_2 : 
+##  [[1 2 3]
+##  [5 6 7]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ajout_col_t_2 <span class="op">=</span> np.array([[<span class="dv">4</span>], [<span class="dv">8</span>]])
+t_2 <span class="op">=</span> np.append(t_2,ajout_col_t_2, axis <span class="op">=</span> <span class="dv">1</span>)
+<span class="bu">print</span>(<span class="st">&quot;t_2 après ajout colonne : </span><span class="ch">\n</span><span class="st">&quot;</span>, t_2)</code></pre></div>
+<pre><code>## t_2 après ajout colonne : 
+##  [[1 2 3 4]
+##  [5 6 7 8]]</code></pre>
+<p>Pour ajouter une ligne, on utilise la fonction <code>vstack()</code> de <code>Numpy</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ajout_ligne_t_2 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>])
+t_2 <span class="op">=</span> np.vstack([t_2,ajout_ligne_t_2])
+<span class="bu">print</span>(<span class="st">&quot;t_2 après ajout ligne : </span><span class="ch">\n</span><span class="st">&quot;</span>, t_2)</code></pre></div>
+<pre><code>## t_2 après ajout ligne : 
+##  [[ 1  2  3  4]
+##  [ 5  6  7  8]
+##  [10 11 12 13]]</code></pre>
+</div>
+<div id="suppression-delements-2" class="section level4">
+<h4><span class="header-section-number">9.1.4.2</span> Suppression d’éléments</h4>
+<p>Pour supprimer des éléments, on utilise la fonction <code>delete()</code> de <code>NumPy</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_1 : &quot;</span>, t_1)
+<span class="co"># Supprimer le dernier élément</span></code></pre></div>
+<pre><code>## t_1 :  [1 3 5 1]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.delete(t_1, (<span class="op">-</span><span class="dv">1</span>))</code></pre></div>
+<p>Note : pour que la suppression soit effective, on assigne le résultat de <code>np.delete()</code> à l’objet.</p>
+<p>Pour supprimer plusieurs éléments :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_1 : &quot;</span>, t_1)
+<span class="co"># Supprimer les 1er et 2e éléments</span></code></pre></div>
+<pre><code>## t_1 :  [1 3 5 1]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> np.delete(t_1, ([<span class="dv">0</span>, <span class="dv">2</span>]))
+<span class="bu">print</span>(t_1)</code></pre></div>
+<pre><code>## [3 1]</code></pre>
+<p>Pour supprimer une colonne d’un tableau à deux dimensions :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_2 : &quot;</span>, t_2)
+<span class="co"># Supprimer la première colonne :</span></code></pre></div>
+<pre><code>## t_2 :  [[ 1  2  3  4]
+##  [ 5  6  7  8]
+##  [10 11 12 13]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.delete(t_2, (<span class="dv">0</span>), axis<span class="op">=</span><span class="dv">1</span>)</code></pre></div>
+<p>Supprimer plusieurs colonnes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_2 : &quot;</span>, t_2)
+<span class="co"># Supprimer la 1ère et la 3e colonne :</span></code></pre></div>
+<pre><code>## t_2 :  [[ 1  2  3  4]
+##  [ 5  6  7  8]
+##  [10 11 12 13]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.delete(t_2, ([<span class="dv">0</span>,<span class="dv">2</span>]), axis<span class="op">=</span><span class="dv">1</span>)</code></pre></div>
+<p>Et pour supprimer une ligne :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_2 : &quot;</span>, t_2)
+<span class="co"># Supprimer la première ligne :</span></code></pre></div>
+<pre><code>## t_2 :  [[ 1  2  3  4]
+##  [ 5  6  7  8]
+##  [10 11 12 13]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.delete(t_2, (<span class="dv">0</span>), axis<span class="op">=</span><span class="dv">0</span>)</code></pre></div>
+<p>Supprimer plusieurs lignes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;t_2 : &quot;</span>, t_2)
+<span class="co"># Supprimer la 1ère et la 3e ligne</span></code></pre></div>
+<pre><code>## t_2 :  [[ 1  2  3  4]
+##  [ 5  6  7  8]
+##  [10 11 12 13]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.delete(t_2, ([<span class="dv">0</span>,<span class="dv">2</span>]), axis<span class="op">=</span><span class="dv">0</span>)</code></pre></div>
+</div>
 </div>
 <div id="copie-de-tableau" class="section level3">
 <h3><span class="header-section-number">9.1.5</span> Copie de tableau</h3>
@@ -676,11 +770,74 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.dot(t_1, t_3.T)</code></pre></div>
 </div>
 </div>
+<div id="operateurs-logiques-1" class="section level3">
+<h3><span class="header-section-number">9.1.9</span> Opérateurs logiques</h3>
+<p>Pour effectuer des tests logiques sur les éléments d’un tableau, <code>NumPy</code> propose des fonctions, répertoriées dans le Tableau <a href="#numpy-operateurs-logiques"><strong>??</strong></a>. Le résultat retourné par l’application de ces fonctions est un tableau de booléens.</p>
+<table>
+<caption><span id="tab:numpy-operateurs-logiques">Table 9.1: </span> Fonctions logiques</caption>
+<thead>
+<tr class="header">
+<th align="right">Code</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>greater()</code></td>
+<td align="right">Supérieur à</td>
+</tr>
+<tr class="even">
+<td align="right"><code>greater_equal()</code></td>
+<td align="right">Supérieur ou égal à</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>less()</code></td>
+<td align="right">Inférieur à</td>
+</tr>
+<tr class="even">
+<td align="right"><code>less_equal()</code></td>
+<td align="right">Inférieur ou égal à</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>equal()</code></td>
+<td align="right">Égal à</td>
+</tr>
+<tr class="even">
+<td align="right"><code>not_equal()</code></td>
+<td align="right">Différent de</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>logical_and()</code></td>
+<td align="right">Et logique</td>
+</tr>
+<tr class="even">
+<td align="right"><code>logical_or()</code></td>
+<td align="right">Ou logique</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>logical_xor()</code></td>
+<td align="right">XOR logique</td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, pour obtenir les éléments de <code>t</code> compris entre 10 et 20 (inclus) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">24</span>], [<span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">40</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">14</span>]])
+masque <span class="op">=</span> np.logical_and(t <span class="op">&lt;=</span> <span class="dv">20</span>, t <span class="op">&gt;=</span> <span class="dv">10</span>)
+<span class="bu">print</span>(<span class="st">&quot;masque : </span><span class="ch">\n</span><span class="st">&quot;</span>, masque)</code></pre></div>
+<pre><code>## masque : 
+##  [[False  True False False]
+##  [False  True False False]
+##  [False False False  True]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;les éléments de t compris entre 10 et 20 : </span><span class="ch">\n</span><span class="st">&quot;</span>,
+      t[masque])</code></pre></div>
+<pre><code>## les éléments de t compris entre 10 et 20 : 
+##  [10 12 14]</code></pre>
+</div>
 <div id="quelques-constantes-1" class="section level3">
-<h3><span class="header-section-number">9.1.9</span> Quelques constantes</h3>
-<p><code>NumPy</code> propose quelques constantes, dont certaines sont reportées dans le Tableau <a href="numpy.html#tab:constantes-numpy">9.1</a>.</p>
+<h3><span class="header-section-number">9.1.10</span> Quelques constantes</h3>
+<p><code>NumPy</code> propose quelques constantes, dont certaines sont reportées dans le Tableau <a href="numpy.html#tab:constantes-numpy">9.2</a>.</p>
 <table style="width:94%;">
-<caption><span id="tab:constantes-numpy">Table 9.1: </span> Codes de formatages</caption>
+<caption><span id="tab:constantes-numpy">Table 9.2: </span> Codes de formatages</caption>
 <colgroup>
 <col width="19%" />
 <col width="75%" />
@@ -716,11 +873,11 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 </table>
 </div>
 <div id="fonctions-universelles" class="section level3">
-<h3><span class="header-section-number">9.1.10</span> Fonctions universelles</h3>
+<h3><span class="header-section-number">9.1.11</span> Fonctions universelles</h3>
 <p>Les fonctions universelles (<em>ufunc</em> pour <em>universal functions</em>) sont des fonctions qui peuvent être appliquées terme à terme aux éléments d’un tableau. On distingue deux types de fonctions universelles : les fonctions unaires, qui effectuent une opération sur une seule, et les fonctions binaires qui effectuent une opération sur deux opérandes.</p>
-<p>Parmi les <em>ufuncs</em>, on retrouve des opérations arithmétiques (addition, multiplication, puissance, valeur absolue, etc.) et des fonctions mathématiques usuelles (fonctions trigonométriques, exponentielle, logarithme, etc.). Le Tableau <a href="numpy.html#tab:ufuncs-unaires">9.2</a> répertorie quelques fonctions universelles unaires, tandis que le Tableau <a href="numpy.html#tab:ufuncs-binaires">9.3</a> répertories quelques fonctions universelles binaires.</p>
+<p>Parmi les <em>ufuncs</em>, on retrouve des opérations arithmétiques (addition, multiplication, puissance, valeur absolue, etc.) et des fonctions mathématiques usuelles (fonctions trigonométriques, exponentielle, logarithme, etc.). Le Tableau <a href="numpy.html#tab:ufuncs-unaires">9.3</a> répertorie quelques fonctions universelles unaires, tandis que le Tableau <a href="numpy.html#tab:ufuncs-binaires">9.4</a> répertories quelques fonctions universelles binaires.</p>
 <table style="width:94%;">
-<caption><span id="tab:ufuncs-unaires">Table 9.2: </span> Fonctions universelles unaires</caption>
+<caption><span id="tab:ufuncs-unaires">Table 9.3: </span> Fonctions universelles unaires</caption>
 <colgroup>
 <col width="19%" />
 <col width="75%" />
@@ -766,16 +923,72 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 </tr>
 <tr class="odd">
 <td align="right"><code>sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code></td>
-<td align="right">Sinus (cosinus, et tangente) de <code>x | | `sinh(x)`, `cosh(x)`, `tanh(x)` | Sinus (cosinus, et tangente) hyperbolique de `x`  | | `arcsin(x)`, `arccos(x)`, `arctan(x)` | Arc-sinus (arc-cosinus, et arc-tangente) de</code>x</td>
+<td align="right">Sinus (cosinus, et tangente) de <code>x</code></td>
 </tr>
 <tr class="even">
-<td align="right"><code>arcsinh(x)</code>, <code>arccosh(x)</code>, <code>arctanh(x)</code></td>
-<td align="right">Arc-sinus (arc-cosinus, et arc-tangente) hyperbolique de `<code>x | |</code>hypoth(x,y)<code>| Hypoténuse $\sqrt{x^2+y^2}$ | |</code>degrees(x)<code>| Conversion des angles</code>x<code>de radians en degrés | |</code>radians(x)<code>| Conversion des angles</code>x<code>de degrés en radians | |</code>exp(x)<code>| Exponentielle de</code>x<code>| |</code>expm1(x)<code>| $e^x-1$ | |</code>log(x)<code>| Logarithme népérien des éléments de</code>x<code>| |</code>log10(x)<code>| Logatithme des éléments de</code>x<code>en base 10 | |</code>log2(x)<code>| Logarithme des éléments de</code>x<code>en base 2 | |</code>log1p(x)<code>| $ln(1+x$ | |</code>exp2(x)<code>| $2^x$ | |</code>isnan(x)<code>| Tableau de booléens indiquant</code>True<code>pour les éléments</code>NaN<code>| |</code>isfinite(x)<code>| Tableau de booléens indiquant</code>True<code>pour les éléments non infinis et non-NaN | |</code>isinf(x)<code>| Tableau de booléens indiquant</code>True` pour les éléments infinis</td>
+<td align="right"><code>sinh(x)</code>, <code>cosh(x)</code>, <code>tanh(x)</code></td>
+<td align="right">Sinus (cosinus, et tangente) hyperbolique de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>arcsin(x)</code>, <code>arccos(x)</code>, <code>arctan(x)</code></td>
+<td align="right">Arc-sinus (arc-cosinus, et arc-tangente) de <code>x | | `arcsinh(x)`, `arccosh(x)`, `arctanh(x)` | Arc-sinus (arc-cosinus, et arc-tangente) hyperbolique de</code>x</td>
+</tr>
+<tr class="even">
+<td align="right"><code>hypoth(x,y)</code></td>
+<td align="right">Hypoténuse <span class="math inline">\(\sqrt{x^2+y^2}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>degrees(x)</code></td>
+<td align="right">Conversion des angles <code>x</code> de radians en degrés</td>
+</tr>
+<tr class="even">
+<td align="right"><code>radians(x)</code></td>
+<td align="right">Conversion des angles <code>x</code> de degrés en radians</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>exp(x)</code></td>
+<td align="right">Exponentielle de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>expm1(x)</code></td>
+<td align="right"><span class="math inline">\(e^x-1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>log(x)</code></td>
+<td align="right">Logarithme népérien des éléments de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>log10(x)</code></td>
+<td align="right">Logatithme des éléments de <code>x</code> en base 10</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>log2(x)</code></td>
+<td align="right">Logarithme des éléments de <code>x</code> en base 2</td>
+</tr>
+<tr class="even">
+<td align="right"><code>log1p(x)</code></td>
+<td align="right"><span class="math inline">\(ln(1+x\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>exp2(x)</code></td>
+<td align="right"><span class="math inline">\(2^x\)</span></td>
+</tr>
+<tr class="even">
+<td align="right"><code>isnan(x)</code></td>
+<td align="right">Tableau de booléens indiquant <code>True</code> pour les éléments <code>NaN</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>isfinite(x)</code></td>
+<td align="right">Tableau de booléens indiquant <code>True</code> pour les éléments non infinis et non-NaN</td>
+</tr>
+<tr class="even">
+<td align="right"><code>isinf(x)</code></td>
+<td align="right">Tableau de booléens indiquant <code>True</code> pour les éléments infinis</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:ufuncs-binaires">Table 9.3: </span> Fonctions universelles binaires</caption>
+<caption><span id="tab:ufuncs-binaires">Table 9.4: </span> Fonctions universelles binaires</caption>
 <thead>
 <tr class="header">
 <th align="right">Code</th>
@@ -788,7 +1001,7 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 <td align="right">Addition terme à terme de <code>x</code> et <code>y</code></td>
 </tr>
 <tr class="even">
-<td align="right"><code>substract(x,y)</code></td>
+<td align="right"><code>subtract(x,y)</code></td>
 <td align="right">Soustraction terme à terme de <code>x</code> et <code>y</code></td>
 </tr>
 <tr class="odd">
@@ -825,17 +1038,13 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>], [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]])
 t_2 <span class="op">=</span> np.array([[<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>], [<span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>], [<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>]])
 np.log(t_1) <span class="co"># Logarithme népérien</span>
-np.substract(t_1, t_2) <span class="co"># Soustraction des éléments de t_1 par ceux de t_2</span></code></pre></div>
-<pre><code>## AttributeError: module &#39;numpy&#39; has no attribute &#39;substract&#39;
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+np.subtract(t_1, t_2) <span class="co"># Soustraction des éléments de t_1 par ceux de t_2</span></code></pre></div>
 </div>
 <div id="methodes-et-fonctions-mathematiques-et-statistiques" class="section level3">
-<h3><span class="header-section-number">9.1.11</span> Méthodes et fonctions mathématiques et statistiques</h3>
-<p><code>NumPy</code> fournit de nombreuses méthodes pour calculer des statistiques sur l’ensemble des valeurs des tableaux, ou sur un des axes des tableaux (par exemple sur l’équivalent de lignes ou des colonnes dans les tableaux à deux dimensions). Certaines sont reportées dans le Tableau <a href="numpy.html#tab:numpy-maths-methodes">9.4</a>.</p>
+<h3><span class="header-section-number">9.1.12</span> Méthodes et fonctions mathématiques et statistiques</h3>
+<p><code>NumPy</code> fournit de nombreuses méthodes pour calculer des statistiques sur l’ensemble des valeurs des tableaux, ou sur un des axes des tableaux (par exemple sur l’équivalent de lignes ou des colonnes dans les tableaux à deux dimensions). Certaines sont reportées dans le Tableau <a href="numpy.html#tab:numpy-maths-methodes">9.5</a>.</p>
 <table>
-<caption><span id="tab:numpy-maths-methodes">Table 9.4: </span> Méthodes mathématiques et statistiques</caption>
+<caption><span id="tab:numpy-maths-methodes">Table 9.5: </span> Méthodes mathématiques et statistiques</caption>
 <thead>
 <tr class="header">
 <th align="right">Code</th>
@@ -898,21 +1107,18 @@ np.substract(t_1, t_2) <span class="co"># Soustraction des éléments de t_1 par
 ##  [ 9 -1 11 12]]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Somme des éléments : &quot;</span>, t_1.<span class="bu">sum</span>())</code></pre></div>
 <pre><code>## Somme des éléments :  61</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Covariance des éléments : &quot;</span>, t_1.cov())</code></pre></div>
-<pre><code>## AttributeError: &#39;numpy.ndarray&#39; object has no attribute &#39;cov&#39;
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Covariance des éléments : &quot;</span>, t_1.var())</code></pre></div>
+<pre><code>## Covariance des éléments :  18.07638888888889</code></pre>
 <p>Pour appliquer ces fonctions sur un axe donné, on modifie la valeur du paramètre <code>axis</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Somme par colonne: &quot;</span>, t_1.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</code></pre></div>
 <pre><code>## Somme par colonne:  [ 9  7 21 24]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Somme par ligne: &quot;</span>, t_1.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))</code></pre></div>
 <pre><code>## Somme par ligne:  [10 20 31]</code></pre>
-<p><code>NumPy</code> offre aussi certaines fonctions spécifiques aux statistiques, dont certaines sont répertoriées dans le Tableau <a href="numpy.html#tab:numpy-stats-fonctions">9.5</a>.</p>
-<table style="width:94%;">
-<caption><span id="tab:numpy-stats-fonctions">Table 9.5: </span> Fonctions statistiques</caption>
+<p><code>NumPy</code> offre aussi certaines fonctions spécifiques aux statistiques, dont certaines sont répertoriées dans le Tableau <a href="numpy.html#tab:numpy-stats-fonctions">9.6</a>.</p>
+<table style="width:99%;">
+<caption><span id="tab:numpy-stats-fonctions">Table 9.6: </span> Fonctions statistiques</caption>
 <colgroup>
-<col width="19%" />
+<col width="23%" />
 <col width="75%" />
 </colgroup>
 <thead>
@@ -923,34 +1129,46 @@ np.substract(t_1, t_2) <span class="co"># Soustraction des éléments de t_1 par
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right"><code>mean(x)</code></td>
+<td align="right"><code>sum(x)</code>, <code>nansum(x)</code></td>
+<td align="right">Somme de <code>x</code> (<code>nansum(x)</code> ne tient pas compte des valeurs <code>NaN</code>)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>mean(x)</code>, <code>nanmean()</code></td>
 <td align="right">Moyenne de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>median(x)</code>, <code>nanmedian()</code></td>
+<td align="right">Médiane de <code>x</code></td>
 </tr>
 <tr class="even">
 <td align="right"><code>average(x)</code></td>
 <td align="right">Moyenne de <code>x</code> (possibilité d’utiliser des poids à l’aide du paramètre <code>weight</code>)</td>
 </tr>
 <tr class="odd">
-<td align="right"><code>median(x)</code></td>
-<td align="right">Médiane de <code>x</code></td>
+<td align="right"><code>min(x)</code>, <code>nanmin()</code></td>
+<td align="right">Minimum de <code>x</code></td>
 </tr>
 <tr class="even">
-<td align="right"><code>percentile(x,p)</code></td>
+<td align="right"><code>max(x)</code>, <code>nanmax()</code></td>
+<td align="right">Maximum de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>percentile(x,p)</code>, <code>nanpercentile(n,p)</code></td>
 <td align="right">P-ème percentile de <code>x</code></td>
 </tr>
-<tr class="odd">
-<td align="right"><code>var(x)</code></td>
+<tr class="even">
+<td align="right"><code>var(x)</code>, <code>nanvar(x)</code></td>
 <td align="right">Variance de <code>x</code></td>
 </tr>
-<tr class="even">
-<td align="right"><code>std(x)</code></td>
+<tr class="odd">
+<td align="right"><code>std(x)</code>, <code>nanstd()</code></td>
 <td align="right">Écart-type de <code>x</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right"><code>cov(x)</code></td>
 <td align="right">Covariance de <code>x</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right"><code>corrcoef(x)</code></td>
 <td align="right">Coefficients de corrélation</td>
 </tr>
@@ -965,7 +1183,13 @@ np.substract(t_1, t_2) <span class="co"># Soustraction des éléments de t_1 par
 ##  [ 9 -1 11 12]]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Variance: &quot;</span>, np.var(t_1))</code></pre></div>
 <pre><code>## Variance:  18.07638888888889</code></pre>
-<p>Pour calculer une moyenne pondérée (prenons un vecteur)</p>
+<p>Si le tableau comporte des valeurs <code>NaN</code>, pour calculer la somme par exempe, si on utilise <code>sum()</code>, le résultat sera <code>NaN</code>. Pour ignorer les valeurs <code>NaN</code>, on utilise une fonction spécifique (ici, <code>nansum()</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, np.NaN, <span class="dv">4</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>], [<span class="dv">9</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">12</span>]])
+<span class="bu">print</span>(<span class="st">&quot;somme : &quot;</span>, np.<span class="bu">sum</span>(t_1))</code></pre></div>
+<pre><code>## somme :  nan</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;somme en ignorant les NaN : &quot;</span>, np.nansum(t_1))</code></pre></div>
+<pre><code>## somme en ignorant les NaN :  58.0</code></pre>
+<p>Pour calculer une moyenne pondérée (prenons un vecteur) :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">v_1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>])
 w <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">5</span>, <span class="dv">1</span>])
 <span class="bu">print</span>(<span class="st">&quot;Moyenne pondérée : &quot;</span>, np.average(v_1, weights<span class="op">=</span>w))</code></pre></div>
@@ -976,9 +1200,9 @@ w <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv
 <h2><span class="header-section-number">9.2</span> Génération de nombres pseudo-aléatoires</h2>
 <p>La génération de nombres pseudo-aléatoires est permise par le module <code>random</code> de <code>Numpy</code>. Le lecteur intéressé par les aspects plus statistiques pourra trouver davantage de notions abordées dans le sous-module <code>stats</code> de <code>SciPy</code>.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> numpy <span class="im">import</span> random</code></pre></div>
-<p>Le Tableau <a href="numpy.html#tab:numpy-pseudo-aleatoires">9.6</a> répertorie quelques fonctions permettant de tirer de manière pseudo-aléatoire des nombres avec le module <code>random</code> de <code>Numpy</code> (en évaluant <code>??random</code>, on obtient une liste exhaustive).</p>
+<p>Le Tableau <a href="numpy.html#tab:numpy-pseudo-aleatoires">9.7</a> répertorie quelques fonctions permettant de tirer de manière pseudo-aléatoire des nombres avec le module <code>random</code> de <code>Numpy</code> (en évaluant <code>??random</code>, on obtient une liste exhaustive).</p>
 <table style="width:94%;">
-<caption><span id="tab:numpy-pseudo-aleatoires">Table 9.6: </span> Quelques fonctions de génération de nombres pseudo-aléatoires</caption>
+<caption><span id="tab:numpy-pseudo-aleatoires">Table 9.7: </span> Quelques fonctions de génération de nombres pseudo-aléatoires</caption>
 <colgroup>
 <col width="19%" />
 <col width="75%" />
@@ -1035,8 +1259,8 @@ w <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv
 <p>Voici un exemple de génération de nombres pseudo aléatoires selon une distribution Gaussienne :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
 <span class="bu">print</span>(x)</code></pre></div>
-<pre><code>## [ 0.36711687 -1.04407103  1.60317238 -0.25667344 -0.36109967  0.81773232
-##  -0.51684574 -0.43333061 -0.60098265  0.59050046]</code></pre>
+<pre><code>## [-0.02467154  0.68174291  0.04416855  0.04350923  0.63212315  0.36319188
+##   0.45819622  1.61177938 -0.97630566  0.3721754 ]</code></pre>
 <p>La génération des nombres s’effectue en fonction d’une graine (<em>seed</em>), c’est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode <code>seed()</code>, à qui on indique une valeur en paramètre :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.random.seed(<span class="dv">1234</span>)
 x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
@@ -1081,7 +1305,7 @@ y <span class="op">=</span> np.random.permutation(x)
 <li>Afficher le type de <code>x</code> puis sa longueur.</li>
 <li>Extraire le premier élément, puis en faire de même avec le dernier.</li>
 <li>Extraire les trois premiers éléments et les stocker dans un vecteur que l’on nommera <code>a</code>.</li>
-<li>Extraire les éléments en position 1, 3, 5 ; les stocker dans un vecteur que l’on nommera <code>b</code>.</li>
+<li>Extraire les 1er, 2e et 5e éléments du vecteur (attention aux positions) ; les stocker dans un vecteur que l’on nommera <code>b</code>.</li>
 <li>Additionner le nombre 10 au vecteur <code>x</code>, puis multiplier le résultat par 2.</li>
 <li>Effectuer l’addition de <code>a</code> et <code>b</code>, commenter le résultat.</li>
 <li>Effectuer l’addition suivante : <code>x+a</code> ; commenter le résultat, puis regarder le résultat de <code>a+x</code>.</li>
@@ -1098,20 +1322,20 @@ y <span class="op">=</span> np.random.permutation(x)
 <p><em>Deuxième exercice</em></p>
 <ol style="list-style-type: decimal">
 <li>Créer la matrice suivante : <span class="math inline">\(A = \begin{bmatrix} -3 &amp; 5 &amp; 6 \\ -1 &amp; 2 &amp; 2 \\ 1 &amp; -1 &amp; -1 \end{bmatrix}\)</span>.</li>
-<li>Afficher la dimension de , son nombre de colonnes, son nombre de lignes et sa longueur.</li>
-<li>Extraire la seconde colonne de , puis la premi`ere ligne. 4.Extraire l’élément en troisième position à la première ligne.</li>
-<li>Extraire la sous-matrice de dimension <span class="math inline">\(2\times 2\)</span> du coin inférieur de , c’est-à-dire <span class="math inline">\(\begin{bmatrix} 2 &amp; 2 \\ -1 &amp; -1 \end{bmatrix}\)</span>.</li>
-<li>Calculer la somme des colonnes puis des lignes de .</li>
-<li>Afficher la diagonale de .</li>
-<li>Rajouter le vecteur <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span> à droite de la matrice  et stocker le résultat dans un objet appelé .</li>
-<li>Retirer le quatrième vecteur de .</li>
-<li>Retirer la première et la troisième ligne de .</li>
-<li>Ajouter le scalaire  à .</li>
-<li>Ajouter le vecteur <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span> à A.</li>
-<li>Ajouter la matrice identité <span class="math inline">\(I_3\)</span> à .</li>
-<li>Diviser tous les éléments de la matrice  par 2.</li>
-<li>Multiplier la matrice  par le vecteur <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span>.</li>
-<li>Afficher la transposée de .</li>
+<li>Afficher la dimension de <code>A</code>, son nombre de colonnes, son nombre de lignes et sa longueur.</li>
+<li>Extraire la seconde colonne de <code>A</code>, puis la première ligne. 4.Extraire l’élément en troisième position à la première ligne.</li>
+<li>Extraire la sous-matrice de dimension <span class="math inline">\(2\times 2\)</span> du coin inférieur de <code>A</code>, c’est-à-dire <span class="math inline">\(\begin{bmatrix} 2 &amp; 2 \\ -1 &amp; -1 \end{bmatrix}\)</span>.</li>
+<li>Calculer la somme des colonnes puis des lignes de A.</li>
+<li>Afficher la diagonale de <code>A</code>.</li>
+<li>Rajouter le vecteur <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span> à droite de la matrice <code>A</code> et stocker le résultat dans un objet appelé <code>B</code>.</li>
+<li>Retirer le quatrième vecteur de <code>B</code>.</li>
+<li>Retirer la première et la troisième ligne de <code>B</code>.</li>
+<li>Ajouter le scalaire 10 à <code>A</code>.</li>
+<li>Ajouter le vecteur <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span> à <code>A</code>.</li>
+<li>Ajouter la matrice identité <span class="math inline">\(I_3\)</span> à <code>A</code>.</li>
+<li>Diviser tous les éléments de la matrice <code>A</code> par 2.</li>
+<li>Multiplier la matrice <code>A</code> par le vecteur ligne <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3\end{bmatrix}^\top\)</span>.</li>
+<li>Afficher la transposée de <code>A</code>.</li>
 <li>Effectuer le produit avec transposition <span class="math inline">\(A^\top A\)</span>.</li>
 </ol>
 </div>

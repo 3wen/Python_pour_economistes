@@ -240,9 +240,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.9</b> Quelques constantes</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.10</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.11</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#operateurs-logiques-1"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
@@ -301,7 +302,7 @@ ligne du bloc 1
 ligne du bloc1</code></pre>
 </div>
 
-<p>Dans le code ci-dessous, nous définissons une variable <code>x</code> contenant l’entier <span class="math inline">\(2\)</span>. L’instruction suivante évalue l’expression <code>x == 2</code> (cf. Section @red(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est <code>Vrai</code>, alors le contenu du bloc est évalué.</p>
+<p>Dans le code ci-dessous, nous définissons une variable <code>x</code> contenant l’entier <span class="math inline">\(2\)</span>. L’instruction suivante évalue l’expression <code>x == 2</code> (cf. Section @ref(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est <code>Vrai</code>, alors le contenu du bloc est évalué.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">2</span>
 <span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:
   <span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span>)</code></pre></div>
@@ -338,23 +339,19 @@ Au moment de l’exécution du script, on peut choisir de créer et exporter les
 <p>Par exemple, admettons qu’on veuille créer une variable de chaleur prenant la valeur <code>chaud</code> si la valeur de la variable <code>temperature</code> dépasse 28 degrés C, <code>froid</code> sinon. Admettons que la température est de 26 degrés C :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">26</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
-
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
-
 <span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## Il fait froid</code></pre>
 <p>Si la température est à présent de 32 degrés C :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">32</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
-
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
-
 <span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## Il fait chaud</code></pre>
 </div>
@@ -373,7 +370,6 @@ chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
 <p>L’exemple précédent manque un peu de sens commun. Peut-on dire que lordqu’il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques nuances :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="op">-</span><span class="dv">4</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
-
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaude&quot;</span>
 <span class="cf">elif</span> temperature <span class="op">&lt;=</span> <span class="dv">28</span> <span class="kw">and</span> temperature <span class="op">&gt;</span> <span class="dv">15</span>:
@@ -382,7 +378,6 @@ chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
   chaleur <span class="op">=</span> <span class="st">&quot;froide&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;très froide&quot;</span>
-
 <span class="bu">print</span>(<span class="st">&quot;La température est &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## La température est très froide</code></pre>
 

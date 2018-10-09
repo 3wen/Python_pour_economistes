@@ -240,9 +240,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.9</b> Quelques constantes</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.10</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.11</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#operateurs-logiques-1"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
@@ -358,7 +359,6 @@ prod_val_2 <span class="op">=</span> production_2(l <span class="op">=</span> <s
 prod_val_3 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)
 <span class="co"># En ne nommant aucun paramètre</span>
 prod_val_4 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>)
-
 res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 <span class="bu">print</span>(res)</code></pre></div>
 <pre><code>## [41.59215573604822, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
@@ -388,7 +388,6 @@ prod_val_1 <span class="op">=</span> production_3(<span class="dv">1</span>, <sp
 prod_val_2 <span class="op">=</span> production_3(a <span class="op">=</span> <span class="dv">1</span>, l <span class="op">=</span> <span class="dv">42</span>)
 prod_val_3 <span class="op">=</span> production_3(l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
 prod_val_4 <span class="op">=</span> production_3(m <span class="op">=</span> <span class="dv">40</span>, l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
-
 res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 <span class="bu">print</span>(res)</code></pre></div>
 <pre><code>## [41.16765711449734, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
@@ -403,7 +402,6 @@ res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 <span class="kw">def</span> appliquer_carre_4(fun):
   <span class="co">&quot;&quot;&quot;Applique la fonction `fun` à 4&quot;&quot;&quot;</span>
   <span class="cf">return</span> fun(<span class="dv">4</span>)
-
 <span class="bu">print</span>(appliquer_carre_4(carre))</code></pre></div>
 <pre><code>## 16</code></pre>
 </div>
@@ -415,7 +413,6 @@ res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 <p>Regardons cela à travers un exemple.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Définition d&#39;une variable globale :</span>
 valeur <span class="op">=</span> <span class="dv">1</span>
-
 <span class="co"># Définition d&#39;une variable locale à la fonction f</span>
 <span class="kw">def</span> f(x):
   valeur <span class="op">=</span> <span class="dv">2</span>
@@ -451,9 +448,7 @@ valeur <span class="op">=</span> <span class="dv">1</span>
   valeur <span class="op">=</span> <span class="dv">2</span>
   <span class="kw">def</span> g(x):
     <span class="cf">return</span> x <span class="op">+</span> valeur
-
   <span class="cf">return</span> g(<span class="dv">2</span>)
-
 <span class="bu">print</span>(f())</code></pre></div>
 <pre><code>## 4</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># La variable valeur n&#39;est définie ni dans g() ni dans f()</span>
@@ -462,16 +457,13 @@ valeur <span class="op">=</span> <span class="dv">1</span>
 <span class="kw">def</span> f():
   <span class="kw">def</span> g(x):
     <span class="cf">return</span> x <span class="op">+</span> valeur
-
   <span class="cf">return</span> g(<span class="dv">2</span>)
-
 <span class="bu">print</span>(f())</code></pre></div>
 <pre><code>## 3</code></pre>
 <p>Si on définit une variable dans le corps d’une fonction et que l’on souhaite qu’elle soit accessible dans l’environnement global, on peut utiliser le mot-clé <code>global</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> f(x):
   <span class="kw">global</span> y
   y <span class="op">=</span> x<span class="op">+</span><span class="dv">1</span>
-
 f(<span class="dv">3</span>)
 <span class="bu">print</span>(y)</code></pre></div>
 <pre><code>## 4</code></pre>
@@ -518,7 +510,6 @@ f(<span class="dv">3</span>)
   <span class="co">&quot;&quot;&quot;Retourne la moyenne et l&#39;écart-type de `x`&quot;&quot;&quot;</span>
   <span class="cf">return</span> {<span class="st">&quot;moyenne&quot;</span>: statistics.mean(x),
   <span class="st">&quot;ecart_type&quot;</span>: statistics.stdev(x)}
-
 x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">2</span>]
 res <span class="op">=</span> stat_des(x)
 <span class="bu">print</span>(res)</code></pre></div>

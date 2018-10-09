@@ -3039,7 +3039,7 @@ Un bloc de code est un regroupement d'instructions. Des codes imbriqués indent�
 
 
 
-Dans le code ci-dessous, nous définissons une variable `x` contenant l'entier $2$. L'instruction suivante évalue l'expression `x == 2` (cf. Section\ \@red(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est `Vrai`, alors le contenu du bloc est évalué.
+Dans le code ci-dessous, nous définissons une variable `x` contenant l'entier $2$. L'instruction suivante évalue l'expression `x == 2` (cf. Section\ \@ref(#operateurs-comparaison) pour des rappels sur les opérateurs de comparaison). Si le résultat de cette expression est `Vrai`, alors le contenu du bloc est évalué.
 ```{python, eval=T, echo=TRUE, error=TRUE}
 x = 2
 if x == 2:
@@ -3911,6 +3911,19 @@ print(tableau_2[2][0])
 print(tableau_2[2,0])
 ```
 
+Pour extraire des colonnes d'un tableau à deux entrées :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Deuxième colonne : \n", tableau_2[:, [1]])
+print("Deuxièmes et troisièmes colonnes : \n", tableau_2[:, [1,2]])
+```
+
+Pour cette dernière instruction, on indique avec le premier paramètre non renseigné (avant les deux points) que l'on désire tous les éléments de la première dimension, puis, avec la virgule, on indique qu'on regarde à l'intérieur de chaque élément de la première dimension, et qu'on veut les valeurs aux positions 1 et 2 (donc les éléments des colonnes 2 et 3).
+
+
+Pour extraire seulement certains éléments d'un tableau à 1 dimension, on peut indiquer les indices des éléments à récupérer :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("2e et 4e éléments : \n", tableau_2[[1,3]])
+```
 
 #### Extraction à l'aide de booléens
 
@@ -3968,6 +3981,85 @@ D'ailleurs, un découpage avec juste les deux points sans préciser les paramèt
 tableau[:] = 0
 print(tableau)
 ```
+
+#### Ajout d'éléments
+
+Pour ajouter des éléments, on utilise la fonction `append()` de `NumPy`. Il faut noter que l'appel à cette fonction ne modifie pas l'objet auquel on ajoute les valeurs. Si on désire que les modifications sont apportées à cet objet, il faut l'écraser :
+```{python, eval=T, echo=TRUE, error=TRUE}
+t_1 = np.array([1,3,5])
+print("t_1 : ", t_1)
+t_1 = np.append(t_1, 1)
+print("t_1 après l'ajout : ", t_1)
+```
+
+Pour ajouter une colonne à un tableau à deux dimensions :
+```{python, eval=T, echo=TRUE, error=TRUE}
+t_2 = np.array([[1,2,3], [5,6,7]])
+print("t_2 : \n", t_2)
+ajout_col_t_2 = np.array([[4], [8]])
+t_2 = np.append(t_2,ajout_col_t_2, axis = 1)
+print("t_2 après ajout colonne : \n", t_2)
+```
+
+Pour ajouter une ligne, on utilise la fonction `vstack()` de `Numpy` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+ajout_ligne_t_2 = np.array([10, 11, 12, 13])
+t_2 = np.vstack([t_2,ajout_ligne_t_2])
+print("t_2 après ajout ligne : \n", t_2)
+```
+
+#### Suppression d'éléments
+
+Pour supprimer des éléments, on utilise la fonction `delete()` de `NumPy` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_1 : ", t_1)
+# Supprimer le dernier élément
+np.delete(t_1, (-1))
+```
+
+Note : pour que la suppression soit effective, on assigne le résultat de `np.delete()` à l'objet.
+
+Pour supprimer plusieurs éléments :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_1 : ", t_1)
+# Supprimer les 1er et 2e éléments
+t_1 = np.delete(t_1, ([0, 2]))
+print(t_1)
+```
+
+
+
+Pour supprimer une colonne d'un tableau à deux dimensions :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_2 : ", t_2)
+# Supprimer la première colonne :
+np.delete(t_2, (0), axis=1)
+```
+
+Supprimer plusieurs colonnes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_2 : ", t_2)
+# Supprimer la 1ère et la 3e colonne :
+np.delete(t_2, ([0,2]), axis=1)
+```
+
+Et pour supprimer une ligne :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_2 : ", t_2)
+# Supprimer la première ligne :
+np.delete(t_2, (0), axis=0)
+```
+
+
+Supprimer plusieurs lignes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("t_2 : ", t_2)
+# Supprimer la 1ère et la 3e ligne
+np.delete(t_2, ([0,2]), axis=0)
+```
+
+
 
 ### Copie de tableau
 
@@ -4154,6 +4246,33 @@ Le produit d'un vecteur avec une matrice est également possible :
 np.dot(t_1, t_3.T)
 ```
 
+### Opérateurs logiques
+
+Pour effectuer des tests logiques sur les éléments d'un tableau, `NumPy` propose des fonctions, répertoriées dans le Tableau\ \@ref(numpy-operateurs-logiques). Le résultat retourné par l'application de ces fonctions est un tableau de booléens.
+
+| Code | Description |
+| ------------: | ----------------------------------------------------: |
+| `greater()` | Supérieur à  |
+| `greater_equal()` | Supérieur ou égal à |
+| `less()` | Inférieur à  |
+| `less_equal()` | Inférieur ou égal à  |
+| `equal()` | Égal à  |
+| `not_equal()` | Différent de |
+| `logical_and()` | Et logique |
+| `logical_or()` | Ou logique |
+| `logical_xor()` | XOR logique |
+
+Table: (#tab:numpy-operateurs-logiques) Fonctions logiques
+
+Par exemple, pour obtenir les éléments de `t` compris entre 10 et 20 (inclus) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+t = np.array([[1, 10, 3, 24], [9, 12, 40, 2], [0, 7, 2, 14]])
+masque = np.logical_and(t <= 20, t >= 10)
+print("masque : \n", masque)
+print("les éléments de t compris entre 10 et 20 : \n",
+      t[masque])
+```
+
 
 ### Quelques constantes
 
@@ -4188,7 +4307,7 @@ Parmi les *ufuncs*, on retrouve des opérations arithmétiques (addition, multip
 | `ceil(x)` | Troncature de `x` à l'entier supérieur |
 | `sqrt(x)` | Racine carrée de `x` |
 | `square(x)` | Carré de `x` |
-| `sin(x)`, `cos(x)`, `tan(x)` | Sinus (cosinus, et tangente) de ``x |
+| `sin(x)`, `cos(x)`, `tan(x)` | Sinus (cosinus, et tangente) de `x` |
 | `sinh(x)`, `cosh(x)`, `tanh(x)` | Sinus (cosinus, et tangente) hyperbolique de `x`  |
 | `arcsin(x)`, `arccos(x)`, `arctan(x)` | Arc-sinus (arc-cosinus, et arc-tangente) de ``x |
 | `arcsinh(x)`, `arccosh(x)`, `arctanh(x)` | Arc-sinus (arc-cosinus, et arc-tangente) hyperbolique de ``x |
@@ -4213,7 +4332,7 @@ Table: (#tab:ufuncs-unaires) Fonctions universelles unaires
 | Code | Description |
 | ------------: | ----------------------------------------------------: |
 | `add(x,y)` | Addition terme à terme de `x` et `y` |
-| `substract(x,y)` | Soustraction terme à terme de `x` et `y` |
+| `subtract(x,y)` | Soustraction terme à terme de `x` et `y` |
 | `multiply(x,y)` | Multiplication terme à terme de `x` et `y` |
 | `divide(x,y)` | Division terme à terme de `x` et `y` |
 | `floor_divide(x,y)` | Quotients entiers des divisions terme à terme de `x` et `y`|
@@ -4230,7 +4349,7 @@ Pour utiliser ses fonctions, procéder comme dans l'exemple suivant :
 t_1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 t_2 = np.array([[13, 14, 15, 16], [17, 18, 19, 20], [21, 22, 23, 24]])
 np.log(t_1) # Logarithme népérien
-np.substract(t_1, t_2) # Soustraction des éléments de t_1 par ceux de t_2
+np.subtract(t_1, t_2) # Soustraction des éléments de t_1 par ceux de t_2
 ```
 
 
@@ -4262,7 +4381,7 @@ Donnons un exemple de l'utilisation de ces méthodes :
 t_1 = np.array([[1, 2, 3, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
 print("t_1 : \n", t_1)
 print("Somme des éléments : ", t_1.sum())
-print("Covariance des éléments : ", t_1.cov())
+print("Covariance des éléments : ", t_1.var())
 ```
 
 Pour appliquer ces fonctions sur un axe donné, on modifie la valeur du paramètre ` axis` :
@@ -4275,13 +4394,16 @@ print("Somme par ligne: ", t_1.sum(axis=1))
 `NumPy` offre aussi certaines fonctions spécifiques aux statistiques, dont certaines sont répertoriées dans le Tableau\ \@ref(tab:numpy-stats-fonctions).
 
 | Code | Description |
-| ------------: | ----------------------------------------------------: |
-| `mean(x)` | Moyenne de `x` |
+| ---------------: | ----------------------------------------------------: |
+| `sum(x)`, `nansum(x)` | Somme de `x` (`nansum(x)` ne tient pas compte des valeurs `NaN`) |
+| `mean(x)`, `nanmean()` | Moyenne de `x` |
+| `median(x)`, `nanmedian()` | Médiane de `x` |
 | `average(x)` | Moyenne de `x` (possibilité d'utiliser des poids à l'aide du paramètre `weight`) |
-| `median(x)` | Médiane de `x` |
-| `percentile(x,p)` | P-ème percentile de `x` |
-| `var(x)` | Variance de `x` |
-| `std(x)` | Écart-type de `x` |
+| `min(x)`, `nanmin()` | Minimum de `x` |
+| `max(x)`, `nanmax()` | Maximum de `x` |
+| `percentile(x,p)`, `nanpercentile(n,p)` | P-ème percentile de `x` |
+| `var(x)`, `nanvar(x)` | Variance de `x` |
+| `std(x)`, `nanstd()` | Écart-type de `x` |
 | `cov(x)` | Covariance de `x` |
 | `corrcoef(x)` | Coefficients de corrélation |
 
@@ -4294,12 +4416,20 @@ print("t_1 : \n", t_1)
 print("Variance: ", np.var(t_1))
 ```
 
-Pour calculer une moyenne pondérée (prenons un vecteur)
+Si le tableau comporte des valeurs `NaN`, pour calculer la somme par exempe, si on utilise `sum()`, le résultat sera `NaN`. Pour ignorer les valeurs `NaN`, on utilise une fonction spécifique (ici, `nansum()`) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+t_1 = np.array([[1, 2, np.NaN, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
+print("somme : ", np.sum(t_1))
+print("somme en ignorant les NaN : ", np.nansum(t_1))
+```
+
+Pour calculer une moyenne pondérée (prenons un vecteur) :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 v_1 = np.array([1, 1, 4, 2])
 w = np.array([1, 1, .5, 1])
 print("Moyenne pondérée : ", np.average(v_1, weights=w))
 ```
+
 
 
 ## Génération de nombres pseudo-aléatoires
@@ -4393,7 +4523,7 @@ Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmat
   2. Afficher le type de `x` puis sa longueur.
   3. Extraire le premier élément, puis en faire de même avec le dernier.
   4. Extraire les trois premiers éléments et les stocker dans un vecteur que l'on nommera `a`.
-  5. Extraire les éléments en position 1, 3, 5 ; les stocker dans un vecteur que l'on nommera `b`.
+  5. Extraire les 1er, 2e et 5e éléments du vecteur (attention aux positions) ; les stocker dans un vecteur que l'on nommera `b`.
   6. Additionner le nombre 10 au vecteur `x`, puis multiplier le résultat par 2.
   7. Effectuer l'addition de `a` et `b`, commenter le résultat.
   8. Effectuer l'addition suivante : `x+a` ; commenter le résultat, puis regarder le résultat de `a+x`.
@@ -4410,23 +4540,23 @@ Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmat
 
 *Deuxième exercice*
 
-  1. Créer la matrice suivante : \(A = \begin{bmatrix} -3 & 5 & 6 \\ -1 & 2 & 2 \\ 1 & -1 & -1 \end{bmatrix}\).
-  2. Afficher la dimension de \texttt{A}, son nombre de colonnes, son nombre de lignes et sa longueur.
-  3. Extraire la seconde colonne de \texttt{A}, puis la premi\`ere ligne.
+  1. Créer la matrice suivante : $A = \begin{bmatrix} -3 & 5 & 6 \\ -1 & 2 & 2 \\ 1 & -1 & -1 \end{bmatrix}$.
+  2. Afficher la dimension de `A`, son nombre de colonnes, son nombre de lignes et sa longueur.
+  3. Extraire la seconde colonne de `A`, puis la première ligne.
   4.Extraire l'élément en troisième position à la première ligne.
-  5. Extraire la sous-matrice de dimension \(2\times 2\) du coin inférieur de \texttt{A}, c'est-à-dire \(\begin{bmatrix} 2 & 2 \\ -1 & -1 \end{bmatrix}\).
-  6. Calculer la somme des colonnes puis des lignes de \texttt{A}.
-  7. Afficher la diagonale de \texttt{A}.
-  8. Rajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à droite de la matrice \texttt{A} et stocker le résultat dans un objet appelé \texttt{B}.
-  9. Retirer le quatrième vecteur de \texttt{B}.
-  10. Retirer la première et la troisième ligne de \texttt{B}.
-  11. Ajouter le scalaire \texttt{10} à \texttt{A}.
-  12. Ajouter le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\) à A.
-  13. Ajouter la matrice identité \(I_3\) à \texttt{A}.
-  14. Diviser tous les éléments de la matrice \texttt{A} par 2.
-  15. Multiplier la matrice \texttt{A} par le vecteur \(\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top\).
-  16. Afficher la transposée de \texttt{A}.
-  17. Effectuer le produit avec transposition \(A^\top A\).
+  5. Extraire la sous-matrice de dimension $2\times 2$ du coin inférieur de `A`, c'est-à-dire $\begin{bmatrix} 2 & 2 \\ -1 & -1 \end{bmatrix}$.
+  6. Calculer la somme des colonnes puis des lignes de A.
+  7. Afficher la diagonale de `A`.
+  8. Rajouter le vecteur $\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top$ à droite de la matrice `A` et stocker le résultat dans un objet appelé `B`.
+  9. Retirer le quatrième vecteur de `B`.
+  10. Retirer la première et la troisième ligne de `B`.
+  11. Ajouter le scalaire 10 à `A`.
+  12. Ajouter le vecteur $\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top$ à `A`.
+  13. Ajouter la matrice identité $I_3$ à `A`.
+  14. Diviser tous les éléments de la matrice `A` par 2.
+  15. Multiplier la matrice `A` par le vecteur ligne $\begin{bmatrix} 1 & 2 & 3\end{bmatrix}^\top$.
+  16. Afficher la transposée de `A`.
+  17. Effectuer le produit avec transposition $A^\top A$.
   
 
 ```

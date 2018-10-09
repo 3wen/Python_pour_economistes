@@ -240,9 +240,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.9</b> Quelques constantes</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.10</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.11</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#operateurs-logiques-1"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
@@ -422,7 +423,6 @@ url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignem
 <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;./fichiers_exemples/fichier_csv.csv&#39;</span>) <span class="im">as</span> mon_fichier:
   mon_fichier_reader <span class="op">=</span> csv.reader(mon_fichier, delimiter<span class="op">=</span><span class="st">&#39;,&#39;</span>, quotechar<span class="op">=</span><span class="st">&#39;&quot;&#39;</span>)
   donnees <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> mon_fichier_reader]
-
 <span class="bu">print</span>(donnees)</code></pre></div>
 <pre><code>## [[&#39;nom&#39;, &#39;prénom&#39;, &#39;équipe&#39;], [&#39;Irving&#39;, &#39; &quot;Kyrie&quot;&#39;, &#39; &quot;Celtics&quot;&#39;], [&#39;James&#39;, &#39; &quot;Lebron&quot;&#39;, &#39; &quot;Lakers&quot;&#39;, &#39;&#39;], [&#39;Curry&#39;, &#39; &quot;Stephen&quot;&#39;, &#39; &quot;Golden State Warriors&quot;&#39;]]</code></pre>
 <p>La méthode <code>reader()</code> peut prendre plusieurs paramètres, décrits dans le Tableau <a href="chargement-et-sauvegarde-de-donnees.html#tab:parametres-reader-csv">5.2</a>.</p>
@@ -491,7 +491,6 @@ chemin <span class="op">=</span> <span class="st">&quot;./fichiers_exemples/fich
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> csv
 <span class="im">import</span> urllib.request
 <span class="im">import</span> codecs
-
 url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv&quot;</span>
 <span class="cf">with</span> urllib.request.urlopen(url) <span class="im">as</span> mon_fichier:
     mon_fochier_csv <span class="op">=</span> csv.reader(codecs.iterdecode(mon_fichier, <span class="st">&#39;utf-8&#39;</span>))
@@ -505,7 +504,6 @@ url <span class="op">=</span> <span class="st">&quot;http://egallic.fr/Enseignem
 <p>Pour importer des fichiers au format JSON (<em>JavaScript Object Notation</em>), qui sont très utilisés dès lors qu’on communique avec une API, on peut utiliser la librairie <code>json</code>, et sa méthode <code>load()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> json
 lien <span class="op">=</span> <span class="st">&#39;./fichiers_exemples/tweets.json&#39;</span>
-
 <span class="cf">with</span> <span class="bu">open</span>(lien) <span class="im">as</span> mon_fichier_json:
     data <span class="op">=</span> json.load(mon_fichier_json)</code></pre></div>
 <p>Ensuite, on peut afficher le contenu importé à l’aide de la fonction <code>pprint()</code> :</p>
@@ -590,12 +588,10 @@ chemin <span class="op">=</span> <span class="st">&quot;chemin/vers/fichier.txt&
 <p>Exemple de création d’un fichier CSV :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> csv
 chemin <span class="op">=</span> <span class="st">&quot;./fichiers_exemples/fichier_export.csv&quot;</span>
-
 <span class="cf">with</span> <span class="bu">open</span>(chemin, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>) <span class="im">as</span> mon_fichier:
     mon_fichier_ecrire <span class="op">=</span> csv.writer(mon_fichier, delimiter<span class="op">=</span><span class="st">&#39;,&#39;</span>,
                                     quotechar<span class="op">=</span><span class="st">&#39;&quot;&#39;</span>,
                                     quoting<span class="op">=</span>csv.QUOTE_MINIMAL)
-
     mon_fichier_ecrire.writerow([<span class="st">&#39;Pays&#39;</span>, <span class="st">&#39;Année&#39;</span>, <span class="st">&#39;Trimestre&#39;</span>, <span class="st">&#39;TC_PIB&#39;</span>])
     mon_fichier_ecrire.writerow([<span class="st">&#39;France&#39;</span>, <span class="st">&#39;2017&#39;</span>, <span class="st">&#39;Q4&#39;</span>, <span class="fl">0.7</span>])
     mon_fichier_ecrire.writerow([<span class="st">&#39;France&#39;</span>, <span class="st">&#39;2018&#39;</span>, <span class="st">&#39;Q1&#39;</span>, <span class="fl">0.2</span>])</code></pre></div>
@@ -613,7 +609,6 @@ y <span class="op">=</span> { <span class="st">&quot;nom&quot;</span>: <span cla
   <span class="st">&quot;equipes&quot;</span>: [<span class="st">&quot;Cleveland&quot;</span>, <span class="st">&quot;Boston&quot;</span>]}
 x_json <span class="op">=</span> json.dumps(x)
 y_json <span class="op">=</span> json.dumps(y)
-
 <span class="bu">print</span>(<span class="st">&quot;x_json: &quot;</span>, x_json)</code></pre></div>
 <pre><code>## x_json:  [1, &quot;pomme&quot;, [&quot;p\u00e9pins&quot;, &quot;rouge&quot;]]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;y_json: &quot;</span>, y_json)</code></pre></div>
@@ -621,13 +616,11 @@ y_json <span class="op">=</span> json.dumps(y)
 <p>Comme on peut le constater, on rencontre quelques petite problèmes d’affichage des caractères accentués. On peut préciser, à l’aide du paramètre <code>ensure_ascii</code> évalué à <code>False</code> que l’on ne désire pas s’assurer que les caractères non-ascii soient échappés par des séquences de type <code>\uXXXX</code>.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x_json <span class="op">=</span> json.dumps(x, ensure_ascii<span class="op">=</span><span class="va">False</span>)
 y_json <span class="op">=</span> json.dumps(y, ensure_ascii<span class="op">=</span><span class="va">False</span>)
-
 <span class="bu">print</span>(<span class="st">&quot;x_json: &quot;</span>, x_json)</code></pre></div>
 <pre><code>## x_json:  [1, &quot;pomme&quot;, [&quot;pépins&quot;, &quot;rouge&quot;]]</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;y_json: &quot;</span>, y_json)</code></pre></div>
 <pre><code>## y_json:  {&quot;nom&quot;: &quot;Kyrie&quot;, &quot;prenom&quot;: &quot;John&quot;, &quot;naissance&quot;: 1992, &quot;equipes&quot;: [&quot;Cleveland&quot;, &quot;Boston&quot;]}</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">chemin <span class="op">=</span> <span class="st">&quot;./fichiers_exemples/export_json.json&quot;</span>
-
 <span class="cf">with</span> <span class="bu">open</span>(chemin, <span class="st">&#39;w&#39;</span>) <span class="im">as</span> f:
     json.dump(json.dumps(x, ensure_ascii<span class="op">=</span><span class="va">False</span>), f)
     f.write(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)
@@ -638,7 +631,6 @@ y_json <span class="op">=</span> json.dumps(y, ensure_ascii<span class="op">=</s
     data <span class="op">=</span> []
     <span class="cf">for</span> line <span class="kw">in</span> f:
         data.append(json.loads(line, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>))
-
 <span class="bu">print</span>(data)</code></pre></div>
 <pre><code>## [&#39;[1, &quot;pomme&quot;, [&quot;pépins&quot;, &quot;rouge&quot;]]&#39;, &#39;{&quot;nom&quot;: &quot;Kyrie&quot;, &quot;prenom&quot;: &quot;John&quot;, &quot;naissance&quot;: 1992, &quot;equipes&quot;: [&quot;Cleveland&quot;, &quot;Boston&quot;]}&#39;]</code></pre>
 </div>

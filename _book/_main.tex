@@ -3202,7 +3202,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-09 22:13:03.564043
+## 2018-10-11 00:22:15.095015
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3212,7 +3212,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-09 22:13:03.566457
+## 2018-10-11 00:22:15.097096
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4074,7 +4074,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4088,7 +4088,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4124,7 +4124,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Marseille', 'Aix-en-Provence', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4155,7 +4155,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Toulon', 'Aix-en-Provence'}
+## {'Toulon', 'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4168,7 +4168,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Toulon', 'Aix-en-Provence'}
+## {'Toulon', 'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4184,7 +4184,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4210,7 +4210,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Rennes', 'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille', 'Rennes', 'Nice'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4257,7 +4257,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Nice', 'Marseille', 'Aix-en-Provence', 'Toulon'}
+## y :  {'Nice', 'Toulon', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4267,7 +4267,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
+## ensemble :  {'Nice', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4297,7 +4297,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4308,7 +4308,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Marseille', 'Aix-en-Provence']
+## ['Aix-en-Provence', 'Marseille']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -6479,7 +6479,7 @@ Bien évidemment, la plupart du temps, nous n'écrivons pas à la main
 chaque entrée. Nous exportons les données contenues dans une structure.
 La Section~\ref{pandas-importation-excel} donne des exemples de ce type
 d'export, lorsque les données sont contenues dans des tableaux à deux
-dimension créés avec la librairie \texttt{Pandas}.
+dimension créés avec la librairie \texttt{pandas}.
 
 \subsection{Fichier JSON}\label{fichier-json-1}
 
@@ -7834,7 +7834,7 @@ Il est coutume d'importer \texttt{NumPy} en lui attribuant l'alias
 \end{Highlighting}
 \end{Shaded}
 
-\section{Tableaux}\label{tableaux}
+\section{Tableaux}\label{numpy-tableaux}
 
 NumPy propose une structure de données populaire, les tableaux (de type
 \emph{array}), sur lesquels il est possible d'effectuer de manière
@@ -9311,7 +9311,7 @@ Le produit d'un vecteur avec une matrice est également possible :
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Opérateurs logiques}\label{operateurs-logiques-1}
+\subsection{Opérateurs logiques}\label{operateurs-logiques}
 
 Pour effectuer des tests logiques sur les éléments d'un tableau,
 \texttt{NumPy} propose des fonctions, répertoriées dans le
@@ -9371,7 +9371,8 @@ Par exemple, pour obtenir les éléments de \texttt{t} compris entre 10 et
 ##  [10 12 14]
 \end{lstlisting}
 
-\subsection{Quelques constantes}\label{quelques-constantes-1}
+\subsection{Quelques constantes
+\{numpy-constantes\}}\label{quelques-constantes-numpy-constantes}
 
 \texttt{NumPy} propose quelques constantes, dont certaines sont
 reportées dans le Tableau~\ref{tab:constantes-numpy}.
@@ -9423,6 +9424,53 @@ Nombre Pi (\(\pi\))\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
+
+On peut noter la présence de la valeur \texttt{NaN}, qui est une valeur
+spéciale parmi les nombres à virgule flottante. Le comportement de cette
+constante est spécial.
+
+Quand on additionne, soustrait, multiplie ou divise un nombre par cette
+valeur \texttt{NaN}, on obtient \texttt{NaN} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Addition : "}\NormalTok{, np.nan }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Addition :  nan
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Soustraction : "}\NormalTok{, np.nan }\OperatorTok{-} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Soustraction :  nan
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Multiplication : "}\NormalTok{, np.nan }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Multiplication :  nan
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"AddDivisiontion : "}\NormalTok{, np.nan }\OperatorTok{/} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## AddDivisiontion :  nan
+\end{lstlisting}
 
 \subsection{Fonctions universelles}\label{fonctions-universelles}
 
@@ -9982,8 +10030,8 @@ distribution Gaussienne :
 \end{Shaded}
 
 \begin{lstlisting}
-## [-1.39527077 -1.11025369 -1.74145425 -1.04955895 -1.39174223  0.72334718
-##   0.18771558 -0.29037524 -0.76273874 -0.29233662]
+## [-0.84187605  1.17502807 -0.68002783  0.66411353 -0.57901523 -0.54077171
+##  -1.09950798 -0.99467128  0.23539504  0.02389249]
 \end{lstlisting}
 
 La génération des nombres s'effectue en fonction d'une graine
@@ -10198,21 +10246,3405 @@ Considérons le vecteur suivant :
 \end{enumerate}
 \EndKnitrBlock{exframe}
 
-\chapter{Manipulation de données avec Pandas}\label{pandas}
+\chapter{\texorpdfstring{Manipulation de données avec
+\texttt{pandas}}{Manipulation de données avec pandas}}\label{pandas}
 
-\section{Importation et exportation de
-données}\label{importation-et-exportation-de-donnees}
+\texttt{pandas} est une librairie open-source basée sur \texttt{NumPy}
+fournissant des structures de données facile à manipuler, et des outils
+d'analyse de données. Le lecteur familier avec les fonctions de base du
+langage \texttt{R} retrouvera de nombreuses fonctionnalités similaires
+avec \texttt{pandas}.
 
-\subsection{Fichiers Excel}\label{pandas-importation-excel}
+Pour avoir accès aux fonctionnalités de \texttt{pandas}, il est coutume
+de charger la librairie en lui accordant l'alias \texttt{pd} :
 
-\section{Sélection}\label{selection}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\end{Highlighting}
+\end{Shaded}
+
+Nous allons également utiliser des fonctions de \texttt{numpy} (c.f.
+Section~\ref{numpy}). Assurons-nous de charger cette librairie, si ce
+n'est pas déjà fait :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Structures}\label{structures-1}
+
+Nous allons nous pencher sur deux types de structures, les séries
+(\texttt{serie}) et les dataframes (\texttt{DataFrame}).
+
+\subsection{Séries}\label{series}
+
+Les séries sont tableaux à une dimension de données indexées.
+
+\subsubsection{Création de séries à partir d'un
+dictionnaire}\label{creation-de-series-a-partir-dun-dictionnaire}
+
+Pour en créer,on peut définir une liste, puis appliquer la fonction
+\texttt{Series} de \texttt{pandas} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan, .}\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    1.0
+## 1    4.0
+## 2   -1.0
+## 3    NaN
+## 4    0.5
+## 5    1.0
+## dtype: float64
+\end{lstlisting}
+
+L'affichage précédent montre que la série \texttt{s} créée contient à la
+fois les données et un index associé. L'attribut \texttt{values} permet
+d'afficher les valeurs qui sont stockées dans un tableau \texttt{numpy}
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"valeur de s : "}\NormalTok{, s.values)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## valeur de s :  [ 1.   4.  -1.   nan  0.5  1. ]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"type des valeurs de s : "}\NormalTok{, }\BuiltInTok{type}\NormalTok{(s.values))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## type des valeurs de s :  <class 'numpy.ndarray'>
+\end{lstlisting}
+
+L'indice est quand à lui stocké dans une structure spécifique de
+\texttt{pandas} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"index de s : "}\NormalTok{, s.index)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## index de s :  RangeIndex(start=0, stop=6, step=1)
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"type de l'index de s : "}\NormalTok{, }\BuiltInTok{type}\NormalTok{(s.index))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## type de l'index de s :  <class 'pandas.core.indexes.range.RangeIndex'>
+\end{lstlisting}
+
+Il est possible d'attribuer un nom à la série ainsi qu'à l'index :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s.name }\OperatorTok{=} \StringTok{"ma_serie"}
+\NormalTok{s.name }\OperatorTok{=} \StringTok{"nom_index"}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nom de la série : }\SpecialCharTok{%s}\StringTok{ , nom de l'index : }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (s.name, s.index.name))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## nom de la série : nom_index , nom de l'index : None
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"série s : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## série s : 
+##  0    1.0
+## 1    4.0
+## 2   -1.0
+## 3    NaN
+## 4    0.5
+## 5    1.0
+## Name: nom_index, dtype: float64
+\end{lstlisting}
+
+\subsubsection{Définition de l'index}\label{definition-de-lindex}
+
+L'index peut être défini par l'utilisateur, au moment de la création de
+la série :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## o    1.0
+## d    4.0
+## i   -1.0
+## l    NaN
+## dtype: float64
+\end{lstlisting}
+
+On peut définir l'indice avec des valeurs numériques également, sans
+être forcé de respecter un ordre précis :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{4}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4     1.0
+## 40    4.0
+## 2    -1.0
+## 3     NaN
+## dtype: float64
+\end{lstlisting}
+
+L'index peut être modifié par la suite, en venant écraser l'attribut
+\texttt{index} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s.index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Série s : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Série s : 
+##  o    1.0
+## d    4.0
+## i   -1.0
+## l    NaN
+## dtype: float64
+\end{lstlisting}
+
+\subsubsection{Création de séries
+particulières}\label{creation-de-series-particulieres}
+
+Il existe une petite astuce pour créer des séries avec une valeur
+répétée, qui consiste à fournir un scalaire à la fonction
+\texttt{Series} de \texttt{NumPy} et un index dont la longueur
+correspondra au nombre de fois où le scalaire sera répété :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series(}\DecValTok{5}\NormalTok{, index }\OperatorTok{=}\NormalTok{ [np.arange(}\DecValTok{4}\NormalTok{)])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    5
+## 1    5
+## 2    5
+## 3    5
+## dtype: int64
+\end{lstlisting}
+
+On peut créer une série à partir d'un dictionnaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dictionnaire }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Roi"}\NormalTok{: }\StringTok{"Arthur"}\NormalTok{,}
+                \StringTok{"Chevalier_pays_galles"}\NormalTok{: }\StringTok{"Perceval"}\NormalTok{,}
+                \StringTok{"Druide"}\NormalTok{: }\StringTok{"Merlin"}\NormalTok{\}}
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series(dictionnaire)}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Roi                        Arthur
+## Chevalier_pays_galles    Perceval
+## Druide                     Merlin
+## dtype: object
+\end{lstlisting}
+
+Comme on le note dans la sortie précédente, les clés du dictionnaire ont
+été utilisées pour l'index. Lors de la création de la série, on peut
+préciser au paramètre clé des valeurs spécifiques : cela aura pour
+conséquence de ne récupérer que les observations correspondant à ces
+clés :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dictionnaire }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Roi"}\NormalTok{: }\StringTok{"Arthur"}\NormalTok{,}
+                \StringTok{"Chevalier_pays_galles"}\NormalTok{: }\StringTok{"Perceval"}\NormalTok{,}
+                \StringTok{"Druide"}\NormalTok{: }\StringTok{"Merlin"}\NormalTok{\}}
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series(dictionnaire, index }\OperatorTok{=}\NormalTok{ [}\StringTok{"Roi"}\NormalTok{, }\StringTok{"Druide"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Roi       Arthur
+## Druide    Merlin
+## dtype: object
+\end{lstlisting}
+
+\subsection{Dataframes}\label{dataframes}
+
+Les Dataframes correspondent au format de données que l'on rencontre
+classiquement en économie, des tableaux à deux dimensions, avec des
+variables en colonnes et des observations en ligne. Les colonnes et
+lignes des dataframes sont indexées.
+
+\subsubsection{Création de dataframes à partir d'un
+dictionnaire}\label{creation-de-dataframes-a-partir-dun-dictionnaire}
+
+Pour créer un dataframe, on peut fournir à la fonction
+\texttt{DataFrame()} de \texttt{pandas} un dictionnaire pouvant être
+transformé en \texttt{serie}. C'est le cas d'un dictionnaire dont les
+valeurs associées aux clés ont toutes la même longueur :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : }
+\NormalTok{               [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{,}
+                \DecValTok{63}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{66}\NormalTok{, }\DecValTok{67}\NormalTok{,}
+                \DecValTok{68}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{71}\NormalTok{, }\DecValTok{72}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: }
+\NormalTok{               [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{,}
+                \DecValTok{129}\NormalTok{, }\DecValTok{132}\NormalTok{, }\DecValTok{135}\NormalTok{, }\DecValTok{139}\NormalTok{, }\DecValTok{142}\NormalTok{,}
+                \DecValTok{146}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{154}\NormalTok{, }\DecValTok{159}\NormalTok{, }\DecValTok{164}\NormalTok{]}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##     height  weight
+## 0       58     115
+## 1       59     117
+## 2       60     120
+## 3       61     123
+## 4       62     126
+## 5       63     129
+## 6       64     132
+## 7       65     135
+## 8       66     139
+## 9       67     142
+## 10      68     146
+## 11      69     150
+## 12      70     154
+## 13      71     159
+## 14      72     164
+\end{lstlisting}
+
+La position des éléments dans le dataframe sert d'index. Comme pour les
+séries, les valeur sont accessibles dans l'attribut \texttt{values} et
+l'index dans l'attribut \texttt{index}. Les colonnes sont également
+indexées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.columns)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Index(['height', 'weight'], dtype='object')
+\end{lstlisting}
+
+La méthode \texttt{head()} permet d'afficher les premières lignes (les 5
+premières, par défaut). On peut modifier son paramètre \texttt{n} pour
+indiquer le nombre de lignes à retourner :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.head(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Lors de la création d'un dataframe à partir d'un dictionnaire, si on
+précise le nom des colonnes à importer par une liste de chaînes de
+caractères fournie au paramètree \texttt{columns} de la fonction
+\texttt{DataFrame}, on peut non seulement définir les colonnes à remplir
+mais également leur ordre d'apparition.
+
+Par exemple, pour n'importer que la colonne \texttt{weight} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico, columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"weight"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    weight
+## 0     115
+## 1     117
+\end{lstlisting}
+
+Et pour définir l'ordre dans lequel les colonnes apparaîtront :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico, columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"weight"}\NormalTok{, }\StringTok{"height"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    weight  height
+## 0     115      58
+## 1     117      59
+\end{lstlisting}
+
+Si on indique un nom de colonne absent parmi les clés du dictionnaires,
+le dataframe résultant contiendra une colonne portant ce nom mais
+remplie de valeurs \texttt{NaN} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico, columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"weight"}\NormalTok{, }\StringTok{"height"}\NormalTok{, }\StringTok{"age"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    weight  height  age
+## 0     115      58  NaN
+## 1     117      59  NaN
+\end{lstlisting}
+
+\subsubsection{Création de dataframes à partir d'une
+série}\label{creation-de-dataframes-a-partir-dune-serie}
+
+Un dataframe peut être créé à partir d'une série :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan], index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{])}
+\NormalTok{s.name }\OperatorTok{=} \StringTok{"nom_variable"}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(s, columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"nom_variable"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    nom_variable
+## o           1.0
+## d           4.0
+## i          -1.0
+## l           NaN
+\end{lstlisting}
+
+Si on n'attribue pas de nom à la série, il suffit de ne pas renseigner
+le paramètre \texttt{columns} de la fonction \texttt{DataFrame}. Mais
+dans ce cas, la colonne n'aura pas de non, juste un index numérique.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan], index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{])}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(s)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##      0
+## o  1.0
+## d  4.0
+## i -1.0
+## l  NaN
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.columns.name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## None
+\end{lstlisting}
+
+\subsubsection{Création de dataframes à partir d'une liste de
+dictionnaire}\label{creation-de-dataframes-a-partir-dune-liste-de-dictionnaire}
+
+Un dataframe peut être créé à partir d'une liste de dictionnaires :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico_1 }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"Nom"}\NormalTok{: }\StringTok{"Pendragon"}\NormalTok{,}
+    \StringTok{"Prenom"}\NormalTok{: }\StringTok{"Arthur"}\NormalTok{,}
+    \StringTok{"Role"}\NormalTok{: }\StringTok{"Roi de Bretagne"}
+\NormalTok{\}}
+\NormalTok{dico_2 }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"Nom"}\NormalTok{: }\StringTok{"de Galles"}\NormalTok{,}
+    \StringTok{"Prenom"}\NormalTok{: }\StringTok{"Perceval"}\NormalTok{,}
+    \StringTok{"Role"}\NormalTok{: }\StringTok{"Chevalier du Pays de Galles"}
+\NormalTok{\}}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame([dico_1, dico_2])}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##          Nom    Prenom                         Role
+## 0  Pendragon    Arthur              Roi de Bretagne
+## 1  de Galles  Perceval  Chevalier du Pays de Galles
+\end{lstlisting}
+
+Si certaines clés sont absentes dans un ou plusieurs des dictionnaires
+de la liste, les valeurs correspondantes dans le dataframe seront
+\texttt{NaN} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico_3 }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"Prenom"}\NormalTok{: }\StringTok{"Guenièvre"}\NormalTok{,}
+    \StringTok{"Role"}\NormalTok{: }\StringTok{"Reine de Bretagne"}
+\NormalTok{\}}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame([dico_1, dico_2, dico_3])}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##          Nom             ...                                      Role
+## 0  Pendragon             ...                           Roi de Bretagne
+## 1  de Galles             ...               Chevalier du Pays de Galles
+## 2        NaN             ...                         Reine de Bretagne
+## 
+## [3 rows x 3 columns]
+\end{lstlisting}
+
+\subsubsection{Création de dataframes à partir d'un dictionnaire de
+séries}\label{creation-de-dataframes-a-partir-dun-dictionnaire-de-series}
+
+On peut aussi créer un dataframe à partir d'un dictionnaire de séries.
+Pour illustrer la méthode, créons deux dictionnaires :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# PIB annuel 2017}
+\CommentTok{# En millions de dollars courants}
+\NormalTok{dico_gdp_current }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"France"}\NormalTok{: }\FloatTok{2582501.31}\NormalTok{,}
+    \StringTok{"USA"}\NormalTok{: }\FloatTok{19390604.00}\NormalTok{,}
+    \StringTok{"UK"}\NormalTok{: }\FloatTok{2622433.96}
+\NormalTok{\}}
+\CommentTok{# Indice annuel des prix à la consommation}
+\NormalTok{dico_cpi }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"France"}\NormalTok{: }\FloatTok{0.2}\NormalTok{,}
+    \StringTok{"UK"}\NormalTok{: }\FloatTok{0.6}\NormalTok{,}
+    \StringTok{"USA"}\NormalTok{: }\FloatTok{1.3}\NormalTok{,}
+    \StringTok{"Germany"}\NormalTok{: }\FloatTok{0.5}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+À partir de ces deux dictionnaires, créons deux séries correspondantes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_gdp_current }\OperatorTok{=}\NormalTok{ pd.Series(dico_gdp_current)}
+\NormalTok{s_cpi }\OperatorTok{=}\NormalTok{ pd.Series(dico_cpi)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_gdp_current : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_gdp_current)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_gdp_current : 
+##  France     2582501.31
+## USA       19390604.00
+## UK         2622433.96
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{s_cpi : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_cpi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## s_cpi : 
+##  France     0.2
+## UK         0.6
+## USA        1.3
+## Germany    0.5
+## dtype: float64
+\end{lstlisting}
+
+Puis, créons un dictionnaire de séries :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico_de_series }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"gdp"}\NormalTok{: s_gdp_current,}
+    \StringTok{"cpi"}\NormalTok{: s_cpi}
+\NormalTok{\}}
+\BuiltInTok{print}\NormalTok{(dico_de_series)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## {'gdp': France     2582501.31
+## USA       19390604.00
+## UK         2622433.96
+## dtype: float64, 'cpi': France     0.2
+## UK         0.6
+## USA        1.3
+## Germany    0.5
+## dtype: float64}
+\end{lstlisting}
+
+Enfin, créons notre dataframe :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico_de_series)}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##                  gdp  cpi
+## France    2582501.31  0.2
+## Germany          NaN  0.5
+## UK        2622433.96  0.6
+## USA      19390604.00  1.3
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+Le dictionnaire \texttt{dico\_gdp\_current} ne contient pas de clé
+\texttt{Germany}, contrairement au dictionnaire \texttt{dico\_cpi}. Lors
+de la création du dataframe, la valeur du PIB pour l'Allemagne a dont
+été assignée comme \texttt{NaN}.
+\EndKnitrBlock{remarque}
+
+\subsubsection{\texorpdfstring{Création de dataframes à partir d'un
+tableau \texttt{NumPy} à deux
+dimensions}{Création de dataframes à partir d'un tableau NumPy à deux dimensions}}\label{creation-de-dataframes-a-partir-dun-tableau-numpy-a-deux-dimensions}
+
+On peut aussi créer un dataframe à partir d'un tableau \texttt{Numpy}.
+Lors de la création, avec la fonction \texttt{DataFrame()} de
+\texttt{NumPy}, il est possible de préciser le nom des colonnes (à
+défaut, l'indiçage des colonnes sera numérique) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{liste }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{    [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+\NormalTok{    [}\DecValTok{11}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{33}\NormalTok{],}
+\NormalTok{    [}\DecValTok{111}\NormalTok{, }\DecValTok{222}\NormalTok{, }\DecValTok{333}\NormalTok{],}
+\NormalTok{    [}\DecValTok{1111}\NormalTok{, }\DecValTok{2222}\NormalTok{, }\DecValTok{3333}\NormalTok{],}
+\NormalTok{]}
+\NormalTok{tableau_np }\OperatorTok{=}\NormalTok{ np.array(tableau)}
+\BuiltInTok{print}\NormalTok{(df }\OperatorTok{=}\NormalTok{ pd.DataFrame(tableau_np,}
+\NormalTok{                  columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ValueError: Shape of passed values is (2, 3), indices imply (3, 3)
+## 
+## Detailed traceback: 
+##   File "<string>", line 2, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 379, in __init__
+##     copy=copy)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 536, in _init_ndarray
+##     return create_block_manager_from_blocks([values], [columns, index])
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 4866, in create_block_manager_from_blocks
+##     construction_error(tot_items, blocks[0].shape[1:], axes, e)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 4843, in construction_error
+##     passed, implied))
+\end{lstlisting}
+
+\subsubsection{Modification de l'index}\label{modification-de-lindex}
+
+Comme pour les séries, on peut modifier l'index une fois que le
+dataframe a été créé, en venant écraser les valeurs des attributs
+\texttt{index} et \texttt{columns}, pour l'index des lignes et colonnes,
+respectivement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ValueError: Length mismatch: Expected axis has 3 elements, new values have 4 elements
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 4385, in __setattr__
+##     return object.__setattr__(self, name, value)
+##   File "pandas/_libs/properties.pyx", line 69, in pandas._libs.properties.AxisProperty.__set__
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 645, in _set_axis
+##     self._data.set_axis(axis, labels)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 3323, in set_axis
+##     'values have {new} elements'.format(old=old_len, new=new_len))
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"aa"}\NormalTok{, }\StringTok{"bb"}\NormalTok{, }\StringTok{"cc"}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##           aa             ...                                        cc
+## 0  Pendragon             ...                           Roi de Bretagne
+## 1  de Galles             ...               Chevalier du Pays de Galles
+## 2        NaN             ...                         Reine de Bretagne
+## 
+## [3 rows x 3 columns]
+\end{lstlisting}
+
+\section{Sélection}\label{pandas-selection}
+
+Dans cette section, nous regardons différentes manières de sélectionner
+des données dans des séries et dataframes. On note deux manières bien
+distinctes :
+
+\begin{itemize}
+\tightlist
+\item
+  une première basée sur l'utiliation de crochets directement sur
+  l'objet pour lequel on souhaite sélectionner certaines parties ;
+\item
+  seconde s'appuyant sur des indexeurs, accessibles en tant qu'attributs
+  d'objets \texttt{NumPy} (\texttt{loc}, \texttt{at}, \texttt{iat},
+  etc.)
+\end{itemize}
+
+La seconde méthode permet d'éviter certaines confusions qui peuvent
+apparaître dans le cas d'index numériques.
+
+\subsection{Pour les séries}\label{pour-les-series}
+
+Dans un premier temps, regardons les manières d'extraire des valeurs
+contenues dans des séries.
+
+\subsubsection{Avec les crochets}\label{avec-les-crochets}
+
+On peut utiliser l'index pour extraire les données :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan, .}\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{s[}\DecValTok{0}\NormalTok{] }\CommentTok{# 1er élément de s}
+\NormalTok{s[}\DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{] }\CommentTok{# du 2e élément (inclus) au 4e (non inclus)}
+\NormalTok{s[[}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{]] }\CommentTok{# 1er et 5e éléments}
+\end{Highlighting}
+\end{Shaded}
+
+On note que contrairement aux tableaux \texttt{numpy} ou aux listes, on
+ne peut pas utiliser des valeurs négatives pour l'index afin de
+récupérer les données en comptant leur position par rapport à la fin :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s[}\OperatorTok{-}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## KeyError: -2
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/series.py", line 766, in __getitem__
+##     result = self.index.get_value(self, key)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 3103, in get_value
+##     tz=getattr(series.dtype, 'tz', None))
+##   File "pandas/_libs/index.pyx", line 106, in pandas._libs.index.IndexEngine.get_value
+##   File "pandas/_libs/index.pyx", line 114, in pandas._libs.index.IndexEngine.get_value
+##   File "pandas/_libs/index.pyx", line 162, in pandas._libs.index.IndexEngine.get_loc
+##   File "pandas/_libs/hashtable_class_helper.pxi", line 958, in pandas._libs.hashtable.Int64HashTable.get_item
+##   File "pandas/_libs/hashtable_class_helper.pxi", line 964, in pandas._libs.hashtable.Int64HashTable.get_item
+\end{lstlisting}
+
+Dans le cas d'un indice composé de chaînes de caractères, il est alors
+possible, pour extraire les données de la série, de faire référence soit
+au contenu de l'indice (pour faire simple, son nom), soit à sa position
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\StringTok{"o"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"l"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"La série s : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## La série s : 
+##  o    1.0
+## d    4.0
+## i   -1.0
+## l    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{'s["d"] : }\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{, s[}\StringTok{"d"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s["d"] : 
+##  4.0
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{'s[1] : }\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{, s[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s[1] : 
+##  4.0
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments o et i : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s[[}\StringTok{"o"}\NormalTok{, }\StringTok{"i"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments o et i : 
+##  o    1.0
+## i   -1.0
+## dtype: float64
+\end{lstlisting}
+
+Par contre, dans le cas où l'indice est défini avec des valeurs
+numériques, pour extraire les valeurs à l'aide des crochets, ce sera par
+la valeur de l'indice et pas en s'appuyant sur la position :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{4}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(s[}\DecValTok{40}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 4.0
+\end{lstlisting}
+
+\subsubsection{Avec les indexeurs}\label{avec-les-indexeurs}
+
+Pandas propose deux types d'indiçage multi-axes : \texttt{loc},
+\texttt{iloc}. Le premier est principalement basé sur l'utilisation des
+labels des axes, tandis que le second s'appuie principalement sur les
+positions à l'aide d'entiers.
+
+Pour les besoins de cette partie, créons deux séries ; une première avec
+un index textuel, une deuxième avec un index numérique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{s_texte }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\StringTok{"c"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"d"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{Extraction d'un seul
+élément}\label{extraction-dun-seul-element}
+
+Pour extraire un objet avec \texttt{loc}, on utilise le nom de l'indice
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(s_num.loc[}\DecValTok{5}\NormalTok{], s_texte.loc[}\StringTok{"c"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 1.0 1.0
+\end{lstlisting}
+
+Pour extraire un élément unique avec \texttt{iloc}, il suffit d'indiquer
+sa position :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(s_num.iloc[}\DecValTok{1}\NormalTok{], s_texte.iloc[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{Extraction de plusieurs
+éléments}\label{extraction-de-plusieurs-elements}
+
+Pour extraire plusieurs éléments avec \texttt{loc}, on utilise les noms
+(labels) des indices, que l'on fournit dans une liste :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux labels 5 et 4 :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.loc[[}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux labels 5 et 4 :
+##  5    1.0
+## 4   -1.0
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux labels c et b : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.loc[[}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux labels c et b : 
+##  c    1.0
+## b   -1.0
+## dtype: float64
+\end{lstlisting}
+
+Pour extraire plusieurs éléments avec \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux positions 0 et 2 :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.iloc[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux positions 0 et 2 :
+##  5    1.0
+## 4   -1.0
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux positions 0 et 2 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.iloc[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux positions 0 et 2 : 
+##  c    1.0
+## b   -1.0
+## dtype: float64
+\end{lstlisting}
+
+\paragraph{Découpage}\label{decoupage-series}
+
+On peut effectuer des découpages de séries, pour récupérer des éléments
+consécutifs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments des labels 5 jusqu'à 4 :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.loc[}\DecValTok{5}\NormalTok{:}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments des labels 5 jusqu'à 4 :
+##  5    1.0
+## 0    4.0
+## 4   -1.0
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments des labels c à b : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.loc[}\StringTok{"c"}\NormalTok{:}\StringTok{"b"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments des labels c à b : 
+##  c    1.0
+## a    4.0
+## b   -1.0
+## dtype: float64
+\end{lstlisting}
+
+Pour extraire plusieurs éléments avec \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux positions de 0 à 2 :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux positions de 0 à 2 :
+##  5    1.0
+## 0    4.0
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"éléments aux positions de 0 à 2 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## éléments aux positions de 0 à 2 : 
+##  c    1.0
+## a    4.0
+## dtype: float64
+\end{lstlisting}
+
+Comme ce que l'on a vu jusqu'à présent, la valeur supérieur de la limite
+n'est pas incluse dans le découpage.
+
+\paragraph{Masque}\label{masque}
+
+On peut aussi utiliser un masque pour extraire des éléments,
+indifféremment en utilisant \texttt{loc} ou \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,s_num.loc[[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+##  5    1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.loc[[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+##  c    1.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.iloc[[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+##  5    1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.iloc[[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+##  c    1.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+\paragraph{Quel est l'intérêt ?}\label{quel-est-linteret}
+
+Pourquoi introduir de telles manières d'extraire les données et ne pas
+se contenter de l'extraction à l'aide des crochers sur les objets ?
+Regardons un exemple simple. Admettons que nous disposons de la série
+\texttt{s\_num}, avec un indice composé d'entiers n'étant pas une
+séquence allant de 0 au nombre d'éléments. Dans ce cas, si nous
+souhaitons récupérer récupérer le 2e élément, du fait de l'indice
+composé de valeurs numériques, nous ne pouvons pas l'obtenir en
+demandant \texttt{s{[}1{]}}. Pour extraire le 2e de la série, on doit
+savoir que son indice vaut \texttt{0} et ainsi demander :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"L'élément dont l'index vaut 0 : "}\NormalTok{, s_num[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## L'élément dont l'index vaut 0 :  4.0
+\end{lstlisting}
+
+Pour pouvoir effectuer l'extraction en fonction de la position, il est
+bien pratique d'avoir cet attribut \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"L'élément en 2e position :"}\NormalTok{, s_num.iloc[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## L'élément en 2e position : 4.0
+\end{lstlisting}
+
+\subsection{Pour les dataframes}\label{pour-les-dataframes}
+
+À présent, regardons différentes manières d'extraire des données depuis
+un dataframe. Créons deux dataframes en exemple, l'une avec un index
+numérique ; une autre avec un index textuel :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df_num }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\NormalTok{df_texte }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico, index}\OperatorTok{=}\NormalTok{[}\StringTok{"a"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"d"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df_num : 
+##     height  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+## 3      61     123   31     160
+## 4      62     126   29     158
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df_texte : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df_texte : 
+##     height  weight  age  taille
+## a      58     115   28     162
+## e      59     117   33     156
+## c      60     120   31     172
+## b      61     123   31     160
+## d      62     126   29     158
+\end{lstlisting}
+
+Pour faire simple, lorsqu'on veut effectuer une extraction avec les
+attributs \texttt{iloc}, la syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.iloc[selection_lignes, selection_colonnes]}
+\end{Highlighting}
+\end{Shaded}
+
+avec \texttt{selection\_lignes} :
+
+\begin{itemize}
+\tightlist
+\item
+  une valeur unique : \texttt{1} (seconde ligne) ;
+\item
+  une liste de valeurs : \texttt{{[}2,\ 1,\ 3{]}} (3e ligne, 2e ligne et
+  4e ligne) ;
+\item
+  un découpage : \texttt{{[}2:4{]}} (de la 3e ligne à la 4e ligne (non
+  incluse)).
+\end{itemize}
+
+pour \texttt{selection\_colonnes} :
+
+\begin{itemize}
+\tightlist
+\item
+  une valeur unique : \texttt{1} (seconde colonne) ;
+\item
+  une liste de valeurs : \texttt{{[}2,\ 1,\ 3{]}} (3e colonne, 2e
+  colonne et 4e colonne) ;
+\item
+  un découpage : \texttt{{[}2:4{]}} (de la 3e colonne à la 4e colonne
+  (non incluse)).
+\end{itemize}
+
+Avec \texttt{loc}, la syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.loc[selection_lignes, selection_colonnes]}
+\end{Highlighting}
+\end{Shaded}
+
+avec \texttt{selection\_lignes} :
+
+\begin{itemize}
+\tightlist
+\item
+  une valeur unique : \texttt{"a"} (ligne nommée \texttt{a}) ;
+\item
+  une liste de noms : \texttt{{[}"a",\ "c",\ "b"{]}} (lignes nommées
+  ``a'', ``c'' et ``b'') ;
+\item
+  un masque :
+  \texttt{df.{[}\textquotesingle{}a\textquotesingle{}{]}\textless{}10}
+  (lignes pour lesquelles les valeurs du masque valent \texttt{True}).
+\end{itemize}
+
+pour \texttt{selection\_colonnes} :
+
+\begin{itemize}
+\tightlist
+\item
+  une valeur unique : \texttt{a} (colonne nommée \texttt{a}) ;
+\item
+  une liste de valeurs : \texttt{{[}"a",\ "c",\ "b"{]}} (colonnes
+  nommées ``a'', ``c'' et ``b'') ;
+\item
+  un découpage : \texttt{{[}"a":"c"{]}} (de la colonne nommée ``a'' à la
+  colonne nommée ``c'').
+\end{itemize}
+
+\subsubsection{Extraction d'une ligne}\label{extraction-dune-ligne}
+
+Pour extraire une ligne d'un dataframe, on peut utiliser le nom de la
+ligne avec \texttt{loc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Ligne nommée 'e':}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[}\StringTok{"e"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Ligne nommée 'e':
+##  height     59
+## weight    117
+## age        33
+## taille    156
+## Name: e, dtype: int64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Ligne nommée 'e':}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.loc[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## Ligne nommée 'e':
+##  height     59
+## weight    117
+## age        33
+## taille    156
+## Name: 1, dtype: int64
+\end{lstlisting}
+
+Ou bien, sa position avec \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Ligne en position 0:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.iloc[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Ligne en position 0:
+##  height     58
+## weight    115
+## age        28
+## taille    162
+## Name: a, dtype: int64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Ligne en position 0:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.iloc[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## Ligne en position 0:
+##  height     58
+## weight    115
+## age        28
+## taille    162
+## Name: 0, dtype: int64
+\end{lstlisting}
+
+\subsubsection{Extraction de plusieurs
+lignes}\label{extraction-de-plusieurs-lignes}
+
+Pour extraire plusieurs lignes d'un dataframe, on peut utiliser leur
+noms avec \texttt{loc} (dans un tableau) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Lignes nommées a et c :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[[}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Lignes nommées a et c :
+##     height  weight  age  taille
+## a      58     115   28     162
+## c      60     120   31     172
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Lignes nommées 0 et 2:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.loc[[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## Lignes nommées 0 et 2:
+##     height  weight  age  taille
+## 0      58     115   28     162
+## 2      60     120   31     172
+\end{lstlisting}
+
+Ou bien, leur position avec \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Lignes aux positions 0 et 3:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.iloc[[}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Lignes aux positions 0 et 3:
+##     height  weight  age  taille
+## a      58     115   28     162
+## b      61     123   31     160
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Lignes aux positions 0 et 3:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.iloc[[}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## Lignes aux positions 0 et 3:
+##     height  weight  age  taille
+## 0      58     115   28     162
+## 3      61     123   31     160
+\end{lstlisting}
+
+\subsubsection{Découpage de plusieurs lignes}\label{decoupage-df-lignes}
+
+On peut récupérer une suite de ligne en délimitant la première et la
+dernière à extraire en fonction de leur nom et en utilisant \texttt{loc}
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Lignes du label a à c:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[}\StringTok{"a"}\NormalTok{:}\StringTok{"c"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Lignes du label a à c:
+##     height  weight  age  taille
+## a      58     115   28     162
+## e      59     117   33     156
+## c      60     120   31     172
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"\textbackslash{}Lignes du label 0 à 2:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.loc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## \Lignes du label 0 à 2:
+##     height  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+\end{lstlisting}
+
+Avec l'attribut \texttt{iloc}, c'est également possible (encore une
+fois, la borne supérieure n'est pas incluse) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Lignes des positions 0 à 3 (non incluse):}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Lignes des positions 0 à 3 (non incluse):
+##     height  weight  age  taille
+## a      58     115   28     162
+## e      59     117   33     156
+## c      60     120   31     172
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Lignes des positions 0 à 3 (non incluse):}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## Lignes des positions 0 à 3 (non incluse):
+##     height  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+\end{lstlisting}
+
+\subsubsection{Masque}\label{masque-extraction-ligne}
+
+On peut aussi utiliser un masque pour sélectionner certaines lignes. Par
+exemple, si on souhaite récupérer les lignes pour lesquelles la variable
+\texttt{height} a une valeur supérieure à 60, on utilise le masque
+suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{masque }\OperatorTok{=}\NormalTok{ df_texte[}\StringTok{"height"}\NormalTok{]}\OperatorTok{>} \DecValTok{60}
+\BuiltInTok{print}\NormalTok{(masque)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## a    False
+## e    False
+## c    False
+## b     True
+## d     True
+## Name: height, dtype: bool
+\end{lstlisting}
+
+Pour filtrer :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df_texte.loc[masque])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## b      61     123   31     160
+## d      62     126   29     158
+\end{lstlisting}
+
+\subsubsection{Extraction d'une seule
+colonne}\label{extraction-dune-seule-colonne}
+
+Pour extraire une colonne d'un dataframe, on peut utiliser des crochets
+et faire référence au nom de la colonne (qui est indexée par les noms) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df_texte[}\StringTok{'weight'}\NormalTok{].head(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## a    115
+## e    117
+## Name: weight, dtype: int64
+\end{lstlisting}
+
+En ayant sélectionné une seule colonne, on obtient une série (l'index du
+dataframe est conservé pour la série) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(df_texte[}\StringTok{'weight'}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'pandas.core.series.Series'>
+\end{lstlisting}
+
+On peut également extraire une colonne en faisant référence à l'attribut
+du dataframe portant le nom de cette colonne :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df_texte.weight.head(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## a    115
+## e    117
+## Name: weight, dtype: int64
+\end{lstlisting}
+
+Comme pour les séries, on peut s'appuyer sur les attributs \texttt{loc}
+et \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colone 2 (loc):}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[:,}\StringTok{"weight"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colone 2 (loc):
+##  a    115
+## e    117
+## c    120
+## b    123
+## d    126
+## Name: weight, dtype: int64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colonne 2 (iloc):}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.iloc[:,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colonne 2 (iloc):
+##  a    115
+## e    117
+## c    120
+## b    123
+## d    126
+## Name: weight, dtype: int64
+\end{lstlisting}
+
+\subsubsection{Extraction de plusieurs
+colonnes}\label{extraction-de-plusieurs-colonnes}
+
+Pour extraire plusieurs colonnes, il suffit de placer les noms des
+colonnes dans un tableau :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df_texte[[}\StringTok{"weight"}\NormalTok{, }\StringTok{"height"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    weight  height
+## a     115      58
+## e     117      59
+## c     120      60
+## b     123      61
+## d     126      62
+\end{lstlisting}
+
+L'ordre dans lequel on appelle ces colonnes correspond à l'ordre dans
+lequel elles seront retournées.
+
+À nouveau, on peut utuliser l'attribut \texttt{loc} (on utilise les deux
+points ici pour dire que l'on veut toutes les lignes) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colonnes de weight à height:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[:,[}\StringTok{"weight"}\NormalTok{, }\StringTok{"height"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colonnes de weight à height:
+##     weight  height
+## a     115      58
+## e     117      59
+## c     120      60
+## b     123      61
+## d     126      62
+\end{lstlisting}
+
+Et l'attribut \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colonnes 2 et 1 :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_num.iloc[:,[}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colonnes 2 et 1 :
+##     weight  height
+## 0     115      58
+## 1     117      59
+## 2     120      60
+## 3     123      61
+## 4     126      62
+\end{lstlisting}
+
+\subsubsection{Découpage de plusieurs
+colonnes}\label{decoupage-df-colonnes}
+
+Pour effectuer un découpage, on peut utiliser les attributs \texttt{loc}
+et \texttt{iloc}. Attention, on ne place pas le nom des colonnes servant
+pour le découpage dans un tableau ici :
+
+Avec \texttt{loc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colones 2 et 2:}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df_texte.loc[:, }\StringTok{"height"}\NormalTok{:}\StringTok{"age"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colones 2 et 2:
+##     height  weight  age
+## a      58     115   28
+## e      59     117   33
+## c      60     120   31
+## b      61     123   31
+## d      62     126   29
+\end{lstlisting}
+
+Et avec l'attribut \texttt{iloc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Colonnes de la position 0 à 2 (non incluse) :}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+\NormalTok{      df_texte.iloc[:, }\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Colonnes de la position 0 à 2 (non incluse) :
+##     height  weight
+## a      58     115
+## e      59     117
+## c      60     120
+## b      61     123
+## d      62     126
+\end{lstlisting}
+
+\subsubsection{Extraction de lignes et
+colonnes}\label{extraction-de-lignes-et-colonnes}
+
+À présent que nous avons passé en revue de nombreuses manières de
+sélectionner une ou plusieurs lignes ou colonnes, nous pouvons également
+mentionner qu'il est possible de faire des sélections de colonnes et de
+lignes dans une même instruction.
+
+Par exemple, avec \texttt{iloc}, sélectionnons les lignes de la position
+0 à la position 2 (non incluse) et les colonnes de la position 1 à 3
+(non incluse) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df_texte.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    weight  age
+## a     115   28
+## e     117   33
+\end{lstlisting}
+
+Avec \texttt{loc}, sélectionnons les lignes nommées \texttt{a} et
+\texttt{c} et les colonnes de celle nommée \texttt{weight} jusqu'à
+\texttt{age}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_texte.loc[[}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{], }\StringTok{"weight"}\NormalTok{:}\StringTok{"age"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Filtrage}\label{filtrage}
+
+Pour effectuer une filtration des données dans un tableau, en fonction
+des valeurs rencontrées pour certaines variables, on utilise des
+masques, comme indiqué dans la Section~\ref{masque-extraction-ligne}.
+
+Redennons quelques exemples ici, en redéfinissant notre dataframe :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+## 3      61     123   31     160
+## 4      62     126   29     158
+\end{lstlisting}
+
+L'idée consiste à créer un masque retournant une série contenant des
+valeurs booléennes, une par ligne. Lorsque la valeur de la ligne du
+masque vaut \texttt{True}, la ligne du dataframe sur lequel sera
+appliqué le masque sera retenue, tandis qu'elle ne le sera pas quand la
+valeur de la ligne du masque vaut \texttt{False}.
+
+Regardons un exemple simple, dans lequel nous souhaitons conserver les
+observations uniquement pour lesquelles la valeur de la variable
+\texttt{age} est inférieure à 30 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{masque }\OperatorTok{=}\NormalTok{ df[}\StringTok{"age"}\NormalTok{] }\OperatorTok{<} \DecValTok{30}
+\BuiltInTok{print}\NormalTok{(masque)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0     True
+## 1    False
+## 2    False
+## 3    False
+## 4     True
+## Name: age, dtype: bool
+\end{lstlisting}
+
+Il reste alors à appliquer ce masque, avec \texttt{loc}. On souhaite
+l'ensemble des colonnes, mais seulement quelques lignes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.loc[masque])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 0      58     115   28     162
+## 4      62     126   29     158
+\end{lstlisting}
+
+Note : cela fonctionne aussi sans \texttt{loc} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df[masque])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 0      58     115   28     162
+## 4      62     126   29     158
+\end{lstlisting}
+
+Plus simplement, on peut utiliser la méthode \texttt{query()} de
+\texttt{pandas}. On fournit une expression booléenne à évaluer à cette
+méthode pour filtrer les données :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.query(age}\OperatorTok{<}\DecValTok{30}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## NameError: name 'age' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+La requête peut être un peu plus complexe, en combinant opérateurs de
+comparaison (c.f. Section~\ref{operateurs-comparaison}) et opérateurs
+logiques (c.f. Section~\ref{operateurs-logiques}). Par exemple,
+admettons que nous voulons filtrer les valeurs du dataframe pour ne
+retenir que les observations pour lesquelles la taille est inférieure ou
+égale à 62 et la masse strictement supérieure à 120. La requête serait
+alors :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.query(}\StringTok{"weight > 120 and height < 62"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 3      61     123   31     160
+\end{lstlisting}
+
+On peut noter que l'instruction suivante donne le même résultat :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.query(}\StringTok{"weight > 120"}\NormalTok{).query(}\StringTok{"height < 62"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 3      61     123   31     160
+\end{lstlisting}
+
+\section{Valeurs manquantes}\label{valeurs-manquantes}
+
+En économie, il est assez fréquent de récupérer des données incomplètes.
+La manière dont les données manquantes sont gérées par \texttt{pandas}
+est le recours aux deux valeurs spéciales : \texttt{None} et
+\texttt{NaN}.
+
+La valeur \texttt{None} peut être utilisée dans les tableaux
+\texttt{NumPy} uniquement quand le type de ces derniers est
+\texttt{object}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_none }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, }\VariableTok{None}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(tableau_none)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [1 4 -1 None]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(tableau_none))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Avec un tableau de type \texttt{object}, les opérations effectuées sur
+les données seront moins efficaces qu'avec un tableau d'un type
+numérique (VanderPlas
+\protect\hyperlink{ref-vanderplas2016python}{2016}, p 121).
+
+La valeur \texttt{NaN} est une valeur de nombre à virgule flottante
+(c.f. Section~\ref{numpy-constantes}). \texttt{NumPy} la gère
+différemment de \texttt{NaN}, et n'assigne passe type \texttt{object}
+d'emblée en présence de \texttt{NaN} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau_nan }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan])}
+\BuiltInTok{print}\NormalTok{(tableau_nan)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## [ 1.  4. -1. nan]
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(tableau_nan))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'numpy.ndarray'>
+\end{lstlisting}
+
+Avec \texttt{pandas}, ces deux valeurs, \texttt{None} et \texttt{NaN}
+peuvent être présentes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\VariableTok{None}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan])}
+\BuiltInTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    1.0
+## 1    NaN
+## 2   -1.0
+## 3    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(s))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## <class 'pandas.core.series.Series'>
+\end{lstlisting}
+
+Cela tient aussi pour les tableaux :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, np.nan],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, np.nan, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight   age  taille
+## 0    58.0     115  28.0     162
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+## 3    61.0     123   NaN     160
+## 4     NaN     126  29.0     158
+\end{lstlisting}
+
+On note toutefois que seule le type des variables pour lesquelles
+existent des valeurs manquantes sont passées en \texttt{float64} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.dtypes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## height    float64
+## weight      int64
+## age       float64
+## taille      int64
+## dtype: object
+\end{lstlisting}
+
+\BeginKnitrBlock{remarque}
+On note que les données sont enregistrées sur un type \texttt{float64}.
+Lorsqu'on travaille sur un tableau ne comportant pas de valeurs
+manquantes, dont le type est \texttt{int} ou \texttt{bool}, si on
+introduit une valeur manquante, \texttt{pandas} changera le type des
+données en \texttt{float64} et \texttt{object}, respectivement.
+\EndKnitrBlock{remarque}
+
+\texttt{pandas} propose différentes pour manipuler les valeurs
+manquantes.
+
+\subsection{Repérer les valeurs
+manquantes}\label{reperer-les-valeurs-manquantes}
+
+Avec la méthode \texttt{isnull()}, un masque de booléens est retournée,
+indiquant \texttt{True} pour les observations dont la valeur est
+\texttt{NaN} ou \texttt{None} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(s.isnull())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    False
+## 1     True
+## 2    False
+## 3     True
+## dtype: bool
+\end{lstlisting}
+
+Pour savoir si une valeur n'est pas nulle, on dispose de la méthode
+\texttt{notnull()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(s.notnull())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0     True
+## 1    False
+## 2     True
+## 3    False
+## dtype: bool
+\end{lstlisting}
+
+\subsection{Retirer les observations avec valeurs
+manquantes}\label{retirer-les-observations-avec-valeurs-manquantes}
+
+La méthode \texttt{dropna()} permet quant à elle de retirer les
+observations disposant de valeurs nulles :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.dropna())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight   age  taille
+## 0    58.0     115  28.0     162
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+\end{lstlisting}
+
+\subsection{Retirer les valeurs manquantes par d'autres
+valeurs}\label{retirer-les-valeurs-manquantes-par-dautres-valeurs}
+
+Pour remplacer les valeurs manquantes par d'autres valeurs,
+\texttt{pandas} propose d'utiliser la méthode \texttt{fillna()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.fillna(}\OperatorTok{-}\DecValTok{9999}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight     age  taille
+## 0    58.0     115    28.0     162
+## 1    59.0     117    33.0     156
+## 2    60.0     120    31.0     172
+## 3    61.0     123 -9999.0     160
+## 4 -9999.0     126    29.0     158
+\end{lstlisting}
+
+\section{Suppressions}\label{suppressions}
+
+Pour supprimer une valeur sur un des axes d'une série ou d'un dataframe,
+\texttt{NumPy} propose la méthode \texttt{drop()}.
+
+\subsection{Suppression d'éléments dans une
+série}\label{suppression-delements-dans-une-serie}
+
+Pour illustrer le fonctionnement de la méthode \texttt{drop()}, créons
+une série avec un index numérique, une autre avec un index textuel :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{s_texte }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\StringTok{"c"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"d"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+On peut supprimer un élément d'une série en utilisant son nom :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"pour s_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.drop(}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## pour s_num : 
+##  0    4.0
+## 4   -1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{pour s_texte : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.drop(}\StringTok{"c"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## pour s_texte : 
+##  a    4.0
+## b   -1.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+On peut aussi aller récupérer le nom en fonction de la position, en
+passant par un détour en utilisant la méthode \texttt{index()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pritn(s.drop(s_num.index[}\DecValTok{0}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## NameError: name 'pritn' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num.index[0] : "}\NormalTok{, s_num.index[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num.index[0] :  5
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_texte.index[0] : "}\NormalTok{, s_texte.index[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_texte.index[0] :  c
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"pour s_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.drop(s_num.index[}\DecValTok{0}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## pour s_num : 
+##  0    4.0
+## 4   -1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{pour s_texte : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.drop(s_texte.index[}\DecValTok{0}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## pour s_texte : 
+##  a    4.0
+## b   -1.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+Pour supprimer plusieurs éléments, il suffit de fournir plusieurs noms
+d'indice dans une liste à la méthode \texttt{drop()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"pour s_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.drop([}\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## pour s_num : 
+##  0    4.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{pour s_texte : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.drop([}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## pour s_texte : 
+##  a    4.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+À nouveau, on peut aller récupérer le nom en fonction de la position, en
+passant par un détour en utilisant la méthode \texttt{index()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pritn(s.drop(s_num.index[}\DecValTok{0}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## NameError: name 'pritn' is not defined
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num.index[[0,2]] : "}\NormalTok{, s_num.index[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num.index[[0,2]] :  Int64Index([5, 4], dtype='int64')
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_texte.index[[0,2]] : "}\NormalTok{, s_texte.index[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_texte.index[[0,2]] :  Index(['c', 'b'], dtype='object')
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"pour s_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num.drop(s_num.index[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## pour s_num : 
+##  0    4.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{pour s_texte : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_texte.drop(s_texte.index[[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{]]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 
+## pour s_texte : 
+##  a    4.0
+## d    NaN
+## dtype: float64
+\end{lstlisting}
+
+Il est possible d'utiliser un découpage également pour obtenir la série
+sans le ou les éléments (c.f. Section~\ref{decoupage-series})
+
+\subsection{Suppression d'éléments dans un
+dataframe}\label{suppression-delements-dans-un-dataframe}
+
+Pour illustrer le fonctionnement de la méthode \texttt{drop()} sur un
+dataframe, créons-en un :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{s_texte }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\StringTok{"c"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"d"}\NormalTok{])}
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, np.nan],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, np.nan, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Suppressions de lignes}\label{suppressions-de-lignes}
+
+Pour supprimer une ligne d'un dataframe, on peut faire référence à son
+nom (ici, les noms sont des numéros, mais ce sont bien des labels) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer la première ligne :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer la première ligne :  
+##     height  weight   age  taille
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+## 3    61.0     123   NaN     160
+## 4     NaN     126  29.0     158
+\end{lstlisting}
+
+Si les lignes ont des labels textuels, on peut au préalable aller les
+récupérer à l'aide de la méthode \texttt{index()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{label_pos_0 }\OperatorTok{=}\NormalTok{ df.index[}\DecValTok{0}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer la première ligne :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(label_pos_0))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer la première ligne :  
+##     height  weight   age  taille
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+## 3    61.0     123   NaN     160
+## 4     NaN     126  29.0     158
+\end{lstlisting}
+
+Pour supprimer plusieurs lignes, on donne le nom de ces lignes dans une
+liste à la méthode \texttt{drop()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer les 1ère et 4e lignes :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop([}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer les 1ère et 4e lignes :  
+##     height  weight   age  taille
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+## 4     NaN     126  29.0     158
+\end{lstlisting}
+
+Ou encore, en indiquant les positions des lignes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{label_pos }\OperatorTok{=}\NormalTok{ df.index[[}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer les 1ère et 4e lignes :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(label_pos))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer les 1ère et 4e lignes :  
+##     height  weight   age  taille
+## 1    59.0     117  33.0     156
+## 2    60.0     120  31.0     172
+## 4     NaN     126  29.0     158
+\end{lstlisting}
+
+Il est possible d'utiliser un découpage également pour obtenir la série
+sans le ou les éléments (c.f. Sections~\ref{decoupage-df-lignes} et
+\ref{decoupage-df-colonnes})
+
+\subsubsection{Suppressions de colonnes}\label{suppressions-de-colonnes}
+
+Pour supprimer une colonne d'un dataframe, on procède de la même manière
+que pour les lignes, mais en ajoutant le paramètre \texttt{axis=1} à la
+méthode \texttt{drop()} pour préciser que l'on s'intéresse aux colonnes
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer la première colonne :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(}\StringTok{"height"}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer la première colonne :  
+##     weight   age  taille
+## 0     115  28.0     162
+## 1     117  33.0     156
+## 2     120  31.0     172
+## 3     123   NaN     160
+## 4     126  29.0     158
+\end{lstlisting}
+
+On peut au préalable aller récupérer les labels des colonnes en fonction
+de leur position à l'aide de la méthode \texttt{columns()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{label_pos }\OperatorTok{=}\NormalTok{ df.columns[}\DecValTok{0}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"label_pos : "}\NormalTok{, label_pos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## label_pos :  height
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer la première colonne :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(label_pos, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer la première colonne :  
+##     weight   age  taille
+## 0     115  28.0     162
+## 1     117  33.0     156
+## 2     120  31.0     172
+## 3     123   NaN     160
+## 4     126  29.0     158
+\end{lstlisting}
+
+Pour supprimer plusieurs colonnes, on donne le nom de ces colonnes dans
+une liste à la méthode \texttt{drop()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer les 1ère et 4e colonnes :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop([}\StringTok{"height"}\NormalTok{, }\StringTok{"taille"}\NormalTok{], axis }\OperatorTok{=} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer les 1ère et 4e colonnes :  
+##     weight   age
+## 0     115  28.0
+## 1     117  33.0
+## 2     120  31.0
+## 3     123   NaN
+## 4     126  29.0
+\end{lstlisting}
+
+Ou encore, en indiquant les positions des colonnes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{label_pos }\OperatorTok{=}\NormalTok{ df.columns[[}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Supprimer les 1ère et 4e colonnes :  }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df.drop(label_pos, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## Supprimer les 1ère et 4e colonnes :  
+##     weight   age
+## 0     115  28.0
+## 1     117  33.0
+## 2     120  31.0
+## 3     123   NaN
+## 4     126  29.0
+\end{lstlisting}
+
+Il est possible d'utiliser un découpage également pour obtenir la série
+sans le ou les éléments (c.f. Sections~\ref{decoupage-df-lignes} et
+\ref{decoupage-df-colonnes})
+
+\section{Remplacement de valeurs}\label{remplacement-de-valeurs}
+
+Nous allons à présent regarder comment modifier une ou plusieurs
+valeurs, dans le cas d'une série puis d'un dataframe.
+
+\subsection{Pour une série}\label{pour-une-serie}
+
+Pour modifier une valeur particulière dans une série ou dans un
+dataframe, on peut utiliser le symbole égale (\texttt{=}) en ayant au
+préalable ciblé l'emplacement de la valeur à modifier, à l'aide des
+techniques d'extraction expliquées dans la
+Section~\ref{pandas-selection}.
+
+Par exemple, considérons la série suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num : "}\NormalTok{, s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num :  5    1.0
+## 0    4.0
+## 4   -1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+Modifions le deuxième élément élément de \texttt{s\_num}, pour lui
+donner la valeur -3 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num.iloc[}\DecValTok{1}\NormalTok{] }\OperatorTok{=} \OperatorTok{-}\DecValTok{3}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num : "}\NormalTok{, s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num :  5    1.0
+## 0   -3.0
+## 4   -1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+Il est évidemment possible de modifier plusieurs valeurs à la fois.
+
+Il suffit à nouveau de cibler les positions (on peu utiliser de
+nombreuses manières de le faire) et de fournir un objet de dimensions
+équivalentes pour venir remplacer les valeurs ciblées. Par exemple, dans
+notre série \texttt{s\_num}, allons remplacer les valeurs en position 1
+et 3 (2e et 4e valeurs) par -10 et -9 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num.iloc[[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{]] }\OperatorTok{=}\NormalTok{ [}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\OperatorTok{-}\DecValTok{9}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 5     1.0
+## 0   -10.0
+## 4    -1.0
+## 1    -9.0
+## dtype: float64
+\end{lstlisting}
+
+\subsection{Pour un dataframe}\label{pour-un-dataframe}
+
+Considérons le dataframe suivant :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"ville"}\NormalTok{ : [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{,}
+                   \StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{],}
+        \StringTok{"annee"}\NormalTok{: [}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{2018}\NormalTok{,}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{],}
+        \StringTok{"x"}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{],}
+        \StringTok{"y"}\NormalTok{: [}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+## 5      Paris   2019  0  4
+\end{lstlisting}
+
+\subsubsection{Modifications d'une valeur
+particulière}\label{modifications-dune-valeur-particuliere}
+
+Modifions la valeur de la première ligne de \texttt{df} pour la colonne
+\texttt{annee}, pour que celle-ci vaille 2020. Dans un premier temps,
+récupérons la position de la colonne \texttt{annee} dans le dataframe, à
+l'aide de la méthode \texttt{get\_loc()} appliquée à l'attribut
+\texttt{colnames} du dataframe :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pos_annee }\OperatorTok{=}\NormalTok{ df.columns.get_loc(}\StringTok{"annee"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"pos_annee : "}\NormalTok{, pos_annee)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## pos_annee :  1
+\end{lstlisting}
+
+Ensuite, effectuons la modification :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.iloc[}\DecValTok{0}\NormalTok{,pos_annee] }\OperatorTok{=} \DecValTok{2020}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+## 5      Paris   2019  0  4
+\end{lstlisting}
+
+\subsubsection{Modifications sur une ou plusieurs
+colonnes}\label{modifications-sur-une-ou-plusieurs-colonnes}
+
+Pour modifier toutes les valeurs d'une colonne pour y placer une valeur
+particulière, par exemple un 2 dans la colonne \texttt{x} de \texttt{df}
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.x }\OperatorTok{=} \DecValTok{2}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  2  4
+## 5      Paris   2019  2  4
+\end{lstlisting}
+
+On peut également modifier les valeurs de la colonne en fournissant une
+liste de valeurs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.x }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  3
+## 1        Aix   2019  3  3
+## 2  Marseille   2018  4  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  1  4
+## 5      Paris   2019  0  4
+\end{lstlisting}
+
+On peut donc imaginer modifier les valeurs d'une colonne en fonction des
+valeurs que l'on lit dans une autre colonne. Par exemple, admettons le
+code suivant : si la valeur de \texttt{y} vaut 2, alors celle de x vaut
+``a'', si la valeur de \texttt{y} vaut 1, lors celle de \texttt{x} vaut
+``b'', sinon, elle vaut \texttt{NaN}. Dans un premier temps,
+construisons une liste contenant les valeurs à insérer (que nous
+nommerons \texttt{nv\_val}), à l'aide d'une boucle. Nous allons
+parcourir tous les éléments de la colonne \texttt{y}, et à chaque
+itération ajouter à \texttt{nv\_val} la valeur obtenue en effectuant nos
+comparaisons :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nv_val }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ np.arange(}\BuiltInTok{len}\NormalTok{(df.index)):}
+        \ControlFlowTok{if}\NormalTok{ df.y[i] }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+\NormalTok{            nv_val.append(}\StringTok{"a"}\NormalTok{)}
+        \ControlFlowTok{elif}\NormalTok{ df.y[i] }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{            nv_val.append(}\StringTok{"b"}\NormalTok{)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            nv_val.append(np.nan)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nv_val : "}\NormalTok{, nv_val)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## nv_val :  [nan, nan, 'a', 'b', nan, nan]
+\end{lstlisting}
+
+Nous sommes prêts à modifier le contenu de la colonne \texttt{x} de
+\texttt{df} pour le remplacer par \texttt{nv\_val} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.x }\OperatorTok{=}\NormalTok{ nv_val}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee    x  y
+## 0  Marseille   2020  NaN  3
+## 1        Aix   2019  NaN  3
+## 2  Marseille   2018    a  2
+## 3        Aix   2018    b  1
+## 4      Paris   2019  NaN  4
+## 5      Paris   2019  NaN  4
+\end{lstlisting}
+
+Pour remplacer plusieurs colonnes en même temps :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[[}\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{]] }\OperatorTok{=}\NormalTok{ [[}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{], }\DecValTok{1}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  1
+## 1        Aix   2019  3  1
+## 2  Marseille   2018  4  1
+## 3        Aix   2018  2  1
+## 4      Paris   2019  1  1
+## 5      Paris   2019  0  1
+\end{lstlisting}
+
+Dans l'instruction précédente, nous avons remplacé le contenu des
+colonnes \texttt{x} et \texttt{y} par une vecteur de valeurs écrites à
+la main pour \texttt{x} et par la valeur 1 pour toutes les observations
+pour \texttt{y}.
+
+\subsubsection{Modifications sur une ou plusieurs
+lignes}\label{modifications-sur-une-ou-plusieurs-lignes}
+
+Pour remplacer une ligne par une valeur constante (peu d'intérêt ici) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.iloc[}\DecValTok{1}\NormalTok{,:] }\OperatorTok{=} \DecValTok{1}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  1
+## 1          1      1  1  1
+## 2  Marseille   2018  4  1
+## 3        Aix   2018  2  1
+## 4      Paris   2019  1  1
+## 5      Paris   2019  0  1
+\end{lstlisting}
+
+Il peut être plus intéressant de remplacer une observation comme suit :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.iloc[}\DecValTok{1}\NormalTok{,:] }\OperatorTok{=}\NormalTok{ [}\StringTok{"Aix"}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ValueError: Must have equal len keys and value when setting with an iterable
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 189, in __setitem__
+##     self._setitem_with_indexer(indexer, value)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 606, in _setitem_with_indexer
+##     raise ValueError('Must have equal len keys and value '
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  1
+## 1          1      1  1  1
+## 2  Marseille   2018  4  1
+## 3        Aix   2018  2  1
+## 4      Paris   2019  1  1
+## 5      Paris   2019  0  1
+\end{lstlisting}
+
+Pour remplacer plusieurs lignes, la méthode est identique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.iloc[[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{],:] }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{    [}\StringTok{"Aix"}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+\NormalTok{    [}\StringTok{"Aix"}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## ValueError: Must have equal len keys and value when setting with an ndarray
+## 
+## Detailed traceback: 
+##   File "<string>", line 3, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 189, in __setitem__
+##     self._setitem_with_indexer(indexer, value)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 590, in _setitem_with_indexer
+##     raise ValueError('Must have equal len keys and value '
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2020  2  1
+## 1          1      1  1  1
+## 2  Marseille   2018  4  1
+## 3        Aix   2018  2  1
+## 4      Paris   2019  1  1
+## 5      Paris   2019  0  1
+\end{lstlisting}
+
+\section{Ajout de valeurs}\label{pandas-ajout-valeurs}
+
+Regardons à présent comment ajouter des valeurs, dans une série d'abord,
+puis dans un dataframe.
+
+\subsection{Pour une série}\label{pour-une-serie-1}
+
+Considérons la série suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{, np.nan],}
+\NormalTok{             index }\OperatorTok{=}\NormalTok{ [}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num : "}\NormalTok{, s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num :  5    1.0
+## 0    4.0
+## 4   -1.0
+## 1    NaN
+## dtype: float64
+\end{lstlisting}
+
+\subsubsection{Ajout d'une seule valeur dans une
+série}\label{ajout-dune-seule-valeur-dans-une-serie}
+
+Pour ajouter une valeur, on utlise la méthode \texttt{append()}. Ici,
+avec \texttt{s\_num}, comme l'index est manuel, nous sommes obligé de
+fournir une série avec une valeur pour l'index également :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num_2 }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{], index }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num_2 : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num_2 : 
+##  2    1
+## dtype: int64
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num }\OperatorTok{=}\NormalTok{ s_num.append(s_num_2)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num : 
+##  5    1.0
+## 0    4.0
+## 4   -1.0
+## 1    NaN
+## 2    1.0
+## dtype: float64
+\end{lstlisting}
+
+On note que la méthode \texttt{append()} retourne une vue, et que pour
+répercuter l'ajout, il est nécessaire d'effectuer une nouvelle
+assignation.
+
+En ayant une série avec un index numérique généré automatiquement, on
+peut préciser la valeur \texttt{True} pour le paramètre
+\texttt{ignore\_index} de la méthode \texttt{append()} pour indiquer de
+ne pas tenir compte de la valeur de l'index de l'objet que l'on ajoute :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\NormalTok{s }\OperatorTok{=}\NormalTok{ s.append(pd.Series([}\DecValTok{2}\NormalTok{]), ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s : 
+##  0    10
+## 1     2
+## 2     4
+## 3     2
+## dtype: int64
+\end{lstlisting}
+
+\subsubsection{Ajout de plusieurs valeurs dans une
+série}\label{ajout-de-plusieurs-valeurs-dans-une-serie}
+
+Pour ajouter plusieurs valeurs, on utlise la méthode \texttt{append()}.
+Ici, avec \texttt{s\_num}, comme l'index est manuel, nous sommes obligé
+de fournir une série avec une valeur pour l'index également :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s_num_2 }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{1}\NormalTok{], index }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{])}
+\NormalTok{s_num.append(s_num_2)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"s_num : "}\NormalTok{, s_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## s_num :  5    1.0
+## 0    4.0
+## 4   -1.0
+## 1    NaN
+## 2    1.0
+## dtype: float64
+\end{lstlisting}
+
+En ayant une série avec un index numérique généré automatiquement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OperatorTok{=}\NormalTok{ pd.Series([}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+\NormalTok{s.append(pd.Series([}\DecValTok{2}\NormalTok{]), ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Pour un dataframe}\label{pour-un-dataframe-1}
+
+Reprenons notre dataframe :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"ville"}\NormalTok{ : [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{,}
+                   \StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{],}
+        \StringTok{"annee"}\NormalTok{: [}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{2018}\NormalTok{,}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{],}
+        \StringTok{"x"}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{],}
+        \StringTok{"y"}\NormalTok{: [}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+## 5      Paris   2019  0  4
+\end{lstlisting}
+
+\subsubsection{Ajout d'une ligne dans un
+dataframe}\label{ajout-dune-ligne-dans-un-dataframe}
+
+Comme pour une série, pour ajouter une ligne, on utlise la méthode
+\texttt{append()}. Dans un premier temps, créons un nouveau dataframe
+avec la ligne à ajouter :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nv_ligne }\OperatorTok{=}\NormalTok{ pd.DataFrame([[}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"2021"}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{]],}
+\NormalTok{                       columns }\OperatorTok{=}\NormalTok{ df.columns)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nv_ligne : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, nv_ligne)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## nv_ligne : 
+##         ville annee  x  y
+## 0  Marseille  2021  2  4
+\end{lstlisting}
+
+On s'est assuré d'avoir le même nom de colonnes ici, en indiquant au
+paramètre \texttt{columns} de la méthode \texttt{pd.DataFrame} le nom
+des colonnes de \texttt{df}, c'est-à-dire \texttt{df.columns}.
+
+Ajoutons la nouvelle ligne à \texttt{df} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.append(nv_ligne, ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+À nouveau,la méthode \texttt{append()} appliquée à un dataframe,
+retourne une vue et n'affecte pas l'objet.
+
+On peut noter que lors de l'ajout d'une ligne, si le nom des colonnes
+n'est pas indiqué dans le même ordre que dans le dataframe dans lequel
+est effectué l'ajout, il faut rajouter une indication au paramètre
+\texttt{sort} de la méthode \texttt{append()} :
+
+\begin{itemize}
+\tightlist
+\item
+  si \texttt{sort=True}, l'ordre des colonnes de la ligne ajoutée sera
+  appliqué au dataframe de destination ;
+\item
+  si \texttt{sort=False}, l'odre des colonnes du dataframe de
+  destination ne sera pas modifié.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nv_ligne }\OperatorTok{=}\NormalTok{ pd.DataFrame([[}\StringTok{"2021"}\NormalTok{, }\StringTok{"Marseille"}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{]],}
+\NormalTok{                       columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"annee"}\NormalTok{, }\StringTok{"ville"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nv_ligne : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, nv_ligne)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## nv_ligne : 
+##    annee      ville  x  y
+## 0  2021  Marseille  2  4
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"avec sort=True : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+\NormalTok{  df.append(nv_ligne, ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{, sort }\OperatorTok{=} \VariableTok{True}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## avec sort=True : 
+##    annee      ville  x  y
+## 0  2019  Marseille  1  3
+## 1  2019        Aix  2  3
+## 2  2018  Marseille  2  2
+## 3  2018        Aix  2  1
+## 4  2019      Paris  0  4
+## 5  2019      Paris  0  4
+## 6  2021  Marseille  2  4
+## 7  2021  Marseille  2  4
+\end{lstlisting}
+
+\subsubsection{Ajout de plusieurs lignes dans un
+dataframe}\label{ajout-de-plusieurs-lignes-dans-un-dataframe}
+
+Pour ajouter plusieurs lignes, c'est exactement le même principe qu'avec
+une seule, il suffit juste d'ajouter un dataframe de plusieurs lignes,
+avec encore une fois les mêmes noms.
+
+Les lignes à insérer :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nv_lignes }\OperatorTok{=}\NormalTok{ pd.DataFrame([}
+\NormalTok{    [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"2022"}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{],}
+\NormalTok{    [}\StringTok{"Aix"}\NormalTok{, }\StringTok{"2022"}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{]],}
+\NormalTok{    columns }\OperatorTok{=}\NormalTok{ df.columns)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nv_ligne : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, nv_lignes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## nv_ligne : 
+##         ville annee  x  y
+## 0  Marseille  2022  2  4
+## 1        Aix  2022  3  3
+\end{lstlisting}
+
+Puis l'insertion :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.append(nv_lignes, ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Ajout d'une colonne dans un
+dataframe}\label{ajout-dune-colonne-dans-un-dataframe}
+
+Pour ajouter une colonne dans un dataframe, on utilise la méthode
+\texttt{assign()}, en indiquant le nom et les valeurs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ numpy }\ImportTok{import}\NormalTok{ random}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(z }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville annee  x  y         z
+## 0  Marseille  2019  1  3  0.117443
+## 1        Aix  2019  2  3  0.393782
+## 2  Marseille  2018  2  2  0.452730
+## 3        Aix  2018  2  1  0.538148
+## 4      Paris  2019  0  4  0.790622
+## 5      Paris  2019  0  4  0.465836
+## 6  Marseille  2021  2  4  0.435332
+## 7  Marseille  2022  2  4  0.569479
+## 8        Aix  2022  3  3  0.969259
+\end{lstlisting}
+
+\subsubsection{Ajout de plusieurs colonnes dans un
+dataframe}\label{ajout-de-plusieurs-colonnes-dans-un-dataframe}
+
+Pour ajouter plusieurs colonnes, le même principe s'applique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(a }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)),}
+\NormalTok{          b }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## df : 
+##         ville annee  x  y         z         a         b
+## 0  Marseille  2019  1  3  0.117443  0.040556  0.689236
+## 1        Aix  2019  2  3  0.393782  0.548120  0.929546
+## 2  Marseille  2018  2  2  0.452730  0.462577  0.918117
+## 3        Aix  2018  2  1  0.538148  0.376472  0.975302
+## 4      Paris  2019  0  4  0.790622  0.327912  0.397002
+## 5      Paris  2019  0  4  0.465836  0.813529  0.262626
+## 6  Marseille  2021  2  4  0.435332  0.646552  0.430151
+## 7  Marseille  2022  2  4  0.569479  0.047426  0.764531
+## 8        Aix  2022  3  3  0.969259  0.994958  0.599731
+\end{lstlisting}
 
 \section{Retrait des valeurs
 dupliquées}\label{retrait-des-valeurs-dupliquees}
 
-\section{Modification des colonnes}\label{modification-des-colonnes}
+Pour retirer les valeurs dupliquées dans un dataframe, \texttt{NumPy}
+propose la méthode \texttt{drop\_duplicates()}, qui prend plusieurs
+paramètres optionnels :
+
+\begin{itemize}
+\item
+  \texttt{subset} : en indiquant un ou plusieurs noms de colonnes, la
+  recherche de doublons se fait uniquement sur ces colonnes ;
+\item
+  \texttt{keep} : permet d'indiquer quelle observation garder en cas de
+  doublons identifies :
+\item
+  si \texttt{keep=\textquotesingle{}first\textquotesingle{}}, tous les
+  doublons sont retirés sauf la première occurrence,
+\item
+  si \texttt{keep=\textquotesingle{}last\textquotesingle{}}, tous les
+  doublons sont retirés sauf la dernière occurrence, -si
+  \texttt{keep=\textquotesingle{}False\textquotesingle{}}, tous les
+  doublons sont retirés ;
+\item
+  \texttt{inplace} : booléen (défaut : \texttt{False}) pour indiquer si
+  le retrait des doublons doit s'effectuer sur le dataframe ou bien si
+  une copie doit être retournée (par défaut).
+\end{itemize}
+
+Donnons quelques exemples à l'aide de ce dataframe qui compose deux
+doublons quand on considère sa totalité. Si on se concentre uniquement
+sur les années ou les villes, ou les deux, d'autres doublons peuvent
+être identifiés.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"ville"}\NormalTok{ : [}\StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{,}
+                   \StringTok{"Marseille"}\NormalTok{, }\StringTok{"Aix"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{, }\StringTok{"Paris"}\NormalTok{],}
+        \StringTok{"annee"}\NormalTok{: [}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{2018}\NormalTok{,}\DecValTok{2019}\NormalTok{, }\DecValTok{2019}\NormalTok{],}
+        \StringTok{"x"}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{],}
+        \StringTok{"y"}\NormalTok{: [}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##        ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+## 5      Paris   2019  0  4
+\end{lstlisting}
+
+Pour retirer les doublons :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.drop_duplicates())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##        ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+\end{lstlisting}
+
+Retirer les doublons en gardant la dernière valeur des doublons
+identifiés :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.drop_duplicates(keep}\OperatorTok{=}\StringTok{'last'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Pour retirer les doublons identifiés quand on se concentre sur le nom
+des villes, et en conservant uniquement la première valeur :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.drop_duplicates(subset }\OperatorTok{=}\NormalTok{ [}\StringTok{"ville"}\NormalTok{], keep }\OperatorTok{=} \StringTok{'first'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##        ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 4      Paris   2019  0  4
+\end{lstlisting}
+
+Idem mais en se concentrant sur les couples (ville, annee)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.drop_duplicates(subset }\OperatorTok{=}\NormalTok{ [}\StringTok{"ville"}\NormalTok{, }\StringTok{"annee"}\NormalTok{], keep }\OperatorTok{=} \StringTok{'first'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##        ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+\end{lstlisting}
+
+On note que le dataframe original n'a pas été impacté, puisque nous
+n'avons pas touché au paramètre \texttt{inplace}. Si à présent, nous
+demandons à ce que les changement soient opérés sur le dataframe plutôt
+que de récupérer une copie :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.drop_duplicates(subset }\OperatorTok{=}\NormalTok{ [}\StringTok{"ville"}\NormalTok{, }\StringTok{"annee"}\NormalTok{], keep }\OperatorTok{=} \StringTok{'first'}\NormalTok{, inplace }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##        ville  annee  x  y
+## 0  Marseille   2019  1  3
+## 1        Aix   2019  2  3
+## 2  Marseille   2018  2  2
+## 3        Aix   2018  2  1
+## 4      Paris   2019  0  4
+\end{lstlisting}
+
+Pour savoir si une valeur est dupliquée dans un dataframe,
+\texttt{NumPy} propose la méthode \texttt{duplicated()}, qui retourne un
+masque indiquant pour chaque observation, si elle est dupliquée ou non.
+Son fonctionnement est similaire à \texttt{df.drop\_duplicates()},
+hormis pour le paramètre \texttt{inplace} qui n'est pas présent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.duplicated(subset }\OperatorTok{=}\NormalTok{ [}\StringTok{"ville"}\NormalTok{], keep }\OperatorTok{=} \StringTok{'first'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    False
+## 1    False
+## 2     True
+## 3     True
+## 4    False
+## dtype: bool
+\end{lstlisting}
+
+\section{Opérations}\label{operations}
+
+Il est souvent nécessaire de devoir effectuer des opérations sur les
+colonnes d'un dataframe, notamment lorsqu'il s'agit de créer une
+nouvelle variable.
+
+En reprenant les principes de modification de colonnes (c.f.
+Section~@ref(\#pandas-ajout-valeurs)), on imagine assez facilement qu'il
+est possible d'appliquer les fonctions et méthodes de \texttt{NumPy}
+(c.f. Section~\ref{numpy-tableaux}) sur les valeurs des colonnes.
+
+Par exemple, considérons le dataframe suivant :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : }
+\NormalTok{               [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{,}
+                \DecValTok{63}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{66}\NormalTok{, }\DecValTok{67}\NormalTok{,}
+                \DecValTok{68}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{71}\NormalTok{, }\DecValTok{72}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: }
+\NormalTok{               [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{,}
+                \DecValTok{129}\NormalTok{, }\DecValTok{132}\NormalTok{, }\DecValTok{135}\NormalTok{, }\DecValTok{139}\NormalTok{, }\DecValTok{142}\NormalTok{,}
+                \DecValTok{146}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{154}\NormalTok{, }\DecValTok{159}\NormalTok{, }\DecValTok{164}\NormalTok{]}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##     height  weight
+## 0       58     115
+## 1       59     117
+## 2       60     120
+## 3       61     123
+## 4       62     126
+## 5       63     129
+## 6       64     132
+## 7       65     135
+## 8       66     139
+## 9       67     142
+## 10      68     146
+## 11      69     150
+## 12      70     154
+## 13      71     159
+## 14      72     164
+\end{lstlisting}
+
+Ajoutons la colonne \texttt{height\_2}, élevant les valeurs de la
+colonne \texttt{height} au carré :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(height_2 }\OperatorTok{=}\NormalTok{ df.height}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  height_2
+## 0      58     115      3364
+## 1      59     117      3481
+## 2      60     120      3600
+\end{lstlisting}
+
+À présent, ajoutons la colonne \texttt{imc}, fournissant les valeurs de
+l'indicateur de masse corporelle pour les individus du dataframe
+(\(\text{IMC} = \frac{\text{weight}}{\text{height}^2}\)) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(imc }\OperatorTok{=}\NormalTok{ df.weight }\OperatorTok{/}\NormalTok{ df.height_2)}
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  height_2       imc
+## 0      58     115      3364  0.034185
+## 1      59     117      3481  0.033611
+## 2      60     120      3600  0.033333
+\end{lstlisting}
+
+\subsection{Statistiques}\label{statistiques}
+
+\texttt{pandas} propose quelques méthodes pour effectuer des
+statistiques descriptives pour chaque colonne ou par ligne. Pour cela,
+la syntaxe est la suivante (tous les paramètres ont une valeur par
+défaut, la liste est simplifiée ici) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataframe.fonction_stat(axis, skipna)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{axis} : 0 pour les lignes, 1 pour les colonnes ;
+\item
+  \texttt{skipna} : si \texttt{True}, exclue les valeurs manquantes pour
+  effectuer les calculs.
+\end{itemize}
+
+Parmi les méthodes disponibles : \texttt{mean()}, \texttt{mode()},
+\texttt{median()} \texttt{std()} \texttt{min()} \texttt{max()}
+\texttt{sum()}
+
+Par exemple, pour calculer la moyenne des valeurs pour chaque colonne :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+        \StringTok{"married"}\NormalTok{: [}\VariableTok{True}\NormalTok{, }\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{False}\NormalTok{, }\VariableTok{True}\NormalTok{],}
+        \StringTok{"city"}\NormalTok{: [}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{]}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df.mean())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## height      60.0
+## weight     120.2
+## age         30.4
+## taille     161.6
+## married      0.6
+## dtype: float64
+\end{lstlisting}
+
+Si on le souhaite, on peut faire la moyenne des valeurs en colonne (sans
+aucun sens ici) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0    72.8
+## 1    73.2
+## 2    76.6
+## 3    75.0
+## 4    75.2
+## dtype: float64
+\end{lstlisting}
 
 \section{Tri}\label{tri-2}
 
@@ -10221,6 +13653,11 @@ dupliquées}\label{retrait-des-valeurs-dupliquees}
 \section{Agrégation}\label{agregation}
 
 \section{Stacking et unstacking}\label{stacking-et-unstacking}
+
+\section{Importation et exportation de
+données}\label{importation-et-exportation-de-donnees}
+
+\subsection{Fichiers Excel}\label{pandas-importation-excel}
 
 \chapter{Visualisation de données}\label{visualisation-de-donnees}
 

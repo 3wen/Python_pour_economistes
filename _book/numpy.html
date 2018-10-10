@@ -52,38 +52,38 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
 code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
 code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="styles/style.css" type="text/css" />
@@ -231,7 +231,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a><ul>
-<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a><ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="numpy.html"><a href="numpy.html#creation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
 <li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
 <li class="chapter" data-level="9.1.3" data-path="numpy.html"><a href="numpy.html#extraction-des-elements-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
@@ -240,26 +240,51 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="numpy.html"><a href="numpy.html#operateurs-logiques-1"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-1"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes {numpy-constantes}</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
 <li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec Pandas</a><ul>
-<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#importation-et-exportation-de-donnees"><i class="fa fa-check"></i><b>10.1</b> Importation et exportation de données</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.1.1</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a><ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="pandas.html"><a href="pandas.html#series"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="pandas.html"><a href="pandas.html#pour-les-series"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
+</ul></li>
 <li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.3</b> Filtrage</a></li>
-<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.4</b> Retrait des valeurs dupliquées</a></li>
-<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#modification-des-colonnes"><i class="fa fa-check"></i><b>10.5</b> Modification des colonnes</a></li>
-<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.6</b> Tri</a></li>
-<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#jointures"><i class="fa fa-check"></i><b>10.7</b> Jointures</a></li>
-<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#agregation"><i class="fa fa-check"></i><b>10.8</b> Agrégation</a></li>
-<li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.9</b> Stacking et unstacking</a></li>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.4</b> Valeurs manquantes</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#reperer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.4.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.4.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.4.2</b> Retirer les observations avec valeurs manquantes</a></li>
+<li class="chapter" data-level="10.4.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.4.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.5</b> Suppressions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-une-serie"><i class="fa fa-check"></i><b>10.5.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-un-dataframe"><i class="fa fa-check"></i><b>10.5.2</b> Suppression d’éléments dans un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.6</b> Remplacement de valeurs</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie"><i class="fa fa-check"></i><b>10.6.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.7</b> Ajout de valeurs</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie-1"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.8</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.9</b> Opérations</a><ul>
+<li class="chapter" data-level="10.9.1" data-path="pandas.html"><a href="pandas.html#statistiques"><i class="fa fa-check"></i><b>10.9.1</b> Statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.10</b> Tri</a></li>
+<li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#jointures"><i class="fa fa-check"></i><b>10.11</b> Jointures</a></li>
+<li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#agregation"><i class="fa fa-check"></i><b>10.12</b> Agrégation</a></li>
+<li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.13</b> Stacking et unstacking</a></li>
+<li class="chapter" data-level="10.14" data-path="pandas.html"><a href="pandas.html#importation-et-exportation-de-donnees"><i class="fa fa-check"></i><b>10.14</b> Importation et exportation de données</a><ul>
+<li class="chapter" data-level="10.14.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.14.1</b> Fichiers Excel</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a></li>
 <li class="chapter" data-level="12" data-path="programmation-parallele.html"><a href="programmation-parallele.html"><i class="fa fa-check"></i><b>12</b> Programmation parallèle</a></li>
@@ -286,7 +311,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>Ce chapitre est consacré à une librairie importante pour les calculs numérique : <code>NumPy</code> (abréviation de <em>Numerical Python</em>).</p>
 <p>Il est coutume d’importer <code>NumPy</code> en lui attribuant l’alias <code>np</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np</code></pre></div>
-<div id="tableaux" class="section level2">
+<div id="numpy-tableaux" class="section level2">
 <h2><span class="header-section-number">9.1</span> Tableaux</h2>
 <p>NumPy propose une structure de données populaire, les tableaux (de type <em>array</em>), sur lesquels il est possible d’effectuer de manière efficace des calculs. Les tableaux sont une structure notamment utile pour effectuer des opérations statistiques basiques ainsi que de la génération pseudo-aléatoire de nombres.</p>
 <p>La stucture des tableaux ressemble à celle des listes, mais ces dernières sont moins rapides à être traitées et utilisent davantage de mémoire. Le gain de vitesse de traitement des tableaux en <code>NumPy</code> vient du fait que les données sont stockées dans des blocs contigus de mémoire, facilitant ainsi les accès en lecture.</p>
@@ -770,7 +795,7 @@ t_1 <span class="op">+</span> t_2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.dot(t_1, t_3.T)</code></pre></div>
 </div>
 </div>
-<div id="operateurs-logiques-1" class="section level3">
+<div id="operateurs-logiques" class="section level3">
 <h3><span class="header-section-number">9.1.9</span> Opérateurs logiques</h3>
 <p>Pour effectuer des tests logiques sur les éléments d’un tableau, <code>NumPy</code> propose des fonctions, répertoriées dans le Tableau <a href="#numpy-operateurs-logiques"><strong>??</strong></a>. Le résultat retourné par l’application de ces fonctions est un tableau de booléens.</p>
 <table>
@@ -833,8 +858,8 @@ masque <span class="op">=</span> np.logical_and(t <span class="op">&lt;=</span> 
 <pre><code>## les éléments de t compris entre 10 et 20 : 
 ##  [10 12 14]</code></pre>
 </div>
-<div id="quelques-constantes-1" class="section level3">
-<h3><span class="header-section-number">9.1.10</span> Quelques constantes</h3>
+<div id="quelques-constantes-numpy-constantes" class="section level3">
+<h3><span class="header-section-number">9.1.10</span> Quelques constantes {numpy-constantes}</h3>
 <p><code>NumPy</code> propose quelques constantes, dont certaines sont reportées dans le Tableau <a href="numpy.html#tab:constantes-numpy">9.2</a>.</p>
 <table style="width:94%;">
 <caption><span id="tab:constantes-numpy">Table 9.2: </span> Codes de formatages</caption>
@@ -871,6 +896,16 @@ masque <span class="op">=</span> np.logical_and(t <span class="op">&lt;=</span> 
 </tr>
 </tbody>
 </table>
+<p>On peut noter la présence de la valeur <code>NaN</code>, qui est une valeur spéciale parmi les nombres à virgule flottante. Le comportement de cette constante est spécial.</p>
+<p>Quand on additionne, soustrait, multiplie ou divise un nombre par cette valeur <code>NaN</code>, on obtient <code>NaN</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Addition : &quot;</span>, np.nan <span class="op">+</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>## Addition :  nan</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Soustraction : &quot;</span>, np.nan <span class="op">-</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>## Soustraction :  nan</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Multiplication : &quot;</span>, np.nan <span class="op">+</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>## Multiplication :  nan</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;AddDivisiontion : &quot;</span>, np.nan <span class="op">/</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>## AddDivisiontion :  nan</code></pre>
 </div>
 <div id="fonctions-universelles" class="section level3">
 <h3><span class="header-section-number">9.1.11</span> Fonctions universelles</h3>
@@ -1259,8 +1294,8 @@ w <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv
 <p>Voici un exemple de génération de nombres pseudo aléatoires selon une distribution Gaussienne :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
 <span class="bu">print</span>(x)</code></pre></div>
-<pre><code>## [-0.02467154  0.68174291  0.04416855  0.04350923  0.63212315  0.36319188
-##   0.45819622  1.61177938 -0.97630566  0.3721754 ]</code></pre>
+<pre><code>## [-0.1426485  -0.66757686 -0.35267593 -1.62862273  0.27626356  0.66133859
+##   0.25028595  0.13091563 -1.02542841 -1.95969993]</code></pre>
 <p>La génération des nombres s’effectue en fonction d’une graine (<em>seed</em>), c’est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode <code>seed()</code>, à qui on indique une valeur en paramètre :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.random.seed(<span class="dv">1234</span>)
 x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
@@ -1386,6 +1421,7 @@ gitbook.start({
 "collapse": "subsection",
 "scroll_highlight": true
 },
+"toc_depth": 4,
 "search": true
 });
 });

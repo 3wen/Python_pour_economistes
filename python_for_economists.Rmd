@@ -17,8 +17,9 @@ site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
     css: styles/style.css
-    highlight: tango
+    highlight: default
     config:
+      toc_depth: 4
       toc:
         collapse: subsection
         scroll_highlight: yes
@@ -27,7 +28,7 @@ output:
       search: yes
       edit: https://github.com/3wen/Python_pour_economistes/edit/master/%s
   bookdown::pdf_book:
-    highlight: tango
+    highlight: default
     keep_tex: yes
     includes:
       in_header: styles/mystyle_books.tex
@@ -2411,7 +2412,7 @@ dictionnaire = {"nom": "Rockwell", "prenom": "Criquette"}
 ```
 
 
-## Opérateurs logiques
+## Opérateurs logiques {#operateurs-logiques}
 
 Les opérateurs logiques opèrent sur un ou plusieurs objets de type logique (des booléens).
 
@@ -2573,6 +2574,7 @@ La librairie `math` propose quelques constantes :
 | `math.nan` | Nombre à virgule flotante *not a number* |
 
 Table: (#tab:constantes-base) Quelques constantes intégrées dans Python
+
 
 ## Exercice
 
@@ -2932,7 +2934,7 @@ with open(chemin, mode='w') as mon_fichier:
 ```
 
 
-Bien évidemment, la plupart du temps, nous n'écrivons pas à la main chaque entrée. Nous exportons les données contenues dans une structure. La Section\ \@ref(pandas-importation-excel) donne des exemples de ce type d'export, lorsque les données sont contenues dans des tableaux à deux dimension créés avec la librairie `Pandas`.
+Bien évidemment, la plupart du temps, nous n'écrivons pas à la main chaque entrée. Nous exportons les données contenues dans une structure. La Section\ \@ref(pandas-importation-excel) donne des exemples de ce type d'export, lorsque les données sont contenues dans des tableaux à deux dimension créés avec la librairie `pandas`.
 
 
 ### Fichier JSON
@@ -3692,7 +3694,7 @@ import numpy as np
 ```
 
 
-## Tableaux
+## Tableaux {#numpy-tableaux}
 
 NumPy propose une structure de données populaire, les tableaux (de type *array*), sur lesquels il est possible d'effectuer de manière efficace des calculs. Les tableaux sont une structure notamment utile pour effectuer des opérations statistiques basiques ainsi que de la génération pseudo-aléatoire de nombres.
 
@@ -4274,7 +4276,7 @@ print("les éléments de t compris entre 10 et 20 : \n",
 ```
 
 
-### Quelques constantes
+### Quelques constantes {numpy-constantes}
 
 
 `NumPy` propose quelques constantes, dont certaines sont reportées dans le Tableau\ \@ref(tab:constantes-numpy).
@@ -4288,6 +4290,18 @@ print("les éléments de t compris entre 10 et 20 : \n",
 | `np.pi` | Nombre Pi ($\pi$) |
 
 Table: (#tab:constantes-numpy) Codes de formatages
+
+On peut noter la présence de la valeur `NaN`, qui est une valeur spéciale parmi les nombres à virgule flottante. Le comportement de cette constante est spécial.
+
+
+Quand on additionne, soustrait, multiplie ou divise un nombre par cette valeur `NaN`, on obtient `NaN` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Addition : ", np.nan + 1)
+print("Soustraction : ", np.nan - 1)
+print("Multiplication : ", np.nan + 1)
+print("AddDivisiontion : ", np.nan / 1)
+```
+
 
 
 ### Fonctions universelles
@@ -4562,19 +4576,1355 @@ Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmat
 ```
 
 
-# Manipulation de données avec Pandas {#pandas}
+# Manipulation de données avec `pandas` {#pandas}
 
-## Importation et exportation de données
+`pandas` est une librairie open-source basée sur `NumPy` fournissant des structures de données facile à manipuler, et des outils d'analyse de données. Le lecteur familier avec les fonctions de base du langage `R` retrouvera de nombreuses fonctionnalités similaires avec `pandas`. 
 
-### Fichiers Excel {#pandas-importation-excel}
 
-## Sélection
+
+Pour avoir accès aux fonctionnalités de `pandas`, il est coutume de charger la librairie en lui accordant l'alias `pd` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+import pandas as pd
+```
+
+Nous allons également utiliser des fonctions de `numpy` (c.f. Section\ \@ref(numpy)). Assurons-nous de charger cette librairie, si ce n'est pas déjà fait :
+```{python, eval=T, echo=TRUE, error=TRUE}
+import numpy as np
+```
+
+## Structures
+
+Nous allons nous pencher sur deux types de structures, les séries (`serie`) et les dataframes (`DataFrame`).
+
+
+### Séries
+
+Les séries sont tableaux à une dimension de données indexées.
+
+#### Création de séries à partir d'un dictionnaire
+
+Pour en créer,on peut définir une liste, puis appliquer la fonction `Series` de `pandas` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan, .5, 1])
+print(s)
+```
+
+L'affichage précédent montre que la série `s` créée contient à la fois les données et un index associé. L'attribut `values` permet d'afficher les valeurs qui sont stockées dans un tableau `numpy` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("valeur de s : ", s.values)
+print("type des valeurs de s : ", type(s.values))
+```
+
+L'indice est quand à lui stocké dans une structure spécifique de `pandas` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("index de s : ", s.index)
+print("type de l'index de s : ", type(s.index))
+```
+
+
+Il est possible d'attribuer un nom à la série ainsi qu'à l'index :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s.name = "ma_serie"
+s.name = "nom_index"
+print("nom de la série : %s , nom de l'index : %s" % (s.name, s.index.name))
+print("série s : \n", s)
+```
+
+
+
+#### Définition de l'index
+
+L'index peut être défini par l'utilisateur, au moment de la création de la série :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan],
+             index = ["o", "d", "i", "l"])
+print(s)
+```
+
+On peut définir l'indice avec des valeurs numériques également, sans être forcé de respecter un ordre précis :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan],
+             index = [4, 40, 2, 3])
+print(s)
+```
+
+
+L'index peut être modifié par la suite, en venant écraser l'attribut `index` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s.index = ["o", "d", "i", "l"]
+print("Série s : \n", s)
+```
+
+
+#### Création de séries particulières
+
+Il existe une petite astuce pour créer des séries avec une valeur répétée, qui consiste à fournir un scalaire à la fonction `Series` de `NumPy` et un index dont la longueur correspondra au nombre de fois où le scalaire sera répété :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series(5, index = [np.arange(4)])
+print(s)
+```
+
+
+On peut créer une série à partir d'un dictionnaire :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dictionnaire = {"Roi": "Arthur",
+                "Chevalier_pays_galles": "Perceval",
+                "Druide": "Merlin"}
+s = pd.Series(dictionnaire)
+print(s)
+```
+
+Comme on le note dans la sortie précédente, les clés du dictionnaire ont été utilisées pour l'index. Lors de la création de la série, on peut préciser au paramètre clé des valeurs spécifiques : cela aura pour conséquence de ne récupérer que les observations correspondant à ces clés :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dictionnaire = {"Roi": "Arthur",
+                "Chevalier_pays_galles": "Perceval",
+                "Druide": "Merlin"}
+s = pd.Series(dictionnaire, index = ["Roi", "Druide"])
+print(s)
+```
+
+
+### Dataframes
+
+
+Les Dataframes correspondent au format de données que l'on rencontre classiquement en économie, des tableaux à deux dimensions, avec des variables en colonnes et des observations en ligne. Les colonnes et lignes des dataframes sont indexées.
+
+
+#### Création de dataframes à partir d'un dictionnaire
+
+Pour créer un dataframe, on peut fournir à la fonction `DataFrame()` de `pandas` un dictionnaire pouvant être transformé en `serie`. C'est le cas d'un dictionnaire dont les valeurs associées aux clés ont toutes la même longueur :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : 
+               [58, 59, 60, 61, 62,
+                63, 64, 65, 66, 67,
+                68, 69, 70, 71, 72],
+        "weight": 
+               [115, 117, 120, 123, 126,
+                129, 132, 135, 139, 142,
+                146, 150, 154, 159, 164]
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+La position des éléments dans le dataframe sert d'index. Comme pour les séries, les valeur sont accessibles dans l'attribut `values` et l'index dans l'attribut `index`. Les colonnes sont également indexées :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.columns)
+```
+
+
+La méthode `head()` permet d'afficher les premières lignes (les 5 premières, par défaut). On peut modifier son paramètre `n` pour indiquer le nombre de lignes à retourner :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.head(2)
+```
+
+Lors de la création d'un dataframe à partir d'un dictionnaire, si on précise le nom des colonnes à importer par une liste de chaînes de caractères fournie au paramètree `columns` de la fonction `DataFrame`, on peut non seulement définir les colonnes à remplir mais également leur ordre d'apparition.
+
+Par exemple, pour n'importer que la colonne `weight` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = pd.DataFrame(dico, columns = ["weight"])
+print(df.head(2))
+```
+
+Et pour définir l'ordre dans lequel les colonnes apparaîtront :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = pd.DataFrame(dico, columns = ["weight", "height"])
+print(df.head(2))
+```
+
+
+Si on indique un nom de colonne absent parmi les clés du dictionnaires, le dataframe résultant contiendra une colonne portant ce nom mais remplie de valeurs `NaN` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = pd.DataFrame(dico, columns = ["weight", "height", "age"])
+print(df.head(2))
+```
+
+
+#### Création de dataframes à partir d'une série
+
+Un dataframe peut être créé à partir d'une série :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan], index = ["o", "d", "i", "l"])
+s.name = "nom_variable"
+df = pd.DataFrame(s, columns = ["nom_variable"])
+print(df)
+```
+
+Si on n'attribue pas de nom à la série, il suffit de ne pas renseigner le paramètre `columns` de la fonction `DataFrame`. Mais dans ce cas, la colonne n'aura pas de non, juste un index numérique.
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan], index = ["o", "d", "i", "l"])
+df = pd.DataFrame(s)
+print(df)
+print(df.columns.name)
+```
+
+#### Création de dataframes à partir d'une liste de dictionnaire
+
+
+Un dataframe peut être créé à partir d'une liste de dictionnaires :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico_1 = {
+    "Nom": "Pendragon",
+    "Prenom": "Arthur",
+    "Role": "Roi de Bretagne"
+}
+dico_2 = {
+    "Nom": "de Galles",
+    "Prenom": "Perceval",
+    "Role": "Chevalier du Pays de Galles"
+}
+
+df = pd.DataFrame([dico_1, dico_2])
+print(df)
+```
+
+Si certaines clés sont absentes dans un ou plusieurs des dictionnaires de la liste, les valeurs correspondantes dans le dataframe seront `NaN` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico_3 = {
+    "Prenom": "Guenièvre",
+    "Role": "Reine de Bretagne"
+}
+df = pd.DataFrame([dico_1, dico_2, dico_3])
+print(df)
+```
+
+
+#### Création de dataframes à partir d'un dictionnaire de séries
+
+
+On peut aussi créer un dataframe à partir d'un dictionnaire de séries. Pour illustrer la méthode, créons deux dictionnaires :
+```{python, eval=T, echo=TRUE, error=TRUE}
+# PIB annuel 2017
+# En millions de dollars courants
+dico_gdp_current = {
+    "France": 2582501.31,
+    "USA": 19390604.00,
+    "UK": 2622433.96
+}
+# Indice annuel des prix à la consommation
+dico_cpi = {
+    "France": 0.2,
+    "UK": 0.6,
+    "USA": 1.3,
+    "Germany": 0.5
+}
+```
+
+À partir de ces deux dictionnaires, créons deux séries correspondantes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_gdp_current = pd.Series(dico_gdp_current)
+s_cpi = pd.Series(dico_cpi)
+
+print("s_gdp_current : \n", s_gdp_current)
+print("\ns_cpi : \n", s_cpi)
+```
+
+Puis, créons un dictionnaire de séries :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico_de_series = {
+    "gdp": s_gdp_current,
+    "cpi": s_cpi
+}
+print(dico_de_series)
+```
+
+
+Enfin, créons notre dataframe :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.DataFrame(dico_de_series)
+print(s)
+```
+
+```{block2, type='remarque', echo=TRUE}
+Le dictionnaire `dico_gdp_current` ne contient pas de clé `Germany`, contrairement au dictionnaire `dico_cpi`. Lors de la création du dataframe, la valeur du PIB pour l'Allemagne a dont été assignée comme `NaN`.
+
+```
+
+
+
+
+#### Création de dataframes à partir d'un tableau `NumPy` à deux dimensions
+
+On peut aussi créer un dataframe à partir d'un tableau `Numpy`. Lors de la création, avec la fonction `DataFrame()` de `NumPy`, il est possible de préciser le nom des colonnes (à défaut, l'indiçage des colonnes sera numérique) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+liste = [
+    [1, 2, 3],
+    [11, 22, 33],
+    [111, 222, 333],
+    [1111, 2222, 3333],
+]
+tableau_np = np.array(tableau)
+print(df = pd.DataFrame(tableau_np,
+                  columns = ["a", "b", "c"]))
+```
+
+
+#### Modification de l'index
+
+Comme pour les séries, on peut modifier l'index une fois que le dataframe a été créé, en venant écraser les valeurs des attributs `index` et `columns`, pour l'index des lignes et colonnes, respectivement :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.index = ["o", "d", "i", "l"]
+df.columns = ["aa", "bb", "cc"]
+print(df)
+```
+
+
+
+## Sélection {#pandas-selection}
+
+Dans cette section, nous regardons différentes manières de sélectionner des données dans des séries et dataframes. On note deux manières bien distinctes :
+
+- une première basée sur l'utiliation de crochets directement sur l'objet pour lequel on souhaite sélectionner certaines parties ;
+- seconde s'appuyant sur des indexeurs, accessibles en tant qu'attributs d'objets `NumPy` (`loc`, `at`, `iat`, etc.)
+
+La seconde méthode permet d'éviter certaines confusions qui peuvent apparaître dans le cas d'index numériques.
+
+### Pour les séries
+
+Dans un premier temps, regardons les manières d'extraire des valeurs contenues dans des séries.
+
+
+#### Avec les crochets
+
+On peut utiliser l'index pour extraire les données :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan, .5, 1])
+s[0] # 1er élément de s
+s[1:3] # du 2e élément (inclus) au 4e (non inclus)
+s[[0,4]] # 1er et 5e éléments
+```
+
+On note que contrairement aux tableaux `numpy` ou aux listes, on ne peut pas utiliser des valeurs négatives pour l'index afin de récupérer les données en comptant leur position par rapport à la fin :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s[-2]
+```
+
+
+Dans le cas d'un indice composé de chaînes de caractères, il est alors possible, pour extraire les données de la série, de faire référence soit au contenu de l'indice (pour faire simple, son nom), soit à sa position :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan],
+             index = ["o", "d", "i", "l"])
+print("La série s : \n", s)
+print('s["d"] : \n', s["d"])
+print('s[1] : \n', s[1])
+print("éléments o et i : \n", s[["o", "i"]])
+```
+
+
+
+Par contre, dans le cas où l'indice est défini avec des valeurs numériques, pour extraire les valeurs à l'aide des crochets, ce sera par la valeur de l'indice et pas en s'appuyant sur la position :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, 4, -1, np.nan],
+             index = [4, 40, 2, 3])
+print(s[40])
+```
+
+
+#### Avec les indexeurs
+
+Pandas propose deux types d'indiçage multi-axes : `loc`, `iloc`.  Le premier est principalement basé sur l'utilisation des labels des axes, tandis que le second s'appuie principalement sur les positions à l'aide d'entiers.
+
+Pour les besoins de cette partie, créons deux séries ; une première avec un index textuel, une deuxième avec un index numérique :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num = pd.Series([1, 4, -1, np.nan],
+             index = [5, 0, 4, 1])
+s_texte = pd.Series([1, 4, -1, np.nan],
+             index = ["c", "a", "b", "d"])
+```
+
+##### Extraction d'un seul élément
+
+Pour extraire un objet avec `loc`, on utilise le nom de l'indice :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(s_num.loc[5], s_texte.loc["c"])
+```
+
+Pour extraire un élément unique avec `iloc`, il suffit d'indiquer sa position :
+```{python, eval=T, echo=TRUE, error=TRUE}
+(s_num.iloc[1], s_texte.iloc[1])
+```
+
+
+##### Extraction de plusieurs éléments
+
+
+Pour extraire plusieurs éléments avec `loc`, on utilise les noms (labels) des indices, que l'on fournit dans une liste :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("éléments aux labels 5 et 4 :\n", s_num.loc[[5,4]])
+print("éléments aux labels c et b : \n", s_texte.loc[["c", "b"]])
+```
+
+Pour extraire plusieurs éléments avec `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("éléments aux positions 0 et 2 :\n", s_num.iloc[[0,2]])
+print("éléments aux positions 0 et 2 : \n", s_texte.iloc[[0,2]])
+```
+
+
+##### Découpage {#decoupage-series}
+
+
+On peut effectuer des découpages de séries, pour récupérer des éléments consécutifs :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("éléments des labels 5 jusqu'à 4 :\n", s_num.loc[5:4])
+print("éléments des labels c à b : \n", s_texte.loc["c":"b"])
+```
+
+Pour extraire plusieurs éléments avec `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("éléments aux positions de 0 à 2 :\n", s_num.iloc[0:2])
+print("éléments aux positions de 0 à 2 : \n", s_texte.iloc[0:2])
+```
+
+Comme ce que l'on a vu jusqu'à présent, la valeur supérieur de la limite n'est pas incluse dans le découpage.
+
+
+##### Masque
+
+On peut aussi utiliser un masque pour extraire des éléments, indifféremment en utilisant `loc` ou `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("\n",s_num.loc[[True, False, False, True]])
+print("\n", s_texte.loc[[True, False, False, True]])
+print("\n", s_num.iloc[[True, False, False, True]])
+print("\n", s_texte.iloc[[True, False, False, True]])
+```
+
+
+
+
+##### Quel est l'intérêt ?
+
+
+Pourquoi introduir de telles manières d'extraire les données et ne pas se contenter de l'extraction à l'aide des crochers sur les objets ? Regardons un exemple simple. Admettons que nous disposons de la série `s_num`, avec un indice composé d'entiers n'étant pas une séquence allant de 0 au nombre d'éléments. Dans ce cas, si nous souhaitons récupérer récupérer le 2e élément, du fait de l'indice composé de valeurs numériques, nous ne pouvons pas l'obtenir en demandant `s[1]`. Pour extraire le 2e de la série, on doit savoir que son indice vaut `0` et ainsi demander :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("L'élément dont l'index vaut 0 : ", s_num[0])
+```
+
+Pour pouvoir effectuer l'extraction en fonction de la position, il est bien pratique d'avoir cet attribut `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("L'élément en 2e position :", s_num.iloc[1])
+```
+
+
+
+### Pour les dataframes
+
+À présent, regardons différentes manières d'extraire des données depuis un dataframe. Créons deux dataframes en exemple, l'une avec un index numérique ; une autre avec un index textuel :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, 62],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, 31, 29],
+        "taille": [162, 156, 172, 160, 158],
+       } 
+df_num = pd.DataFrame(dico)
+df_texte = pd.DataFrame(dico, index=["a", "e", "c", "b", "d"])
+print("df_num : \n", df_num)
+print("df_texte : \n", df_texte)
+```
+
+
+Pour faire simple, lorsqu'on veut effectuer une extraction avec les attributs  `iloc`, la syntaxe est la suivante :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+df.iloc[selection_lignes, selection_colonnes]
+```
+
+avec `selection_lignes` :
+
+- une valeur unique : `1` (seconde ligne) ;
+- une liste de valeurs : `[2, 1, 3]` (3e ligne, 2e ligne et 4e ligne) ;
+- un découpage : `[2:4]` (de la 3e ligne à la 4e ligne (non incluse)).
+
+pour `selection_colonnes` :
+
+- une valeur unique : `1` (seconde colonne) ;
+- une liste de valeurs : `[2, 1, 3]` (3e colonne, 2e colonne et 4e colonne) ;
+- un découpage : `[2:4]` (de la 3e colonne à la 4e colonne (non incluse)).
+
+
+Avec `loc`, la syntaxe est la suivante :
+
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+df.loc[selection_lignes, selection_colonnes]
+```
+
+avec `selection_lignes` :
+
+- une valeur unique : `"a"` (ligne nommée `a`) ;
+- une liste de noms : `["a", "c", "b"]` (lignes nommées "a", "c" et "b") ;
+- un masque : `df.['a']<10` (lignes pour lesquelles les valeurs du masque valent `True`).
+
+pour `selection_colonnes` :
+
+- une valeur unique : `a` (colonne nommée `a`) ;
+- une liste de valeurs : `["a", "c", "b"]` (colonnes nommées "a", "c" et "b") ;
+- un découpage : `["a":"c"]` (de la colonne nommée "a" à la colonne nommée "c").
+
+#### Extraction d'une ligne
+
+Pour extraire une ligne d'un dataframe, on peut utiliser le nom de la ligne avec `loc` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Ligne nommée 'e':\n", df_texte.loc["e"])
+print("\nLigne nommée 'e':\n", df_num.loc[1])
+```
+
+
+Ou bien, sa position avec `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Ligne en position 0:\n", df_texte.iloc[0])
+print("\nLigne en position 0:\n", df_num.iloc[0])
+```
+
+
+
+#### Extraction de plusieurs lignes
+
+Pour extraire plusieurs lignes d'un dataframe, on peut utiliser leur noms avec `loc` (dans un tableau) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Lignes nommées a et c :\n", df_texte.loc[["a", "c"]])
+print("\nLignes nommées 0 et 2:\n", df_num.loc[[0, 2]])
+```
+
+
+Ou bien, leur position avec `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Lignes aux positions 0 et 3:\n", df_texte.iloc[[0, 3]])
+print("\nLignes aux positions 0 et 3:\n", df_num.iloc[[0, 3]])
+```
+
+
+
+#### Découpage de plusieurs lignes {#decoupage-df-lignes}
+
+On peut récupérer une suite de ligne en délimitant la première et la dernière à extraire en fonction de leur nom et en utilisant `loc` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Lignes du label a à c:\n", df_texte.loc["a":"c"])
+print("\Lignes du label 0 à 2:\n", df_num.loc[0:2])
+```
+
+Avec l'attribut `iloc`, c'est également possible (encore une fois, la borne supérieure n'est pas incluse) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Lignes des positions 0 à 3 (non incluse):\n", df_texte.iloc[0:3])
+print("\nLignes des positions 0 à 3 (non incluse):\n", df_num.iloc[0:3])
+```
+
+
+
+#### Masque {#masque-extraction-ligne}
+
+On peut aussi utiliser un masque pour sélectionner certaines lignes. Par exemple, si on souhaite récupérer les lignes pour lesquelles la variable `height` a une valeur supérieure à 60, on utilise le masque suivante :
+```{python, eval=T, echo=TRUE, error=TRUE}
+masque = df_texte["height"]> 60
+print(masque)
+```
+
+Pour filtrer :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df_texte.loc[masque])
+```
+
+
+
+#### Extraction d'une seule colonne
+
+Pour extraire une colonne d'un dataframe, on peut utiliser des crochets et faire référence au nom de la colonne (qui est indexée par les noms) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df_texte['weight'].head(2))
+```
+
+En ayant sélectionné une seule colonne, on obtient une série (l'index du dataframe est conservé pour la série) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(type(df_texte['weight']))
+```
+
+
+On peut également extraire une colonne en faisant référence à l'attribut du dataframe portant le nom de cette colonne :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df_texte.weight.head(2))
+```
+
+
+Comme pour les séries, on peut s'appuyer sur les attributs `loc` et `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Colone 2 (loc):\n", df_texte.loc[:,"weight"])
+print("Colonne 2 (iloc):\n", df_texte.iloc[:,1])
+```
+
+
+#### Extraction de plusieurs colonnes
+
+
+Pour extraire plusieurs colonnes, il suffit de placer les noms des colonnes dans un tableau :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df_texte[["weight", "height"]])
+```
+
+L'ordre dans lequel on appelle ces colonnes correspond à l'ordre dans lequel elles seront retournées.
+
+À nouveau, on peut utuliser l'attribut `loc` (on utilise les deux points ici pour dire que l'on veut toutes les lignes) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Colonnes de weight à height:\n", df_texte.loc[:,["weight", "height"]])
+```
+
+
+Et l'attribut `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Colonnes 2 et 1 :\n", df_num.iloc[:,[1,0]])
+```
+
+#### Découpage de plusieurs colonnes {#decoupage-df-colonnes}
+
+Pour effectuer un découpage, on peut utiliser les attributs `loc` et `iloc`. Attention, on ne place pas le nom des colonnes servant pour le découpage dans un tableau ici :
+
+Avec `loc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Colones 2 et 2:\n", df_texte.loc[:, "height":"age"])
+```
+
+
+Et avec l'attribut `iloc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Colonnes de la position 0 à 2 (non incluse) :\n", 
+      df_texte.iloc[:, 0:2])
+```
+
+
+
+
+#### Extraction de lignes et colonnes
+
+À présent que nous avons passé en revue de nombreuses manières de sélectionner une ou plusieurs lignes ou colonnes, nous pouvons également mentionner qu'il est possible de faire des sélections de colonnes et de lignes dans une même instruction.
+
+
+Par exemple, avec `iloc`, sélectionnons les lignes de la position 0 à la position 2 (non incluse) et les colonnes de la position 1 à 3 (non incluse) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df_texte.iloc[0:2, 1:3])
+```
+
+
+Avec `loc`, sélectionnons les lignes nommées `a` et `c` et les colonnes de celle nommée `weight` jusqu'à `age`.
+```{python, eval=T, echo=TRUE, error=TRUE}
+df_texte.loc[["a", "c"], "weight":"age"]
+```
+
+
+
+
 
 ## Filtrage
 
+
+Pour effectuer une filtration des données dans un tableau, en fonction des valeurs rencontrées pour certaines variables, on utilise des masques, comme indiqué dans la Section\ \@ref(masque-extraction-ligne).
+
+
+Redennons quelques exemples ici, en redéfinissant notre dataframe :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, 62],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, 31, 29],
+        "taille": [162, 156, 172, 160, 158],
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+L'idée consiste à créer un masque retournant une série contenant des valeurs booléennes, une par ligne. Lorsque la valeur de la ligne du masque vaut `True`, la ligne du dataframe sur lequel sera appliqué le masque sera retenue, tandis qu'elle ne le sera pas quand la valeur de la ligne du masque vaut `False`.
+
+
+Regardons un exemple simple, dans lequel nous souhaitons conserver les observations uniquement pour lesquelles la valeur de la variable `age` est inférieure à 30 :
+```{python, eval=T, echo=TRUE, error=TRUE}
+masque = df["age"] < 30
+print(masque)
+```
+
+Il reste alors à appliquer ce masque, avec `loc`. On souhaite l'ensemble des colonnes, mais seulement quelques lignes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.loc[masque])
+```
+
+Note : cela fonctionne aussi sans `loc` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df[masque])
+```
+
+Plus simplement, on peut utiliser la méthode `query()` de `pandas`. On fournit une expression booléenne à évaluer à cette méthode pour filtrer les données :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.query(age<30))
+```
+
+
+La requête peut être un peu plus complexe, en combinant opérateurs de comparaison (c.f. Section\ \@ref(operateurs-comparaison)) et opérateurs logiques (c.f. Section\ \@ref(operateurs-logiques)). Par exemple, admettons que nous voulons filtrer les valeurs du dataframe pour ne retenir que les observations pour lesquelles la taille est inférieure ou égale à 62 et la masse strictement supérieure à 120. La requête serait alors :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.query("weight > 120 and height < 62"))
+```
+
+On peut noter que l'instruction suivante donne le même résultat :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.query("weight > 120").query("height < 62"))
+```
+
+
+
+## Valeurs manquantes
+
+En économie, il est assez fréquent de récupérer des données incomplètes. La manière dont les données manquantes sont gérées par `pandas` est le recours aux deux valeurs spéciales : `None` et `NaN`.
+
+La valeur `None` peut être utilisée dans les tableaux `NumPy` uniquement quand le type de ces derniers est `object`.
+```{python, eval=T, echo=TRUE, error=TRUE}
+tableau_none = np.array([1, 4, -1, None])
+print(tableau_none)
+print(type(tableau_none))
+```
+
+Avec un tableau de type `object`, les opérations effectuées sur les données seront moins efficaces qu'avec un tableau d'un type numérique [@vanderplas2016python, p 121].
+
+La valeur `NaN` est une valeur de nombre à virgule flottante (c.f. Section\ \@ref(numpy-constantes)). `NumPy` la gère différemment de `NaN`, et n'assigne passe type `object` d'emblée en présence de `NaN` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+tableau_nan = np.array([1, 4, -1, np.nan])
+print(tableau_nan)
+print(type(tableau_nan))
+```
+
+Avec `pandas`, ces deux valeurs, `None` et `NaN` peuvent être présentes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([1, None, -1, np.nan])
+print(s)
+print(type(s))
+```
+
+Cela tient aussi pour les tableaux :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, np.nan],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, np.nan, 29],
+        "taille": [162, 156, 172, 160, 158],
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+On note toutefois que seule le type des variables pour lesquelles existent des valeurs manquantes sont passées en `float64` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.dtypes)
+```
+
+
+
+```{block2, type='remarque', echo=TRUE}
+On note que les données sont enregistrées sur un type `float64`. Lorsqu'on travaille sur un tableau ne comportant pas de valeurs manquantes, dont le type est `int` ou `bool`, si on introduit une valeur manquante, `pandas` changera le type des données en `float64` et `object`, respectivement.
+```
+
+
+`pandas` propose différentes pour manipuler les valeurs manquantes.
+
+
+### Repérer les valeurs manquantes
+
+Avec la méthode `isnull()`, un masque de booléens est retournée, indiquant `True` pour les observations dont la valeur est `NaN` ou `None` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(s.isnull())
+```
+
+
+Pour savoir si une valeur n'est pas nulle, on dispose de la méthode `notnull()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(s.notnull())
+```
+
+
+### Retirer les observations avec valeurs manquantes
+
+La méthode `dropna()` permet quant à elle de retirer les observations disposant de valeurs nulles :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.dropna())
+```
+
+### Retirer les valeurs manquantes par d'autres valeurs
+
+Pour remplacer les valeurs manquantes par d'autres valeurs, `pandas` propose d'utiliser la méthode `fillna()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.fillna(-9999))
+```
+
+
+
+
+## Suppressions
+
+Pour supprimer une valeur sur un des axes d'une série ou d'un dataframe, `NumPy` propose la méthode `drop()`.
+
+
+### Suppression d'éléments dans une série
+
+Pour illustrer le fonctionnement de la méthode `drop()`, créons une série avec un index numérique, une autre avec un index textuel :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num = pd.Series([1, 4, -1, np.nan],
+             index = [5, 0, 4, 1])
+s_texte = pd.Series([1, 4, -1, np.nan],
+             index = ["c", "a", "b", "d"])
+
+```
+
+On peut supprimer un élément d'une série en utilisant son nom :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("pour s_num : \n", s_num.drop(5))
+print("\npour s_texte : \n", s_texte.drop("c"))
+```
+
+On peut aussi aller récupérer le nom en fonction de la position, en passant par un détour en utilisant la méthode `index()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+pritn(s.drop(s_num.index[0]))
+print("s_num.index[0] : ", s_num.index[0])
+print("s_texte.index[0] : ", s_texte.index[0])
+
+print("pour s_num : \n", s_num.drop(s_num.index[0]))
+print("\npour s_texte : \n", s_texte.drop(s_texte.index[0]))
+```
+
+
+
+Pour supprimer plusieurs éléments, il suffit de fournir plusieurs noms d'indice dans une liste à la méthode `drop()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("pour s_num : \n", s_num.drop([5, 4]))
+print("\npour s_texte : \n", s_texte.drop(["c", "b"]))
+```
+
+
+À nouveau, on peut aller récupérer le nom en fonction de la position, en passant par un détour en utilisant la méthode `index()` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+pritn(s.drop(s_num.index[0]))
+print("s_num.index[[0,2]] : ", s_num.index[[0,2]])
+print("s_texte.index[[0,2]] : ", s_texte.index[[0,2]])
+
+print("pour s_num : \n", s_num.drop(s_num.index[[0,2]]))
+print("\npour s_texte : \n", s_texte.drop(s_texte.index[[0,2]]))
+```
+
+
+
+Il est possible d'utiliser un découpage également pour obtenir la série sans le ou les éléments (c.f. Section\ \@ref(decoupage-series))
+
+
+### Suppression d'éléments dans un dataframe
+
+
+Pour illustrer le fonctionnement de la méthode `drop()` sur un dataframe, créons-en un :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num = pd.Series([1, 4, -1, np.nan],
+             index = [5, 0, 4, 1])
+s_texte = pd.Series([1, 4, -1, np.nan],
+             index = ["c", "a", "b", "d"])
+dico = {"height" : [58, 59, 60, 61, np.nan],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, np.nan, 29],
+        "taille": [162, 156, 172, 160, 158],
+       } 
+df = pd.DataFrame(dico)
+```
+
+#### Suppressions de lignes
+
+Pour supprimer une ligne d'un dataframe, on peut faire référence à son nom (ici, les noms sont des numéros, mais ce sont bien des labels) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Supprimer la première ligne :  \n", df.drop(0))
+```
+
+Si les lignes ont des labels textuels, on peut au préalable aller les récupérer à l'aide de la méthode `index()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+label_pos_0 = df.index[0]
+print("Supprimer la première ligne :  \n", df.drop(label_pos_0))
+```
+
+
+Pour supprimer plusieurs lignes, on donne le nom de ces lignes dans une liste à la méthode `drop()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Supprimer les 1ère et 4e lignes :  \n", df.drop([0,3]))
+```
+
+Ou encore, en indiquant les positions des lignes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+label_pos = df.index[[0, 3]]
+print("Supprimer les 1ère et 4e lignes :  \n", df.drop(label_pos))
+```
+
+Il est possible d'utiliser un découpage également pour obtenir la série sans le ou les éléments (c.f. Sections\ \@ref(decoupage-df-lignes) et \@ref(decoupage-df-colonnes))
+
+
+#### Suppressions de colonnes
+
+
+Pour supprimer une colonne d'un dataframe, on procède de la même manière que pour les lignes, mais en ajoutant le paramètre `axis=1` à la méthode `drop()` pour préciser que l'on s'intéresse aux colonnes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Supprimer la première colonne :  \n", df.drop("height", axis=1))
+```
+
+On peut au préalable aller récupérer les labels des colonnes en fonction de leur position à l'aide de la méthode `columns()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+label_pos = df.columns[0]
+print("label_pos : ", label_pos)
+print("Supprimer la première colonne :  \n", df.drop(label_pos, axis=1))
+```
+
+
+Pour supprimer plusieurs colonnes, on donne le nom de ces colonnes dans une liste à la méthode `drop()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("Supprimer les 1ère et 4e colonnes :  \n", df.drop(["height", "taille"], axis = 1))
+```
+
+Ou encore, en indiquant les positions des colonnes :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+label_pos = df.columns[[0, 3]]
+print("Supprimer les 1ère et 4e colonnes :  \n", df.drop(label_pos, axis=1))
+```
+
+Il est possible d'utiliser un découpage également pour obtenir la série sans le ou les éléments (c.f. Sections\ \@ref(decoupage-df-lignes) et \@ref(decoupage-df-colonnes))
+
+
+## Remplacement de valeurs
+
+Nous allons à présent regarder comment modifier une ou plusieurs valeurs, dans le cas d'une série puis d'un dataframe.
+
+### Pour une série
+
+Pour modifier une valeur particulière dans une série ou dans un dataframe, on peut utiliser le symbole égale (`=`) en ayant au préalable ciblé l'emplacement de la valeur à modifier, à l'aide des techniques d'extraction expliquées dans la Section\ \@ref(pandas-selection).
+
+Par exemple, considérons la série suivante :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num = pd.Series([1, 4, -1, np.nan],
+             index = [5, 0, 4, 1])
+print("s_num : ", s_num)
+```
+
+Modifions le deuxième élément élément de `s_num`, pour lui donner la valeur -3 :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num.iloc[1] = -3
+print("s_num : ", s_num)
+```
+
+
+Il est évidemment possible de modifier plusieurs valeurs à la fois. 
+
+Il suffit à nouveau de cibler les positions (on peu utiliser de nombreuses manières de le faire) et de fournir un objet de dimensions équivalentes pour venir remplacer les valeurs ciblées. Par exemple, dans notre série `s_num`, allons remplacer les valeurs en position 1 et 3 (2e et 4e valeurs) par -10 et -9 :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num.iloc[[1,3]] = [-10, -9]
+print(s_num)
+```
+
+
+### Pour un dataframe
+
+Considérons le dataframe suivant :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"ville" : ["Marseille", "Aix",
+                   "Marseille", "Aix", "Paris", "Paris"],
+        "annee": [2019, 2019, 2018, 2018,2019, 2019],
+        "x": [1, 2, 2, 2, 0, 0],
+        "y": [3, 3, 2, 1, 4, 4],
+       } 
+df = pd.DataFrame(dico)
+print("df : \n", df)
+```
+
+
+#### Modifications d'une valeur particulière
+
+Modifions la valeur de la première ligne de `df` pour la colonne `annee`, pour que celle-ci vaille 2020. Dans un premier temps, récupérons la position de la colonne `annee` dans le dataframe, à l'aide de la méthode `get_loc()` appliquée à l'attribut `colnames` du dataframe :
+```{python, eval=T, echo=TRUE, error=TRUE}
+pos_annee = df.columns.get_loc("annee")
+print("pos_annee : ", pos_annee)
+```
+
+Ensuite, effectuons la modification :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.iloc[0,pos_annee] = 2020
+print("df : \n", df)
+```
+
+
+#### Modifications sur une ou plusieurs colonnes
+
+Pour modifier toutes les valeurs d'une colonne pour y placer une valeur particulière, par exemple un 2 dans la colonne `x` de `df` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.x = 2
+print("df : \n", df)
+```
+
+
+On peut également modifier les valeurs de la colonne en fournissant une liste de valeurs :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.x = [2, 3, 4, 2, 1, 0]
+print("df : \n", df)
+```
+
+On peut donc  imaginer modifier les valeurs d'une colonne en fonction des valeurs que l'on lit dans une autre colonne. Par exemple, admettons le code suivant : si la valeur de `y` vaut 2, alors celle de x vaut "a", si la valeur de `y` vaut 1, lors celle de `x` vaut "b", sinon, elle vaut `NaN`. Dans un premier temps, construisons une liste contenant les valeurs à insérer (que nous nommerons `nv_val`), à l'aide d'une boucle. Nous allons parcourir tous les éléments de la colonne `y`, et à chaque itération ajouter à `nv_val` la valeur obtenue en effectuant nos comparaisons :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+nv_val = []
+for i in np.arange(len(df.index)):
+        if df.y[i] == 2:
+            nv_val.append("a")
+        elif df.y[i] == 1:
+            nv_val.append("b")
+        else:
+            nv_val.append(np.nan)
+print("nv_val : ", nv_val)
+```
+
+Nous sommes prêts à modifier le contenu de la colonne `x` de `df` pour le remplacer par `nv_val` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.x = nv_val
+print("df : \n", df)
+```
+
+
+Pour remplacer plusieurs colonnes en même temps :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df[["x", "y"]] = [[2, 3, 4, 2, 1, 0], 1]
+print("df : \n", df)
+```
+
+Dans l'instruction précédente, nous avons remplacé le contenu des colonnes `x` et `y` par une vecteur de valeurs écrites à la main pour `x` et par la valeur 1 pour toutes les observations pour `y`.
+
+
+
+#### Modifications sur une ou plusieurs lignes
+
+
+Pour remplacer une ligne par une valeur constante (peu d'intérêt ici) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.iloc[1,:] = 1
+print("df : \n", df)
+```
+
+Il peut être plus intéressant de remplacer une observation comme suit :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.iloc[1,:] = ["Aix", 2018, 1, 2, 3]
+print("df : \n", df)
+```
+
+
+Pour remplacer plusieurs lignes, la méthode est identique :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.iloc[[1,3],:] = [
+    ["Aix", 2018, 1, 2, 3],
+    ["Aix", 2018, -1, -1, -1]
+]
+print("df : \n", df)
+```
+
+
+## Ajout de valeurs {#pandas-ajout-valeurs}
+
+Regardons à présent comment ajouter des valeurs, dans une série d'abord, puis dans un dataframe.
+
+### Pour une série
+
+Considérons la série suivante :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num = pd.Series([1, 4, -1, np.nan],
+             index = [5, 0, 4, 1])
+print("s_num : ", s_num)
+```
+
+#### Ajout d'une seule valeur dans une série
+
+
+Pour ajouter une valeur, on utlise la méthode `append()`. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligé de fournir une série avec une valeur pour l'index également :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num_2 = pd.Series([1], index = [2])
+print("s_num_2 : \n", s_num_2)
+s_num = s_num.append(s_num_2)
+print("s_num : \n", s_num)
+```
+
+On note que la méthode `append()` retourne une vue, et que pour répercuter l'ajout, il est nécessaire d'effectuer une nouvelle assignation.
+
+
+En ayant une série avec un index numérique généré automatiquement, on peut préciser la valeur `True` pour le paramètre `ignore_index` de la méthode `append()` pour indiquer de ne pas tenir compte de la valeur de l'index de l'objet que l'on ajoute :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([10, 2, 4])
+s = s.append(pd.Series([2]), ignore_index=True)
+print("s : \n", s)
+```
+
+#### Ajout de plusieurs valeurs dans une série
+
+Pour ajouter plusieurs valeurs, on utlise la méthode `append()`. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligé de fournir une série avec une valeur pour l'index également :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s_num_2 = pd.Series([1], index = [2])
+s_num.append(s_num_2)
+print("s_num : ", s_num)
+```
+
+
+En ayant une série avec un index numérique généré automatiquement :
+```{python, eval=T, echo=TRUE, error=TRUE}
+s = pd.Series([10, 2, 4])
+s.append(pd.Series([2]), ignore_index=True)
+```
+
+
+
+#### Pour un dataframe
+
+Reprenons notre dataframe :
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"ville" : ["Marseille", "Aix",
+                   "Marseille", "Aix", "Paris", "Paris"],
+        "annee": [2019, 2019, 2018, 2018,2019, 2019],
+        "x": [1, 2, 2, 2, 0, 0],
+        "y": [3, 3, 2, 1, 4, 4],
+       } 
+df = pd.DataFrame(dico)
+print("df : \n", df)
+```
+
+
+
+#### Ajout d'une ligne dans un dataframe
+
+Comme pour une série, pour ajouter une ligne, on utlise la méthode `append()`. Dans un premier temps, créons un nouveau dataframe avec la ligne à ajouter :
+```{python, eval=T, echo=TRUE, error=TRUE}
+nv_ligne = pd.DataFrame([["Marseille", "2021", 2, 4]],
+                       columns = df.columns)
+print("nv_ligne : \n", nv_ligne)
+```
+
+On s'est assuré d'avoir le même nom de colonnes ici, en indiquant au paramètre `columns` de la méthode `pd.DataFrame` le nom des colonnes de `df`, c'est-à-dire `df.columns`.
+
+Ajoutons la nouvelle ligne à `df` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = df.append(nv_ligne, ignore_index=True)
+```
+
+À nouveau,la méthode `append()` appliquée à un dataframe, retourne une vue et n'affecte pas l'objet.
+
+
+On peut noter que lors de l'ajout d'une ligne, si le nom des colonnes n'est pas indiqué dans le même ordre que dans le dataframe dans lequel est effectué l'ajout, il faut rajouter une indication au paramètre `sort` de la méthode `append()` :
+
+- si `sort=True`, l'ordre des colonnes de la ligne ajoutée sera appliqué au dataframe de destination ;
+- si `sort=False`, l'odre des colonnes du dataframe de destination ne sera pas modifié.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+nv_ligne = pd.DataFrame([["2021", "Marseille", 2, 4]],
+                       columns = ["annee", "ville", "x", "y"])
+print("nv_ligne : \n", nv_ligne)
+print("avec sort=True : \n", 
+  df.append(nv_ligne, ignore_index=True, sort = True))
+```
+
+
+#### Ajout de plusieurs lignes dans un dataframe
+
+Pour ajouter plusieurs lignes, c'est exactement le même principe qu'avec une seule, il suffit juste d'ajouter un dataframe de plusieurs lignes, avec encore une fois les mêmes noms.
+
+Les lignes à insérer :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+nv_lignes = pd.DataFrame([
+    ["Marseille", "2022", 2, 4],
+    ["Aix", "2022", 3, 3]],
+    columns = df.columns)
+print("nv_ligne : \n", nv_lignes)
+```
+
+Puis l'insertion :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = df.append(nv_lignes, ignore_index=True)
+```
+
+
+#### Ajout d'une colonne dans un dataframe
+
+Pour ajouter une colonne dans un dataframe, on utilise la méthode `assign()`, en indiquant le nom et les valeurs.
+```{python, eval=T, echo=TRUE, error=TRUE}
+from numpy import random
+df = df.assign(z = random.rand(len(df.index)))
+print("df : \n", df)
+```
+
+
+
+#### Ajout de plusieurs colonnes dans un dataframe
+
+Pour ajouter plusieurs colonnes, le même principe s'applique :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = df.assign(a = random.rand(len(df.index)),
+          b = random.rand(len(df.index)))
+print("df : \n", df)
+```
+
+
+
+
+
+
+
+
 ## Retrait des valeurs dupliquées
 
-## Modification des colonnes
+
+Pour retirer les valeurs dupliquées dans un dataframe, `NumPy` propose la méthode `drop_duplicates()`, qui prend plusieurs paramètres optionnels :
+
+- `subset` : en indiquant un ou plusieurs noms de colonnes, la recherche de doublons se fait uniquement sur ces colonnes ;
+- `keep` : permet d'indiquer quelle observation garder en cas de doublons identifies :
+
+  - si `keep='first'`, tous les doublons sont retirés sauf la première occurrence,
+  - si `keep='last'`, tous les doublons sont retirés sauf la dernière occurrence,
+  -si `keep='False'`, tous les doublons sont retirés ;
+
+- `inplace` : booléen (défaut : `False`) pour indiquer si le retrait des doublons doit s'effectuer sur le dataframe ou bien si une copie doit être retournée (par défaut).
+
+
+Donnons quelques exemples à l'aide de ce dataframe qui compose deux doublons quand on considère sa totalité. Si on se concentre uniquement sur les années ou les villes, ou les deux, d'autres doublons peuvent être identifiés.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"ville" : ["Marseille", "Aix",
+                   "Marseille", "Aix", "Paris", "Paris"],
+        "annee": [2019, 2019, 2018, 2018,2019, 2019],
+        "x": [1, 2, 2, 2, 0, 0],
+        "y": [3, 3, 2, 1, 4, 4],
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+
+Pour retirer les doublons :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.drop_duplicates())
+```
+
+Retirer les doublons en gardant la dernière valeur des doublons identifiés :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.drop_duplicates(keep='last')
+```
+
+
+Pour retirer les doublons identifiés quand on se concentre sur le nom des villes, et en conservant uniquement la première valeur :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.drop_duplicates(subset = ["ville"], keep = 'first'))
+```
+
+Idem mais en se concentrant sur les couples (ville, annee)
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.drop_duplicates(subset = ["ville", "annee"], keep = 'first'))
+```
+
+
+On note que le dataframe original n'a pas été impacté, puisque nous n'avons pas touché au paramètre `inplace`. Si à présent, nous demandons à ce que les changement soient opérés sur le dataframe plutôt que de récupérer une copie :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.drop_duplicates(subset = ["ville", "annee"], keep = 'first', inplace = True)
+print(df)
+```
+
+
+Pour savoir si une valeur est dupliquée dans un dataframe, `NumPy` propose la méthode `duplicated()`, qui retourne un masque indiquant pour chaque observation, si elle est dupliquée ou non. Son fonctionnement est similaire à `df.drop_duplicates()`, hormis pour le paramètre `inplace` qui n'est pas présent.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.duplicated(subset = ["ville"], keep = 'first'))
+```
+
+
+## Opérations
+
+Il est souvent nécessaire de devoir effectuer des opérations sur les colonnes d'un dataframe, notamment lorsqu'il s'agit de créer une nouvelle variable.
+
+En reprenant les principes de modification de colonnes (c.f. Section\ \@ref(#pandas-ajout-valeurs)), on imagine assez facilement qu'il est possible d'appliquer les fonctions et méthodes de `NumPy` (c.f. Section\ \@ref(numpy-tableaux)) sur les valeurs des colonnes.
+
+Par exemple, considérons le dataframe suivant :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : 
+               [58, 59, 60, 61, 62,
+                63, 64, 65, 66, 67,
+                68, 69, 70, 71, 72],
+        "weight": 
+               [115, 117, 120, 123, 126,
+                129, 132, 135, 139, 142,
+                146, 150, 154, 159, 164]
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+Ajoutons la colonne `height_2`, élevant les valeurs de la colonne `height` au carré :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = df.assign(height_2 = df.height**2)
+print(df.head(3))
+```
+
+
+À présent, ajoutons la colonne `imc`, fournissant les valeurs de l'indicateur de masse corporelle pour les individus du dataframe ($\text{IMC} = \frac{\text{weight}}{\text{height}^2}$) :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+df = df.assign(imc = df.weight / df.height_2)
+print(df.head(3))
+```
+
+
+### Statistiques
+
+`pandas` propose quelques méthodes pour effectuer des statistiques descriptives pour chaque colonne ou par ligne. Pour cela, la syntaxe est la suivante (tous les paramètres ont une valeur par défaut, la liste est simplifiée ici) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+dataframe.fonction_stat(axis, skipna)
+```
+
+- `axis` : 0 pour les lignes, 1 pour les colonnes ;
+- `skipna` : si `True`, exclue les valeurs manquantes pour effectuer les calculs.
+
+Parmi les méthodes disponibles : `mean()`, `mode()`, `median()` `std()` `min()` `max()` `sum()`
+
+Par exemple, pour calculer la moyenne des valeurs pour chaque colonne : 
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, 62],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, 31, 29],
+        "taille": [162, 156, 172, 160, 158],
+        "married": [True, True, False, False, True],
+        "city": ["A", "B", "B", "B", "A"]
+       } 
+df = pd.DataFrame(dico)
+print(df.mean())
+```
+
+Si on le souhaite, on peut faire la moyenne des valeurs en colonne (sans aucun sens ici) :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.mean(axis=1))
+```
+
+
 
 ## Tri
 
@@ -4585,6 +5935,10 @@ Considérons le vecteur suivant : $x = \begin{bmatrix}1 & 2 & 3 & 4 & 5\end{bmat
 ## Stacking et unstacking
 
 
+
+## Importation et exportation de données
+
+### Fichiers Excel {#pandas-importation-excel}
 
 
 

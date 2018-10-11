@@ -437,7 +437,7 @@ urlcolor=bleuAMSE,}
 
 {
 \hypersetup{linkcolor=black}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \listoftables
@@ -472,6 +472,8 @@ souhaientent apprendre les bases en Python. Il est à destination des
 étudiants de l'AMSE mais pourrait intéresser des individus ayant une
 approche de la donnée à travers la discipline économique désirant
 découvrir Python.
+
+Merci à Adrien Pacifico pour ses commentaires instructifs.
 
 \chapter{Introduction}\label{introduction}
 
@@ -1232,7 +1234,7 @@ faire comme suit :
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{figs/intro_pyplot} \end{center}
+\begin{center}\includegraphics[width=9.03in]{figs/intro_pyplot} \end{center}
 
 \section{L'aide}\label{laide}
 
@@ -1488,14 +1490,15 @@ Lorsque deux littéraux de chaînes sont côte à côte, Python les concatène
 \end{lstlisting}
 
 Il est également possible d'\textbf{ajouter à une chaîne de caractères
-le contenu d'une variable}, à l'aide du marqueur \texttt{\%s} :
+le contenu d'une variable}, à l'aide de crochets (\texttt{\{\}}) et de
+la méthode \texttt{format()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{"}
+\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{\{\}}\StringTok{"}
 \NormalTok{langage_1 }\OperatorTok{=} \StringTok{"R"}
 \NormalTok{langage_2 }\OperatorTok{=} \StringTok{"Python"}
-\NormalTok{preference_1 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_1}
+\NormalTok{preference_1 }\OperatorTok{=}\NormalTok{ x.}\BuiltInTok{format}\NormalTok{(langage_1)}
 \BuiltInTok{print}\NormalTok{(preference_1)}
 \end{Highlighting}
 \end{Shaded}
@@ -1506,7 +1509,7 @@ le contenu d'une variable}, à l'aide du marqueur \texttt{\%s} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{preference_2 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ langage_2}
+\NormalTok{preference_2 }\OperatorTok{=}\NormalTok{ x.}\BuiltInTok{format}\NormalTok{(langage_2)}
 \BuiltInTok{print}\NormalTok{(preference_2)}
 \end{Highlighting}
 \end{Shaded}
@@ -1516,13 +1519,13 @@ le contenu d'une variable}, à l'aide du marqueur \texttt{\%s} :
 \end{lstlisting}
 
 Il est tout à fait possible d'ajouter \textbf{plus d'un contenu de
-variable} dans une chaîne de caractères, toujours avec le marqueur
-\texttt{\%s} :
+variable} dans une chaîne de caractères, toujours avec les crochets et
+la méthode \texttt{format()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{%s}\StringTok{ et en }\SpecialCharTok{%s}\StringTok{"}
-\NormalTok{preference_3 }\OperatorTok{=}\NormalTok{ x }\OperatorTok{%}\NormalTok{ (langage_1, langage_2)}
+\NormalTok{x }\OperatorTok{=} \StringTok{"J'aime coder en }\SpecialCharTok{\{\}}\StringTok{ et en }\SpecialCharTok{\{\}}\StringTok{"}
+\NormalTok{preference_3 }\OperatorTok{=}\NormalTok{ x.}\BuiltInTok{format}\NormalTok{(langage_1, langage_2)}
 \BuiltInTok{print}\NormalTok{(preference_3)}
 \end{Highlighting}
 \end{Shaded}
@@ -1593,7 +1596,6 @@ suffit de préciser les deux valeurs d'indices :
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \StringTok{"You shall not pass!"}
-
 \CommentTok{# Du quatrième caractère (non inclus) au neuvième (inclus)}
 \BuiltInTok{print}\NormalTok{(x[}\DecValTok{4}\NormalTok{:}\DecValTok{9}\NormalTok{])}
 \end{Highlighting}
@@ -2182,6 +2184,29 @@ Par exemple, pour écrire \(3,2^12\), on procèdera comme suit :
 
 \begin{lstlisting}
 ## 3200000000000.0
+\end{lstlisting}
+
+Par ailleurs, lorsque le nombre est égal à une fraction de 0, on peut
+s'affranchir d'écrire le zéro :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\FloatTok{0.35}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0.35
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(.}\DecValTok{35}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## 0.35
 \end{lstlisting}
 
 \subsection{Nombres complèxes}\label{nombres-complexes}
@@ -3203,7 +3228,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-11 16:35:36.018992
+## 2018-10-12 00:58:06.603419
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3213,7 +3238,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-11 16:35:36.020317
+## 2018-10-12 00:58:06.605499
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4156,7 +4181,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille', 'Toulon'}
+## {'Toulon', 'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4169,7 +4194,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille', 'Toulon'}
+## {'Toulon', 'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4185,7 +4210,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4211,7 +4236,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Nice', 'Aix-en-Provence', 'Rennes', 'Marseille'}
+## {'Marseille', 'Aix-en-Provence', 'Nice', 'Rennes'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4258,7 +4283,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Nice', 'Marseille', 'Aix-en-Provence', 'Toulon'}
+## y :  {'Nice', 'Toulon', 'Marseille', 'Aix-en-Provence'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -5062,7 +5087,6 @@ Pour tester l'égalité de contenu entre deux objets :
 \NormalTok{a }\OperatorTok{=} \StringTok{"Hello"}
 \NormalTok{b }\OperatorTok{=} \StringTok{"World"}
 \NormalTok{c }\OperatorTok{=} \StringTok{"World"}
-
 \BuiltInTok{print}\NormalTok{(a }\OperatorTok{==}\NormalTok{ c)}
 \end{Highlighting}
 \end{Shaded}
@@ -5088,7 +5112,6 @@ L'inégalité entre deux objets :
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
 \NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]}
-
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{!=}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5118,7 +5141,6 @@ Pour savoir si un objet est inférieur (strictement ou non) ou inférieur
 \NormalTok{x }\OperatorTok{=} \DecValTok{1}
 \NormalTok{y }\OperatorTok{=} \DecValTok{1}
 \NormalTok{z }\OperatorTok{=} \DecValTok{2}
-
 \BuiltInTok{print}\NormalTok{(x }\OperatorTok{<}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -5342,7 +5364,6 @@ retourne faux :
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \VariableTok{True}
 \NormalTok{y }\OperatorTok{=} \VariableTok{False}
-
 \BuiltInTok{print}\NormalTok{(x }\KeywordTok{and}\NormalTok{ y)}
 \end{Highlighting}
 \end{Shaded}
@@ -6137,7 +6158,6 @@ appel à la méthode \texttt{reader()} du module \texttt{csv} :
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{'./fichiers_exemples/fichier_csv.csv'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{  mon_fichier_reader }\OperatorTok{=}\NormalTok{ csv.reader(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{, quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{)}
 \NormalTok{  donnees }\OperatorTok{=}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ mon_fichier_reader]}
-
 \BuiltInTok{print}\NormalTok{(donnees)}
 \end{Highlighting}
 \end{Shaded}
@@ -6253,7 +6273,6 @@ hébergé sur Internet :
 \ImportTok{import}\NormalTok{ csv}
 \ImportTok{import}\NormalTok{ urllib.request}
 \ImportTok{import}\NormalTok{ codecs}
-
 \NormalTok{url }\OperatorTok{=} \StringTok{"http://egallic.fr/Enseignement/Python/fichiers_exemples/fichier_csv.csv"}
 \ControlFlowTok{with}\NormalTok{ urllib.request.urlopen(url) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fochier_csv }\OperatorTok{=}\NormalTok{ csv.reader(codecs.iterdecode(mon_fichier, }\StringTok{'utf-8'}\NormalTok{))}
@@ -6277,7 +6296,6 @@ API, on peut utiliser la librairie \texttt{json}, et sa méthode
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ json}
 \NormalTok{lien }\OperatorTok{=} \StringTok{'./fichiers_exemples/tweets.json'}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(lien) }\ImportTok{as}\NormalTok{ mon_fichier_json:}
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ json.load(mon_fichier_json)}
 \end{Highlighting}
@@ -6473,12 +6491,10 @@ Exemple de création d'un fichier CSV :
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ csv}
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/fichier_export.csv"}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ mon_fichier:}
 \NormalTok{    mon_fichier_ecrire }\OperatorTok{=}\NormalTok{ csv.writer(mon_fichier, delimiter}\OperatorTok{=}\StringTok{','}\NormalTok{,}
 \NormalTok{                                    quotechar}\OperatorTok{=}\StringTok{'"'}\NormalTok{,}
 \NormalTok{                                    quoting}\OperatorTok{=}\NormalTok{csv.QUOTE_MINIMAL)}
-
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'Pays'}\NormalTok{, }\StringTok{'Année'}\NormalTok{, }\StringTok{'Trimestre'}\NormalTok{, }\StringTok{'TC_PIB'}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2017'}\NormalTok{, }\StringTok{'Q4'}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
 \NormalTok{    mon_fichier_ecrire.writerow([}\StringTok{'France'}\NormalTok{, }\StringTok{'2018'}\NormalTok{, }\StringTok{'Q1'}\NormalTok{, }\FloatTok{0.2}\NormalTok{])}
@@ -6512,7 +6528,6 @@ interrogée avec la libraririe \texttt{twitter-python}) en JSON.
   \StringTok{"equipes"}\NormalTok{: [}\StringTok{"Cleveland"}\NormalTok{, }\StringTok{"Boston"}\NormalTok{]\}}
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6541,7 +6556,6 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Highlighting}[]
 \NormalTok{x_json }\OperatorTok{=}\NormalTok{ json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \NormalTok{y_json }\OperatorTok{=}\NormalTok{ json.dumps(y, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"x_json: "}\NormalTok{, x_json)}
 \end{Highlighting}
 \end{Shaded}
@@ -6563,7 +6577,6 @@ des séquences de type \texttt{\textbackslash{}uXXXX}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/export_json.json"}
-
 \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(chemin, }\StringTok{'w'}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
 \NormalTok{    json.dump(json.dumps(x, ensure_ascii}\OperatorTok{=}\VariableTok{False}\NormalTok{), f)}
 \NormalTok{    f.write(}\StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
@@ -6581,7 +6594,6 @@ Si on souhaite réimporter dans Python le contenu du fichier
 \NormalTok{    data }\OperatorTok{=}\NormalTok{ []}
     \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ f:}
 \NormalTok{        data.append(json.loads(line, encoding}\OperatorTok{=}\StringTok{"utf-8"}\NormalTok{))}
-
 \BuiltInTok{print}\NormalTok{(data)}
 \end{Highlighting}
 \end{Shaded}
@@ -6758,12 +6770,10 @@ Admettons que la température est de 26 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{26}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6778,12 +6788,10 @@ Si la température est à présent de 32 degrés C :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \DecValTok{32}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaud"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froid"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"Il fait "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -6825,7 +6833,6 @@ nuances :
 \begin{Highlighting}[]
 \NormalTok{temperature }\OperatorTok{=} \OperatorTok{-}\DecValTok{4}
 \NormalTok{chaleur }\OperatorTok{=} \StringTok{""}
-
 \ControlFlowTok{if}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{28}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"chaude"}
 \ControlFlowTok{elif}\NormalTok{ temperature }\OperatorTok{<=} \DecValTok{28} \KeywordTok{and}\NormalTok{ temperature }\OperatorTok{>} \DecValTok{15}\NormalTok{:}
@@ -6834,7 +6841,6 @@ nuances :
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"froide"}
 \ControlFlowTok{else}\NormalTok{:}
 \NormalTok{  chaleur }\OperatorTok{=} \StringTok{"très froide"}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"La température est "} \OperatorTok{+}\NormalTok{ chaleur)}
 \end{Highlighting}
 \end{Shaded}
@@ -7079,9 +7085,10 @@ Aussi, pour afficher la suite des \(10\) premiers carrés :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{message }\OperatorTok{=} \StringTok{"Le carré de }\SpecialCharTok{\{\}}\StringTok{ est }\SpecialCharTok{\{\}}\StringTok{"} 
 \NormalTok{n}\OperatorTok{=}\DecValTok{10}
 \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, n}\OperatorTok{+}\DecValTok{1}\NormalTok{):}
-  \BuiltInTok{print}\NormalTok{(}\StringTok{"Le carré de }\SpecialCharTok{%s}\StringTok{ est }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
+  \BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7124,8 +7131,9 @@ une boucle \texttt{for()}, on peut définir les valeurs ``à la main'' :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{message }\OperatorTok{=} \StringTok{"Le carré de }\SpecialCharTok{\{\}}\StringTok{ est }\SpecialCharTok{\{\}}\StringTok{"}
 \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ [}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{]:}
-  \BuiltInTok{print}\NormalTok{(}\StringTok{"Le carré de }\SpecialCharTok{%s}\StringTok{ est }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
+  \BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(i,i}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7143,8 +7151,9 @@ numériques :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{message }\OperatorTok{=} \StringTok{"Il y a }\SpecialCharTok{\{\}}\StringTok{ lettre(s) dans le prénom }\SpecialCharTok{\{\}}\StringTok{"}
 \ControlFlowTok{for}\NormalTok{ prenom }\KeywordTok{in}\NormalTok{ [}\StringTok{"Pascaline"}\NormalTok{, }\StringTok{"Gauthier"}\NormalTok{, }\StringTok{"Xuan"}\NormalTok{, }\StringTok{"Jimmy"}\NormalTok{]:}
-  \BuiltInTok{print}\NormalTok{(}\StringTok{"Il y a }\SpecialCharTok{%s}\StringTok{ lettre(s) dans le prénom }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (}\BuiltInTok{len}\NormalTok{(prenom), prenom))}
+  \BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(}\BuiltInTok{len}\NormalTok{(prenom), prenom))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7159,9 +7168,10 @@ Rien n'empêche de faire des boucles à l'intérieur de boucles :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{message }\OperatorTok{=} \StringTok{"i vaut }\SpecialCharTok{\{\}}\StringTok{ et j vaut }\SpecialCharTok{\{\}}\StringTok{"}
 \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{):}
     \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{):}
-        \BuiltInTok{print}\NormalTok{(}\StringTok{"i vaut }\SpecialCharTok{%s}\StringTok{ et j vaut }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (i, j))}
+        \BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(i, j))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7193,10 +7203,11 @@ le symbole \texttt{+=} plutôt que d'écrire
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{message }\OperatorTok{=} \StringTok{"Nouvelle valeur pour j : }\SpecialCharTok{\{\}}\StringTok{"}
 \NormalTok{j }\OperatorTok{=} \DecValTok{10}
 \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{):}
 \NormalTok{  j }\OperatorTok{+=} \DecValTok{5}
-  \BuiltInTok{print}\NormalTok{(}\StringTok{"Nouvelle valeur pour j : }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ j)}
+  \BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(j))}
   
 \end{Highlighting}
 \end{Shaded}
@@ -7342,7 +7353,8 @@ On peut ensuite l'appeler :
 \subsection{Ajout d'une description}\label{ajout-dune-description}
 
 Il est possible (et fortement recommandé) d'ajouter une description de
-ce que la fonction fait :
+ce que la fonction fait, en adoptant des conventions (c.f.
+\url{https://www.python.org/dev/peps/pep-0257/}) =
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7382,11 +7394,13 @@ pourra s'écrire en Python de la manière suivante :
 \begin{Highlighting}[]
 \KeywordTok{def}\NormalTok{ production(l, k, m):}
   \CommentTok{"""}
-\CommentTok{  @param l (float) travail}
-\CommentTok{  @param k (float) capital}
-\CommentTok{  @param m (float) matériel}
-\CommentTok{  @desc Retourne la valeur de la production en fonction}
-\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  Retourne la valeur de la production en fonction}
+\CommentTok{  du travail, du capital et du matériel.}
+\CommentTok{  }
+\CommentTok{  Keyword arguments:}
+\CommentTok{  l -- travail (float)}
+\CommentTok{  k -- capital (float)}
+\CommentTok{  m -- matériel (float)}
 \CommentTok{  """}
   \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
 \end{Highlighting}
@@ -7451,11 +7465,13 @@ Prenons un exemple avec deux paramètres positionnels (\texttt{l} et
 \begin{Highlighting}[]
 \KeywordTok{def}\NormalTok{ production_2(l, m, k}\OperatorTok{=}\DecValTok{42}\NormalTok{):}
   \CommentTok{"""}
-\CommentTok{  @param l (float) travail}
-\CommentTok{  @param m (float) matériel}
-\CommentTok{  @param k (float) capital (defaut : 42)}
-\CommentTok{  @desc Retourne la valeur de la production en fonction}
-\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  Retourne la valeur de la production en fonction}
+\CommentTok{  du travail, du capital et du matériel.}
+\CommentTok{  }
+\CommentTok{  Keyword arguments:}
+\CommentTok{  l -- travail (float)}
+\CommentTok{  m -- matériel (float)}
+\CommentTok{  k -- capital (float) (default 42)}
 \CommentTok{  """}
   \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
 \end{Highlighting}
@@ -7474,7 +7490,6 @@ résultat, des trois manières suivantes :
 \NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, k }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
 \CommentTok{# En ne nommant aucun paramètre}
 \NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_2(}\DecValTok{42}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{)}
-
 \NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
 \BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
@@ -7506,12 +7521,14 @@ l'appel, on peut les faire figurer dans des ordres différents :
 \begin{Highlighting}[]
 \KeywordTok{def}\NormalTok{ production_3(a, l, m }\OperatorTok{=} \DecValTok{40}\NormalTok{, k}\OperatorTok{=}\DecValTok{42}\NormalTok{):}
   \CommentTok{"""}
-\CommentTok{  @param a (float) productivité totale des facteurs}
-\CommentTok{  @param l (float) travail}
-\CommentTok{  @param m (float) matériel (défaut : 40)}
-\CommentTok{  @param k (float) capital (défaut : 42)}
-\CommentTok{  @desc Retourne la valeur de la production en fonction}
-\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  Retourne la valeur de la production en fonction}
+\CommentTok{  de la productivité, du travail, du capital et du matériel.}
+\CommentTok{  }
+\CommentTok{  Keyword arguments:}
+\CommentTok{  a -- productivité totale des facteurs (float)}
+\CommentTok{  l -- travail (float)}
+\CommentTok{  m -- matériel (float) (default 40)}
+\CommentTok{  k -- capital (float) (default 42)}
 \CommentTok{  """}
   \ControlFlowTok{return}\NormalTok{ a }\OperatorTok{*}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
   
@@ -7519,7 +7536,6 @@ l'appel, on peut les faire figurer dans des ordres différents :
 \NormalTok{prod_val_2 }\OperatorTok{=}\NormalTok{ production_3(a }\OperatorTok{=} \DecValTok{1}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{)}
 \NormalTok{prod_val_3 }\OperatorTok{=}\NormalTok{ production_3(l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
 \NormalTok{prod_val_4 }\OperatorTok{=}\NormalTok{ production_3(m }\OperatorTok{=} \DecValTok{40}\NormalTok{, l }\OperatorTok{=} \DecValTok{42}\NormalTok{, a }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
-
 \NormalTok{res }\OperatorTok{=}\NormalTok{ [prod_val_1, prod_val_2, prod_val_3, prod_val_4]}
 \BuiltInTok{print}\NormalTok{(res)}
 \end{Highlighting}
@@ -7542,7 +7558,6 @@ Une fonction peut être fournie en paramètre à une autre fonction.
 \KeywordTok{def}\NormalTok{ appliquer_carre_4(fun):}
   \CommentTok{"""Applique la fonction `fun` à 4"""}
   \ControlFlowTok{return}\NormalTok{ fun(}\DecValTok{4}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(appliquer_carre_4(carre))}
 \end{Highlighting}
 \end{Shaded}
@@ -7569,7 +7584,6 @@ Regardons cela à travers un exemple.
 \begin{Highlighting}[]
 \CommentTok{# Définition d'une variable globale :}
 \NormalTok{valeur }\OperatorTok{=} \DecValTok{1}
-
 \CommentTok{# Définition d'une variable locale à la fonction f}
 \KeywordTok{def}\NormalTok{ f(x):}
 \NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
@@ -7662,9 +7676,7 @@ suite jusqu'à l'environnement global.
 \NormalTok{  valeur }\OperatorTok{=} \DecValTok{2}
   \KeywordTok{def}\NormalTok{ g(x):}
     \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
-
   \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(f())}
 \end{Highlighting}
 \end{Shaded}
@@ -7681,9 +7693,7 @@ suite jusqu'à l'environnement global.
 \KeywordTok{def}\NormalTok{ f():}
   \KeywordTok{def}\NormalTok{ g(x):}
     \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{+}\NormalTok{ valeur}
-
   \ControlFlowTok{return}\NormalTok{ g(}\DecValTok{2}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(f())}
 \end{Highlighting}
 \end{Shaded}
@@ -7701,7 +7711,6 @@ utiliser le mot-clé \texttt{global} :
 \KeywordTok{def}\NormalTok{ f(x):}
   \KeywordTok{global}\NormalTok{ y}
 \NormalTok{  y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{+}\DecValTok{1}
-
 \NormalTok{f(}\DecValTok{3}\NormalTok{)}
 \BuiltInTok{print}\NormalTok{(y)}
 \end{Highlighting}
@@ -7763,11 +7772,13 @@ fonction \texttt{produduction()} :
 \begin{Highlighting}[]
 \KeywordTok{def}\NormalTok{ production(l, k, m):}
   \CommentTok{"""}
-\CommentTok{  @param l (float) travail}
-\CommentTok{  @param k (float) capital}
-\CommentTok{  @param m (float) matériel}
-\CommentTok{  @desc Retourne la valeur de la production en fonction}
-\CommentTok{    du travail, du capital et du matériel.}
+\CommentTok{  Retourne la valeur de la production en fonction}
+\CommentTok{  du travail, du capital et du matériel.}
+\CommentTok{  }
+\CommentTok{  Keyword arguments:}
+\CommentTok{  l -- travail (float)}
+\CommentTok{  k -- capital (float)}
+\CommentTok{  m -- matériel (float)}
 \CommentTok{  """}
   \ControlFlowTok{return}\NormalTok{ l}\OperatorTok{**}\FloatTok{0.3} \OperatorTok{*}\NormalTok{ k}\OperatorTok{**}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ m}\OperatorTok{**}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}
 \end{Highlighting}
@@ -7808,7 +7819,6 @@ pouvoir accéder aux valeurs grâce à leur clé !
   \CommentTok{"""Retourne la moyenne et l'écart-type de `x`"""}
   \ControlFlowTok{return}\NormalTok{ \{}\StringTok{"moyenne"}\NormalTok{: statistics.mean(x),}
   \StringTok{"ecart_type"}\NormalTok{: statistics.stdev(x)\}}
-
 \NormalTok{x }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]}
 \NormalTok{res }\OperatorTok{=}\NormalTok{ stat_des(x)}
 \BuiltInTok{print}\NormalTok{(res)}
@@ -7821,8 +7831,8 @@ pouvoir accéder aux valeurs grâce à leur clé !
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\StringTok{"La moyenne vaut }\SpecialCharTok{%s}\StringTok{ et l'écart-type vaut }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%} 
-\NormalTok{      (res[}\StringTok{"moyenne"}\NormalTok{], res[}\StringTok{"ecart_type"}\NormalTok{]))}
+\NormalTok{message }\OperatorTok{=} \StringTok{"La moyenne vaut }\SpecialCharTok{\{\}}\StringTok{ et l'écart-type vaut }\SpecialCharTok{\{\}}\StringTok{"}
+\BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(res[}\StringTok{"moyenne"}\NormalTok{], res[}\StringTok{"ecart_type"}\NormalTok{]))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8384,24 +8394,23 @@ L'accès au premier élément :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_1[0] : }\SpecialCharTok{%s}\StringTok{ (type : }\SpecialCharTok{%s}\StringTok{)"} \OperatorTok{%}
-\NormalTok{      (tableau_1[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_1[}\DecValTok{0}\NormalTok{])))}
+\NormalTok{message }\OperatorTok{=} \StringTok{"tableau_}\SpecialCharTok{\{\}}\StringTok{[0] : }\SpecialCharTok{\{\}}\StringTok{ (type : }\SpecialCharTok{\{\}}\StringTok{)"}
+\BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(}\DecValTok{0}\NormalTok{, tableau_1[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_1[}\DecValTok{0}\NormalTok{])))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## tableau_1[0] : 1 (type : <class 'numpy.int64'>)
+## tableau_0[0] : 1 (type : <class 'numpy.int64'>)
 \end{lstlisting}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\StringTok{"tableau_2[0] : }\SpecialCharTok{%s}\StringTok{ (type : }\SpecialCharTok{%s}\StringTok{)"} \OperatorTok{%}
-\NormalTok{      (tableau_2[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_2[}\DecValTok{0}\NormalTok{])))}
+\BuiltInTok{print}\NormalTok{(message.}\BuiltInTok{format}\NormalTok{(}\DecValTok{1}\NormalTok{, tableau_2[}\DecValTok{0}\NormalTok{], }\BuiltInTok{type}\NormalTok{(tableau_2[}\DecValTok{0}\NormalTok{])))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
-## tableau_2[0] : [1 2 3] (type : <class 'numpy.ndarray'>)
+## tableau_1[0] : [1 2 3] (type : <class 'numpy.ndarray'>)
 \end{lstlisting}
 
 L'accès aux éléments peut se faire en partant par la fin :
@@ -10060,8 +10069,8 @@ distribution Gaussienne :
 \end{Shaded}
 
 \begin{lstlisting}
-## [-0.08920125 -0.14428889 -0.503941    0.57110602 -1.24299773  1.69394338
-##   0.34088738  0.07924827  2.36789324  0.61084739]
+## [ 0.62143295 -0.07042597  1.52015822 -0.27448434 -0.88476129 -0.55012054
+##  -1.01192962  1.47925572 -0.0825684  -0.13423692]
 \end{lstlisting}
 
 On peut générer un tableau à plusieurs dimensions. Par exemple, un
@@ -10077,16 +10086,16 @@ tableau à deux dimensions, dans lequel la première dimension contient 10
 \end{Shaded}
 
 \begin{lstlisting}
-## [[ 6.06665899e-01 -1.13836870e+00 -1.89617738e+00  1.46667904e-01]
-##  [-8.41273677e-01 -4.80708510e-01 -4.77491241e-01  4.95656007e-01]
-##  [-2.89038523e-01 -6.86107637e-01  1.55362162e+00 -1.95948604e+00]
-##  [-1.17568169e+00  9.03917254e-01 -9.03965244e-01 -8.05371410e-01]
-##  [-9.08419923e-01  6.71350836e-02 -8.80514164e-01 -9.72895859e-01]
-##  [-1.02071074e+00 -5.07255866e-01  4.23928261e-02 -8.87208437e-01]
-##  [ 3.18991533e-01  8.65558629e-01 -3.44614793e-01  4.60745263e-01]
-##  [ 6.31010978e-01 -8.72791636e-01 -2.20411812e-01  2.67607342e-03]
-##  [-4.59977829e-01  1.71672629e+00 -1.85962822e+00  3.03309323e+00]
-##  [-2.19505582e-01  3.62362407e-01  1.23106456e+00 -1.58255267e+00]]
+## [[-0.89773676  0.47784743 -0.18828503 -1.07326863]
+##  [-0.12028866 -2.57897103  0.53880402 -1.50201521]
+##  [-0.28207529  0.06734446  0.32548478 -0.85765086]
+##  [-0.92844873 -0.30513664 -0.88056833  1.63508718]
+##  [-0.09968875 -1.1934041  -0.55502202 -0.94810613]
+##  [ 1.93380871  0.46796594 -0.695845    0.29701112]
+##  [ 0.05895762  0.38876768  0.7910198   0.93399952]
+##  [ 1.87369479 -1.86215708  0.09627302 -1.72466545]
+##  [-0.90176775  0.36036808  1.58300668  0.19365071]
+##  [ 1.60296909 -1.06625609  1.03235042 -0.3347297 ]]
 \end{lstlisting}
 
 La génération des nombres s'effectue en fonction d'une graine
@@ -10336,7 +10345,7 @@ Nous allons nous pencher sur deux types de structures, les séries
 
 \subsection{Séries}\label{series}
 
-Les séries sont tableaux à une dimension de données indexées.
+Les séries sont des tableaux à une dimension de données indexées.
 
 \subsubsection{Création de séries à partir d'un
 dictionnaire}\label{creation-de-series-a-partir-dun-dictionnaire}
@@ -10415,7 +10424,7 @@ Il est possible d'attribuer un nom à la série ainsi qu'à l'index :
 \begin{Highlighting}[]
 \NormalTok{s.name }\OperatorTok{=} \StringTok{"ma_serie"}
 \NormalTok{s.name }\OperatorTok{=} \StringTok{"nom_index"}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"nom de la série : }\SpecialCharTok{%s}\StringTok{ , nom de l'index : }\SpecialCharTok{%s}\StringTok{"} \OperatorTok{%}\NormalTok{ (s.name, s.index.name))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"nom de la série : }\SpecialCharTok{\{\}}\StringTok{ , nom de l'index : }\SpecialCharTok{\{\}}\StringTok{"}\NormalTok{.}\BuiltInTok{format}\NormalTok{(s.name, s.index.name))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10760,7 +10769,6 @@ Un dataframe peut être créé à partir d'une liste de dictionnaires :
     \StringTok{"Prenom"}\NormalTok{: }\StringTok{"Perceval"}\NormalTok{,}
     \StringTok{"Role"}\NormalTok{: }\StringTok{"Chevalier du Pays de Galles"}
 \NormalTok{\}}
-
 \NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame([dico_1, dico_2])}
 \BuiltInTok{print}\NormalTok{(df)}
 \end{Highlighting}
@@ -10827,7 +10835,6 @@ Pour illustrer la méthode, créons deux dictionnaires :
 \begin{Highlighting}[]
 \NormalTok{s_gdp_current }\OperatorTok{=}\NormalTok{ pd.Series(dico_gdp_current)}
 \NormalTok{s_cpi }\OperatorTok{=}\NormalTok{ pd.Series(dico_cpi)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"s_gdp_current : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, s_gdp_current)}
 \end{Highlighting}
 \end{Shaded}
@@ -10918,7 +10925,7 @@ défaut, l'indiçage des colonnes sera numérique) :
 \NormalTok{    [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
 \NormalTok{    [}\DecValTok{11}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{33}\NormalTok{],}
 \NormalTok{    [}\DecValTok{111}\NormalTok{, }\DecValTok{222}\NormalTok{, }\DecValTok{333}\NormalTok{],}
-\NormalTok{    [}\DecValTok{1111}\NormalTok{, }\DecValTok{2222}\NormalTok{, }\DecValTok{3333}\NormalTok{],}
+\NormalTok{    [}\DecValTok{1111}\NormalTok{, }\DecValTok{2222}\NormalTok{, }\DecValTok{3333}\NormalTok{]}
 \NormalTok{]}
 \NormalTok{tableau_np }\OperatorTok{=}\NormalTok{ np.array(tableau)}
 \BuiltInTok{print}\NormalTok{(df }\OperatorTok{=}\NormalTok{ pd.DataFrame(tableau_np,}
@@ -10939,6 +10946,44 @@ défaut, l'indiçage des colonnes sera numérique) :
 ##     construction_error(tot_items, blocks[0].shape[1:], axes, e)
 ##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 4843, in construction_error
 ##     passed, implied))
+\end{lstlisting}
+
+\subsubsection{Dimensions}\label{dimensions-1}
+
+On accède aux dimensions d'un dataframe avec l'attribut \texttt{shape}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"shape : "}\NormalTok{, df.shape)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## shape :  (3, 3)
+\end{lstlisting}
+
+On peut aussi afficher le nombre de lignes comme suit :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"shape : "}\NormalTok{, }\BuiltInTok{len}\NormalTok{(df))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## shape :  3
+\end{lstlisting}
+
+Et le nombre de colonnes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"shape : "}\NormalTok{, }\BuiltInTok{len}\NormalTok{(df.columns))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## shape :  3
 \end{lstlisting}
 
 \subsubsection{Modification de l'index}\label{modification-de-lindex}
@@ -11953,6 +11998,78 @@ Avec \texttt{loc}, sélectionnons les lignes nommées \texttt{a} et
 \NormalTok{df_texte.loc[[}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{], }\StringTok{"weight"}\NormalTok{:}\StringTok{"age"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
+
+\section{Renommage des colonnes dans un
+dataframe}\label{renommage-des-colonnes-dans-un-dataframe}
+
+Pour renommer une colonne dans un dataframe, \texttt{pandas} propose la
+méthode \texttt{rename()}. Prenons un exemple avec notre dataframe
+\texttt{df} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dico }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{ : [}\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{62}\NormalTok{],}
+        \StringTok{"weight"}\NormalTok{: [}\DecValTok{115}\NormalTok{, }\DecValTok{117}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{123}\NormalTok{, }\DecValTok{126}\NormalTok{],}
+        \StringTok{"age"}\NormalTok{: [}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{29}\NormalTok{],}
+        \StringTok{"taille"}\NormalTok{: [}\DecValTok{162}\NormalTok{, }\DecValTok{156}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{],}
+\NormalTok{       \} }
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dico)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    height  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+## 3      61     123   31     160
+## 4      62     126   29     158
+\end{lstlisting}
+
+Renommons la colonne \texttt{height} en \texttt{taille}, à l'aide d'un
+dicionnaire précisé au paramètre \texttt{columns}, avec comme clé le nom
+actuel de la colonne, et en valeur le nouveau nom :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.rename(index}\OperatorTok{=}\BuiltInTok{str}\NormalTok{, columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"height"}\NormalTok{: }\StringTok{"taille"}\NormalTok{\}, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    taille  weight  age  taille
+## 0      58     115   28     162
+## 1      59     117   33     156
+## 2      60     120   31     172
+## 3      61     123   31     160
+## 4      62     126   29     158
+\end{lstlisting}
+
+Pour que le changement soit effectif, on indique \texttt{inplace=True},
+sinon, la modification n'est pas apportée au dataframe.
+
+Pour renommer plusieurs colonnes en même temps, il suffit de fournir
+plusieurs couples de clés valeurs dans le dictionnaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.rename(index}\OperatorTok{=}\BuiltInTok{str}\NormalTok{,}
+\NormalTok{          columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"weight"}\NormalTok{: }\StringTok{"masse"}\NormalTok{, }\StringTok{"age"}\NormalTok{ : }\StringTok{"annees"}\NormalTok{\},}
+\NormalTok{          inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##    taille  masse  annees  taille
+## 0      58    115      28     162
+## 1      59    117      33     156
+## 2      60    120      31     172
+## 3      61    123      31     160
+## 4      62    126      29     158
+\end{lstlisting}
 
 \section{Filtrage}\label{filtrage}
 
@@ -13206,7 +13323,7 @@ En ayant une série avec un index numérique généré automatiquement :
 \end{Highlighting}
 \end{Shaded}
 
-\subsubsection{Pour un dataframe}\label{pour-un-dataframe-1}
+\subsection{Pour un dataframe}\label{pour-un-dataframe-1}
 
 Reprenons notre dataframe :
 
@@ -13563,6 +13680,19 @@ hormis pour le paramètre \texttt{inplace} qui n'est pas présent.
 ## 3     True
 ## 4    False
 ## dtype: bool
+\end{lstlisting}
+
+On peut utiliser la méthode \texttt{any()} par la suite pour savoir s'il
+existe des doublons :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.duplicated(subset }\OperatorTok{=}\NormalTok{ [}\StringTok{"ville"}\NormalTok{], keep }\OperatorTok{=} \StringTok{'first'}\NormalTok{).}\BuiltInTok{any}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## True
 \end{lstlisting}
 
 \section{Opérations}\label{operations}
@@ -14050,25 +14180,21 @@ quelques dataframes :
      \StringTok{"year"}\NormalTok{ : np.arange(}\DecValTok{2014}\NormalTok{, }\DecValTok{2017}\NormalTok{),}
      \StringTok{"exportations"}\NormalTok{ : [}\FloatTok{816.8192172}\NormalTok{, }\FloatTok{851.6632573}\NormalTok{, }\FloatTok{867.4014253}\NormalTok{]}
 \NormalTok{    \})}
-
 \NormalTok{importations_fr }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
 \NormalTok{    \{}\StringTok{"country"}\NormalTok{ : }\StringTok{"France"}\NormalTok{,}
      \StringTok{"year"}\NormalTok{ : np.arange(}\DecValTok{2015}\NormalTok{, }\DecValTok{2018}\NormalTok{),}
      \StringTok{"importations"}\NormalTok{ : [}\FloatTok{898.5242962}\NormalTok{, }\FloatTok{936.3691166}\NormalTok{, }\FloatTok{973.8762149}\NormalTok{]}
 \NormalTok{    \})}
-
 \NormalTok{exportations_us }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
 \NormalTok{    \{}\StringTok{"country"}\NormalTok{ : }\StringTok{"USA"}\NormalTok{,}
      \StringTok{"year"}\NormalTok{ : np.arange(}\DecValTok{2014}\NormalTok{, }\DecValTok{2017}\NormalTok{),}
      \StringTok{"exportations"}\NormalTok{ : [}\FloatTok{2208.678084}\NormalTok{, }\FloatTok{2217.733347}\NormalTok{, }\FloatTok{2210.442218}\NormalTok{]}
 \NormalTok{    \})}
-
 \NormalTok{importations_us }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
 \NormalTok{    \{}\StringTok{"country"}\NormalTok{ : }\StringTok{"USA"}\NormalTok{,}
      \StringTok{"year"}\NormalTok{ : np.arange(}\DecValTok{2015}\NormalTok{, }\DecValTok{2018}\NormalTok{),}
      \StringTok{"importations"}\NormalTok{ : [}\FloatTok{2827.336251}\NormalTok{, }\FloatTok{2863.264745}\NormalTok{, np.nan]}
 \NormalTok{    \})}
-
 \NormalTok{importations_maroc }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
 \NormalTok{    \{}\StringTok{"pays"}\NormalTok{ : }\StringTok{"Maroc"}\NormalTok{,}
      \StringTok{"annee"}\NormalTok{ : np.arange(}\DecValTok{2015}\NormalTok{, }\DecValTok{2018}\NormalTok{),}
@@ -14079,10 +14205,8 @@ quelques dataframes :
      \StringTok{"year"}\NormalTok{ : np.arange(}\DecValTok{2014}\NormalTok{, }\DecValTok{2017}\NormalTok{),}
      \StringTok{"exportations"}\NormalTok{ : [}\FloatTok{35.50207915}\NormalTok{, }\FloatTok{37.45996653}\NormalTok{, }\FloatTok{39.38228396}\NormalTok{]}
 \NormalTok{    \})}
-
 \NormalTok{exportations }\OperatorTok{=}\NormalTok{ pd.concat([exportations_fr, exportations_us], ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 \NormalTok{importations }\OperatorTok{=}\NormalTok{ pd.concat([importations_fr, importations_us], ignore_index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-
 \BuiltInTok{print}\NormalTok{(}\StringTok{"exportations : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, exportations)}
 \end{Highlighting}
 \end{Shaded}
@@ -14388,7 +14512,7 @@ groupes doivent être créés selon les valeurs de la colonne
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x110f23470>
+## <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x121e57208>
 \end{lstlisting}
 
 Ensuite, on récupère la variable \texttt{ouvriers} :
@@ -14401,7 +14525,7 @@ Ensuite, on récupère la variable \texttt{ouvriers} :
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x110f23748>
+## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1147c9e80>
 \end{lstlisting}
 
 \begin{Shaded}
@@ -14411,7 +14535,7 @@ Ensuite, on récupère la variable \texttt{ouvriers} :
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x110f23198>
+## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1147c9400>
 \end{lstlisting}
 
 Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher
@@ -14472,7 +14596,8 @@ des données dans différents formats.
 \subsubsection{Exportation de données
 tabulaires}\label{exportation-de-donnees-tabulaires}
 
-\paragraph{Vers un fichier CSV}\label{vers-un-fichier-csv}
+\paragraph{Vers un fichier CSV
+\{pandas-export\_csv\}}\label{vers-un-fichier-csv-pandas-export_csv}
 
 Pour exporter des données tabulaires, comme celles contenues dans un
 dataframe, \texttt{NumPy} propose la méthode \texttt{to\_csv()}, qui
@@ -14480,6 +14605,16 @@ accepte de nombreuses spécifications. Regardons quelques-unes
 d'entre-elles qui me semblent les plus courantes :
 
 \begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:pandasto-csv} Paramètres principaux de la fonction
+\texttt{to\_csv}}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\raggedleft\strut
+Paramètre\strut
+\end{minipage} & \begin{minipage}[b]{0.67\columnwidth}\raggedleft\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \begin{minipage}[b]{0.22\columnwidth}\raggedleft\strut
 Paramètre\strut
@@ -14560,9 +14695,371 @@ format de dates pour les objets \texttt{datetime}\strut
 \bottomrule
 \end{longtable}
 
+Admettons que nous souhaitons exporter le contenu du dataframe
+\texttt{chomage} vers un fichier CSV dont les champs sont séparés par
+des points-virgules, et en n'exportant pas l'index :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chomage }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
+\NormalTok{    \{}\StringTok{"region"}\NormalTok{ : ([}\StringTok{"Bretagne"}\NormalTok{]}\OperatorTok{*}\DecValTok{4} \OperatorTok{+}\NormalTok{ [}\StringTok{"Corse"}\NormalTok{]}\OperatorTok{*}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\DecValTok{2}\NormalTok{,}
+     \StringTok{"departement"}\NormalTok{ : [}\StringTok{"Cotes-d'Armor"}\NormalTok{, }\StringTok{"Finistere"}\NormalTok{,}
+                      \StringTok{"Ille-et-Vilaine"}\NormalTok{, }\StringTok{"Morbihan"}\NormalTok{,}
+                      \StringTok{"Corse-du-Sud"}\NormalTok{, }\StringTok{"Haute-Corse"}\NormalTok{]}\OperatorTok{*}\DecValTok{2}\NormalTok{,}
+     \StringTok{"annee"}\NormalTok{ : np.repeat([}\DecValTok{2011}\NormalTok{, }\DecValTok{2010}\NormalTok{], }\DecValTok{6}\NormalTok{),}
+     \StringTok{"ouvriers"}\NormalTok{ : [}\DecValTok{8738}\NormalTok{, }\DecValTok{12701}\NormalTok{, }\DecValTok{11390}\NormalTok{, }\DecValTok{10228}\NormalTok{, }\DecValTok{975}\NormalTok{, }\DecValTok{1297}\NormalTok{,}
+                   \DecValTok{8113}\NormalTok{, }\DecValTok{12258}\NormalTok{, }\DecValTok{10897}\NormalTok{, }\DecValTok{9617}\NormalTok{, }\DecValTok{936}\NormalTok{, }\DecValTok{1220}\NormalTok{],}
+     \StringTok{"ingenieurs"}\NormalTok{ : [}\DecValTok{1420}\NormalTok{, }\DecValTok{2530}\NormalTok{, }\DecValTok{3986}\NormalTok{, }\DecValTok{2025}\NormalTok{, }\DecValTok{259}\NormalTok{, }\DecValTok{254}\NormalTok{,}
+                     \DecValTok{1334}\NormalTok{, }\DecValTok{2401}\NormalTok{, }\DecValTok{3776}\NormalTok{, }\DecValTok{1979}\NormalTok{, }\DecValTok{253}\NormalTok{, }\DecValTok{241}\NormalTok{]}
+\NormalTok{    \})}
+\BuiltInTok{print}\NormalTok{(chomage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##       region      departement  annee  ouvriers  ingenieurs
+## 0   Bretagne    Cotes-d'Armor   2011      8738        1420
+## 1   Bretagne        Finistere   2011     12701        2530
+## 2   Bretagne  Ille-et-Vilaine   2011     11390        3986
+## 3   Bretagne         Morbihan   2011     10228        2025
+## 4      Corse     Corse-du-Sud   2011       975         259
+## 5      Corse      Haute-Corse   2011      1297         254
+## 6   Bretagne    Cotes-d'Armor   2010      8113        1334
+## 7   Bretagne        Finistere   2010     12258        2401
+## 8   Bretagne  Ille-et-Vilaine   2010     10897        3776
+## 9   Bretagne         Morbihan   2010      9617        1979
+## 10     Corse     Corse-du-Sud   2010       936         253
+## 11     Corse      Haute-Corse   2010      1220         241
+\end{lstlisting}
+
+Pour l'exportation :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/chomage.csv"}
+\NormalTok{chomage.to_csv(chemin, decimal}\OperatorTok{=}\StringTok{";"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si on désire que le fichier CSV soit compressé dans un fichier
+\texttt{gzip}, on le nomme avec l'extention \texttt{.csv.gz} et on
+ajoute la valeur \texttt{gzip} au paramètre \texttt{compression} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./Python_pour_economistes/fichiers_exemples/chomage.csv.gz"}
+\NormalTok{chomage.to_csv(chemin, decimal}\OperatorTok{=}\StringTok{";"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{, compression}\OperatorTok{=}\StringTok{"gzip"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## FileNotFoundError: [Errno 2] No such file or directory: './Python_pour_economistes/fichiers_exemples/chomage.csv.gz'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 1745, in to_csv
+##     formatter.save()
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/io/formats/csvs.py", line 136, in save
+##     compression=None)
+##   File "/anaconda3/lib/python3.6/site-packages/pandas/io/common.py", line 400, in _get_handle
+##     f = open(path_or_buf, mode, encoding=encoding)
+\end{lstlisting}
+
+\paragraph{Vers un fichier HDF5}\label{vers-un-fichier-hdf5}
+
+Pour enregistrer les données d'un dataframe dans un fichier HDF5
+utilisant HDFStore, \texttt{pandas} propose la méthode
+\texttt{to\_hdf()} qui fonctionne de la même manière que la fonction
+\texttt{to\_csv()} (cf.~Section~@ref(pandas-export\_csv)).
+
+Il est nécessaire de spécifier le paramètre \texttt{path\_or\_buf} pour
+indiquer le chemin et le paramètre \texttt{key} pour identifier l'objet
+à enregistrer dans le fichier.
+
+La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/chomage.h5"}
+\NormalTok{chomage.to_hdf(chemin, }\StringTok{"base_chomage"}\NormalTok{, decimal}\OperatorTok{=}\StringTok{";"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Importation des données}\label{importation-des-donnees}
+
+\texttt{pandas} propose de nombreuses fonctions pour importer des
+données. Dans cette version des notes de cours, nous allons en aborder 3
+: \texttt{read\_csv()}, pour lire des fichiers CSV ;
+\texttt{read\_excel()}, pour lire des fichiers Excel ; et
+\texttt{read\_hdf()} pour lire des fichiers HDF5.
+
+Dans la prochaine version, des ajouts sur \texttt{read\_html()},
+\texttt{read\_fwf()}, \texttt{read\_stata()}, \texttt{read\_json()}.
+
+\subsection{Fichiers CSV}\label{pandas-importation-csv}
+
+Pour importer des données depuis un fichier CSV, \texttt{pandas} propose
+la fonction \texttt{read\_csv()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/chomage.csv"}
+\NormalTok{chomage }\OperatorTok{=}\NormalTok{ pd.read_csv(chemin, decimal}\OperatorTok{=}\StringTok{";"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## TypeError: parser_f() got an unexpected keyword argument 'index'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+Il est possible de fournir une URL pointant vers un fichier CSV comme
+chemin, la fonction \texttt{read\_csv()}.
+
+Parmi les paramètres que l'on utilise fréquemment :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sep}, \texttt{delimiter} : séparateur de champs ;
+\item
+  \texttt{decimal} : séparateur de décimales ;
+\item
+  \texttt{header} : numéro(s) de ligne(s) à utiliser comme en-tête des
+  données ;
+\item
+  \texttt{skiprows} : numéro(s) de ligne(s) à sauter au début ;
+\item
+  \texttt{skipfooter} : numéro(s) de ligne(s) à sauter à la fin ;
+\item
+  \texttt{nrows} : nombre de ligne à lire ;
+\item
+  \texttt{na\_values} : chaînes de caractères supplémentaires à
+  considérer comme valeurs manquantes (en plus de \texttt{\#N/A},
+  \texttt{\#N/A\ N/A}, \texttt{\#NA}, \texttt{-1.\#IND},
+  \texttt{-1.\#QNAN}, \texttt{-NaN}, \texttt{-nan}, \texttt{1.\#IND},
+  \texttt{1.\#QNAN}, \texttt{N/A}, \texttt{NA}, \texttt{NULL},
+  \texttt{NaN}, \texttt{n/a}, \texttt{nan}, \texttt{null}) ;
+\item
+  \texttt{quotechar} : caractère de \emph{quote} ;
+\item
+  \texttt{encoding} : encodage des caractères (défaut \texttt{utf-8}).
+\end{itemize}
+
 \subsection{Fichiers Excel}\label{pandas-importation-excel}
 
+Pour importer des fichiers Excel, \texttt{pandas} propose la fonction
+\texttt{read\_excel()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/chomage.xlsx"}
+\NormalTok{chomage }\OperatorTok{=}\NormalTok{ pd.read_excel(chemin, skiprows}\OperatorTok{=}\DecValTok{2}\NormalTok{, header}\OperatorTok{=}\DecValTok{1}\NormalTok{, sheet }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(chomage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##     Bretagne    Cotes-d'Armor  2011   8738  1420
+## 0   Bretagne        Finistere  2011  12701  2530
+## 1   Bretagne  Ille-et-Vilaine  2011  11390  3986
+## 2   Bretagne         Morbihan  2011  10228  2025
+## 3      Corse     Corse-du-Sud  2011    975   259
+## 4      Corse      Haute-Corse  2011   1297   254
+## 5   Bretagne    Cotes-d'Armor  2010   8113  1334
+## 6   Bretagne        Finistere  2010  12258  2401
+## 7   Bretagne  Ille-et-Vilaine  2010  10897  3776
+## 8   Bretagne         Morbihan  2010   9617  1979
+## 9      Corse     Corse-du-Sud  2010    936   253
+## 10     Corse      Haute-Corse  2010   1220   241
+\end{lstlisting}
+
+Parmi les paramètres fréquemment utilisés :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{header} : numéro de ligne à utiliser comme en-tête ;
+\item
+  \texttt{sheet} : nom ou numéro de feuille ;
+\item
+  \texttt{skiprows} : nombre de lignes à sauter au début ;
+\item
+  \texttt{thousands} : séparateur de milliers.
+\end{itemize}
+
+\subsection{Fichiers HDF5}\label{pandas-importation-hdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chemin }\OperatorTok{=} \StringTok{"./fichiers_exemples/chomage.h5"}
+\BuiltInTok{print}\NormalTok{(pd.read_hdf(chemin, }\StringTok{"base_chomage"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+##       region      departement  annee  ouvriers  ingenieurs
+## 0   Bretagne    Cotes-d'Armor   2011      8738        1420
+## 1   Bretagne        Finistere   2011     12701        2530
+## 2   Bretagne  Ille-et-Vilaine   2011     11390        3986
+## 3   Bretagne         Morbihan   2011     10228        2025
+## 4      Corse     Corse-du-Sud   2011       975         259
+## 5      Corse      Haute-Corse   2011      1297         254
+## 6   Bretagne    Cotes-d'Armor   2010      8113        1334
+## 7   Bretagne        Finistere   2010     12258        2401
+## 8   Bretagne  Ille-et-Vilaine   2010     10897        3776
+## 9   Bretagne         Morbihan   2010      9617        1979
+## 10     Corse     Corse-du-Sud   2010       936         253
+## 11     Corse      Haute-Corse   2010      1220         241
+\end{lstlisting}
+
+\section{Exercice}\label{exercice-8}
+
+\BeginKnitrBlock{exframe}
+\textbf{Exercice 1 : Importation et exportation}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Télécharger à la main le fichier csv à l'adresse suivante :
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.csv}
+  et le placer dans le répertoire courant. Importer son contenu dans
+  Python.
+\item
+  Importer à nouveau les données dans Python, mais en fournissant cette
+  fois le l'url directement à la fonction d'importation.
+\item
+  À présent, importer le contenu du fichier disponible à l'adresse
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_decim.csv}.
+  Le séparateur de champs est un point virgule et le séparateur décimal
+  est une virgule.
+\item
+  Importer le contenu du fichier
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_h.csv}.
+  Le nom des colonnes n'est pas présent.
+\item
+  Importer le contenu du fichier
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_h_s.csv}.
+  La première ligne n'est pas à importer.
+\item
+  Importer le contenu de la première feuille du fichier Excel
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.xlsx}.
+\item
+  Importer le contenu de la seconde feuille (\texttt{notes\_h\_s}) du
+  fichier Excel disponible ici :
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.xlsx}.
+  La première ligne est un commentaire à ne pas considérer durant
+  l'importaiton.
+\item
+  Exporter le contenu de l'objet contenant les notes de la question
+  précédente au format csv (virgule en séparateur de champs, point en
+  séparateur décimal, ne pas conserver le numéro des lignes).
+\end{enumerate}
+
+\textbf{Exercice 2 : Manipulation de tableaux de données}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  À l'aide de la fonction \texttt{read\_excel()} de la librairie
+  \texttt{pandas}, importer le contenu de la feuille intitulée
+  \texttt{notes\_2012} du fichier Excel disponible à l'adresse suivante
+  :
+  \url{http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_etudiants.xlsx}
+  et le stocker dans une variable que l'on nommera notes\_2012.
+\item
+  Afficher les 6 premières lignes du jeu de données, puis les dimensions
+  du tableau.
+\item
+  Conserver uniquement la colonne \texttt{note\_stat} du tableau de
+  données \texttt{notes\_2012} dans un objet que l'on appellera
+  \texttt{tmp}.
+\item
+  Conserver uniquement les colonnes \texttt{num\_etudiant},
+  \texttt{note\_stat} et \texttt{note\_macro} dans un objet nommé
+  \texttt{tmp}.
+\item
+  Remplacer le contenu de \texttt{tmp} par les observations de
+  \texttt{notes\_2012} pour lesquelles l'individu a obtenu une note de
+  stat supérieure (strictement) à 10.
+\item
+  Remplacer le contenu de tmp par les observations de
+  \texttt{notes\_2012} pour lesquelles l'individu a obtenu une note de
+  stats comprise dans l'intervalle (10, 15).
+\item
+  Regarder s'il y a des doublons dans le tableau de données
+  \texttt{notees\_2012} ; le cas échéant, les retirer du tableau.
+\item
+  Afficher le type des données de la colonne \texttt{num\_etudiant},
+  puis afficher le type de toutes les colonnes de notes\_2012.
+\item
+  Ajouter au tableau \texttt{notes\_2012} les colonnes suivantes :
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  \texttt{note\_stat\_maj} : la note de stat (\texttt{note\_stat})
+  majorée d'un point,
+\item
+  \texttt{note\_macro\_maj} : la note de macro (\texttt{note\_macro})
+  majorée de trois points (le faire en deux étapes : d'abord deux points
+  en plus, puis un point).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Renommer la colonne year en annee.
+\item
+  Depuis le fichier \texttt{notes\_etudiants.xlsx} (c.f. question 1),
+  importer le contenu des feuilles \texttt{notes\_2013},
+  \texttt{notes\_2014} et \texttt{prenoms} et le stocker dans les objets
+  \texttt{notes\_2013}, \texttt{notes\_2014} et \texttt{prenoms},
+  respectivement.
+\item
+  Empiler le contenu des tableaux de données \texttt{notes\_2012},
+  \texttt{notes\_2013} et \texttt{notes\_2014} dans un objet que l'on
+  nommera \texttt{notes}.
+\item
+  Fusionner les tableaux \texttt{notes} et \texttt{prenoms} à l'aide
+  d'une jointure gauche, de manière à rajouter les informations
+  contenues dans le tableau prenoms aux observations de notes. La
+  jointure doit se faire par le numéro d'étudiant et l'année, l'objet
+  final viendra remplacer le contenu de notes.
+\item
+  Trier le tableau notes par années croissantes et notes de macro
+  décroissantes.
+\item
+  Créer une colonne \texttt{apres\_2012} qui prend la valeur
+  \texttt{True} si l'observation concerne une note attribuée après 2012.
+\item
+  En effectuant des regroupements sur le dataframe \texttt{notes}
+  calculer :
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  la moyenne et l'écart-type annuels des notes pour chacune des deux
+  matières,
+\item
+  la moyenne et l'écart-type annuels et par sexe des notes pour chacune
+  des deux matières.
+\end{enumerate}
+\EndKnitrBlock{exframe}
+
 \chapter{Visualisation de données}\label{visualisation-de-donnees}
+
+\url{https://seaborn.pydata.org/}
 
 \chapter{References}\label{references}
 

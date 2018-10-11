@@ -28,6 +28,7 @@ output:
       search: yes
       edit: https://github.com/3wen/Python_pour_economistes/edit/master/%s
   bookdown::pdf_book:
+    toc_depth: 3
     highlight: default
     keep_tex: yes
     includes:
@@ -120,6 +121,9 @@ Bien évidemment, Python étant un langage très vaste, ces notes ne sauraient e
 ## À qui s'adressent ces notes ?
 
 Dans un premier temps, cet ouvrage s'adresse aux débutants qui souhaientent apprendre les bases en Python. Il est à destination des étudiants de l'AMSE mais pourrait intéresser des individus ayant une approche de la donnée à travers la discipline économique désirant découvrir Python.
+
+
+Merci à Adrien Pacifico pour ses commentaires instructifs.
 
 # Introduction
 
@@ -701,21 +705,21 @@ print(x)
 
 
 
-Il est également possible d'**ajouter à une chaîne de caractères le contenu d'une variable**, à l'aide du marqueur `%s` :
+Il est également possible d'**ajouter à une chaîne de caractères le contenu d'une variable**, à l'aide de crochets (`{}`) et de la méthode `format()`
 ```{python, eval=T, echo=TRUE, error=TRUE}
-x = "J'aime coder en %s"
+x = "J'aime coder en {}"
 langage_1 = "R"
 langage_2 = "Python"
-preference_1 = x % langage_1
+preference_1 = x.format(langage_1)
 print(preference_1)
-preference_2 = x % langage_2
+preference_2 = x.format(langage_2)
 print(preference_2)
 ```
 
-Il est tout à fait possible d'ajouter **plus d'un contenu de variable** dans une chaîne de caractères, toujours avec le marqueur `%s` :
+Il est tout à fait possible d'ajouter **plus d'un contenu de variable** dans une chaîne de caractères, toujours avec les crochets et la méthode `format()` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-x = "J'aime coder en %s et en %s"
-preference_3 = x % (langage_1, langage_2)
+x = "J'aime coder en {} et en {}"
+preference_3 = x.format(langage_1, langage_2)
 print(preference_3)
 ```
 
@@ -1030,6 +1034,13 @@ y = 3.2e12
 print(x)
 print(y)
 ```
+
+Par ailleurs, lorsque le nombre est égal à une fraction de 0, on peut s'affranchir d'écrire le zéro :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(0.35)
+print(.35)
+```
+
 
 ### Nombres complèxes
 
@@ -3262,9 +3273,10 @@ print(list(range(2, 10, 3))) # Les entiers de 2 à 9 par pas de 3
 Aussi, pour afficher la suite des $10$ premiers carrés :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
+message = "Le carré de {} est {}" 
 n=10
 for i in range(0, n+1):
-  print("Le carré de %s est %s" % (i,i**2))
+  print(message.format(i,i**2))
 ```
 
 Lors de la première itération, `i` vaut 0. Lors de la seconde, `i` vaut 1. Lors de la troisième, `i` vaut 2, etc.
@@ -3284,24 +3296,27 @@ print(n_entiers_carres)
 Il n'est pas obligatoire d'utiliser la fonction `range()` dans une boucle `for()`, on peut définir les valeurs "à la main" :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
+message = "Le carré de {} est {}"
 for i in [0, 1, 2, 8, 9, 10]:
-  print("Le carré de %s est %s" % (i,i**2))
+  print(message.format(i,i**2))
 ```
 
 
 Dans le même esprit, il n'est pas obligatoire d'itérer sur des valeurs numériques :
 ```{python, eval=T, echo=TRUE, error=TRUE}
+message = "Il y a {} lettre(s) dans le prénom {}"
 for prenom in ["Pascaline", "Gauthier", "Xuan", "Jimmy"]:
-  print("Il y a %s lettre(s) dans le prénom %s" % (len(prenom), prenom))
+  print(message.format(len(prenom), prenom))
 ```
 
 
 
 Rien n'empêche de faire des boucles à l'intérieur de boucles :
 ```{python, eval=T, echo=TRUE, error=TRUE}
+message = "i vaut {} et j vaut {}"
 for i in range(0,3):
     for j in range(0,3):
-        print("i vaut %s et j vaut %s" % (i, j))
+        print(message.format(i, j))
 ```
 
 Comme on peut le constater, l'itération se fait pour chaque valeur de `i`, et pour chacune de ces valeurs, une seconde itération est effectuée sur les valeurs de `j`.
@@ -3316,10 +3331,11 @@ Dans une boucle, si on désire incrémenter un comteur, on peut utiliser le symb
 
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
+message = "Nouvelle valeur pour j : {}"
 j = 10
 for i in range(0, 4):
   j += 5
-  print("Nouvelle valeur pour j : %s" % j)
+  print(message.format(j))
   
 print(j)
 ```
@@ -3383,7 +3399,7 @@ print(carre(-3))
 
 ### Ajout d'une description
 
-Il est possible (et fortement recommandé) d'ajouter une description de ce que la fonction fait :
+Il est possible (et fortement recommandé) d'ajouter une description de ce que la fonction fait, en adoptant des conventions (c.f. https://www.python.org/dev/peps/pep-0257/) =
 ```{python, eval=T, echo=TRUE, error=TRUE}
 def carre(x):
   """retourne le carré de x"""
@@ -3406,11 +3422,13 @@ Considérons par exemple le problème suivant. Nous disposons d'une fonction de 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 def production(l, k, m):
   """
-  @param l (float) travail
-  @param k (float) capital
-  @param m (float) matériel
-  @desc Retourne la valeur de la production en fonction
-    du travail, du capital et du matériel.
+  Retourne la valeur de la production en fonction
+  du travail, du capital et du matériel.
+  
+  Keyword arguments:
+  l -- travail (float)
+  k -- capital (float)
+  m -- matériel (float)
   """
   return l**0.3 * k**0.5 * m**(0.2)
 ```
@@ -3444,11 +3462,13 @@ Prenons un exemple avec deux paramètres positionnels (`l` et `m`) et un paramè
 ```{python, eval=T, echo=TRUE, error=TRUE}
 def production_2(l, m, k=42):
   """
-  @param l (float) travail
-  @param m (float) matériel
-  @param k (float) capital (defaut : 42)
-  @desc Retourne la valeur de la production en fonction
-    du travail, du capital et du matériel.
+  Retourne la valeur de la production en fonction
+  du travail, du capital et du matériel.
+  
+  Keyword arguments:
+  l -- travail (float)
+  m -- matériel (float)
+  k -- capital (float) (default 42)
   """
   return l**0.3 * k**0.5 * m**(0.2)
 ```
@@ -3483,12 +3503,14 @@ Du moment que tous les paramètres positionnels sont nommés lors de l'appel, on
 ```{python, eval=T, echo=TRUE, error=TRUE}
 def production_3(a, l, m = 40, k=42):
   """
-  @param a (float) productivité totale des facteurs
-  @param l (float) travail
-  @param m (float) matériel (défaut : 40)
-  @param k (float) capital (défaut : 42)
-  @desc Retourne la valeur de la production en fonction
-    du travail, du capital et du matériel.
+  Retourne la valeur de la production en fonction
+  de la productivité, du travail, du capital et du matériel.
+  
+  Keyword arguments:
+  a -- productivité totale des facteurs (float)
+  l -- travail (float)
+  m -- matériel (float) (default 40)
+  k -- capital (float) (default 42)
   """
   return a * l**0.3 * k**0.5 * m**(0.2)
   
@@ -3636,11 +3658,13 @@ Avec plusieurs paramètres, regardons la fonction lambda équivalente à la fonc
 ```{python, eval=T, echo=TRUE, error=TRUE}
 def production(l, k, m):
   """
-  @param l (float) travail
-  @param k (float) capital
-  @param m (float) matériel
-  @desc Retourne la valeur de la production en fonction
-    du travail, du capital et du matériel.
+  Retourne la valeur de la production en fonction
+  du travail, du capital et du matériel.
+  
+  Keyword arguments:
+  l -- travail (float)
+  k -- capital (float)
+  m -- matériel (float)
   """
   return l**0.3 * k**0.5 * m**(0.2)
 ```
@@ -3667,8 +3691,8 @@ def stat_des(x):
 x = [1,3,2,6,4,1,8,9,3,2]
 res = stat_des(x)
 print(res)
-print("La moyenne vaut %s et l'écart-type vaut %s" % 
-      (res["moyenne"], res["ecart_type"]))
+message = "La moyenne vaut {} et l'écart-type vaut {}"
+print(message.format(res["moyenne"], res["ecart_type"]))
 ```
 
 
@@ -3884,10 +3908,9 @@ tableau_2 = np.array(tableau_2)
 
 L'accès au premier élément :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print("tableau_1[0] : %s (type : %s)" %
-      (tableau_1[0], type(tableau_1[0])))
-print("tableau_2[0] : %s (type : %s)" %
-      (tableau_2[0], type(tableau_2[0])))
+message = "tableau_{}[0] : {} (type : {})"
+print(message.format(0, tableau_1[0], type(tableau_1[0])))
+print(message.format(1, tableau_2[0], type(tableau_2[0])))
 ```
 
 
@@ -4608,7 +4631,7 @@ Nous allons nous pencher sur deux types de structures, les séries (`serie`) et 
 
 ### Séries
 
-Les séries sont tableaux à une dimension de données indexées.
+Les séries sont des tableaux à une dimension de données indexées.
 
 #### Création de séries à partir d'un dictionnaire
 
@@ -4637,7 +4660,7 @@ Il est possible d'attribuer un nom à la série ainsi qu'à l'index :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s.name = "ma_serie"
 s.name = "nom_index"
-print("nom de la série : %s , nom de l'index : %s" % (s.name, s.index.name))
+print("nom de la série : {} , nom de l'index : {}".format(s.name, s.index.name))
 print("série s : \n", s)
 ```
 
@@ -4700,7 +4723,6 @@ print(s)
 
 
 Les Dataframes correspondent au format de données que l'on rencontre classiquement en économie, des tableaux à deux dimensions, avec des variables en colonnes et des observations en ligne. Les colonnes et lignes des dataframes sont indexées.
-
 
 #### Création de dataframes à partir d'un dictionnaire
 
@@ -4867,12 +4889,32 @@ liste = [
     [1, 2, 3],
     [11, 22, 33],
     [111, 222, 333],
-    [1111, 2222, 3333],
+    [1111, 2222, 3333]
 ]
 tableau_np = np.array(tableau)
 print(df = pd.DataFrame(tableau_np,
                   columns = ["a", "b", "c"]))
 ```
+
+#### Dimensions
+
+On accède aux dimensions d'un dataframe avec l'attribut `shape`.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("shape : ", df.shape)
+```
+
+On peut aussi afficher le nombre de lignes comme suit :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("shape : ", len(df))
+```
+
+
+Et le nombre de colonnes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("shape : ", len(df.columns))
+```
+
 
 
 #### Modification de l'index
@@ -5228,8 +5270,38 @@ df_texte.loc[["a", "c"], "weight":"age"]
 ```
 
 
+## Renommage des colonnes dans un dataframe
+
+Pour renommer une colonne dans un dataframe, `pandas` propose la méthode `rename()`. Prenons un exemple avec notre dataframe `df` :
 
 
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, 62],
+        "weight": [115, 117, 120, 123, 126],
+        "age": [28, 33, 31, 31, 29],
+        "taille": [162, 156, 172, 160, 158],
+       } 
+df = pd.DataFrame(dico)
+print(df)
+```
+
+Renommons la colonne `height` en `taille`, à l'aide d'un dicionnaire précisé au paramètre `columns`, avec comme clé le nom actuel de la colonne, et en valeur le nouveau nom :
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.rename(index=str, columns={"height": "taille"}, inplace=True)
+print(df)
+```
+
+Pour que le changement soit effectif, on indique `inplace=True`, sinon, la modification n'est pas apportée au dataframe.
+
+Pour renommer plusieurs colonnes en même temps, il suffit de fournir plusieurs couples de clés valeurs dans le dictionnaire :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.rename(index=str,
+          columns={"weight": "masse", "age" : "annees"},
+          inplace=True)
+print(df)
+```
 
 ## Filtrage
 
@@ -5709,7 +5781,7 @@ s.append(pd.Series([2]), ignore_index=True)
 
 
 
-#### Pour un dataframe
+### Pour un dataframe
 
 Reprenons notre dataframe :
 ```{python, eval=T, echo=TRUE, error=TRUE}
@@ -5869,6 +5941,12 @@ Pour savoir si une valeur est dupliquée dans un dataframe, `NumPy` propose la m
 ```{python, eval=T, echo=TRUE, error=TRUE}
 print(df.duplicated(subset = ["ville"], keep = 'first'))
 ```
+
+On peut utiliser la méthode `any()` par la suite pour savoir s'il existe des doublons :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.duplicated(subset = ["ville"], keep = 'first').any())
+```
+
 
 
 ## Opérations
@@ -6257,7 +6335,7 @@ chomage.loc[:,["annee", "region",
 #### Exportation de données tabulaires
 
 
-##### Vers un fichier CSV
+##### Vers un fichier CSV {pandas-export_csv}
 
 
 Pour exporter des données tabulaires, comme celles contenues dans un dataframe, `NumPy` propose la méthode `to_csv()`, qui accepte de nombreuses spécifications. Regardons quelques-unes d'entre-elles qui me semblent les plus courantes :
@@ -6278,17 +6356,166 @@ Pour exporter des données tabulaires, comme celles contenues dans un dataframe,
 | `chunksize` | (entier) nombre de lignes à écrire à la fois |
 | `date_format` | format de dates pour les objets `datetime` |
 
+Table: (#tab:pandasto-csv) Paramètres principaux de la fonction `to_csv`
+
+Admettons que nous souhaitons exporter le contenu du dataframe `chomage` vers un fichier CSV dont les champs sont séparés par des points-virgules, et en n'exportant pas l'index :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chomage = pd.DataFrame(
+    {"region" : (["Bretagne"]*4 + ["Corse"]*2)*2,
+     "departement" : ["Cotes-d'Armor", "Finistere",
+                      "Ille-et-Vilaine", "Morbihan",
+                      "Corse-du-Sud", "Haute-Corse"]*2,
+     "annee" : np.repeat([2011, 2010], 6),
+     "ouvriers" : [8738, 12701, 11390, 10228, 975, 1297,
+                   8113, 12258, 10897, 9617, 936, 1220],
+     "ingenieurs" : [1420, 2530, 3986, 2025, 259, 254,
+                     1334, 2401, 3776, 1979, 253, 241]
+    })
+print(chomage)
+```
+
+
+Pour l'exportation :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/chomage.csv"
+chomage.to_csv(chemin, decimal=";", index=False)
+```
+
+
+Si on désire que le fichier CSV soit compressé dans un fichier `gzip`, on le nomme avec l'extention `.csv.gz` et on ajoute la valeur `gzip` au paramètre `compression` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./Python_pour_economistes/fichiers_exemples/chomage.csv.gz"
+chomage.to_csv(chemin, decimal=";", index=False, compression="gzip")
+```
+
+
+##### Vers un fichier HDF5
+
+
+Pour enregistrer les données d'un dataframe dans un fichier HDF5 utilisant HDFStore, `pandas` propose la méthode `to_hdf()` qui fonctionne de la même manière que la fonction `to_csv()` (cf. Section\ \@ref(pandas-export_csv)).
+
+Il est nécessaire de spécifier le paramètre `path_or_buf` pour indiquer le chemin et le paramètre `key` pour identifier l'objet à enregistrer dans le fichier.
+
+La syntaxe est la suivante :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/chomage.h5"
+chomage.to_hdf(chemin, "base_chomage", decimal=";", index=False)
+```
+
+
+## Importation des données
+
+`pandas` propose de nombreuses fonctions pour importer des données. Dans cette version des notes de cours, nous allons en aborder 3 : `read_csv()`, pour lire des fichiers CSV ; `read_excel()`, pour lire des fichiers Excel ; et `read_hdf()` pour lire des fichiers HDF5.
+
+Dans la prochaine version, des ajouts sur `read_html()`, `read_fwf()`, `read_stata()`, `read_json()`.
+
+
+
+### Fichiers CSV {#pandas-importation-csv}
+
+
+Pour importer des données depuis un fichier CSV, `pandas` propose la fonction `read_csv()` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/chomage.csv"
+chomage = pd.read_csv(chemin, decimal=";", index=False)
+```
+
+Il est possible de fournir une URL pointant vers un fichier CSV comme chemin, la fonction `read_csv()`.
+
+Parmi les paramètres que l'on utilise fréquemment :
+
+- `sep`, `delimiter` : séparateur de champs ;
+- `decimal` : séparateur de décimales ;
+- `header` : numéro(s) de ligne(s) à utiliser comme en-tête des données ;
+- `skiprows` : numéro(s) de ligne(s) à sauter au début ;
+- `skipfooter` : numéro(s) de ligne(s) à sauter à la fin ;
+- `nrows` : nombre de ligne à lire ;
+- `na_values` : chaînes de caractères supplémentaires à considérer comme valeurs manquantes (en plus de `#N/A`, `#N/A N/A`, `#NA`, `-1.#IND`, `-1.#QNAN`, `-NaN`, `-nan`, `1.#IND`, `1.#QNAN`, `N/A`, `NA`, `NULL`, `NaN`, `n/a`, `nan`, `null`) ;
+- `quotechar` : caractère de *quote* ;
+- `encoding` : encodage des caractères (défaut `utf-8`).
 
 
 
 
 ### Fichiers Excel {#pandas-importation-excel}
 
+Pour importer des fichiers Excel, `pandas` propose la fonction `read_excel()`.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/chomage.xlsx"
+chomage = pd.read_excel(chemin, skiprows=2, header=1, sheet = 1)
+print(chomage)
+```
+
+Parmi les paramètres fréquemment utilisés :
+
+- `header` : numéro de ligne à utiliser comme en-tête ;
+- `sheet` : nom ou numéro de feuille ;
+- `skiprows` : nombre de lignes à sauter au début ;
+- `thousands` : séparateur de milliers.
 
 
+### Fichiers HDF5 {#pandas-importation-hdf}
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+chemin = "./fichiers_exemples/chomage.h5"
+print(pd.read_hdf(chemin, "base_chomage"))
+```
+
+
+## Exercice
+
+```{block2, type='exframe', echo=TRUE}
+
+**Exercice 1 : Importation et exportation**
+
+1. Télécharger à la main le fichier csv à l'adresse suivante : http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.csv et le placer dans le répertoire courant. Importer son contenu dans Python.
+2. Importer à nouveau les données dans Python, mais en fournissant cette fois le l’url directement à la fonction d'importation.
+3. À présent, importer le contenu du fichier disponible à l’adresse http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_decim.csv. Le séparateur de champs est un point virgule
+et le séparateur décimal est une virgule.
+4. Importer le contenu du fichier http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_h.csv. Le nom des colonnes n’est pas présent.
+5. Importer le contenu du fichier http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_h_s.csv. La première ligne n’est pas à importer.
+6. Importer le contenu de la première feuille du fichier Excel http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.xlsx.
+7. Importer le contenu de la seconde feuille (`notes_h_s`) du fichier Excel disponible ici : http://egallic.fr/Enseignement/Python/Exercices/donnees/notes.xlsx. La première ligne est un commentaire à ne pas considérer durant l’importaiton.
+8. Exporter le contenu de l’objet contenant les notes de la question précédente au format csv (virgule
+en séparateur de champs, point en séparateur décimal, ne pas conserver le numéro des
+lignes).
+
+
+**Exercice 2 : Manipulation de tableaux de données**
+
+1. À l'aide de la fonction `read_excel()` de la librairie `pandas`, importer le contenu de la feuille intitulée `notes_2012` du fichier Excel disponible à l'adresse suivante : http://egallic.fr/Enseignement/Python/Exercices/donnees/notes_etudiants.xlsx et le stocker dans une variable que l'on nommera notes_2012.
+2. Afficher les 6 premières lignes du jeu de données, puis les dimensions du tableau.
+3. Conserver uniquement la colonne `note_stat` du tableau de données `notes_2012` dans un objet que l'on appellera `tmp`.
+4. Conserver uniquement les colonnes `num_etudiant`, `note_stat` et `note_macro` dans un objet nommé `tmp`.
+5. Remplacer le contenu de `tmp` par les observations de `notes_2012` pour lesquelles l'individu a obtenu une note de stat supérieure (strictement) à 10.
+6. Remplacer le contenu de tmp par les observations de `notes_2012` pour lesquelles l'individu a obtenu une note de stats comprise dans l'intervalle (10, 15).
+7. Regarder s'il y a des doublons dans le tableau de données `notees_2012` ; le cas échéant, les retirer du tableau.
+8. Afficher le type des données de la colonne `num_etudiant`, puis afficher le type de toutes les colonnes de notes_2012.
+9. Ajouter au tableau `notes_2012` les colonnes suivantes :
+  
+  (a) `note_stat_maj` : la note de stat (`note_stat`) majorée d'un point,
+  (b) `note_macro_maj` : la note de macro (`note_macro`) majorée de trois points (le faire en deux étapes : d'abord deux points en plus, puis un point).
+10. Renommer la colonne year en annee.
+11. Depuis le fichier `notes_etudiants.xlsx` (c.f. question 1), importer le contenu des feuilles `notes_2013`, `notes_2014` et `prenoms` et le stocker dans les objets `notes_2013`, `notes_2014` et `prenoms`, respectivement.
+12. Empiler le contenu des tableaux de données `notes_2012`, `notes_2013` et `notes_2014` dans un objet que l'on nommera `notes`.
+13. Fusionner les tableaux `notes` et `prenoms` à l'aide d'une jointure gauche, de manière à rajouter les informations contenues dans le tableau prenoms aux observations de notes. La jointure doit se faire par le numéro d'étudiant et l'année, l'objet final viendra remplacer le contenu de notes.
+14. Trier le tableau notes par années croissantes et notes de macro décroissantes.
+15. Créer une colonne `apres_2012` qui prend la valeur `True` si l'observation concerne une note attribuée après 2012.
+16. En effectuant des regroupements sur le dataframe `notes` calculer :
+  
+  (a) la moyenne et l'écart-type annuels des notes pour chacune des deux matières,
+  (b) la moyenne et l'écart-type annuels et par sexe des notes pour chacune des deux matières.
+
+```
 
 # Visualisation de données
 
+
+https://seaborn.pydata.org/
 <!-- # Programmation parallèle -->
 
 # References

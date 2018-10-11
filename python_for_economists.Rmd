@@ -4483,6 +4483,14 @@ x = np.random.normal(size=10)
 print(x)
 ```
 
+On peut générer un tableau à plusieurs dimensions. Par exemple, un tableau à deux dimensions, dans lequel la première dimension contient 10 éléments, contenant chacun 4 tirages aléatoires selon une $\mathcal{N}(0,1)$ :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x = np.random.randn(10, 4)
+print(x)
+```
+
+
+
 La génération des nombres s'effectue en fonction d'une graine (*seed*), c'est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode `seed()`, à qui on indique une valeur en paramètre :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 np.random.seed(1234)
@@ -5277,6 +5285,14 @@ print(df.query("weight > 120").query("height < 62"))
 ```
 
 
+### Test d'appartenance
+
+Pour créer un masque indiquant si les valeurs d'une série ou d'un dataframe appartiennent à un ensemble, on peut utiliser la méthode `isin()`. Par exemple, retournons un masque indiquant si les valeurs de la colonne `height` de `df` sont dans l'intervalle $[59,60]$ :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.height.isin(np.arange(59,61))
+```
+
+
 
 ## Valeurs manquantes
 
@@ -5709,7 +5725,7 @@ print("df : \n", df)
 
 
 
-#### Ajout d'une ligne dans un dataframe
+#### Ajout d'une ligne dans un dataframe {#pandas-ajout-ligne-df}
 
 Comme pour une série, pour ajouter une ligne, on utlise la méthode `append()`. Dans un premier temps, créons un nouveau dataframe avec la ligne à ajouter :
 ```{python, eval=T, echo=TRUE, error=TRUE}
@@ -5892,7 +5908,7 @@ print(df.head(3))
 ```
 
 
-### Statistiques
+### Statistiques {pandas-statistiques-df}
 
 `pandas` propose quelques méthodes pour effectuer des statistiques descriptives pour chaque colonne ou par ligne. Pour cela, la syntaxe est la suivante (tous les paramètres ont une valeur par défaut, la liste est simplifiée ici) :
 
@@ -5903,7 +5919,18 @@ dataframe.fonction_stat(axis, skipna)
 - `axis` : 0 pour les lignes, 1 pour les colonnes ;
 - `skipna` : si `True`, exclue les valeurs manquantes pour effectuer les calculs.
 
-Parmi les méthodes disponibles : `mean()`, `mode()`, `median()` `std()` `min()` `max()` `sum()`
+Parmi les méthodes disponibles : 
+- `mean()` : moyenne ;
+- `mode()` : mode ;
+- `median()` : médiane ;
+- `std()` : écart-type ;
+- `min()` : minimum ;
+- `max()` : maximum
+- `mad()` : écart absolu à la moyenne ;
+- `sum()` : somme des valeurs ;
+- `prod()` : produit de tous les éléments ;
+- `count()` : comptage du nombre d'éléments.
+
 
 Par exemple, pour calculer la moyenne des valeurs pour chaque colonne : 
 
@@ -5925,18 +5952,335 @@ print(df.mean(axis=1))
 ```
 
 
+Ces fonctions peuvent s'appliquer sur une seule colonne. Par exemple, pour afficher la valeur minimum :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("min : ", df.height.min())
+```
+
+Il est aussi utile de pouvoir obtenir la position des valeurs min et max ; ce qu'on peut obtenir avec les méthodes `idxmin()` et `idxmax()`, respectivement.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("pos min : ", df.height.idxmin())
+print("pos min : ", df.height.idxmax())
+```
+
+Une méthode très pratique est `describe()`, elle permet de retourner des statistiques descriptives sur l'ensemble des colonnes numériques :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(df.describe())
+```
+
+
 
 ## Tri
 
-## Jointures
+Il est aisé de trier un dataframe par ordre croissant ou décroissant d'une ou plusieurs de ses colonnes. Pour ce faire, on utilise la méthode `sort_values()`. La syntaxe est la suivante :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+DataFrame.sort_values(by, axis=0, ascending=True,
+                      inplace=False, kind="quicksort",
+                      na_position="last")
+```
+
+- `by` : nom ou liste de nom de la ou les colonnes utilisées pour effectuer le tri ;
+- `axis` : `0` pour l'index (par défaut), `1` pour les colonnes
+- `ascending` : booléen ou liste de booléens, quand `True` le tri est fait par valeurs croissantes (par défaut), quand `False` il est effectué par valeurs décroissantes
+- `inplace` : si `True`, le tri affecte le dataframe, sinon il retourne une vue ;
+- `kind` : choix de l'algorithme de tri (`quicksort` (par défaut), `mergesort`, `heapsort`) ;
+- `na_position` : si `first`, les valeurs manquantes sont placées au début ; si `last` (par défaut), à la fin.
+
+
+Donnons quelques exemples :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+dico = {"height" : [58, 59, 60, 61, 62],
+        "weight": [115, np.nan, 120, 123, 126],
+        "age": [28, 33, 31, 31, 29],
+        "taille": [162, 156, 172, 160, 158],
+        "married": [True, True, np.nan, False, True],
+        "city": ["A", "B", "B", "B", "A"]
+       } 
+df = pd.DataFrame(dico)
+```
+
+Si on trie les valeurs par ordre décroissant des valeurs de la colonne `height` :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.sort_values(by="height", ascending=False)
+```
+
+
+Pour effectuer un tri par ordre croissant des valeurs de `married` (rappel, `True` est interprété comme 1 et `False` comme 0), puis décoissant de `weight`, en plaçant les valeurs `NaN` en premier :
+```{python, eval=T, echo=TRUE, error=TRUE}
+df.sort_values(by=["married", "weight"],
+               ascending=[True, False],
+               na_position="first")
+```
+
+On note que les valeurs `NaN` sont remontées en avant pour les sous-groupes composés en fonction des valeurs de `married`.
+
+
+## Concaténation
+
+Il est fréquent d'avoir des données en provenance de plusieurs sources lorsque l'on réalise une analyse. Il est alors nécessaire de pouvoir combiner les différentes sources dans une seule. Dans cette section, nous allons nous contenter de concaténer différents dataframes entre-eux, dans des cas simples dans lesquels on sait *a priori* qu'il suffit de coller deux dataframes côte-à-côte ou l'un en-dessous de l'aure. Le cas des jointures un peu plus élaborées avec appariement en fonction d'une ou plusieurs colonnes est abordé dans la Section\ \@ref(pandas-jointures).
+
+
+Dans un premier temps, créons deux dataframes avec le même nombre de lignes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+x_1 = pd.DataFrame(np.random.randn(5, 4),
+                   columns=["a", "b", "c", "d"])
+x_2 = pd.DataFrame(np.random.randn(5, 2),
+                   columns = ["e", "f"])
+print("x_1 : \n", x_1)
+print("\nx_2 : \n", x_2)
+```
+
+Pour "coller" le dataframe `x_2` à droite de `x_1`, on peut utiliser la méthode `concat()` de `pandas`. Pour indiquer que la concaténation s'effectue sur les colonnes, on précise la valeur `1` pour le paramètre `axix` comme suit :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.concat([x_1, x_2], axis = 1))
+```
+
+
+Pour coller les dataframes les uns en-dessous des autres, on peut utiliser la méthode `append()`, comme indiqué dans la Section\ \@ref(pandas-ajout-ligne-df), ou on peut aussi utiliser la méthode `concat()`. 
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x_3 = pd.DataFrame(np.random.randn(5, 2),
+                   columns = ["e", "f"])
+print("x_3 : \n", x_3)
+```
+
+Rajoutons les observations de `x_3` en-dessous de celles de `x_2` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.concat([x_2, x_3], axis = 0))
+```
+
+Comme on peut le voir, l'indice des lignes de `x_2` n'a pas été modifié. Si on souhaite qu'il le soit, on peut le préciser via le paramètre `ignore_index` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.concat([x_2, x_3], axis = 0, ignore_index=True))
+```
+
+Si le nom des colonnes n'est pas ientique, des valeurs `NaN` seront introduites :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+x_4 = pd.DataFrame(np.random.randn(5, 2),
+                   columns = ["e", "g"])
+print("x_4 : \n", x_4)
+pd.concat([x_2, x_4], axis = 0, sort=False, ignore_index=True)
+```
+
+## Jointures {#pandas-jointures}
+
+Il est plus fréquent d'avoir recours à des jointures un peu plus élaborées pour rassembler les différentes sources de données en une seule. `pandas` offre un moyen performant pour rassembler les données, la fonction `merge()`.
+
+
+Pour illustrer les différentes jointures de cette section, créons quelques dataframes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+exportations_fr = pd.DataFrame(
+    {"country" : "France",
+     "year" : np.arange(2014, 2017),
+     "exportations" : [816.8192172, 851.6632573, 867.4014253]
+    })
+
+importations_fr = pd.DataFrame(
+    {"country" : "France",
+     "year" : np.arange(2015, 2018),
+     "importations" : [898.5242962, 936.3691166, 973.8762149]
+    })
+
+exportations_us = pd.DataFrame(
+    {"country" : "USA",
+     "year" : np.arange(2014, 2017),
+     "exportations" : [2208.678084, 2217.733347, 2210.442218]
+    })
+
+importations_us = pd.DataFrame(
+    {"country" : "USA",
+     "year" : np.arange(2015, 2018),
+     "importations" : [2827.336251, 2863.264745, np.nan]
+    })
+
+importations_maroc = pd.DataFrame(
+    {"pays" : "Maroc",
+     "annee" : np.arange(2015, 2018),
+     "importations" : [46.39884177, 53.52375588, 56.68165748]
+    })
+exportations_maroc = pd.DataFrame(
+    {"country" : "Maroc",
+     "year" : np.arange(2014, 2017),
+     "exportations" : [35.50207915, 37.45996653, 39.38228396]
+    })
+
+exportations = pd.concat([exportations_fr, exportations_us], ignore_index=True)
+importations = pd.concat([importations_fr, importations_us], ignore_index=True)
+
+print("exportations : \n", exportations)
+print("\nimportations : \n", importations)
+```
+
+
+La fonction `merge()` de `pandas` nécessite de préciser la table de gauche (que l'on appellera ici `x`) via le paramètre `left` sur qui viendra s'effectuer la jointure de la table de droite (que l'on appellera ici `y`) via le paramètre `right`.
+
+Par défaut, la fonction `merge()` réalise une jointure de type `inner`, c'est-à-dire que toutes les toutes les lignes de `x` qui trouvent une correspondance dans `y`, et toutes les colonnes de `x` et `y` seront dans le résultat de la jointure :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.merge(left = importations, right = exportations))
+```
+
+
+Si on désire changer le type de jointure, on peut modifier la valeur du paramètre `how` de la fonction `merge()`, pour lui donner une des valeurs suivantes :
+
+- `left` : toutes les lignes de `x`, et toutes les colonnes de `x` et `y`. Les lignes dans `x` pour lesquelles il n'y a pas de correspondance dans `y` auront des valeurs `NaN` dans les
+nouvelles colonnes. S'il y a plusieurs correspondances dans les noms entre `x` et `y`, toutes
+les combinaisons sont retournées ;
+- `inner` :  toutes les lignes de `x` pour lesquelles il y a des valeurs correspondantes dans `y`, et toutes les colonnes de `x` et `y`. S'il y a plusieurs correspondances dans les noms
+entre `x` et `y`, toutes les combinaisons possibles sont retournées ;
+- `right` : toutes les lignes de `y`, et toutes les colonnes de `y` et `x`. Les lignes dans
+`y` pour lesquelles il n'y a pas de correspondance dans `x` auront des valeurs `NaN` dans les
+nouvelles colonnes. S'il y a plusieurs correspondances dans les noms entre `y` et `x`, toutes
+les combinaisons sont retournées ;
+- `outer`: toutes les lignes de `x` et de `y`, et toutes les colonnes de `x` et `y`. Les lignes de `x` pour lesquelles il n'y a pas de correspondance dabs `y` et celles de `y` pour lesquelles il n'y a pas de correspondance dans `x` auront des valeurs `NaN`.
+
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print("left : \n", pd.merge(left = importations, right = exportations, how="left"))
+print("\nright : \n", pd.merge(left = importations, right = exportations, how="right"))
+print("\nouter : \n", pd.merge(left = importations, right = exportations, how="outer"))
+```
+
+
+Le paramètre `on`, qui attend un nom de colonne ou une liste de noms sert à désigner les colonnes permettant de faire la jointure. Les noms de colonnes doivent être identiques dans les deux dataframes.
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.merge(left = importations, right = exportations, on = "country"))
+```
+
+Si le nom des colonnes devant servir à réaliser la jointure sont différents entre le dataframe de gauche et celui de droite, on indique au paramètre `left_on` le ou les noms de colonnes du dataframe de gauche à utiliser pour la jointure ; et au paramètre `right_on`, le ou les noms correspondants dans le dataframe de doite :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+pd.merge(left = importations_maroc, right = exportations_maroc,
+         left_on= ["pays", "annee"], right_on = ["country", "year"] )
+```
+
+
+Avec le paramètre `suffixes`, on peut définir des suffixes à ajouter aux noms des colonnes lorsqu'il existe des colonnes dans `x` et dans `y` portant le même nom mais ne servant pas à la jointure. Par défaut, les suffixes (`_x` et `_y`) sont rajoutés.
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(pd.merge(left = importations, right = exportations,
+               on = "country",
+               suffixes=("_gauche", "_droite")).head(3))
+```
+
 
 ## Agrégation
+
+Il arrive de vouloir agréger les valeurs d'une variable, pour passer par exemple d'une dimension
+trimestrielle à annuelle. Avec des observations spatiales, cela peut aussi être le cas, comme
+par exemple lorsque l'on dispose de données à l'échelle des départements et que l'on souhaite
+connaître les valeurs agrégées à l'échelle des régions.
+
+Pour illustrer les différentes opérations d'agrégation, créons un dataframe avec des des données de chômage dans différentes régions, départements et années :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chomage = pd.DataFrame(
+    {"region" : (["Bretagne"]*4 + ["Corse"]*2)*2,
+     "departement" : ["Cotes-d'Armor", "Finistere",
+                      "Ille-et-Vilaine", "Morbihan",
+                      "Corse-du-Sud", "Haute-Corse"]*2,
+     "annee" : np.repeat([2011, 2010], 6),
+     "ouvriers" : [8738, 12701, 11390, 10228, 975, 1297,
+                   8113, 12258, 10897, 9617, 936, 1220],
+     "ingenieurs" : [1420, 2530, 3986, 2025, 259, 254,
+                     1334, 2401, 3776, 1979, 253, 241]
+    })
+print(chomage)
+```
+
+
+Comme nous l'avons vu précédemment (c.f. Section\ \@ref(pandas-statistiques-df)), on peut utiliser des méthodes permettant de calculer des statistiques simples sur l'ensemble des données. Par exemple, pour afficher la moyenne de chacune des colonnes numériques :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(chomage.mean())
+```
+
+
+Ce qui nous intéresse dans cette section, est d'effectuer des calculs sur des sous-groupes de données. Le principe est simple : dans un premier temps, on sépare les données en fonction de groupes identifiés (*split*), puis on applique une opération sur chacun des groupes (*apply*), et enfin on rassemble les résultats (*combine*). Pour effectuer le regroupement, en fonction de facteurs avant d'effectuer les calculs d'agrégation, `pandas` propose la méthode `groupby()`. On lui fournit en paramètre le ou les noms de colonnes servant à effectuer les groupes.
+
+### Agrégation selon les valeurs d'une seule colonne
+
+Par exemple, admettons que nous souhaitons obtenir le nombre total de chomeurs ouvriers par année. Dans un premier temps, on utilise la méthode `groupby()` sur notre dataframe en indiquant que les groupes doivent être créés selon les valeurs de la colonne `annee`
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(chomage.groupby("annee"))
+```
+
+Ensuite, on récupère la variable `ouvriers` :
+
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(chomage.groupby("annee").annee)
+# Ou bien
+print(chomage.groupby("annee")["annee"])
+```
+
+Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher le résultat :
+```{python, eval=T, echo=TRUE, error=TRUE}
+print(chomage.groupby("annee")["ouvriers"].sum())
+```
+
+
+Si on veut effectuer ce calcul pour plusieurs colonnes, par exemple `ouvriers` et `ingenieurs`, il suffit de sélectionner *a priori* la variale de regroupement et les variables pour lesquelles on désire effectuer le calcul :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chomage.loc[:,["annee", "ouvriers", "ingenieurs"]].groupby("annee").sum()
+```
+
+### Agrégation selon les valeurs de plusieurs colonnes
+
+À présent, admettons que l'on souhaite effectuer une agrégation en fonction de l'année et de la région. Il s'agit simplement de donner une liste contenant les noms des colonnes utilisées pour créer les différents groupes :
+```{python, eval=T, echo=TRUE, error=TRUE}
+chomage.loc[:,["annee", "region",
+               "ouvriers", "ingenieurs"]].groupby(["annee",
+                                                   "region"]).sum()
+```
+
+
 
 ## Stacking et unstacking
 
 
+À compléter
 
-## Importation et exportation de données
+
+## Exportation et importation de données
+
+`pandas` offre de nombreuses fonctions pour importer et exporter des données dans différents formats.
+
+
+### Exportation des données
+
+
+#### Exportation de données tabulaires
+
+
+##### Vers un fichier CSV
+
+
+Pour exporter des données tabulaires, comme celles contenues dans un dataframe, `NumPy` propose la méthode `to_csv()`, qui accepte de nombreuses spécifications. Regardons quelques-unes d'entre-elles qui me semblent les plus courantes :
+
+| Paramètre | Description |
+| ---------------: | -------------------------------------------------: |
+| `path_or_buf` | chemin vers le fichier |
+| `sep` | caractère de séparation des champs |
+| `decimal` | Caractère à utiliser pour le séparateur de décimales |
+| `na_rep` | représentation à utiliser pour les valeurs manquantes |
+| `header` | indique si le nom des colonnes doit être exporté (`True` par défaut) |
+| `index` | indique si le nom des lignes doit être exporté (`True` par défaut) |
+| `mode` | mode d'écriture python (c.f. Tableau\ \@ref(tab:open-mode-ouverture), par défaut `w`) |
+| `encoding` | encodage des caractères (`utf-8` par défaut) |
+| `compression` | compression à utiliser pour le fichier de destination (`gzip`, `bz2`, `zip`,  `xz`) |
+| `line_terminator` | caractère de fin de ligne |
+| `quotechar` | Caractère utilisé pour mettre les champs entre *quotes* |
+| `chunksize` | (entier) nombre de lignes à écrire à la fois |
+| `date_format` | format de dates pour les objets `datetime` |
+
+
+
+
 
 ### Fichiers Excel {#pandas-importation-excel}
 
@@ -5945,7 +6289,7 @@ print(df.mean(axis=1))
 
 # Visualisation de données
 
-# Programmation parallèle
+<!-- # Programmation parallèle -->
 
 # References
 

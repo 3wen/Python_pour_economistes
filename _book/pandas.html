@@ -241,7 +241,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
 <li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes {numpy-constantes}</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
 <li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
@@ -280,7 +280,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
 <li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
-<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#statistiques-pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques {pandas-statistiques-df}</a></li>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
 <li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
@@ -332,8 +332,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="series" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Séries</h3>
 <p>Les séries sont des tableaux à une dimension de données indexées.</p>
-<div id="creation-de-series-a-partir-dun-dictionnaire" class="section level4">
-<h4><span class="header-section-number">10.1.1.1</span> Création de séries à partir d’un dictionnaire</h4>
+<div id="creation-de-series-a-partir-dune-liste" class="section level4">
+<h4><span class="header-section-number">10.1.1.1</span> Création de séries à partir d’une liste</h4>
 <p>Pour en créer,on peut définir une liste, puis appliquer la fonction <code>Series</code> de <code>pandas</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, np.nan, .<span class="dv">5</span>, <span class="dv">1</span>])
 <span class="bu">print</span>(s)</code></pre></div>
@@ -525,6 +525,7 @@ dico_2 <span class="op">=</span> {
     <span class="st">&quot;Prenom&quot;</span>: <span class="st">&quot;Perceval&quot;</span>,
     <span class="st">&quot;Role&quot;</span>: <span class="st">&quot;Chevalier du Pays de Galles&quot;</span>
 }
+
 df <span class="op">=</span> pd.DataFrame([dico_1, dico_2])
 <span class="bu">print</span>(df)</code></pre></div>
 <pre><code>##          Nom    Prenom                         Role
@@ -564,6 +565,7 @@ dico_cpi <span class="op">=</span> {
 <p>À partir de ces deux dictionnaires, créons deux séries correspondantes :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s_gdp_current <span class="op">=</span> pd.Series(dico_gdp_current)
 s_cpi <span class="op">=</span> pd.Series(dico_cpi)
+
 <span class="bu">print</span>(<span class="st">&quot;s_gdp_current : </span><span class="ch">\n</span><span class="st">&quot;</span>, s_gdp_current)</code></pre></div>
 <pre><code>## s_gdp_current : 
 ##  France     2582501.31
@@ -617,8 +619,8 @@ s_cpi <span class="op">=</span> pd.Series(dico_cpi)
 ]
 tableau_np <span class="op">=</span> np.array(tableau)
 <span class="bu">print</span>(df <span class="op">=</span> pd.DataFrame(tableau_np,
-                  columns <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>]))</code></pre></div>
-<pre><code>## ValueError: Shape of passed values is (2, 3), indices imply (3, 3)
+                  columns <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>]))</code></pre></div>
+<pre><code>## ValueError: Shape of passed values is (2, 3), indices imply (4, 3)
 ## 
 ## Detailed traceback: 
 ##   File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
@@ -883,7 +885,7 @@ df_texte <span class="op">=</span> pd.DataFrame(dico, index<span class="op">=</s
 </ul>
 <p>pour <code>selection_colonnes</code> :</p>
 <ul>
-<li>une valeur unique : <code>a</code> (colonne nommée <code>a</code>) ;</li>
+<li>une valeur unique : <code>&quot;a&quot;</code> (colonne nommée <code>a</code>) ;</li>
 <li>une liste de valeurs : <code>[&quot;a&quot;, &quot;c&quot;, &quot;b&quot;]</code> (colonnes nommées “a”, “c” et “b”) ;</li>
 <li>un découpage : <code>[&quot;a&quot;:&quot;c&quot;]</code> (de la colonne nommée “a” à la colonne nommée “c”).</li>
 </ul>
@@ -1171,11 +1173,10 @@ df <span class="op">=</span> pd.DataFrame(dico)
 ## 0      58     115   28     162
 ## 4      62     126   29     158</code></pre>
 <p>Plus simplement, on peut utiliser la méthode <code>query()</code> de <code>pandas</code>. On fournit une expression booléenne à évaluer à cette méthode pour filtrer les données :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(df.query(age<span class="op">&lt;</span><span class="dv">30</span>))</code></pre></div>
-<pre><code>## NameError: name &#39;age&#39; is not defined
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(df.query(<span class="st">&quot;age&lt;30&quot;</span>))</code></pre></div>
+<pre><code>##    height  weight  age  taille
+## 0      58     115   28     162
+## 4      62     126   29     158</code></pre>
 <p>La requête peut être un peu plus complexe, en combinant opérateurs de comparaison (c.f. Section <a href="operateurs.html#operateurs-comparaison">4.2</a>) et opérateurs logiques (c.f. Section <a href="operateurs.html#operateurs-logiques">4.3</a>). Par exemple, admettons que nous voulons filtrer les valeurs du dataframe pour ne retenir que les observations pour lesquelles la taille est inférieure ou égale à 62 et la masse strictement supérieure à 120. La requête serait alors :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(df.query(<span class="st">&quot;weight &gt; 120 and height &lt; 62&quot;</span>))</code></pre></div>
 <pre><code>##    height  weight  age  taille
@@ -1200,7 +1201,7 @@ df <span class="op">=</span> pd.DataFrame(dico)
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(tableau_none))</code></pre></div>
 <pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
 <p>Avec un tableau de type <code>object</code>, les opérations effectuées sur les données seront moins efficaces qu’avec un tableau d’un type numérique <span class="citation">(VanderPlas <a href="#ref-vanderplas2016python">2016</a>, p 121)</span>.</p>
-<p>La valeur <code>NaN</code> est une valeur de nombre à virgule flottante (c.f. Section <a href="#numpy-constantes"><strong>??</strong></a>). <code>NumPy</code> la gère différemment de <code>NaN</code>, et n’assigne passe type <code>object</code> d’emblée en présence de <code>NaN</code> :</p>
+<p>La valeur <code>NaN</code> est une valeur de nombre à virgule flottante (c.f. Section <a href="numpy.html#numpy-constantes">9.1.10</a>). <code>NumPy</code> la gère différemment de <code>NaN</code>, et n’assigne passe type <code>object</code> d’emblée en présence de <code>NaN</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">tableau_nan <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, np.nan])
 <span class="bu">print</span>(tableau_nan)</code></pre></div>
 <pre><code>## [ 1.  4. -1. nan]</code></pre>
@@ -1931,8 +1932,8 @@ df <span class="op">=</span> pd.DataFrame(dico)
 ## 0      58     115      3364  0.034185
 ## 1      59     117      3481  0.033611
 ## 2      60     120      3600  0.033333</code></pre>
-<div id="statistiques-pandas-statistiques-df" class="section level3">
-<h3><span class="header-section-number">10.10.1</span> Statistiques {pandas-statistiques-df}</h3>
+<div id="pandas-statistiques-df" class="section level3">
+<h3><span class="header-section-number">10.10.1</span> Statistiques</h3>
 <p><code>pandas</code> propose quelques méthodes pour effectuer des statistiques descriptives pour chaque colonne ou par ligne. Pour cela, la syntaxe est la suivante (tous les paramètres ont une valeur par défaut, la liste est simplifiée ici) :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dataframe.fonction_stat(axis, skipna)</code></pre></div>
 <ul>
@@ -2112,21 +2113,25 @@ x_2 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">5</s
      <span class="st">&quot;year&quot;</span> : np.arange(<span class="dv">2014</span>, <span class="dv">2017</span>),
      <span class="st">&quot;exportations&quot;</span> : [<span class="fl">816.8192172</span>, <span class="fl">851.6632573</span>, <span class="fl">867.4014253</span>]
     })
+
 importations_fr <span class="op">=</span> pd.DataFrame(
     {<span class="st">&quot;country&quot;</span> : <span class="st">&quot;France&quot;</span>,
      <span class="st">&quot;year&quot;</span> : np.arange(<span class="dv">2015</span>, <span class="dv">2018</span>),
      <span class="st">&quot;importations&quot;</span> : [<span class="fl">898.5242962</span>, <span class="fl">936.3691166</span>, <span class="fl">973.8762149</span>]
     })
+
 exportations_us <span class="op">=</span> pd.DataFrame(
     {<span class="st">&quot;country&quot;</span> : <span class="st">&quot;USA&quot;</span>,
      <span class="st">&quot;year&quot;</span> : np.arange(<span class="dv">2014</span>, <span class="dv">2017</span>),
      <span class="st">&quot;exportations&quot;</span> : [<span class="fl">2208.678084</span>, <span class="fl">2217.733347</span>, <span class="fl">2210.442218</span>]
     })
+
 importations_us <span class="op">=</span> pd.DataFrame(
     {<span class="st">&quot;country&quot;</span> : <span class="st">&quot;USA&quot;</span>,
      <span class="st">&quot;year&quot;</span> : np.arange(<span class="dv">2015</span>, <span class="dv">2018</span>),
      <span class="st">&quot;importations&quot;</span> : [<span class="fl">2827.336251</span>, <span class="fl">2863.264745</span>, np.nan]
     })
+
 importations_maroc <span class="op">=</span> pd.DataFrame(
     {<span class="st">&quot;pays&quot;</span> : <span class="st">&quot;Maroc&quot;</span>,
      <span class="st">&quot;annee&quot;</span> : np.arange(<span class="dv">2015</span>, <span class="dv">2018</span>),
@@ -2137,8 +2142,10 @@ exportations_maroc <span class="op">=</span> pd.DataFrame(
      <span class="st">&quot;year&quot;</span> : np.arange(<span class="dv">2014</span>, <span class="dv">2017</span>),
      <span class="st">&quot;exportations&quot;</span> : [<span class="fl">35.50207915</span>, <span class="fl">37.45996653</span>, <span class="fl">39.38228396</span>]
     })
+
 exportations <span class="op">=</span> pd.concat([exportations_fr, exportations_us], ignore_index<span class="op">=</span><span class="va">True</span>)
 importations <span class="op">=</span> pd.concat([importations_fr, importations_us], ignore_index<span class="op">=</span><span class="va">True</span>)
+
 <span class="bu">print</span>(<span class="st">&quot;exportations : </span><span class="ch">\n</span><span class="st">&quot;</span>, exportations)</code></pre></div>
 <pre><code>## exportations : 
 ##    country  year  exportations
@@ -2266,7 +2273,7 @@ importations <span class="op">=</span> pd.concat([importations_fr, importations_
 ## 9   Bretagne         Morbihan   2010      9617        1979
 ## 10     Corse     Corse-du-Sud   2010       936         253
 ## 11     Corse      Haute-Corse   2010      1220         241</code></pre>
-<p>Comme nous l’avons vu précédemment (c.f. Section <a href="#pandas-statistiques-df"><strong>??</strong></a>), on peut utiliser des méthodes permettant de calculer des statistiques simples sur l’ensemble des données. Par exemple, pour afficher la moyenne de chacune des colonnes numériques :</p>
+<p>Comme nous l’avons vu précédemment (c.f. Section <a href="pandas.html#pandas-statistiques-df">10.10.1</a>), on peut utiliser des méthodes permettant de calculer des statistiques simples sur l’ensemble des données. Par exemple, pour afficher la moyenne de chacune des colonnes numériques :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.mean())</code></pre></div>
 <pre><code>## annee         2010.500000
 ## ouvriers      7364.166667
@@ -2277,13 +2284,13 @@ importations <span class="op">=</span> pd.concat([importations_fr, importations_
 <h3><span class="header-section-number">10.14.1</span> Agrégation selon les valeurs d’une seule colonne</h3>
 <p>Par exemple, admettons que nous souhaitons obtenir le nombre total de chomeurs ouvriers par année. Dans un premier temps, on utilise la méthode <code>groupby()</code> sur notre dataframe en indiquant que les groupes doivent être créés selon les valeurs de la colonne <code>annee</code></p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>))</code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x1271660b8&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x11f431d68&gt;</code></pre>
 <p>Ensuite, on récupère la variable <code>ouvriers</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>).annee)
 <span class="co"># Ou bien</span></code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x127166f60&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x11f42a400&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;annee&quot;</span>])</code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x127166780&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x11f42a320&gt;</code></pre>
 <p>Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher le résultat :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;ouvriers&quot;</span>].<span class="bu">sum</span>())</code></pre></div>
 <pre><code>## annee

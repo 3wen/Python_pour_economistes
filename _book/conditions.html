@@ -241,7 +241,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
 <li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes {numpy-constantes}</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
 <li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
@@ -280,7 +280,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
 <li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
-<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#statistiques-pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques {pandas-statistiques-df}</a></li>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
 <li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
@@ -377,19 +377,23 @@ Au moment de l’exécution du script, on peut choisir de créer et exporter les
 <p>Par exemple, admettons qu’on veuille créer une variable de chaleur prenant la valeur <code>chaud</code> si la valeur de la variable <code>temperature</code> dépasse 28 degrés C, <code>froid</code> sinon. Admettons que la température est de 26 degrés C :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">26</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
+
 <span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## Il fait froid</code></pre>
 <p>Si la température est à présent de 32 degrés C :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="dv">32</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaud&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;froid&quot;</span>
+
 <span class="bu">print</span>(<span class="st">&quot;Il fait &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## Il fait chaud</code></pre>
 </div>
@@ -408,6 +412,7 @@ chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
 <p>L’exemple précédent manque un peu de sens commun. Peut-on dire que lordqu’il fait 28 degrés C ou moins il fait froid ? Ajoutons quelques nuances :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temperature <span class="op">=</span> <span class="op">-</span><span class="dv">4</span>
 chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
+
 <span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">28</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;chaude&quot;</span>
 <span class="cf">elif</span> temperature <span class="op">&lt;=</span> <span class="dv">28</span> <span class="kw">and</span> temperature <span class="op">&gt;</span> <span class="dv">15</span>:
@@ -416,6 +421,7 @@ chaleur <span class="op">=</span> <span class="st">&quot;&quot;</span>
   chaleur <span class="op">=</span> <span class="st">&quot;froide&quot;</span>
 <span class="cf">else</span>:
   chaleur <span class="op">=</span> <span class="st">&quot;très froide&quot;</span>
+
 <span class="bu">print</span>(<span class="st">&quot;La température est &quot;</span> <span class="op">+</span> chaleur)</code></pre></div>
 <pre><code>## La température est très froide</code></pre>
 
@@ -433,9 +439,9 @@ L’avantage d’utiliser des instructions conditionnelles <code>if-elif</code> 
 <p>L’objectif va être de créer une variable <code>continent</code> qui va indiquer soit <code>Europe</code>, <code>Asie</code> ou autre à l’issue de l’exécution du code.</p>
 <p>À l’aide d’instructions conditionnelles de type <code>if-elif</code>, rédiger un code qui vérifie la valeur d’une variable <code>pays</code>, et définit la valeur d’une autre variable nommée <code>continent</code> en fonction du contenu observé dans <code>pays</code> tel que :</p>
 <ul>
-<li>si la valeur de pays est présente dans la liste <code>europe</code>, <code>pays</code> vaudra <code>Europe</code> ;</li>
-<li>si la valeur de pays est présente dans la liste <code>asie</code>, <code>pays</code> vaudra <code>Asie</code> ;</li>
-<li>si la valeur de pays n’est présente ni dans <code>europe</code> ni dans <code>asie</code>, la variable <code>pays</code> vaudra <code>Autre</code>.</li>
+<li>si la valeur de pays est présente dans la liste <code>europe</code>, <code>continent</code> vaudra <code>Europe</code> ;</li>
+<li>si la valeur de pays est présente dans la liste <code>asie</code>, <code>continent</code> vaudra <code>Asie</code> ;</li>
+<li>si la valeur de pays n’est présente ni dans <code>europe</code> ni dans <code>asie</code>, la variable <code>continent</code> vaudra <code>Autre</code>.</li>
 </ul>
 <p>Pour ce faire :</p>
 <ol style="list-style-type: decimal">

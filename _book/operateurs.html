@@ -241,7 +241,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
 <li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes {numpy-constantes}</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
 <li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
@@ -280,7 +280,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
 <li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
-<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#statistiques-pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques {pandas-statistiques-df}</a></li>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
 <li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
@@ -335,8 +335,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="soustraction" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Soustraction</h3>
 <p>On effectue une soustraction entre deux nombres à l’aide du symbole <code>-</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="dv">1</span><span class="op">+</span><span class="dv">1</span>) <span class="co"># Soustraction</span></code></pre></div>
-<pre><code>## 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="dv">1</span><span class="op">-</span><span class="dv">1</span>) <span class="co"># Soustraction</span></code></pre></div>
+<pre><code>## 0</code></pre>
 </div>
 <div id="multiplication" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Multiplication</h3>
@@ -394,7 +394,7 @@ b <span class="op">=</span> <span class="st">&quot;dollar&quot;</span>
 l_2 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">11</span>]
 <span class="bu">print</span>(l_1 <span class="op">+</span> l_2)</code></pre></div>
 <pre><code>## [1, &#39;pomme&#39;, 5, 7, 9, 11]</code></pre>
-<p>Idem avec des n-uplets =</p>
+<p>Idem avec des n-uplets :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">t_1 <span class="op">=</span> (<span class="dv">1</span>, <span class="st">&quot;pomme&quot;</span>, <span class="dv">5</span>, <span class="dv">7</span>)
 t_2 <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">11</span>)
 <span class="bu">print</span>(t_1 <span class="op">+</span> t_2)</code></pre></div>
@@ -468,6 +468,7 @@ t_2 <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">11</s
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="st">&quot;Hello&quot;</span>
 b <span class="op">=</span> <span class="st">&quot;World&quot;</span>
 c <span class="op">=</span> <span class="st">&quot;World&quot;</span>
+
 <span class="bu">print</span>(a <span class="op">==</span> c)</code></pre></div>
 <pre><code>## False</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(b <span class="op">==</span> c)</code></pre></div>
@@ -476,6 +477,7 @@ c <span class="op">=</span> <span class="st">&quot;World&quot;</span>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]
 y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]
 z <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>]
+
 <span class="bu">print</span>(x <span class="op">!=</span> y)</code></pre></div>
 <pre><code>## False</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x <span class="op">!=</span> z)</code></pre></div>
@@ -487,6 +489,7 @@ z <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">1</span>
 y <span class="op">=</span> <span class="dv">1</span>
 z <span class="op">=</span> <span class="dv">2</span>
+
 <span class="bu">print</span>(x <span class="op">&lt;</span> y)</code></pre></div>
 <pre><code>## False</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x <span class="op">&lt;=</span> y)</code></pre></div>
@@ -557,6 +560,7 @@ y <span class="op">=</span> <span class="va">True</span>
 <p>Si au moins l’un des deux est faux, la comparaison “ET” logique retourne faux :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="va">True</span>
 y <span class="op">=</span> <span class="va">False</span>
+
 <span class="bu">print</span>(x <span class="kw">and</span> y)</code></pre></div>
 <pre><code>## False</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(y <span class="kw">and</span> y)</code></pre></div>

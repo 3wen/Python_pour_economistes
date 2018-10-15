@@ -28,7 +28,7 @@ output:
       search: yes
       edit: https://github.com/3wen/Python_pour_economistes/edit/master/%s
   bookdown::pdf_book:
-    toc_depth: 3
+    toc_depth: 4
     highlight: default
     keep_tex: yes
     includes:
@@ -668,7 +668,7 @@ Le caractère `\` (barre oblique inversée, ou *backslash*) est le caractère d'
 | :---: |:-----------:| :---:|:-----------:|
 | `\n` | Nouvelle ligne | `\r` | Retour à la ligne |
 | `\t` | Tabulation | `\b` | Retour arrière |
-| `\` | Barre oblique inversée | `\'` | Apostrophe |
+| `\\` | Barre oblique inversée | `\'` | Apostrophe |
 | `\"` | Apostrophe double | `` \` `` | Accent grave |
 
 ```
@@ -727,7 +727,7 @@ print(preference_3)
 ### Indexation et extraction
 
 
-Les chaînes de caractères peuvent être indexées. Attention, **l'indice du premier caractère commence à 0*.
+Les chaînes de caractères peuvent être indexées. Attention, **l'indice du premier caractère commence à 0**.
 
 Pour obtenir le ie caractère d'une chaîne, on utilise des crochets. La syntaxe est la suivante :
 ```{python, eval=F, echo=TRUE, error=TRUE}
@@ -1027,7 +1027,7 @@ print(type(x))
 print(type(y))
 ```
 
-Il est également possible d'avoir recours aux notations scientifiques, en utilisant `E` ou `e` pour indiquer une puissance de 10. Par exemple, pour écrire $3,2^12$, on procèdera comme suit :
+Il est également possible d'avoir recours aux notations scientifiques, en utilisant `E` ou `e` pour indiquer une puissance de 10. Par exemple, pour écrire $3,2^{12}$, on procèdera comme suit :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 x = 3.2E12
 y = 3.2e12
@@ -1085,6 +1085,7 @@ La **conversion d'un nombre ou d'une chaîne de caractères en entier** s'effect
 ```{python, eval=T, echo=TRUE, error=TRUE}
 x = "3"
 x_int = int(x)
+print(type(x_int))
 print(type(x))
 ```
 
@@ -1231,14 +1232,14 @@ Les objets du type `date` possèdent quelques méthodes. Nous allons passer en r
 
 La méthode `ctime()` retourne la date sous forme d'une chaîne de caractères.
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.ctime()
+print(debut.ctime())
 ```
 
 ##### `weekday()`
 
 La méthode `weekday()` retourne la position du jour de la semaine (lundi valant 0, dimanche 6)
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.weekday()
+print(debut.weekday())
 ```
 
 ```{block2, type='remarque', echo=TRUE}
@@ -1249,7 +1250,7 @@ Cette méthode peut être très pratique lors d'une analyse des données, pour e
 
 Dans la même veine que `weekday()`, la méthode `isoweekday()` retourne la position du jour de la semaine, en attribuant cette fois la valeur 1 au lundi et 7 au dimanche.
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.isoweekday()
+print(debut.isoweekday())
 ```
 
 ##### `toordinal()`
@@ -1257,14 +1258,14 @@ debut.isoweekday()
 La méthode `toordinal()` retourne le numéro du jour, en prenant comme référence la valeur 1 pour le premier jour de l'an 1.
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.toordinal()
+print(debut.toordinal())
 ```
 
 ##### `isoformat()`
 
 La méthode `isoformat()` retourne la date en [numérotation ISO](https://fr.wikipedia.org/wiki/Num%C3%A9rotation_ISO_des_semaines), sous forme d'une chaîne de caractères.
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.isoformat()
+print(debut.isoformat())
 ```
 
 
@@ -1273,7 +1274,7 @@ debut.isoformat()
 La méthode `isocalendar()` retourne un nuplet (c.f. Section\ \@ref(n-uplets-tuples)) comprenant trois éléments : l'année, le numéro de la semaine et le jour de la semaine (les trois en numérotation ISO).
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
-debut.isocalendar()
+print(debut.isocalendar())
 ```
 
 
@@ -1878,7 +1879,7 @@ Le type de l'objet que l'on vient de créer n'est pas `set` mais `dict` (c.f. Se
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 ensemble_vide = set()
-type(ensemble_vide)
+print(type(ensemble_vide))
 ```
 
 
@@ -2150,6 +2151,7 @@ print("d2: ", d2)
 
 ```{block2, type='exframe', echo=TRUE}
 1. Créer un dictionnaire nommé `photo`, comprenant les couples clés-valeurs suivants :
+  
   1. clé : `id`, valeur : `1`,
   2. clé : `description`, valeur : `Une photo du Vieux-port de Marseille`,
   3. clé : `loc`, valeur : une liste dans laquelle sont données les coordonnées suivantes `5.3772133`, `43.302424`.
@@ -2185,7 +2187,7 @@ print(1+1) # Addition
 On effectue une soustraction entre deux nombres à l'aide du symbole `-` :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print(1+1) # Soustraction
+print(1-1) # Soustraction
 ```
 
 
@@ -2273,7 +2275,7 @@ l_2 = [9, 11]
 print(l_1 + l_2)
 ```
 
-Idem avec des n-uplets =
+Idem avec des n-uplets :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 t_1 = (1, "pomme", 5, 7)
 t_2 = (9, 11)
@@ -3186,9 +3188,9 @@ L'objectif va être de créer une variable `continent` qui va indiquer soit `Eur
 
 À l'aide d'instructions conditionnelles de type `if-elif`, rédiger un code qui vérifie la valeur d'une variable `pays`, et définit la valeur d'une autre variable nommée `continent` en fonction du contenu observé dans `pays` tel que :
 
-- si la valeur de pays est présente dans la liste `europe`, `pays` vaudra `Europe` ;
-- si la valeur de pays est présente dans la liste `asie`, `pays` vaudra `Asie` ;
-- si la valeur de pays n'est présente ni dans `europe` ni dans `asie`, la variable `pays` vaudra `Autre`.
+- si la valeur de pays est présente dans la liste `europe`, `continent` vaudra `Europe` ;
+- si la valeur de pays est présente dans la liste `asie`, `continent` vaudra `Asie` ;
+- si la valeur de pays n'est présente ni dans `europe` ni dans `asie`, la variable `continent` vaudra `Autre`.
   
 
 Pour ce faire :
@@ -3887,7 +3889,7 @@ print("size tableau_2 : ", tableau_2.shape)
 
 ### Extraction des éléments d'un tableau
 
-L'accès aux éléments d'un tableau se fait de la même manière que pour les listes  (c.f. Section\ \@ref(stucture-liste-extraction)), grâce à l'indiçage. La syntaxe est la suivante :
+L'accès aux éléments d'un tableau se fait de la même manière que pour les listes  (c.f. Section\ \@ref(structure-liste-extraction)), grâce à l'indiçage. La syntaxe est la suivante :
 ```{python, eval=F, echo=TRUE, error=TRUE}
 tableau[lower:upper:step]
 ```
@@ -4273,7 +4275,7 @@ np.dot(t_1, t_3.T)
 
 ### Opérateurs logiques
 
-Pour effectuer des tests logiques sur les éléments d'un tableau, `NumPy` propose des fonctions, répertoriées dans le Tableau\ \@ref(numpy-operateurs-logiques). Le résultat retourné par l'application de ces fonctions est un tableau de booléens.
+Pour effectuer des tests logiques sur les éléments d'un tableau, `NumPy` propose des fonctions, répertoriées dans le Tableau\ \@ref(tab:numpy-operateurs-logiques). Le résultat retourné par l'application de ces fonctions est un tableau de booléens.
 
 | Code | Description |
 | ------------: | ----------------------------------------------------: |
@@ -4299,7 +4301,7 @@ print("les éléments de t compris entre 10 et 20 : \n",
 ```
 
 
-### Quelques constantes {numpy-constantes}
+### Quelques constantes {#numpy-constantes}
 
 
 `NumPy` propose quelques constantes, dont certaines sont reportées dans le Tableau\ \@ref(tab:constantes-numpy).
@@ -4633,7 +4635,7 @@ Nous allons nous pencher sur deux types de structures, les séries (`serie`) et 
 
 Les séries sont des tableaux à une dimension de données indexées.
 
-#### Création de séries à partir d'un dictionnaire
+#### Création de séries à partir d'une liste
 
 Pour en créer,on peut définir une liste, puis appliquer la fonction `Series` de `pandas` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
@@ -4893,7 +4895,7 @@ liste = [
 ]
 tableau_np = np.array(tableau)
 print(df = pd.DataFrame(tableau_np,
-                  columns = ["a", "b", "c"]))
+                  columns = ["a", "b", "c", "d"]))
 ```
 
 #### Dimensions
@@ -5115,7 +5117,7 @@ avec `selection_lignes` :
 
 pour `selection_colonnes` :
 
-- une valeur unique : `a` (colonne nommée `a`) ;
+- une valeur unique : `"a"` (colonne nommée `a`) ;
 - une liste de valeurs : `["a", "c", "b"]` (colonnes nommées "a", "c" et "b") ;
 - un découpage : `["a":"c"]` (de la colonne nommée "a" à la colonne nommée "c").
 
@@ -5342,7 +5344,7 @@ print(df[masque])
 
 Plus simplement, on peut utiliser la méthode `query()` de `pandas`. On fournit une expression booléenne à évaluer à cette méthode pour filtrer les données :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print(df.query(age<30))
+print(df.query("age<30"))
 ```
 
 
@@ -5986,7 +5988,7 @@ print(df.head(3))
 ```
 
 
-### Statistiques {pandas-statistiques-df}
+### Statistiques {#pandas-statistiques-df}
 
 `pandas` propose quelques méthodes pour effectuer des statistiques descriptives pour chaque colonne ou par ligne. Pour cela, la syntaxe est la suivante (tous les paramètres ont une valeur par défaut, la liste est simplifiée ici) :
 

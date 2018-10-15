@@ -241,7 +241,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
 <li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
-<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#quelques-constantes-numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes {numpy-constantes}</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
 <li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
@@ -280,7 +280,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
 <li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
-<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#statistiques-pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques {pandas-statistiques-df}</a></li>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
 <li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
@@ -380,7 +380,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <td align="center">Retour arrière</td>
 </tr>
 <tr class="odd">
-<td align="center"><code>\</code></td>
+<td align="center"><code>\\</code></td>
 <td align="center">Barre oblique inversée</td>
 <td align="center"><code>\'</code></td>
 <td align="center">Apostrophe</td>
@@ -431,7 +431,7 @@ preference_3 <span class="op">=</span> x.<span class="bu">format</span>(langage_
 </div>
 <div id="indexation-et-extraction" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Indexation et extraction</h3>
-<p>Les chaînes de caractères peuvent être indexées. Attention, **l’indice du premier caractère commence à 0*.</p>
+<p>Les chaînes de caractères peuvent être indexées. Attention, <strong>l’indice du premier caractère commence à 0</strong>.</p>
 <p>Pour obtenir le ie caractère d’une chaîne, on utilise des crochets. La syntaxe est la suivante :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x[i<span class="op">-</span><span class="dv">1</span>]</code></pre></div>
 <p>Par exemple, pour afficher le premier caractère, puis le cinquième de la chaîne <code>Hello</code> :</p>
@@ -446,6 +446,7 @@ preference_3 <span class="op">=</span> x.<span class="bu">format</span>(langage_
 <pre><code>## l</code></pre>
 <p>L’extraction d’une sous-chaîne en précisant sa position de début et de fin (implicitement ou non) s’effectue avec les crochets également. Il suffit de préciser les deux valeurs d’indices : <code>[debut:fin]</code>.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="st">&quot;You shall not pass!&quot;</span>
+
 <span class="co"># Du quatrième caractère (non inclus) au neuvième (inclus)</span>
 <span class="bu">print</span>(x[<span class="dv">4</span>:<span class="dv">9</span>])</code></pre></div>
 <pre><code>## shall</code></pre>
@@ -681,7 +682,7 @@ y <span class="op">=</span> <span class="fl">48.15162342</span>
 <pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(y))</code></pre></div>
 <pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
-<p>Il est également possible d’avoir recours aux notations scientifiques, en utilisant <code>E</code> ou <code>e</code> pour indiquer une puissance de 10. Par exemple, pour écrire <span class="math inline">\(3,2^12\)</span>, on procèdera comme suit :</p>
+<p>Il est également possible d’avoir recours aux notations scientifiques, en utilisant <code>E</code> ou <code>e</code> pour indiquer une puissance de 10. Par exemple, pour écrire <span class="math inline">\(3,2^{12}\)</span>, on procèdera comme suit :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="fl">3.2E12</span>
 y <span class="op">=</span> <span class="fl">3.2e12</span>
 <span class="bu">print</span>(x)</code></pre></div>
@@ -733,7 +734,9 @@ y <span class="op">=</span> <span class="fl">3.2e12</span>
 <p>La <strong>conversion d’un nombre ou d’une chaîne de caractères en entier</strong> s’effectue à l’aide de la fonction <code>int()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="st">&quot;3&quot;</span>
 x_int <span class="op">=</span> <span class="bu">int</span>(x)
-<span class="bu">print</span>(<span class="bu">type</span>(x))</code></pre></div>
+<span class="bu">print</span>(<span class="bu">type</span>(x_int))</code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(x))</code></pre></div>
 <pre><code>## &lt;class &#39;str&#39;&gt;</code></pre>
 <p>On note que la conversion d’un nombre à virgule flottante tronque le nombre pour ne garder que la partie entière :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="fl">3.6</span>
@@ -841,12 +844,14 @@ Il n’est pas obligatoire de préciser le nom des paramètres dans l’appel à
 <div id="ctime" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.1</span> <code>ctime()</code></h5>
 <p>La méthode <code>ctime()</code> retourne la date sous forme d’une chaîne de caractères.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.ctime()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.ctime())</code></pre></div>
+<pre><code>## Tue Apr 23 00:00:00 2013</code></pre>
 </div>
 <div id="weekday" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.2</span> <code>weekday()</code></h5>
 <p>La méthode <code>weekday()</code> retourne la position du jour de la semaine (lundi valant 0, dimanche 6)</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.weekday()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.weekday())</code></pre></div>
+<pre><code>## 1</code></pre>
 
 <div class="remarque">
 Cette méthode peut être très pratique lors d’une analyse des données, pour explorer les aspects de saisonnalité hebdomadaire.
@@ -856,22 +861,26 @@ Cette méthode peut être très pratique lors d’une analyse des données, pour
 <div id="isoweekday" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.3</span> <code>isoweekday()</code></h5>
 <p>Dans la même veine que <code>weekday()</code>, la méthode <code>isoweekday()</code> retourne la position du jour de la semaine, en attribuant cette fois la valeur 1 au lundi et 7 au dimanche.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.isoweekday()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.isoweekday())</code></pre></div>
+<pre><code>## 2</code></pre>
 </div>
 <div id="toordinal" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.4</span> <code>toordinal()</code></h5>
 <p>La méthode <code>toordinal()</code> retourne le numéro du jour, en prenant comme référence la valeur 1 pour le premier jour de l’an 1.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.toordinal()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.toordinal())</code></pre></div>
+<pre><code>## 734981</code></pre>
 </div>
 <div id="isoformat" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.5</span> <code>isoformat()</code></h5>
 <p>La méthode <code>isoformat()</code> retourne la date en <a href="https://fr.wikipedia.org/wiki/Num%C3%A9rotation_ISO_des_semaines">numérotation ISO</a>, sous forme d’une chaîne de caractères.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.isoformat()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.isoformat())</code></pre></div>
+<pre><code>## 2013-04-23</code></pre>
 </div>
 <div id="isocalendar" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.6</span> <code>isocalendar()</code></h5>
 <p>La méthode <code>isocalendar()</code> retourne un nuplet (c.f. Section <a href="structures.html#n-uplets-tuples">3.2</a>) comprenant trois éléments : l’année, le numéro de la semaine et le jour de la semaine (les trois en numérotation ISO).</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">debut.isocalendar()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(debut.isocalendar())</code></pre></div>
+<pre><code>## (2013, 17, 2)</code></pre>
 </div>
 <div id="replace" class="section level5">
 <h5><span class="header-section-number">2.5.1.1.7</span> <code>replace()</code></h5>
@@ -1138,9 +1147,9 @@ x <span class="op">=</span> datetime(year <span class="op">=</span> <span class=
 <h5><span class="header-section-number">2.5.1.3.1</span> <code>today()</code> et <code>now()</code></h5>
 <p>Les méthodes <code>today()</code> et <code>now()</code> retournent le <code>datetime</code> courant, celui au moment où est évaluée l’instruction :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x.today())</code></pre></div>
-<pre><code>## 2018-10-12 00:57:23.609564</code></pre>
+<pre><code>## 2018-10-15 13:46:00.606551</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(datetime.today())</code></pre></div>
-<pre><code>## 2018-10-12 00:57:23.612322</code></pre>
+<pre><code>## 2018-10-15 13:46:00.608000</code></pre>
 <p>La distinction entre les deux réside dans le fuseau horaire. Avec <code>today()</code>, l’attribut <code>tzinfo</code> est mis à <code>None</code>, tandis qu’avec <code>now()</code>, l’attribut <code>tzinfo</code>, s’il est indiqué, est pris en compte.</p>
 </div>
 <div id="timestamp" class="section level5">

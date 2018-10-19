@@ -300,7 +300,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a></li>
+<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a><ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-matplotlib"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#geometries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
 </ul>
 
@@ -1779,39 +1788,35 @@ df <span class="op">=</span> pd.DataFrame(dico)
 </div>
 <div id="ajout-dune-colonne-dans-un-dataframe" class="section level4">
 <h4><span class="header-section-number">10.8.2.3</span> Ajout d’une colonne dans un dataframe</h4>
-<p>Pour ajouter une colonne dans un dataframe, on utilise la méthode <code>assign()</code>, en indiquant le nom et les valeurs.</p>
+<p>Pour ajouter une colonne dans un dataframe :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> numpy <span class="im">import</span> random
-df <span class="op">=</span> df.assign(z <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index)))
-<span class="bu">print</span>(<span class="st">&quot;df : </span><span class="ch">\n</span><span class="st">&quot;</span>, df)</code></pre></div>
+df <span class="op">=</span> df[<span class="st">&quot;z&quot;</span>] <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index))</code></pre></div>
+<pre><code>## IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;df : </span><span class="ch">\n</span><span class="st">&quot;</span>, df)</code></pre></div>
 <pre><code>## df : 
-##         ville annee  x  y         z
-## 0  Marseille  2019  1  3  0.117443
-## 1        Aix  2019  2  3  0.393782
-## 2  Marseille  2018  2  2  0.452730
-## 3        Aix  2018  2  1  0.538148
-## 4      Paris  2019  0  4  0.790622
-## 5      Paris  2019  0  4  0.465836
-## 6  Marseille  2021  2  4  0.435332
-## 7  Marseille  2022  2  4  0.569479
-## 8        Aix  2022  3  3  0.969259</code></pre>
+##  [0.11744339 0.39378235 0.45272981 0.53814784 0.7906221  0.46583634
+##  0.43533225 0.56947866 0.969259  ]</code></pre>
 </div>
 <div id="ajout-de-plusieurs-colonnes-dans-un-dataframe" class="section level4">
 <h4><span class="header-section-number">10.8.2.4</span> Ajout de plusieurs colonnes dans un dataframe</h4>
-<p>Pour ajouter plusieurs colonnes, le même principe s’applique :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df <span class="op">=</span> df.assign(a <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index)),
-          b <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index)))
-<span class="bu">print</span>(<span class="st">&quot;df : </span><span class="ch">\n</span><span class="st">&quot;</span>, df)</code></pre></div>
+<p>Pour ajouter plusieurs colonnes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df[<span class="st">&quot;a&quot;</span>] <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index))</code></pre></div>
+<pre><code>## AttributeError: &#39;numpy.ndarray&#39; object has no attribute &#39;index&#39;
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df[<span class="st">&quot;b&quot;</span>] <span class="op">=</span> random.rand(<span class="bu">len</span>(df.index))</code></pre></div>
+<pre><code>## AttributeError: &#39;numpy.ndarray&#39; object has no attribute &#39;index&#39;
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;df : </span><span class="ch">\n</span><span class="st">&quot;</span>, df)</code></pre></div>
 <pre><code>## df : 
-##         ville annee  x  y         z         a         b
-## 0  Marseille  2019  1  3  0.117443  0.040556  0.689236
-## 1        Aix  2019  2  3  0.393782  0.548120  0.929546
-## 2  Marseille  2018  2  2  0.452730  0.462577  0.918117
-## 3        Aix  2018  2  1  0.538148  0.376472  0.975302
-## 4      Paris  2019  0  4  0.790622  0.327912  0.397002
-## 5      Paris  2019  0  4  0.465836  0.813529  0.262626
-## 6  Marseille  2021  2  4  0.435332  0.646552  0.430151
-## 7  Marseille  2022  2  4  0.569479  0.047426  0.764531
-## 8        Aix  2022  3  3  0.969259  0.994958  0.599731</code></pre>
+##  [0.11744339 0.39378235 0.45272981 0.53814784 0.7906221  0.46583634
+##  0.43533225 0.56947866 0.969259  ]</code></pre>
 </div>
 </div>
 </div>
@@ -1919,14 +1924,14 @@ df <span class="op">=</span> pd.DataFrame(dico)
 ## 13      71     159
 ## 14      72     164</code></pre>
 <p>Ajoutons la colonne <code>height_2</code>, élevant les valeurs de la colonne <code>height</code> au carré :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df <span class="op">=</span> df.assign(height_2 <span class="op">=</span> df.height<span class="op">**</span><span class="dv">2</span>)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df[<span class="st">&quot;height_2&quot;</span>] <span class="op">=</span> df.height<span class="op">**</span><span class="dv">2</span>
 <span class="bu">print</span>(df.head(<span class="dv">3</span>))</code></pre></div>
 <pre><code>##    height  weight  height_2
 ## 0      58     115      3364
 ## 1      59     117      3481
 ## 2      60     120      3600</code></pre>
 <p>À présent, ajoutons la colonne <code>imc</code>, fournissant les valeurs de l’indicateur de masse corporelle pour les individus du dataframe (<span class="math inline">\(\text{IMC} = \frac{\text{weight}}{\text{height}^2}\)</span>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df <span class="op">=</span> df.assign(imc <span class="op">=</span> df.weight <span class="op">/</span> df.height_2)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">df[<span class="st">&quot;imc&quot;</span>] <span class="op">=</span> df.weight <span class="op">/</span> df.height_2
 <span class="bu">print</span>(df.head(<span class="dv">3</span>))</code></pre></div>
 <pre><code>##    height  weight  height_2       imc
 ## 0      58     115      3364  0.034185
@@ -2032,76 +2037,76 @@ x_2 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">5</s
 <span class="bu">print</span>(<span class="st">&quot;x_1 : </span><span class="ch">\n</span><span class="st">&quot;</span>, x_1)</code></pre></div>
 <pre><code>## x_1 : 
 ##            a         b         c         d
-## 0  0.231711 -0.474710 -0.309147 -2.032396
-## 1 -0.174468 -0.642475 -0.625023  1.325887
-## 2  0.531255  1.275284 -0.682826 -0.948186
-## 3  0.777362  0.325113 -1.203486  1.209543
-## 4  0.157622 -0.293555  0.111560  0.597679</code></pre>
+## 0  0.058606 -0.559564 -2.227457 -0.674820
+## 1  1.014849 -0.557025 -0.424606  0.137496
+## 2 -0.070513  0.325394 -0.473522 -1.609218
+## 3  0.532768  1.413138  0.231711 -0.474710
+## 4 -0.309147 -2.032396 -0.174468 -0.642475</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">x_2 : </span><span class="ch">\n</span><span class="st">&quot;</span>, x_2)</code></pre></div>
 <pre><code>## 
 ## x_2 : 
 ##            e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318</code></pre>
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543</code></pre>
 <p>Pour “coller” le dataframe <code>x_2</code> à droite de <code>x_1</code>, on peut utiliser la méthode <code>concat()</code> de <code>pandas</code>. Pour indiquer que la concaténation s’effectue sur les colonnes, on précise la valeur <code>1</code> pour le paramètre <code>axix</code> comme suit :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(pd.concat([x_1, x_2], axis <span class="op">=</span> <span class="dv">1</span>))</code></pre></div>
 <pre><code>##           a         b         c         d         e         f
-## 0  0.231711 -0.474710 -0.309147 -2.032396 -1.270093  0.120949
-## 1 -0.174468 -0.642475 -0.625023  1.325887 -0.193898  1.804172
-## 2  0.531255  1.275284 -0.682826 -0.948186 -0.234694  0.939908
-## 3  0.777362  0.325113 -1.203486  1.209543 -0.171520 -0.153055
-## 4  0.157622 -0.293555  0.111560  0.597679 -0.363095 -0.067318</code></pre>
+## 0  0.058606 -0.559564 -2.227457 -0.674820 -0.625023  1.325887
+## 1  1.014849 -0.557025 -0.424606  0.137496  0.531255  1.275284
+## 2 -0.070513  0.325394 -0.473522 -1.609218 -0.682826 -0.948186
+## 3  0.532768  1.413138  0.231711 -0.474710  0.777362  0.325113
+## 4 -0.309147 -2.032396 -0.174468 -0.642475 -1.203486  1.209543</code></pre>
 <p>Pour coller les dataframes les uns en-dessous des autres, on peut utiliser la méthode <code>append()</code>, comme indiqué dans la Section <a href="pandas.html#pandas-ajout-ligne-df">10.8.2.1</a>, ou on peut aussi utiliser la méthode <code>concat()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x_3 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">5</span>, <span class="dv">2</span>),
                    columns <span class="op">=</span> [<span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>])
 <span class="bu">print</span>(<span class="st">&quot;x_3 : </span><span class="ch">\n</span><span class="st">&quot;</span>, x_3)</code></pre></div>
 <pre><code>## x_3 : 
 ##            e         f
-## 0  1.444721  0.325771
-## 1 -0.855732 -0.697595
-## 2 -0.276134 -1.258759
-## 3  0.478094 -0.859764
-## 4  0.571988 -0.173965</code></pre>
+## 0  0.157622 -0.293555
+## 1  0.111560  0.597679
+## 2 -1.270093  0.120949
+## 3 -0.193898  1.804172
+## 4 -0.234694  0.939908</code></pre>
 <p>Rajoutons les observations de <code>x_3</code> en-dessous de celles de <code>x_2</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(pd.concat([x_2, x_3], axis <span class="op">=</span> <span class="dv">0</span>))</code></pre></div>
 <pre><code>##           e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318
-## 0  1.444721  0.325771
-## 1 -0.855732 -0.697595
-## 2 -0.276134 -1.258759
-## 3  0.478094 -0.859764
-## 4  0.571988 -0.173965</code></pre>
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543
+## 0  0.157622 -0.293555
+## 1  0.111560  0.597679
+## 2 -1.270093  0.120949
+## 3 -0.193898  1.804172
+## 4 -0.234694  0.939908</code></pre>
 <p>Comme on peut le voir, l’indice des lignes de <code>x_2</code> n’a pas été modifié. Si on souhaite qu’il le soit, on peut le préciser via le paramètre <code>ignore_index</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(pd.concat([x_2, x_3], axis <span class="op">=</span> <span class="dv">0</span>, ignore_index<span class="op">=</span><span class="va">True</span>))</code></pre></div>
 <pre><code>##           e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318
-## 5  1.444721  0.325771
-## 6 -0.855732 -0.697595
-## 7 -0.276134 -1.258759
-## 8  0.478094 -0.859764
-## 9  0.571988 -0.173965</code></pre>
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543
+## 5  0.157622 -0.293555
+## 6  0.111560  0.597679
+## 7 -1.270093  0.120949
+## 8 -0.193898  1.804172
+## 9 -0.234694  0.939908</code></pre>
 <p>Si le nom des colonnes n’est pas ientique, des valeurs <code>NaN</code> seront introduites :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x_4 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">5</span>, <span class="dv">2</span>),
                    columns <span class="op">=</span> [<span class="st">&quot;e&quot;</span>, <span class="st">&quot;g&quot;</span>])
 <span class="bu">print</span>(<span class="st">&quot;x_4 : </span><span class="ch">\n</span><span class="st">&quot;</span>, x_4)</code></pre></div>
 <pre><code>## x_4 : 
 ##            e         g
-## 0  1.534900  0.872856
-## 1  1.856835  0.025914
-## 2  0.171984 -0.191163
-## 3 -0.292936  1.655677
-## 4 -0.207182 -0.686884</code></pre>
+## 0 -0.171520 -0.153055
+## 1 -0.363095 -0.067318
+## 2  1.444721  0.325771
+## 3 -0.855732 -0.697595
+## 4 -0.276134 -1.258759</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pd.concat([x_2, x_4], axis <span class="op">=</span> <span class="dv">0</span>, sort<span class="op">=</span><span class="va">False</span>, ignore_index<span class="op">=</span><span class="va">True</span>)</code></pre></div>
 </div>
 <div id="pandas-jointures" class="section level2">
@@ -2284,13 +2289,13 @@ importations <span class="op">=</span> pd.concat([importations_fr, importations_
 <h3><span class="header-section-number">10.14.1</span> Agrégation selon les valeurs d’une seule colonne</h3>
 <p>Par exemple, admettons que nous souhaitons obtenir le nombre total de chomeurs ouvriers par année. Dans un premier temps, on utilise la méthode <code>groupby()</code> sur notre dataframe en indiquant que les groupes doivent être créés selon les valeurs de la colonne <code>annee</code></p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>))</code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x11f431d68&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x128de5cc0&gt;</code></pre>
 <p>Ensuite, on récupère la variable <code>ouvriers</code> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>).annee)
 <span class="co"># Ou bien</span></code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x11f42a400&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x12890a0f0&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;annee&quot;</span>])</code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x11f42a320&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x128df30b8&gt;</code></pre>
 <p>Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher le résultat :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;ouvriers&quot;</span>].<span class="bu">sum</span>())</code></pre></div>
 <pre><code>## annee

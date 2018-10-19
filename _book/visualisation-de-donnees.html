@@ -300,7 +300,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a></li>
+<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a><ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-matplotlib"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#geometries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
 </ul>
 
@@ -321,7 +330,562 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="visualisation-de-donnees" class="section level1">
 <h1><span class="header-section-number">11</span> Visualisation de données</h1>
+<p>Dans ce chapitre, nous allons explorer les rudiments de la visualisation de données avec la librairie <code>Matplotlib</code>.</p>
+<p>Pour le moment, ces notes ne parleront pas des graphiques dynamiques que l’on peut réaliser en lien avec des librairies JavaScript, comme D3.js. Dans une prochaine version également, nous verrons comment réaliser des graphiques avec <code>seaborn</code> (<a href="https://seaborn.pydata.org/" class="uri">https://seaborn.pydata.org/</a>).</p>
+<p>Pour avoir accès rapidement à un type de graphique que l’on souhaite réaliser, on peut se référencer à cette excellente gallerie : <a href="https://python-graph-gallery.com/" class="uri">https://python-graph-gallery.com/</a>.</p>
+<p>Les adeptes du logiciel et langage de programmation R seront heureux de pouvoir retrouver une grammaire graphique comme celle proposée par le <a href="https://ggplot2.tidyverse.org/"><em>package</em> R <code>ggplot2</code></a> introduit par Hadley Wickham. En effet, il existe une librairie Python nommée <code>ggplot</code> : <a href="http://ggplot.yhathq.com/" class="uri">http://ggplot.yhathq.com/</a>.</p>
+<p>Pour explorer graphiquement ses données, il peut être intéressant d’investir un peu de temps dans la librairie <code>Altair</code> (<a href="https://altair-viz.github.io/" class="uri">https://altair-viz.github.io/</a>). Pour une introduction en vidéo : <a href="https://www.youtube.com/watch?v=aRxahWy-ul8" class="uri">https://www.youtube.com/watch?v=aRxahWy-ul8</a>.</p>
+<div id="graphiques-avec-matplotlib" class="section level2">
+<h2><span class="header-section-number">11.1</span> Graphiques avec matplotlib</h2>
+<p>Pour utiliser les fonctionnalités offertes par <code>matplotlib</code> (<a href="https://matplotlib.org/" class="uri">https://matplotlib.org/</a>), il est nécessaire de charger certains modules. Le plus commun est le sous-module <code>pyplot</code>, auquel on attribue fréquemment l’alias <code>plt</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</code></pre></div>
+<p>Pour réaliser un graphique avec la fonction <code>pyplot</code>, on commence par créer une figure en définissant sa zone, puis on ajoute et / ou modifie ses éléments à l’aide de fonctions offertes par <code>pyplot</code>.</p>
+<p>Pour illustrer les fonctionnalités de <code>matplotlib</code>, nous allons avoir besoin de générer des valeurs, à l’aide de la librairie <code>numpy</code>, que l’on charge :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np</code></pre></div>
+<div id="geometries" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Géométries</h3>
+<div id="matplotlib-plot" class="section level4">
+<h4><span class="header-section-number">11.1.1.1</span> Lignes</h4>
+<p>Pour tracer des lignes sur un repère cartésien, on utilise la fonction <code>plot()</code>, à qui on fournit les coordonnées en abscisses et en ordonnées en premiers paramètres. On définit avec le troisième paramètre la géométrie.</p>
+<p>Par défaut, la géométrie réalisée est une courbe bleue :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.plot(x, y)</code></pre></div>
+<p><img src="figs/pyplot/lignes_1.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Une fois le graphique affiché, on peut le refermer avec la fonction <code>close()</code> :</p>
+<p>De la même manière, on peut préciser la gémoétrie comme suit :</p>
+<p>Pour ajouter une courbe sur le graphique, on fait appel plusieurs fois à la fonction <code>plot()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">y_2 <span class="op">=</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>
+plt.plot(x, y, <span class="st">&quot;-&quot;</span>)
+plt.plot(x, y_2, <span class="st">&quot;-&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_2_courbes.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="parametres-esthetiques" class="section level5">
+<h5><span class="header-section-number">11.1.1.1.1</span> Paramètres esthétiques</h5>
+<div id="couleur-de-lignes" class="section level6">
+<h6><span class="header-section-number">11.1.1.1.1.1</span> Couleur de lignes</h6>
+<p>Pour modifier la couleur d’une ligne, on utilise le paramètre <code>color</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, color<span class="op">=</span><span class="st">&quot;red&quot;</span>)
+plt.plot(x, y_2, color<span class="op">=</span><span class="st">&quot;#00FF00&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_couleur.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Commme on peut le constater, la référence à la couleur peut se faire en faisant appel à son nom (la liste des couleurs disposant d’un nom est accessibles sur la <a href="https://matplotlib.org/examples/color/named_colors.html">documentation de matplotlib</a>). On peut aussi utiliser un code hexadécimal pour faire référence à une couleur.</p>
+
+<div class="remarque">
+Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l’utilisation ensuite : est-ce pour l’écran ? Pour l’impression en niveaux de gris ? On peut également se demander si le choix effectué ne gênera pas la compréhension pour les daltoniens (qui sont environ 4% en France). Le site web <a href="http://colorbrewer2.org/">Color Brewer</a> propose des choix de couleurs en fonctions de caractéristiques souhaitées comme celles mentionnées.
+</div>
+
+</div>
+<div id="epaisseur-des-lignes" class="section level6">
+<h6><span class="header-section-number">11.1.1.1.1.2</span> Épaisseur des lignes</h6>
+<p>L’apaisseur des lignes peut être modifiée à l’aide du paramètre <code>linewidth</code>, à qui l’on fournit une valeur numérique :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, linewidth <span class="op">=</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_epaisseur.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="type-de-lignes" class="section level6">
+<h6><span class="header-section-number">11.1.1.1.1.3</span> Type de lignes</h6>
+<p>Pour changer de type de ligne, on modifie le troisième paramètre de la fonction. On l’a vu, par défaut, une ligne est tracée, ce qui revient à indiquer comme troisième paramètre : <code>'-'</code>. Le Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes">11.1</a> indique les différents format possibles pour la ligne.</p>
+<table>
+<caption><span id="tab:fmt-lignes">Table 11.1: </span> Formats des lignes</caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>-</code></td>
+<td align="right">Ligne pleine</td>
+</tr>
+<tr class="even">
+<td align="right"><code>--</code></td>
+<td align="right">Tirets</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>-.</code></td>
+<td align="right">Points et tirets</td>
+</tr>
+<tr class="even">
+<td align="right"><code>:</code></td>
+<td align="right">Pointillés</td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, pour avoir une interpolation linéraire effectuée entre nos points avec une représentation graphique effectuée à l’aide de tirets :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, <span class="st">&quot;--&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_tirets.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut aussi spécifier le type de ligne à l’aide du paramètre <code>linestyle</code>, en lui indiquant une des valeurs renseignées dans le Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes-2">11.2</a></p>
+<table>
+<caption><span id="tab:fmt-lignes-2">Table 11.2: </span> Formats des lignes via le paramètre <code>linestyle</code></caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>-</code> ou <code>solid</code></td>
+<td align="right">Ligne pleine</td>
+</tr>
+<tr class="even">
+<td align="right"><code>--</code> ou <code>dashed</code></td>
+<td align="right">Tirets</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>-.</code> ou <code>dashdot</code></td>
+<td align="right">Points et tirets</td>
+</tr>
+<tr class="even">
+<td align="right"><code>:</code> ou <code>dotted</code></td>
+<td align="right">Pointillés</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>None</code></td>
+<td align="right">Aucune ligne de tracée</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_linestyle.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="marqueurs" class="section level6">
+<h6><span class="header-section-number">11.1.1.1.1.4</span> Marqueurs</h6>
+<p>Le Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes-marqueurs">11.3</a> indique quant à lui des formats que l’on peut spécifier comme marqueurs à chaque point présent sur la courbe.</p>
+<table>
+<caption><span id="tab:fmt-lignes-marqueurs">Table 11.3: </span> Formats des lignes</caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>.</code></td>
+<td align="right">Points</td>
+</tr>
+<tr class="even">
+<td align="right"><code>,</code></td>
+<td align="right">Pixels</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>o</code></td>
+<td align="right">Cercles vides</td>
+</tr>
+<tr class="even">
+<td align="right"><code>v</code></td>
+<td align="right">Triangles pointant vers le bas</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>^</code></td>
+<td align="right">Triangles pointant vers le haut</td>
+</tr>
+<tr class="even">
+<td align="right"><code>&lt;</code></td>
+<td align="right">Triangles pointant vers la gauche</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>&gt;</code></td>
+<td align="right">Triangles pointant vers la droite</td>
+</tr>
+<tr class="even">
+<td align="right"><code>1</code></td>
+<td align="right">‘tri_down’</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>2</code></td>
+<td align="right">‘tri_up’</td>
+</tr>
+<tr class="even">
+<td align="right"><code>3</code></td>
+<td align="right">‘tri_left’</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>4</code></td>
+<td align="right">‘tri_right’</td>
+</tr>
+<tr class="even">
+<td align="right"><code>s</code></td>
+<td align="right">Carré</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>p</code></td>
+<td align="right">Pentagone</td>
+</tr>
+<tr class="even">
+<td align="right"><code>*</code></td>
+<td align="right">Astérisque</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>h</code></td>
+<td align="right">Hexagone 1</td>
+</tr>
+<tr class="even">
+<td align="right"><code>H</code></td>
+<td align="right">Hexagone 2</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>+</code></td>
+<td align="right">Symbole plus</td>
+</tr>
+<tr class="even">
+<td align="right"><code>x</code></td>
+<td align="right">Symbole multiplier</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>D</code></td>
+<td align="right">Losange</td>
+</tr>
+<tr class="even">
+<td align="right"><code>d</code></td>
+<td align="right">Losange fin</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>|</code></td>
+<td align="right">Ligne verticale</td>
+</tr>
+<tr class="even">
+<td align="right"><code>_</code></td>
+<td align="right">Ligne horizontale</td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, avec des cercles vides :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, <span class="st">&quot;o&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_cercles.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut noter qu’il est possible de combiner les types de lignesdu Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes">11.1</a> avec des types de marqueurs du Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes-marqueurs">11.3</a> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, <span class="st">&quot;--v&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_tirets_triangles.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour contrôler de manière plus précise les marqueurs, on peut utiliser les paramètres suivants :</p>
+<ul>
+<li><code>marker</code> : renseigne le type de marqueur (c.f. Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes-marqueurs">11.3</a>) ;</li>
+<li><code>markerfacecolor</code> : la couleur désirée pour les marqueurs ;</li>
+<li><code>markersize</code> : taille des marqueurs.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y, marker<span class="op">=</span><span class="st">&quot;o&quot;</span>, markerfacecolor <span class="op">=</span> <span class="st">&quot;red&quot;</span>, markersize <span class="op">=</span> <span class="dv">10</span>)</code></pre></div>
+<p><img src="figs/pyplot/lignes_marqueurs.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="nuage-de-points" class="section level4">
+<h4><span class="header-section-number">11.1.1.2</span> Nuage de points</h4>
+<p>Un des graphiques que l’on rencontre très fréquemment est le nuage de points. Pour en réaliser un, on peut faire appel à la fonction <code>scatter()</code>, à qui l’on indique les cordonnées (x,y) des points ainsi que quelques paramètres optionnels de forme ou d’esthétisme.</p>
+
+<div class="remarque">
+<a href="https://matplotlib.org/2.0.2/api/pyplot_api.html#matplotlib.pyplot.scatter">La documentation en ligne</a> de la fonction <code>scatter()</code> mentionne que la fonction <code>plot()</code> (c.f. Section <a href="visualisation-de-donnees.html#matplotlib-plot">11.1.1.1</a>) est plus rapide pour effectuer des nuages de points dans lesquels la couleur ou la taille des points de varie.
+</div>
+
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.scatter(x, y)</code></pre></div>
+<p><img src="figs/pyplot/scatter_1.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour changer la forme des marqueurs, on l’indique via le paramètre <code>marker</code> (c.f. Tableau <a href="visualisation-de-donnees.html#tab:fmt-lignes-marqueurs">11.3</a> pour les valeurs possibles) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;+&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/scatter_2.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="taille-et-couleur" class="section level4">
+<h4><span class="header-section-number">11.1.1.3</span> Taille et couleur</h4>
+<p>La taille des points est ajustable via le paramètre <code>s</code>, tandis que la couleur se modifie via le paramètre <code>color</code> (ou par son alias <code>c</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;+&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, s <span class="op">=</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="figs/pyplot/scatter_3.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut associer une couleur et une taille spécifiques à chaque point :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.rand(<span class="dv">30</span>)
+y <span class="op">=</span> np.random.rand(<span class="dv">30</span>)
+z <span class="op">=</span> np.random.rand(<span class="dv">30</span>)
+couleurs <span class="op">=</span> np.random.choice([<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>], <span class="dv">30</span>)
+plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;o&quot;</span>, color <span class="op">=</span> couleurs, s <span class="op">=</span> z<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
+<p><img src="figs/pyplot/scatter_bubble.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="histogrammes" class="section level4">
+<h4><span class="header-section-number">11.1.1.4</span> Histogrammes</h4>
+<p>Pour réaliser un histogramme avec <code>pyplot</code>, on utilise la fonction <code>hist()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)
+plt.hist(x)</code></pre></div>
+<p><img src="figs/pyplot/histogramme.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut préciser avec le paramètre <code>bins</code> soit le nombre de classes, soit leurs bornes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.hist(x, bins<span class="op">=</span><span class="dv">30</span>)</code></pre></div>
+<p><img src="figs/pyplot/histogramme_bins.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Et avec les bornes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">bins <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>)
+plt.hist(x, bins<span class="op">=</span>bins)</code></pre></div>
+<p><img src="figs/pyplot/histogramme_bins_2.png" width="350" style="display: block; margin: auto;" /></p>
+<p>L’orientation se change via le paramètre <code>orientation</code>, en indiquant soit <code>'vertical'</code> (par dédaut), soit <code>'horizontal'</code></p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.hist(x, orientation<span class="op">=</span><span class="st">&#39;horizontal&#39;</span>)</code></pre></div>
+<p><img src="figs/pyplot/histogramme_orientation.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="parametres-esthetiques-1" class="section level5">
+<h5><span class="header-section-number">11.1.1.4.1</span> Paramètres esthétiques</h5>
+<p>Pour changer la couleur de remplissage, on utilise le paramètre <code>color</code> ; pour ajouter une couleur délimitant les barres, on utilise le paramètre <code>edgecolor</code> ; pour définir l’épaisseur du contour, on utilise le paramètre <code>linewidth</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)
+plt.hist(x, color <span class="op">=</span> <span class="st">&quot;#00FF00&quot;</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>)</code></pre></div>
+<p><img src="figs/pyplot/histogramme_esthetiques.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="diagrammes-en-batons" class="section level4">
+<h4><span class="header-section-number">11.1.1.5</span> Diagrammes en bâtons</h4>
+<p>Pour réaliser des diagrammes en bâtons, <code>pyplot</code> propose la fonction <code>bar()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]
+chomage <span class="op">=</span> [<span class="fl">9.3</span>, <span class="fl">9.7</span>, <span class="fl">6.5</span>, <span class="fl">3.4</span>]
+plt.bar(pays, chomage)</code></pre></div>
+<p><img src="figs/pyplot/barplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour un diagramme horizontal, on utilise la fonction <code>barh()</code> de la même manière :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.barh(pays, chomage)</code></pre></div>
+<p><img src="figs/pyplot/barplot_h.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="plusieurs-series-sur-un-diagramme-en-batons" class="section level5">
+<h5><span class="header-section-number">11.1.1.5.1</span> Plusieurs séries sur un diagramme en bâtons</h5>
+<p>Pour comparer plusieurs séries côte-à-côte, il est nécessaire d’emprunter des notions qui ne seront introduites qu’à la Section <a href="visualisation-de-donnees.html#pyplot-elements-graphiques">11.1.3</a> (le code est fourni ici plutôt comme un aide-mémoire pour effectuer ce genre de graphiques).</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]
+chomage_f <span class="op">=</span> [<span class="fl">9.1</span>, <span class="fl">11.2</span>, <span class="fl">6.4</span>, <span class="fl">2.9</span>]
+chomage_h <span class="op">=</span> [<span class="fl">9.5</span>, <span class="dv">9</span>, <span class="fl">6.6</span>, <span class="fl">3.8</span>]
+<span class="co"># Position sur l&#39;axe des x pour chaque étiquette</span>
+position <span class="op">=</span> np.arange(<span class="bu">len</span>(pays))
+<span class="co"># Largeur des barres</span>
+largeur <span class="op">=</span> .<span class="dv">35</span>
+
+<span class="co"># Création de la figure et d&#39;un set de sous-graphiques</span>
+fig, ax <span class="op">=</span> plt.subplots()
+r1 <span class="op">=</span> ax.bar(position <span class="op">-</span> largeur<span class="op">/</span><span class="dv">2</span>, chomage_f, largeur)
+r2 <span class="op">=</span> ax.bar(position <span class="op">+</span> largeur<span class="op">/</span><span class="dv">2</span>, chomage_h, largeur)
+
+<span class="co"># Modification des marques sur l&#39;axe des x et de leurs étiquettes</span>
+ax.set_xticks(position)
+ax.set_xticklabels(pays)</code></pre></div>
+<p><img src="figs/pyplot/barplot_mulltiples.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="diagrammes-en-batons-empiles" class="section level5">
+<h5><span class="header-section-number">11.1.1.5.2</span> Diagrammes en bâtons empilés</h5>
+<p>Pour empiler les valeurs des séries, on préciser à l’aide du paramètre <code>bottom</code> la valeur de départ pour la série :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]
+nb_chomeurs_f <span class="op">=</span> [<span class="fl">1.307</span>, <span class="fl">1.185</span>, .<span class="dv">577</span>, .<span class="dv">148</span>]
+nb_chomeurs_h <span class="op">=</span> [<span class="fl">1.46</span>, <span class="fl">1.338</span>, .<span class="dv">878</span>, .<span class="dv">179</span>]
+
+plt.bar(pays, nb_chomeurs_f)
+plt.bar(pays, nb_chomeurs_h, bottom <span class="op">=</span> nb_chomeurs_f)</code></pre></div>
+<p><img src="figs/pyplot/barplot_stack.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="parametres-esthetiques" class="section level5">
+<h5><span class="header-section-number">11.1.1.5.3</span> Paramètres esthetiques</h5>
+<p>Pour changer la couleur de remplissage, on utilise le paramètre <code>color</code> ; pour la couleur du contour, on renseigne le paramètre <code>edgecolor</code> ; pour la largeur du contour, on s’appuie sur le paramètre <code>linewidth</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]
+nb_chomeurs_f <span class="op">=</span> [<span class="fl">1.307</span>, <span class="fl">1.185</span>, .<span class="dv">577</span>, .<span class="dv">148</span>]
+nb_chomeurs_h <span class="op">=</span> [<span class="fl">1.46</span>, <span class="fl">1.338</span>, .<span class="dv">878</span>, .<span class="dv">179</span>]
+
+plt.bar(pays, nb_chomeurs_f, color <span class="op">=</span> <span class="st">&quot;purple&quot;</span>,
+        edgecolor <span class="op">=</span> <span class="st">&quot;black&quot;</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span>)
+plt.bar(pays, nb_chomeurs_h, bottom <span class="op">=</span> nb_chomeurs_f)</code></pre></div>
+<p><img src="figs/pyplot/barplot_esthetiques.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="boxplots" class="section level4">
+<h4><span class="header-section-number">11.1.1.6</span> Boxplots</h4>
+<p>Pour réaliser une boîte à moustaches (ou <em>boxplot</em>), <code>pyplot</code> offre la fonction <code>boxplot()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)
+plt.boxplot(x)</code></pre></div>
+<p><img src="figs/pyplot/boxplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>En renseigant à <code>False</code> la valeur du paramètre <code>vert</code>, le boxplot est tracé horizontalement :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.boxplot(x, vert <span class="op">=</span> <span class="va">False</span>)</code></pre></div>
+<p><img src="figs/pyplot/boxplot_horizontal.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="plusieurs-graphiques-sur-une-figure" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Plusieurs graphiques sur une figure</h3>
+<p>Pour placer des graphiques les uns à côté des autres, on utilise la fonction <code>subplot()</code>. Les graphiques seront placés comme dans une matrice, avec un nombre de lignes <code>n_lignes</code> et un nombre de colonnes <code>n_colones</code>. On peut indiquer les dimensions de cette matrice en paramètres de la fonction <code>subplot()</code>, à l’aide de la syntaxe suivante :</p>
+<p>où <code>courant</code> indique l’indice du graphique actif. Voyons à travers un exemple le fonctionnement :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>
+<span class="co"># Matrice de dimension 3x2 de graphiques</span>
+
+<span class="co"># Ligne 1, colonne 1</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)
+
+<span class="co"># Ligne 1, colonne 2</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)
+
+<span class="co"># Ligne 2, colonne 1</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)
+
+<span class="co"># Ligne 2, colonne 2</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)
+
+<span class="co"># Ligne 3, colonne 1</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;blue&quot;</span>)
+
+<span class="co"># Ligne 3, colonne 2</span>
+plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>)
+plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;violet&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/subplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Rappelons-nous que les matrices sont remplies lignes par lignes en Python, ce qui permet de bien comprendre la valeur du numéro de graphique actif.</p>
+<p>En utilisant la fonction <code>subplots()</code> (attention au “s” final du nom de la fonction qui la différencie de la précédente), il est possible de produire une matrice de graphiques également, en procédant de la manière suivante :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">f, ax_arr <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>)
+ax_arr[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)
+ax_arr[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)
+ax_arr[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)
+ax_arr[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/subplots.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Cette manière de procéder offre l’avantage de préciser facilement le partage d’axes entre les différents sous-graphiques, via les paramètres <code>sharex</code> et <code>sharey</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">f, ax_arr <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, sharey<span class="op">=</span><span class="va">True</span>, sharex <span class="op">=</span> <span class="va">True</span>)
+ax_arr[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)
+ax_arr[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)
+ax_arr[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)
+ax_arr[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/subplots_share.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="pyplot-elements-graphiques" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Éléments de graphiques</h3>
+<p>Jusqu’ici, nous avons regardé comment créer différentes géométries, mais nous n’avons pas touché aux axes, à leurs valeurs ou étiquettes (sauf lors de l’exemple non expliqué des diagrammes côte-à-côte), ou encore modifié les légendes ou titres.</p>
+<div id="titre" class="section level4">
+<h4><span class="header-section-number">11.1.3.1</span> Titre</h4>
+<p>Pour ajouter un titre au graphique, on peut utiliser la fonction title() :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+y_2 <span class="op">=</span> <span class="op">-</span>y
+plt.plot(x, y)
+plt.plot(x, y_2)
+plt.title(<span class="st">&quot;Représentation graphique de $y = x^2$ </span><span class="ch">\n</span><span class="st">et de $y = -x^2$&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_titre.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="axes" class="section level4">
+<h4><span class="header-section-number">11.1.3.2</span> Axes</h4>
+<p>Les fonctions <code>xlabel()</code> et <code>ylabel()</code> permettent d’ajouter des étiquettes aux axes :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.plot(x, y)
+plt.xlabel(<span class="st">&quot;Valeurs de $x$&quot;</span>)
+plt.ylabel(<span class="st">&quot;Valeurs de $y$&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_axes_label.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="limites" class="section level5">
+<h5><span class="header-section-number">11.1.3.2.1</span> Limites</h5>
+<p>Pour contrôler les limites des axes, on utilise la fonction <code>axis()</code>, en précisant les paramètres <code>xmin</code>, <code>xmax</code>, <code>ymax</code>, <code>ymin</code> et <code>ymax</code>, désignant, respectivement, les bornes inférieures et supérieures de l’axe des absisses et les borenes inférieures et supérieures de l’axe des ordonnées :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.axis(xmin <span class="op">=</span> <span class="dv">0</span>, xmax <span class="op">=</span> <span class="dv">5</span>, ymin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, ymax <span class="op">=</span> <span class="dv">30</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_axes_limites.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="marques-et-etiquettes" class="section level5">
+<h5><span class="header-section-number">11.1.3.2.2</span> Marques et étiquettes</h5>
+<p>Les fonctions <code>xticks()</code> et <code>yticks()</code> permettent d’obtenir ou de modifier les marques de l’axe des abscisses et de l’axe des ordonnées, respectivement.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.plot(x, y)
+plt.xticks(np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, step <span class="op">=</span> <span class="dv">4</span>))</code></pre></div>
+<p><img src="figs/pyplot/plot_ticks.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Il peut être pratique de récupérer les positions et les étiquettes d’un graphique pour pouvoir les modifier, par exemple pour définir l’espacement entre chaque marque :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y)
+locs_x, labels_x <span class="op">=</span> plt.xticks()
+locs_y, labels_y <span class="op">=</span> plt.yticks()
+loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)
+loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)
+
+plt.xticks(loc_x_new)
+plt.yticks(loc_y_new)</code></pre></div>
+<p><img src="figs/pyplot/plot_ticks_2.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut également modifier les étiquettes des marques :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y)
+locs_x, labels_x <span class="op">=</span> plt.xticks()
+locs_y, labels_y <span class="op">=</span> plt.yticks()
+loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)
+loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)
+
+labels_x_new <span class="op">=</span> <span class="bu">list</span>()
+<span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(locs_x)):
+        labels_x_new.append(<span class="st">&quot;x : &quot;</span> <span class="op">+</span> <span class="bu">str</span>(locs_x[i]))
+
+plt.xticks(loc_x_new, labels_x_new)
+plt.yticks(loc_y_new)</code></pre></div>
+<p><img src="figs/pyplot/plot_ticks_3.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="grilles" class="section level5">
+<h5><span class="header-section-number">11.1.3.2.3</span> Grilles</h5>
+<p>Pour rajouter une grille, on utilise la fonction <code>grid()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.plot(x, y)
+plt.grid()</code></pre></div>
+<p><img src="figs/pyplot/plot_grid.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Le paramètre <code>axis</code> permet de définir si l’on désire une grille pour les deux axes (<code>both</code>, par défaut), uniquement pour les abscisses (<code>x</code>), ou uniquement pour les ordonnées (<code>y</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y)
+plt.grid(axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_grid_y.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut paraméter les lignes majeures ou mineurs de la grille :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.plot(x, y)
+plt.minorticks_on()
+plt.grid(which <span class="op">=</span> <span class="st">&quot;major&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;black&quot;</span>)
+plt.grid(which <span class="op">=</span> <span class="st">&quot;minor&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, linestyle <span class="op">=</span> <span class="st">&quot;--&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_grid_minor.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="legendes" class="section level4">
+<h4><span class="header-section-number">11.1.3.3</span> Légendes</h4>
+<p>Lorsque l’on désire ajouter une légende, on précise l’étiquette de celle-ci au paramètre <code>label</code> dans l’appel de la fonction <code>plot</code>, puis on fait appel à la fonction <code>legend()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span>
+plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)
+plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)
+plt.legend()
+plt.legend()</code></pre></div>
+<p><img src="figs/pyplot/plot_legende.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour préciser la position de la légende, on peut s’appuyer sur le paramètre <code>loc</code> dans la fonction <code>legend()</code>, en indiquant une valeur telle que reportée dans le Tableau <a href="#tab:pyplot-legendes-loc">11.4</a>.</p>
+<div style="white-space: pre-line;">Chaîne | Code | Description |
+———–: | | ———–: | ————————————————:|
+<code>best</code> | <code>0</code> | Laisser Python optimiser le positonnement |
+<code>upper right</code> | <code>1</code> | En haut à droite |
+<code>upper left</code> | <code>2</code> | En haut à gauche |
+<code>lower left</code> | <code>3</code> | En bas à gauche |
+<code>lower right</code> | <code>4</code> | En bas à droite |
+<code>right</code> | <code>5</code> | À droite |
+<code>center left</code> | <code>6</code> | Centré au milieu à gauche |
+<code>center right</code> | <code>7</code> | Centré au milieu à droite |
+<code>lower center</code> | <code>8</code> | Centré en bas |
+<code>upper center</code> | <code>9</code> | Centré en haut |
+<code>center</code> | <code>10</code> | Centré |</div>
+<p>Table: (#tab:pyplot-legendes-loc) Formats des lignes</p>
+<p>Par exemple, pour centrer la légende au milieu, en bas du graphique :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span>
+plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)
+plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)
+plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</code></pre></div>
+<p><img src="figs/pyplot/plot_legende_pos.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="dimensions-2" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> Dimensions</h3>
+<p>Pour définir les dimensions d’une figure, on renseigne le paramètre <code>figsize</code> de la fonction <code>figure()</code>. On lui fournit un n-uplet d’entiers dont le premier élément correspond à la longueur et le second la hauteur (les valeurs sont en pouces) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))
+plt.plot(x, y)</code></pre></div>
+<p><img src="figs/pyplot/plot_size.png" width="500" style="display: block; margin: auto;" /></p>
+</div>
+<div id="enregistrement" class="section level3">
+<h3><span class="header-section-number">11.1.5</span> Enregistrement</h3>
+<p>Pour sauvegarder un grapgique, on peut utiliser la fonction <code>plt.savefig()</code>. On précise le chemin vers le fichier à créer, en indiquant l’extension du fichier désiré (<em>e.g.</em>, <code>png</code> ou <code>pdf</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)
+y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>
+y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span>
+plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))
+plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)
+plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)
+plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)
+plt.savefig(<span class="st">&quot;test.pdf&quot;</span>)</code></pre></div>
+<p>L’extension indiquée (dans l’exemple présent, <code>pdf</code>) détermine le format de fichier en sortie. On peut utiliser les extensions indiquées dans les clés du dictionnaire retourné par l’instruction suivante (les valeurs donnant une description du type de fichier) :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(fig.canvas.get_supported_filetypes())</code></pre></div>
+<pre><code>## {&#39;ps&#39;: &#39;Postscript&#39;, &#39;eps&#39;: &#39;Encapsulated Postscript&#39;, &#39;pdf&#39;: &#39;Portable Document Format&#39;, &#39;pgf&#39;: &#39;PGF code for LaTeX&#39;, &#39;png&#39;: &#39;Portable Network Graphics&#39;, &#39;raw&#39;: &#39;Raw RGBA bitmap&#39;, &#39;rgba&#39;: &#39;Raw RGBA bitmap&#39;, &#39;svg&#39;: &#39;Scalable Vector Graphics&#39;, &#39;svgz&#39;: &#39;Scalable Vector Graphics&#39;, &#39;jpg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;jpeg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;tif&#39;: &#39;Tagged Image File Format&#39;, &#39;tiff&#39;: &#39;Tagged Image File Format&#39;}</code></pre>
+</div>
+</div>
+<div id="graphiques-avec-seaborn" class="section level2">
+<h2><span class="header-section-number">11.2</span> Graphiques avec seaborn</h2>
+<p>Cette section sera à compléter.</p>
 <p><a href="https://seaborn.pydata.org/" class="uri">https://seaborn.pydata.org/</a> <!-- # Programmation parallèle --></p>
+</div>
 </div>
             </section>
 

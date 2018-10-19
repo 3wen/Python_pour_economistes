@@ -5854,10 +5854,10 @@ df = df.append(nv_lignes, ignore_index=True)
 
 #### Ajout d'une colonne dans un dataframe
 
-Pour ajouter une colonne dans un dataframe, on utilise la méthode `assign()`, en indiquant le nom et les valeurs.
+Pour ajouter une colonne dans un dataframe :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 from numpy import random
-df = df.assign(z = random.rand(len(df.index)))
+df = df["z"] = random.rand(len(df.index))
 print("df : \n", df)
 ```
 
@@ -5865,14 +5865,12 @@ print("df : \n", df)
 
 #### Ajout de plusieurs colonnes dans un dataframe
 
-Pour ajouter plusieurs colonnes, le même principe s'applique :
+Pour ajouter plusieurs colonnes :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df = df.assign(a = random.rand(len(df.index)),
-          b = random.rand(len(df.index)))
+df["a"] = random.rand(len(df.index))
+df["b"] = random.rand(len(df.index))
 print("df : \n", df)
 ```
-
-
 
 
 
@@ -5975,7 +5973,7 @@ print(df)
 
 Ajoutons la colonne `height_2`, élevant les valeurs de la colonne `height` au carré :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df = df.assign(height_2 = df.height**2)
+df["height_2"] = df.height**2
 print(df.head(3))
 ```
 
@@ -5983,9 +5981,10 @@ print(df.head(3))
 À présent, ajoutons la colonne `imc`, fournissant les valeurs de l'indicateur de masse corporelle pour les individus du dataframe ($\text{IMC} = \frac{\text{weight}}{\text{height}^2}$) :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df = df.assign(imc = df.weight / df.height_2)
+df["imc"] = df.weight / df.height_2
 print(df.head(3))
 ```
+
 
 
 ### Statistiques {#pandas-statistiques-df}
@@ -6516,6 +6515,1191 @@ lignes).
 
 # Visualisation de données
 
+
+Dans ce chapitre, nous allons explorer les rudiments de la visualisation de données avec la librairie `Matplotlib`. 
+
+
+Pour le moment, ces notes ne parleront pas des graphiques dynamiques que l'on peut réaliser en lien avec des librairies JavaScript, comme D3.js. Dans une prochaine version également, nous verrons comment réaliser des graphiques avec `seaborn` (https://seaborn.pydata.org/).
+
+
+Pour avoir accès rapidement à un type de graphique que l'on souhaite réaliser, on peut se référencer à cette excellente gallerie : https://python-graph-gallery.com/.
+
+
+Les adeptes du logiciel et langage de programmation R seront heureux de pouvoir retrouver une grammaire graphique comme celle proposée par le [*package* R `ggplot2`](https://ggplot2.tidyverse.org/) introduit par Hadley Wickham. En effet, il existe une librairie Python nommée `ggplot` : http://ggplot.yhathq.com/.
+
+
+Pour explorer graphiquement ses données, il peut être intéressant d'investir un peu de temps dans la librairie `Altair` (https://altair-viz.github.io/). Pour une introduction en vidéo : https://www.youtube.com/watch?v=aRxahWy-ul8.
+
+## Graphiques avec matplotlib
+
+Pour utiliser les fonctionnalités offertes par `matplotlib` (https://matplotlib.org/), il est nécessaire de charger certains modules. Le plus commun est le sous-module `pyplot`, auquel on attribue fréquemment l'alias `plt` :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+import matplotlib.pyplot as plt
+```
+
+Pour réaliser un graphique avec la fonction `pyplot`, on commence par créer une figure en définissant sa zone, puis on ajoute et / ou modifie ses éléments à l'aide de fonctions offertes par `pyplot`.
+
+Pour illustrer les fonctionnalités de `matplotlib`, nous allons avoir besoin de générer des valeurs, à l'aide de la librairie `numpy`, que l'on charge :
+```{python, eval=F, echo=TRUE, error=TRUE}
+import numpy as np
+```
+
+### Géométries
+
+
+#### Lignes {#matplotlib-plot}
+
+Pour tracer des lignes sur un repère cartésien, on utilise la fonction `plot()`, à qui on fournit les coordonnées en abscisses et en ordonnées en premiers paramètres. On définit avec le troisième paramètre la géométrie.
+
+Par défaut, la géométrie réalisée est une courbe bleue :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.savefig("figs/pyplot/lignes_1.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_1.png")
+```
+
+Une fois le graphique affiché, on peut le refermer avec la fonction `close()` :
+```{python, eval=F, echo=FALSE, error=TRUE}
+plt.close()
+```
+
+
+
+De la même manière, on peut préciser la gémoétrie comme suit :
+```{python, eval=F, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y, "-")
+```
+
+
+Pour ajouter une courbe sur le graphique, on fait appel plusieurs fois à la fonction `plot()` :
+```{python, eval=F, echo=TRUE, error=TRUE}
+y_2 = -x**2
+plt.plot(x, y, "-")
+plt.plot(x, y_2, "-")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+y_2 = -x**2
+plt.plot(x, y, "-")
+plt.plot(x, y_2, "-")
+plt.savefig("figs/pyplot/lignes_2_courbes.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_2_courbes.png")
+```
+
+
+##### Paramètres esthétiques
+
+
+###### Couleur de lignes
+
+Pour modifier la couleur d'une ligne, on utilise le paramètre `color` :
+
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, color="red")
+plt.plot(x, y_2, color="#00FF00")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, color="red")
+plt.plot(x, y_2, color="#00FF00")
+plt.savefig("figs/pyplot/lignes_couleur.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_couleur.png")
+```
+
+Commme on peut le constater, la référence à la couleur peut se faire en faisant appel à son nom (la liste des couleurs disposant d'un nom est accessibles sur la [documentation de matplotlib](https://matplotlib.org/examples/color/named_colors.html)). On peut aussi utiliser un code hexadécimal pour faire référence à une couleur.
+
+```{block2, type='remarque', echo=TRUE}
+Il peut être intéressant, lorsque l'on choisit des couleurs, de penser à l'utilisation ensuite : est-ce pour l'écran ? Pour l'impression en niveaux de gris ? On peut également se demander si le choix effectué ne gênera pas la compréhension pour les daltoniens (qui sont environ 4% en France). Le site web [Color Brewer](http://colorbrewer2.org/) propose des choix de couleurs en fonctions de caractéristiques souhaitées comme celles mentionnées.
+```
+
+###### Épaisseur des lignes
+
+
+L'apaisseur des lignes peut être modifiée à l'aide du paramètre `linewidth`, à qui l'on fournit une valeur numérique :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, linewidth = 2)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, linewidth = 2)
+plt.savefig("figs/pyplot/lignes_epaisseur.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center", fig.width=12}
+knitr::include_graphics("figs/pyplot/lignes_epaisseur.png")
+```
+
+
+
+
+###### Type de lignes
+
+
+Pour changer de type de ligne, on modifie le troisième paramètre de la fonction. On l'a vu, par défaut, une ligne est tracée, ce qui revient à indiquer comme troisième paramètre : `'-'`. Le Tableau\ \@ref(tab:fmt-lignes) indique les différents format possibles pour la ligne.
+
+| Valeur | Description |
+| -----------: | ------------------------------------------------:|
+| `-`	 | Ligne pleine |
+| `--` |	Tirets |
+| `-.` |	Points et tirets |
+| `:` |	Pointillés |
+
+Table: (#tab:fmt-lignes) Formats des lignes
+
+Par exemple, pour avoir une interpolation linéraire effectuée entre nos points avec une représentation graphique effectuée à l'aide de tirets :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, "--")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, "--")
+plt.savefig("figs/pyplot/lignes_tirets.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_tirets.png")
+```
+
+
+On peut aussi spécifier le type de ligne à l'aide du paramètre `linestyle`, en lui indiquant une des valeurs renseignées dans le Tableau\ \@ref(tab:fmt-lignes-2) 
+
+| Valeur | Description |
+| -----------: | ------------------------------------------------:|
+| `-`	ou `solid` | Ligne pleine |
+| `--` ou `dashed` |	Tirets |
+| `-.` ou `dashdot` |	Points et tirets |
+| `:` ou `dotted` |	Pointillés |
+| `None` | Aucune ligne de tracée |
+
+Table: (#tab:fmt-lignes-2) Formats des lignes via le paramètre `linestyle`
+
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, linestyle="dashed")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, linestyle="dashed")
+plt.savefig("figs/pyplot/lignes_linestyle.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_linestyle.png")
+```
+
+
+
+###### Marqueurs
+
+
+Le Tableau\ \@ref(tab:fmt-lignes-marqueurs) indique quant à lui des formats que l'on peut spécifier comme marqueurs à chaque point présent sur la courbe.
+
+| Valeur | Description |
+| -----------: | ------------------------------------------------:|
+| `.` |	Points |
+| `,` |	Pixels |
+| `o` |	Cercles vides |
+| `v` |	Triangles pointant vers le bas |
+| `^` |	Triangles pointant vers le haut |
+| `<` |	Triangles pointant vers la gauche |
+| `>` |	Triangles pointant vers la droite |
+| `1` |	'tri_down' |
+| `2` |	'tri_up' |
+| `3` |	'tri_left' |
+| `4` |	'tri_right' |
+| `s` |	Carré |
+| `p` |	Pentagone |
+| `*` |	Astérisque |
+| `h` |	Hexagone 1 |
+| `H` |	Hexagone 2 |
+| `+` |	Symbole plus |
+| `x` |	Symbole multiplier |
+| `D` |	Losange |
+| `d` |	Losange fin |
+| `|` |	Ligne verticale |
+| `_` |	Ligne horizontale |
+
+Table: (#tab:fmt-lignes-marqueurs) Formats des lignes
+
+Par exemple, avec des cercles vides :
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, "o")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, "o")
+plt.savefig("figs/pyplot/lignes_cercles.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/lignes_cercles.png")
+```
+
+
+On peut noter qu'il est possible de combiner les types de lignesdu Tableau\ \@ref(tab:fmt-lignes) avec des types de marqueurs du Tableau\ \@ref(tab:fmt-lignes-marqueurs) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, "--v")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, "--v")
+plt.savefig("figs/pyplot/lignes_tirets_triangles.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center", fig.width=12}
+knitr::include_graphics("figs/pyplot/lignes_tirets_triangles.png")
+```
+
+
+Pour contrôler de manière plus précise les marqueurs, on peut utiliser les paramètres suivants :
+
+- `marker` : renseigne le type de marqueur (c.f. Tableau\ \@ref(tab:fmt-lignes-marqueurs)) ;
+- `markerfacecolor` : la couleur désirée pour les marqueurs ;
+- `markersize` : taille des marqueurs.
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y, marker="o", markerfacecolor = "red", markersize = 10)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y, marker="o", markerfacecolor = "red", markersize = 10)
+plt.savefig("figs/pyplot/lignes_marqueurs.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center", fig.width=12}
+knitr::include_graphics("figs/pyplot/lignes_marqueurs.png")
+```
+
+
+
+#### Nuage de points
+
+Un des graphiques que l'on rencontre très fréquemment est le nuage de points. Pour en réaliser un, on peut faire appel à la fonction `scatter()`, à qui l'on indique les cordonnées (x,y) des points ainsi que quelques paramètres optionnels de forme ou d'esthétisme.
+
+```{block2, type='remarque', echo=TRUE}
+[La documentation en ligne](https://matplotlib.org/2.0.2/api/pyplot_api.html#matplotlib.pyplot.scatter) de la fonction `scatter()` mentionne que la fonction `plot()` (c.f. Section\ \@ref(matplotlib-plot)) est plus rapide pour effectuer des nuages de points dans lesquels la couleur ou la taille des points de varie.
+```
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y)
+plt.savefig("figs/pyplot/scatter_1.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/scatter_1.png")
+```
+
+Pour changer la forme des marqueurs, on l'indique via le paramètre `marker` (c.f. Tableau\ \@ref(tab:fmt-lignes-marqueurs) pour les valeurs possibles) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y, marker="+")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y, marker="+")
+plt.savefig("figs/pyplot/scatter_2.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/scatter_2.png")
+```
+
+
+#### Taille et couleur
+
+La taille des points est ajustable via le paramètre `s`, tandis que la couleur se modifie via le paramètre `color` (ou par son alias `c`) :
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y, marker="+", color = "red", s = 2)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.scatter(x, y, marker="+", color = "red", s = 2)
+plt.savefig("figs/pyplot/scatter_3.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/scatter_3.png")
+```
+
+On peut associer une couleur et une taille spécifiques à chaque point :
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.random.rand(30)
+y = np.random.rand(30)
+z = np.random.rand(30)
+couleurs = np.random.choice(["blue", "black", "red"], 30)
+plt.scatter(x, y, marker="o", color = couleurs, s = z*100)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.random.rand(30)
+y = np.random.rand(30)
+z = np.random.rand(30)
+couleurs = np.random.choice(["blue", "black", "red"], 30)
+plt.scatter(x, y, marker="o", color = couleurs, s = z*100)
+plt.savefig("figs/pyplot/scatter_bubble.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/scatter_bubble.png")
+```
+
+
+#### Histogrammes
+
+
+Pour réaliser un histogramme avec `pyplot`, on utilise la fonction `hist()` :
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.random.randn(1000)
+plt.hist(x)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.random.randn(1000)
+plt.hist(x)
+plt.savefig("figs/pyplot/histogramme.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/histogramme.png")
+```
+
+On peut préciser avec le paramètre `bins` soit le nombre de classes, soit leurs bornes :
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.hist(x, bins=30)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+
+plt.hist(x, bins=30)
+plt.savefig("figs/pyplot/histogramme_bins.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/histogramme_bins.png")
+```
+
+Et avec les bornes :
+```{python, eval=F, echo=TRUE, error=TRUE}
+bins = np.arange(-4, 4, .1)
+plt.hist(x, bins=bins)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+bins = np.arange(-4, 4, .1)
+plt.hist(x, bins=bins)
+plt.savefig("figs/pyplot/histogramme_bins_2.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/histogramme_bins_2.png")
+```
+
+
+L'orientation se change via le paramètre `orientation`, en indiquant soit `'vertical'` (par dédaut), soit `'horizontal'`
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.hist(x, orientation='horizontal')
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.hist(x, orientation='horizontal')
+plt.savefig("figs/pyplot/histogramme_orientation.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/histogramme_orientation.png")
+```
+
+
+##### Paramètres esthétiques
+
+Pour changer la couleur de remplissage, on utilise le paramètre `color` ; pour ajouter une couleur délimitant les barres, on utilise le paramètre `edgecolor` ; pour définir l'épaisseur du contour, on utilise le paramètre `linewidth` :
+
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.random.randn(1000)
+plt.hist(x, color = "#00FF00", edgecolor='black', linewidth=1.5)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.random.randn(1000)
+plt.hist(x, color = "#00FF00", edgecolor='black', linewidth=1.5)
+plt.savefig("figs/pyplot/histogramme_esthetiques.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/histogramme_esthetiques.png")
+```
+
+
+#### Diagrammes en bâtons
+
+Pour réaliser des diagrammes en bâtons, `pyplot` propose la fonction `bar()`. 
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+chomage = [9.3, 9.7, 6.5, 3.4]
+plt.bar(pays, chomage)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+chomage = [9.3, 9.7, 6.5, 3.4]
+plt.bar(pays, chomage)
+plt.savefig("figs/pyplot/barplot.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/barplot.png")
+```
+
+Pour un diagramme horizontal, on utilise la fonction `barh()` de la même manière :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.barh(pays, chomage)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.barh(pays, chomage)
+plt.savefig("figs/pyplot/barplot_h.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/barplot_h.png")
+```
+
+##### Plusieurs séries sur un diagramme en bâtons
+
+Pour comparer plusieurs séries côte-à-côte, il est nécessaire d'emprunter des notions qui ne seront introduites qu'à la Section\ \@ref(pyplot-elements-graphiques) (le code est fourni ici plutôt comme un aide-mémoire pour effectuer ce genre de graphiques).
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+chomage_f = [9.1, 11.2, 6.4, 2.9]
+chomage_h = [9.5, 9, 6.6, 3.8]
+# Position sur l'axe des x pour chaque étiquette
+position = np.arange(len(pays))
+# Largeur des barres
+largeur = .35
+
+# Création de la figure et d'un set de sous-graphiques
+fig, ax = plt.subplots()
+r1 = ax.bar(position - largeur/2, chomage_f, largeur)
+r2 = ax.bar(position + largeur/2, chomage_h, largeur)
+
+# Modification des marques sur l'axe des x et de leurs étiquettes
+ax.set_xticks(position)
+ax.set_xticklabels(pays)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+chomage_f = [9.1, 11.2, 6.4, 2.9]
+chomage_h = [9.5, 9, 6.6, 3.8]
+# Position sur l'axe des x pour chaque étiquette
+position = np.arange(len(pays))
+# Largeur des barres
+largeur = .35
+
+# Création de la figure et d'un set de sous-graphiques
+fig, ax = plt.subplots()
+r1 = ax.bar(position - largeur/2, chomage_f, largeur)
+r2 = ax.bar(position + largeur/2, chomage_h, largeur)
+
+# Modification des marques sur l'axe des x et de leurs étiquettes
+ax.set_xticks(position)
+ax.set_xticklabels(pays)
+plt.savefig("figs/pyplot/barplot_mulltiples.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/barplot_mulltiples.png")
+```
+
+##### Diagrammes en bâtons empilés
+
+
+Pour empiler les valeurs des séries, on préciser à l'aide du paramètre `bottom` la valeur de départ pour la série :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+nb_chomeurs_f = [1.307, 1.185, .577, .148]
+nb_chomeurs_h = [1.46, 1.338, .878, .179]
+
+plt.bar(pays, nb_chomeurs_f)
+plt.bar(pays, nb_chomeurs_h, bottom = nb_chomeurs_f)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+nb_chomeurs_f = [1.307, 1.185, .577, .148]
+nb_chomeurs_h = [1.46, 1.338, .878, .179]
+
+plt.bar(pays, nb_chomeurs_f)
+plt.bar(pays, nb_chomeurs_h, bottom = nb_chomeurs_f)
+plt.savefig("figs/pyplot/barplot_stack.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/barplot_stack.png")
+```
+
+
+##### Paramètres esthetiques
+
+Pour changer la couleur de remplissage, on utilise le paramètre `color` ; pour la couleur du contour, on renseigne le paramètre `edgecolor` ; pour la largeur du contour, on s'appuie sur le paramètre `linewidth` :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+nb_chomeurs_f = [1.307, 1.185, .577, .148]
+nb_chomeurs_h = [1.46, 1.338, .878, .179]
+
+plt.bar(pays, nb_chomeurs_f, color = "purple",
+        edgecolor = "black", linewidth = 1.5)
+plt.bar(pays, nb_chomeurs_h, bottom = nb_chomeurs_f)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+pays = ["France", "Italie", "Belgique", "Allemagne"]
+nb_chomeurs_f = [1.307, 1.185, .577, .148]
+nb_chomeurs_h = [1.46, 1.338, .878, .179]
+
+plt.bar(pays, nb_chomeurs_f, color = "purple",
+        edgecolor = "black", linewidth = 1.5)
+plt.bar(pays, nb_chomeurs_h, bottom = nb_chomeurs_f)
+plt.savefig("figs/pyplot/barplot_esthetiques.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/barplot_esthetiques.png")
+```
+
+
+#### Boxplots
+
+Pour réaliser une boîte à moustaches (ou *boxplot*), `pyplot` offre la fonction `boxplot()` :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.random.randn(1000)
+plt.boxplot(x)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.random.randn(1000)
+plt.boxplot(x)
+plt.savefig("figs/pyplot/boxplot.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/boxplot.png")
+```
+
+
+En renseigant à `False` la valeur du paramètre `vert`, le boxplot est tracé horizontalement :
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.boxplot(x, vert = False)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.boxplot(x, vert = False)
+plt.savefig("figs/pyplot/boxplot_horizontal.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/boxplot_horizontal.png")
+```
+
+### Plusieurs graphiques sur une figure
+
+Pour placer des graphiques les uns à côté des autres, on utilise la fonction `subplot()`. Les graphiques seront placés comme dans une matrice, avec un nombre de lignes `n_lignes` et un nombre de colonnes `n_colones`. On peut indiquer les dimensions de cette matrice en paramètres de la fonction `subplot()`, à l'aide de la syntaxe suivante :
+```{python, eval=F, echo=FALSE, error=TRUE}
+plt.subplot(n_lignes, n_col, courant)
+```
+
+où `courant` indique l'indice du graphique actif. Voyons à travers un exemple le fonctionnement :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = -x**2
+# Matrice de dimension 3x2 de graphiques
+
+# Ligne 1, colonne 1
+plt.subplot(3, 2, 1)
+plt.plot(x, y, color = "red")
+
+# Ligne 1, colonne 2
+plt.subplot(3, 2, 2)
+plt.plot(x, y, color = "orange")
+
+# Ligne 2, colonne 1
+plt.subplot(3, 2, 3)
+plt.plot(x, y, color = "yellow")
+
+# Ligne 2, colonne 2
+plt.subplot(3, 2, 4)
+plt.plot(x, y, color = "green")
+
+# Ligne 3, colonne 1
+plt.subplot(3, 2, 5)
+plt.plot(x, y, color = "blue")
+
+# Ligne 3, colonne 2
+plt.subplot(3, 2, 6)
+plt.plot(x, y, color = "violet")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = -x**2
+# Matrice de dimension 3x2 de graphiques
+
+# Ligne 1, colonne 1
+plt.subplot(3, 2, 1)
+plt.plot(x, y, color = "red")
+
+# Ligne 1, colonne 2
+plt.subplot(3, 2, 2)
+plt.plot(x, y, color = "orange")
+
+# Ligne 2, colonne 1
+plt.subplot(3, 2, 3)
+plt.plot(x, y, color = "yellow")
+
+# Ligne 2, colonne 2
+plt.subplot(3, 2, 4)
+plt.plot(x, y, color = "green")
+
+# Ligne 3, colonne 1
+plt.subplot(3, 2, 5)
+plt.plot(x, y, color = "blue")
+
+# Ligne 3, colonne 2
+plt.subplot(3, 2, 6)
+plt.plot(x, y, color = "violet")
+plt.savefig("figs/pyplot/subplot.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/subplot.png")
+```
+
+
+Rappelons-nous que les matrices sont remplies lignes par lignes en Python, ce qui permet de bien comprendre la valeur du numéro de graphique actif.
+
+En utilisant la fonction `subplots()` (attention au "s" final du nom de la fonction qui la différencie de la précédente), il est possible de produire une matrice de graphiques également, en procédant de la manière suivante :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+f, ax_arr = plt.subplots(2, 2)
+ax_arr[0, 0].plot(x, y, color = "red")
+ax_arr[0, 1].plot(x, y, color = "orange")
+ax_arr[1, 0].plot(x, y, color = "yellow")
+ax_arr[1, 1].plot(x, y, color = "green")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+f, ax_arr = plt.subplots(2, 2)
+ax_arr[0, 0].plot(x, y, color = "red")
+ax_arr[0, 1].plot(x, y, color = "orange")
+ax_arr[1, 0].plot(x, y, color = "yellow")
+ax_arr[1, 1].plot(x, y, color = "green")
+plt.savefig("figs/pyplot/subplots.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/subplots.png")
+```
+
+
+Cette manière de procéder offre l'avantage de préciser facilement le partage d'axes entre les différents sous-graphiques, via les paramètres `sharex` et `sharey` :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+f, ax_arr = plt.subplots(2, 2, sharey=True, sharex = True)
+ax_arr[0, 0].plot(x, y, color = "red")
+ax_arr[0, 1].plot(x, y, color = "orange")
+ax_arr[1, 0].plot(x, y, color = "yellow")
+ax_arr[1, 1].plot(x, y, color = "green")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+f, ax_arr = plt.subplots(2, 2, sharey=True, sharex = True)
+ax_arr[0, 0].plot(x, y, color = "red")
+ax_arr[0, 1].plot(x, y, color = "orange")
+ax_arr[1, 0].plot(x, y, color = "yellow")
+ax_arr[1, 1].plot(x, y, color = "green")
+plt.savefig("figs/pyplot/subplots_share.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/subplots_share.png")
+```
+
+
+
+### Éléments de graphiques {#pyplot-elements-graphiques}
+
+Jusqu'ici, nous avons regardé comment créer différentes géométries, mais nous n'avons pas touché aux axes, à leurs valeurs ou étiquettes (sauf lors de l'exemple non expliqué des diagrammes côte-à-côte), ou encore modifié les légendes ou titres.
+
+#### Titre
+
+Pour ajouter un titre au graphique, on peut utiliser la fonction title() :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = -y
+plt.plot(x, y)
+plt.plot(x, y_2)
+plt.title("Représentation graphique de $y = x^2$ \net de $y = -x^2$")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = -y
+plt.plot(x, y)
+plt.plot(x, y_2)
+plt.title("Représentation graphique de $y = x^2$ \net de $y = -x^2$")
+plt.savefig("figs/pyplot/plot_titre.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_titre.png")
+```
+
+
+#### Axes
+
+Les fonctions `xlabel()` et `ylabel()` permettent d'ajouter des étiquettes aux axes :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.xlabel("Valeurs de $x$")
+plt.ylabel("Valeurs de $y$")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.xlabel("Valeurs de $x$")
+plt.ylabel("Valeurs de $y$")
+plt.savefig("figs/pyplot/plot_axes_label.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_axes_label.png")
+```
+
+##### Limites
+
+Pour contrôler les limites des axes, on utilise la fonction `axis()`, en précisant les paramètres `xmin`, `xmax`, `ymax`, `ymin` et `ymax`, désignant, respectivement, les bornes inférieures et supérieures de l'axe des absisses et les borenes inférieures et supérieures de l'axe des ordonnées :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.axis(xmin = 0, xmax = 5, ymin = -1, ymax = 30)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.axis(xmin = 0, xmax = 5, ymin = -1, ymax = 30)
+plt.savefig("figs/pyplot/plot_axes_limites.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_axes_limites.png")
+```
+
+
+##### Marques et étiquettes
+
+Les fonctions `xticks()` et `yticks()` permettent d'obtenir ou de modifier les marques de l'axe des abscisses et de l'axe des ordonnées, respectivement.
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.xticks(np.arange(-10, 11, step = 4))
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.xticks(np.arange(-10, 11, step = 4))
+plt.savefig("figs/pyplot/plot_ticks.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_ticks.png")
+```
+
+
+Il peut être pratique de récupérer les positions et les étiquettes d'un graphique pour pouvoir les modifier, par exemple pour définir l'espacement entre chaque marque :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y)
+locs_x, labels_x = plt.xticks()
+locs_y, labels_y = plt.yticks()
+loc_x_new = np.arange(locs_x[0], locs_x[-1], step = 5)
+loc_y_new = np.arange(locs_y[0], locs_y[-1], step = 10)
+
+plt.xticks(loc_x_new)
+plt.yticks(loc_y_new)
+
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y)
+plt.xticks(np.arange(-10, 11, step = 4))
+plt.savefig("figs/pyplot/plot_ticks_2.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_ticks_2.png")
+```
+
+
+On peut également modifier les étiquettes des marques :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y)
+locs_x, labels_x = plt.xticks()
+locs_y, labels_y = plt.yticks()
+loc_x_new = np.arange(locs_x[0], locs_x[-1], step = 5)
+loc_y_new = np.arange(locs_y[0], locs_y[-1], step = 10)
+
+labels_x_new = list()
+for i in np.arange(1, len(locs_x)):
+        labels_x_new.append("x : " + str(locs_x[i]))
+
+plt.xticks(loc_x_new, labels_x_new)
+plt.yticks(loc_y_new)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y)
+locs_x, labels_x = plt.xticks()
+locs_y, labels_y = plt.yticks()
+loc_x_new = np.arange(locs_x[0], locs_x[-1], step = 5)
+loc_y_new = np.arange(locs_y[0], locs_y[-1], step = 10)
+
+labels_x_new = list()
+for i in np.arange(1, len(locs_x)):
+        labels_x_new.append("x : " + str(locs_x[i]))
+
+plt.xticks(loc_x_new, labels_x_new)
+plt.yticks(loc_y_new)
+plt.savefig("figs/pyplot/plot_ticks_3.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_ticks_3.png")
+```
+
+
+##### Grilles
+
+Pour rajouter une grille, on utilise la fonction `grid()` :
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.plot(x, y)
+plt.grid()
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.grid()
+plt.savefig("figs/pyplot/plot_grid.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_grid.png")
+```
+
+Le paramètre `axis` permet de définir si l'on désire une grille pour les deux axes (`both`, par défaut), uniquement pour les abscisses (`x`), ou uniquement pour les ordonnées (`y`) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y)
+plt.grid(axis = "y")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y)
+plt.grid(axis = "y")
+plt.savefig("figs/pyplot/plot_grid_y.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_grid_y.png")
+```
+
+On peut paraméter les lignes majeures ou mineurs de la grille :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+plt.plot(x, y)
+plt.minorticks_on()
+plt.grid(which = "major", axis = "y", color = "black")
+plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+plt.plot(x, y)
+plt.minorticks_on()
+plt.grid(which = "major", axis = "y", color = "black")
+plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--")
+plt.savefig("figs/pyplot/plot_grid_minor.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_grid_minor.png")
+```
+
+
+
+#### Légendes
+
+Lorsque l'on désire ajouter une légende, on précise l'étiquette de celle-ci au paramètre `label` dans l'appel de la fonction `plot`, puis on fait appel à la fonction `legend()` :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = x**3
+plt.plot(x, y, label = "carré ($x^2$)")
+plt.plot(x, y_2, label = "cube ($x^3$)")
+plt.legend()
+plt.legend()
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = x**3
+plt.plot(x, y, label = "carré ($x^2$)")
+plt.plot(x, y_2, label = "cube ($x^3$)")
+plt.legend()
+plt.savefig("figs/pyplot/plot_legende.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_legende.png")
+```
+
+
+Pour préciser la position de la légende, on peut s'appuyer sur le paramètre `loc` dans la fonction `legend()`, en indiquant une valeur telle que reportée dans le Tableau\ \@ref(tab:pyplot-legendes-loc).
+
+| Chaîne | Code | Description |
+| -----------: | | -----------: | ------------------------------------------------:|
+| `best` | `0` | Laisser Python optimiser le positonnement |
+| `upper right` | `1` | En haut à droite |
+| `upper left` | `2` | En haut à gauche |
+| `lower left` | `3` | En bas à gauche |
+| `lower right` | `4` | En bas à droite |
+| `right` | ` 5` | À droite |
+| `center left` | `6` | Centré au milieu à gauche |
+| `center right` | `7` | Centré au milieu à droite |
+| `lower center` | `8` | Centré en bas |
+| `upper center` | `9` | Centré en haut |
+| `center` | `10` | Centré |
+
+Table: (#tab:pyplot-legendes-loc) Formats des lignes
+
+Par exemple, pour centrer la légende au milieu, en bas du graphique :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = x**3
+plt.plot(x, y, label = "carré ($x^2$)")
+plt.plot(x, y_2, label = "cube ($x^3$)")
+plt.legend(loc = "lower center")
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = x**3
+plt.plot(x, y, label = "carré ($x^2$)")
+plt.plot(x, y_2, label = "cube ($x^3$)")
+plt.legend(loc = "lower center")
+plt.savefig("figs/pyplot/plot_legende_pos.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_legende_pos.png")
+```
+
+
+### Dimensions
+
+Pour définir les dimensions d'une figure, on renseigne le paramètre `figsize` de la fonction `figure()`. On lui fournit un n-uplet d'entiers dont le premier élément correspond à la longueur et le second la hauteur (les valeurs sont en pouces) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.figure(figsize=(10,6))
+plt.plot(x, y)
+```
+
+```{python, eval=T, echo=FALSE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+plt.figure(figsize=(10,6))
+plt.plot(x, y)
+plt.savefig("figs/pyplot/plot_size.png")
+plt.close()
+```
+
+
+```{r, echo=FALSE, fig.pos="H", fig.align="center"}
+knitr::include_graphics("figs/pyplot/plot_size.png")
+```
+
+
+### Enregistrement
+
+Pour sauvegarder un grapgique, on peut utiliser la fonction `plt.savefig()`. On précise le chemin vers le fichier à créer, en indiquant l'extension du fichier désiré (*e.g.*, `png` ou `pdf`) :
+
+```{python, eval=F, echo=TRUE, error=TRUE}
+x = np.arange(-10, 11)
+y = x**2
+y_2 = x**3
+plt.figure(figsize=(10,6))
+plt.plot(x, y, label = "carré ($x^2$)")
+plt.plot(x, y_2, label = "cube ($x^3$)")
+plt.legend(loc = "lower center")
+plt.savefig("test.pdf")
+```
+
+L'extension indiquée (dans l'exemple présent, `pdf`) détermine le format de fichier en sortie. On peut utiliser les extensions indiquées dans les clés du dictionnaire retourné par l'instruction suivante (les valeurs donnant une description du type de fichier) :
+
+```{python, eval=T, echo=T, error=TRUE}
+print(fig.canvas.get_supported_filetypes())
+```
+
+
+
+
+## Graphiques avec seaborn
+
+Cette section sera à compléter.
 
 https://seaborn.pydata.org/
 <!-- # Programmation parallèle -->

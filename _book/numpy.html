@@ -300,7 +300,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a></li>
+<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a><ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-matplotlib"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#geometries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
 </ul>
 
@@ -1306,21 +1315,21 @@ w <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv
 <p>Voici un exemple de génération de nombres pseudo aléatoires selon une distribution Gaussienne :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
 <span class="bu">print</span>(x)</code></pre></div>
-<pre><code>## [-0.23175349  0.83637003 -1.57992674 -0.64067284  0.33813536 -1.09697974
-##   0.39725503  0.97919142  0.37847414  0.08754811]</code></pre>
+<pre><code>## [-0.21608437 -0.04763351 -0.91065944 -0.8920658  -1.20739158  0.6140933
+##  -0.79615403 -0.10350956 -0.7288215   1.46985647]</code></pre>
 <p>On peut générer un tableau à plusieurs dimensions. Par exemple, un tableau à deux dimensions, dans lequel la première dimension contient 10 éléments, contenant chacun 4 tirages aléatoires selon une <span class="math inline">\(\mathcal{N}(0,1)\)</span> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> np.random.randn(<span class="dv">10</span>, <span class="dv">4</span>)
 <span class="bu">print</span>(x)</code></pre></div>
-<pre><code>## [[ 0.12160552  0.8976222   0.0316697  -0.07237433]
-##  [ 0.26944873 -0.72262204  0.28810394  1.41983521]
-##  [-0.18537695 -1.6803613  -0.59242928 -0.10929365]
-##  [-0.2136695   0.13104705 -0.64727663  0.20208448]
-##  [-0.49036592  0.54555753  1.22060399 -1.78623494]
-##  [ 0.78498068 -0.19064412  1.19225767  0.86739176]
-##  [ 1.21144722  0.19919526  0.53835669  0.83941933]
-##  [ 1.96571472  0.02160813  0.2546073  -0.82681712]
-##  [ 1.20764157  0.69334787 -1.61481075  0.34798557]
-##  [-0.90882157  0.01852452  0.37658436  0.72468206]]</code></pre>
+<pre><code>## [[ 0.0145722  -1.87532297  0.26389604  0.74479245]
+##  [ 0.21507124  0.37340081 -2.30198978  0.80505913]
+##  [ 0.47294127 -0.41094583  0.32768293  0.44436743]
+##  [ 0.78187322 -0.58665232 -0.5309845   0.04994529]
+##  [-0.18898402 -1.09015923  0.23203975  1.43007593]
+##  [-0.48374179 -0.62116834  1.92289637  1.04752284]
+##  [-1.03791008  0.57730921  0.57319431  0.9893094 ]
+##  [-1.83270058  0.49668076 -0.10631126 -0.74305415]
+##  [-1.34024884 -0.77796387 -0.50054115  1.77357994]
+##  [-0.20097655 -1.43614827  0.74681482  0.83931251]]</code></pre>
 <p>La génération des nombres s’effectue en fonction d’une graine (<em>seed</em>), c’est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode <code>seed()</code>, à qui on indique une valeur en paramètre :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.random.seed(<span class="dv">1234</span>)
 x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)

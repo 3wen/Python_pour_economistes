@@ -1234,7 +1234,7 @@ faire comme suit :
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{figs/intro_pyplot} \end{center}
+\begin{center}\includegraphics[width=9.03in]{figs/intro_pyplot} \end{center}
 
 \section{L'aide}\label{laide}
 
@@ -3263,7 +3263,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-15 13:39:01.981421
+## 2018-10-19 16:03:47.514049
 \end{lstlisting}
 
 \begin{Shaded}
@@ -3273,7 +3273,7 @@ Les méthodes \texttt{today()} et \texttt{now()} retournent le
 \end{Shaded}
 
 \begin{lstlisting}
-## 2018-10-15 13:39:01.982715
+## 2018-10-19 16:03:47.515594
 \end{lstlisting}
 
 La distinction entre les deux réside dans le fuseau horaire. Avec
@@ -4135,7 +4135,7 @@ par des virgules et en entourant l'ensemble d'accolades (\texttt{\{\}})
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Rennes', 'Nice', 'Marseille'}
 \end{lstlisting}
 
 De manière équivalent, on peut ne pas utiliser la fonction
@@ -4149,7 +4149,7 @@ De manière équivalent, on peut ne pas utiliser la fonction
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Rennes', 'Nice', 'Marseille'}
 \end{lstlisting}
 
 En revanche, si l'ensemble est vide, Python retourne un erreur si la
@@ -4189,7 +4189,7 @@ ils seront supprimés pour ne garder qu'une seule valeur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Rennes', 'Nice', 'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Rennes', 'Nice', 'Marseille'}
 \end{lstlisting}
 
 La longueur d'un ensemble s'obtient à l'aide de la fonction
@@ -4220,7 +4220,7 @@ Pour ajouter un élément à un ensemble, Python offre la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Nice', 'Marseille', 'Toulon', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Toulon', 'Marseille'}
 \end{lstlisting}
 
 Si l'élément est déjà présent, il ne sera pas ajouté :
@@ -4233,7 +4233,7 @@ Si l'élément est déjà présent, il ne sera pas ajouté :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Nice', 'Marseille', 'Toulon', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Toulon', 'Marseille'}
 \end{lstlisting}
 
 \subsubsection{Suppression}\label{suppression}
@@ -4249,7 +4249,7 @@ Pour supprimer une valeur d'un ensemble, Python propose la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Nice', 'Marseille', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 Si la valeur n'est pas présente dans l'ensemble, Python retourne un
@@ -4275,7 +4275,7 @@ message d'erreur :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Aix-en-Provence', 'Nice', 'Marseille', 'Rennes'}
+## {'Nice', 'Rennes', 'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Test d'appartenance}\label{test-dappartenance-1}
@@ -4322,7 +4322,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## y :  {'Toulon', 'Nice', 'Marseille', 'Aix-en-Provence'}
+## y :  {'Aix-en-Provence', 'Toulon', 'Nice', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4332,7 +4332,7 @@ d'égalité. La copie d'un ensemble se fait à l'aide de la méthode
 \end{Shaded}
 
 \begin{lstlisting}
-## ensemble :  {'Nice', 'Marseille', 'Aix-en-Provence'}
+## ensemble :  {'Aix-en-Provence', 'Nice', 'Marseille'}
 \end{lstlisting}
 
 \subsection{Conversion en liste}\label{conversion-en-liste}
@@ -4362,7 +4362,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## {'Marseille', 'Aix-en-Provence'}
+## {'Aix-en-Provence', 'Marseille'}
 \end{lstlisting}
 
 \begin{Shaded}
@@ -4373,7 +4373,7 @@ fonction \texttt{list()}) :
 \end{Shaded}
 
 \begin{lstlisting}
-## ['Marseille', 'Aix-en-Provence']
+## ['Aix-en-Provence', 'Marseille']
 \end{lstlisting}
 
 \section{Dictionnaires}\label{type-dict}
@@ -9421,7 +9421,7 @@ Le produit d'un vecteur avec une matrice est également possible :
 
 Pour effectuer des tests logiques sur les éléments d'un tableau,
 \texttt{NumPy} propose des fonctions, répertoriées dans le
-Tableau~\ref{numpy-operateurs-logiques}. Le résultat retourné par
+Tableau~\ref{tab:numpy-operateurs-logiques}. Le résultat retourné par
 l'application de ces fonctions est un tableau de booléens.
 
 \begin{longtable}[]{@{}rr@{}}
@@ -10135,8 +10135,8 @@ distribution Gaussienne :
 \end{Shaded}
 
 \begin{lstlisting}
-## [ 0.14740848  0.3313272   0.30132689  0.42941564  1.32955533 -0.41858906
-##  -0.54690091  0.37838103 -0.64046612 -0.91517649]
+## [-1.6610255   0.77242888  0.56924509 -1.57077268 -0.15523285 -1.06567928
+##  -0.87796157 -0.7258775   1.29743221  1.0183203 ]
 \end{lstlisting}
 
 On peut générer un tableau à plusieurs dimensions. Par exemple, un
@@ -10152,16 +10152,16 @@ tableau à deux dimensions, dans lequel la première dimension contient 10
 \end{Shaded}
 
 \begin{lstlisting}
-## [[ 0.72188375 -0.56181045 -0.87799136  0.89046917]
-##  [ 1.90310293 -0.22937502  0.86559523 -0.82203819]
-##  [ 0.58434737  2.19723864  1.44281708 -0.64865803]
-##  [ 0.61263492 -0.63802573  0.2038244   1.03474638]
-##  [ 0.13109009 -0.22916724 -0.68533789  0.08920018]
-##  [ 1.36309791  0.4293331  -0.16523788 -0.38770768]
-##  [-0.81706077  0.70620815  1.63001284 -0.67622459]
-##  [ 0.98671681  0.70732769  0.362346    1.13762224]
-##  [ 1.42748899  1.16517479  0.83965617 -0.18553686]
-##  [-1.67487767 -0.54062138  2.69945792  0.45832481]]
+## [[ 0.0105297   0.47251961 -0.12373    -0.1872912 ]
+##  [-1.20428441  2.65926894 -0.63668634 -0.38163319]
+##  [ 0.13833947  0.19738773  0.63465979  0.08038488]
+##  [-0.38778353 -0.24337785 -1.26531789  2.81112248]
+##  [-0.9416632   0.13429127 -1.13188451 -0.63949957]
+##  [-1.79681182  1.12682577 -0.80398719  0.19470224]
+##  [ 0.3929696  -0.55749831 -1.34691688  0.15124849]
+##  [-1.372845    0.19049453  0.52333424  0.32688144]
+##  [ 0.07817021  0.20718265 -0.1733738   1.59869054]
+##  [-1.55238178  0.52630096  1.15822677 -0.70096654]]
 \end{lstlisting}
 
 La génération des nombres s'effectue en fonction d'une graine
@@ -13540,56 +13540,75 @@ Puis l'insertion :
 \subsubsection{Ajout d'une colonne dans un
 dataframe}\label{ajout-dune-colonne-dans-un-dataframe}
 
-Pour ajouter une colonne dans un dataframe, on utilise la méthode
-\texttt{assign()}, en indiquant le nom et les valeurs.
+Pour ajouter une colonne dans un dataframe :
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{from}\NormalTok{ numpy }\ImportTok{import}\NormalTok{ random}
-\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(z }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)))}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df[}\StringTok{"z"}\NormalTok{] }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
 ## df : 
-##         ville annee  x  y         z
-## 0  Marseille  2019  1  3  0.117443
-## 1        Aix  2019  2  3  0.393782
-## 2  Marseille  2018  2  2  0.452730
-## 3        Aix  2018  2  1  0.538148
-## 4      Paris  2019  0  4  0.790622
-## 5      Paris  2019  0  4  0.465836
-## 6  Marseille  2021  2  4  0.435332
-## 7  Marseille  2022  2  4  0.569479
-## 8        Aix  2022  3  3  0.969259
+##  [0.11744339 0.39378235 0.45272981 0.53814784 0.7906221  0.46583634
+##  0.43533225 0.56947866 0.969259  ]
 \end{lstlisting}
 
 \subsubsection{Ajout de plusieurs colonnes dans un
 dataframe}\label{ajout-de-plusieurs-colonnes-dans-un-dataframe}
 
-Pour ajouter plusieurs colonnes, le même principe s'applique :
+Pour ajouter plusieurs colonnes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(a }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)),}
-\NormalTok{          b }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index)))}
+\NormalTok{df[}\StringTok{"a"}\NormalTok{] }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## AttributeError: 'numpy.ndarray' object has no attribute 'index'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\StringTok{"b"}\NormalTok{] }\OperatorTok{=}\NormalTok{ random.rand(}\BuiltInTok{len}\NormalTok{(df.index))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## AttributeError: 'numpy.ndarray' object has no attribute 'index'
+## 
+## Detailed traceback: 
+##   File "<string>", line 1, in <module>
+\end{lstlisting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \BuiltInTok{print}\NormalTok{(}\StringTok{"df : }\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, df)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{lstlisting}
 ## df : 
-##         ville annee  x  y         z         a         b
-## 0  Marseille  2019  1  3  0.117443  0.040556  0.689236
-## 1        Aix  2019  2  3  0.393782  0.548120  0.929546
-## 2  Marseille  2018  2  2  0.452730  0.462577  0.918117
-## 3        Aix  2018  2  1  0.538148  0.376472  0.975302
-## 4      Paris  2019  0  4  0.790622  0.327912  0.397002
-## 5      Paris  2019  0  4  0.465836  0.813529  0.262626
-## 6  Marseille  2021  2  4  0.435332  0.646552  0.430151
-## 7  Marseille  2022  2  4  0.569479  0.047426  0.764531
-## 8        Aix  2022  3  3  0.969259  0.994958  0.599731
+##  [0.11744339 0.39378235 0.45272981 0.53814784 0.7906221  0.46583634
+##  0.43533225 0.56947866 0.969259  ]
 \end{lstlisting}
 
 \section{Retrait des valeurs
@@ -13815,7 +13834,7 @@ colonne \texttt{height} au carré :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(height_2 }\OperatorTok{=}\NormalTok{ df.height}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+\NormalTok{df[}\StringTok{"height_2"}\NormalTok{] }\OperatorTok{=}\NormalTok{ df.height}\OperatorTok{**}\DecValTok{2}
 \BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -13833,7 +13852,7 @@ l'indicateur de masse corporelle pour les individus du dataframe
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(imc }\OperatorTok{=}\NormalTok{ df.weight }\OperatorTok{/}\NormalTok{ df.height_2)}
+\NormalTok{df[}\StringTok{"imc"}\NormalTok{] }\OperatorTok{=}\NormalTok{ df.weight }\OperatorTok{/}\NormalTok{ df.height_2}
 \BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -14088,11 +14107,11 @@ lignes :
 \begin{lstlisting}
 ## x_1 : 
 ##            a         b         c         d
-## 0  0.231711 -0.474710 -0.309147 -2.032396
-## 1 -0.174468 -0.642475 -0.625023  1.325887
-## 2  0.531255  1.275284 -0.682826 -0.948186
-## 3  0.777362  0.325113 -1.203486  1.209543
-## 4  0.157622 -0.293555  0.111560  0.597679
+## 0  0.058606 -0.559564 -2.227457 -0.674820
+## 1  1.014849 -0.557025 -0.424606  0.137496
+## 2 -0.070513  0.325394 -0.473522 -1.609218
+## 3  0.532768  1.413138  0.231711 -0.474710
+## 4 -0.309147 -2.032396 -0.174468 -0.642475
 \end{lstlisting}
 
 \begin{Shaded}
@@ -14105,11 +14124,11 @@ lignes :
 ## 
 ## x_2 : 
 ##            e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543
 \end{lstlisting}
 
 Pour ``coller'' le dataframe \texttt{x\_2} à droite de \texttt{x\_1}, on
@@ -14125,11 +14144,11 @@ valeur \texttt{1} pour le paramètre \texttt{axix} comme suit :
 
 \begin{lstlisting}
 ##           a         b         c         d         e         f
-## 0  0.231711 -0.474710 -0.309147 -2.032396 -1.270093  0.120949
-## 1 -0.174468 -0.642475 -0.625023  1.325887 -0.193898  1.804172
-## 2  0.531255  1.275284 -0.682826 -0.948186 -0.234694  0.939908
-## 3  0.777362  0.325113 -1.203486  1.209543 -0.171520 -0.153055
-## 4  0.157622 -0.293555  0.111560  0.597679 -0.363095 -0.067318
+## 0  0.058606 -0.559564 -2.227457 -0.674820 -0.625023  1.325887
+## 1  1.014849 -0.557025 -0.424606  0.137496  0.531255  1.275284
+## 2 -0.070513  0.325394 -0.473522 -1.609218 -0.682826 -0.948186
+## 3  0.532768  1.413138  0.231711 -0.474710  0.777362  0.325113
+## 4 -0.309147 -2.032396 -0.174468 -0.642475 -1.203486  1.209543
 \end{lstlisting}
 
 Pour coller les dataframes les uns en-dessous des autres, on peut
@@ -14148,11 +14167,11 @@ méthode \texttt{concat()}.
 \begin{lstlisting}
 ## x_3 : 
 ##            e         f
-## 0  1.444721  0.325771
-## 1 -0.855732 -0.697595
-## 2 -0.276134 -1.258759
-## 3  0.478094 -0.859764
-## 4  0.571988 -0.173965
+## 0  0.157622 -0.293555
+## 1  0.111560  0.597679
+## 2 -1.270093  0.120949
+## 3 -0.193898  1.804172
+## 4 -0.234694  0.939908
 \end{lstlisting}
 
 Rajoutons les observations de \texttt{x\_3} en-dessous de celles de
@@ -14166,16 +14185,16 @@ Rajoutons les observations de \texttt{x\_3} en-dessous de celles de
 
 \begin{lstlisting}
 ##           e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318
-## 0  1.444721  0.325771
-## 1 -0.855732 -0.697595
-## 2 -0.276134 -1.258759
-## 3  0.478094 -0.859764
-## 4  0.571988 -0.173965
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543
+## 0  0.157622 -0.293555
+## 1  0.111560  0.597679
+## 2 -1.270093  0.120949
+## 3 -0.193898  1.804172
+## 4 -0.234694  0.939908
 \end{lstlisting}
 
 Comme on peut le voir, l'indice des lignes de \texttt{x\_2} n'a pas été
@@ -14190,16 +14209,16 @@ paramètre \texttt{ignore\_index} :
 
 \begin{lstlisting}
 ##           e         f
-## 0 -1.270093  0.120949
-## 1 -0.193898  1.804172
-## 2 -0.234694  0.939908
-## 3 -0.171520 -0.153055
-## 4 -0.363095 -0.067318
-## 5  1.444721  0.325771
-## 6 -0.855732 -0.697595
-## 7 -0.276134 -1.258759
-## 8  0.478094 -0.859764
-## 9  0.571988 -0.173965
+## 0 -0.625023  1.325887
+## 1  0.531255  1.275284
+## 2 -0.682826 -0.948186
+## 3  0.777362  0.325113
+## 4 -1.203486  1.209543
+## 5  0.157622 -0.293555
+## 6  0.111560  0.597679
+## 7 -1.270093  0.120949
+## 8 -0.193898  1.804172
+## 9 -0.234694  0.939908
 \end{lstlisting}
 
 Si le nom des colonnes n'est pas ientique, des valeurs \texttt{NaN}
@@ -14216,11 +14235,11 @@ seront introduites :
 \begin{lstlisting}
 ## x_4 : 
 ##            e         g
-## 0  1.534900  0.872856
-## 1  1.856835  0.025914
-## 2  0.171984 -0.191163
-## 3 -0.292936  1.655677
-## 4 -0.207182 -0.686884
+## 0 -0.171520 -0.153055
+## 1 -0.363095 -0.067318
+## 2  1.444721  0.325771
+## 3 -0.855732 -0.697595
+## 4 -0.276134 -1.258759
 \end{lstlisting}
 
 \begin{Shaded}
@@ -14584,7 +14603,7 @@ groupes doivent être créés selon les valeurs de la colonne
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x1165bb5f8>
+## <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x1239c2080>
 \end{lstlisting}
 
 Ensuite, on récupère la variable \texttt{ouvriers} :
@@ -14597,7 +14616,7 @@ Ensuite, on récupère la variable \texttt{ouvriers} :
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1165b3908>
+## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1239c26a0>
 \end{lstlisting}
 
 \begin{Shaded}
@@ -14607,7 +14626,7 @@ Ensuite, on récupère la variable \texttt{ouvriers} :
 \end{Shaded}
 
 \begin{lstlisting}
-## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1165b39e8>
+## <pandas.core.groupby.groupby.SeriesGroupBy object at 0x1239c25c0>
 \end{lstlisting}
 
 Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher
@@ -15130,6 +15149,915 @@ Parmi les paramètres fréquemment utilisés :
 \EndKnitrBlock{exframe}
 
 \chapter{Visualisation de données}\label{visualisation-de-donnees}
+
+Dans ce chapitre, nous allons explorer les rudiments de la visualisation
+de données avec la librairie \texttt{Matplotlib}.
+
+Pour le moment, ces notes ne parleront pas des graphiques dynamiques que
+l'on peut réaliser en lien avec des librairies JavaScript, comme D3.js.
+Dans une prochaine version également, nous verrons comment réaliser des
+graphiques avec \texttt{seaborn} (\url{https://seaborn.pydata.org/}).
+
+Pour avoir accès rapidement à un type de graphique que l'on souhaite
+réaliser, on peut se référencer à cette excellente gallerie :
+\url{https://python-graph-gallery.com/}.
+
+Les adeptes du logiciel et langage de programmation R seront heureux de
+pouvoir retrouver une grammaire graphique comme celle proposée par le
+\href{https://ggplot2.tidyverse.org/}{\emph{package} R \texttt{ggplot2}}
+introduit par Hadley Wickham. En effet, il existe une librairie Python
+nommée \texttt{ggplot} : \url{http://ggplot.yhathq.com/}.
+
+Pour explorer graphiquement ses données, il peut être intéressant
+d'investir un peu de temps dans la librairie \texttt{Altair}
+(\url{https://altair-viz.github.io/}). Pour une introduction en vidéo :
+\url{https://www.youtube.com/watch?v=aRxahWy-ul8}.
+
+\section{Graphiques avec matplotlib}\label{graphiques-avec-matplotlib}
+
+Pour utiliser les fonctionnalités offertes par \texttt{matplotlib}
+(\url{https://matplotlib.org/}), il est nécessaire de charger certains
+modules. Le plus commun est le sous-module \texttt{pyplot}, auquel on
+attribue fréquemment l'alias \texttt{plt} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Pour réaliser un graphique avec la fonction \texttt{pyplot}, on commence
+par créer une figure en définissant sa zone, puis on ajoute et / ou
+modifie ses éléments à l'aide de fonctions offertes par \texttt{pyplot}.
+
+Pour illustrer les fonctionnalités de \texttt{matplotlib}, nous allons
+avoir besoin de générer des valeurs, à l'aide de la librairie
+\texttt{numpy}, que l'on charge :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Géométries}\label{geometries}
+
+\subsubsection{Lignes}\label{matplotlib-plot}
+
+Pour tracer des lignes sur un repère cartésien, on utilise la fonction
+\texttt{plot()}, à qui on fournit les coordonnées en abscisses et en
+ordonnées en premiers paramètres. On définit avec le troisième paramètre
+la géométrie.
+
+Par défaut, la géométrie réalisée est une courbe bleue :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.plot(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_1} \end{center}
+
+Une fois le graphique affiché, on peut le refermer avec la fonction
+\texttt{close()} :
+
+De la même manière, on peut préciser la gémoétrie comme suit :
+
+Pour ajouter une courbe sur le graphique, on fait appel plusieurs fois à
+la fonction \texttt{plot()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y_2 }\OperatorTok{=} \OperatorTok{-}\NormalTok{x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.plot(x, y, }\StringTok{"-"}\NormalTok{)}
+\NormalTok{plt.plot(x, y_2, }\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_2_courbes} \end{center}
+
+\paragraph{Paramètres esthétiques}\label{parametres-esthetiques}
+
+\subparagraph{Couleur de lignes}\label{couleur-de-lignes}
+
+Pour modifier la couleur d'une ligne, on utilise le paramètre
+\texttt{color} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, color}\OperatorTok{=}\StringTok{"red"}\NormalTok{)}
+\NormalTok{plt.plot(x, y_2, color}\OperatorTok{=}\StringTok{"#00FF00"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_couleur} \end{center}
+
+Commme on peut le constater, la référence à la couleur peut se faire en
+faisant appel à son nom (la liste des couleurs disposant d'un nom est
+accessibles sur la
+\href{https://matplotlib.org/examples/color/named_colors.html}{documentation
+de matplotlib}). On peut aussi utiliser un code hexadécimal pour faire
+référence à une couleur.
+
+\BeginKnitrBlock{remarque}
+Il peut être intéressant, lorsque l'on choisit des couleurs, de penser à
+l'utilisation ensuite : est-ce pour l'écran ? Pour l'impression en
+niveaux de gris ? On peut également se demander si le choix effectué ne
+gênera pas la compréhension pour les daltoniens (qui sont environ 4\% en
+France). Le site web \href{http://colorbrewer2.org/}{Color Brewer}
+propose des choix de couleurs en fonctions de caractéristiques
+souhaitées comme celles mentionnées.
+\EndKnitrBlock{remarque}
+
+\subparagraph{Épaisseur des lignes}\label{epaisseur-des-lignes}
+
+L'apaisseur des lignes peut être modifiée à l'aide du paramètre
+\texttt{linewidth}, à qui l'on fournit une valeur numérique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, linewidth }\OperatorTok{=} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_epaisseur} \end{center}
+
+\subparagraph{Type de lignes}\label{type-de-lignes}
+
+Pour changer de type de ligne, on modifie le troisième paramètre de la
+fonction. On l'a vu, par défaut, une ligne est tracée, ce qui revient à
+indiquer comme troisième paramètre :
+\texttt{\textquotesingle{}-\textquotesingle{}}. Le
+Tableau~\ref{tab:fmt-lignes} indique les différents format possibles
+pour la ligne.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:fmt-lignes} Formats des lignes}\tabularnewline
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endhead
+\texttt{-} & Ligne pleine\tabularnewline
+\texttt{-\/-} & Tirets\tabularnewline
+\texttt{-.} & Points et tirets\tabularnewline
+\texttt{:} & Pointillés\tabularnewline
+\bottomrule
+\end{longtable}
+
+Par exemple, pour avoir une interpolation linéraire effectuée entre nos
+points avec une représentation graphique effectuée à l'aide de tirets :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, }\StringTok{"--"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_tirets} \end{center}
+
+On peut aussi spécifier le type de ligne à l'aide du paramètre
+\texttt{linestyle}, en lui indiquant une des valeurs renseignées dans le
+Tableau~\ref{tab:fmt-lignes-2}
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:fmt-lignes-2} Formats des lignes via le paramètre
+\texttt{linestyle}}\tabularnewline
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endhead
+\texttt{-} ou \texttt{solid} & Ligne pleine\tabularnewline
+\texttt{-\/-} ou \texttt{dashed} & Tirets\tabularnewline
+\texttt{-.} ou \texttt{dashdot} & Points et tirets\tabularnewline
+\texttt{:} ou \texttt{dotted} & Pointillés\tabularnewline
+\texttt{None} & Aucune ligne de tracée\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, linestyle}\OperatorTok{=}\StringTok{"dashed"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_linestyle} \end{center}
+
+\subparagraph{Marqueurs}\label{marqueurs}
+
+Le Tableau~\ref{tab:fmt-lignes-marqueurs} indique quant à lui des
+formats que l'on peut spécifier comme marqueurs à chaque point présent
+sur la courbe.
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{\label{tab:fmt-lignes-marqueurs} Formats des lignes}\tabularnewline
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Valeur & Description\tabularnewline
+\midrule
+\endhead
+\texttt{.} & Points\tabularnewline
+\texttt{,} & Pixels\tabularnewline
+\texttt{o} & Cercles vides\tabularnewline
+\texttt{v} & Triangles pointant vers le bas\tabularnewline
+\texttt{\^{}} & Triangles pointant vers le haut\tabularnewline
+\texttt{\textless{}} & Triangles pointant vers la gauche\tabularnewline
+\texttt{\textgreater{}} & Triangles pointant vers la
+droite\tabularnewline
+\texttt{1} & `tri\_down'\tabularnewline
+\texttt{2} & `tri\_up'\tabularnewline
+\texttt{3} & `tri\_left'\tabularnewline
+\texttt{4} & `tri\_right'\tabularnewline
+\texttt{s} & Carré\tabularnewline
+\texttt{p} & Pentagone\tabularnewline
+\texttt{*} & Astérisque\tabularnewline
+\texttt{h} & Hexagone 1\tabularnewline
+\texttt{H} & Hexagone 2\tabularnewline
+\texttt{+} & Symbole plus\tabularnewline
+\texttt{x} & Symbole multiplier\tabularnewline
+\texttt{D} & Losange\tabularnewline
+\texttt{d} & Losange fin\tabularnewline
+\texttt{\textbar{}} & Ligne verticale\tabularnewline
+\texttt{\_} & Ligne horizontale\tabularnewline
+\bottomrule
+\end{longtable}
+
+Par exemple, avec des cercles vides :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, }\StringTok{"o"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_cercles} \end{center}
+
+On peut noter qu'il est possible de combiner les types de lignesdu
+Tableau~\ref{tab:fmt-lignes} avec des types de marqueurs du
+Tableau~\ref{tab:fmt-lignes-marqueurs} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, }\StringTok{"--v"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_tirets_triangles} \end{center}
+
+Pour contrôler de manière plus précise les marqueurs, on peut utiliser
+les paramètres suivants :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{marker} : renseigne le type de marqueur (c.f.
+  Tableau~\ref{tab:fmt-lignes-marqueurs}) ;
+\item
+  \texttt{markerfacecolor} : la couleur désirée pour les marqueurs ;
+\item
+  \texttt{markersize} : taille des marqueurs.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y, marker}\OperatorTok{=}\StringTok{"o"}\NormalTok{, markerfacecolor }\OperatorTok{=} \StringTok{"red"}\NormalTok{, markersize }\OperatorTok{=} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/lignes_marqueurs} \end{center}
+
+\subsubsection{Nuage de points}\label{nuage-de-points}
+
+Un des graphiques que l'on rencontre très fréquemment est le nuage de
+points. Pour en réaliser un, on peut faire appel à la fonction
+\texttt{scatter()}, à qui l'on indique les cordonnées (x,y) des points
+ainsi que quelques paramètres optionnels de forme ou d'esthétisme.
+
+\BeginKnitrBlock{remarque}
+\href{https://matplotlib.org/2.0.2/api/pyplot_api.html\#matplotlib.pyplot.scatter}{La
+documentation en ligne} de la fonction \texttt{scatter()} mentionne que
+la fonction \texttt{plot()} (c.f. Section~\ref{matplotlib-plot}) est
+plus rapide pour effectuer des nuages de points dans lesquels la couleur
+ou la taille des points de varie.
+\EndKnitrBlock{remarque}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.scatter(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/scatter_1} \end{center}
+
+Pour changer la forme des marqueurs, on l'indique via le paramètre
+\texttt{marker} (c.f. Tableau~\ref{tab:fmt-lignes-marqueurs} pour les
+valeurs possibles) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.scatter(x, y, marker}\OperatorTok{=}\StringTok{"+"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/scatter_2} \end{center}
+
+\subsubsection{Taille et couleur}\label{taille-et-couleur}
+
+La taille des points est ajustable via le paramètre \texttt{s}, tandis
+que la couleur se modifie via le paramètre \texttt{color} (ou par son
+alias \texttt{c}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.scatter(x, y, marker}\OperatorTok{=}\StringTok{"+"}\NormalTok{, color }\OperatorTok{=} \StringTok{"red"}\NormalTok{, s }\OperatorTok{=} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/scatter_3} \end{center}
+
+On peut associer une couleur et une taille spécifiques à chaque point :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{30}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{30}\NormalTok{)}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{30}\NormalTok{)}
+\NormalTok{couleurs }\OperatorTok{=}\NormalTok{ np.random.choice([}\StringTok{"blue"}\NormalTok{, }\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{], }\DecValTok{30}\NormalTok{)}
+\NormalTok{plt.scatter(x, y, marker}\OperatorTok{=}\StringTok{"o"}\NormalTok{, color }\OperatorTok{=}\NormalTok{ couleurs, s }\OperatorTok{=}\NormalTok{ z}\OperatorTok{*}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/scatter_bubble} \end{center}
+
+\subsubsection{Histogrammes}\label{histogrammes}
+
+Pour réaliser un histogramme avec \texttt{pyplot}, on utilise la
+fonction \texttt{hist()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.randn(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{plt.hist(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/histogramme} \end{center}
+
+On peut préciser avec le paramètre \texttt{bins} soit le nombre de
+classes, soit leurs bornes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.hist(x, bins}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/histogramme_bins} \end{center}
+
+Et avec les bornes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bins }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{)}
+\NormalTok{plt.hist(x, bins}\OperatorTok{=}\NormalTok{bins)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/histogramme_bins_2} \end{center}
+
+L'orientation se change via le paramètre \texttt{orientation}, en
+indiquant soit \texttt{\textquotesingle{}vertical\textquotesingle{}}
+(par dédaut), soit
+\texttt{\textquotesingle{}horizontal\textquotesingle{}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.hist(x, orientation}\OperatorTok{=}\StringTok{'horizontal'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/histogramme_orientation} \end{center}
+
+\paragraph{Paramètres esthétiques}\label{parametres-esthetiques-1}
+
+Pour changer la couleur de remplissage, on utilise le paramètre
+\texttt{color} ; pour ajouter une couleur délimitant les barres, on
+utilise le paramètre \texttt{edgecolor} ; pour définir l'épaisseur du
+contour, on utilise le paramètre \texttt{linewidth} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.randn(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{plt.hist(x, color }\OperatorTok{=} \StringTok{"#00FF00"}\NormalTok{, edgecolor}\OperatorTok{=}\StringTok{'black'}\NormalTok{, linewidth}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/histogramme_esthetiques} \end{center}
+
+\subsubsection{Diagrammes en bâtons}\label{diagrammes-en-batons}
+
+Pour réaliser des diagrammes en bâtons, \texttt{pyplot} propose la
+fonction \texttt{bar()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pays }\OperatorTok{=}\NormalTok{ [}\StringTok{"France"}\NormalTok{, }\StringTok{"Italie"}\NormalTok{, }\StringTok{"Belgique"}\NormalTok{, }\StringTok{"Allemagne"}\NormalTok{]}
+\NormalTok{chomage }\OperatorTok{=}\NormalTok{ [}\FloatTok{9.3}\NormalTok{, }\FloatTok{9.7}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{3.4}\NormalTok{]}
+\NormalTok{plt.bar(pays, chomage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/barplot} \end{center}
+
+Pour un diagramme horizontal, on utilise la fonction \texttt{barh()} de
+la même manière :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.barh(pays, chomage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/barplot_h} \end{center}
+
+\paragraph{Plusieurs séries sur un diagramme en
+bâtons}\label{plusieurs-series-sur-un-diagramme-en-batons}
+
+Pour comparer plusieurs séries côte-à-côte, il est nécessaire
+d'emprunter des notions qui ne seront introduites qu'à la
+Section~\ref{pyplot-elements-graphiques} (le code est fourni ici plutôt
+comme un aide-mémoire pour effectuer ce genre de graphiques).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pays }\OperatorTok{=}\NormalTok{ [}\StringTok{"France"}\NormalTok{, }\StringTok{"Italie"}\NormalTok{, }\StringTok{"Belgique"}\NormalTok{, }\StringTok{"Allemagne"}\NormalTok{]}
+\NormalTok{chomage_f }\OperatorTok{=}\NormalTok{ [}\FloatTok{9.1}\NormalTok{, }\FloatTok{11.2}\NormalTok{, }\FloatTok{6.4}\NormalTok{, }\FloatTok{2.9}\NormalTok{]}
+\NormalTok{chomage_h }\OperatorTok{=}\NormalTok{ [}\FloatTok{9.5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\FloatTok{6.6}\NormalTok{, }\FloatTok{3.8}\NormalTok{]}
+\CommentTok{# Position sur l'axe des x pour chaque étiquette}
+\NormalTok{position }\OperatorTok{=}\NormalTok{ np.arange(}\BuiltInTok{len}\NormalTok{(pays))}
+\CommentTok{# Largeur des barres}
+\NormalTok{largeur }\OperatorTok{=}\NormalTok{ .}\DecValTok{35}
+
+\CommentTok{# Création de la figure et d'un set de sous-graphiques}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots()}
+\NormalTok{r1 }\OperatorTok{=}\NormalTok{ ax.bar(position }\OperatorTok{-}\NormalTok{ largeur}\OperatorTok{/}\DecValTok{2}\NormalTok{, chomage_f, largeur)}
+\NormalTok{r2 }\OperatorTok{=}\NormalTok{ ax.bar(position }\OperatorTok{+}\NormalTok{ largeur}\OperatorTok{/}\DecValTok{2}\NormalTok{, chomage_h, largeur)}
+
+\CommentTok{# Modification des marques sur l'axe des x et de leurs étiquettes}
+\NormalTok{ax.set_xticks(position)}
+\NormalTok{ax.set_xticklabels(pays)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/barplot_mulltiples} \end{center}
+
+\paragraph{Diagrammes en bâtons
+empilés}\label{diagrammes-en-batons-empiles}
+
+Pour empiler les valeurs des séries, on préciser à l'aide du paramètre
+\texttt{bottom} la valeur de départ pour la série :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pays }\OperatorTok{=}\NormalTok{ [}\StringTok{"France"}\NormalTok{, }\StringTok{"Italie"}\NormalTok{, }\StringTok{"Belgique"}\NormalTok{, }\StringTok{"Allemagne"}\NormalTok{]}
+\NormalTok{nb_chomeurs_f }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.307}\NormalTok{, }\FloatTok{1.185}\NormalTok{, .}\DecValTok{577}\NormalTok{, .}\DecValTok{148}\NormalTok{]}
+\NormalTok{nb_chomeurs_h }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.46}\NormalTok{, }\FloatTok{1.338}\NormalTok{, .}\DecValTok{878}\NormalTok{, .}\DecValTok{179}\NormalTok{]}
+
+\NormalTok{plt.bar(pays, nb_chomeurs_f)}
+\NormalTok{plt.bar(pays, nb_chomeurs_h, bottom }\OperatorTok{=}\NormalTok{ nb_chomeurs_f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/barplot_stack} \end{center}
+
+\paragraph{Paramètres esthetiques}\label{parametres-esthetiques}
+
+Pour changer la couleur de remplissage, on utilise le paramètre
+\texttt{color} ; pour la couleur du contour, on renseigne le paramètre
+\texttt{edgecolor} ; pour la largeur du contour, on s'appuie sur le
+paramètre \texttt{linewidth} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pays }\OperatorTok{=}\NormalTok{ [}\StringTok{"France"}\NormalTok{, }\StringTok{"Italie"}\NormalTok{, }\StringTok{"Belgique"}\NormalTok{, }\StringTok{"Allemagne"}\NormalTok{]}
+\NormalTok{nb_chomeurs_f }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.307}\NormalTok{, }\FloatTok{1.185}\NormalTok{, .}\DecValTok{577}\NormalTok{, .}\DecValTok{148}\NormalTok{]}
+\NormalTok{nb_chomeurs_h }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.46}\NormalTok{, }\FloatTok{1.338}\NormalTok{, .}\DecValTok{878}\NormalTok{, .}\DecValTok{179}\NormalTok{]}
+
+\NormalTok{plt.bar(pays, nb_chomeurs_f, color }\OperatorTok{=} \StringTok{"purple"}\NormalTok{,}
+\NormalTok{        edgecolor }\OperatorTok{=} \StringTok{"black"}\NormalTok{, linewidth }\OperatorTok{=} \FloatTok{1.5}\NormalTok{)}
+\NormalTok{plt.bar(pays, nb_chomeurs_h, bottom }\OperatorTok{=}\NormalTok{ nb_chomeurs_f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/barplot_esthetiques} \end{center}
+
+\subsubsection{Boxplots}\label{boxplots}
+
+Pour réaliser une boîte à moustaches (ou \emph{boxplot}),
+\texttt{pyplot} offre la fonction \texttt{boxplot()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.randn(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{plt.boxplot(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/boxplot} \end{center}
+
+En renseigant à \texttt{False} la valeur du paramètre \texttt{vert}, le
+boxplot est tracé horizontalement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.boxplot(x, vert }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/boxplot_horizontal} \end{center}
+
+\subsection{Plusieurs graphiques sur une
+figure}\label{plusieurs-graphiques-sur-une-figure}
+
+Pour placer des graphiques les uns à côté des autres, on utilise la
+fonction \texttt{subplot()}. Les graphiques seront placés comme dans une
+matrice, avec un nombre de lignes \texttt{n\_lignes} et un nombre de
+colonnes \texttt{n\_colones}. On peut indiquer les dimensions de cette
+matrice en paramètres de la fonction \texttt{subplot()}, à l'aide de la
+syntaxe suivante :
+
+où \texttt{courant} indique l'indice du graphique actif. Voyons à
+travers un exemple le fonctionnement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=} \OperatorTok{-}\NormalTok{x}\OperatorTok{**}\DecValTok{2}
+\CommentTok{# Matrice de dimension 3x2 de graphiques}
+
+\CommentTok{# Ligne 1, colonne 1}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"red"}\NormalTok{)}
+
+\CommentTok{# Ligne 1, colonne 2}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"orange"}\NormalTok{)}
+
+\CommentTok{# Ligne 2, colonne 1}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"yellow"}\NormalTok{)}
+
+\CommentTok{# Ligne 2, colonne 2}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"green"}\NormalTok{)}
+
+\CommentTok{# Ligne 3, colonne 1}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"blue"}\NormalTok{)}
+
+\CommentTok{# Ligne 3, colonne 2}
+\NormalTok{plt.subplot(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{plt.plot(x, y, color }\OperatorTok{=} \StringTok{"violet"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/subplot} \end{center}
+
+Rappelons-nous que les matrices sont remplies lignes par lignes en
+Python, ce qui permet de bien comprendre la valeur du numéro de
+graphique actif.
+
+En utilisant la fonction \texttt{subplots()} (attention au ``s'' final
+du nom de la fonction qui la différencie de la précédente), il est
+possible de produire une matrice de graphiques également, en procédant
+de la manière suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f, ax_arr }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"red"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"orange"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"yellow"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"green"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/subplots} \end{center}
+
+Cette manière de procéder offre l'avantage de préciser facilement le
+partage d'axes entre les différents sous-graphiques, via les paramètres
+\texttt{sharex} et \texttt{sharey} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f, ax_arr }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, sharey}\OperatorTok{=}\VariableTok{True}\NormalTok{, sharex }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"red"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"orange"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"yellow"}\NormalTok{)}
+\NormalTok{ax_arr[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(x, y, color }\OperatorTok{=} \StringTok{"green"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/subplots_share} \end{center}
+
+\subsection{Éléments de graphiques}\label{pyplot-elements-graphiques}
+
+Jusqu'ici, nous avons regardé comment créer différentes géométries, mais
+nous n'avons pas touché aux axes, à leurs valeurs ou étiquettes (sauf
+lors de l'exemple non expliqué des diagrammes côte-à-côte), ou encore
+modifié les légendes ou titres.
+
+\subsubsection{Titre}\label{titre}
+
+Pour ajouter un titre au graphique, on peut utiliser la fonction title()
+:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{y_2 }\OperatorTok{=} \OperatorTok{-}\NormalTok{y}
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.plot(x, y_2)}
+\NormalTok{plt.title(}\StringTok{"Représentation graphique de $y = x^2$ }\CharTok{\textbackslash{}n}\StringTok{et de $y = -x^2$"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_titre} \end{center}
+
+\subsubsection{Axes}\label{axes}
+
+Les fonctions \texttt{xlabel()} et \texttt{ylabel()} permettent
+d'ajouter des étiquettes aux axes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.xlabel(}\StringTok{"Valeurs de $x$"}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{"Valeurs de $y$"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_axes_label} \end{center}
+
+\paragraph{Limites}\label{limites}
+
+Pour contrôler les limites des axes, on utilise la fonction
+\texttt{axis()}, en précisant les paramètres \texttt{xmin},
+\texttt{xmax}, \texttt{ymax}, \texttt{ymin} et \texttt{ymax}, désignant,
+respectivement, les bornes inférieures et supérieures de l'axe des
+absisses et les borenes inférieures et supérieures de l'axe des
+ordonnées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.axis(xmin }\OperatorTok{=} \DecValTok{0}\NormalTok{, xmax }\OperatorTok{=} \DecValTok{5}\NormalTok{, ymin }\OperatorTok{=} \OperatorTok{-}\DecValTok{1}\NormalTok{, ymax }\OperatorTok{=} \DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_axes_limites} \end{center}
+
+\paragraph{Marques et étiquettes}\label{marques-et-etiquettes}
+
+Les fonctions \texttt{xticks()} et \texttt{yticks()} permettent
+d'obtenir ou de modifier les marques de l'axe des abscisses et de l'axe
+des ordonnées, respectivement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.xticks(np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, step }\OperatorTok{=} \DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_ticks} \end{center}
+
+Il peut être pratique de récupérer les positions et les étiquettes d'un
+graphique pour pouvoir les modifier, par exemple pour définir
+l'espacement entre chaque marque :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y)}
+\NormalTok{locs_x, labels_x }\OperatorTok{=}\NormalTok{ plt.xticks()}
+\NormalTok{locs_y, labels_y }\OperatorTok{=}\NormalTok{ plt.yticks()}
+\NormalTok{loc_x_new }\OperatorTok{=}\NormalTok{ np.arange(locs_x[}\DecValTok{0}\NormalTok{], locs_x[}\OperatorTok{-}\DecValTok{1}\NormalTok{], step }\OperatorTok{=} \DecValTok{5}\NormalTok{)}
+\NormalTok{loc_y_new }\OperatorTok{=}\NormalTok{ np.arange(locs_y[}\DecValTok{0}\NormalTok{], locs_y[}\OperatorTok{-}\DecValTok{1}\NormalTok{], step }\OperatorTok{=} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{plt.xticks(loc_x_new)}
+\NormalTok{plt.yticks(loc_y_new)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_ticks_2} \end{center}
+
+On peut également modifier les étiquettes des marques :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y)}
+\NormalTok{locs_x, labels_x }\OperatorTok{=}\NormalTok{ plt.xticks()}
+\NormalTok{locs_y, labels_y }\OperatorTok{=}\NormalTok{ plt.yticks()}
+\NormalTok{loc_x_new }\OperatorTok{=}\NormalTok{ np.arange(locs_x[}\DecValTok{0}\NormalTok{], locs_x[}\OperatorTok{-}\DecValTok{1}\NormalTok{], step }\OperatorTok{=} \DecValTok{5}\NormalTok{)}
+\NormalTok{loc_y_new }\OperatorTok{=}\NormalTok{ np.arange(locs_y[}\DecValTok{0}\NormalTok{], locs_y[}\OperatorTok{-}\DecValTok{1}\NormalTok{], step }\OperatorTok{=} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{labels_x_new }\OperatorTok{=} \BuiltInTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{, }\BuiltInTok{len}\NormalTok{(locs_x)):}
+\NormalTok{        labels_x_new.append(}\StringTok{"x : "} \OperatorTok{+} \BuiltInTok{str}\NormalTok{(locs_x[i]))}
+
+\NormalTok{plt.xticks(loc_x_new, labels_x_new)}
+\NormalTok{plt.yticks(loc_y_new)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_ticks_3} \end{center}
+
+\paragraph{Grilles}\label{grilles}
+
+Pour rajouter une grille, on utilise la fonction \texttt{grid()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.grid()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_grid} \end{center}
+
+Le paramètre \texttt{axis} permet de définir si l'on désire une grille
+pour les deux axes (\texttt{both}, par défaut), uniquement pour les
+abscisses (\texttt{x}), ou uniquement pour les ordonnées (\texttt{y}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.grid(axis }\OperatorTok{=} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_grid_y} \end{center}
+
+On peut paraméter les lignes majeures ou mineurs de la grille :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.minorticks_on()}
+\NormalTok{plt.grid(which }\OperatorTok{=} \StringTok{"major"}\NormalTok{, axis }\OperatorTok{=} \StringTok{"y"}\NormalTok{, color }\OperatorTok{=} \StringTok{"black"}\NormalTok{)}
+\NormalTok{plt.grid(which }\OperatorTok{=} \StringTok{"minor"}\NormalTok{, axis }\OperatorTok{=} \StringTok{"y"}\NormalTok{, color }\OperatorTok{=} \StringTok{"red"}\NormalTok{, linestyle }\OperatorTok{=} \StringTok{"--"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_grid_minor} \end{center}
+
+\subsubsection{Légendes}\label{legendes}
+
+Lorsque l'on désire ajouter une légende, on précise l'étiquette de
+celle-ci au paramètre \texttt{label} dans l'appel de la fonction
+\texttt{plot}, puis on fait appel à la fonction \texttt{legend()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{y_2 }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{3}
+\NormalTok{plt.plot(x, y, label }\OperatorTok{=} \StringTok{"carré ($x^2$)"}\NormalTok{)}
+\NormalTok{plt.plot(x, y_2, label }\OperatorTok{=} \StringTok{"cube ($x^3$)"}\NormalTok{)}
+\NormalTok{plt.legend()}
+\NormalTok{plt.legend()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_legende} \end{center}
+
+Pour préciser la position de la légende, on peut s'appuyer sur le
+paramètre \texttt{loc} dans la fonction \texttt{legend()}, en indiquant
+une valeur telle que reportée dans le
+Tableau~\ref{tab:pyplot-legendes-loc}.
+
+Chaîne \textbar{} Code \textbar{} Description \textbar{}\\
+-----------: \textbar{} \textbar{} -----------: \textbar{}
+------------------------------------------------:\textbar{}\\
+\texttt{best} \textbar{} \texttt{0} \textbar{} Laisser Python optimiser
+le positonnement \textbar{}\\
+\texttt{upper\ right} \textbar{} \texttt{1} \textbar{} En haut à droite
+\textbar{}\\
+\texttt{upper\ left} \textbar{} \texttt{2} \textbar{} En haut à gauche
+\textbar{}\\
+\texttt{lower\ left} \textbar{} \texttt{3} \textbar{} En bas à gauche
+\textbar{}\\
+\texttt{lower\ right} \textbar{} \texttt{4} \textbar{} En bas à droite
+\textbar{}\\
+\texttt{right} \textbar{} \texttt{5} \textbar{} À droite \textbar{}\\
+\texttt{center\ left} \textbar{} \texttt{6} \textbar{} Centré au milieu
+à gauche \textbar{}\\
+\texttt{center\ right} \textbar{} \texttt{7} \textbar{} Centré au milieu
+à droite \textbar{}\\
+\texttt{lower\ center} \textbar{} \texttt{8} \textbar{} Centré en bas
+\textbar{}\\
+\texttt{upper\ center} \textbar{} \texttt{9} \textbar{} Centré en haut
+\textbar{}\\
+\texttt{center} \textbar{} \texttt{10} \textbar{} Centré \textbar{}
+
+Table: \label{tab:pyplot-legendes-loc} Formats des lignes
+
+Par exemple, pour centrer la légende au milieu, en bas du graphique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{y_2 }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{3}
+\NormalTok{plt.plot(x, y, label }\OperatorTok{=} \StringTok{"carré ($x^2$)"}\NormalTok{)}
+\NormalTok{plt.plot(x, y_2, label }\OperatorTok{=} \StringTok{"cube ($x^3$)"}\NormalTok{)}
+\NormalTok{plt.legend(loc }\OperatorTok{=} \StringTok{"lower center"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=9.03in]{figs/pyplot/plot_legende_pos} \end{center}
+
+\subsection{Dimensions}\label{dimensions-2}
+
+Pour définir les dimensions d'une figure, on renseigne le paramètre
+\texttt{figsize} de la fonction \texttt{figure()}. On lui fournit un
+n-uplet d'entiers dont le premier élément correspond à la longueur et le
+second la hauteur (les valeurs sont en pouces) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{6}\NormalTok{))}
+\NormalTok{plt.plot(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=13.89in]{figs/pyplot/plot_size} \end{center}
+
+\subsection{Enregistrement}\label{enregistrement}
+
+Pour sauvegarder un grapgique, on peut utiliser la fonction
+\texttt{plt.savefig()}. On précise le chemin vers le fichier à créer, en
+indiquant l'extension du fichier désiré (\emph{e.g.}, \texttt{png} ou
+\texttt{pdf}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{y_2 }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{3}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{6}\NormalTok{))}
+\NormalTok{plt.plot(x, y, label }\OperatorTok{=} \StringTok{"carré ($x^2$)"}\NormalTok{)}
+\NormalTok{plt.plot(x, y_2, label }\OperatorTok{=} \StringTok{"cube ($x^3$)"}\NormalTok{)}
+\NormalTok{plt.legend(loc }\OperatorTok{=} \StringTok{"lower center"}\NormalTok{)}
+\NormalTok{plt.savefig(}\StringTok{"test.pdf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+L'extension indiquée (dans l'exemple présent, \texttt{pdf}) détermine le
+format de fichier en sortie. On peut utiliser les extensions indiquées
+dans les clés du dictionnaire retourné par l'instruction suivante (les
+valeurs donnant une description du type de fichier) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(fig.canvas.get_supported_filetypes())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{lstlisting}
+## {'ps': 'Postscript', 'eps': 'Encapsulated Postscript', 'pdf': 'Portable Document Format', 'pgf': 'PGF code for LaTeX', 'png': 'Portable Network Graphics', 'raw': 'Raw RGBA bitmap', 'rgba': 'Raw RGBA bitmap', 'svg': 'Scalable Vector Graphics', 'svgz': 'Scalable Vector Graphics', 'jpg': 'Joint Photographic Experts Group', 'jpeg': 'Joint Photographic Experts Group', 'tif': 'Tagged Image File Format', 'tiff': 'Tagged Image File Format'}
+\end{lstlisting}
+
+\section{Graphiques avec seaborn}\label{graphiques-avec-seaborn}
+
+Cette section sera à compléter.
 
 \url{https://seaborn.pydata.org/}
 

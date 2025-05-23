@@ -15,14 +15,6 @@ monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 output:
-  bookdown::pdf_book:
-    toc_depth: 4
-    highlight: default
-    citation_package: natbib
-    biblio-style: plainnat
-    keep_tex: yes
-    includes:
-      in_header: styles/mystyle_books.tex
   bookdown::gitbook:
     css: styles/style.css
     highlight: default
@@ -38,6 +30,14 @@ output:
       sharing: null
   bookdown::epub_book:
     stylesheet: styles/style.css
+  bookdown::pdf_book:
+    toc_depth: 4
+    highlight: default
+    citation_package: natbib
+    biblio-style: plainnat
+    keep_tex: yes
+    includes:
+      in_header: styles/mystyle_books.tex
 ---
 
 ```{r, echo=FALSE, cache=FALSE, include=FALSE}

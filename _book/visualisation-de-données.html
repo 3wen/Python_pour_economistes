@@ -783,11 +783,11 @@ Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l�
 <p>Pour réaliser une boîte à moustaches (ou <em>boxplot</em>), <code>pyplot</code> offre la fonction <code>boxplot()</code> :</p>
 <div class="sourceCode" id="cb1408"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1408-1"><a href="visualisation-de-données.html#cb1408-1" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
 <span id="cb1408-2"><a href="visualisation-de-données.html#cb1408-2" tabindex="-1"></a>plt.boxplot(x)</span></code></pre></div>
-<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x161b34040&gt;, &lt;matplotlib.lines.Line2D object at 0x161b34610&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe460&gt;, &lt;matplotlib.lines.Line2D object at 0x161afeb20&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x161b342e0&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe5b0&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe1c0&gt;], &#39;means&#39;: []}</code></pre>
+<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x301ec68e0&gt;, &lt;matplotlib.lines.Line2D object at 0x301ec6790&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x301ec6220&gt;, &lt;matplotlib.lines.Line2D object at 0x301ec6f40&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x301ec17f0&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x301ec66a0&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x301ec6910&gt;], &#39;means&#39;: []}</code></pre>
 <p><img src="figs/pyplot/boxplot.png" width="350" style="display: block; margin: auto;" /></p>
 <p>En renseigant à <code>False</code> la valeur du paramètre <code>vert</code>, le boxplot est tracé horizontalement :</p>
 <div class="sourceCode" id="cb1410"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1410-1"><a href="visualisation-de-données.html#cb1410-1" tabindex="-1"></a>plt.boxplot(x, vert <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
-<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619ce7c0&gt;, &lt;matplotlib.lines.Line2D object at 0x1619ce8e0&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2370&gt;, &lt;matplotlib.lines.Line2D object at 0x1619d2040&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619ce280&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2460&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2730&gt;], &#39;means&#39;: []}</code></pre>
+<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x301da0550&gt;, &lt;matplotlib.lines.Line2D object at 0x301da0130&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x301da02b0&gt;, &lt;matplotlib.lines.Line2D object at 0x301da0340&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x301da0c10&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x301da0e50&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x301d59c40&gt;], &#39;means&#39;: []}</code></pre>
 <p><img src="figs/pyplot/boxplot_horizontal.png" width="350" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -865,7 +865,7 @@ Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l�
 <div id="limites" class="section level5 hasAnchor" number="11.1.3.2.1">
 <h5><span class="header-section-number">11.1.3.2.1</span> Limites<a href="visualisation-de-données.html#limites" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Pour contrôler les limites des axes, on utilise la fonction <code>axis()</code>, en précisant les paramètres <code>xmin</code>, <code>xmax</code>, <code>ymax</code>, <code>ymin</code> et <code>ymax</code>, désignant, respectivement, les bornes inférieures et supérieures de l’axe des absisses et les borenes inférieures et supérieures de l’axe des ordonnées :</p>
-<div class="sourceCode" id="cb1417"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1417-1"><a href="visualisation-de-données.html#cb1417-1" tabindex="-1"></a>plt.axis(xmin <span class="op">=</span> <span class="dv">0</span>, xmax <span class="op">=</span> <span class="dv">5</span>, ymin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, ymax <span class="op">=</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1417"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1417-1"><a href="visualisation-de-données.html#cb1417-1" tabindex="-1"></a>plt.axis(xmin <span class="op">=</span> <span class="dv">0</span>, xmax <span class="op">=</span> <span class="dv">5</span>, ymin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, ymax <span class="op">=</span> <span class="dv">30</span>)<span class="op">;</span></span></code></pre></div>
 <pre><code>## (np.float64(0.0), np.float64(5.0), np.float64(-1.0), np.float64(30.0))</code></pre>
 <p><img src="figs/pyplot/plot_axes_limites.png" width="350" style="display: block; margin: auto;" /></p>
 </div>
@@ -874,68 +874,64 @@ Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l�
 <p>Les fonctions <code>xticks()</code> et <code>yticks()</code> permettent d’obtenir ou de modifier les marques de l’axe des abscisses et de l’axe des ordonnées, respectivement.</p>
 <div class="sourceCode" id="cb1419"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1419-1"><a href="visualisation-de-données.html#cb1419-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
 <span id="cb1419-2"><a href="visualisation-de-données.html#cb1419-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1419-3"><a href="visualisation-de-données.html#cb1419-3" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1419-4"><a href="visualisation-de-données.html#cb1419-4" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, step <span class="op">=</span> <span class="dv">4</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x142f55190&gt;, &lt;matplotlib.axis.XTick object at 0x142f55490&gt;, &lt;matplotlib.axis.XTick object at 0x121714df0&gt;, &lt;matplotlib.axis.XTick object at 0x1609d7ca0&gt;, &lt;matplotlib.axis.XTick object at 0x160a55ca0&gt;, &lt;matplotlib.axis.XTick object at 0x1377c85b0&gt;], [Text(-10, 0, &#39;−10&#39;), Text(-6, 0, &#39;−6&#39;), Text(-2, 0, &#39;−2&#39;), Text(2, 0, &#39;2&#39;), Text(6, 0, &#39;6&#39;), Text(10, 0, &#39;10&#39;)])</code></pre>
+<span id="cb1419-3"><a href="visualisation-de-données.html#cb1419-3" tabindex="-1"></a>plt.plot(x, y)<span class="op">;</span></span>
+<span id="cb1419-4"><a href="visualisation-de-données.html#cb1419-4" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, step <span class="op">=</span> <span class="dv">4</span>))<span class="op">;</span></span></code></pre></div>
 <p><img src="figs/pyplot/plot_ticks.png" width="350" style="display: block; margin: auto;" /></p>
 <p>Il peut être pratique de récupérer les positions et les étiquettes d’un graphique pour pouvoir les modifier, par exemple pour définir l’espacement entre chaque marque :</p>
+<div class="sourceCode" id="cb1420"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1420-1"><a href="visualisation-de-données.html#cb1420-1" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1420-2"><a href="visualisation-de-données.html#cb1420-2" tabindex="-1"></a>locs_x, labels_x <span class="op">=</span> plt.xticks()</span>
+<span id="cb1420-3"><a href="visualisation-de-données.html#cb1420-3" tabindex="-1"></a>locs_y, labels_y <span class="op">=</span> plt.yticks()</span>
+<span id="cb1420-4"><a href="visualisation-de-données.html#cb1420-4" tabindex="-1"></a>loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb1420-5"><a href="visualisation-de-données.html#cb1420-5" tabindex="-1"></a>loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb1420-6"><a href="visualisation-de-données.html#cb1420-6" tabindex="-1"></a></span>
+<span id="cb1420-7"><a href="visualisation-de-données.html#cb1420-7" tabindex="-1"></a>plt.xticks(loc_x_new)<span class="op">;</span></span>
+<span id="cb1420-8"><a href="visualisation-de-données.html#cb1420-8" tabindex="-1"></a>plt.yticks(loc_y_new)<span class="op">;</span></span></code></pre></div>
+<p><img src="figs/pyplot/plot_ticks_2.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut également modifier les étiquettes des marques :</p>
 <div class="sourceCode" id="cb1421"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1421-1"><a href="visualisation-de-données.html#cb1421-1" tabindex="-1"></a>plt.plot(x, y)</span>
 <span id="cb1421-2"><a href="visualisation-de-données.html#cb1421-2" tabindex="-1"></a>locs_x, labels_x <span class="op">=</span> plt.xticks()</span>
 <span id="cb1421-3"><a href="visualisation-de-données.html#cb1421-3" tabindex="-1"></a>locs_y, labels_y <span class="op">=</span> plt.yticks()</span>
 <span id="cb1421-4"><a href="visualisation-de-données.html#cb1421-4" tabindex="-1"></a>loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)</span>
 <span id="cb1421-5"><a href="visualisation-de-données.html#cb1421-5" tabindex="-1"></a>loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb1421-6"><a href="visualisation-de-données.html#cb1421-6" tabindex="-1"></a></span>
-<span id="cb1421-7"><a href="visualisation-de-données.html#cb1421-7" tabindex="-1"></a>plt.xticks(loc_x_new)</span>
-<span id="cb1421-8"><a href="visualisation-de-données.html#cb1421-8" tabindex="-1"></a>plt.yticks(loc_y_new)</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x1609dcf40&gt;, &lt;matplotlib.axis.XTick object at 0x1609dc940&gt;, &lt;matplotlib.axis.XTick object at 0x160bf3c10&gt;, &lt;matplotlib.axis.XTick object at 0x142f2efd0&gt;, &lt;matplotlib.axis.XTick object at 0x142f4b700&gt;, &lt;matplotlib.axis.XTick object at 0x14155c280&gt;], [Text(-10, 0, &#39;−10&#39;), Text(-6, 0, &#39;−6&#39;), Text(-2, 0, &#39;−2&#39;), Text(2, 0, &#39;2&#39;), Text(6, 0, &#39;6&#39;), Text(10, 0, &#39;10&#39;)])</code></pre>
-<p><img src="figs/pyplot/plot_ticks_2.png" width="350" style="display: block; margin: auto;" /></p>
-<p>On peut également modifier les étiquettes des marques :</p>
-<div class="sourceCode" id="cb1423"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1423-1"><a href="visualisation-de-données.html#cb1423-1" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1423-2"><a href="visualisation-de-données.html#cb1423-2" tabindex="-1"></a>locs_x, labels_x <span class="op">=</span> plt.xticks()</span>
-<span id="cb1423-3"><a href="visualisation-de-données.html#cb1423-3" tabindex="-1"></a>locs_y, labels_y <span class="op">=</span> plt.yticks()</span>
-<span id="cb1423-4"><a href="visualisation-de-données.html#cb1423-4" tabindex="-1"></a>loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb1423-5"><a href="visualisation-de-données.html#cb1423-5" tabindex="-1"></a>loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb1423-6"><a href="visualisation-de-données.html#cb1423-6" tabindex="-1"></a></span>
-<span id="cb1423-7"><a href="visualisation-de-données.html#cb1423-7" tabindex="-1"></a>labels_x_new <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb1423-8"><a href="visualisation-de-données.html#cb1423-8" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(locs_x)):</span>
-<span id="cb1423-9"><a href="visualisation-de-données.html#cb1423-9" tabindex="-1"></a>        labels_x_new.append(<span class="st">&quot;x : &quot;</span> <span class="op">+</span> <span class="bu">str</span>(locs_x[i]))</span>
-<span id="cb1423-10"><a href="visualisation-de-données.html#cb1423-10" tabindex="-1"></a></span>
-<span id="cb1423-11"><a href="visualisation-de-données.html#cb1423-11" tabindex="-1"></a>plt.xticks(loc_x_new, labels_x_new)</span>
-<span id="cb1423-12"><a href="visualisation-de-données.html#cb1423-12" tabindex="-1"></a>plt.yticks(loc_y_new)</span></code></pre></div>
+<span id="cb1421-7"><a href="visualisation-de-données.html#cb1421-7" tabindex="-1"></a>labels_x_new <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb1421-8"><a href="visualisation-de-données.html#cb1421-8" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(locs_x)):</span>
+<span id="cb1421-9"><a href="visualisation-de-données.html#cb1421-9" tabindex="-1"></a>        labels_x_new.append(<span class="st">&quot;x : &quot;</span> <span class="op">+</span> <span class="bu">str</span>(locs_x[i]))</span>
+<span id="cb1421-10"><a href="visualisation-de-données.html#cb1421-10" tabindex="-1"></a></span>
+<span id="cb1421-11"><a href="visualisation-de-données.html#cb1421-11" tabindex="-1"></a>plt.xticks(loc_x_new, labels_x_new)<span class="op">;</span></span>
+<span id="cb1421-12"><a href="visualisation-de-données.html#cb1421-12" tabindex="-1"></a>plt.yticks(loc_y_new)<span class="op">;</span></span></code></pre></div>
 <pre><code>## ValueError: The number of FixedLocator locations (5), usually from a call to set_ticks, does not match the number of labels (10).</code></pre>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x142da95e0&gt;, &lt;matplotlib.axis.YTick object at 0x142dde580&gt;, &lt;matplotlib.axis.YTick object at 0x142d84a60&gt;, &lt;matplotlib.axis.YTick object at 0x160b446a0&gt;, &lt;matplotlib.axis.YTick object at 0x160c03070&gt;, &lt;matplotlib.axis.YTick object at 0x141599c70&gt;, &lt;matplotlib.axis.YTick object at 0x141599d60&gt;, &lt;matplotlib.axis.YTick object at 0x142d846d0&gt;, &lt;matplotlib.axis.YTick object at 0x1415eef40&gt;, &lt;matplotlib.axis.YTick object at 0x160c79a30&gt;, &lt;matplotlib.axis.YTick object at 0x1415dc100&gt;, &lt;matplotlib.axis.YTick object at 0x1415b7bb0&gt;, &lt;matplotlib.axis.YTick object at 0x160b448e0&gt;, &lt;matplotlib.axis.YTick object at 0x1415e0b50&gt;], [Text(0, -20.0, &#39;−20&#39;), Text(0, -10.0, &#39;−10&#39;), Text(0, 0.0, &#39;0&#39;), Text(0, 10.0, &#39;10&#39;), Text(0, 20.0, &#39;20&#39;), Text(0, 30.0, &#39;30&#39;), Text(0, 40.0, &#39;40&#39;), Text(0, 50.0, &#39;50&#39;), Text(0, 60.0, &#39;60&#39;), Text(0, 70.0, &#39;70&#39;), Text(0, 80.0, &#39;80&#39;), Text(0, 90.0, &#39;90&#39;), Text(0, 100.0, &#39;100&#39;), Text(0, 110.0, &#39;110&#39;)])</code></pre>
 <p><img src="figs/pyplot/plot_ticks_3.png" width="350" style="display: block; margin: auto;" /></p>
 </div>
 <div id="grilles" class="section level5 hasAnchor" number="11.1.3.2.3">
 <h5><span class="header-section-number">11.1.3.2.3</span> Grilles<a href="visualisation-de-données.html#grilles" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Pour rajouter une grille, on utilise la fonction <code>grid()</code> :</p>
-<div class="sourceCode" id="cb1426"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1426-1"><a href="visualisation-de-données.html#cb1426-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb1426-2"><a href="visualisation-de-données.html#cb1426-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1426-3"><a href="visualisation-de-données.html#cb1426-3" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1426-4"><a href="visualisation-de-données.html#cb1426-4" tabindex="-1"></a>plt.grid()</span></code></pre></div>
+<div class="sourceCode" id="cb1423"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1423-1"><a href="visualisation-de-données.html#cb1423-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1423-2"><a href="visualisation-de-données.html#cb1423-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1423-3"><a href="visualisation-de-données.html#cb1423-3" tabindex="-1"></a>plt.plot(x, y)<span class="op">;</span></span>
+<span id="cb1423-4"><a href="visualisation-de-données.html#cb1423-4" tabindex="-1"></a>plt.grid()<span class="op">;</span></span></code></pre></div>
 <p><img src="figs/pyplot/plot_grid.png" width="350" style="display: block; margin: auto;" /></p>
 <p>Le paramètre <code>axis</code> permet de définir si l’on désire une grille pour les deux axes (<code>both</code>, par défaut), uniquement pour les abscisses (<code>x</code>), ou uniquement pour les ordonnées (<code>y</code>) :</p>
-<div class="sourceCode" id="cb1427"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1427-1"><a href="visualisation-de-données.html#cb1427-1" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1427-2"><a href="visualisation-de-données.html#cb1427-2" tabindex="-1"></a>plt.grid(axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1424"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1424-1"><a href="visualisation-de-données.html#cb1424-1" tabindex="-1"></a>plt.plot(x, y)<span class="op">;</span></span>
+<span id="cb1424-2"><a href="visualisation-de-données.html#cb1424-2" tabindex="-1"></a>plt.grid(axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>)<span class="op">;</span></span></code></pre></div>
 <p><img src="figs/pyplot/plot_grid_y.png" width="350" style="display: block; margin: auto;" /></p>
 <p>On peut paraméter les lignes majeures ou mineurs de la grille :</p>
-<div class="sourceCode" id="cb1428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1428-1"><a href="visualisation-de-données.html#cb1428-1" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1428-2"><a href="visualisation-de-données.html#cb1428-2" tabindex="-1"></a>plt.minorticks_on()</span>
-<span id="cb1428-3"><a href="visualisation-de-données.html#cb1428-3" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;major&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb1428-4"><a href="visualisation-de-données.html#cb1428-4" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;minor&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, linestyle <span class="op">=</span> <span class="st">&quot;--&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1425"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1425-1"><a href="visualisation-de-données.html#cb1425-1" tabindex="-1"></a>plt.plot(x, y)<span class="op">;</span></span>
+<span id="cb1425-2"><a href="visualisation-de-données.html#cb1425-2" tabindex="-1"></a>plt.minorticks_on()<span class="op">;</span></span>
+<span id="cb1425-3"><a href="visualisation-de-données.html#cb1425-3" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;major&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;black&quot;</span>)<span class="op">;</span></span>
+<span id="cb1425-4"><a href="visualisation-de-données.html#cb1425-4" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;minor&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, linestyle <span class="op">=</span> <span class="st">&quot;--&quot;</span>)<span class="op">;</span></span></code></pre></div>
 <p><img src="figs/pyplot/plot_grid_minor.png" width="350" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="légendes" class="section level4 hasAnchor" number="11.1.3.3">
 <h4><span class="header-section-number">11.1.3.3</span> Légendes<a href="#l%C3%A9gendes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lorsque l’on désire ajouter une légende, on précise l’étiquette de celle-ci au paramètre <code>label</code> dans l’appel de la fonction <code>plot</code>, puis on fait appel à la fonction <code>legend()</code> :</p>
-<div class="sourceCode" id="cb1429"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1429-1"><a href="visualisation-de-données.html#cb1429-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb1429-2"><a href="visualisation-de-données.html#cb1429-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1429-3"><a href="visualisation-de-données.html#cb1429-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb1429-4"><a href="visualisation-de-données.html#cb1429-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
-<span id="cb1429-5"><a href="visualisation-de-données.html#cb1429-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
-<span id="cb1429-6"><a href="visualisation-de-données.html#cb1429-6" tabindex="-1"></a>plt.legend()</span>
-<span id="cb1429-7"><a href="visualisation-de-données.html#cb1429-7" tabindex="-1"></a>plt.legend()</span></code></pre></div>
+<div class="sourceCode" id="cb1426"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1426-1"><a href="visualisation-de-données.html#cb1426-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1426-2"><a href="visualisation-de-données.html#cb1426-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1426-3"><a href="visualisation-de-données.html#cb1426-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1426-4"><a href="visualisation-de-données.html#cb1426-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)<span class="op">;</span></span>
+<span id="cb1426-5"><a href="visualisation-de-données.html#cb1426-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)<span class="op">;</span></span>
+<span id="cb1426-6"><a href="visualisation-de-données.html#cb1426-6" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code></pre></div>
 <p><img src="figs/pyplot/plot_legende.png" width="350" style="display: block; margin: auto;" /></p>
 <p>Pour préciser la position de la légende, on peut s’appuyer sur le paramètre <code>loc</code> dans la fonction <code>legend()</code>, en indiquant une valeur telle que reportée dans le Tableau <a href="#tab:pyplot-legendes-loc">11.4</a>.</p>
 <div class="line-block">Chaîne | Code | Description |<br />
@@ -953,37 +949,37 @@ Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l�
 <code>center</code> | <code>10</code> | Centré |</div>
 <p>Table: (#tab:pyplot-legendes-loc) Formats des lignes</p>
 <p>Par exemple, pour centrer la légende au milieu, en bas du graphique :</p>
-<div class="sourceCode" id="cb1430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1430-1"><a href="visualisation-de-données.html#cb1430-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb1430-2"><a href="visualisation-de-données.html#cb1430-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1430-3"><a href="visualisation-de-données.html#cb1430-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb1430-4"><a href="visualisation-de-données.html#cb1430-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
-<span id="cb1430-5"><a href="visualisation-de-données.html#cb1430-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
-<span id="cb1430-6"><a href="visualisation-de-données.html#cb1430-6" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1427"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1427-1"><a href="visualisation-de-données.html#cb1427-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1427-2"><a href="visualisation-de-données.html#cb1427-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1427-3"><a href="visualisation-de-données.html#cb1427-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1427-4"><a href="visualisation-de-données.html#cb1427-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
+<span id="cb1427-5"><a href="visualisation-de-données.html#cb1427-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
+<span id="cb1427-6"><a href="visualisation-de-données.html#cb1427-6" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span></code></pre></div>
 <p><img src="figs/pyplot/plot_legende_pos.png" width="350" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dimensions-2" class="section level3 hasAnchor" number="11.1.4">
 <h3><span class="header-section-number">11.1.4</span> Dimensions<a href="visualisation-de-données.html#dimensions-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pour définir les dimensions d’une figure, on renseigne le paramètre <code>figsize</code> de la fonction <code>figure()</code>. On lui fournit un n-uplet d’entiers dont le premier élément correspond à la longueur et le second la hauteur (les valeurs sont en pouces) :</p>
-<div class="sourceCode" id="cb1431"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1431-1"><a href="visualisation-de-données.html#cb1431-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb1431-2"><a href="visualisation-de-données.html#cb1431-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1431-3"><a href="visualisation-de-données.html#cb1431-3" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
-<span id="cb1431-4"><a href="visualisation-de-données.html#cb1431-4" tabindex="-1"></a>plt.plot(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb1428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1428-1"><a href="visualisation-de-données.html#cb1428-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1428-2"><a href="visualisation-de-données.html#cb1428-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1428-3"><a href="visualisation-de-données.html#cb1428-3" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb1428-4"><a href="visualisation-de-données.html#cb1428-4" tabindex="-1"></a>plt.plot(x, y)</span></code></pre></div>
 <p><img src="figs/pyplot/plot_size.png" width="500" style="display: block; margin: auto;" /></p>
 </div>
 <div id="enregistrement" class="section level3 hasAnchor" number="11.1.5">
 <h3><span class="header-section-number">11.1.5</span> Enregistrement<a href="visualisation-de-données.html#enregistrement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pour sauvegarder un grapgique, on peut utiliser la fonction <code>plt.savefig()</code>. On précise le chemin vers le fichier à créer, en indiquant l’extension du fichier désiré (<em>e.g.</em>, <code>png</code> ou <code>pdf</code>) :</p>
-<div class="sourceCode" id="cb1432"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1432-1"><a href="visualisation-de-données.html#cb1432-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb1432-2"><a href="visualisation-de-données.html#cb1432-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1432-3"><a href="visualisation-de-données.html#cb1432-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb1432-4"><a href="visualisation-de-données.html#cb1432-4" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
-<span id="cb1432-5"><a href="visualisation-de-données.html#cb1432-5" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
-<span id="cb1432-6"><a href="visualisation-de-données.html#cb1432-6" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
-<span id="cb1432-7"><a href="visualisation-de-données.html#cb1432-7" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span>
-<span id="cb1432-8"><a href="visualisation-de-données.html#cb1432-8" tabindex="-1"></a>plt.savefig(<span class="st">&quot;test.pdf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1429"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1429-1"><a href="visualisation-de-données.html#cb1429-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1429-2"><a href="visualisation-de-données.html#cb1429-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1429-3"><a href="visualisation-de-données.html#cb1429-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1429-4"><a href="visualisation-de-données.html#cb1429-4" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb1429-5"><a href="visualisation-de-données.html#cb1429-5" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
+<span id="cb1429-6"><a href="visualisation-de-données.html#cb1429-6" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
+<span id="cb1429-7"><a href="visualisation-de-données.html#cb1429-7" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span>
+<span id="cb1429-8"><a href="visualisation-de-données.html#cb1429-8" tabindex="-1"></a>plt.savefig(<span class="st">&quot;test.pdf&quot;</span>)</span></code></pre></div>
 <p>L’extension indiquée (dans l’exemple présent, <code>pdf</code>) détermine le format de fichier en sortie. On peut utiliser les extensions indiquées dans les clés du dictionnaire retourné par l’instruction suivante (les valeurs donnant une description du type de fichier) :</p>
-<div class="sourceCode" id="cb1433"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1433-1"><a href="visualisation-de-données.html#cb1433-1" tabindex="-1"></a><span class="bu">print</span>(fig.canvas.get_supported_filetypes())</span></code></pre></div>
+<div class="sourceCode" id="cb1430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1430-1"><a href="visualisation-de-données.html#cb1430-1" tabindex="-1"></a><span class="bu">print</span>(fig.canvas.get_supported_filetypes())</span></code></pre></div>
 <pre><code>## {&#39;eps&#39;: &#39;Encapsulated Postscript&#39;, &#39;jpg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;jpeg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;pdf&#39;: &#39;Portable Document Format&#39;, &#39;pgf&#39;: &#39;PGF code for LaTeX&#39;, &#39;png&#39;: &#39;Portable Network Graphics&#39;, &#39;ps&#39;: &#39;Postscript&#39;, &#39;raw&#39;: &#39;Raw RGBA bitmap&#39;, &#39;rgba&#39;: &#39;Raw RGBA bitmap&#39;, &#39;svg&#39;: &#39;Scalable Vector Graphics&#39;, &#39;svgz&#39;: &#39;Scalable Vector Graphics&#39;, &#39;tif&#39;: &#39;Tagged Image File Format&#39;, &#39;tiff&#39;: &#39;Tagged Image File Format&#39;, &#39;webp&#39;: &#39;WebP Image Format&#39;}</code></pre>
 </div>
 </div>

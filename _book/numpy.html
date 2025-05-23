@@ -1456,21 +1456,21 @@ div.csl-indent {
 <p>Voici un exemple de génération de nombres pseudo aléatoires selon une distribution Gaussienne :</p>
 <div class="sourceCode" id="cb932"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb932-1"><a href="numpy.html#cb932-1" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb932-2"><a href="numpy.html#cb932-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
-<pre><code>## [ 0.42502143 -1.28053397  0.27046675  0.59923522 -0.5767011   0.68866691
-##   0.51389061 -1.16998036 -0.18650771  0.61428893]</code></pre>
+<pre><code>## [ 1.89879291  0.84930201 -1.16144746  1.11127108  0.14138507 -0.82671918
+##  -0.4082144  -0.8561965  -0.84949768  0.73243838]</code></pre>
 <p>On peut générer un tableau à plusieurs dimensions. Par exemple, un tableau à deux dimensions, dans lequel la première dimension contient 10 éléments, contenant chacun 4 tirages aléatoires selon une <span class="math inline">\(\mathcal{N}(0,1)\)</span> :</p>
 <div class="sourceCode" id="cb934"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb934-1"><a href="numpy.html#cb934-1" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10</span>, <span class="dv">4</span>)</span>
 <span id="cb934-2"><a href="numpy.html#cb934-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
-<pre><code>## [[-0.67305676 -0.85475807  1.2147936  -0.96969795]
-##  [-0.92957796 -1.02392169 -0.11199527  0.12287237]
-##  [-0.03620463 -0.77037068  0.12813333 -0.0997129 ]
-##  [ 0.20763184 -1.22113316 -0.46274421 -0.75538927]
-##  [ 0.15718239 -0.45696085  1.34027303 -0.33443383]
-##  [ 1.10935213  0.39861808  0.11400695 -0.03817369]
-##  [-0.86639019 -0.84372594  1.38386748  0.5172949 ]
-##  [-0.8009549   1.3285581   1.3459184  -1.61844627]
-##  [-0.08157515  0.11832132 -0.69055415 -1.40124477]
-##  [-0.47146969 -1.19846133  1.74075313 -0.02053008]]</code></pre>
+<pre><code>## [[ 0.4631643   1.04997128  0.16251387  0.48150636]
+##  [-0.96950964  0.59771456 -1.40809027 -0.61153419]
+##  [-0.88085437 -0.99049665  0.00330028  0.80005149]
+##  [-1.41385693 -0.51403921 -0.76830426 -1.78143701]
+##  [ 0.92437578 -0.32034325  0.03228678  2.25417978]
+##  [-0.63740876  1.02237643  1.17549878  0.9290004 ]
+##  [ 0.94160329 -0.58892494  1.14383607 -0.01624704]
+##  [-0.87531088 -2.03853207  0.69090824 -0.19591449]
+##  [ 0.7349359  -1.21437144 -0.43444903 -0.52490299]
+##  [-0.50581784 -0.25302788 -1.22079385 -0.41249534]]</code></pre>
 <p>La génération des nombres s’effectue en fonction d’une graine (<em>seed</em>), c’est-à-dire un nombre initiant le générateur de nombres pseudo aléatoires. Il est possible de fixer cette graine, pour pouvoir avoir des résultats reproductibles par exemple. Pour ce faire, on peut faire appel à la méthode <code>seed()</code>, à qui on indique une valeur en paramètre :</p>
 <div class="sourceCode" id="cb936"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb936-1"><a href="numpy.html#cb936-1" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb936-2"><a href="numpy.html#cb936-2" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)</span>

@@ -2414,13 +2414,13 @@ connaître les valeurs agrégées à l’échelle des régions.</p>
 <h3><span class="header-section-number">10.14.1</span> Agrégation selon les valeurs d’une seule colonne<a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Par exemple, admettons que nous souhaitons obtenir le nombre total de chomeurs ouvriers par année. Dans un premier temps, on utilise la méthode <code>groupby()</code> sur notre dataframe en indiquant que les groupes doivent être créés selon les valeurs de la colonne <code>annee</code></p>
 <div class="sourceCode" id="cb1358"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1358-1"><a href="pandas.html#cb1358-1" tabindex="-1"></a><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>))</span></code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1414a2cd0&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x16fbc7ca0&gt;</code></pre>
 <p>Ensuite, on récupère la variable <code>ouvriers</code> :</p>
 <div class="sourceCode" id="cb1360"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1360-1"><a href="pandas.html#cb1360-1" tabindex="-1"></a><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>).annee)</span></code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x1414b6b80&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x16fbe28b0&gt;</code></pre>
 <div class="sourceCode" id="cb1362"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1362-1"><a href="pandas.html#cb1362-1" tabindex="-1"></a><span class="co"># Ou bien</span></span>
 <span id="cb1362-2"><a href="pandas.html#cb1362-2" tabindex="-1"></a><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;annee&quot;</span>])</span></code></pre></div>
-<pre><code>## &lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x1414ed820&gt;</code></pre>
+<pre><code>## &lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x16fbe7400&gt;</code></pre>
 <p>Et enfin, on peut effectuer le calcul sur chaque sous-groupe et afficher le résultat :</p>
 <div class="sourceCode" id="cb1364"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1364-1"><a href="pandas.html#cb1364-1" tabindex="-1"></a><span class="bu">print</span>(chomage.groupby(<span class="st">&quot;annee&quot;</span>)[<span class="st">&quot;ouvriers&quot;</span>].<span class="bu">sum</span>())</span></code></pre></div>
 <pre><code>## annee

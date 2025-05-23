@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Types de données | Python pour les économistes</title>
+  <meta name="description" content="2 Types de données | Python pour les économistes" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Types de données | Python pour les économistes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Types de données | Python pour les économistes" />
+  
+  
+  
+
+<meta name="author" content="Ewen Gallic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="structures.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="propos-liminaires.html"><a href="propos-liminaires.html#objectifs"><i class="fa fa-check"></i><b>0.1</b> Objectifs</a></li>
+<li class="chapter" data-level="0.2" data-path="python_for_economists.html"><a href="#%C3%A0-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#les-commentaires"><i class="fa fa-check"></i><b>1.5</b> Les commentaires</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="python_for_economists.html"><a href="#types-de-donn%C3%A9es"><i class="fa fa-check"></i><b>2</b> Types de données</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="python_for_economists.html"><a href="#cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-données.html"><a href="types-de-données.html"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-données.html"><a href="types-de-données.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-données.html"><a href="types-de-données.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-données.html"><a href="types-de-données.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="python_for_economists.html"><a href="#valeurs-num%C3%A9riques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-données.html"><a href="types-de-données.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="python_for_economists.html"><a href="#nombre-%C3%A0-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="python_for_economists.html"><a href="#nombres-compl%C3%A8xes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-données.html"><a href="types-de-données.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="python_for_economists.html"><a href="#bool%C3%A9ens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-données.html"><a href="types-de-données.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-données.html"><a href="types-de-données.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-données.html"><a href="types-de-données.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-données.html"><a href="types-de-données.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-données.html"><a href="types-de-données.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#structure-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
+<li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
+<li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
+<li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
+<li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="python_for_economists.html"><a href="#cl%C3%A9s-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
+<li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
+<li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
+<li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs"><i class="fa fa-check"></i><b>4</b> Opérateurs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opérateurs.html"><a href="opérateurs.html"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="opérateurs.html"><a href="opérateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
+<li class="chapter" data-level="4.1.2" data-path="opérateurs.html"><a href="opérateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
+<li class="chapter" data-level="4.1.3" data-path="opérateurs.html"><a href="opérateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
+<li class="chapter" data-level="4.1.4" data-path="opérateurs.html"><a href="opérateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
+<li class="chapter" data-level="4.1.5" data-path="opérateurs.html"><a href="opérateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="opérateurs.html"><a href="opérateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="opérateurs.html"><a href="opérateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
+<li class="chapter" data-level="4.1.8" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="python_for_economists.html"><a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
+<li class="chapter" data-level="4.2.2" data-path="python_for_economists.html"><a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opérateurs.html"><a href="opérateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opérateurs.html"><a href="opérateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opérateurs.html"><a href="opérateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opérateurs.html"><a href="opérateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="opérateurs.html"><a href="opérateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="opérateurs.html"><a href="opérateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="opérateurs.html"><a href="opérateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="python_for_economists.html"><a href="#chargement-et-sauvegarde-de-donn%C3%A9es"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="python_for_economists.html"><a href="#exporter-des-donn%C3%A9es"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="python_for_economists.html"><a href="#d%C3%A9finition"><i class="fa fa-check"></i><b>8.1</b> Définition</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
+<li class="chapter" data-level="8.1.2" data-path="python_for_economists.html"><a href="#param%C3%A8tres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="python_for_economists.html"><a href="#port%C3%A9e"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
+<li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="python_for_economists.html"><a href="#cr%C3%A9ation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
+<li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
+<li class="chapter" data-level="9.1.3" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
+<li class="chapter" data-level="9.1.4" data-path="numpy.html"><a href="numpy.html#modification-3"><i class="fa fa-check"></i><b>9.1.4</b> Modification</a></li>
+<li class="chapter" data-level="9.1.5" data-path="numpy.html"><a href="numpy.html#copie-de-tableau"><i class="fa fa-check"></i><b>9.1.5</b> Copie de tableau</a></li>
+<li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
+<li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
+<li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
+<li class="chapter" data-level="9.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-et-fonctions-math%C3%A9matiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="python_for_economists.html"><a href="#g%C3%A9n%C3%A9ration-de-nombres-pseudo-al%C3%A9atoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
+<li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="python_for_economists.html"><a href="#s%C3%A9ries"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="python_for_economists.html"><a href="#pour-les-s%C3%A9ries"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#renommage-des-colonnes-dans-un-dataframe"><i class="fa fa-check"></i><b>10.3</b> Renommage des colonnes dans un dataframe</a></li>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#test-dappartenance-2"><i class="fa fa-check"></i><b>10.4.1</b> Test d’appartenance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="python_for_economists.html"><a href="#rep%C3%A9rer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.2</b> Retirer les observations avec valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.5.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.7.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.7.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.8.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe-1"><i class="fa fa-check"></i><b>10.8.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="python_for_economists.html"><a href="#retrait-des-valeurs-dupliqu%C3%A9es"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.10" data-path="python_for_economists.html"><a href="#op%C3%A9rations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
+<li class="chapter" data-level="10.12" data-path="python_for_economists.html"><a href="#concat%C3%A9nation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
+<li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#pandas-jointures"><i class="fa fa-check"></i><b>10.13</b> Jointures</a></li>
+<li class="chapter" data-level="10.14" data-path="python_for_economists.html"><a href="#agr%C3%A9gation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a>
+<ul>
+<li class="chapter" data-level="10.14.1" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
+<li class="chapter" data-level="10.14.2" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.15</b> Stacking et unstacking</a></li>
+<li class="chapter" data-level="10.16" data-path="python_for_economists.html"><a href="#exportation-et-importation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="python_for_economists.html"><a href="#exportation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
+</ul></li>
+<li class="chapter" data-level="10.17" data-path="python_for_economists.html"><a href="#importation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a>
+<ul>
+<li class="chapter" data-level="10.17.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-csv"><i class="fa fa-check"></i><b>10.17.1</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="10.17.2" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.17.2</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="10.17.3" data-path="pandas.html"><a href="pandas.html#pandas-importation-hdf"><i class="fa fa-check"></i><b>10.17.3</b> Fichiers HDF5</a></li>
+</ul></li>
+<li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="python_for_economists.html"><a href="#visualisation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="python_for_economists.html"><a href="#g%C3%A9om%C3%A9tries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python pour les économistes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="types-de-données" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Types de données<a href="#types-de-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Il existe quelques types de données intégrés dans Python. Nous allons dans cette partie évoquer les chaînes de caractères, les valeurs numériques, les bouléens (<code>TRUE</code>/<code>FALSE</code>), la valeur <code>null</code> et les dates et temps.</p>
+<div id="chaînes-de-caractères" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Chaînes de caractères<a href="#cha%C3%AEnes-de-caract%C3%A8res" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Une chaîne de caractères, ou <em>string</em> en anglais, est une collection de caractères comme des lettres, des nombres, des espaces, des signes de ponctuation, etc.</p>
+<p>Les chaînes de caractères sont repérées à l’aide de guillemets simples, doubles, ou triples.</p>
+<p>Voici un exemple :</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="types-de-données.html#cb38-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello World&quot;</span></span></code></pre></div>
+<p>Pour afficher dans la console le contenu de notre variable <code>x</code> contenant la chaîne de caractères, on fait appel à la fonction <code>print()</code> :</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="types-de-données.html#cb39-1" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## Hello World</code></pre>
+<p>Comme indiqué juste avant, des guillemets simples peuvent être utilisés pour créer une chaîne de caractères :</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="types-de-données.html#cb41-1" tabindex="-1"></a>y <span class="op">=</span> <span class="st">&#39;How are you?&#39;</span></span>
+<span id="cb41-2"><a href="types-de-données.html#cb41-2" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
+<pre><code>## How are you?</code></pre>
+<p>Pour faire figurer des apostrophes dans une chaîne de caractères créée à l’aide de guillemets simples, il est nécessaire d’utiliser un caracrère d’échappement : une barre oblique inversée (<code>\</code>) :</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="types-de-données.html#cb43-1" tabindex="-1"></a>z <span class="op">=</span> <span class="st">&#39;I</span><span class="ch">\&#39;</span><span class="st">m fine&#39;</span></span>
+<span id="cb43-2"><a href="types-de-données.html#cb43-2" tabindex="-1"></a><span class="bu">print</span>(z)</span></code></pre></div>
+<pre><code>## I&#39;m fine</code></pre>
+<p>On peut noter que si la chaîne de caractères est créée à l’aide de guillemets doubles, il n’est pas nécessaire d’avoir recours au caractère d’échappement :</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="types-de-données.html#cb45-1" tabindex="-1"></a>z <span class="op">=</span> <span class="st">&quot;I&#39;m </span><span class="ch">\&quot;</span><span class="st">fine</span><span class="ch">\&quot;</span><span class="st">&quot;</span></span>
+<span id="cb45-2"><a href="types-de-données.html#cb45-2" tabindex="-1"></a><span class="bu">print</span>(z)</span></code></pre></div>
+<pre><code>## I&#39;m &quot;fine&quot;</code></pre>
+<p>Pour indiquer un retour à la ligne, on utilise la chaîne <code>\n</code> :</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="types-de-données.html#cb47-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello, </span><span class="ch">\n</span><span class="st">World&quot;</span></span>
+<span id="cb47-2"><a href="types-de-données.html#cb47-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## Hello, 
+## World</code></pre>
+<p>Dans le cas de chaînes de caractères sur <strong>plusieurs lignes</strong>, le fait d’utiliser des guillemets simples ou doubles renverra une erreur (<em>EOL while scanning trial literal</em>, <em>i.e.</em>, détection d’une erreur de syntaxe, Python s’attendait à quelque chose d’autre à la fin de la ligne). Pour écrire une chaîne de caractères sur plusieurs lignes, Python propose d’utiliser trois fois des guillemets (simples ou doubles) en début et fin de chaîne :</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="types-de-données.html#cb49-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;&quot;&quot;Hello,</span></span>
+<span id="cb49-2"><a href="types-de-données.html#cb49-2" tabindex="-1"></a><span class="st">World&quot;&quot;&quot;</span></span>
+<span id="cb49-3"><a href="types-de-données.html#cb49-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## Hello,
+## World</code></pre>
+
+<div class="remarque">
+<p>Le caractère <code>\</code> (barre oblique inversée, ou <em>backslash</em>) est le caractère d’échappement. Il permet d’afficher certains caractères, comme les guillemets dans une chaîne elle-même définie à l’aide de guillemets, ou bien les caractères de contrôle, comme la tabulation, le saut de ligne, etc. Voici quelques exemples courants :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Code</th>
+<th align="center">Description</th>
+<th align="center">Code</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>\n</code></td>
+<td align="center">Nouvelle ligne</td>
+<td align="center"><code>\r</code></td>
+<td align="center">Retour à la ligne</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\t</code></td>
+<td align="center">Tabulation</td>
+<td align="center"><code>\b</code></td>
+<td align="center">Retour arrière</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>\\</code></td>
+<td align="center">Barre oblique inversée</td>
+<td align="center"><code>\'</code></td>
+<td align="center">Apostrophe</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\"</code></td>
+<td align="center">Apostrophe double</td>
+<td align="center"><code>\`</code></td>
+<td align="center">Accent grave</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pour récupérer la <strong>longueur d’une chaîne de caractères</strong>, Python propose la fonction <code>len()</code> :</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="types-de-données.html#cb51-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello World !&quot;</span></span>
+<span id="cb51-2"><a href="types-de-données.html#cb51-2" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(x))</span></code></pre></div>
+<pre><code>## 13</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="types-de-données.html#cb53-1" tabindex="-1"></a><span class="bu">print</span>(x, <span class="bu">len</span>(x))</span></code></pre></div>
+<pre><code>## Hello World ! 13</code></pre>
+<div id="type-chaines-concatenation" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Concaténation de chaînes<a href="types-de-données.html#type-chaines-concatenation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour concaténer des chaînes de caractères, c’est-à-dire les mettre bout à bout, Python propose d’utiliser l’opérateur <code>+</code> :</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="types-de-données.html#cb55-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span> <span class="op">+</span> <span class="st">&quot; World&quot;</span>)</span></code></pre></div>
+<pre><code>## Hello World</code></pre>
+<p>L’opérateur <code>*</code> permet quant à lui de répéter plusieurs fois une chaîne :</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="types-de-données.html#cb57-1" tabindex="-1"></a><span class="bu">print</span>( <span class="dv">3</span> <span class="op">*</span> <span class="st">&quot;Go Habs Go! &quot;</span> <span class="op">+</span> <span class="st">&quot;Woo Hoo!&quot;</span>)</span></code></pre></div>
+<pre><code>## Go Habs Go! Go Habs Go! Go Habs Go! Woo Hoo!</code></pre>
+<p>Lorsque deux littéraux de chaînes sont côte à côte, Python les concatène :</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="types-de-données.html#cb59-1" tabindex="-1"></a>x <span class="op">=</span> (<span class="st">&#39;You shall &#39;</span> <span class="st">&#39;not &#39;</span> <span class="st">&quot;pass!&quot;</span>)</span>
+<span id="cb59-2"><a href="types-de-données.html#cb59-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## You shall not pass!</code></pre>
+<p>Il est également possible d’<strong>ajouter à une chaîne de caractères le contenu d’une variable</strong>, à l’aide de crochets (<code>{}</code>) et de la méthode <code>format()</code></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="types-de-données.html#cb61-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;J&#39;aime coder en </span><span class="sc">{}</span><span class="st">&quot;</span></span>
+<span id="cb61-2"><a href="types-de-données.html#cb61-2" tabindex="-1"></a>langage_1 <span class="op">=</span> <span class="st">&quot;R&quot;</span></span>
+<span id="cb61-3"><a href="types-de-données.html#cb61-3" tabindex="-1"></a>langage_2 <span class="op">=</span> <span class="st">&quot;Python&quot;</span></span>
+<span id="cb61-4"><a href="types-de-données.html#cb61-4" tabindex="-1"></a>preference_1 <span class="op">=</span> x.<span class="bu">format</span>(langage_1)</span>
+<span id="cb61-5"><a href="types-de-données.html#cb61-5" tabindex="-1"></a><span class="bu">print</span>(preference_1)</span></code></pre></div>
+<pre><code>## J&#39;aime coder en R</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="types-de-données.html#cb63-1" tabindex="-1"></a>preference_2 <span class="op">=</span> x.<span class="bu">format</span>(langage_2)</span>
+<span id="cb63-2"><a href="types-de-données.html#cb63-2" tabindex="-1"></a><span class="bu">print</span>(preference_2)</span></code></pre></div>
+<pre><code>## J&#39;aime coder en Python</code></pre>
+<p>Il est tout à fait possible d’ajouter <strong>plus d’un contenu de variable</strong> dans une chaîne de caractères, toujours avec les crochets et la méthode <code>format()</code> :</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="types-de-données.html#cb65-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;J&#39;aime coder en </span><span class="sc">{}</span><span class="st"> et en </span><span class="sc">{}</span><span class="st">&quot;</span></span>
+<span id="cb65-2"><a href="types-de-données.html#cb65-2" tabindex="-1"></a>preference_3 <span class="op">=</span> x.<span class="bu">format</span>(langage_1, langage_2)</span>
+<span id="cb65-3"><a href="types-de-données.html#cb65-3" tabindex="-1"></a><span class="bu">print</span>(preference_3)</span></code></pre></div>
+<pre><code>## J&#39;aime coder en R et en Python</code></pre>
+</div>
+<div id="indexation-et-extraction" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Indexation et extraction<a href="types-de-données.html#indexation-et-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les chaînes de caractères peuvent être indexées. Attention, <strong>l’indice du premier caractère commence à 0</strong>.</p>
+<p>Pour obtenir le ie caractère d’une chaîne, on utilise des crochets. La syntaxe est la suivante :</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="types-de-données.html#cb67-1" tabindex="-1"></a>x[i<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
+<p>Par exemple, pour afficher le premier caractère, puis le cinquième de la chaîne <code>Hello</code> :</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="types-de-données.html#cb68-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb68-2"><a href="types-de-données.html#cb68-2" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>## H</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="types-de-données.html#cb70-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## o</code></pre>
+<p>L’extraction peut s’effectuer en partant par la fin de la chaîne, en faisant précéder la veleur de l’indice par le signe moins (<code>-</code>).</p>
+<p>Par exemple, pour afficher l’avant-dernier caractère de notre chaîne <code>x</code> :</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="types-de-données.html#cb72-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## l</code></pre>
+<p>L’extraction d’une sous-chaîne en précisant sa position de début et de fin (implicitement ou non) s’effectue avec les crochets également. Il suffit de préciser les deux valeurs d’indices : <code>[debut:fin]</code>.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="types-de-données.html#cb74-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;You shall not pass!&quot;</span></span>
+<span id="cb74-2"><a href="types-de-données.html#cb74-2" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="types-de-données.html#cb74-3" tabindex="-1"></a><span class="co"># Du quatrième caractère (non inclus) au neuvième (inclus)</span></span>
+<span id="cb74-4"><a href="types-de-données.html#cb74-4" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">4</span>:<span class="dv">9</span>])</span></code></pre></div>
+<pre><code>## shall</code></pre>
+<p>Lorsque l’on ne précise pas la première valeur, le début de la chaîne est pris par défaut ; lorsque le second n’est pas précisé, la fin de la chaîne est prise par défaut.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="types-de-données.html#cb76-1" tabindex="-1"></a><span class="co"># Du 4e caractère (non inclus) à la fin de la chaîne</span></span>
+<span id="cb76-2"><a href="types-de-données.html#cb76-2" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">4</span>:])</span>
+<span id="cb76-3"><a href="types-de-données.html#cb76-3" tabindex="-1"></a><span class="co"># Du début de la chaîne à l&#39;avant dernier caractère (inclus)</span></span>
+<span id="cb76-4"><a href="types-de-données.html#cb76-4" tabindex="-1"></a><span class="bu">print</span>(x[:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb76-5"><a href="types-de-données.html#cb76-5" tabindex="-1"></a><span class="co"># Du 3e caractère avant la fin (inclus) jusqu&#39;à la fin</span></span>
+<span id="cb76-6"><a href="types-de-données.html#cb76-6" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">5</span>:])</span></code></pre></div>
+<pre><code>## shall not pass!</code></pre>
+<pre><code>## You shall not pass</code></pre>
+<pre><code>## pass!</code></pre>
+<p>Il est possible de rajouter un troisième indice dans les crochets : <strong>le pas</strong>.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="types-de-données.html#cb80-1" tabindex="-1"></a><span class="co"># Du 4e caractère (non inclus), jusqu&#39;à la fin de la chaîne,</span></span>
+<span id="cb80-2"><a href="types-de-données.html#cb80-2" tabindex="-1"></a><span class="co"># par pas de 3.</span></span>
+<span id="cb80-3"><a href="types-de-données.html#cb80-3" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">4</span>::<span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## sln s</code></pre>
+<p>Pour obtenir la chaîne en dans le sens opposé :</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb82-1"><a href="types-de-données.html#cb82-1" tabindex="-1"></a><span class="bu">print</span>(x[::<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## !ssap ton llahs uoY</code></pre>
+</div>
+<div id="méthodes-disponibles-avec-les-chaînes-de-caractères" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Méthodes disponibles avec les chaînes de caractères<a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>De nombreuses méthodes sont disponibles pour les chaînes de caractères. En ajoutant un point (<code>.</code>) après le nom d’un objet désignant une chaîne de caractères puis en appuyant sur la touche de tabulation, les méthodes disponibles s’affichent dans un menu déroulant.</p>
+<p>Par exemple, la méthode <code>count()</code> permet de compter le nombre d’occurrences d’un motif dans la chaîne. Pour compter le nombre d’occurrence de <code>in</code> dans la chaîne suivante :</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb84-1"><a href="types-de-données.html#cb84-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;le train de tes injures roule sur le rail de mon indifférence&quot;</span></span>
+<span id="cb84-2"><a href="types-de-données.html#cb84-2" tabindex="-1"></a><span class="bu">print</span>(x.count(<span class="st">&quot;in&quot;</span>))</span></code></pre></div>
+<pre><code>## 3</code></pre>
+
+<div class="remarque">
+Une fois l’appel à méthode écrit, en plaçant le curseur à la fin de la ligne et en appuyant sur les touches <code>Shift</code> et <code>Tabulation</code>, on peut afficher des explications.
+</div>
+<div id="conversion-en-majuscules-ou-en-minuscules" class="section level4 hasAnchor" number="2.1.3.1">
+<h4><span class="header-section-number">2.1.3.1</span> Conversion en majuscules ou en minuscules<a href="types-de-données.html#conversion-en-majuscules-ou-en-minuscules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les méthodes <code>lower()</code> et <code>upper()</code> permettent de passer une chaîne de caractères en caractères minuscules et majuscules, respectivement.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb86-1"><a href="types-de-données.html#cb86-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;le train de tes injures roule sur le rail de mon indifférence&quot;</span></span>
+<span id="cb86-2"><a href="types-de-données.html#cb86-2" tabindex="-1"></a><span class="bu">print</span>(x.lower())</span>
+<span id="cb86-3"><a href="types-de-données.html#cb86-3" tabindex="-1"></a><span class="bu">print</span>(x.upper())</span></code></pre></div>
+<pre><code>## le train de tes injures roule sur le rail de mon indifférence</code></pre>
+<pre><code>## LE TRAIN DE TES INJURES ROULE SUR LE RAIL DE MON INDIFFÉRENCE</code></pre>
+</div>
+<div id="recherche-de-chaînes-de-caractères" class="section level4 hasAnchor" number="2.1.3.2">
+<h4><span class="header-section-number">2.1.3.2</span> Recherche de chaînes de caractères<a href="#recherche-de-cha%C3%AEnes-de-caract%C3%A8res" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Quand on souhaite <strong>retrouver un motif</strong> dans une chaîne de caractères, on peut utiliser la méthode <code>find()</code>. On fournit en paramètres un motif à rechercher. La méthode <code>find()</code> retourne le plus petit indice dans la chaîne où le motif est trouvé. Si le motif n’est pas retrouvé, la valeur retournée est <code>-1</code>.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="types-de-données.html#cb89-1" tabindex="-1"></a><span class="bu">print</span>(x.find(<span class="st">&quot;in&quot;</span>))</span>
+<span id="cb89-2"><a href="types-de-données.html#cb89-2" tabindex="-1"></a><span class="bu">print</span>(x.find(<span class="st">&quot;bonjour&quot;</span>))</span></code></pre></div>
+<pre><code>## 6</code></pre>
+<pre><code>## -1</code></pre>
+<p>Il est possible d’ajouter en option une indication permettant de <strong>limiter la recherche sur une sous-chaîne</strong>, en précisant l’indice de début et de fin :</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="types-de-données.html#cb92-1" tabindex="-1"></a><span class="bu">print</span>(x.find(<span class="st">&quot;in&quot;</span>, <span class="dv">7</span>, <span class="dv">20</span>))</span></code></pre></div>
+<pre><code>## 16</code></pre>
+<p>Note : on peut omettre l’indice de fin ; en ce cas, la fin de la chaîne est utilisée :</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="types-de-données.html#cb94-1" tabindex="-1"></a><span class="bu">print</span>(x.find(<span class="st">&quot;in&quot;</span>, <span class="dv">20</span>))</span></code></pre></div>
+<pre><code>## 49</code></pre>
+
+<div class="remarque">
+Si on ne désire pas connaître la position de la sous-chaîne, mais uniquement sa présence ou son absence, on peut utiliser l’opérateur <code>in</code> : <code>print("train" in x)</code>
+</div>
+<p>Pour effectuer une recherche <strong>sans prêter attention à la casse</strong>, on peut utiliser la méthode <code>capitalize()</code> :</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="types-de-données.html#cb96-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Mademoiselle Deray, il est interdit de manger de la choucroute ici.&quot;</span></span>
+<span id="cb96-2"><a href="types-de-données.html#cb96-2" tabindex="-1"></a><span class="bu">print</span>(x.find(<span class="st">&quot;deray&quot;</span>))</span></code></pre></div>
+<pre><code>## -1</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="types-de-données.html#cb98-1" tabindex="-1"></a><span class="bu">print</span>(x.capitalize().find(<span class="st">&quot;deray&quot;</span>))</span></code></pre></div>
+<pre><code>## 13</code></pre>
+</div>
+<div id="découpage-en-sous-chaînes" class="section level4 hasAnchor" number="2.1.3.3">
+<h4><span class="header-section-number">2.1.3.3</span> Découpage en sous-chaînes<a href="#d%C3%A9coupage-en-sous-cha%C3%AEnes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour <strong>découper une chaîne de caractères en sous-chaînes</strong>, en fonction d’un motif servant à la délimitation des sous-chaînes (par exemple une virgule, ou une espace), on utilise la méthode <code>split()</code> :</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="types-de-données.html#cb100-1" tabindex="-1"></a><span class="bu">print</span>(x.split(<span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<pre><code>## [&#39;Mademoiselle&#39;, &#39;Deray,&#39;, &#39;il&#39;, &#39;est&#39;, &#39;interdit&#39;, &#39;de&#39;, &#39;manger&#39;, &#39;de&#39;, &#39;la&#39;, &#39;choucroute&#39;, &#39;ici.&#39;]</code></pre>
+<p>En indiquant en paramètres une valeur numérique, on peut limiter le nombre de sous-chaînes retournées :</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="types-de-données.html#cb102-1" tabindex="-1"></a><span class="co"># Le nombre de sous-chaînes maximum sera de 3</span></span>
+<span id="cb102-2"><a href="types-de-données.html#cb102-2" tabindex="-1"></a><span class="bu">print</span>(x.split(<span class="st">&quot; &quot;</span>, <span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [&#39;Mademoiselle&#39;, &#39;Deray,&#39;, &#39;il&#39;, &#39;est interdit de manger de la choucroute ici.&#39;]</code></pre>
+<p>La méthode <code>splitlines()</code> permet également de séparer une chaîne de caractères en fonction d’un motif, ce motif étant un caractère de fin de ligne, comme un saut de ligne ou un retour chariot par exemple.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="types-de-données.html#cb104-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&#39;&#39;&#39;&quot;Luke, je suis ton pere !</span></span>
+<span id="cb104-2"><a href="types-de-données.html#cb104-2" tabindex="-1"></a><span class="st">- Non... ce n&#39;est pas vrai ! C&#39;est impossible !</span></span>
+<span id="cb104-3"><a href="types-de-données.html#cb104-3" tabindex="-1"></a><span class="st">- Lis dans ton coeur, tu sauras que c&#39;est vrai.</span></span>
+<span id="cb104-4"><a href="types-de-données.html#cb104-4" tabindex="-1"></a><span class="st">- Noooooooon ! Noooon !&quot;&#39;&#39;&#39;</span></span>
+<span id="cb104-5"><a href="types-de-données.html#cb104-5" tabindex="-1"></a><span class="bu">print</span>(x.splitlines())</span></code></pre></div>
+<pre><code>## [&#39;&quot;Luke, je suis ton pere !&#39;, &quot;- Non... ce n&#39;est pas vrai ! C&#39;est impossible !&quot;, &quot;- Lis dans ton coeur, tu sauras que c&#39;est vrai.&quot;, &#39;- Noooooooon ! Noooon !&quot;&#39;]</code></pre>
+</div>
+<div id="nettoyage-complétion" class="section level4 hasAnchor" number="2.1.3.4">
+<h4><span class="header-section-number">2.1.3.4</span> Nettoyage, complétion<a href="#nettoyage-compl%C3%A9tion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour retirer des caractères blancs (<em>e.g.</em>, des espaces, sauts de ligne, quadratins, etc.) présents en début et fin de chaîne, on peut utiliser la méthode <code>strip()</code>, ce qui est parfois très utile pour nettoyer des chaînes.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="types-de-données.html#cb106-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">    Pardon, du sucre ?     </span><span class="ch">\n</span><span class="st">  </span><span class="ch">\n</span><span class="st">&quot;</span></span>
+<span id="cb106-2"><a href="types-de-données.html#cb106-2" tabindex="-1"></a><span class="bu">print</span>(x.strip())</span></code></pre></div>
+<pre><code>## Pardon, du sucre ?</code></pre>
+<p>On peut préciser en paramètre quels caractères retirer en début et fin de chaîne :</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="types-de-données.html#cb108-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;www.egallic.fr&quot;</span></span>
+<span id="cb108-2"><a href="types-de-données.html#cb108-2" tabindex="-1"></a><span class="bu">print</span>(x.strip(<span class="st">&quot;wrf.&quot;</span>))</span></code></pre></div>
+<pre><code>## egallic</code></pre>
+<p>Parfois, il est nécessaire de s’assurer d’obtenir une <strong>chaîne d’une longueur donnée</strong> (lorsque l’on doit fournir un fichier avec des largeurs fixes pour chaque colonne par exemple). La méthode <code>rjust()</code> est alors d’un grand secours. En lui renseignant une longueur de chaîne et un caractère de remplissage, elle retourne la chaîne de caractères avec une complétion éventuelle (si la longueur de la chaîne retournée n’est pas assez longue au regard de la valeur demandée), en répétant le caractère de remplissage autant de fois que nécessaire.</p>
+<p>Par exemple, pour avoir une coordonnée de longitude, stockée dans une chaîne de caractères de longueur 7, en rajoutant des espaces si nécessaire :</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="types-de-données.html#cb110-1" tabindex="-1"></a>longitude <span class="op">=</span> <span class="st">&quot;48.11&quot;</span></span>
+<span id="cb110-2"><a href="types-de-données.html#cb110-2" tabindex="-1"></a><span class="bu">print</span>(x.rjust(<span class="dv">7</span>,<span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<pre><code>## www.egallic.fr</code></pre>
+</div>
+<div id="remplacements" class="section level4 hasAnchor" number="2.1.3.5">
+<h4><span class="header-section-number">2.1.3.5</span> Remplacements<a href="types-de-données.html#remplacements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La méthode <code>replace()</code> permet d’effectuer des <strong>remplacements de motifs</strong> dans une chaîne de caractères.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="types-de-données.html#cb112-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Criquette ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !&quot;</span></span>
+<span id="cb112-2"><a href="types-de-données.html#cb112-2" tabindex="-1"></a><span class="bu">print</span>(x.replace(<span class="st">&quot;Criquette&quot;</span>, <span class="st">&quot;Ridge&quot;</span>))</span></code></pre></div>
+<pre><code>## Ridge ! Vous, ici ? Dans votre propre salle de bain ? Quelle surprise !</code></pre>
+<p>Cette méthode est très pratique pour <strong>retirer des espaces</strong> par exemple :</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="types-de-données.html#cb114-1" tabindex="-1"></a><span class="bu">print</span>(x.replace(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<pre><code>## Criquette!Vous,ici?Dansvotrepropresalledebain?Quellesurprise!</code></pre>
+<p>Voici un tableau répertoriant quelques méthodes disponibles (<a href="https://docs.python.org/3/library/stdtypes.html#string-methods">liste exhaustive dans la documentation</a>) :</p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Méthode</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>capitalize()</code></td>
+<td align="right">Mise en majuscule du premier caractère et en minuscile du reste</td>
+</tr>
+<tr class="even">
+<td align="right"><code>casefold()</code></td>
+<td align="right">retire les distinctions de casse (utile pour la comparaison de chaînes sans faire attention à la casse)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>count()</code></td>
+<td align="right">Compte le nombre d’occurrence (sans chevauchement) d’un motif</td>
+</tr>
+<tr class="even">
+<td align="right"><code>encode()</code></td>
+<td align="right">Encode une chaîne de caractères dans un encodage spécifique</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>find()</code></td>
+<td align="right">Retourne le plus petit indice où une sous-chaîne est trouvée</td>
+</tr>
+<tr class="even">
+<td align="right"><code>lower()</code></td>
+<td align="right">Retourne la chaîne en ayant passé chaque caractère alphabétique en minuscules</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>replace()</code></td>
+<td align="right">Remplace un motif par un autre</td>
+</tr>
+<tr class="even">
+<td align="right"><code>split()</code></td>
+<td align="right">Sépare la chaîne en sous-chaînes en fonction d’un motif</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>title()</code></td>
+<td align="right">Retourne la chaîne en ayant passé chaque première lettre de mot par une majuscule</td>
+</tr>
+<tr class="even">
+<td align="right"><code>upper()</code></td>
+<td align="right">Retourne la chaîne en ayant passé chaque caractère alphabétique en majuscules</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="conversion-chaines-caracteres" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Conversion en chaînes de caractères<a href="types-de-données.html#conversion-chaines-caracteres" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lorsque l’on veut concaténer une chaîne de caractères avec un nombre, Python retourne une erreur.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="types-de-données.html#cb116-1" tabindex="-1"></a>nb_followers <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb116-2"><a href="types-de-données.html#cb116-2" tabindex="-1"></a>message <span class="op">=</span> <span class="st">&quot;He has &quot;</span> <span class="op">+</span> nb_followers <span class="op">+</span> <span class="st">&quot;followers.&quot;</span></span></code></pre></div>
+<pre><code>## TypeError: can only concatenate str (not &quot;int&quot;) to str</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="types-de-données.html#cb118-1" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre></div>
+<pre><code>## NameError: name &#39;message&#39; is not defined</code></pre>
+<p>Il est alors nécessaire de convertir au préalable l’objet n’étant pas une chaîne en une chaîne de caractères. Pour ce faire, Python propose la fonction <code>str()</code> :</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="types-de-données.html#cb120-1" tabindex="-1"></a>message <span class="op">=</span> <span class="st">&quot;He has &quot;</span> <span class="op">+</span> <span class="bu">str</span>(nb_followers) <span class="op">+</span> <span class="st">&quot; followers.&quot;</span></span>
+<span id="cb120-2"><a href="types-de-données.html#cb120-2" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre></div>
+<pre><code>## He has 0 followers.</code></pre>
+</div>
+<div id="exercice" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Exercice<a href="types-de-données.html#exercice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<div class="exframe">
+<ol style="list-style-type: decimal">
+<li>Créer deux variables nommées <code>a</code> et <code>b</code> afin qu’elles contiennent respectivement les chaînes de caractères suivantes : <code>23 à 0</code> et <code>C'est la piquette, Jack!</code>.</li>
+<li>Afficher le nombre de caractères de <code>a</code>, puis de <code>b</code>.</li>
+<li>Concaténer <code>a</code> et <code>b</code> dans une seule chaîne de caractères, en ajoutant une virgule comme caractère de séparation.</li>
+<li>Même question en choisissant une séparation permettant un retour à la ligne entre les deux phrases.</li>
+<li>À l’aide de la méthode appropriée, mettre en majuscules <code>a</code> et <code>b</code>.</li>
+<li>À l’aide de la méthode appropriée, mettre en minuscules <code>a</code> et <code>b</code>.</li>
+<li>Extraire le mot <code>la</code> et <code>Jack</code> de la chaîne <code>b</code>, en utilisant les indices.</li>
+<li>Rechercher si la sous-chaîne <code>piqu</code> est présente dans <code>b</code>, puis faire de même avec la sous-chaîne <code>mauvais</code>.</li>
+<li>Retourner la position (indice) du premier caractère <code>a</code> retrouvé dans la chaîne <code>b</code>, puis essayer avec le caractère <code>w</code>.</li>
+<li>Remplacer les occurrences du motif <code>a</code> par le motif <code>Z</code> dans la sous-chaîne <code>b</code>.</li>
+<li>Séparer la chaîne <code>b</code> en utilisant la virgule comme séparateur de sous-chaînes.</li>
+<li>(Bonus) Retirer tous les caractères de ponctuation de la chaîne b, puis utiliser une méthode appropriée pour retirer les caractères blancs en début et fin de chaîne. (Utiliser la librairie <code>regex</code>).</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="valeurs-numériques" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Valeurs numériques<a href="#valeurs-num%C3%A9riques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il existe quatre catégories de nombres en Python : les entiers, les nombres à virgule flottante et les complèxes.</p>
+<div id="entiers" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Entiers<a href="types-de-données.html#entiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les entiers (<code>ints</code>), en Python, sont des nombres entiers signés.</p>
+
+<div class="remarque">
+On accède au type d’un objet à l’aide de la fonction <code>type()</code> en Python.
+</div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="types-de-données.html#cb122-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb122-2"><a href="types-de-données.html#cb122-2" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb122-3"><a href="types-de-données.html#cb122-3" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="types-de-données.html#cb124-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span></code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+</div>
+<div id="nombre-à-virgule-flottante" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Nombre à virgule flottante<a href="#nombre-%C3%A0-virgule-flottante" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les nombres à virgule flottante (<code>floats</code>) représentent les nombres réels. Ils sont écrits à l’aide d’un point permettant de distinguer la partie entière de la partie décimale du nombre.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="types-de-données.html#cb126-1" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb126-2"><a href="types-de-données.html#cb126-2" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">48.15162342</span></span>
+<span id="cb126-3"><a href="types-de-données.html#cb126-3" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code></pre></div>
+<pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="types-de-données.html#cb128-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span></code></pre></div>
+<pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
+<p>Il est également possible d’avoir recours aux notations scientifiques, en utilisant <code>E</code> ou <code>e</code> pour indiquer une puissance de 10. Par exemple, pour écrire <span class="math inline">\(3,2^{12}\)</span>, on procèdera comme suit :</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="types-de-données.html#cb130-1" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.2E12</span></span>
+<span id="cb130-2"><a href="types-de-données.html#cb130-2" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">3.2e12</span></span>
+<span id="cb130-3"><a href="types-de-données.html#cb130-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## 3200000000000.0</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="types-de-données.html#cb132-1" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
+<pre><code>## 3200000000000.0</code></pre>
+<p>Par ailleurs, lorsque le nombre est égal à une fraction de 0, on peut s’affranchir d’écrire le zéro :</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb134-1"><a href="types-de-données.html#cb134-1" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">0.35</span>)</span></code></pre></div>
+<pre><code>## 0.35</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb136-1"><a href="types-de-données.html#cb136-1" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">.35</span>)</span></code></pre></div>
+<pre><code>## 0.35</code></pre>
+</div>
+<div id="nombres-complèxes" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Nombres complèxes<a href="#nombres-compl%C3%A8xes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Python permet nativement de manipuler des nombres complèxes, de la forme <span class="math inline">\(z=a+ib\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont des nombres à virgule flottante, et tel que <span class="math inline">\(i^2=(-i)^2=1\)</span>. La partie réelle du nombre, <span class="math inline">\(\mathfrak{R}(z)\)</span>, est <span class="math inline">\(a\)</span> tandis que sa partie imaginaire, <span class="math inline">\(\mathfrak{I}(z)\)</span>, est <span class="math inline">\(b\)</span>.</p>
+<p>En python, l’unité imaginaire <span class="math inline">\(i\)</span> est dénotée par la lettre <code>j</code>.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb138-1"><a href="types-de-données.html#cb138-1" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">1</span><span class="op">+</span><span class="ot">3j</span></span>
+<span id="cb138-2"><a href="types-de-données.html#cb138-2" tabindex="-1"></a><span class="bu">print</span>(z)</span></code></pre></div>
+<pre><code>## (1+3j)</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb140-1"><a href="types-de-données.html#cb140-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(z))</span></code></pre></div>
+<pre><code>## &lt;class &#39;complex&#39;&gt;</code></pre>
+<p>Il est également possible d’utiliser la fonction <code>complex()</code>, qui demande deux paramètres (la partie réelle et la partie imaginaire) :</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb142-1"><a href="types-de-données.html#cb142-1" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">complex</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb142-2"><a href="types-de-données.html#cb142-2" tabindex="-1"></a><span class="bu">print</span>(z)</span></code></pre></div>
+<pre><code>## (1+3j)</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb144-1"><a href="types-de-données.html#cb144-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(z))</span></code></pre></div>
+<pre><code>## &lt;class &#39;complex&#39;&gt;</code></pre>
+<p>Plusieurs méthodes sont disponibles avec les nombres complèxes. Par exemple, pour accéder au conjugué, Python fournit la méthode <code>conjugate()</code> :</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb146-1"><a href="types-de-données.html#cb146-1" tabindex="-1"></a><span class="bu">print</span>(z.conjugate())</span></code></pre></div>
+<pre><code>## (1-3j)</code></pre>
+<p>L’accès à la partie réelle d’un complèxe ou à sa partie imaginaire s’effectue comme suit:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb148-1"><a href="types-de-données.html#cb148-1" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">complex</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb148-2"><a href="types-de-données.html#cb148-2" tabindex="-1"></a><span class="bu">print</span>(z.real)</span></code></pre></div>
+<pre><code>## 1.0</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="types-de-données.html#cb150-1" tabindex="-1"></a><span class="bu">print</span>(z.imag)</span></code></pre></div>
+<pre><code>## 3.0</code></pre>
+</div>
+<div id="conversions" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Conversions<a href="types-de-données.html#conversions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour convertir un nombre dans un autre format numérique, Python dispose de quelques fonctions.</p>
+<div id="conversion-en-entier" class="section level4 hasAnchor" number="2.2.4.1">
+<h4><span class="header-section-number">2.2.4.1</span> Conversion en entier<a href="types-de-données.html#conversion-en-entier" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La <strong>conversion d’un nombre ou d’une chaîne de caractères en entier</strong> s’effectue à l’aide de la fonction <code>int()</code> :</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="types-de-données.html#cb152-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;3&quot;</span></span>
+<span id="cb152-2"><a href="types-de-données.html#cb152-2" tabindex="-1"></a>x_int <span class="op">=</span> <span class="bu">int</span>(x)</span>
+<span id="cb152-3"><a href="types-de-données.html#cb152-3" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_int))</span></code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb154-1"><a href="types-de-données.html#cb154-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code></pre></div>
+<pre><code>## &lt;class &#39;str&#39;&gt;</code></pre>
+<p>On note que la conversion d’un nombre à virgule flottante tronque le nombre pour ne garder que la partie entière :</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb156-1"><a href="types-de-données.html#cb156-1" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.6</span></span>
+<span id="cb156-2"><a href="types-de-données.html#cb156-2" tabindex="-1"></a>x_int <span class="op">=</span> <span class="bu">int</span>(x)</span>
+<span id="cb156-3"><a href="types-de-données.html#cb156-3" tabindex="-1"></a><span class="bu">print</span>(x_int)</span></code></pre></div>
+<pre><code>## 3</code></pre>
+</div>
+<div id="conversion-en-nombre-à-virgule-flottante" class="section level4 hasAnchor" number="2.2.4.2">
+<h4><span class="header-section-number">2.2.4.2</span> Conversion en nombre à virgule flottante<a href="#conversion-en-nombre-%C3%A0-virgule-flottante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour <strong>convertir un nombre ou une chaîne de caractères en nombre à virgule flottante</strong> (si possible), Python propose d’utiliser la fonction <code>float()</code>.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb158-1"><a href="types-de-données.html#cb158-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;3.6&quot;</span></span>
+<span id="cb158-2"><a href="types-de-données.html#cb158-2" tabindex="-1"></a>x_float <span class="op">=</span> <span class="bu">float</span>(x)</span>
+<span id="cb158-3"><a href="types-de-données.html#cb158-3" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_float))</span></code></pre></div>
+<pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
+<p>Avec un entier à l’origine :</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb160-1"><a href="types-de-données.html#cb160-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb160-2"><a href="types-de-données.html#cb160-2" tabindex="-1"></a>x_float <span class="op">=</span> <span class="bu">float</span>(x)</span>
+<span id="cb160-3"><a href="types-de-données.html#cb160-3" tabindex="-1"></a><span class="bu">print</span>(x_float)</span></code></pre></div>
+<pre><code>## 3.0</code></pre>
+</div>
+<div id="conversion-en-complèxe" class="section level4 hasAnchor" number="2.2.4.3">
+<h4><span class="header-section-number">2.2.4.3</span> Conversion en complèxe<a href="#conversion-en-compl%C3%A8xe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La conversion d’un nombre ou d’une chaîne de caractères en nombre complèxe s’effectue avec la fonction <code>complex()</code> :</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb162-1"><a href="types-de-données.html#cb162-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;2&quot;</span></span>
+<span id="cb162-2"><a href="types-de-données.html#cb162-2" tabindex="-1"></a>x_complex <span class="op">=</span> <span class="bu">complex</span>(x)</span>
+<span id="cb162-3"><a href="types-de-données.html#cb162-3" tabindex="-1"></a><span class="bu">print</span>(x_complex)</span></code></pre></div>
+<pre><code>## (2+0j)</code></pre>
+<p>Avec un <em>float</em> :</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb164-1"><a href="types-de-données.html#cb164-1" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">2.4</span></span>
+<span id="cb164-2"><a href="types-de-données.html#cb164-2" tabindex="-1"></a>x_complex <span class="op">=</span> <span class="bu">complex</span>(x)</span>
+<span id="cb164-3"><a href="types-de-données.html#cb164-3" tabindex="-1"></a><span class="bu">print</span>(x_complex)</span></code></pre></div>
+<pre><code>## (2.4+0j)</code></pre>
+</div>
+</div>
+</div>
+<div id="booléens" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Booléens<a href="#bool%C3%A9ens" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Les données de type logique peuvent prendre deux valeurs : <code>True</code> ou <code>False</code>. Elles répondent
+à une condition logique. Il faut faire attention à bien respecter la casse.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb166-1"><a href="types-de-données.html#cb166-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb166-2"><a href="types-de-données.html#cb166-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb166-3"><a href="types-de-données.html#cb166-3" tabindex="-1"></a><span class="bu">print</span>(x, y)</span></code></pre></div>
+<pre><code>## True False</code></pre>
+<p><code>True</code> peut être converti automatiquement en 1 ; <code>False</code> en 0. Cela peut s’avérer très pratique, pour faire des comptages de valeurs vraies ou fausses dans les colonnes d’un tableau de données, par exemple.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="types-de-données.html#cb168-1" tabindex="-1"></a>res <span class="op">=</span> <span class="va">True</span> <span class="op">+</span> <span class="va">True</span> <span class="op">+</span> <span class="va">False</span> <span class="op">+</span> <span class="va">True</span><span class="op">*</span><span class="va">True</span></span>
+<span id="cb168-2"><a href="types-de-données.html#cb168-2" tabindex="-1"></a><span class="bu">print</span>(res)</span></code></pre></div>
+<pre><code>## 3</code></pre>
+</div>
+<div id="objet-vide" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Objet vide<a href="types-de-données.html#objet-vide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>L’objet vide, communément appelé <code>null</code>, possède un équivalent en Python : <code>None</code>. Pour l’assigner à une variable, il faut faire attention à la casse :</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb170-1"><a href="types-de-données.html#cb170-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb170-2"><a href="types-de-données.html#cb170-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## None</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb172-1"><a href="types-de-données.html#cb172-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code></pre></div>
+<pre><code>## &lt;class &#39;NoneType&#39;&gt;</code></pre>
+<p>L’objet <code>None</code> est une variable neutre, au comportement “null”.</p>
+<p>Pour tester si un objet est l’objet <code>None</code>, on procède comme suit (le résultat est un booléen) :</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="types-de-données.html#cb174-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb174-2"><a href="types-de-données.html#cb174-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb174-3"><a href="types-de-données.html#cb174-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">is</span> <span class="va">None</span>)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="types-de-données.html#cb176-1" tabindex="-1"></a><span class="bu">print</span>(y <span class="kw">is</span> <span class="va">None</span>)</span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+<div id="dates-et-temps" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Dates et temps<a href="types-de-données.html#dates-et-temps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il existe plusieurs moduels pour gérer les dates et le temps en Python. Nous allons explorer une partie du module <code>datetime</code>.</p>
+<div id="module-datetime" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Module datetime<a href="types-de-données.html#module-datetime" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Python possède un module appelé <code>datetime</code> qui offre la possibilité de manipuler des dates et des durées (<em>dates</em> et <em>times</em>).</p>
+<p>Il existe plusieurs types d’objets désignant des dates :</p>
+<ul>
+<li><code>date</code> : une date suivant le calendrier grégorien, renseignant l’année, le mois et le jour ;</li>
+<li><code>time</code> : un temp donné, sans prise en compte d’un jour particulier, renseignant l’heure, la minute, la seconde (possiblement la microseconde et le fuseau horaire également).</li>
+<li><code>datetime</code> : une date combinant <code>date</code> et <code>time</code> ;</li>
+<li><code>timedelta</code> : une durée entre deux objets de type <code>dates</code>, <code>time</code> ou <code>datetime</code> ;</li>
+<li><code>tzinfo</code> : un type de base abstraite, renseignant au sujet des fuseaux horaires ;</li>
+<li><code>timezone</code> : un type utilisant le type <code>tzinfo</code> comme un décalage fixe par rapport à l’UTC.</li>
+</ul>
+<div id="type-date" class="section level4 hasAnchor" number="2.5.1.1">
+<h4><span class="header-section-number">2.5.1.1</span> Date<a href="types-de-données.html#type-date" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les objets de type <code>date</code> désignent des dates du calendrier grégorien, pour lesquelles sont mentionnées les caractéristiques suivantes : l’année, le mois et le jour.</p>
+<p>Pour créer un objet <code>date</code>, la syntaxe est la suivante :</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="types-de-données.html#cb178-1" tabindex="-1"></a>date(year, month, day)</span></code></pre></div>
+<p>Par exemple, pour créer la date renseignant le 23 avril 2013 :</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="types-de-données.html#cb179-1" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
+<span id="cb179-2"><a href="types-de-données.html#cb179-2" tabindex="-1"></a>debut <span class="op">=</span> date(year <span class="op">=</span> <span class="dv">2013</span>, month <span class="op">=</span> <span class="dv">4</span>, day <span class="op">=</span> <span class="dv">23</span>)</span>
+<span id="cb179-3"><a href="types-de-données.html#cb179-3" tabindex="-1"></a><span class="bu">print</span>(debut)</span></code></pre></div>
+<pre><code>## 2013-04-23</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb181-1"><a href="types-de-données.html#cb181-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(debut))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.date&#39;&gt;</code></pre>
+
+<div class="remarque">
+Il n’est pas obligatoire de préciser le nom des paramètres dans l’appel à la fonction <code>date</code>. L’ordre à respecter devra toutefois être le suivant : année, mois, jour.
+</div>
+<p>On peut ensuite accéder aux attributs de la date créée (ce sont des entiers) :</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb183-1"><a href="types-de-données.html#cb183-1" tabindex="-1"></a><span class="bu">print</span>(debut.year) <span class="co"># Extraire l&#39;année</span></span></code></pre></div>
+<pre><code>## 2013</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb185-1"><a href="types-de-données.html#cb185-1" tabindex="-1"></a><span class="bu">print</span>(debut.month) <span class="co"># Extraire le mois</span></span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb187-1"><a href="types-de-données.html#cb187-1" tabindex="-1"></a><span class="bu">print</span>(debut.day) <span class="co"># Extraire le jour</span></span></code></pre></div>
+<pre><code>## 23</code></pre>
+<p>Les objets du type <code>date</code> possèdent quelques méthodes. Nous allons passer en revue quelques-unes d’entre-elles.</p>
+<div id="ctime" class="section level5 hasAnchor" number="2.5.1.1.1">
+<h5><span class="header-section-number">2.5.1.1.1</span> <code>ctime()</code><a href="types-de-données.html#ctime" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>ctime()</code> retourne la date sous forme d’une chaîne de caractères.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb189-1"><a href="types-de-données.html#cb189-1" tabindex="-1"></a><span class="bu">print</span>(debut.ctime())</span></code></pre></div>
+<pre><code>## Tue Apr 23 00:00:00 2013</code></pre>
+</div>
+<div id="weekday" class="section level5 hasAnchor" number="2.5.1.1.2">
+<h5><span class="header-section-number">2.5.1.1.2</span> <code>weekday()</code><a href="types-de-données.html#weekday" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>weekday()</code> retourne la position du jour de la semaine (lundi valant 0, dimanche 6)</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="types-de-données.html#cb191-1" tabindex="-1"></a><span class="bu">print</span>(debut.weekday())</span></code></pre></div>
+<pre><code>## 1</code></pre>
+
+<div class="remarque">
+Cette méthode peut être très pratique lors d’une analyse des données, pour explorer les aspects de saisonnalité hebdomadaire.
+</div>
+</div>
+<div id="isoweekday" class="section level5 hasAnchor" number="2.5.1.1.3">
+<h5><span class="header-section-number">2.5.1.1.3</span> <code>isoweekday()</code><a href="types-de-données.html#isoweekday" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Dans la même veine que <code>weekday()</code>, la méthode <code>isoweekday()</code> retourne la position du jour de la semaine, en attribuant cette fois la valeur 1 au lundi et 7 au dimanche.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="types-de-données.html#cb193-1" tabindex="-1"></a><span class="bu">print</span>(debut.isoweekday())</span></code></pre></div>
+<pre><code>## 2</code></pre>
+</div>
+<div id="toordinal" class="section level5 hasAnchor" number="2.5.1.1.4">
+<h5><span class="header-section-number">2.5.1.1.4</span> <code>toordinal()</code><a href="types-de-données.html#toordinal" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>toordinal()</code> retourne le numéro du jour, en prenant comme référence la valeur 1 pour le premier jour de l’an 1.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb195-1"><a href="types-de-données.html#cb195-1" tabindex="-1"></a><span class="bu">print</span>(debut.toordinal())</span></code></pre></div>
+<pre><code>## 734981</code></pre>
+</div>
+<div id="isoformat" class="section level5 hasAnchor" number="2.5.1.1.5">
+<h5><span class="header-section-number">2.5.1.1.5</span> <code>isoformat()</code><a href="types-de-données.html#isoformat" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>isoformat()</code> retourne la date en <a href="https://fr.wikipedia.org/wiki/Num%C3%A9rotation_ISO_des_semaines">numérotation ISO</a>, sous forme d’une chaîne de caractères.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="types-de-données.html#cb197-1" tabindex="-1"></a><span class="bu">print</span>(debut.isoformat())</span></code></pre></div>
+<pre><code>## 2013-04-23</code></pre>
+</div>
+<div id="isocalendar" class="section level5 hasAnchor" number="2.5.1.1.6">
+<h5><span class="header-section-number">2.5.1.1.6</span> <code>isocalendar()</code><a href="types-de-données.html#isocalendar" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>isocalendar()</code> retourne un nuplet (c.f. Section <a href="structures.html#n-uplets-tuples">3.2</a>) comprenant trois éléments : l’année, le numéro de la semaine et le jour de la semaine (les trois en numérotation ISO).</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb199-1"><a href="types-de-données.html#cb199-1" tabindex="-1"></a><span class="bu">print</span>(debut.isocalendar())</span></code></pre></div>
+<pre><code>## datetime.IsoCalendarDate(year=2013, week=17, weekday=2)</code></pre>
+</div>
+<div id="replace" class="section level5 hasAnchor" number="2.5.1.1.7">
+<h5><span class="header-section-number">2.5.1.1.7</span> <code>replace()</code><a href="types-de-données.html#replace" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>replace()</code> retourne la date après avoir effectué une modification</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb201-1"><a href="types-de-données.html#cb201-1" tabindex="-1"></a>x <span class="op">=</span> debut.replace(year<span class="op">=</span><span class="dv">2014</span>)</span>
+<span id="cb201-2"><a href="types-de-données.html#cb201-2" tabindex="-1"></a>y <span class="op">=</span> debut.replace(month<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb201-3"><a href="types-de-données.html#cb201-3" tabindex="-1"></a>z <span class="op">=</span> debut.replace(day<span class="op">=</span><span class="dv">24</span>)</span>
+<span id="cb201-4"><a href="types-de-données.html#cb201-4" tabindex="-1"></a><span class="bu">print</span>(x, y, z)</span></code></pre></div>
+<pre><code>## 2014-04-23 2013-05-23 2013-04-24</code></pre>
+<p>Cela n’a pas d’incidence sur l’objet d’origine :</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb203-1"><a href="types-de-données.html#cb203-1" tabindex="-1"></a><span class="bu">print</span>(debut)</span></code></pre></div>
+<pre><code>## 2013-04-23</code></pre>
+<p>Il est possible de modifier plusieurs éléments en même temps :</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb205-1"><a href="types-de-données.html#cb205-1" tabindex="-1"></a>x <span class="op">=</span> debut.replace(day<span class="op">=</span><span class="dv">24</span>, month<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb205-2"><a href="types-de-données.html#cb205-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## 2013-05-24</code></pre>
+</div>
+<div id="strftime" class="section level5 hasAnchor" number="2.5.1.1.8">
+<h5><span class="header-section-number">2.5.1.1.8</span> <code>strftime()</code><a href="types-de-données.html#strftime" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>strftime()</code> retourne, sous la forme d’une chaîne de caractères, une représentation de la date, selon un masque utilisé.</p>
+<p>Par exemple, pour que la date soit représentée sous la forme <code>DD-MM-YYYY</code> (jour sur deux chiffres, mois sur deux chiffres et année sur 4) :</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb207-1"><a href="types-de-données.html#cb207-1" tabindex="-1"></a><span class="bu">print</span>(debut.strftime(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">-%m-%Y&quot;</span>))</span></code></pre></div>
+<pre><code>## 23-04-2013</code></pre>
+<p>Dans l’exemple précédent, on note deux choses : la présence de directives de formatage (qui commencent par le symbole de pourcentage) et des caractères autres (ici, les tirets). On peut noter que les caractères peuvent être remplacés par d’autres, il s’agit ici d’un choix pour représenter la date en séparant ses éléments par ddes tirets. Il est tout à fait possible d’adopter une autre écriture, par exemple avec des barres obliques, ou même d’autres chaînes de caractères :</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb209-1"><a href="types-de-données.html#cb209-1" tabindex="-1"></a><span class="bu">print</span>(debut.strftime(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">/%m/%Y&quot;</span>))</span></code></pre></div>
+<pre><code>## 23/04/2013</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb211-1"><a href="types-de-données.html#cb211-1" tabindex="-1"></a><span class="bu">print</span>(debut.strftime(<span class="st">&quot;Jour : </span><span class="sc">%d</span><span class="st">, Mois : %m, Annee : %Y&quot;</span>))</span></code></pre></div>
+<pre><code>## Jour : 23, Mois : 04, Annee : 2013</code></pre>
+<p>Concernant les directives de formatage, elles correspondent aux codes requis par le standard C (c.f. la <a href="https://docs.python.org/fr/3/library/datetime.html#strftime-strptime-behavior">documentation de Python</a>). En voici quelques-uns :</p>
+<table>
+<caption><span id="tab:codes-formatage">Table 2.1: </span> Codes de formatages</caption>
+<colgroup>
+<col width="9%" />
+<col width="66%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Code</th>
+<th align="right">Description</th>
+<th align="right">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>%a</code></td>
+<td align="right">Abréviation du jour de la semaine (dépend du lieu)</td>
+<td align="right"><code>Tue</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%A</code></td>
+<td align="right">Jour de la semaine complet (dépend du lieu)</td>
+<td align="right"><code>Tuesday</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%b</code></td>
+<td align="right">Abréviation du mois (dépend du lieu)</td>
+<td align="right"><code>Apr</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%B</code></td>
+<td align="right">Nom du mois complet (dépend du lieu) octobre</td>
+<td align="right"><code>April</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%c</code></td>
+<td align="right">Date et heure (dépend du lieu) au format %a %e %b %H:%M:%S:%Y</td>
+<td align="right"><code>Tue Apr 23 00:00:00 2013</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%C</code></td>
+<td align="right">Siècle (00-99) -1 (partie entière de la division de l’année par 100)</td>
+<td align="right"><code>20</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%d</code></td>
+<td align="right">Jour du mois (01–31)</td>
+<td align="right"><code>23</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%D</code></td>
+<td align="right">Date au format %m/%d/%y</td>
+<td align="right"><code>04/23/13</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%e</code></td>
+<td align="right">Jour du mois en nombre décimal (1–31)</td>
+<td align="right"><code>23</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%F</code></td>
+<td align="right">Date au format %Y-%m-%d</td>
+<td align="right"><code>2013-04-23</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%h</code></td>
+<td align="right">Même chose que %b</td>
+<td align="right"><code>Apr</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%H</code></td>
+<td align="right">Heure (00–24)</td>
+<td align="right"><code>00</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%I</code></td>
+<td align="right">Heure (01–12)</td>
+<td align="right"><code>12</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%j</code></td>
+<td align="right">Jour de l’année (001–366)</td>
+<td align="right"><code>113</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%m</code></td>
+<td align="right">Mois (01–12)</td>
+<td align="right"><code>04</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%M</code></td>
+<td align="right">Minute (00-59)</td>
+<td align="right"><code>00</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%n</code></td>
+<td align="right">Retour à la ligne en output, caractère blanc en input</td>
+<td align="right"><code>\n</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%p</code></td>
+<td align="right">AM/PM PM</td>
+<td align="right"><code>AM</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%r</code></td>
+<td align="right">Heure au format 12 AM/PM</td>
+<td align="right"><code>12:00:00 AM</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%R</code></td>
+<td align="right">Même chose que %H:%M</td>
+<td align="right"><code>00:00</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%S</code></td>
+<td align="right">Seconde (00-61)</td>
+<td align="right"><code>00</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%t</code></td>
+<td align="right">Tabulation en output, caractère blanc en input</td>
+<td align="right"><code>\t</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%T</code></td>
+<td align="right">Même chose que %H:%M:%S</td>
+<td align="right"><code>00:00:00</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%u</code></td>
+<td align="right">Jour de la semaine (1–7), commence le lundi</td>
+<td align="right"><code>2</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%U</code></td>
+<td align="right">Semaine de l’anné (00–53), dimanche comme début de semaine, et le premier dimanche de l’année définit la semaine</td>
+<td align="right"><code>16</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%V</code></td>
+<td align="right">Semaine de l’année (00-53). Si la semaine (qui commence un lundi) qui contient le 1 er janvier a quatre jours ou plus dans la nouvelle année, alors elle est considérée comme la semaine 1. Sinon, elle est considérée comme la dernière de l’année précédente, et la semaine suivante est considérée comme semaine 1 (norme ISO 8601)</td>
+<td align="right"><code>17</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%w</code></td>
+<td align="right">Jour de la semaine (0–6), dimanche étant 0</td>
+<td align="right"><code>2</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%W</code></td>
+<td align="right">Semaine de l’année (00–53), le lundi étant le premier jour de la semaine, et typiquement, le premier lundi de l’année définit la semaine 1 (conviention G.B.)</td>
+<td align="right"><code>16</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%x</code></td>
+<td align="right">Date (dépend du lieu)</td>
+<td align="right"><code>04/23/13</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%X</code></td>
+<td align="right">Heure (dépend du lieu)</td>
+<td align="right"><code>00:00:00'</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%y</code></td>
+<td align="right">Année sans le “siècle”” (00–99)</td>
+<td align="right"><code>13</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%Y</code></td>
+<td align="right">Année (en input, uniquement de 0 à 9999)</td>
+<td align="right"><code>2013</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>%z</code></td>
+<td align="right">offset en heures et minutes par rapport au temps UTC</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="right"><code>%Z</code></td>
+<td align="right">Abréviation du fuseau horaire (en output seulement) CEST</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="type-time" class="section level4 hasAnchor" number="2.5.1.2">
+<h4><span class="header-section-number">2.5.1.2</span> Time<a href="types-de-données.html#type-time" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les objets de type <code>time</code> désignent des temps précis sans prise en compte d’un jour particulier. Ils renseignant l’heure, la minute, la seconde (possiblement la microseconde et le fuseau horaire également).</p>
+<p>Pour créer un objet <code>time</code>, la syntaxe est la suivante :</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb213-1"><a href="types-de-données.html#cb213-1" tabindex="-1"></a>time(hour, minute, second)</span></code></pre></div>
+<p>Par exemple, pour créer le moment 23:04:59 (vingt-trois heures, quatre minutes et cinquante-neuf secondes) :</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb214-1"><a href="types-de-données.html#cb214-1" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> time</span>
+<span id="cb214-2"><a href="types-de-données.html#cb214-2" tabindex="-1"></a>moment <span class="op">=</span> time(hour <span class="op">=</span> <span class="dv">23</span>, minute <span class="op">=</span> <span class="dv">4</span>, second <span class="op">=</span> <span class="dv">59</span>)</span>
+<span id="cb214-3"><a href="types-de-données.html#cb214-3" tabindex="-1"></a><span class="bu">print</span>(moment)</span></code></pre></div>
+<pre><code>## 23:04:59</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb216-1"><a href="types-de-données.html#cb216-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(moment))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.time&#39;&gt;</code></pre>
+<p>On peut rajouter des informations sur la microseconde. Sa valeur doit être comprise entre zéro et un million.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb218-1"><a href="types-de-données.html#cb218-1" tabindex="-1"></a>moment <span class="op">=</span> time(hour <span class="op">=</span> <span class="dv">23</span>, minute <span class="op">=</span> <span class="dv">4</span>, second <span class="op">=</span> <span class="dv">59</span>, microsecond <span class="op">=</span> <span class="dv">230</span>)</span>
+<span id="cb218-2"><a href="types-de-données.html#cb218-2" tabindex="-1"></a><span class="bu">print</span>(moment)</span></code></pre></div>
+<pre><code>## 23:04:59.000230</code></pre>
+<div class="sourceCode" id="cb220"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb220-1"><a href="types-de-données.html#cb220-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(moment))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.time&#39;&gt;</code></pre>
+<p>On peut ensuite accéder aux attributs de la date créée (ce sont des entiers), parmi lesquels :</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb222-1"><a href="types-de-données.html#cb222-1" tabindex="-1"></a><span class="bu">print</span>(moment.hour) <span class="co"># Extraire l&#39;heure</span></span></code></pre></div>
+<pre><code>## 23</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb224-1"><a href="types-de-données.html#cb224-1" tabindex="-1"></a><span class="bu">print</span>(moment.minute) <span class="co"># Extraire la minute</span></span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb226-1"><a href="types-de-données.html#cb226-1" tabindex="-1"></a><span class="bu">print</span>(moment.second) <span class="co"># Extraire la seconde</span></span></code></pre></div>
+<pre><code>## 59</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb228-1"><a href="types-de-données.html#cb228-1" tabindex="-1"></a><span class="bu">print</span>(moment.microsecond) <span class="co"># Extraire la microseconde</span></span></code></pre></div>
+<pre><code>## 230</code></pre>
+<p>Les objets du type <code>time</code> possèdent quelques méthodes, dont l’utilisation est similaire aux objets de classe <code>date</code> (se référer à la Section <a href="types-de-données.html#type-date">2.5.1.1</a>).</p>
+</div>
+<div id="datetime" class="section level4 hasAnchor" number="2.5.1.3">
+<h4><span class="header-section-number">2.5.1.3</span> Datetime<a href="types-de-données.html#datetime" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les objets de type <code>datetime</code> combinent les éléments des objets de type <code>date</code> et <code>time</code>. Ils renseignant le jour dans le calendrier grégorien ainsi que l’heure, la minute, la seconde (possiblement la microseconde et le fuseau horaire).</p>
+<p>Pour créer un objet <code>datetime</code>, la syntaxe est la suivante :</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb230-1"><a href="types-de-données.html#cb230-1" tabindex="-1"></a>datetime(year, month, day, hour, minute, second, microsecond)</span></code></pre></div>
+<p>Par exemple, pour créer la date 23-04-2013 à 17:10:00 :</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb231-1"><a href="types-de-données.html#cb231-1" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb231-2"><a href="types-de-données.html#cb231-2" tabindex="-1"></a>x <span class="op">=</span> datetime(year <span class="op">=</span> <span class="dv">2013</span>, month <span class="op">=</span> <span class="dv">4</span>, day <span class="op">=</span> <span class="dv">23</span>,</span>
+<span id="cb231-3"><a href="types-de-données.html#cb231-3" tabindex="-1"></a>  hour <span class="op">=</span> <span class="dv">23</span>, minute <span class="op">=</span> <span class="dv">4</span>, second <span class="op">=</span> <span class="dv">59</span>)</span>
+<span id="cb231-4"><a href="types-de-données.html#cb231-4" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>## 2013-04-23 23:04:59</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb233-1"><a href="types-de-données.html#cb233-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.datetime&#39;&gt;</code></pre>
+<p>Les objets de type <code>datetime</code> disposent des attributs des objets de type <code>date</code> (c.f. Section <a href="types-de-données.html#type-date">2.5.1.1</a>) et de type <code>time</code> (c.f. Section <a href="types-de-données.html#type-time">2.5.1.2</a>).</p>
+<p>Pour ce qui est des méthodes, davantage sont disponibles. Nous allons en commenter certaines.</p>
+<div id="today-et-now" class="section level5 hasAnchor" number="2.5.1.3.1">
+<h5><span class="header-section-number">2.5.1.3.1</span> <code>today()</code> et <code>now()</code><a href="types-de-données.html#today-et-now" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Les méthodes <code>today()</code> et <code>now()</code> retournent le <code>datetime</code> courant, celui au moment où est évaluée l’instruction :</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb235-1"><a href="types-de-données.html#cb235-1" tabindex="-1"></a><span class="bu">print</span>(x.today())</span></code></pre></div>
+<pre><code>## 2025-05-22 23:36:02.881445</code></pre>
+<div class="sourceCode" id="cb237"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb237-1"><a href="types-de-données.html#cb237-1" tabindex="-1"></a><span class="bu">print</span>(datetime.today())</span></code></pre></div>
+<pre><code>## 2025-05-22 23:36:02.883058</code></pre>
+<p>La distinction entre les deux réside dans le fuseau horaire. Avec <code>today()</code>, l’attribut <code>tzinfo</code> est mis à <code>None</code>, tandis qu’avec <code>now()</code>, l’attribut <code>tzinfo</code>, s’il est indiqué, est pris en compte.</p>
+</div>
+<div id="timestamp" class="section level5 hasAnchor" number="2.5.1.3.2">
+<h5><span class="header-section-number">2.5.1.3.2</span> <code>timestamp()</code><a href="types-de-données.html#timestamp" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>timestamp()</code> retourne, sous forme d’un nombre à virgule flottante, le <em>timestamp</em> POSIX correspondant à l’objet de type <code>datetime</code>. Le <em>timestamp</em> POSIX correspond à l’heure Posix, équivalent au nombre de secondes écoulées depuis le premier janvier 1970, à 00:00:00 UTC.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb239-1"><a href="types-de-données.html#cb239-1" tabindex="-1"></a><span class="bu">print</span>(x.timestamp())</span></code></pre></div>
+<pre><code>## 1366772699.0</code></pre>
+</div>
+<div id="date" class="section level5 hasAnchor" number="2.5.1.3.3">
+<h5><span class="header-section-number">2.5.1.3.3</span> <code>date()</code><a href="types-de-données.html#date" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>date()</code> retourne un objet de type <code>date</code> dont les attributs d’année, de mois et de jour sont identiques à ceux de l’objet :</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="types-de-données.html#cb241-1" tabindex="-1"></a>x_date <span class="op">=</span> x.date()</span>
+<span id="cb241-2"><a href="types-de-données.html#cb241-2" tabindex="-1"></a><span class="bu">print</span>(x_date)</span></code></pre></div>
+<pre><code>## 2013-04-23</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb243-1"><a href="types-de-données.html#cb243-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_date))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.date&#39;&gt;</code></pre>
+</div>
+<div id="time" class="section level5 hasAnchor" number="2.5.1.3.4">
+<h5><span class="header-section-number">2.5.1.3.4</span> <code>time()</code><a href="types-de-données.html#time" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La méthode <code>time()</code> retourne un objet de type <code>time</code> dont les attributs d’heure, minute, seconde, microseconde sont identiques à ceux de l’objet :</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb245-1"><a href="types-de-données.html#cb245-1" tabindex="-1"></a>x_time <span class="op">=</span> x.time()</span>
+<span id="cb245-2"><a href="types-de-données.html#cb245-2" tabindex="-1"></a><span class="bu">print</span>(x_time)</span></code></pre></div>
+<pre><code>## 23:04:59</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb247-1"><a href="types-de-données.html#cb247-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_time))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.time&#39;&gt;</code></pre>
+</div>
+</div>
+<div id="timedelta" class="section level4 hasAnchor" number="2.5.1.4">
+<h4><span class="header-section-number">2.5.1.4</span> Timedelta<a href="types-de-données.html#timedelta" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les objets de type <code>timedelta</code> représentent des durées séparant deux dates ou heures.</p>
+<p>Pour créer un objet de type <code>timedelta</code>, la syntaxe est la suivante :</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb249-1"><a href="types-de-données.html#cb249-1" tabindex="-1"></a>timedelta(days, hours, minutes, seconds, microseconds)</span></code></pre></div>
+<p>Il n’est pas obligatoire de fournir une valeur à chaque paramètre. Lorsque qu’un paramètre ne reçoit pas de valeur, celle qui lui est attribuée par défaut est 0.</p>
+<p>Par exemple, pour créer un objet indiquant une durée de 1 jour et 30 secondes :</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb250-1"><a href="types-de-données.html#cb250-1" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb250-2"><a href="types-de-données.html#cb250-2" tabindex="-1"></a>duree <span class="op">=</span> timedelta(days <span class="op">=</span> <span class="dv">1</span>, seconds <span class="op">=</span> <span class="dv">30</span>)</span>
+<span id="cb250-3"><a href="types-de-données.html#cb250-3" tabindex="-1"></a>duree</span></code></pre></div>
+<pre><code>## datetime.timedelta(days=1, seconds=30)</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb252-1"><a href="types-de-données.html#cb252-1" tabindex="-1"></a>datetime.timedelta(<span class="dv">1</span>, <span class="dv">30</span>)</span></code></pre></div>
+<p>On peut accéder ensuite aux attributs (ayant été définis). Par exemple, pour accéder au nombre de jours que représente la durée :</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb253-1"><a href="types-de-données.html#cb253-1" tabindex="-1"></a>duree.days</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb255-1"><a href="types-de-données.html#cb255-1" tabindex="-1"></a><span class="dv">1</span></span></code></pre></div>
+<p>La méthode <code>total_seconds()</code> permet d’obtenir la durée exprimée en secondes :</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb256-1"><a href="types-de-données.html#cb256-1" tabindex="-1"></a>duree <span class="op">=</span> timedelta(days <span class="op">=</span> <span class="dv">1</span>, seconds <span class="op">=</span> <span class="dv">30</span>, hours <span class="op">=</span> <span class="dv">20</span>)</span>
+<span id="cb256-2"><a href="types-de-données.html#cb256-2" tabindex="-1"></a>duree.total_seconds()</span>
+<span id="cb256-3"><a href="types-de-données.html#cb256-3" tabindex="-1"></a><span class="fl">158430.0</span></span></code></pre></div>
+<div id="durée-séparant-deux-objets-date-ou-datetime" class="section level5 hasAnchor" number="2.5.1.4.1">
+<h5><span class="header-section-number">2.5.1.4.1</span> Durée séparant deux objets <code>date</code> ou <code>datetime</code><a href="#dur%C3%A9e-s%C3%A9parant-deux-objets-date-ou-datetime" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Lorsqu’on soustrait deux objets de type <code>date</code>, on obtient le nombre de jours séparant ces deux dates, sous la forme d’un objet de type <code>timedelta</code> :</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb257-1"><a href="types-de-données.html#cb257-1" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb257-2"><a href="types-de-données.html#cb257-2" tabindex="-1"></a>debut <span class="op">=</span> date(<span class="dv">2018</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb257-3"><a href="types-de-données.html#cb257-3" tabindex="-1"></a>fin <span class="op">=</span> date(<span class="dv">2018</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb257-4"><a href="types-de-données.html#cb257-4" tabindex="-1"></a>nb_jours <span class="op">=</span> fin<span class="op">-</span>debut</span>
+<span id="cb257-5"><a href="types-de-données.html#cb257-5" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(nb_jours))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.timedelta&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb259-1"><a href="types-de-données.html#cb259-1" tabindex="-1"></a><span class="bu">print</span>(nb_jours)</span></code></pre></div>
+<pre><code>## 1 day, 0:00:00</code></pre>
+<p>Lorsqu’on soustrait deux objets de type <code>datetime</code>, on obtient le nombre de jours, secondes (et microsecondes, si renseignées) séparant ces deux dates, sous la forme d’un objet de type <code>timedelta</code> :</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb261-1"><a href="types-de-données.html#cb261-1" tabindex="-1"></a>debut <span class="op">=</span> datetime(<span class="dv">2018</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">26</span>, <span class="dv">30</span>, <span class="dv">230</span>)</span>
+<span id="cb261-2"><a href="types-de-données.html#cb261-2" tabindex="-1"></a>fin <span class="op">=</span> datetime(<span class="dv">2018</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">31</span>)</span>
+<span id="cb261-3"><a href="types-de-données.html#cb261-3" tabindex="-1"></a>duree <span class="op">=</span> fin<span class="op">-</span>debut</span>
+<span id="cb261-4"><a href="types-de-données.html#cb261-4" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(duree))</span></code></pre></div>
+<pre><code>## &lt;class &#39;datetime.timedelta&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb263-1"><a href="types-de-données.html#cb263-1" tabindex="-1"></a><span class="bu">print</span>(duree)</span></code></pre></div>
+<pre><code>## 22:48:00.999770</code></pre>
+<p>On peut noter que les durée données prennent en compte les années bissextiles. Regardons d’abord pour une année non-bissextile, le nombre de jours séparant le 28 février du premier mars :</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb265-1"><a href="types-de-données.html#cb265-1" tabindex="-1"></a>debut <span class="op">=</span> date(<span class="dv">2021</span>, <span class="dv">2</span>,<span class="dv">28</span>)</span>
+<span id="cb265-2"><a href="types-de-données.html#cb265-2" tabindex="-1"></a>fin <span class="op">=</span> date(<span class="dv">2021</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb265-3"><a href="types-de-données.html#cb265-3" tabindex="-1"></a>duree <span class="op">=</span> fin <span class="op">-</span> debut</span>
+<span id="cb265-4"><a href="types-de-données.html#cb265-4" tabindex="-1"></a>duree</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb266-1"><a href="types-de-données.html#cb266-1" tabindex="-1"></a>datetime.timedelta(<span class="dv">1</span>)</span></code></pre></div>
+<p>Regardons à présent la même chose, mais dans le cas d’une année bissextile :</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb267-1"><a href="types-de-données.html#cb267-1" tabindex="-1"></a>debut_biss <span class="op">=</span> date(<span class="dv">2020</span>, <span class="dv">2</span>,<span class="dv">28</span>)</span>
+<span id="cb267-2"><a href="types-de-données.html#cb267-2" tabindex="-1"></a>fin_biss <span class="op">=</span> date(<span class="dv">2020</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb267-3"><a href="types-de-données.html#cb267-3" tabindex="-1"></a>duree_biss <span class="op">=</span> fin_biss <span class="op">-</span> debut_biss</span>
+<span id="cb267-4"><a href="types-de-données.html#cb267-4" tabindex="-1"></a>duree_biss</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb268-1"><a href="types-de-données.html#cb268-1" tabindex="-1"></a>datetime.timedelta(<span class="dv">2</span>)</span></code></pre></div>
+<p>Il est également possible d’<strong>ajouter des durées à une date</strong> :</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb269-1"><a href="types-de-données.html#cb269-1" tabindex="-1"></a>debut <span class="op">=</span> datetime(<span class="dv">2018</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
+<span id="cb269-2"><a href="types-de-données.html#cb269-2" tabindex="-1"></a><span class="bu">print</span>(debut <span class="op">+</span> timedelta(seconds <span class="op">=</span> <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## 2019-01-01 00:00:00</code></pre>
+</div>
+</div>
+</div>
+<div id="module-pytz" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Module <code>pytz</code><a href="types-de-données.html#module-pytz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si la gestion des dates revêt une importance particulière, une librairie propose d’aller un peu plus loins, notamment en ce qui concerne la gestion des fuseaux horaires. Cette librarie s’appelle <code>pytz</code>. De nombreux exemples sont proposés sur <a href="https://pypi.org/project/pytz/">la page web du projet</a>.</p>
+</div>
+<div id="exercices" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Exercices<a href="types-de-données.html#exercices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<div class="exframe">
+<ol style="list-style-type: decimal">
+<li>En utilisant la fonction appropriée, stocker la date du 29 août 2019 dans un objet que l’on appellera
+<code>d</code> puis afficher le type de l’objet.</li>
+<li>À l’aide de la fonction appropriée, afficher la date du jour.</li>
+<li>Stocker la date suivante dans un objet nommé <code>d2</code> : “2019-08-29 20:30:56”. Puis, afficher dans la console avec la fonction <code>print()</code> les attributs d’année, de minute et de seconde de <code>d2</code>.</li>
+<li>Ajouter 2 jours, 3 heures et 4 minutes à <code>d2</code>, et stocker le résultat dans un objet appelé <code>d3</code>.</li>
+<li>Afficher la différence en secondes entre <code>d3</code> et <code>d2</code>.</li>
+<li>À partir de l’objet <code>d2</code>, afficher sous forme de chaîne de caractères la date de <code>d2</code> de manière à ce qu’elle respecte la syntaxe suivante : “Mois Jour, Année”, avec “Mois” le nom du mois (August), “Jour” le numéro du jour sur deux chiffres (29) et “Année” l’année de la date (2019).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "toc_depth": 4
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

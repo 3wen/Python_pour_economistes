@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Python pour les économistes</title>
-  <meta name="description" content="Python pour les économistes">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Fonctions | Python pour les économistes</title>
+  <meta name="description" content="8 Fonctions | Python pour les économistes" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Python pour les économistes" />
+  <meta property="og:title" content="8 Fonctions | Python pour les économistes" />
   <meta property="og:type" content="book" />
-  
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Python pour les économistes" />
+  <meta name="twitter:title" content="8 Fonctions | Python pour les économistes" />
   
   
   
 
-<meta name="author" content="Ewen Gallic">
+<meta name="author" content="Ewen Gallic" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="boucles.html">
-<link rel="next" href="numpy.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="boucles.html"/>
+<link rel="next" href="numpy.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -46,44 +47,104 @@
 
 
 
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="styles/style.css" type="text/css" />
@@ -99,20 +160,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a><ul>
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="propos-liminaires.html"><a href="propos-liminaires.html#objectifs"><i class="fa fa-check"></i><b>0.1</b> Objectifs</a></li>
-<li class="chapter" data-level="0.2" data-path="propos-liminaires.html"><a href="propos-liminaires.html#a-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
+<li class="chapter" data-level="0.2" data-path="python_for_economists.html"><a href="#%C3%A0-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a><ul>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
 <li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
 <li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
 <li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a><ul>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
 <li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
 </ul></li>
@@ -120,195 +185,231 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
 <li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="types-de-donnees.html"><a href="types-de-donnees.html"><i class="fa fa-check"></i><b>2</b> Types de données</a><ul>
-<li class="chapter" data-level="2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#type-chaines-concatenation"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
-<li class="chapter" data-level="2.1.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
-<li class="chapter" data-level="2.1.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#methodes-disponibles-avec-les-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
-<li class="chapter" data-level="2.1.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
-<li class="chapter" data-level="2.1.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+<li class="chapter" data-level="2" data-path="python_for_economists.html"><a href="#types-de-donn%C3%A9es"><i class="fa fa-check"></i><b>2</b> Types de données</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="python_for_economists.html"><a href="#cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-données.html"><a href="types-de-données.html"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-données.html"><a href="types-de-données.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-données.html"><a href="types-de-données.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-données.html"><a href="types-de-données.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#valeurs-numeriques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
-<li class="chapter" data-level="2.2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombre-a-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
-<li class="chapter" data-level="2.2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombres-complexes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
-<li class="chapter" data-level="2.2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+<li class="chapter" data-level="2.2" data-path="python_for_economists.html"><a href="#valeurs-num%C3%A9riques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-données.html"><a href="types-de-données.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="python_for_economists.html"><a href="#nombre-%C3%A0-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="python_for_economists.html"><a href="#nombres-compl%C3%A8xes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-données.html"><a href="types-de-données.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#booleens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
-<li class="chapter" data-level="2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
-<li class="chapter" data-level="2.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
-<li class="chapter" data-level="2.5.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+<li class="chapter" data-level="2.3" data-path="python_for_economists.html"><a href="#bool%C3%A9ens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-données.html"><a href="types-de-données.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-données.html"><a href="types-de-données.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-données.html"><a href="types-de-données.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-données.html"><a href="types-de-données.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-données.html"><a href="types-de-données.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a><ul>
-<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a><ul>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#structure-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
 <li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
 <li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
 <li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
 <li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="structures.html"><a href="structures.html#extraction-des-elements"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
 <li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a><ul>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
 <li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
 <li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
 <li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="structures.html"><a href="structures.html#extraction-des-elements-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
-<li class="chapter" data-level="3.4.2" data-path="structures.html"><a href="structures.html#cles-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="python_for_economists.html"><a href="#cl%C3%A9s-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
 <li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
 <li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
 <li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
 <li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="operateurs.html"><a href="operateurs.html"><i class="fa fa-check"></i><b>4</b> Opérateurs</a><ul>
-<li class="chapter" data-level="4.1" data-path="operateurs.html"><a href="operateurs.html#operateurs-arithmetiques"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="operateurs.html"><a href="operateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
-<li class="chapter" data-level="4.1.2" data-path="operateurs.html"><a href="operateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
-<li class="chapter" data-level="4.1.3" data-path="operateurs.html"><a href="operateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
-<li class="chapter" data-level="4.1.4" data-path="operateurs.html"><a href="operateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
-<li class="chapter" data-level="4.1.5" data-path="operateurs.html"><a href="operateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
-<li class="chapter" data-level="4.1.6" data-path="operateurs.html"><a href="operateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
-<li class="chapter" data-level="4.1.7" data-path="operateurs.html"><a href="operateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
-<li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
-<li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
+<li class="chapter" data-level="4" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs"><i class="fa fa-check"></i><b>4</b> Opérateurs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opérateurs.html"><a href="opérateurs.html"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="opérateurs.html"><a href="opérateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
+<li class="chapter" data-level="4.1.2" data-path="opérateurs.html"><a href="opérateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
+<li class="chapter" data-level="4.1.3" data-path="opérateurs.html"><a href="opérateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
+<li class="chapter" data-level="4.1.4" data-path="opérateurs.html"><a href="opérateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
+<li class="chapter" data-level="4.1.5" data-path="opérateurs.html"><a href="opérateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="opérateurs.html"><a href="opérateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="opérateurs.html"><a href="opérateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
+<li class="chapter" data-level="4.1.8" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
-<li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
-<li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
+<li class="chapter" data-level="4.2" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="python_for_economists.html"><a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
+<li class="chapter" data-level="4.2.2" data-path="python_for_economists.html"><a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opérateurs.html"><a href="opérateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="operateurs.html"><a href="operateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
-<li class="chapter" data-level="4.3.2" data-path="operateurs.html"><a href="operateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
-<li class="chapter" data-level="4.3.3" data-path="operateurs.html"><a href="operateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+<li class="chapter" data-level="4.3" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opérateurs.html"><a href="opérateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opérateurs.html"><a href="opérateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opérateurs.html"><a href="opérateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
-<li class="chapter" data-level="4.5" data-path="operateurs.html"><a href="operateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
-<li class="chapter" data-level="4.6" data-path="operateurs.html"><a href="operateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
+<li class="chapter" data-level="4.4" data-path="opérateurs.html"><a href="opérateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="opérateurs.html"><a href="opérateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="opérateurs.html"><a href="opérateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a><ul>
-<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#charger-donnees"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
-<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
-<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="5" data-path="python_for_economists.html"><a href="#chargement-et-sauvegarde-de-donn%C3%A9es"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#exporter-des-donnees"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
-<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
-<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
-<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
+<li class="chapter" data-level="5.2" data-path="python_for_economists.html"><a href="#exporter-des-donn%C3%A9es"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
+<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
 <li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
 <li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
 <li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
+<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
 <li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
-<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a><ul>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="python_for_economists.html"><a href="#d%C3%A9finition"><i class="fa fa-check"></i><b>8.1</b> Définition</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
-<li class="chapter" data-level="8.1.2" data-path="fonctions.html"><a href="fonctions.html#parametres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+<li class="chapter" data-level="8.1.2" data-path="python_for_economists.html"><a href="#param%C3%A8tres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
+<li class="chapter" data-level="8.2" data-path="python_for_economists.html"><a href="#port%C3%A9e"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
 <li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a><ul>
-<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="numpy.html"><a href="numpy.html#creation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="python_for_economists.html"><a href="#cr%C3%A9ation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
 <li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
-<li class="chapter" data-level="9.1.3" data-path="numpy.html"><a href="numpy.html#extraction-des-elements-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
+<li class="chapter" data-level="9.1.3" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
 <li class="chapter" data-level="9.1.4" data-path="numpy.html"><a href="numpy.html#modification-3"><i class="fa fa-check"></i><b>9.1.4</b> Modification</a></li>
 <li class="chapter" data-level="9.1.5" data-path="numpy.html"><a href="numpy.html#copie-de-tableau"><i class="fa fa-check"></i><b>9.1.5</b> Copie de tableau</a></li>
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
 <li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.12" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-et-fonctions-math%C3%A9matiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
+<li class="chapter" data-level="9.2" data-path="python_for_economists.html"><a href="#g%C3%A9n%C3%A9ration-de-nombres-pseudo-al%C3%A9atoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="pandas.html"><a href="pandas.html#series"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="python_for_economists.html"><a href="#s%C3%A9ries"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
 <li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="pandas.html"><a href="pandas.html#pour-les-series"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="python_for_economists.html"><a href="#pour-les-s%C3%A9ries"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
 <li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#renommage-des-colonnes-dans-un-dataframe"><i class="fa fa-check"></i><b>10.3</b> Renommage des colonnes dans un dataframe</a></li>
-<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a><ul>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#test-dappartenance-2"><i class="fa fa-check"></i><b>10.4.1</b> Test d’appartenance</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="pandas.html"><a href="pandas.html#reperer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="python_for_economists.html"><a href="#rep%C3%A9rer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
 <li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.2</b> Retirer les observations avec valeurs manquantes</a></li>
 <li class="chapter" data-level="10.5.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.5.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-une-serie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
-<li class="chapter" data-level="10.6.2" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a><ul>
-<li class="chapter" data-level="10.7.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
 <li class="chapter" data-level="10.7.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.7.2</b> Pour un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a><ul>
-<li class="chapter" data-level="10.8.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
 <li class="chapter" data-level="10.8.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe-1"><i class="fa fa-check"></i><b>10.8.2</b> Pour un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
-<li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
+<li class="chapter" data-level="10.9" data-path="python_for_economists.html"><a href="#retrait-des-valeurs-dupliqu%C3%A9es"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.10" data-path="python_for_economists.html"><a href="#op%C3%A9rations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a>
+<ul>
 <li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
-<li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
+<li class="chapter" data-level="10.12" data-path="python_for_economists.html"><a href="#concat%C3%A9nation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
 <li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#pandas-jointures"><i class="fa fa-check"></i><b>10.13</b> Jointures</a></li>
-<li class="chapter" data-level="10.14" data-path="pandas.html"><a href="pandas.html#agregation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a><ul>
-<li class="chapter" data-level="10.14.1" data-path="pandas.html"><a href="pandas.html#agregation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
-<li class="chapter" data-level="10.14.2" data-path="pandas.html"><a href="pandas.html#agregation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
+<li class="chapter" data-level="10.14" data-path="python_for_economists.html"><a href="#agr%C3%A9gation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a>
+<ul>
+<li class="chapter" data-level="10.14.1" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
+<li class="chapter" data-level="10.14.2" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
 </ul></li>
 <li class="chapter" data-level="10.15" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.15</b> Stacking et unstacking</a></li>
-<li class="chapter" data-level="10.16" data-path="pandas.html"><a href="pandas.html#exportation-et-importation-de-donnees"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a><ul>
-<li class="chapter" data-level="10.16.1" data-path="pandas.html"><a href="pandas.html#exportation-des-donnees"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
+<li class="chapter" data-level="10.16" data-path="python_for_economists.html"><a href="#exportation-et-importation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="python_for_economists.html"><a href="#exportation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
 </ul></li>
-<li class="chapter" data-level="10.17" data-path="pandas.html"><a href="pandas.html#importation-des-donnees"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a><ul>
+<li class="chapter" data-level="10.17" data-path="python_for_economists.html"><a href="#importation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a>
+<ul>
 <li class="chapter" data-level="10.17.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-csv"><i class="fa fa-check"></i><b>10.17.1</b> Fichiers CSV</a></li>
 <li class="chapter" data-level="10.17.2" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.17.2</b> Fichiers Excel</a></li>
 <li class="chapter" data-level="10.17.3" data-path="pandas.html"><a href="pandas.html#pandas-importation-hdf"><i class="fa fa-check"></i><b>10.17.3</b> Fichiers HDF5</a></li>
 </ul></li>
 <li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a><ul>
-<li class="chapter" data-level="11.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-matplotlib"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#geometries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
-<li class="chapter" data-level="11.1.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
-<li class="chapter" data-level="11.1.3" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
-<li class="chapter" data-level="11.1.4" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
-<li class="chapter" data-level="11.1.5" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+<li class="chapter" data-level="11" data-path="python_for_economists.html"><a href="#visualisation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="python_for_economists.html"><a href="#g%C3%A9om%C3%A9tries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
 </ul>
@@ -328,60 +429,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fonctions" class="section level1">
-<h1><span class="header-section-number">8</span> Fonctions</h1>
+<div id="fonctions" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Fonctions<a href="fonctions.html#fonctions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>La plupart du temps, on utilise les fonctions de base ou contenues dans des modules. Cela dit, lorsque l’on récupère des données en ligne ou qu’on doit mettre en forme des données importées depuis diverses sources, il arrive qu’il soit nécessaire de créer ses propres fonctions. L’avantage de créer ses fonctions se révèle dès lors qu’on doit effectuer une suite d’instruction de manière répétée, avec quelques légères différences (on peut alors appliquer les fonctions au sein d’une boucle, comme nous l’avons abordé dans le Chapitre <a href="boucles.html#boucles">7</a>).</p>
-<div id="definition" class="section level2">
-<h2><span class="header-section-number">8.1</span> Définition</h2>
+<div id="définition" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Définition<a href="#d%C3%A9finition" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Une fonction est déclarée à l’aide du mot clé <code>keyword</code>. Ce qu’elle renvoie est retourné à l’aide du mot clé <code>return</code>.</p>
 <p>La syntaxe est la suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> nom_fonction(parametres):
-  corps_de_la_fonction</code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb637-1"><a href="fonctions.html#cb637-1" tabindex="-1"></a><span class="kw">def</span> nom_fonction(parametres):</span>
+<span id="cb637-2"><a href="fonctions.html#cb637-2" tabindex="-1"></a>  corps_de_la_fonction</span></code></pre></div>
 <p>Une fois que la fonction est définie, on l’appelle en faisant référence à son nom :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">nom_fonction()</code></pre></div>
-<p>Il suffit donc de rajouter des parenthèses au nom de la fonction pour l’appeler. En effet, <code>nom_fonction</code> désigne l’objet qui contient la fonction qui est appelée à l’aide de l’expression <code>nom_fonction()</code>. Par exemple, si on souhaite définir la fonction qui calcule le carré d’un nombre, voici ce que l’on peut écrire :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
-  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb638-1"><a href="fonctions.html#cb638-1" tabindex="-1"></a>nom_fonction()</span></code></pre></div>
+<p>Il suffit donc de rajouter des parenthèses au nom de la fonction pour l’appeler. En effet, <code>nom_fonction</code> désigne l’objet qui contient la fonction qui est appelée à l’aide de l’expression <code>nom_fonction()</code>.
+Par exemple, si on souhaite définir la fonction qui calcule le carré d’un nombre, voici ce que l’on peut écrire :</p>
+<div class="sourceCode" id="cb639"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb639-1"><a href="fonctions.html#cb639-1" tabindex="-1"></a><span class="kw">def</span> carre(x):</span>
+<span id="cb639-2"><a href="fonctions.html#cb639-2" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span></code></pre></div>
 <p>On peut ensuite l’appeler :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(carre(<span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb640-1"><a href="fonctions.html#cb640-1" tabindex="-1"></a><span class="bu">print</span>(carre(<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(carre(<span class="op">-</span><span class="dv">3</span>))</code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb642-1"><a href="fonctions.html#cb642-1" tabindex="-1"></a><span class="bu">print</span>(carre(<span class="op">-</span><span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## 9</code></pre>
-<div id="ajout-dune-description" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Ajout d’une description</h3>
+<div id="ajout-dune-description" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Ajout d’une description<a href="fonctions.html#ajout-dune-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Il est possible (et fortement recommandé) d’ajouter une description de ce que la fonction fait, en adoptant des conventions (c.f. <a href="https://www.python.org/dev/peps/pep-0257/" class="uri">https://www.python.org/dev/peps/pep-0257/</a>) =</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
-  <span class="co">&quot;&quot;&quot;retourne le carré de x&quot;&quot;&quot;</span>
-  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb644-1"><a href="fonctions.html#cb644-1" tabindex="-1"></a><span class="kw">def</span> carre(x):</span>
+<span id="cb644-2"><a href="fonctions.html#cb644-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;retourne le carré de x&quot;&quot;&quot;</span></span>
+<span id="cb644-3"><a href="fonctions.html#cb644-3" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span></code></pre></div>
 <p>De fait, quand on évalue ensuite l’instruction suivante, la description de la fonction s’affiche :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(carre)</code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="fonctions.html#cb645-1" tabindex="-1"></a>?carre</span></code></pre></div>
 <p>Dans Jupyter Notebook, après avoir écrit le nom de la fonction, on peut aussi afficher la description en appuyant sur les touches du clavier <code>Shift</code> et <code>Tabulation</code>.</p>
 </div>
-<div id="parametres-dune-fonction" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Paramètres d’une fonction</h3>
+<div id="paramètres-dune-fonction" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Paramètres d’une fonction<a href="#param%C3%A8tres-dune-fonction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dans l’exemple de la fonction <code>carre()</code> que nous avons créée, nous avons renseigné un seul paramètre, appelé <code>x</code>. Si la fonction que l’on souhaite créer nécessite plusieurs paramètres, il faut les séparer par une virgule.</p>
 <p>Considérons par exemple le problème suivant. Nous disposons d’une fonction de production <span class="math inline">\(Y(L, K, M)\)</span>, qui dépend du nombre de travailleurs <span class="math inline">\(L\)</span> et de la quantité de capital <span class="math inline">\(K\)</span>, et du matériel <span class="math inline">\(M\)</span>, telle que <span class="math inline">\(Y(L, K, M) = L^{0.3} K^{0.5}M^2\)</span>. Cette fonction pourra s’écrire en Python de la manière suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production(l, k, m):
-  <span class="co">&quot;&quot;&quot;</span>
-<span class="co">  Retourne la valeur de la production en fonction</span>
-<span class="co">  du travail, du capital et du matériel.</span>
-<span class="co">  </span>
-<span class="co">  Keyword arguments:</span>
-<span class="co">  l -- travail (float)</span>
-<span class="co">  k -- capital (float)</span>
-<span class="co">  m -- matériel (float)</span>
-<span class="co">  &quot;&quot;&quot;</span>
-  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
-<div id="appel-sans-noms-de-parametres" class="section level4">
-<h4><span class="header-section-number">8.1.2.1</span> Appel sans noms de paramètres</h4>
+<div class="sourceCode" id="cb646"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb646-1"><a href="fonctions.html#cb646-1" tabindex="-1"></a><span class="kw">def</span> production(l, k, m):</span>
+<span id="cb646-2"><a href="fonctions.html#cb646-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb646-3"><a href="fonctions.html#cb646-3" tabindex="-1"></a><span class="co">  Retourne la valeur de la production en fonction</span></span>
+<span id="cb646-4"><a href="fonctions.html#cb646-4" tabindex="-1"></a><span class="co">  du travail, du capital et du matériel.</span></span>
+<span id="cb646-5"><a href="fonctions.html#cb646-5" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb646-6"><a href="fonctions.html#cb646-6" tabindex="-1"></a><span class="co">  Keyword arguments:</span></span>
+<span id="cb646-7"><a href="fonctions.html#cb646-7" tabindex="-1"></a><span class="co">  l -- travail (float)</span></span>
+<span id="cb646-8"><a href="fonctions.html#cb646-8" tabindex="-1"></a><span class="co">  k -- capital (float)</span></span>
+<span id="cb646-9"><a href="fonctions.html#cb646-9" tabindex="-1"></a><span class="co">  m -- matériel (float)</span></span>
+<span id="cb646-10"><a href="fonctions.html#cb646-10" tabindex="-1"></a><span class="co">  &quot;&quot;&quot;</span></span>
+<span id="cb646-11"><a href="fonctions.html#cb646-11" tabindex="-1"></a>  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</span></code></pre></div>
+<div id="appel-sans-noms-de-paramètres" class="section level4 hasAnchor" number="8.1.2.1">
+<h4><span class="header-section-number">8.1.2.1</span> Appel sans noms de paramètres<a href="#appel-sans-noms-de-param%C3%A8tres" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En reprenant l’exemple précédent, si on nous donne <span class="math inline">\(L = 60\)</span> et <span class="math inline">\(K = 42\)</span> et <span class="math inline">\(M = 40\)</span>, on peut en déduire la production :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">prod_val <span class="op">=</span> production(<span class="dv">60</span>, <span class="dv">42</span>, <span class="dv">40</span>)
-<span class="bu">print</span>(prod_val)</code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb647-1"><a href="fonctions.html#cb647-1" tabindex="-1"></a>prod_val <span class="op">=</span> production(<span class="dv">60</span>, <span class="dv">42</span>, <span class="dv">40</span>)</span>
+<span id="cb647-2"><a href="fonctions.html#cb647-2" tabindex="-1"></a><span class="bu">print</span>(prod_val)</span></code></pre></div>
 <pre><code>## 46.289449781254994</code></pre>
 <p>On peut noter que le nom des paramètres n’a pas été mentionné ici. Lors de l’appel de la fonction, la valeur du premier paramètre a été attribué au paramètre défini en premier (<code>l</code>), celle du second au second paramètre (<code>k</code>) et enfin celle du troisième au troisième paramètre (<code>m</code>).</p>
 </div>
-<div id="parametres-positionnels-parametres-par-mots-cles" class="section level4">
-<h4><span class="header-section-number">8.1.2.2</span> Paramètres positionnels paramètres par mots-clés</h4>
+<div id="paramètres-positionnels-paramètres-par-mots-clés" class="section level4 hasAnchor" number="8.1.2.2">
+<h4><span class="header-section-number">8.1.2.2</span> Paramètres positionnels paramètres par mots-clés<a href="#param%C3%A8tres-positionnels-param%C3%A8tres-par-mots-cl%C3%A9s" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Il existe deux types de paramètres que l’on peut donner à une fonction en Python :</p>
 <ul>
 <li>les paramètres positionnels ;</li>
@@ -390,29 +492,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Contrairement aux paramètres positionnels, les paramètres par mot clé ont une valeur attribuée par défaut. On parle de paramètre formel pour désigner les paramètres de la fonction (les variables utilisées dans le corps de la fonction) et de paramètre effectif pour désigner la valeur que l’on souhaite donner au paramètre formel. Pour définir la valeur à donner à un paramètre formel, on utilise le symbol d’égalité. Lors de l’appel de la fonction, si l’utilisateur ne définit pas explicitement une valeur, celle par défaut sera affectée. Ainsi, il n’est pas forcément nécessaire de préciser les paramètres par mots-clés lors de l’appel de la fonction.</p>
 <p>Il est important de noter que les arguments positionnels (ceux qui n’ont pas de valeur par défaut) doivent apparaître en premier dans la liste des paramètres.</p>
 <p>Prenons un exemple avec deux paramètres positionnels (<code>l</code> et <code>m</code>) et un paramètre par mot-clé (<code>k</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production_2(l, m, k<span class="op">=</span><span class="dv">42</span>):
-  <span class="co">&quot;&quot;&quot;</span>
-<span class="co">  Retourne la valeur de la production en fonction</span>
-<span class="co">  du travail, du capital et du matériel.</span>
-<span class="co">  </span>
-<span class="co">  Keyword arguments:</span>
-<span class="co">  l -- travail (float)</span>
-<span class="co">  m -- matériel (float)</span>
-<span class="co">  k -- capital (float) (default 42)</span>
-<span class="co">  &quot;&quot;&quot;</span>
-  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb649-1"><a href="fonctions.html#cb649-1" tabindex="-1"></a><span class="kw">def</span> production_2(l, m, k<span class="op">=</span><span class="dv">42</span>):</span>
+<span id="cb649-2"><a href="fonctions.html#cb649-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb649-3"><a href="fonctions.html#cb649-3" tabindex="-1"></a><span class="co">  Retourne la valeur de la production en fonction</span></span>
+<span id="cb649-4"><a href="fonctions.html#cb649-4" tabindex="-1"></a><span class="co">  du travail, du capital et du matériel.</span></span>
+<span id="cb649-5"><a href="fonctions.html#cb649-5" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb649-6"><a href="fonctions.html#cb649-6" tabindex="-1"></a><span class="co">  Keyword arguments:</span></span>
+<span id="cb649-7"><a href="fonctions.html#cb649-7" tabindex="-1"></a><span class="co">  l -- travail (float)</span></span>
+<span id="cb649-8"><a href="fonctions.html#cb649-8" tabindex="-1"></a><span class="co">  m -- matériel (float)</span></span>
+<span id="cb649-9"><a href="fonctions.html#cb649-9" tabindex="-1"></a><span class="co">  k -- capital (float) (default 42)</span></span>
+<span id="cb649-10"><a href="fonctions.html#cb649-10" tabindex="-1"></a><span class="co">  &quot;&quot;&quot;</span></span>
+<span id="cb649-11"><a href="fonctions.html#cb649-11" tabindex="-1"></a>  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</span></code></pre></div>
 <p>La fonction <code>production_2()</code> peut s’appeler, pour donner le même résultat, des trois manières suivantes :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># En nommant tous les paramètres, en ommettant k</span>
-prod_val_1 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>)
-<span class="co"># En nommant tous les paramètres et en précisant k</span>
-prod_val_2 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)
-<span class="co"># En nommant uniquement le paramètre mot-clé k</span>
-prod_val_3 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)
-<span class="co"># En ne nommant aucun paramètre</span>
-prod_val_4 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>)
-
-res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
-<span class="bu">print</span>(res)</code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb650-1"><a href="fonctions.html#cb650-1" tabindex="-1"></a><span class="co"># En nommant tous les paramètres, en ommettant k</span></span>
+<span id="cb650-2"><a href="fonctions.html#cb650-2" tabindex="-1"></a>prod_val_1 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>)</span>
+<span id="cb650-3"><a href="fonctions.html#cb650-3" tabindex="-1"></a><span class="co"># En nommant tous les paramètres et en précisant k</span></span>
+<span id="cb650-4"><a href="fonctions.html#cb650-4" tabindex="-1"></a>prod_val_2 <span class="op">=</span> production_2(l <span class="op">=</span> <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb650-5"><a href="fonctions.html#cb650-5" tabindex="-1"></a><span class="co"># En nommant uniquement le paramètre mot-clé k</span></span>
+<span id="cb650-6"><a href="fonctions.html#cb650-6" tabindex="-1"></a>prod_val_3 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, k <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb650-7"><a href="fonctions.html#cb650-7" tabindex="-1"></a><span class="co"># En ne nommant aucun paramètre</span></span>
+<span id="cb650-8"><a href="fonctions.html#cb650-8" tabindex="-1"></a>prod_val_4 <span class="op">=</span> production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>)</span>
+<span id="cb650-9"><a href="fonctions.html#cb650-9" tabindex="-1"></a></span>
+<span id="cb650-10"><a href="fonctions.html#cb650-10" tabindex="-1"></a>res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]</span>
+<span id="cb650-11"><a href="fonctions.html#cb650-11" tabindex="-1"></a><span class="bu">print</span>(res)</span></code></pre></div>
 <pre><code>## [41.59215573604822, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
 
 <div class="remarque">
@@ -423,168 +525,163 @@ res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
 <li>il n’y a pas d’entre deux.</li>
 </ul>
 </div>
-
 <p>Du moment que tous les paramètres positionnels sont nommés lors de l’appel, on peut les faire figurer dans des ordres différents :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production_3(a, l, m <span class="op">=</span> <span class="dv">40</span>, k<span class="op">=</span><span class="dv">42</span>):
-  <span class="co">&quot;&quot;&quot;</span>
-<span class="co">  Retourne la valeur de la production en fonction</span>
-<span class="co">  de la productivité, du travail, du capital et du matériel.</span>
-<span class="co">  </span>
-<span class="co">  Keyword arguments:</span>
-<span class="co">  a -- productivité totale des facteurs (float)</span>
-<span class="co">  l -- travail (float)</span>
-<span class="co">  m -- matériel (float) (default 40)</span>
-<span class="co">  k -- capital (float) (default 42)</span>
-<span class="co">  &quot;&quot;&quot;</span>
-  <span class="cf">return</span> a <span class="op">*</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)
-  
-prod_val_1 <span class="op">=</span> production_3(<span class="dv">1</span>, <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">38</span>)
-prod_val_2 <span class="op">=</span> production_3(a <span class="op">=</span> <span class="dv">1</span>, l <span class="op">=</span> <span class="dv">42</span>)
-prod_val_3 <span class="op">=</span> production_3(l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
-prod_val_4 <span class="op">=</span> production_3(m <span class="op">=</span> <span class="dv">40</span>, l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)
-
-res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]
-<span class="bu">print</span>(res)</code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb652-1"><a href="fonctions.html#cb652-1" tabindex="-1"></a><span class="kw">def</span> production_3(a, l, m <span class="op">=</span> <span class="dv">40</span>, k<span class="op">=</span><span class="dv">42</span>):</span>
+<span id="cb652-2"><a href="fonctions.html#cb652-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb652-3"><a href="fonctions.html#cb652-3" tabindex="-1"></a><span class="co">  Retourne la valeur de la production en fonction</span></span>
+<span id="cb652-4"><a href="fonctions.html#cb652-4" tabindex="-1"></a><span class="co">  de la productivité, du travail, du capital et du matériel.</span></span>
+<span id="cb652-5"><a href="fonctions.html#cb652-5" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb652-6"><a href="fonctions.html#cb652-6" tabindex="-1"></a><span class="co">  Keyword arguments:</span></span>
+<span id="cb652-7"><a href="fonctions.html#cb652-7" tabindex="-1"></a><span class="co">  a -- productivité totale des facteurs (float)</span></span>
+<span id="cb652-8"><a href="fonctions.html#cb652-8" tabindex="-1"></a><span class="co">  l -- travail (float)</span></span>
+<span id="cb652-9"><a href="fonctions.html#cb652-9" tabindex="-1"></a><span class="co">  m -- matériel (float) (default 40)</span></span>
+<span id="cb652-10"><a href="fonctions.html#cb652-10" tabindex="-1"></a><span class="co">  k -- capital (float) (default 42)</span></span>
+<span id="cb652-11"><a href="fonctions.html#cb652-11" tabindex="-1"></a><span class="co">  &quot;&quot;&quot;</span></span>
+<span id="cb652-12"><a href="fonctions.html#cb652-12" tabindex="-1"></a>  <span class="cf">return</span> a <span class="op">*</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</span>
+<span id="cb652-13"><a href="fonctions.html#cb652-13" tabindex="-1"></a>  </span>
+<span id="cb652-14"><a href="fonctions.html#cb652-14" tabindex="-1"></a>prod_val_1 <span class="op">=</span> production_3(<span class="dv">1</span>, <span class="dv">42</span>, m <span class="op">=</span> <span class="dv">38</span>)</span>
+<span id="cb652-15"><a href="fonctions.html#cb652-15" tabindex="-1"></a>prod_val_2 <span class="op">=</span> production_3(a <span class="op">=</span> <span class="dv">1</span>, l <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb652-16"><a href="fonctions.html#cb652-16" tabindex="-1"></a>prod_val_3 <span class="op">=</span> production_3(l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb652-17"><a href="fonctions.html#cb652-17" tabindex="-1"></a>prod_val_4 <span class="op">=</span> production_3(m <span class="op">=</span> <span class="dv">40</span>, l <span class="op">=</span> <span class="dv">42</span>, a <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb652-18"><a href="fonctions.html#cb652-18" tabindex="-1"></a></span>
+<span id="cb652-19"><a href="fonctions.html#cb652-19" tabindex="-1"></a>res <span class="op">=</span> [prod_val_1, prod_val_2, prod_val_3, prod_val_4]</span>
+<span id="cb652-20"><a href="fonctions.html#cb652-20" tabindex="-1"></a><span class="bu">print</span>(res)</span></code></pre></div>
 <pre><code>## [41.16765711449734, 41.59215573604822, 41.59215573604822, 41.59215573604822]</code></pre>
 </div>
-<div id="fonction-comme-parametre" class="section level4">
-<h4><span class="header-section-number">8.1.2.3</span> Fonction comme paramètre</h4>
+<div id="fonction-comme-paramètre" class="section level4 hasAnchor" number="8.1.2.3">
+<h4><span class="header-section-number">8.1.2.3</span> Fonction comme paramètre<a href="#fonction-comme-param%C3%A8tre" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Une fonction peut être fournie en paramètre à une autre fonction.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
-  <span class="co">&quot;&quot;&quot;Retourne le carré de x&quot;&quot;&quot;</span>
-  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span>
-  
-<span class="kw">def</span> appliquer_carre_4(fun):
-  <span class="co">&quot;&quot;&quot;Applique la fonction `fun` à 4&quot;&quot;&quot;</span>
-  <span class="cf">return</span> fun(<span class="dv">4</span>)
-
-<span class="bu">print</span>(appliquer_carre_4(carre))</code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb654-1"><a href="fonctions.html#cb654-1" tabindex="-1"></a><span class="kw">def</span> carre(x):</span>
+<span id="cb654-2"><a href="fonctions.html#cb654-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;Retourne le carré de x&quot;&quot;&quot;</span></span>
+<span id="cb654-3"><a href="fonctions.html#cb654-3" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb654-4"><a href="fonctions.html#cb654-4" tabindex="-1"></a>  </span>
+<span id="cb654-5"><a href="fonctions.html#cb654-5" tabindex="-1"></a><span class="kw">def</span> appliquer_carre_4(fun):</span>
+<span id="cb654-6"><a href="fonctions.html#cb654-6" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;Applique la fonction `fun` à 4&quot;&quot;&quot;</span></span>
+<span id="cb654-7"><a href="fonctions.html#cb654-7" tabindex="-1"></a>  <span class="cf">return</span> fun(<span class="dv">4</span>)</span>
+<span id="cb654-8"><a href="fonctions.html#cb654-8" tabindex="-1"></a></span>
+<span id="cb654-9"><a href="fonctions.html#cb654-9" tabindex="-1"></a><span class="bu">print</span>(appliquer_carre_4(carre))</span></code></pre></div>
 <pre><code>## 16</code></pre>
 </div>
 </div>
 </div>
-<div id="portee" class="section level2">
-<h2><span class="header-section-number">8.2</span> Portée</h2>
+<div id="portée" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Portée<a href="#port%C3%A9e" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lorsque une fonction est appelée, le corps de cette fonction est interprété. Les variables ayant été définies dans le corps de la fonction sont assignées à un <em>namespace</em> local. C’est-à-dire qu’elles ne vivent qu’à l’intérieur ce cet espace local, qui est créé au moment de l’appel de la fonction et détruit à la fin de celui ci. On parle alors de portée des variables. Ainsi, une variable ayant une portée locale (assignée dans l’espace local) peut avoir le même nom qu’une variable globale (définie dans l’espace de travail global), sans pour autant désigner le même objet, ou écraser cet objet.</p>
 <p>Regardons cela à travers un exemple.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Définition d&#39;une variable globale :</span>
-valeur <span class="op">=</span> <span class="dv">1</span>
-
-<span class="co"># Définition d&#39;une variable locale à la fonction f</span>
-<span class="kw">def</span> f(x):
-  valeur <span class="op">=</span> <span class="dv">2</span>
-  nouvelle_valeur <span class="op">=</span> <span class="dv">3</span>
-  <span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)
-  <span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)
-  <span class="cf">return</span> x <span class="op">+</span> valeur</code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb656-1"><a href="fonctions.html#cb656-1" tabindex="-1"></a><span class="co"># Définition d&#39;une variable globale :</span></span>
+<span id="cb656-2"><a href="fonctions.html#cb656-2" tabindex="-1"></a>valeur <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb656-3"><a href="fonctions.html#cb656-3" tabindex="-1"></a></span>
+<span id="cb656-4"><a href="fonctions.html#cb656-4" tabindex="-1"></a><span class="co"># Définition d&#39;une variable locale à la fonction f</span></span>
+<span id="cb656-5"><a href="fonctions.html#cb656-5" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb656-6"><a href="fonctions.html#cb656-6" tabindex="-1"></a>  valeur <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb656-7"><a href="fonctions.html#cb656-7" tabindex="-1"></a>  nouvelle_valeur <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb656-8"><a href="fonctions.html#cb656-8" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)</span>
+<span id="cb656-9"><a href="fonctions.html#cb656-9" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)</span>
+<span id="cb656-10"><a href="fonctions.html#cb656-10" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> valeur</span></code></pre></div>
 <p>Appelons la fonction <code>f()</code>, puis regardons la valeur de <code>valeur</code> et celle de <code>nouvelle_valeur</code> après l’exécution de la fonction.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">res <span class="op">=</span> f(<span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb657-1"><a href="fonctions.html#cb657-1" tabindex="-1"></a>res <span class="op">=</span> f(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## valeur vaut : 2
 ## nouvelle_valeur vaut : 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)</code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb659-1"><a href="fonctions.html#cb659-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;valeur vaut :&quot;</span>, valeur)</span></code></pre></div>
 <pre><code>## valeur vaut : 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)</code></pre></div>
-<pre><code>## NameError: name &#39;nouvelle_valeur&#39; is not defined
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb661"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb661-1"><a href="fonctions.html#cb661-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;nouvelle_valeur vaut :&quot;</span>, nouvelle_valeur)</span></code></pre></div>
+<pre><code>## NameError: name &#39;nouvelle_valeur&#39; is not defined</code></pre>
 <p>Comme on peut le constater, durant l’appel, la variable locale du nom <code>valeur</code> valait 2. Cette variable ne faisait pas référence à la variable du même nom définie dans l’environnement global. À l’issue de l’exécution de la fonction <code>f()</code>, cette variable <code>valeur</code> locale est supprimée, et il en est de même pour la variable locale <code>nouvelle_valeur</code>, qui n’existe pas dans l’environnement gloabl (d’où l’erreur retournée).</p>
 <p>Sans trop rentrer trop dans les détails, il semble important de connaître quelques principes à propos de la portée des variables. Les variables sont définies dans des environnements, qui sont embriqués les uns dans les autres. Si une variable n’est pas définie dans le corps d’une fonction, Python ira chercher dans un environnement parent.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">valeur <span class="op">=</span> <span class="dv">1</span>
-<span class="kw">def</span> f(x):
-  <span class="cf">return</span> x <span class="op">+</span> valeur
-  
-<span class="bu">print</span>(f(<span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb663-1"><a href="fonctions.html#cb663-1" tabindex="-1"></a>valeur <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb663-2"><a href="fonctions.html#cb663-2" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb663-3"><a href="fonctions.html#cb663-3" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> valeur</span>
+<span id="cb663-4"><a href="fonctions.html#cb663-4" tabindex="-1"></a>  </span>
+<span id="cb663-5"><a href="fonctions.html#cb663-5" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## 3</code></pre>
 <p>Si on définit une fonction à l’intérieur d’une autre fonction, et qu’on appelle une variable non définie dans le corps de cette fonction, Python ira chercher dans l’environnement directement supérieur. S’il ne trouve pas, il ira chercher dans l’environnement encore supérieur, et ainsi de suite jusqu’à l’environnement global.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># La variable valeur n&#39;est pas définie dans</span>
-<span class="co"># l&#39;environnement local de g().</span>
-<span class="co"># Python va alors chercher dans f().</span>
-valeur <span class="op">=</span> <span class="dv">1</span>
-<span class="kw">def</span> f():
-  valeur <span class="op">=</span> <span class="dv">2</span>
-  <span class="kw">def</span> g(x):
-    <span class="cf">return</span> x <span class="op">+</span> valeur
-
-  <span class="cf">return</span> g(<span class="dv">2</span>)
-
-<span class="bu">print</span>(f())</code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb665-1"><a href="fonctions.html#cb665-1" tabindex="-1"></a><span class="co"># La variable valeur n&#39;est pas définie dans</span></span>
+<span id="cb665-2"><a href="fonctions.html#cb665-2" tabindex="-1"></a><span class="co"># l&#39;environnement local de g().</span></span>
+<span id="cb665-3"><a href="fonctions.html#cb665-3" tabindex="-1"></a><span class="co"># Python va alors chercher dans f().</span></span>
+<span id="cb665-4"><a href="fonctions.html#cb665-4" tabindex="-1"></a>valeur <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb665-5"><a href="fonctions.html#cb665-5" tabindex="-1"></a><span class="kw">def</span> f():</span>
+<span id="cb665-6"><a href="fonctions.html#cb665-6" tabindex="-1"></a>  valeur <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb665-7"><a href="fonctions.html#cb665-7" tabindex="-1"></a>  <span class="kw">def</span> g(x):</span>
+<span id="cb665-8"><a href="fonctions.html#cb665-8" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> valeur</span>
+<span id="cb665-9"><a href="fonctions.html#cb665-9" tabindex="-1"></a></span>
+<span id="cb665-10"><a href="fonctions.html#cb665-10" tabindex="-1"></a>  <span class="cf">return</span> g(<span class="dv">2</span>)</span>
+<span id="cb665-11"><a href="fonctions.html#cb665-11" tabindex="-1"></a></span>
+<span id="cb665-12"><a href="fonctions.html#cb665-12" tabindex="-1"></a><span class="bu">print</span>(f())</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># La variable valeur n&#39;est définie ni dans g() ni dans f()</span>
-<span class="co"># mais dans l&#39;environnement supérieur (ici, global)</span>
-valeur <span class="op">=</span> <span class="dv">1</span>
-<span class="kw">def</span> f():
-  <span class="kw">def</span> g(x):
-    <span class="cf">return</span> x <span class="op">+</span> valeur
-
-  <span class="cf">return</span> g(<span class="dv">2</span>)
-
-<span class="bu">print</span>(f())</code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb667-1"><a href="fonctions.html#cb667-1" tabindex="-1"></a><span class="co"># La variable valeur n&#39;est définie ni dans g() ni dans f()</span></span>
+<span id="cb667-2"><a href="fonctions.html#cb667-2" tabindex="-1"></a><span class="co"># mais dans l&#39;environnement supérieur (ici, global)</span></span>
+<span id="cb667-3"><a href="fonctions.html#cb667-3" tabindex="-1"></a>valeur <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb667-4"><a href="fonctions.html#cb667-4" tabindex="-1"></a><span class="kw">def</span> f():</span>
+<span id="cb667-5"><a href="fonctions.html#cb667-5" tabindex="-1"></a>  <span class="kw">def</span> g(x):</span>
+<span id="cb667-6"><a href="fonctions.html#cb667-6" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> valeur</span>
+<span id="cb667-7"><a href="fonctions.html#cb667-7" tabindex="-1"></a></span>
+<span id="cb667-8"><a href="fonctions.html#cb667-8" tabindex="-1"></a>  <span class="cf">return</span> g(<span class="dv">2</span>)</span>
+<span id="cb667-9"><a href="fonctions.html#cb667-9" tabindex="-1"></a></span>
+<span id="cb667-10"><a href="fonctions.html#cb667-10" tabindex="-1"></a><span class="bu">print</span>(f())</span></code></pre></div>
 <pre><code>## 3</code></pre>
 <p>Si on définit une variable dans le corps d’une fonction et que l’on souhaite qu’elle soit accessible dans l’environnement global, on peut utiliser le mot-clé <code>global</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> f(x):
-  <span class="kw">global</span> y
-  y <span class="op">=</span> x<span class="op">+</span><span class="dv">1</span>
-
-f(<span class="dv">3</span>)
-<span class="bu">print</span>(y)</code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb669-1"><a href="fonctions.html#cb669-1" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb669-2"><a href="fonctions.html#cb669-2" tabindex="-1"></a>  <span class="kw">global</span> y</span>
+<span id="cb669-3"><a href="fonctions.html#cb669-3" tabindex="-1"></a>  y <span class="op">=</span> x<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb669-4"><a href="fonctions.html#cb669-4" tabindex="-1"></a></span>
+<span id="cb669-5"><a href="fonctions.html#cb669-5" tabindex="-1"></a>f(<span class="dv">3</span>)</span>
+<span id="cb669-6"><a href="fonctions.html#cb669-6" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
 <pre><code>## 4</code></pre>
 
 <div class="remarque">
 <p>La variable que l’on souhaite définir de manière globale depuis un espace local de la fonction ne doit pas avoir le même nom d’un des paramètres.</p>
 </div>
-
 </div>
-<div id="fonctions-lambda" class="section level2">
-<h2><span class="header-section-number">8.3</span> Fonctions lambda</h2>
+<div id="fonctions-lambda" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Fonctions lambda<a href="fonctions.html#fonctions-lambda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Python propose ce que l’on appelle des fonctions lambdas, ou encore des fonctions anonymes. Une fonction lambda ne possède qu’une seule instruction dont le résultat est celui de la fonction.</p>
 <p>On les définit à l’aide du mot-clé <code>lambda</code>. La syntaxe est la suivante :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">nom_fonction <span class="op">=</span> <span class="kw">lambda</span> parametres : retour</code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb671-1"><a href="fonctions.html#cb671-1" tabindex="-1"></a>nom_fonction <span class="op">=</span> <span class="kw">lambda</span> parametres : retour</span></code></pre></div>
 <p>Les paramètres sont à séparer par des virugles.</p>
 <p>Reprenons la fonction <code>carre()</code> créée précédemment :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> carre(x):
-  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb672-1"><a href="fonctions.html#cb672-1" tabindex="-1"></a><span class="kw">def</span> carre(x):</span>
+<span id="cb672-2"><a href="fonctions.html#cb672-2" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span></code></pre></div>
 <p>La fonction lambda équivalent s’écrit :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">carre_2 <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>
-<span class="bu">print</span>(carre_2(<span class="dv">4</span>))</code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb673-1"><a href="fonctions.html#cb673-1" tabindex="-1"></a>carre_2 <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb673-2"><a href="fonctions.html#cb673-2" tabindex="-1"></a><span class="bu">print</span>(carre_2(<span class="dv">4</span>))</span></code></pre></div>
 <pre><code>## 16</code></pre>
 <p>Avec plusieurs paramètres, regardons la fonction lambda équivalente à la fonction <code>produduction()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> production(l, k, m):
-  <span class="co">&quot;&quot;&quot;</span>
-<span class="co">  Retourne la valeur de la production en fonction</span>
-<span class="co">  du travail, du capital et du matériel.</span>
-<span class="co">  </span>
-<span class="co">  Keyword arguments:</span>
-<span class="co">  l -- travail (float)</span>
-<span class="co">  k -- capital (float)</span>
-<span class="co">  m -- matériel (float)</span>
-<span class="co">  &quot;&quot;&quot;</span>
-  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">production_2 <span class="op">=</span> <span class="kw">lambda</span> l,k,m : l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)
-<span class="bu">print</span>(production(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb675-1"><a href="fonctions.html#cb675-1" tabindex="-1"></a><span class="kw">def</span> production(l, k, m):</span>
+<span id="cb675-2"><a href="fonctions.html#cb675-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb675-3"><a href="fonctions.html#cb675-3" tabindex="-1"></a><span class="co">  Retourne la valeur de la production en fonction</span></span>
+<span id="cb675-4"><a href="fonctions.html#cb675-4" tabindex="-1"></a><span class="co">  du travail, du capital et du matériel.</span></span>
+<span id="cb675-5"><a href="fonctions.html#cb675-5" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb675-6"><a href="fonctions.html#cb675-6" tabindex="-1"></a><span class="co">  Keyword arguments:</span></span>
+<span id="cb675-7"><a href="fonctions.html#cb675-7" tabindex="-1"></a><span class="co">  l -- travail (float)</span></span>
+<span id="cb675-8"><a href="fonctions.html#cb675-8" tabindex="-1"></a><span class="co">  k -- capital (float)</span></span>
+<span id="cb675-9"><a href="fonctions.html#cb675-9" tabindex="-1"></a><span class="co">  m -- matériel (float)</span></span>
+<span id="cb675-10"><a href="fonctions.html#cb675-10" tabindex="-1"></a><span class="co">  &quot;&quot;&quot;</span></span>
+<span id="cb675-11"><a href="fonctions.html#cb675-11" tabindex="-1"></a>  <span class="cf">return</span> l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb676-1"><a href="fonctions.html#cb676-1" tabindex="-1"></a>production_2 <span class="op">=</span> <span class="kw">lambda</span> l,k,m : l<span class="op">**</span><span class="fl">0.3</span> <span class="op">*</span> k<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> m<span class="op">**</span>(<span class="fl">0.2</span>)</span>
+<span id="cb676-2"><a href="fonctions.html#cb676-2" tabindex="-1"></a><span class="bu">print</span>(production(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</span></code></pre></div>
 <pre><code>## 40.987803063838406</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb678-1"><a href="fonctions.html#cb678-1" tabindex="-1"></a><span class="bu">print</span>(production_2(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">42</span>))</span></code></pre></div>
 <pre><code>## 40.987803063838406</code></pre>
 </div>
-<div id="retour-de-plusieurs-valeurs" class="section level2">
-<h2><span class="header-section-number">8.4</span> Retour de plusieurs valeurs</h2>
+<div id="retour-de-plusieurs-valeurs" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Retour de plusieurs valeurs<a href="fonctions.html#retour-de-plusieurs-valeurs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Il peut parfois être pratique de retourner plusieurs éléments en retour d’une fonction. Bien que la liste se porte candidate à cette fonctionnalité, il peut-être plus avisé d’utiliser un dictionnaire, pour pouvoir accéder aux valeurs grâce à leur clé !</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> statistics
-<span class="kw">def</span> stat_des(x):
-  <span class="co">&quot;&quot;&quot;Retourne la moyenne et l&#39;écart-type de `x`&quot;&quot;&quot;</span>
-  <span class="cf">return</span> {<span class="st">&quot;moyenne&quot;</span>: statistics.mean(x),
-  <span class="st">&quot;ecart_type&quot;</span>: statistics.stdev(x)}
-
-x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">2</span>]
-res <span class="op">=</span> stat_des(x)
-<span class="bu">print</span>(res)</code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb680-1"><a href="fonctions.html#cb680-1" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb680-2"><a href="fonctions.html#cb680-2" tabindex="-1"></a><span class="kw">def</span> stat_des(x):</span>
+<span id="cb680-3"><a href="fonctions.html#cb680-3" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;Retourne la moyenne et l&#39;écart-type de `x`&quot;&quot;&quot;</span></span>
+<span id="cb680-4"><a href="fonctions.html#cb680-4" tabindex="-1"></a>  <span class="cf">return</span> {<span class="st">&quot;moyenne&quot;</span>: statistics.mean(x),</span>
+<span id="cb680-5"><a href="fonctions.html#cb680-5" tabindex="-1"></a>  <span class="st">&quot;ecart_type&quot;</span>: statistics.stdev(x)}</span>
+<span id="cb680-6"><a href="fonctions.html#cb680-6" tabindex="-1"></a></span>
+<span id="cb680-7"><a href="fonctions.html#cb680-7" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">2</span>]</span>
+<span id="cb680-8"><a href="fonctions.html#cb680-8" tabindex="-1"></a>res <span class="op">=</span> stat_des(x)</span>
+<span id="cb680-9"><a href="fonctions.html#cb680-9" tabindex="-1"></a><span class="bu">print</span>(res)</span></code></pre></div>
 <pre><code>## {&#39;moyenne&#39;: 3.9, &#39;ecart_type&#39;: 2.8460498941515415}</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">message <span class="op">=</span> <span class="st">&quot;La moyenne vaut </span><span class="sc">{}</span><span class="st"> et l&#39;écart-type vaut </span><span class="sc">{}</span><span class="st">&quot;</span>
-<span class="bu">print</span>(message.<span class="bu">format</span>(res[<span class="st">&quot;moyenne&quot;</span>], res[<span class="st">&quot;ecart_type&quot;</span>]))</code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb682-1"><a href="fonctions.html#cb682-1" tabindex="-1"></a>message <span class="op">=</span> <span class="st">&quot;La moyenne vaut </span><span class="sc">{}</span><span class="st"> et l&#39;écart-type vaut </span><span class="sc">{}</span><span class="st">&quot;</span></span>
+<span id="cb682-2"><a href="fonctions.html#cb682-2" tabindex="-1"></a><span class="bu">print</span>(message.<span class="bu">format</span>(res[<span class="st">&quot;moyenne&quot;</span>], res[<span class="st">&quot;ecart_type&quot;</span>]))</span></code></pre></div>
 <pre><code>## La moyenne vaut 3.9 et l&#39;écart-type vaut 2.8460498941515415</code></pre>
 </div>
-<div id="exercice-6" class="section level2">
-<h2><span class="header-section-number">8.5</span> Exercice</h2>
+<div id="exercice-6" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Exercice<a href="fonctions.html#exercice-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 <div class="exframe">
 <ol style="list-style-type: decimal">
@@ -593,7 +690,6 @@ res <span class="op">=</span> stat_des(x)
 <li>Créer une fonction qui à partir de deux points représentés par des couples de coordonnées (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(y_1\)</span>) et (<span class="math inline">\(x_2\)</span>, <span class="math inline">\(y_2\)</span>) retourne la distance euclidienne entre ces deux points. Proposer une seconde solution à l’aide d’une fonction lambda.</li>
 </ol>
 </div>
-
 </div>
 </div>
             </section>
@@ -606,42 +702,44 @@ res <span class="op">=</span> stat_des(x)
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
-"text": "Edit"
-},
-"download": ["_main.pdf", "_main.epub"],
-"toc": {
-"collapse": "subsection",
-"scroll_highlight": true
-},
-"toc_depth": 4,
-"search": true
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "toc_depth": 4
 });
 });
 </script>
@@ -651,10 +749,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Python pour les économistes</title>
-  <meta name="description" content="Python pour les économistes">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Structures | Python pour les économistes</title>
+  <meta name="description" content="3 Structures | Python pour les économistes" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Python pour les économistes" />
+  <meta property="og:title" content="3 Structures | Python pour les économistes" />
   <meta property="og:type" content="book" />
-  
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Python pour les économistes" />
+  <meta name="twitter:title" content="3 Structures | Python pour les économistes" />
   
   
   
 
-<meta name="author" content="Ewen Gallic">
+<meta name="author" content="Ewen Gallic" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="types-de-donnees.html">
-<link rel="next" href="operateurs.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="types-de-données.html"/>
+<link rel="next" href="opérateurs.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -46,44 +47,104 @@
 
 
 
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="styles/style.css" type="text/css" />
@@ -99,20 +160,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a><ul>
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="propos-liminaires.html"><a href="propos-liminaires.html#objectifs"><i class="fa fa-check"></i><b>0.1</b> Objectifs</a></li>
-<li class="chapter" data-level="0.2" data-path="propos-liminaires.html"><a href="propos-liminaires.html#a-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
+<li class="chapter" data-level="0.2" data-path="python_for_economists.html"><a href="#%C3%A0-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a><ul>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
 <li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
 <li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
 <li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a><ul>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
 <li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
 </ul></li>
@@ -120,195 +185,231 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
 <li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="types-de-donnees.html"><a href="types-de-donnees.html"><i class="fa fa-check"></i><b>2</b> Types de données</a><ul>
-<li class="chapter" data-level="2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#type-chaines-concatenation"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
-<li class="chapter" data-level="2.1.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
-<li class="chapter" data-level="2.1.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#methodes-disponibles-avec-les-chaines-de-caracteres"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
-<li class="chapter" data-level="2.1.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
-<li class="chapter" data-level="2.1.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+<li class="chapter" data-level="2" data-path="python_for_economists.html"><a href="#types-de-donn%C3%A9es"><i class="fa fa-check"></i><b>2</b> Types de données</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="python_for_economists.html"><a href="#cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-données.html"><a href="types-de-données.html"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-données.html"><a href="types-de-données.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-données.html"><a href="types-de-données.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-données.html"><a href="types-de-données.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#valeurs-numeriques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
-<li class="chapter" data-level="2.2.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombre-a-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
-<li class="chapter" data-level="2.2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#nombres-complexes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
-<li class="chapter" data-level="2.2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+<li class="chapter" data-level="2.2" data-path="python_for_economists.html"><a href="#valeurs-num%C3%A9riques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-données.html"><a href="types-de-données.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="python_for_economists.html"><a href="#nombre-%C3%A0-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="python_for_economists.html"><a href="#nombres-compl%C3%A8xes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-données.html"><a href="types-de-données.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#booleens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
-<li class="chapter" data-level="2.4" data-path="types-de-donnees.html"><a href="types-de-donnees.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
-<li class="chapter" data-level="2.5" data-path="types-de-donnees.html"><a href="types-de-donnees.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
-<li class="chapter" data-level="2.5.2" data-path="types-de-donnees.html"><a href="types-de-donnees.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="types-de-donnees.html"><a href="types-de-donnees.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+<li class="chapter" data-level="2.3" data-path="python_for_economists.html"><a href="#bool%C3%A9ens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-données.html"><a href="types-de-données.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-données.html"><a href="types-de-données.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-données.html"><a href="types-de-données.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-données.html"><a href="types-de-données.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-données.html"><a href="types-de-données.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a><ul>
-<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a><ul>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#structure-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
 <li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
 <li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
 <li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
 <li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="structures.html"><a href="structures.html#extraction-des-elements"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
 <li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a><ul>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
 <li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
 <li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
 <li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="structures.html"><a href="structures.html#extraction-des-elements-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
-<li class="chapter" data-level="3.4.2" data-path="structures.html"><a href="structures.html#cles-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="python_for_economists.html"><a href="#cl%C3%A9s-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
 <li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
 <li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
 <li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
 <li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="operateurs.html"><a href="operateurs.html"><i class="fa fa-check"></i><b>4</b> Opérateurs</a><ul>
-<li class="chapter" data-level="4.1" data-path="operateurs.html"><a href="operateurs.html#operateurs-arithmetiques"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="operateurs.html"><a href="operateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
-<li class="chapter" data-level="4.1.2" data-path="operateurs.html"><a href="operateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
-<li class="chapter" data-level="4.1.3" data-path="operateurs.html"><a href="operateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
-<li class="chapter" data-level="4.1.4" data-path="operateurs.html"><a href="operateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
-<li class="chapter" data-level="4.1.5" data-path="operateurs.html"><a href="operateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
-<li class="chapter" data-level="4.1.6" data-path="operateurs.html"><a href="operateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
-<li class="chapter" data-level="4.1.7" data-path="operateurs.html"><a href="operateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
-<li class="chapter" data-level="4.1.8" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
-<li class="chapter" data-level="4.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-mathematiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
+<li class="chapter" data-level="4" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs"><i class="fa fa-check"></i><b>4</b> Opérateurs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opérateurs.html"><a href="opérateurs.html"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="opérateurs.html"><a href="opérateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
+<li class="chapter" data-level="4.1.2" data-path="opérateurs.html"><a href="opérateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
+<li class="chapter" data-level="4.1.3" data-path="opérateurs.html"><a href="opérateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
+<li class="chapter" data-level="4.1.4" data-path="opérateurs.html"><a href="opérateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
+<li class="chapter" data-level="4.1.5" data-path="opérateurs.html"><a href="opérateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="opérateurs.html"><a href="opérateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="opérateurs.html"><a href="opérateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
+<li class="chapter" data-level="4.1.8" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="operateurs.html"><a href="operateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="operateurs.html"><a href="operateurs.html#egalite-inegalite"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
-<li class="chapter" data-level="4.2.2" data-path="operateurs.html"><a href="operateurs.html#inferiorite-et-superiorite-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
-<li class="chapter" data-level="4.2.3" data-path="operateurs.html"><a href="operateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
+<li class="chapter" data-level="4.2" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="python_for_economists.html"><a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
+<li class="chapter" data-level="4.2.2" data-path="python_for_economists.html"><a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opérateurs.html"><a href="opérateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="operateurs.html"><a href="operateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
-<li class="chapter" data-level="4.3.2" data-path="operateurs.html"><a href="operateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
-<li class="chapter" data-level="4.3.3" data-path="operateurs.html"><a href="operateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+<li class="chapter" data-level="4.3" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opérateurs.html"><a href="opérateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opérateurs.html"><a href="opérateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opérateurs.html"><a href="opérateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="operateurs.html"><a href="operateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
-<li class="chapter" data-level="4.5" data-path="operateurs.html"><a href="operateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
-<li class="chapter" data-level="4.6" data-path="operateurs.html"><a href="operateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
+<li class="chapter" data-level="4.4" data-path="opérateurs.html"><a href="opérateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="opérateurs.html"><a href="opérateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="opérateurs.html"><a href="opérateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a><ul>
-<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#charger-donnees"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
-<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
-<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="5" data-path="python_for_economists.html"><a href="#chargement-et-sauvegarde-de-donn%C3%A9es"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#exporter-des-donnees"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
-<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
-<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
-<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-donnees.html"><a href="chargement-et-sauvegarde-de-donnees.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
+<li class="chapter" data-level="5.2" data-path="python_for_economists.html"><a href="#exporter-des-donn%C3%A9es"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a><ul>
+<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
 <li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
 <li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
 <li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a><ul>
+<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
 <li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
 <li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a><ul>
-<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>8.1</b> Définition</a><ul>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="python_for_economists.html"><a href="#d%C3%A9finition"><i class="fa fa-check"></i><b>8.1</b> Définition</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
-<li class="chapter" data-level="8.1.2" data-path="fonctions.html"><a href="fonctions.html#parametres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+<li class="chapter" data-level="8.1.2" data-path="python_for_economists.html"><a href="#param%C3%A8tres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#portee"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
+<li class="chapter" data-level="8.2" data-path="python_for_economists.html"><a href="#port%C3%A9e"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
 <li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
 <li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
 <li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a><ul>
-<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="numpy.html"><a href="numpy.html#creation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="python_for_economists.html"><a href="#cr%C3%A9ation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
 <li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
-<li class="chapter" data-level="9.1.3" data-path="numpy.html"><a href="numpy.html#extraction-des-elements-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
+<li class="chapter" data-level="9.1.3" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
 <li class="chapter" data-level="9.1.4" data-path="numpy.html"><a href="numpy.html#modification-3"><i class="fa fa-check"></i><b>9.1.4</b> Modification</a></li>
 <li class="chapter" data-level="9.1.5" data-path="numpy.html"><a href="numpy.html#copie-de-tableau"><i class="fa fa-check"></i><b>9.1.5</b> Copie de tableau</a></li>
 <li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
 <li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
 <li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
-<li class="chapter" data-level="9.1.9" data-path="operateurs.html"><a href="operateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
 <li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
 <li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
-<li class="chapter" data-level="9.1.12" data-path="numpy.html"><a href="numpy.html#methodes-et-fonctions-mathematiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+<li class="chapter" data-level="9.1.12" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-et-fonctions-math%C3%A9matiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="numpy.html"><a href="numpy.html#generation-de-nombres-pseudo-aleatoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
+<li class="chapter" data-level="9.2" data-path="python_for_economists.html"><a href="#g%C3%A9n%C3%A9ration-de-nombres-pseudo-al%C3%A9atoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
 <li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a><ul>
-<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="pandas.html"><a href="pandas.html#series"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="python_for_economists.html"><a href="#s%C3%A9ries"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
 <li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="pandas.html"><a href="pandas.html#pour-les-series"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="python_for_economists.html"><a href="#pour-les-s%C3%A9ries"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
 <li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#renommage-des-colonnes-dans-un-dataframe"><i class="fa fa-check"></i><b>10.3</b> Renommage des colonnes dans un dataframe</a></li>
-<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a><ul>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#test-dappartenance-2"><i class="fa fa-check"></i><b>10.4.1</b> Test d’appartenance</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="pandas.html"><a href="pandas.html#reperer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="python_for_economists.html"><a href="#rep%C3%A9rer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
 <li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.2</b> Retirer les observations avec valeurs manquantes</a></li>
 <li class="chapter" data-level="10.5.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.5.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-une-serie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
-<li class="chapter" data-level="10.6.2" data-path="pandas.html"><a href="pandas.html#suppression-delements-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a><ul>
-<li class="chapter" data-level="10.7.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
 <li class="chapter" data-level="10.7.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.7.2</b> Pour un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a><ul>
-<li class="chapter" data-level="10.8.1" data-path="pandas.html"><a href="pandas.html#pour-une-serie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
 <li class="chapter" data-level="10.8.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe-1"><i class="fa fa-check"></i><b>10.8.2</b> Pour un dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="pandas.html"><a href="pandas.html#retrait-des-valeurs-dupliquees"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
-<li class="chapter" data-level="10.10" data-path="pandas.html"><a href="pandas.html#operations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a><ul>
+<li class="chapter" data-level="10.9" data-path="python_for_economists.html"><a href="#retrait-des-valeurs-dupliqu%C3%A9es"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.10" data-path="python_for_economists.html"><a href="#op%C3%A9rations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a>
+<ul>
 <li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
-<li class="chapter" data-level="10.12" data-path="pandas.html"><a href="pandas.html#concatenation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
+<li class="chapter" data-level="10.12" data-path="python_for_economists.html"><a href="#concat%C3%A9nation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
 <li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#pandas-jointures"><i class="fa fa-check"></i><b>10.13</b> Jointures</a></li>
-<li class="chapter" data-level="10.14" data-path="pandas.html"><a href="pandas.html#agregation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a><ul>
-<li class="chapter" data-level="10.14.1" data-path="pandas.html"><a href="pandas.html#agregation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
-<li class="chapter" data-level="10.14.2" data-path="pandas.html"><a href="pandas.html#agregation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
+<li class="chapter" data-level="10.14" data-path="python_for_economists.html"><a href="#agr%C3%A9gation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a>
+<ul>
+<li class="chapter" data-level="10.14.1" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
+<li class="chapter" data-level="10.14.2" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
 </ul></li>
 <li class="chapter" data-level="10.15" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.15</b> Stacking et unstacking</a></li>
-<li class="chapter" data-level="10.16" data-path="pandas.html"><a href="pandas.html#exportation-et-importation-de-donnees"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a><ul>
-<li class="chapter" data-level="10.16.1" data-path="pandas.html"><a href="pandas.html#exportation-des-donnees"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
+<li class="chapter" data-level="10.16" data-path="python_for_economists.html"><a href="#exportation-et-importation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="python_for_economists.html"><a href="#exportation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
 </ul></li>
-<li class="chapter" data-level="10.17" data-path="pandas.html"><a href="pandas.html#importation-des-donnees"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a><ul>
+<li class="chapter" data-level="10.17" data-path="python_for_economists.html"><a href="#importation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a>
+<ul>
 <li class="chapter" data-level="10.17.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-csv"><i class="fa fa-check"></i><b>10.17.1</b> Fichiers CSV</a></li>
 <li class="chapter" data-level="10.17.2" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.17.2</b> Fichiers Excel</a></li>
 <li class="chapter" data-level="10.17.3" data-path="pandas.html"><a href="pandas.html#pandas-importation-hdf"><i class="fa fa-check"></i><b>10.17.3</b> Fichiers HDF5</a></li>
 </ul></li>
 <li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a><ul>
-<li class="chapter" data-level="11.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-matplotlib"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#geometries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
-<li class="chapter" data-level="11.1.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
-<li class="chapter" data-level="11.1.3" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
-<li class="chapter" data-level="11.1.4" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
-<li class="chapter" data-level="11.1.5" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+<li class="chapter" data-level="11" data-path="python_for_economists.html"><a href="#visualisation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="python_for_economists.html"><a href="#g%C3%A9om%C3%A9tries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="visualisation-de-donnees.html"><a href="visualisation-de-donnees.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
 </ul>
@@ -328,444 +429,437 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="structures" class="section level1">
-<h1><span class="header-section-number">3</span> Structures</h1>
+<div id="structures" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Structures<a href="structures.html#structures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Python dispose de plusieurs structures différentes intégrées de base. Nous allons aborder dans cette partie quelques unes d’entre-elles : les listes, les N-uplet (ou <em>tuples</em>), les ensembles et les dictionnaires.</p>
-<div id="structures-listes" class="section level2">
-<h2><span class="header-section-number">3.1</span> Listes</h2>
+<div id="structures-listes" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Listes<a href="structures.html#structures-listes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Une des structures les plus flexibles en Python est la liste. Il s’agit d’un regroupement de valeurs. La création d’une liste s’effectue en écrivant les valeurs en les séparant par une virgule et en entourant l’ensemble par des crochets (<code>[</code> et <code>]</code>).</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="st">&quot;Pascaline&quot;</span>, <span class="st">&quot;Gauthier&quot;</span>, <span class="st">&quot;Xuan&quot;</span>, <span class="st">&quot;Jimmy&quot;</span>]
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb271-1"><a href="structures.html#cb271-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">&quot;Pascaline&quot;</span>, <span class="st">&quot;Gauthier&quot;</span>, <span class="st">&quot;Xuan&quot;</span>, <span class="st">&quot;Jimmy&quot;</span>]</span>
+<span id="cb271-2"><a href="structures.html#cb271-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [&#39;Pascaline&#39;, &#39;Gauthier&#39;, &#39;Xuan&#39;, &#39;Jimmy&#39;]</code></pre>
 <p>Le contenu d’une liste n’est pas forcément du texte :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]
-<span class="bu">print</span>(y)</code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb273-1"><a href="structures.html#cb273-1" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb273-2"><a href="structures.html#cb273-2" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
 <pre><code>## [1, 2, 3, 4, 5]</code></pre>
 <p>Il est même possible de faire figurer des éléments de type différent dans une liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">z <span class="op">=</span> [<span class="st">&quot;Piketty&quot;</span>, <span class="st">&quot;Thomas&quot;</span>, <span class="dv">1971</span>]
-<span class="bu">print</span>(z)</code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb275-1"><a href="structures.html#cb275-1" tabindex="-1"></a>z <span class="op">=</span> [<span class="st">&quot;Piketty&quot;</span>, <span class="st">&quot;Thomas&quot;</span>, <span class="dv">1971</span>]</span>
+<span id="cb275-2"><a href="structures.html#cb275-2" tabindex="-1"></a><span class="bu">print</span>(z)</span></code></pre></div>
 <pre><code>## [&#39;Piketty&#39;, &#39;Thomas&#39;, 1971]</code></pre>
 <p>Une liste peut contenir une autre liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">tweets <span class="op">=</span> [<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;bbb&quot;</span>]
-followers <span class="op">=</span> [<span class="st">&quot;Anne&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Irma&quot;</span>, <span class="st">&quot;John&quot;</span>]
-compte <span class="op">=</span> [tweets, followers]
-<span class="bu">print</span>(compte)</code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb277-1"><a href="structures.html#cb277-1" tabindex="-1"></a>tweets <span class="op">=</span> [<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;bbb&quot;</span>]</span>
+<span id="cb277-2"><a href="structures.html#cb277-2" tabindex="-1"></a>followers <span class="op">=</span> [<span class="st">&quot;Anne&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Irma&quot;</span>, <span class="st">&quot;John&quot;</span>]</span>
+<span id="cb277-3"><a href="structures.html#cb277-3" tabindex="-1"></a>compte <span class="op">=</span> [tweets, followers]</span>
+<span id="cb277-4"><a href="structures.html#cb277-4" tabindex="-1"></a><span class="bu">print</span>(compte)</span></code></pre></div>
 <pre><code>## [[&#39;aaa&#39;, &#39;bbb&#39;], [&#39;Anne&#39;, &#39;Bob&#39;, &#39;Irma&#39;, &#39;John&#39;]]</code></pre>
-<div id="structure-liste-extraction" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Extraction des éléments</h3>
+<div id="structure-liste-extraction" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Extraction des éléments<a href="structures.html#structure-liste-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>L’accès aux éléments se fait grace à son indexation (attention, l’indice du premier élément est 0) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="dv">0</span>]) <span class="co"># Le premier élément de x</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb279-1"><a href="structures.html#cb279-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>]) <span class="co"># Le premier élément de x</span></span></code></pre></div>
 <pre><code>## Pascaline</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="dv">1</span>]) <span class="co"># Le second élément de x</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb281-1"><a href="structures.html#cb281-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>]) <span class="co"># Le second élément de x</span></span></code></pre></div>
 <pre><code>## Gauthier</code></pre>
-<p>L’accès à un élément peut aussi se faire en parant de la fin, en faisant figurer le signe moins (<code>-</code>) devant l’indice : L’accès aux éléments se fait grace à son indexation (attention, l’indice du premier élément est 0) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Le dernier élément de x</span></code></pre></div>
+<p>L’accès à un élément peut aussi se faire en parant de la fin, en faisant figurer le signe moins (<code>-</code>) devant l’indice :
+L’accès aux éléments se fait grace à son indexation (attention, l’indice du premier élément est 0) :</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb283-1"><a href="structures.html#cb283-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Le dernier élément de x</span></span></code></pre></div>
 <pre><code>## Jimmy</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">2</span>]) <span class="co"># L&#39;avant dernier élément de x</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb285-1"><a href="structures.html#cb285-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">2</span>]) <span class="co"># L&#39;avant dernier élément de x</span></span></code></pre></div>
 <pre><code>## Xuan</code></pre>
 <p>Le découpage d’une liste de manière à obtenir un sous-ensemble de la liste s’effectue avec les deux points (<code>:</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">2</span>]) <span class="co"># Les premiers et seconds éléments de x</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb287-1"><a href="structures.html#cb287-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">2</span>]) <span class="co"># Les premiers et seconds éléments de x</span></span></code></pre></div>
 <pre><code>## [&#39;Gauthier&#39;]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="dv">2</span>:]) <span class="co"># Du second (non inclus) à la fin de x</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb289-1"><a href="structures.html#cb289-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">2</span>:]) <span class="co"># Du second (non inclus) à la fin de x</span></span></code></pre></div>
 <pre><code>## [&#39;Xuan&#39;, &#39;Jimmy&#39;]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[:<span class="op">-</span><span class="dv">2</span>]) <span class="co"># Du premier à l&#39;avant dernier (non inclus)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb291-1"><a href="structures.html#cb291-1" tabindex="-1"></a><span class="bu">print</span>(x[:<span class="op">-</span><span class="dv">2</span>]) <span class="co"># Du premier à l&#39;avant dernier (non inclus)</span></span></code></pre></div>
 <pre><code>## [&#39;Pascaline&#39;, &#39;Gauthier&#39;]</code></pre>
 
 <div class="remarque">
 Le découpage retourne également une liste.
 </div>
-
 <p>Lors de l’extraction des éléments de la liste à l’aide des crochets, il est possible de rajouter un troisième paramètre, le pas :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[::<span class="dv">2</span>]) <span class="co"># Un élément sur deux</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb293-1"><a href="structures.html#cb293-1" tabindex="-1"></a><span class="bu">print</span>(x[::<span class="dv">2</span>]) <span class="co"># Un élément sur deux</span></span></code></pre></div>
 <pre><code>## [&#39;Pascaline&#39;, &#39;Xuan&#39;]</code></pre>
 <p>L’accès à des listes imbriquées s’effectue en utilisant plusieurs fois les crochets :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">tweets <span class="op">=</span> [<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;bbb&quot;</span>]
-followers <span class="op">=</span> [<span class="st">&quot;Anne&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Irma&quot;</span>, <span class="st">&quot;John&quot;</span>]
-compte <span class="op">=</span> [tweets, followers]
-res <span class="op">=</span> compte[<span class="dv">1</span>][<span class="dv">3</span>] <span class="co"># Le 4e élément du 2e élément de la liste compte</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb295-1"><a href="structures.html#cb295-1" tabindex="-1"></a>tweets <span class="op">=</span> [<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;bbb&quot;</span>]</span>
+<span id="cb295-2"><a href="structures.html#cb295-2" tabindex="-1"></a>followers <span class="op">=</span> [<span class="st">&quot;Anne&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Irma&quot;</span>, <span class="st">&quot;John&quot;</span>]</span>
+<span id="cb295-3"><a href="structures.html#cb295-3" tabindex="-1"></a>compte <span class="op">=</span> [tweets, followers]</span>
+<span id="cb295-4"><a href="structures.html#cb295-4" tabindex="-1"></a>res <span class="op">=</span> compte[<span class="dv">1</span>][<span class="dv">3</span>] <span class="co"># Le 4e élément du 2e élément de la liste compte</span></span></code></pre></div>
 <p>Le <strong>nombre d’éléments d’une liste</strong> s’obtient avec la fonction <code>len()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">len</span>(compte))</code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb296-1"><a href="structures.html#cb296-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(compte))</span></code></pre></div>
 <pre><code>## 2</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">len</span>(compte[<span class="dv">1</span>]))</code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb298-1"><a href="structures.html#cb298-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(compte[<span class="dv">1</span>]))</span></code></pre></div>
 <pre><code>## 4</code></pre>
 </div>
-<div id="modification" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Modification</h3>
+<div id="modification" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Modification<a href="structures.html#modification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Les listes sont mutables, c’est-à-dire que leur contenu peut être modifié une fois l’objet créé.</p>
-<div id="remplacement" class="section level4">
-<h4><span class="header-section-number">3.1.2.1</span> Remplacement</h4>
+<div id="remplacement" class="section level4 hasAnchor" number="3.1.2.1">
+<h4><span class="header-section-number">3.1.2.1</span> Remplacement<a href="structures.html#remplacement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour <strong>modifier</strong> un élément dans une liste, on utilise l’indiçage :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>]
-x[<span class="dv">3</span>] <span class="op">=</span> <span class="dv">7</span> <span class="co"># Remplacement du 4e élément</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb300-1"><a href="structures.html#cb300-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>]</span>
+<span id="cb300-2"><a href="structures.html#cb300-2" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="op">=</span> <span class="dv">7</span> <span class="co"># Remplacement du 4e élément</span></span>
+<span id="cb300-3"><a href="structures.html#cb300-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 3, 5, 7, 9]</code></pre>
 </div>
-<div id="ajout-delements" class="section level4">
-<h4><span class="header-section-number">3.1.2.2</span> Ajout d’éléments</h4>
+<div id="ajout-déléments" class="section level4 hasAnchor" number="3.1.2.2">
+<h4><span class="header-section-number">3.1.2.2</span> Ajout d’éléments<a href="#ajout-d%C3%A9l%C3%A9ments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour <strong>ajouter des éléments à une liste</strong>, on utilise la méthode <code>append()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x.append(<span class="dv">11</span>) <span class="co"># Ajout de la valeur 11 en fin de liste</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb302-1"><a href="structures.html#cb302-1" tabindex="-1"></a>x.append(<span class="dv">11</span>) <span class="co"># Ajout de la valeur 11 en fin de liste</span></span>
+<span id="cb302-2"><a href="structures.html#cb302-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 3, 5, 7, 9, 11]</code></pre>
 <p>Il est aussi possible d’utiliser la méthode <code>extend()</code>, pour concaténer des listes :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">y <span class="op">=</span> [<span class="dv">13</span>, <span class="dv">15</span>]
-x.extend(y)
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb304-1"><a href="structures.html#cb304-1" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">13</span>, <span class="dv">15</span>]</span>
+<span id="cb304-2"><a href="structures.html#cb304-2" tabindex="-1"></a>x.extend(y)</span>
+<span id="cb304-3"><a href="structures.html#cb304-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 3, 5, 7, 9, 11, 13, 15]</code></pre>
 </div>
-<div id="suppression-delements" class="section level4">
-<h4><span class="header-section-number">3.1.2.3</span> Suppression d’éléments</h4>
+<div id="suppression-déléments" class="section level4 hasAnchor" number="3.1.2.3">
+<h4><span class="header-section-number">3.1.2.3</span> Suppression d’éléments<a href="#suppression-d%C3%A9l%C3%A9ments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour <strong>retirer un élément d’une liste</strong>, on utilise la méthode <code>remove()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x.remove(<span class="dv">3</span>) <span class="co"># Retire le 4e élément</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb306-1"><a href="structures.html#cb306-1" tabindex="-1"></a>x.remove(<span class="dv">3</span>) <span class="co"># Retire le 4e élément</span></span>
+<span id="cb306-2"><a href="structures.html#cb306-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 5, 7, 9, 11, 13, 15]</code></pre>
 <p>On peut aussi utiliser la commande <code>del</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>]
-<span class="kw">del</span> x[<span class="dv">3</span>] <span class="co"># Retire le 4e élément</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb308-1"><a href="structures.html#cb308-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>]</span>
+<span id="cb308-2"><a href="structures.html#cb308-2" tabindex="-1"></a><span class="kw">del</span> x[<span class="dv">3</span>] <span class="co"># Retire le 4e élément</span></span>
+<span id="cb308-3"><a href="structures.html#cb308-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 3, 5, 9]</code></pre>
 </div>
-<div id="affectations-multiples" class="section level4">
-<h4><span class="header-section-number">3.1.2.4</span> Affectations multiples</h4>
+<div id="affectations-multiples" class="section level4 hasAnchor" number="3.1.2.4">
+<h4><span class="header-section-number">3.1.2.4</span> Affectations multiples<a href="structures.html#affectations-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>On peut modifier plusieurs valeurs en même temps :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">10</span>]
-x[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">9</span>] <span class="co"># Remplace les 4e et 5e valeurs</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb310-1"><a href="structures.html#cb310-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">10</span>]</span>
+<span id="cb310-2"><a href="structures.html#cb310-2" tabindex="-1"></a>x[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">9</span>] <span class="co"># Remplace les 4e et 5e valeurs</span></span>
+<span id="cb310-3"><a href="structures.html#cb310-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 3, 5, 7, 9]</code></pre>
 <p>La modification peut agrandir la taille de la liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]
-x[<span class="dv">2</span>:<span class="dv">3</span>] <span class="op">=</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>] <span class="co"># Remplace la 3e valeur</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb312-1"><a href="structures.html#cb312-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb312-2"><a href="structures.html#cb312-2" tabindex="-1"></a>x[<span class="dv">2</span>:<span class="dv">3</span>] <span class="op">=</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>] <span class="co"># Remplace la 3e valeur</span></span>
+<span id="cb312-3"><a href="structures.html#cb312-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 2, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, 4, 5]</code></pre>
 <p>On peut supprimer plusieurs valeurs en même temps :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]
-x[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> [] <span class="co"># Retire les 4e et 5e valeurs</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb314-1"><a href="structures.html#cb314-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb314-2"><a href="structures.html#cb314-2" tabindex="-1"></a>x[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> [] <span class="co"># Retire les 4e et 5e valeurs</span></span>
+<span id="cb314-3"><a href="structures.html#cb314-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 2, 3]</code></pre>
 </div>
 </div>
-<div id="test-dappartenance" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Test d’appartenance</h3>
+<div id="test-dappartenance" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Test d’appartenance<a href="structures.html#test-dappartenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En utilisant l’opérateur <code>in</code>, on peut tester l’appartenance d’un objet à une liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]
-<span class="bu">print</span>(<span class="dv">1</span> <span class="kw">in</span> x)</code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb316-1"><a href="structures.html#cb316-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb316-2"><a href="structures.html#cb316-2" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="kw">in</span> x)</span></code></pre></div>
 <pre><code>## True</code></pre>
 </div>
-<div id="copie-de-liste" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> Copie de liste</h3>
+<div id="copie-de-liste" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Copie de liste<a href="structures.html#copie-de-liste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Attention, la copie d’une liste n’est pas triviale en Python. Prenons un exemple.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]
-y <span class="op">=</span> x</code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb318-1"><a href="structures.html#cb318-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb318-2"><a href="structures.html#cb318-2" tabindex="-1"></a>y <span class="op">=</span> x</span></code></pre></div>
 <p>Modifions le premier élément de <code>y</code>, et observons le contenu de <code>y</code> et de <code>x</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>
-<span class="bu">print</span>(y)</code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb319-1"><a href="structures.html#cb319-1" tabindex="-1"></a>y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb319-2"><a href="structures.html#cb319-2" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
 <pre><code>## [0, 2, 3]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb321-1"><a href="structures.html#cb321-1" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [0, 2, 3]</code></pre>
 <p>Comme on peut le constater, le fait d’avoir utilisé le signe égal a simplement créé une référence et non pas une copie.</p>
 <p>Pour effectuer une copie de liste, plusieurs façons existent. Parmi elles, l’utilisation de la fonction <code>list()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]
-y <span class="op">=</span> <span class="bu">list</span>(x)
-y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>
-<span class="bu">print</span>(<span class="st">&quot;x : &quot;</span>, x)</code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb323-1"><a href="structures.html#cb323-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb323-2"><a href="structures.html#cb323-2" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">list</span>(x)</span>
+<span id="cb323-3"><a href="structures.html#cb323-3" tabindex="-1"></a>y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb323-4"><a href="structures.html#cb323-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;x : &quot;</span>, x)</span></code></pre></div>
 <pre><code>## x :  [1, 2, 3]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb325-1"><a href="structures.html#cb325-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</span></code></pre></div>
 <pre><code>## y :  [0, 2, 3]</code></pre>
 <p>On peut noter que lorsque l’on fait un découpement, un nouvel objet est créé, pas une référence :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]
-y <span class="op">=</span> x[:<span class="dv">2</span>]
-y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>
-<span class="bu">print</span>(<span class="st">&quot;x : &quot;</span>, x)</code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb327-1"><a href="structures.html#cb327-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb327-2"><a href="structures.html#cb327-2" tabindex="-1"></a>y <span class="op">=</span> x[:<span class="dv">2</span>]</span>
+<span id="cb327-3"><a href="structures.html#cb327-3" tabindex="-1"></a>y[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb327-4"><a href="structures.html#cb327-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;x : &quot;</span>, x)</span></code></pre></div>
 <pre><code>## x :  [1, 2, 3, 4]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb329-1"><a href="structures.html#cb329-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</span></code></pre></div>
 <pre><code>## y :  [0, 2]</code></pre>
 </div>
-<div id="tri" class="section level3">
-<h3><span class="header-section-number">3.1.5</span> Tri</h3>
+<div id="tri" class="section level3 hasAnchor" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Tri<a href="structures.html#tri" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pour trier les objets de la liste (sans en créer une nouvelle), Python propose la méthode <code>sort()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>]
-x.sort()
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb331-1"><a href="structures.html#cb331-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>]</span>
+<span id="cb331-2"><a href="structures.html#cb331-2" tabindex="-1"></a>x.sort()</span>
+<span id="cb331-3"><a href="structures.html#cb331-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1, 2, 3, 4]</code></pre>
 <p>Cela fonctionne également avec des valeurs textuelles, en triant par ordre alphabétique :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>]
-x.sort()
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb333-1"><a href="structures.html#cb333-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>]</span>
+<span id="cb333-2"><a href="structures.html#cb333-2" tabindex="-1"></a>x.sort()</span>
+<span id="cb333-3"><a href="structures.html#cb333-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [&#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></pre>
 <p>Il est possible de fournir à la méthode <code>sort()</code> des paramètres. Parmi ces paramètres, il en est un, <code>key</code>, qui permet de fournir une fonction pour effectuer le tri. Cette fonction doit retourner une valeur pour chaque objet de la liste, sur laquelle le tri sera effectué. Par exemple, avec la fonction <code>len()</code>, qui, lorsqu’appliquée à du texte, retourne le nombre de caractères :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="st">&quot;aa&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;aaaaa&quot;</span>, <span class="st">&quot;aa&quot;</span>]
-x.sort(key<span class="op">=</span><span class="bu">len</span>)
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb335-1"><a href="structures.html#cb335-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">&quot;aa&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;aaaaa&quot;</span>, <span class="st">&quot;aa&quot;</span>]</span>
+<span id="cb335-2"><a href="structures.html#cb335-2" tabindex="-1"></a>x.sort(key<span class="op">=</span><span class="bu">len</span>)</span>
+<span id="cb335-3"><a href="structures.html#cb335-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## [&#39;a&#39;, &#39;aa&#39;, &#39;aa&#39;, &#39;aaaaa&#39;]</code></pre>
 </div>
 </div>
-<div id="n-uplets-tuples" class="section level2">
-<h2><span class="header-section-number">3.2</span> N-uplets (Tuples)</h2>
+<div id="n-uplets-tuples" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> N-uplets (Tuples)<a href="structures.html#n-uplets-tuples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Les n-uplets, ou <em>tuples</em> sont des séquences d’objets Python.</p>
 <p>Pour créer un n-uplet, on liste les valeurs, séparées par des virgules :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb337-1"><a href="structures.html#cb337-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span></span>
+<span id="cb337-2"><a href="structures.html#cb337-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## (1, 4, 9, 16, 25)</code></pre>
 <p>On note que les n-uplets sont repérés par une suite de valeurs, entourées dans deux parenthèses.</p>
-<div id="extraction-des-elements" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Extraction des éléments</h3>
+<div id="extraction-des-éléments" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Extraction des éléments<a href="#extraction-des-%C3%A9l%C3%A9ments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Les éléments d’un n-uplet s’extraient de la même manière que ceux des listes (c.f. Section <a href="structures.html#structure-liste-extraction">3.1.1</a>).</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(x[<span class="dv">0</span>])</code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb339-1"><a href="structures.html#cb339-1" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])</span></code></pre></div>
 <pre><code>## 1</code></pre>
 </div>
-<div id="modification-1" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Modification</h3>
+<div id="modification-1" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Modification<a href="structures.html#modification-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Contrairement aux listes, les n-uplets sont <strong>inaltérables</strong> (c’est-à-dire ne pouvant pas être modifés après avoir été créés) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></code></pre></div>
-<pre><code>## TypeError: &#39;tuple&#39; object does not support item assignment
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb341-1"><a href="structures.html#cb341-1" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## TypeError: &#39;tuple&#39; object does not support item assignment</code></pre>
 <p>Il est possible d’<strong>imbriquer des n-uplets</strong> à l’intérieur d’un autre n-uplet. Pour ce faire, on a recours à l’utilisation de parenthèses :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> ((<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>), (<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">26</span>, <span class="dv">64</span>))
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb343-1"><a href="structures.html#cb343-1" tabindex="-1"></a>x <span class="op">=</span> ((<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>), (<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">26</span>, <span class="dv">64</span>))</span>
+<span id="cb343-2"><a href="structures.html#cb343-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## ((1, 4, 9, 16), (1, 8, 26, 64))</code></pre>
 </div>
 </div>
-<div id="structure-ensembles" class="section level2">
-<h2><span class="header-section-number">3.3</span> Ensembles</h2>
+<div id="structure-ensembles" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Ensembles<a href="structures.html#structure-ensembles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Les ensembles (<em>sets</em>) sont des collections non ordonnée d’éléments uniques. Les ensembles sont inaltérables, et non indexés.</p>
 <p>Pour créer un ensemble, Python fournit la fonction <code>set()</code>. On fournit un ou plusieurs éléments constituant l’ensemble, en les séparant par des virgules et en entourant l’ensemble d’accolades (<code>{}</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;}</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb345-1"><a href="structures.html#cb345-1" tabindex="-1"></a>ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})</span>
+<span id="cb345-2"><a href="structures.html#cb345-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Nice&#39;, &#39;Rennes&#39;}</code></pre>
 <p>De manière équivalent, on peut ne pas utiliser la fonction <code>set()</code> et définir l’ensemble uniquement à l’aide des crochets :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> {<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>}
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;}</code></pre>
-<p>En revanche, si l’ensemble est vide, Python retourne un erreur si la fonction <code>set()</code> n’est pas utilisée : il est nécessaire d’utiliser la fonction set :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble_vide <span class="op">=</span> {}
-<span class="bu">type</span>(ensemble_vide)</code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb347-1"><a href="structures.html#cb347-1" tabindex="-1"></a>ensemble <span class="op">=</span> {<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rennes&quot;</span>}</span>
+<span id="cb347-2"><a href="structures.html#cb347-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Marseille&#39;}</code></pre>
+<p>En revanche, si l’ensemble est vide, Python retourne un erreur si la fonction <code>set()</code> n’est pas utilisée :
+il est nécessaire d’utiliser la fonction set :</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb349-1"><a href="structures.html#cb349-1" tabindex="-1"></a>ensemble_vide <span class="op">=</span> {}</span>
+<span id="cb349-2"><a href="structures.html#cb349-2" tabindex="-1"></a><span class="bu">type</span>(ensemble_vide)</span></code></pre></div>
+<pre><code>## &lt;class &#39;dict&#39;&gt;</code></pre>
 <p>Le type de l’objet que l’on vient de créer n’est pas <code>set</code> mais <code>dict</code> (c.f. Section <a href="structures.html#type-dict">3.4</a>). Aussi, pour créer l’ensemble vide, on utilise <code>set()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble_vide <span class="op">=</span> <span class="bu">set</span>()
-<span class="bu">print</span>(<span class="bu">type</span>(ensemble_vide))</code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb351-1"><a href="structures.html#cb351-1" tabindex="-1"></a>ensemble_vide <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb351-2"><a href="structures.html#cb351-2" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(ensemble_vide))</span></code></pre></div>
 <pre><code>## &lt;class &#39;set&#39;&gt;</code></pre>
 <p>Lors de la création, s’il existe des doublons dans les valeurs fournies, ils seront supprimés pour ne garder qu’une seule valeur :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Nice&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;}</code></pre>
+<div class="sourceCode" id="cb353"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb353-1"><a href="structures.html#cb353-1" tabindex="-1"></a>ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Rennes&quot;</span>})</span>
+<span id="cb353-2"><a href="structures.html#cb353-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Marseille&#39;}</code></pre>
 <p>La longueur d’un ensemble s’obtient à l’aide de la fonction <code>len()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">len</span>(ensemble))</code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb355-1"><a href="structures.html#cb355-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(ensemble))</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div id="modifications" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Modifications</h3>
-<div id="ajout" class="section level4">
-<h4><span class="header-section-number">3.3.1.1</span> Ajout</h4>
+<div id="modifications" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Modifications<a href="structures.html#modifications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ajout" class="section level4 hasAnchor" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Ajout<a href="structures.html#ajout" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour ajouter un élément à un ensemble, Python offre la méthode <code>add()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.add(<span class="st">&quot;Toulon&quot;</span>)
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Toulon&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb357-1"><a href="structures.html#cb357-1" tabindex="-1"></a>ensemble.add(<span class="st">&quot;Toulon&quot;</span>)</span>
+<span id="cb357-2"><a href="structures.html#cb357-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Toulon&#39;}</code></pre>
 <p>Si l’élément est déjà présent, il ne sera pas ajouté :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.add(<span class="st">&quot;Toulon&quot;</span>)
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Toulon&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb359-1"><a href="structures.html#cb359-1" tabindex="-1"></a>ensemble.add(<span class="st">&quot;Toulon&quot;</span>)</span>
+<span id="cb359-2"><a href="structures.html#cb359-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Toulon&#39;}</code></pre>
 </div>
-<div id="suppression" class="section level4">
-<h4><span class="header-section-number">3.3.1.2</span> Suppression</h4>
+<div id="suppression" class="section level4 hasAnchor" number="3.3.1.2">
+<h4><span class="header-section-number">3.3.1.2</span> Suppression<a href="structures.html#suppression" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour supprimer une valeur d’un ensemble, Python propose la méthode <code>remove()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)
-<span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb361-1"><a href="structures.html#cb361-1" tabindex="-1"></a>ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)</span>
+<span id="cb361-2"><a href="structures.html#cb361-2" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;}</code></pre>
 <p>Si la valeur n’est pas présente dans l’ensemble, Python retourne un message d’erreur :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)</code></pre></div>
-<pre><code>## KeyError: &#39;Toulon&#39;
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(ensemble)</code></pre></div>
-<pre><code>## {&#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;, &#39;Aix-en-Provence&#39;}</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb363-1"><a href="structures.html#cb363-1" tabindex="-1"></a>ensemble.remove(<span class="st">&quot;Toulon&quot;</span>)</span></code></pre></div>
+<pre><code>## KeyError: &#39;Toulon&#39;</code></pre>
+<div class="sourceCode" id="cb365"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb365-1"><a href="structures.html#cb365-1" tabindex="-1"></a><span class="bu">print</span>(ensemble)</span></code></pre></div>
+<pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Rennes&#39;, &#39;Nice&#39;}</code></pre>
 </div>
 </div>
-<div id="test-dappartenance-1" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Test d’appartenance</h3>
+<div id="test-dappartenance-1" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Test d’appartenance<a href="structures.html#test-dappartenance-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un des intérêts des ensembles est la recherche rapide de présence ou absence de valeurs (plus rapide que dans une liste). Comme pour les listes, les tests d’appartenance s’effectuent à l’aide de l’opérateur <code>in</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Marseille&quot;</span> <span class="kw">in</span> ensemble)</code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb367-1"><a href="structures.html#cb367-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Marseille&quot;</span> <span class="kw">in</span> ensemble)</span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Paris&quot;</span> <span class="kw">in</span> ensemble)</code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb369-1"><a href="structures.html#cb369-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Paris&quot;</span> <span class="kw">in</span> ensemble)</span></code></pre></div>
 <pre><code>## False</code></pre>
 </div>
-<div id="copie-densemble" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Copie d’ensemble</h3>
+<div id="copie-densemble" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Copie d’ensemble<a href="structures.html#copie-densemble" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pour copier un ensemble, comme pour les listes (c.f. Section <a href="structures.html#copie-de-liste">3.1.4</a>), il ne faut pas utiliser le signe d’égalité. La copie d’un ensemble se fait à l’aide de la méthode <code>copy()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>})
-y <span class="op">=</span> ensemble.copy()
-y.add(<span class="st">&quot;Toulon&quot;</span>)
-<span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</code></pre></div>
-<pre><code>## y :  {&#39;Nice&#39;, &#39;Aix-en-Provence&#39;, &#39;Toulon&#39;, &#39;Marseille&#39;}</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;ensemble : &quot;</span>, ensemble)</code></pre></div>
-<pre><code>## ensemble :  {&#39;Nice&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;}</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb371-1"><a href="structures.html#cb371-1" tabindex="-1"></a>ensemble <span class="op">=</span> <span class="bu">set</span>({<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Nice&quot;</span>})</span>
+<span id="cb371-2"><a href="structures.html#cb371-2" tabindex="-1"></a>y <span class="op">=</span> ensemble.copy()</span>
+<span id="cb371-3"><a href="structures.html#cb371-3" tabindex="-1"></a>y.add(<span class="st">&quot;Toulon&quot;</span>)</span>
+<span id="cb371-4"><a href="structures.html#cb371-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;y : &quot;</span>, y)</span></code></pre></div>
+<pre><code>## y :  {&#39;Aix-en-Provence&#39;, &#39;Nice&#39;, &#39;Marseille&#39;, &#39;Toulon&#39;}</code></pre>
+<div class="sourceCode" id="cb373"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb373-1"><a href="structures.html#cb373-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;ensemble : &quot;</span>, ensemble)</span></code></pre></div>
+<pre><code>## ensemble :  {&#39;Aix-en-Provence&#39;, &#39;Nice&#39;, &#39;Marseille&#39;}</code></pre>
 </div>
-<div id="conversion-en-liste" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Conversion en liste</h3>
+<div id="conversion-en-liste" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Conversion en liste<a href="structures.html#conversion-en-liste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un des intérêts des ensembles est est qu’ils contiennent des éléments uniques. Aussi, lorsque l’on souhaite obtenir les éléments distincts d’une liste, il est possible de la convertir en ensemble (avec la fonction <code>set()</code>), puis de convertir l’ensemble en liste (avec la fonction <code>list()</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ma_liste <span class="op">=</span> [<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Marseille&quot;</span>]
-<span class="bu">print</span>(ma_liste)</code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb375-1"><a href="structures.html#cb375-1" tabindex="-1"></a>ma_liste <span class="op">=</span> [<span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Aix-en-Provence&quot;</span>, <span class="st">&quot;Marseille&quot;</span>, <span class="st">&quot;Marseille&quot;</span>]</span>
+<span id="cb375-2"><a href="structures.html#cb375-2" tabindex="-1"></a><span class="bu">print</span>(ma_liste)</span></code></pre></div>
 <pre><code>## [&#39;Marseille&#39;, &#39;Aix-en-Provence&#39;, &#39;Marseille&#39;, &#39;Marseille&#39;]</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_ensemble <span class="op">=</span> <span class="bu">set</span>(ma_liste)
-<span class="bu">print</span>(mon_ensemble)</code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb377-1"><a href="structures.html#cb377-1" tabindex="-1"></a>mon_ensemble <span class="op">=</span> <span class="bu">set</span>(ma_liste)</span>
+<span id="cb377-2"><a href="structures.html#cb377-2" tabindex="-1"></a><span class="bu">print</span>(mon_ensemble)</span></code></pre></div>
 <pre><code>## {&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;}</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">ma_nouvelle_liste <span class="op">=</span> <span class="bu">list</span>(mon_ensemble)
-<span class="bu">print</span>(ma_nouvelle_liste)</code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb379-1"><a href="structures.html#cb379-1" tabindex="-1"></a>ma_nouvelle_liste <span class="op">=</span> <span class="bu">list</span>(mon_ensemble)</span>
+<span id="cb379-2"><a href="structures.html#cb379-2" tabindex="-1"></a><span class="bu">print</span>(ma_nouvelle_liste)</span></code></pre></div>
 <pre><code>## [&#39;Aix-en-Provence&#39;, &#39;Marseille&#39;]</code></pre>
 </div>
 </div>
-<div id="type-dict" class="section level2">
-<h2><span class="header-section-number">3.4</span> Dictionnaires</h2>
+<div id="type-dict" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Dictionnaires<a href="structures.html#type-dict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Les dictionnaires en Python sont une implémentation d’objets clé-valeurs, les clés étant indexées.</p>
 <p>Les clés sont souvent du texte, les valeurs peuvent être de différents types et différentes structures.</p>
 <p>Pour créer un dictionnaire, on peut procéder en utilisant des accolades (<code>{}</code>). Comme rencontré dans la Section <a href="structures.html#structure-ensembles">3.3</a>, si on évalue le code suivant, on obtient un dictionnaire :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dict_vide <span class="op">=</span> {}
-<span class="bu">print</span>(<span class="bu">type</span>(dict_vide))</code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb381-1"><a href="structures.html#cb381-1" tabindex="-1"></a>dict_vide <span class="op">=</span> {}</span>
+<span id="cb381-2"><a href="structures.html#cb381-2" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(dict_vide))</span></code></pre></div>
 <pre><code>## &lt;class &#39;dict&#39;&gt;</code></pre>
 <p>Pour créer un dictionnaire avec des entrée, on peut utiliser les accolades, on sépare chaque entrée par des virgules, et on distingue la clé de la valeur associée par deux points (<code>:</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_dict <span class="op">=</span> { <span class="st">&quot;nom&quot;</span>: <span class="st">&quot;Kyrie&quot;</span>,
-  <span class="st">&quot;prenom&quot;</span>: <span class="st">&quot;John&quot;</span>,
-  <span class="st">&quot;naissance&quot;</span>: <span class="dv">1992</span>,
-  <span class="st">&quot;equipes&quot;</span>: [<span class="st">&quot;Cleveland&quot;</span>, <span class="st">&quot;Boston&quot;</span>]}
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb383-1"><a href="structures.html#cb383-1" tabindex="-1"></a>mon_dict <span class="op">=</span> { <span class="st">&quot;nom&quot;</span>: <span class="st">&quot;Kyrie&quot;</span>,</span>
+<span id="cb383-2"><a href="structures.html#cb383-2" tabindex="-1"></a>  <span class="st">&quot;prenom&quot;</span>: <span class="st">&quot;John&quot;</span>,</span>
+<span id="cb383-3"><a href="structures.html#cb383-3" tabindex="-1"></a>  <span class="st">&quot;naissance&quot;</span>: <span class="dv">1992</span>,</span>
+<span id="cb383-4"><a href="structures.html#cb383-4" tabindex="-1"></a>  <span class="st">&quot;equipes&quot;</span>: [<span class="st">&quot;Cleveland&quot;</span>, <span class="st">&quot;Boston&quot;</span>]}</span>
+<span id="cb383-5"><a href="structures.html#cb383-5" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Cleveland&#39;, &#39;Boston&#39;]}</code></pre>
 <p>Il est aussi possible de créer un dictionnaire à l’aide de la fonction <code>dict()</code>, en fournissant une séquence de clés-valeurs :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="bu">dict</span>([(<span class="st">&quot;Julien-Yacine&quot;</span>, <span class="st">&quot;Data-scientist&quot;</span>),
-  (<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Directrice&quot;</span>)])
-<span class="bu">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb385-1"><a href="structures.html#cb385-1" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">dict</span>([(<span class="st">&quot;Julien-Yacine&quot;</span>, <span class="st">&quot;Data-scientist&quot;</span>),</span>
+<span id="cb385-2"><a href="structures.html#cb385-2" tabindex="-1"></a>  (<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Directrice&quot;</span>)])</span>
+<span id="cb385-3"><a href="structures.html#cb385-3" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## {&#39;Julien-Yacine&#39;: &#39;Data-scientist&#39;, &#39;Sonia&#39;: &#39;Directrice&#39;}</code></pre>
-<div id="extraction-des-elements-1" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> Extraction des éléments</h3>
-<p>L’extraction dans les dictionnaires repose sur le même principe que pour les listes et les n-uplets (c.f. Section @ref(#structure-liste-extraction)). Toutefois, l’extraction d’un élément d’un dictionnaire ne se fait pas en fonction de sa position dans le dictionnaire, mais par sa clé :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict[<span class="st">&quot;prenom&quot;</span>])</code></pre></div>
+<div id="extraction-des-éléments-1" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Extraction des éléments<a href="#extraction-des-%C3%A9l%C3%A9ments-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’extraction dans les dictionnaires repose sur le même principe que pour les listes et les n-uplets (c.f. Section <a href="structures.html#structure-liste-extraction">3.1.1</a>). Toutefois, l’extraction d’un élément d’un dictionnaire ne se fait pas en fonction de sa position dans le dictionnaire, mais par sa clé :</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb387-1"><a href="structures.html#cb387-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict[<span class="st">&quot;prenom&quot;</span>])</span></code></pre></div>
 <pre><code>## John</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict[<span class="st">&quot;equipes&quot;</span>])</code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb389-1"><a href="structures.html#cb389-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict[<span class="st">&quot;equipes&quot;</span>])</span></code></pre></div>
 <pre><code>## [&#39;Cleveland&#39;, &#39;Boston&#39;]</code></pre>
 <p>Si l’extraction s’effectue par une clé non présente dans le dictionnaire, une erreur sera retournée :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict[<span class="st">&quot;age&quot;</span>])</code></pre></div>
-<pre><code>## KeyError: &#39;age&#39;
-## 
-## Detailed traceback: 
-##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb391-1"><a href="structures.html#cb391-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict[<span class="st">&quot;age&quot;</span>])</span></code></pre></div>
+<pre><code>## KeyError: &#39;age&#39;</code></pre>
 <p>On peut tester la présence d’une clé avec l’opérateur <code>in</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;prenom&quot;</span> <span class="kw">in</span> mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb393-1"><a href="structures.html#cb393-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;prenom&quot;</span> <span class="kw">in</span> mon_dict)</span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;age&quot;</span> <span class="kw">in</span> mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb395-1"><a href="structures.html#cb395-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;age&quot;</span> <span class="kw">in</span> mon_dict)</span></code></pre></div>
 <pre><code>## False</code></pre>
 <p>L’extraction de valeurs peut aussi se faire à l’aide de la méthode <code>get()</code>, qui retourne une valeur <code>None</code> si la clé n’est pas présente :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict.get(<span class="st">&quot;prenom&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb397-1"><a href="structures.html#cb397-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict.get(<span class="st">&quot;prenom&quot;</span>))</span></code></pre></div>
 <pre><code>## John</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict.get(<span class="st">&quot;age&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb399-1"><a href="structures.html#cb399-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict.get(<span class="st">&quot;age&quot;</span>))</span></code></pre></div>
 <pre><code>## None</code></pre>
 </div>
-<div id="cles-et-valeurs" class="section level3">
-<h3><span class="header-section-number">3.4.2</span> Clés et valeurs</h3>
+<div id="clés-et-valeurs" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Clés et valeurs<a href="#cl%C3%A9s-et-valeurs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>À l’aide de la méthode <code>key()</code>, on peut accéder aux clés du dictionnaire :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">les_cles <span class="op">=</span> mon_dict.keys()
-<span class="bu">print</span>(les_cles)</code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb401-1"><a href="structures.html#cb401-1" tabindex="-1"></a>les_cles <span class="op">=</span> mon_dict.keys()</span>
+<span id="cb401-2"><a href="structures.html#cb401-2" tabindex="-1"></a><span class="bu">print</span>(les_cles)</span></code></pre></div>
 <pre><code>## dict_keys([&#39;nom&#39;, &#39;prenom&#39;, &#39;naissance&#39;, &#39;equipes&#39;])</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(les_cles))</code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb403-1"><a href="structures.html#cb403-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(les_cles))</span></code></pre></div>
 <pre><code>## &lt;class &#39;dict_keys&#39;&gt;</code></pre>
 <p>Il est possible par la suite de transformer cette énumération de clés en liste :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">les_cles_liste <span class="op">=</span> <span class="bu">list</span>(les_cles)
-<span class="bu">print</span>(les_cles_liste)</code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb405-1"><a href="structures.html#cb405-1" tabindex="-1"></a>les_cles_liste <span class="op">=</span> <span class="bu">list</span>(les_cles)</span>
+<span id="cb405-2"><a href="structures.html#cb405-2" tabindex="-1"></a><span class="bu">print</span>(les_cles_liste)</span></code></pre></div>
 <pre><code>## [&#39;nom&#39;, &#39;prenom&#39;, &#39;naissance&#39;, &#39;equipes&#39;]</code></pre>
 <p>La méthode <code>values()</code> fournit quand à elle les valeurs du dictionnaire :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">les_valeurs <span class="op">=</span> mon_dict.values()
-<span class="bu">print</span>(les_valeurs)</code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb407-1"><a href="structures.html#cb407-1" tabindex="-1"></a>les_valeurs <span class="op">=</span> mon_dict.values()</span>
+<span id="cb407-2"><a href="structures.html#cb407-2" tabindex="-1"></a><span class="bu">print</span>(les_valeurs)</span></code></pre></div>
 <pre><code>## dict_values([&#39;Kyrie&#39;, &#39;John&#39;, 1992, [&#39;Cleveland&#39;, &#39;Boston&#39;]])</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(les_valeurs))</code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb409-1"><a href="structures.html#cb409-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(les_valeurs))</span></code></pre></div>
 <pre><code>## &lt;class &#39;dict_values&#39;&gt;</code></pre>
 <p>La méthode <code>items()</code> fournit quand à elle les clés et valeurs sous forme de n-uplets :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">les_items <span class="op">=</span> mon_dict.items()
-<span class="bu">print</span>(les_items)</code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb411-1"><a href="structures.html#cb411-1" tabindex="-1"></a>les_items <span class="op">=</span> mon_dict.items()</span>
+<span id="cb411-2"><a href="structures.html#cb411-2" tabindex="-1"></a><span class="bu">print</span>(les_items)</span></code></pre></div>
 <pre><code>## dict_items([(&#39;nom&#39;, &#39;Kyrie&#39;), (&#39;prenom&#39;, &#39;John&#39;), (&#39;naissance&#39;, 1992), (&#39;equipes&#39;, [&#39;Cleveland&#39;, &#39;Boston&#39;])])</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">type</span>(les_items))</code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb413-1"><a href="structures.html#cb413-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(les_items))</span></code></pre></div>
 <pre><code>## &lt;class &#39;dict_items&#39;&gt;</code></pre>
 </div>
-<div id="recherche-dappartenance" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> Recherche d’appartenance</h3>
+<div id="recherche-dappartenance" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Recherche d’appartenance<a href="structures.html#recherche-dappartenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Grâce aux méthodes <code>keys()</code>, <code>values()</code> et <code>items()</code>, il est aisé de rechercher la présence d’objets dans un dictionnaire.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;age&quot;</span> <span class="kw">in</span> les_cles)</code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb415-1"><a href="structures.html#cb415-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;age&quot;</span> <span class="kw">in</span> les_cles)</span></code></pre></div>
 <pre><code>## False</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;nom&quot;</span> <span class="kw">in</span> les_cles)</code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb417-1"><a href="structures.html#cb417-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;nom&quot;</span> <span class="kw">in</span> les_cles)</span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>([<span class="st">&#39;Cleveland&#39;</span>, <span class="st">&#39;Boston&#39;</span>] <span class="kw">in</span> les_valeurs)</code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb419-1"><a href="structures.html#cb419-1" tabindex="-1"></a><span class="bu">print</span>([<span class="st">&#39;Cleveland&#39;</span>, <span class="st">&#39;Boston&#39;</span>] <span class="kw">in</span> les_valeurs)</span></code></pre></div>
 <pre><code>## True</code></pre>
 </div>
-<div id="modification-2" class="section level3">
-<h3><span class="header-section-number">3.4.4</span> Modification</h3>
-<div id="remplacement-1" class="section level4">
-<h4><span class="header-section-number">3.4.4.1</span> Remplacement</h4>
+<div id="modification-2" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Modification<a href="structures.html#modification-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="remplacement-1" class="section level4 hasAnchor" number="3.4.4.1">
+<h4><span class="header-section-number">3.4.4.1</span> Remplacement<a href="structures.html#remplacement-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Pour remplacer la valeur associée à une clé, on peut utiliser les crochets (<code>[]</code>) et le signe d’égalité (<code>=</code>).</p>
 <p>Par exemple, pour remplacer les valeurs associées à la clé <code>equipes</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_dict[<span class="st">&quot;equipes&quot;</span>] <span class="op">=</span> [<span class="st">&quot;Montclair Kimberley Academy&quot;</span>,
-  <span class="st">&quot;Cleveland Cavaliers&quot;</span>, <span class="st">&quot;Boston Celtics&quot;</span>]
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb421-1"><a href="structures.html#cb421-1" tabindex="-1"></a>mon_dict[<span class="st">&quot;equipes&quot;</span>] <span class="op">=</span> [<span class="st">&quot;Montclair Kimberley Academy&quot;</span>,</span>
+<span id="cb421-2"><a href="structures.html#cb421-2" tabindex="-1"></a>  <span class="st">&quot;Cleveland Cavaliers&quot;</span>, <span class="st">&quot;Boston Celtics&quot;</span>]</span>
+<span id="cb421-3"><a href="structures.html#cb421-3" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;]}</code></pre>
 </div>
-<div id="ajout-delements-1" class="section level4">
-<h4><span class="header-section-number">3.4.4.2</span> Ajout d’éléments</h4>
+<div id="ajout-déléments-1" class="section level4 hasAnchor" number="3.4.4.2">
+<h4><span class="header-section-number">3.4.4.2</span> Ajout d’éléments<a href="#ajout-d%C3%A9l%C3%A9ments-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>L’ajout d’un élément dans un dictionnaire peut s’effectuer avec les crochets (<code>[]</code>) et le signe d’égalité (<code>=</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_dict[<span class="st">&quot;taille_cm&quot;</span>] <span class="op">=</span> <span class="dv">191</span>
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb423-1"><a href="structures.html#cb423-1" tabindex="-1"></a>mon_dict[<span class="st">&quot;taille_cm&quot;</span>] <span class="op">=</span> <span class="dv">191</span></span>
+<span id="cb423-2"><a href="structures.html#cb423-2" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;], &#39;taille_cm&#39;: 191}</code></pre>
 <p>Pour ajouter le contenu d’un autre dictionnaire à un dictionnaire, Python propose la méthode <code>update()</code>.</p>
 <p>Créons un second dictionnaire dans un premier temps :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">second_dict <span class="op">=</span> {<span class="st">&quot;masse_kg&quot;</span> : <span class="dv">88</span>, <span class="st">&quot;debut_nba&quot;</span> : <span class="dv">2011</span>}
-<span class="bu">print</span>(second_dict)</code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb425-1"><a href="structures.html#cb425-1" tabindex="-1"></a>second_dict <span class="op">=</span> {<span class="st">&quot;masse_kg&quot;</span> : <span class="dv">88</span>, <span class="st">&quot;debut_nba&quot;</span> : <span class="dv">2011</span>}</span>
+<span id="cb425-2"><a href="structures.html#cb425-2" tabindex="-1"></a><span class="bu">print</span>(second_dict)</span></code></pre></div>
 <pre><code>## {&#39;masse_kg&#39;: 88, &#39;debut_nba&#39;: 2011}</code></pre>
 <p>Ajoutons le contenu de ce second dictionnaire au premier :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">mon_dict.update(second_dict)
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb427-1"><a href="structures.html#cb427-1" tabindex="-1"></a>mon_dict.update(second_dict)</span>
+<span id="cb427-2"><a href="structures.html#cb427-2" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;], &#39;taille_cm&#39;: 191, &#39;masse_kg&#39;: 88, &#39;debut_nba&#39;: 2011}</code></pre>
 <p>Si on modifie par la suite le second dictionnaire, cela n’aura pas d’incidence sur le premier :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">second_dict[<span class="st">&quot;poste&quot;</span>] <span class="op">=</span> <span class="st">&quot;PG&quot;</span>
-<span class="bu">print</span>(second_dict)</code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb429-1"><a href="structures.html#cb429-1" tabindex="-1"></a>second_dict[<span class="st">&quot;poste&quot;</span>] <span class="op">=</span> <span class="st">&quot;PG&quot;</span></span>
+<span id="cb429-2"><a href="structures.html#cb429-2" tabindex="-1"></a><span class="bu">print</span>(second_dict)</span></code></pre></div>
 <pre><code>## {&#39;masse_kg&#39;: 88, &#39;debut_nba&#39;: 2011, &#39;poste&#39;: &#39;PG&#39;}</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb431-1"><a href="structures.html#cb431-1" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;], &#39;taille_cm&#39;: 191, &#39;masse_kg&#39;: 88, &#39;debut_nba&#39;: 2011}</code></pre>
 </div>
-<div id="suppression-delements-1" class="section level4">
-<h4><span class="header-section-number">3.4.4.3</span> Suppression d’éléments</h4>
+<div id="suppression-déléments-1" class="section level4 hasAnchor" number="3.4.4.3">
+<h4><span class="header-section-number">3.4.4.3</span> Suppression d’éléments<a href="#suppression-d%C3%A9l%C3%A9ments-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>La suppression d’un élément dans un dictionnaire peut s’effectuer de plusieurs manières. Par exemple, avec l’opérateur <code>del</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">del</span> mon_dict[<span class="st">&quot;debut_nba&quot;</span>]
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb433-1"><a href="structures.html#cb433-1" tabindex="-1"></a><span class="kw">del</span> mon_dict[<span class="st">&quot;debut_nba&quot;</span>]</span>
+<span id="cb433-2"><a href="structures.html#cb433-2" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;], &#39;taille_cm&#39;: 191, &#39;masse_kg&#39;: 88}</code></pre>
 <p>Il est également possible d’utiliser la méthode <code>pop()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">res <span class="op">=</span> mon_dict.pop(<span class="st">&quot;masse_kg&quot;</span>)
-<span class="bu">print</span>(mon_dict)</code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb435-1"><a href="structures.html#cb435-1" tabindex="-1"></a>res <span class="op">=</span> mon_dict.pop(<span class="st">&quot;masse_kg&quot;</span>)</span>
+<span id="cb435-2"><a href="structures.html#cb435-2" tabindex="-1"></a><span class="bu">print</span>(mon_dict)</span></code></pre></div>
 <pre><code>## {&#39;nom&#39;: &#39;Kyrie&#39;, &#39;prenom&#39;: &#39;John&#39;, &#39;naissance&#39;: 1992, &#39;equipes&#39;: [&#39;Montclair Kimberley Academy&#39;, &#39;Cleveland Cavaliers&#39;, &#39;Boston Celtics&#39;], &#39;taille_cm&#39;: 191}</code></pre>
 <p>Dans l’instruction précédente, nous avons ajouté une assignation du résultat de l’appliation de la méthode <code>pop()</code> à une variable nommée <code>res</code>. Comme on peut le constater, la méthode <code>pop()</code>, en plus d’avoir supprimé la clé, a retourné la valeur associée :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(res)</code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb437-1"><a href="structures.html#cb437-1" tabindex="-1"></a><span class="bu">print</span>(res)</span></code></pre></div>
 <pre><code>## 88</code></pre>
 </div>
 </div>
-<div id="copie-de-dictionnaire" class="section level3">
-<h3><span class="header-section-number">3.4.5</span> Copie de dictionnaire</h3>
+<div id="copie-de-dictionnaire" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Copie de dictionnaire<a href="structures.html#copie-de-dictionnaire" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pour copier un dictionnaire, et non créer une référence (ce qui est le cas si on utilise le signe d’égalité), Python fournit comme pour les ensembles, une méthode <code>copy()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">d <span class="op">=</span> {<span class="st">&quot;Marseille&quot;</span>: <span class="dv">13</span>, <span class="st">&quot;Rennes&quot;</span> : <span class="dv">35</span>}
-d2 <span class="op">=</span> d.copy()
-d2[<span class="st">&quot;Paris&quot;</span>] <span class="op">=</span> <span class="dv">75</span>
-<span class="bu">print</span>(<span class="st">&quot;d: &quot;</span>, d)</code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb439-1"><a href="structures.html#cb439-1" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">&quot;Marseille&quot;</span>: <span class="dv">13</span>, <span class="st">&quot;Rennes&quot;</span> : <span class="dv">35</span>}</span>
+<span id="cb439-2"><a href="structures.html#cb439-2" tabindex="-1"></a>d2 <span class="op">=</span> d.copy()</span>
+<span id="cb439-3"><a href="structures.html#cb439-3" tabindex="-1"></a>d2[<span class="st">&quot;Paris&quot;</span>] <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb439-4"><a href="structures.html#cb439-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;d: &quot;</span>, d)</span></code></pre></div>
 <pre><code>## d:  {&#39;Marseille&#39;: 13, &#39;Rennes&#39;: 35}</code></pre>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;d2: &quot;</span>, d2)</code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb441-1"><a href="structures.html#cb441-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;d2: &quot;</span>, d2)</span></code></pre></div>
 <pre><code>## d2:  {&#39;Marseille&#39;: 13, &#39;Rennes&#39;: 35, &#39;Paris&#39;: 75}</code></pre>
 </div>
-<div id="exercice-1" class="section level3">
-<h3><span class="header-section-number">3.4.6</span> Exercice</h3>
+<div id="exercice-1" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Exercice<a href="structures.html#exercice-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 <div class="exframe">
 <ol style="list-style-type: decimal">
 <li><p>Créer un dictionnaire nommé <code>photo</code>, comprenant les couples clés-valeurs suivants :</p></li>
-<li>clé : <code>id</code>, valeur : <code>1</code>,</li>
-<li>clé : <code>description</code>, valeur : <code>Une photo du Vieux-port de Marseille</code>,</li>
-<li>clé : <code>loc</code>, valeur : une liste dans laquelle sont données les coordonnées suivantes <code>5.3772133</code>, <code>43.302424</code>. 2.Ajouter le couple de clé-valeur suivant au dictionnaire <code>photo</code> : clé : <code>utilisateur</code>, valeur : <code>bob</code>.</li>
-<li>Rechercher s’il existe une entrée dont la clé vaut <code>description</code> dans le dictionnaire <code>photo</code>. Si tel est le cas, afficher l’entrée correspondante (clé et valeur).</li>
-<li>Supprimer l’entrée dans <code>photo</code> dont la clé vaut <code>utilisateur</code>.</li>
-<li>Modifier la valeur de l’entrée <code>loc</code> dans le dictionnaire <code>photo</code>, pour proposer une nouvelle liste, dont les coordonnées sont les suivantes : <code>5.3692712</code> et <code>43.2949627</code>.</li>
+<li><p>clé : <code>id</code>, valeur : <code>1</code>,</p></li>
+<li><p>clé : <code>description</code>, valeur : <code>Une photo du Vieux-port de Marseille</code>,</p></li>
+<li><p>clé : <code>loc</code>, valeur : une liste dans laquelle sont données les coordonnées suivantes <code>5.3772133</code>, <code>43.302424</code>.
+2.Ajouter le couple de clé-valeur suivant au dictionnaire <code>photo</code> : clé : <code>utilisateur</code>, valeur : <code>bob</code>.</p></li>
+<li><p>Rechercher s’il existe une entrée dont la clé vaut <code>description</code> dans le dictionnaire <code>photo</code>. Si tel est le cas, afficher l’entrée correspondante (clé et valeur).</p></li>
+<li><p>Supprimer l’entrée dans <code>photo</code> dont la clé vaut <code>utilisateur</code>.</p></li>
+<li><p>Modifier la valeur de l’entrée <code>loc</code> dans le dictionnaire <code>photo</code>, pour proposer une nouvelle liste, dont les coordonnées sont les suivantes : <code>5.3692712</code> et <code>43.2949627</code>.</p></li>
 </ol>
 </div>
-
 </div>
 </div>
 </div>
@@ -774,47 +868,49 @@ d2[<span class="st">&quot;Paris&quot;</span>] <span class="op">=</span> <span cl
           </div>
         </div>
       </div>
-<a href="types-de-donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="operateurs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="types-de-données.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="opérateurs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
-"text": "Edit"
-},
-"download": ["_main.pdf", "_main.epub"],
-"toc": {
-"collapse": "subsection",
-"scroll_highlight": true
-},
-"toc_depth": 4,
-"search": true
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "toc_depth": 4
 });
 });
 </script>
@@ -824,10 +920,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

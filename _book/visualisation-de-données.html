@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Visualisation de données | Python pour les économistes</title>
+  <meta name="description" content="11 Visualisation de données | Python pour les économistes" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Visualisation de données | Python pour les économistes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Visualisation de données | Python pour les économistes" />
+  
+  
+  
+
+<meta name="author" content="Ewen Gallic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pandas.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="propos-liminaires.html"><a href="propos-liminaires.html#objectifs"><i class="fa fa-check"></i><b>0.1</b> Objectifs</a></li>
+<li class="chapter" data-level="0.2" data-path="python_for_economists.html"><a href="#%C3%A0-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#les-commentaires"><i class="fa fa-check"></i><b>1.5</b> Les commentaires</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="python_for_economists.html"><a href="#types-de-donn%C3%A9es"><i class="fa fa-check"></i><b>2</b> Types de données</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="python_for_economists.html"><a href="#cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-données.html"><a href="types-de-données.html"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-données.html"><a href="types-de-données.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-données.html"><a href="types-de-données.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-données.html"><a href="types-de-données.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="python_for_economists.html"><a href="#valeurs-num%C3%A9riques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-données.html"><a href="types-de-données.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="python_for_economists.html"><a href="#nombre-%C3%A0-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="python_for_economists.html"><a href="#nombres-compl%C3%A8xes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-données.html"><a href="types-de-données.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="python_for_economists.html"><a href="#bool%C3%A9ens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-données.html"><a href="types-de-données.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-données.html"><a href="types-de-données.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-données.html"><a href="types-de-données.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-données.html"><a href="types-de-données.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-données.html"><a href="types-de-données.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#structure-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
+<li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
+<li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
+<li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
+<li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="python_for_economists.html"><a href="#cl%C3%A9s-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
+<li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
+<li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
+<li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs"><i class="fa fa-check"></i><b>4</b> Opérateurs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opérateurs.html"><a href="opérateurs.html"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="opérateurs.html"><a href="opérateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
+<li class="chapter" data-level="4.1.2" data-path="opérateurs.html"><a href="opérateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
+<li class="chapter" data-level="4.1.3" data-path="opérateurs.html"><a href="opérateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
+<li class="chapter" data-level="4.1.4" data-path="opérateurs.html"><a href="opérateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
+<li class="chapter" data-level="4.1.5" data-path="opérateurs.html"><a href="opérateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="opérateurs.html"><a href="opérateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="opérateurs.html"><a href="opérateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
+<li class="chapter" data-level="4.1.8" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="python_for_economists.html"><a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
+<li class="chapter" data-level="4.2.2" data-path="python_for_economists.html"><a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opérateurs.html"><a href="opérateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opérateurs.html"><a href="opérateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opérateurs.html"><a href="opérateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opérateurs.html"><a href="opérateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="opérateurs.html"><a href="opérateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="opérateurs.html"><a href="opérateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="opérateurs.html"><a href="opérateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="python_for_economists.html"><a href="#chargement-et-sauvegarde-de-donn%C3%A9es"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="python_for_economists.html"><a href="#exporter-des-donn%C3%A9es"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="python_for_economists.html"><a href="#d%C3%A9finition"><i class="fa fa-check"></i><b>8.1</b> Définition</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
+<li class="chapter" data-level="8.1.2" data-path="python_for_economists.html"><a href="#param%C3%A8tres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="python_for_economists.html"><a href="#port%C3%A9e"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
+<li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="python_for_economists.html"><a href="#cr%C3%A9ation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
+<li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
+<li class="chapter" data-level="9.1.3" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
+<li class="chapter" data-level="9.1.4" data-path="numpy.html"><a href="numpy.html#modification-3"><i class="fa fa-check"></i><b>9.1.4</b> Modification</a></li>
+<li class="chapter" data-level="9.1.5" data-path="numpy.html"><a href="numpy.html#copie-de-tableau"><i class="fa fa-check"></i><b>9.1.5</b> Copie de tableau</a></li>
+<li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
+<li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
+<li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
+<li class="chapter" data-level="9.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-et-fonctions-math%C3%A9matiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="python_for_economists.html"><a href="#g%C3%A9n%C3%A9ration-de-nombres-pseudo-al%C3%A9atoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
+<li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="python_for_economists.html"><a href="#s%C3%A9ries"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="python_for_economists.html"><a href="#pour-les-s%C3%A9ries"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#renommage-des-colonnes-dans-un-dataframe"><i class="fa fa-check"></i><b>10.3</b> Renommage des colonnes dans un dataframe</a></li>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#test-dappartenance-2"><i class="fa fa-check"></i><b>10.4.1</b> Test d’appartenance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="python_for_economists.html"><a href="#rep%C3%A9rer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.2</b> Retirer les observations avec valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.5.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.7.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.7.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.8.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe-1"><i class="fa fa-check"></i><b>10.8.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="python_for_economists.html"><a href="#retrait-des-valeurs-dupliqu%C3%A9es"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.10" data-path="python_for_economists.html"><a href="#op%C3%A9rations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
+<li class="chapter" data-level="10.12" data-path="python_for_economists.html"><a href="#concat%C3%A9nation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
+<li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#pandas-jointures"><i class="fa fa-check"></i><b>10.13</b> Jointures</a></li>
+<li class="chapter" data-level="10.14" data-path="python_for_economists.html"><a href="#agr%C3%A9gation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a>
+<ul>
+<li class="chapter" data-level="10.14.1" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
+<li class="chapter" data-level="10.14.2" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.15</b> Stacking et unstacking</a></li>
+<li class="chapter" data-level="10.16" data-path="python_for_economists.html"><a href="#exportation-et-importation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="python_for_economists.html"><a href="#exportation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
+</ul></li>
+<li class="chapter" data-level="10.17" data-path="python_for_economists.html"><a href="#importation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a>
+<ul>
+<li class="chapter" data-level="10.17.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-csv"><i class="fa fa-check"></i><b>10.17.1</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="10.17.2" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.17.2</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="10.17.3" data-path="pandas.html"><a href="pandas.html#pandas-importation-hdf"><i class="fa fa-check"></i><b>10.17.3</b> Fichiers HDF5</a></li>
+</ul></li>
+<li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="python_for_economists.html"><a href="#visualisation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="python_for_economists.html"><a href="#g%C3%A9om%C3%A9tries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python pour les économistes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualisation-de-données" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Visualisation de données<a href="#visualisation-de-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Dans ce chapitre, nous allons explorer les rudiments de la visualisation de données avec la librairie <code>Matplotlib</code>.</p>
+<p>Pour le moment, ces notes ne parleront pas des graphiques dynamiques que l’on peut réaliser en lien avec des librairies JavaScript, comme D3.js. Dans une prochaine version également, nous verrons comment réaliser des graphiques avec <code>seaborn</code> (<a href="https://seaborn.pydata.org/" class="uri">https://seaborn.pydata.org/</a>).</p>
+<p>Pour avoir accès rapidement à un type de graphique que l’on souhaite réaliser, on peut se référencer à cette excellente gallerie : <a href="https://python-graph-gallery.com/" class="uri">https://python-graph-gallery.com/</a>.</p>
+<p>Les adeptes du logiciel et langage de programmation R seront heureux de pouvoir retrouver une grammaire graphique comme celle proposée par le <a href="https://ggplot2.tidyverse.org/"><em>package</em> R <code>ggplot2</code></a> introduit par Hadley Wickham. En effet, il existe une librairie Python nommée <code>ggplot</code> : <a href="http://ggplot.yhathq.com/" class="uri">http://ggplot.yhathq.com/</a>.</p>
+<p>Pour explorer graphiquement ses données, il peut être intéressant d’investir un peu de temps dans la librairie <code>Altair</code> (<a href="https://altair-viz.github.io/" class="uri">https://altair-viz.github.io/</a>). Pour une introduction en vidéo : <a href="https://www.youtube.com/watch?v=aRxahWy-ul8" class="uri">https://www.youtube.com/watch?v=aRxahWy-ul8</a>.</p>
+<div id="graphiques-avec-matplotlib" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Graphiques avec matplotlib<a href="visualisation-de-données.html#graphiques-avec-matplotlib" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pour utiliser les fonctionnalités offertes par <code>matplotlib</code> (<a href="https://matplotlib.org/" class="uri">https://matplotlib.org/</a>), il est nécessaire de charger certains modules. Le plus commun est le sous-module <code>pyplot</code>, auquel on attribue fréquemment l’alias <code>plt</code> :</p>
+<div class="sourceCode" id="cb1383"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1383-1"><a href="visualisation-de-données.html#cb1383-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+<p>Pour réaliser un graphique avec la fonction <code>pyplot</code>, on commence par créer une figure en définissant sa zone, puis on ajoute et / ou modifie ses éléments à l’aide de fonctions offertes par <code>pyplot</code>.</p>
+<p>Pour illustrer les fonctionnalités de <code>matplotlib</code>, nous allons avoir besoin de générer des valeurs, à l’aide de la librairie <code>numpy</code>, que l’on charge :</p>
+<div class="sourceCode" id="cb1384"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1384-1"><a href="visualisation-de-données.html#cb1384-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div id="géométries" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Géométries<a href="#g%C3%A9om%C3%A9tries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="matplotlib-plot" class="section level4 hasAnchor" number="11.1.1.1">
+<h4><span class="header-section-number">11.1.1.1</span> Lignes<a href="visualisation-de-données.html#matplotlib-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour tracer des lignes sur un repère cartésien, on utilise la fonction <code>plot()</code>, à qui on fournit les coordonnées en abscisses et en ordonnées en premiers paramètres. On définit avec le troisième paramètre la géométrie.</p>
+<p>Par défaut, la géométrie réalisée est une courbe bleue :</p>
+<div class="sourceCode" id="cb1385"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1385-1"><a href="visualisation-de-données.html#cb1385-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1385-2"><a href="visualisation-de-données.html#cb1385-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1385-3"><a href="visualisation-de-données.html#cb1385-3" tabindex="-1"></a>plt.plot(x, y)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_1.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Une fois le graphique affiché, on peut le refermer avec la fonction <code>close()</code> :</p>
+<p>De la même manière, on peut préciser la gémoétrie comme suit :</p>
+<p>Pour ajouter une courbe sur le graphique, on fait appel plusieurs fois à la fonction <code>plot()</code> :</p>
+<div class="sourceCode" id="cb1386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1386-1"><a href="visualisation-de-données.html#cb1386-1" tabindex="-1"></a>y_2 <span class="op">=</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1386-2"><a href="visualisation-de-données.html#cb1386-2" tabindex="-1"></a>plt.plot(x, y, <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb1386-3"><a href="visualisation-de-données.html#cb1386-3" tabindex="-1"></a>plt.plot(x, y_2, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_2_courbes.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="paramètres-esthétiques" class="section level5 hasAnchor" number="11.1.1.1.1">
+<h5><span class="header-section-number">11.1.1.1.1</span> Paramètres esthétiques<a href="#param%C3%A8tres-esth%C3%A9tiques" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="couleur-de-lignes" class="section level6 hasAnchor" number="11.1.1.1.1.1">
+<h6><span class="header-section-number">11.1.1.1.1.1</span> Couleur de lignes<a href="visualisation-de-données.html#couleur-de-lignes" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>Pour modifier la couleur d’une ligne, on utilise le paramètre <code>color</code> :</p>
+<div class="sourceCode" id="cb1387"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1387-1"><a href="visualisation-de-données.html#cb1387-1" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1387-2"><a href="visualisation-de-données.html#cb1387-2" tabindex="-1"></a>plt.plot(x, y_2, color<span class="op">=</span><span class="st">&quot;#00FF00&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_couleur.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Commme on peut le constater, la référence à la couleur peut se faire en faisant appel à son nom (la liste des couleurs disposant d’un nom est accessibles sur la <a href="https://matplotlib.org/examples/color/named_colors.html">documentation de matplotlib</a>). On peut aussi utiliser un code hexadécimal pour faire référence à une couleur.</p>
+
+<div class="remarque">
+Il peut être intéressant, lorsque l’on choisit des couleurs, de penser à l’utilisation ensuite : est-ce pour l’écran ? Pour l’impression en niveaux de gris ? On peut également se demander si le choix effectué ne gênera pas la compréhension pour les daltoniens (qui sont environ 4% en France). Le site web <a href="http://colorbrewer2.org/">Color Brewer</a> propose des choix de couleurs en fonctions de caractéristiques souhaitées comme celles mentionnées.
+</div>
+</div>
+<div id="épaisseur-des-lignes" class="section level6 hasAnchor" number="11.1.1.1.1.2">
+<h6><span class="header-section-number">11.1.1.1.1.2</span> Épaisseur des lignes<a href="#%C3%A9paisseur-des-lignes" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>L’apaisseur des lignes peut être modifiée à l’aide du paramètre <code>linewidth</code>, à qui l’on fournit une valeur numérique :</p>
+<div class="sourceCode" id="cb1388"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1388-1"><a href="visualisation-de-données.html#cb1388-1" tabindex="-1"></a>plt.plot(x, y, linewidth <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_epaisseur.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="type-de-lignes" class="section level6 hasAnchor" number="11.1.1.1.1.3">
+<h6><span class="header-section-number">11.1.1.1.1.3</span> Type de lignes<a href="visualisation-de-données.html#type-de-lignes" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>Pour changer de type de ligne, on modifie le troisième paramètre de la fonction. On l’a vu, par défaut, une ligne est tracée, ce qui revient à indiquer comme troisième paramètre : <code>'-'</code>. Le Tableau <a href="visualisation-de-données.html#tab:fmt-lignes">11.1</a> indique les différents format possibles pour la ligne.</p>
+<table>
+<caption><span id="tab:fmt-lignes">Table 11.1: </span> Formats des lignes</caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>-</code></td>
+<td align="right">Ligne pleine</td>
+</tr>
+<tr class="even">
+<td align="right"><code>--</code></td>
+<td align="right">Tirets</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>-.</code></td>
+<td align="right">Points et tirets</td>
+</tr>
+<tr class="even">
+<td align="right"><code>:</code></td>
+<td align="right">Pointillés</td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, pour avoir une interpolation linéraire effectuée entre nos points avec une représentation graphique effectuée à l’aide de tirets :</p>
+<div class="sourceCode" id="cb1389"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1389-1"><a href="visualisation-de-données.html#cb1389-1" tabindex="-1"></a>plt.plot(x, y, <span class="st">&quot;--&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_tirets.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut aussi spécifier le type de ligne à l’aide du paramètre <code>linestyle</code>, en lui indiquant une des valeurs renseignées dans le Tableau <a href="visualisation-de-données.html#tab:fmt-lignes-2">11.2</a></p>
+<table>
+<caption><span id="tab:fmt-lignes-2">Table 11.2: </span> Formats des lignes via le paramètre <code>linestyle</code></caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>-</code> ou <code>solid</code></td>
+<td align="right">Ligne pleine</td>
+</tr>
+<tr class="even">
+<td align="right"><code>--</code> ou <code>dashed</code></td>
+<td align="right">Tirets</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>-.</code> ou <code>dashdot</code></td>
+<td align="right">Points et tirets</td>
+</tr>
+<tr class="even">
+<td align="right"><code>:</code> ou <code>dotted</code></td>
+<td align="right">Pointillés</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>None</code></td>
+<td align="right">Aucune ligne de tracée</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb1390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1390-1"><a href="visualisation-de-données.html#cb1390-1" tabindex="-1"></a>plt.plot(x, y, linestyle<span class="op">=</span><span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_linestyle.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="marqueurs" class="section level6 hasAnchor" number="11.1.1.1.1.4">
+<h6><span class="header-section-number">11.1.1.1.1.4</span> Marqueurs<a href="visualisation-de-données.html#marqueurs" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>Le Tableau <a href="visualisation-de-données.html#tab:fmt-lignes-marqueurs">11.3</a> indique quant à lui des formats que l’on peut spécifier comme marqueurs à chaque point présent sur la courbe.</p>
+<table>
+<caption><span id="tab:fmt-lignes-marqueurs">Table 11.3: </span> Formats des lignes</caption>
+<thead>
+<tr class="header">
+<th align="right">Valeur</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>.</code></td>
+<td align="right">Points</td>
+</tr>
+<tr class="even">
+<td align="right"><code>,</code></td>
+<td align="right">Pixels</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>o</code></td>
+<td align="right">Cercles vides</td>
+</tr>
+<tr class="even">
+<td align="right"><code>v</code></td>
+<td align="right">Triangles pointant vers le bas</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>^</code></td>
+<td align="right">Triangles pointant vers le haut</td>
+</tr>
+<tr class="even">
+<td align="right"><code>&lt;</code></td>
+<td align="right">Triangles pointant vers la gauche</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>&gt;</code></td>
+<td align="right">Triangles pointant vers la droite</td>
+</tr>
+<tr class="even">
+<td align="right"><code>1</code></td>
+<td align="right">‘tri_down’</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>2</code></td>
+<td align="right">‘tri_up’</td>
+</tr>
+<tr class="even">
+<td align="right"><code>3</code></td>
+<td align="right">‘tri_left’</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>4</code></td>
+<td align="right">‘tri_right’</td>
+</tr>
+<tr class="even">
+<td align="right"><code>s</code></td>
+<td align="right">Carré</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>p</code></td>
+<td align="right">Pentagone</td>
+</tr>
+<tr class="even">
+<td align="right"><code>*</code></td>
+<td align="right">Astérisque</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>h</code></td>
+<td align="right">Hexagone 1</td>
+</tr>
+<tr class="even">
+<td align="right"><code>H</code></td>
+<td align="right">Hexagone 2</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>+</code></td>
+<td align="right">Symbole plus</td>
+</tr>
+<tr class="even">
+<td align="right"><code>x</code></td>
+<td align="right">Symbole multiplier</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>D</code></td>
+<td align="right">Losange</td>
+</tr>
+<tr class="even">
+<td align="right"><code>d</code></td>
+<td align="right">Losange fin</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>|</code></td>
+<td align="right">Ligne verticale</td>
+</tr>
+<tr class="even">
+<td align="right"><code>_</code></td>
+<td align="right">Ligne horizontale</td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, avec des cercles vides :</p>
+<div class="sourceCode" id="cb1391"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1391-1"><a href="visualisation-de-données.html#cb1391-1" tabindex="-1"></a>plt.plot(x, y, <span class="st">&quot;o&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_cercles.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut noter qu’il est possible de combiner les types de lignesdu Tableau <a href="visualisation-de-données.html#tab:fmt-lignes">11.1</a> avec des types de marqueurs du Tableau <a href="visualisation-de-données.html#tab:fmt-lignes-marqueurs">11.3</a> :</p>
+<div class="sourceCode" id="cb1392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1392-1"><a href="visualisation-de-données.html#cb1392-1" tabindex="-1"></a>plt.plot(x, y, <span class="st">&quot;--v&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_tirets_triangles.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour contrôler de manière plus précise les marqueurs, on peut utiliser les paramètres suivants :</p>
+<ul>
+<li><code>marker</code> : renseigne le type de marqueur (c.f. Tableau <a href="visualisation-de-données.html#tab:fmt-lignes-marqueurs">11.3</a>) ;</li>
+<li><code>markerfacecolor</code> : la couleur désirée pour les marqueurs ;</li>
+<li><code>markersize</code> : taille des marqueurs.</li>
+</ul>
+<div class="sourceCode" id="cb1393"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1393-1"><a href="visualisation-de-données.html#cb1393-1" tabindex="-1"></a>plt.plot(x, y, marker<span class="op">=</span><span class="st">&quot;o&quot;</span>, markerfacecolor <span class="op">=</span> <span class="st">&quot;red&quot;</span>, markersize <span class="op">=</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/lignes_marqueurs.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="nuage-de-points" class="section level4 hasAnchor" number="11.1.1.2">
+<h4><span class="header-section-number">11.1.1.2</span> Nuage de points<a href="visualisation-de-données.html#nuage-de-points" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Un des graphiques que l’on rencontre très fréquemment est le nuage de points. Pour en réaliser un, on peut faire appel à la fonction <code>scatter()</code>, à qui l’on indique les cordonnées (x,y) des points ainsi que quelques paramètres optionnels de forme ou d’esthétisme.</p>
+
+<div class="remarque">
+<a href="https://matplotlib.org/2.0.2/api/pyplot_api.html#matplotlib.pyplot.scatter">La documentation en ligne</a> de la fonction <code>scatter()</code> mentionne que la fonction <code>plot()</code> (c.f. Section <a href="visualisation-de-données.html#matplotlib-plot">11.1.1.1</a>) est plus rapide pour effectuer des nuages de points dans lesquels la couleur ou la taille des points de varie.
+</div>
+<div class="sourceCode" id="cb1394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1394-1"><a href="visualisation-de-données.html#cb1394-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1394-2"><a href="visualisation-de-données.html#cb1394-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1394-3"><a href="visualisation-de-données.html#cb1394-3" tabindex="-1"></a>plt.scatter(x, y)</span></code></pre></div>
+<p><img src="figs/pyplot/scatter_1.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour changer la forme des marqueurs, on l’indique via le paramètre <code>marker</code> (c.f. Tableau <a href="visualisation-de-données.html#tab:fmt-lignes-marqueurs">11.3</a> pour les valeurs possibles) :</p>
+<div class="sourceCode" id="cb1395"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1395-1"><a href="visualisation-de-données.html#cb1395-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1395-2"><a href="visualisation-de-données.html#cb1395-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1395-3"><a href="visualisation-de-données.html#cb1395-3" tabindex="-1"></a>plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;+&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/scatter_2.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="taille-et-couleur" class="section level4 hasAnchor" number="11.1.1.3">
+<h4><span class="header-section-number">11.1.1.3</span> Taille et couleur<a href="visualisation-de-données.html#taille-et-couleur" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La taille des points est ajustable via le paramètre <code>s</code>, tandis que la couleur se modifie via le paramètre <code>color</code> (ou par son alias <code>c</code>) :</p>
+<div class="sourceCode" id="cb1396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1396-1"><a href="visualisation-de-données.html#cb1396-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1396-2"><a href="visualisation-de-données.html#cb1396-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1396-3"><a href="visualisation-de-données.html#cb1396-3" tabindex="-1"></a>plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;+&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, s <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/scatter_3.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut associer une couleur et une taille spécifiques à chaque point :</p>
+<div class="sourceCode" id="cb1397"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1397-1"><a href="visualisation-de-données.html#cb1397-1" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">30</span>)</span>
+<span id="cb1397-2"><a href="visualisation-de-données.html#cb1397-2" tabindex="-1"></a>y <span class="op">=</span> np.random.rand(<span class="dv">30</span>)</span>
+<span id="cb1397-3"><a href="visualisation-de-données.html#cb1397-3" tabindex="-1"></a>z <span class="op">=</span> np.random.rand(<span class="dv">30</span>)</span>
+<span id="cb1397-4"><a href="visualisation-de-données.html#cb1397-4" tabindex="-1"></a>couleurs <span class="op">=</span> np.random.choice([<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>], <span class="dv">30</span>)</span>
+<span id="cb1397-5"><a href="visualisation-de-données.html#cb1397-5" tabindex="-1"></a>plt.scatter(x, y, marker<span class="op">=</span><span class="st">&quot;o&quot;</span>, color <span class="op">=</span> couleurs, s <span class="op">=</span> z<span class="op">*</span><span class="dv">100</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/scatter_bubble.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="histogrammes" class="section level4 hasAnchor" number="11.1.1.4">
+<h4><span class="header-section-number">11.1.1.4</span> Histogrammes<a href="visualisation-de-données.html#histogrammes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour réaliser un histogramme avec <code>pyplot</code>, on utilise la fonction <code>hist()</code> :</p>
+<div class="sourceCode" id="cb1398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1398-1"><a href="visualisation-de-données.html#cb1398-1" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb1398-2"><a href="visualisation-de-données.html#cb1398-2" tabindex="-1"></a>plt.hist(x)</span></code></pre></div>
+<p><img src="figs/pyplot/histogramme.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut préciser avec le paramètre <code>bins</code> soit le nombre de classes, soit leurs bornes :</p>
+<div class="sourceCode" id="cb1399"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1399-1"><a href="visualisation-de-données.html#cb1399-1" tabindex="-1"></a>plt.hist(x, bins<span class="op">=</span><span class="dv">30</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/histogramme_bins.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Et avec les bornes :</p>
+<div class="sourceCode" id="cb1400"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1400-1"><a href="visualisation-de-données.html#cb1400-1" tabindex="-1"></a>bins <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>)</span>
+<span id="cb1400-2"><a href="visualisation-de-données.html#cb1400-2" tabindex="-1"></a>plt.hist(x, bins<span class="op">=</span>bins)</span></code></pre></div>
+<p><img src="figs/pyplot/histogramme_bins_2.png" width="350" style="display: block; margin: auto;" /></p>
+<p>L’orientation se change via le paramètre <code>orientation</code>, en indiquant soit <code>'vertical'</code> (par dédaut), soit <code>'horizontal'</code></p>
+<div class="sourceCode" id="cb1401"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1401-1"><a href="visualisation-de-données.html#cb1401-1" tabindex="-1"></a>plt.hist(x, orientation<span class="op">=</span><span class="st">&#39;horizontal&#39;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/histogramme_orientation.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="paramètres-esthétiques-1" class="section level5 hasAnchor" number="11.1.1.4.1">
+<h5><span class="header-section-number">11.1.1.4.1</span> Paramètres esthétiques<a href="#param%C3%A8tres-esth%C3%A9tiques-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour changer la couleur de remplissage, on utilise le paramètre <code>color</code> ; pour ajouter une couleur délimitant les barres, on utilise le paramètre <code>edgecolor</code> ; pour définir l’épaisseur du contour, on utilise le paramètre <code>linewidth</code> :</p>
+<div class="sourceCode" id="cb1402"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1402-1"><a href="visualisation-de-données.html#cb1402-1" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb1402-2"><a href="visualisation-de-données.html#cb1402-2" tabindex="-1"></a>plt.hist(x, color <span class="op">=</span> <span class="st">&quot;#00FF00&quot;</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/histogramme_esthetiques.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="diagrammes-en-bâtons" class="section level4 hasAnchor" number="11.1.1.5">
+<h4><span class="header-section-number">11.1.1.5</span> Diagrammes en bâtons<a href="#diagrammes-en-b%C3%A2tons" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour réaliser des diagrammes en bâtons, <code>pyplot</code> propose la fonction <code>bar()</code>.</p>
+<div class="sourceCode" id="cb1403"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1403-1"><a href="visualisation-de-données.html#cb1403-1" tabindex="-1"></a>pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]</span>
+<span id="cb1403-2"><a href="visualisation-de-données.html#cb1403-2" tabindex="-1"></a>chomage <span class="op">=</span> [<span class="fl">9.3</span>, <span class="fl">9.7</span>, <span class="fl">6.5</span>, <span class="fl">3.4</span>]</span>
+<span id="cb1403-3"><a href="visualisation-de-données.html#cb1403-3" tabindex="-1"></a>plt.bar(pays, chomage)</span></code></pre></div>
+<p><img src="figs/pyplot/barplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour un diagramme horizontal, on utilise la fonction <code>barh()</code> de la même manière :</p>
+<div class="sourceCode" id="cb1404"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1404-1"><a href="visualisation-de-données.html#cb1404-1" tabindex="-1"></a>plt.barh(pays, chomage)</span></code></pre></div>
+<p><img src="figs/pyplot/barplot_h.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="plusieurs-séries-sur-un-diagramme-en-bâtons" class="section level5 hasAnchor" number="11.1.1.5.1">
+<h5><span class="header-section-number">11.1.1.5.1</span> Plusieurs séries sur un diagramme en bâtons<a href="#plusieurs-s%C3%A9ries-sur-un-diagramme-en-b%C3%A2tons" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour comparer plusieurs séries côte-à-côte, il est nécessaire d’emprunter des notions qui ne seront introduites qu’à la Section <a href="visualisation-de-données.html#pyplot-elements-graphiques">11.1.3</a> (le code est fourni ici plutôt comme un aide-mémoire pour effectuer ce genre de graphiques).</p>
+<div class="sourceCode" id="cb1405"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1405-1"><a href="visualisation-de-données.html#cb1405-1" tabindex="-1"></a>pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]</span>
+<span id="cb1405-2"><a href="visualisation-de-données.html#cb1405-2" tabindex="-1"></a>chomage_f <span class="op">=</span> [<span class="fl">9.1</span>, <span class="fl">11.2</span>, <span class="fl">6.4</span>, <span class="fl">2.9</span>]</span>
+<span id="cb1405-3"><a href="visualisation-de-données.html#cb1405-3" tabindex="-1"></a>chomage_h <span class="op">=</span> [<span class="fl">9.5</span>, <span class="dv">9</span>, <span class="fl">6.6</span>, <span class="fl">3.8</span>]</span>
+<span id="cb1405-4"><a href="visualisation-de-données.html#cb1405-4" tabindex="-1"></a><span class="co"># Position sur l&#39;axe des x pour chaque étiquette</span></span>
+<span id="cb1405-5"><a href="visualisation-de-données.html#cb1405-5" tabindex="-1"></a>position <span class="op">=</span> np.arange(<span class="bu">len</span>(pays))</span>
+<span id="cb1405-6"><a href="visualisation-de-données.html#cb1405-6" tabindex="-1"></a><span class="co"># Largeur des barres</span></span>
+<span id="cb1405-7"><a href="visualisation-de-données.html#cb1405-7" tabindex="-1"></a>largeur <span class="op">=</span> <span class="fl">.35</span></span>
+<span id="cb1405-8"><a href="visualisation-de-données.html#cb1405-8" tabindex="-1"></a></span>
+<span id="cb1405-9"><a href="visualisation-de-données.html#cb1405-9" tabindex="-1"></a><span class="co"># Création de la figure et d&#39;un set de sous-graphiques</span></span>
+<span id="cb1405-10"><a href="visualisation-de-données.html#cb1405-10" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1405-11"><a href="visualisation-de-données.html#cb1405-11" tabindex="-1"></a>r1 <span class="op">=</span> ax.bar(position <span class="op">-</span> largeur<span class="op">/</span><span class="dv">2</span>, chomage_f, largeur)</span>
+<span id="cb1405-12"><a href="visualisation-de-données.html#cb1405-12" tabindex="-1"></a>r2 <span class="op">=</span> ax.bar(position <span class="op">+</span> largeur<span class="op">/</span><span class="dv">2</span>, chomage_h, largeur)</span>
+<span id="cb1405-13"><a href="visualisation-de-données.html#cb1405-13" tabindex="-1"></a></span>
+<span id="cb1405-14"><a href="visualisation-de-données.html#cb1405-14" tabindex="-1"></a><span class="co"># Modification des marques sur l&#39;axe des x et de leurs étiquettes</span></span>
+<span id="cb1405-15"><a href="visualisation-de-données.html#cb1405-15" tabindex="-1"></a>ax.set_xticks(position)</span>
+<span id="cb1405-16"><a href="visualisation-de-données.html#cb1405-16" tabindex="-1"></a>ax.set_xticklabels(pays)</span></code></pre></div>
+<p><img src="figs/pyplot/barplot_mulltiples.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="diagrammes-en-bâtons-empilés" class="section level5 hasAnchor" number="11.1.1.5.2">
+<h5><span class="header-section-number">11.1.1.5.2</span> Diagrammes en bâtons empilés<a href="#diagrammes-en-b%C3%A2tons-empil%C3%A9s" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour empiler les valeurs des séries, on préciser à l’aide du paramètre <code>bottom</code> la valeur de départ pour la série :</p>
+<div class="sourceCode" id="cb1406"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1406-1"><a href="visualisation-de-données.html#cb1406-1" tabindex="-1"></a>pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]</span>
+<span id="cb1406-2"><a href="visualisation-de-données.html#cb1406-2" tabindex="-1"></a>nb_chomeurs_f <span class="op">=</span> [<span class="fl">1.307</span>, <span class="fl">1.185</span>, <span class="fl">.577</span>, <span class="fl">.148</span>]</span>
+<span id="cb1406-3"><a href="visualisation-de-données.html#cb1406-3" tabindex="-1"></a>nb_chomeurs_h <span class="op">=</span> [<span class="fl">1.46</span>, <span class="fl">1.338</span>, <span class="fl">.878</span>, <span class="fl">.179</span>]</span>
+<span id="cb1406-4"><a href="visualisation-de-données.html#cb1406-4" tabindex="-1"></a></span>
+<span id="cb1406-5"><a href="visualisation-de-données.html#cb1406-5" tabindex="-1"></a>plt.bar(pays, nb_chomeurs_f)</span>
+<span id="cb1406-6"><a href="visualisation-de-données.html#cb1406-6" tabindex="-1"></a>plt.bar(pays, nb_chomeurs_h, bottom <span class="op">=</span> nb_chomeurs_f)</span></code></pre></div>
+<p><img src="figs/pyplot/barplot_stack.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="paramètres-esthetiques" class="section level5 hasAnchor" number="11.1.1.5.3">
+<h5><span class="header-section-number">11.1.1.5.3</span> Paramètres esthetiques<a href="#param%C3%A8tres-esthetiques" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour changer la couleur de remplissage, on utilise le paramètre <code>color</code> ; pour la couleur du contour, on renseigne le paramètre <code>edgecolor</code> ; pour la largeur du contour, on s’appuie sur le paramètre <code>linewidth</code> :</p>
+<div class="sourceCode" id="cb1407"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1407-1"><a href="visualisation-de-données.html#cb1407-1" tabindex="-1"></a>pays <span class="op">=</span> [<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Italie&quot;</span>, <span class="st">&quot;Belgique&quot;</span>, <span class="st">&quot;Allemagne&quot;</span>]</span>
+<span id="cb1407-2"><a href="visualisation-de-données.html#cb1407-2" tabindex="-1"></a>nb_chomeurs_f <span class="op">=</span> [<span class="fl">1.307</span>, <span class="fl">1.185</span>, <span class="fl">.577</span>, <span class="fl">.148</span>]</span>
+<span id="cb1407-3"><a href="visualisation-de-données.html#cb1407-3" tabindex="-1"></a>nb_chomeurs_h <span class="op">=</span> [<span class="fl">1.46</span>, <span class="fl">1.338</span>, <span class="fl">.878</span>, <span class="fl">.179</span>]</span>
+<span id="cb1407-4"><a href="visualisation-de-données.html#cb1407-4" tabindex="-1"></a></span>
+<span id="cb1407-5"><a href="visualisation-de-données.html#cb1407-5" tabindex="-1"></a>plt.bar(pays, nb_chomeurs_f, color <span class="op">=</span> <span class="st">&quot;purple&quot;</span>,</span>
+<span id="cb1407-6"><a href="visualisation-de-données.html#cb1407-6" tabindex="-1"></a>        edgecolor <span class="op">=</span> <span class="st">&quot;black&quot;</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span>)</span>
+<span id="cb1407-7"><a href="visualisation-de-données.html#cb1407-7" tabindex="-1"></a>plt.bar(pays, nb_chomeurs_h, bottom <span class="op">=</span> nb_chomeurs_f)</span></code></pre></div>
+<p><img src="figs/pyplot/barplot_esthetiques.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="boxplots" class="section level4 hasAnchor" number="11.1.1.6">
+<h4><span class="header-section-number">11.1.1.6</span> Boxplots<a href="visualisation-de-données.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour réaliser une boîte à moustaches (ou <em>boxplot</em>), <code>pyplot</code> offre la fonction <code>boxplot()</code> :</p>
+<div class="sourceCode" id="cb1408"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1408-1"><a href="visualisation-de-données.html#cb1408-1" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb1408-2"><a href="visualisation-de-données.html#cb1408-2" tabindex="-1"></a>plt.boxplot(x)</span></code></pre></div>
+<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x161b34040&gt;, &lt;matplotlib.lines.Line2D object at 0x161b34610&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe460&gt;, &lt;matplotlib.lines.Line2D object at 0x161afeb20&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x161b342e0&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe5b0&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x161afe1c0&gt;], &#39;means&#39;: []}</code></pre>
+<p><img src="figs/pyplot/boxplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>En renseigant à <code>False</code> la valeur du paramètre <code>vert</code>, le boxplot est tracé horizontalement :</p>
+<div class="sourceCode" id="cb1410"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1410-1"><a href="visualisation-de-données.html#cb1410-1" tabindex="-1"></a>plt.boxplot(x, vert <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
+<pre><code>## {&#39;whiskers&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619ce7c0&gt;, &lt;matplotlib.lines.Line2D object at 0x1619ce8e0&gt;], &#39;caps&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2370&gt;, &lt;matplotlib.lines.Line2D object at 0x1619d2040&gt;], &#39;boxes&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619ce280&gt;], &#39;medians&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2460&gt;], &#39;fliers&#39;: [&lt;matplotlib.lines.Line2D object at 0x1619d2730&gt;], &#39;means&#39;: []}</code></pre>
+<p><img src="figs/pyplot/boxplot_horizontal.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="plusieurs-graphiques-sur-une-figure" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Plusieurs graphiques sur une figure<a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour placer des graphiques les uns à côté des autres, on utilise la fonction <code>subplot()</code>. Les graphiques seront placés comme dans une matrice, avec un nombre de lignes <code>n_lignes</code> et un nombre de colonnes <code>n_colones</code>. On peut indiquer les dimensions de cette matrice en paramètres de la fonction <code>subplot()</code>, à l’aide de la syntaxe suivante :</p>
+<p>où <code>courant</code> indique l’indice du graphique actif. Voyons à travers un exemple le fonctionnement :</p>
+<div class="sourceCode" id="cb1412"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1412-1"><a href="visualisation-de-données.html#cb1412-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1412-2"><a href="visualisation-de-données.html#cb1412-2" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1412-3"><a href="visualisation-de-données.html#cb1412-3" tabindex="-1"></a><span class="co"># Matrice de dimension 3x2 de graphiques</span></span>
+<span id="cb1412-4"><a href="visualisation-de-données.html#cb1412-4" tabindex="-1"></a></span>
+<span id="cb1412-5"><a href="visualisation-de-données.html#cb1412-5" tabindex="-1"></a><span class="co"># Ligne 1, colonne 1</span></span>
+<span id="cb1412-6"><a href="visualisation-de-données.html#cb1412-6" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb1412-7"><a href="visualisation-de-données.html#cb1412-7" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1412-8"><a href="visualisation-de-données.html#cb1412-8" tabindex="-1"></a></span>
+<span id="cb1412-9"><a href="visualisation-de-données.html#cb1412-9" tabindex="-1"></a><span class="co"># Ligne 1, colonne 2</span></span>
+<span id="cb1412-10"><a href="visualisation-de-données.html#cb1412-10" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb1412-11"><a href="visualisation-de-données.html#cb1412-11" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb1412-12"><a href="visualisation-de-données.html#cb1412-12" tabindex="-1"></a></span>
+<span id="cb1412-13"><a href="visualisation-de-données.html#cb1412-13" tabindex="-1"></a><span class="co"># Ligne 2, colonne 1</span></span>
+<span id="cb1412-14"><a href="visualisation-de-données.html#cb1412-14" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb1412-15"><a href="visualisation-de-données.html#cb1412-15" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)</span>
+<span id="cb1412-16"><a href="visualisation-de-données.html#cb1412-16" tabindex="-1"></a></span>
+<span id="cb1412-17"><a href="visualisation-de-données.html#cb1412-17" tabindex="-1"></a><span class="co"># Ligne 2, colonne 2</span></span>
+<span id="cb1412-18"><a href="visualisation-de-données.html#cb1412-18" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb1412-19"><a href="visualisation-de-données.html#cb1412-19" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)</span>
+<span id="cb1412-20"><a href="visualisation-de-données.html#cb1412-20" tabindex="-1"></a></span>
+<span id="cb1412-21"><a href="visualisation-de-données.html#cb1412-21" tabindex="-1"></a><span class="co"># Ligne 3, colonne 1</span></span>
+<span id="cb1412-22"><a href="visualisation-de-données.html#cb1412-22" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb1412-23"><a href="visualisation-de-données.html#cb1412-23" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb1412-24"><a href="visualisation-de-données.html#cb1412-24" tabindex="-1"></a></span>
+<span id="cb1412-25"><a href="visualisation-de-données.html#cb1412-25" tabindex="-1"></a><span class="co"># Ligne 3, colonne 2</span></span>
+<span id="cb1412-26"><a href="visualisation-de-données.html#cb1412-26" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb1412-27"><a href="visualisation-de-données.html#cb1412-27" tabindex="-1"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">&quot;violet&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/subplot.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Rappelons-nous que les matrices sont remplies lignes par lignes en Python, ce qui permet de bien comprendre la valeur du numéro de graphique actif.</p>
+<p>En utilisant la fonction <code>subplots()</code> (attention au “s” final du nom de la fonction qui la différencie de la précédente), il est possible de produire une matrice de graphiques également, en procédant de la manière suivante :</p>
+<div class="sourceCode" id="cb1413"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1413-1"><a href="visualisation-de-données.html#cb1413-1" tabindex="-1"></a>f, ax_arr <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb1413-2"><a href="visualisation-de-données.html#cb1413-2" tabindex="-1"></a>ax_arr[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1413-3"><a href="visualisation-de-données.html#cb1413-3" tabindex="-1"></a>ax_arr[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb1413-4"><a href="visualisation-de-données.html#cb1413-4" tabindex="-1"></a>ax_arr[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)</span>
+<span id="cb1413-5"><a href="visualisation-de-données.html#cb1413-5" tabindex="-1"></a>ax_arr[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/subplots.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Cette manière de procéder offre l’avantage de préciser facilement le partage d’axes entre les différents sous-graphiques, via les paramètres <code>sharex</code> et <code>sharey</code> :</p>
+<div class="sourceCode" id="cb1414"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1414-1"><a href="visualisation-de-données.html#cb1414-1" tabindex="-1"></a>f, ax_arr <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, sharey<span class="op">=</span><span class="va">True</span>, sharex <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb1414-2"><a href="visualisation-de-données.html#cb1414-2" tabindex="-1"></a>ax_arr[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1414-3"><a href="visualisation-de-données.html#cb1414-3" tabindex="-1"></a>ax_arr[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb1414-4"><a href="visualisation-de-données.html#cb1414-4" tabindex="-1"></a>ax_arr[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;yellow&quot;</span>)</span>
+<span id="cb1414-5"><a href="visualisation-de-données.html#cb1414-5" tabindex="-1"></a>ax_arr[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, y, color <span class="op">=</span> <span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/subplots_share.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="pyplot-elements-graphiques" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Éléments de graphiques<a href="visualisation-de-données.html#pyplot-elements-graphiques" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Jusqu’ici, nous avons regardé comment créer différentes géométries, mais nous n’avons pas touché aux axes, à leurs valeurs ou étiquettes (sauf lors de l’exemple non expliqué des diagrammes côte-à-côte), ou encore modifié les légendes ou titres.</p>
+<div id="titre" class="section level4 hasAnchor" number="11.1.3.1">
+<h4><span class="header-section-number">11.1.3.1</span> Titre<a href="visualisation-de-données.html#titre" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Pour ajouter un titre au graphique, on peut utiliser la fonction title() :</p>
+<div class="sourceCode" id="cb1415"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1415-1"><a href="visualisation-de-données.html#cb1415-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1415-2"><a href="visualisation-de-données.html#cb1415-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1415-3"><a href="visualisation-de-données.html#cb1415-3" tabindex="-1"></a>y_2 <span class="op">=</span> <span class="op">-</span>y</span>
+<span id="cb1415-4"><a href="visualisation-de-données.html#cb1415-4" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1415-5"><a href="visualisation-de-données.html#cb1415-5" tabindex="-1"></a>plt.plot(x, y_2)</span>
+<span id="cb1415-6"><a href="visualisation-de-données.html#cb1415-6" tabindex="-1"></a>plt.title(<span class="st">&quot;Représentation graphique de $y = x^2$ </span><span class="ch">\n</span><span class="st">et de $y = -x^2$&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_titre.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="axes" class="section level4 hasAnchor" number="11.1.3.2">
+<h4><span class="header-section-number">11.1.3.2</span> Axes<a href="visualisation-de-données.html#axes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les fonctions <code>xlabel()</code> et <code>ylabel()</code> permettent d’ajouter des étiquettes aux axes :</p>
+<div class="sourceCode" id="cb1416"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1416-1"><a href="visualisation-de-données.html#cb1416-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1416-2"><a href="visualisation-de-données.html#cb1416-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1416-3"><a href="visualisation-de-données.html#cb1416-3" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1416-4"><a href="visualisation-de-données.html#cb1416-4" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Valeurs de $x$&quot;</span>)</span>
+<span id="cb1416-5"><a href="visualisation-de-données.html#cb1416-5" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Valeurs de $y$&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_axes_label.png" width="350" style="display: block; margin: auto;" /></p>
+<div id="limites" class="section level5 hasAnchor" number="11.1.3.2.1">
+<h5><span class="header-section-number">11.1.3.2.1</span> Limites<a href="visualisation-de-données.html#limites" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour contrôler les limites des axes, on utilise la fonction <code>axis()</code>, en précisant les paramètres <code>xmin</code>, <code>xmax</code>, <code>ymax</code>, <code>ymin</code> et <code>ymax</code>, désignant, respectivement, les bornes inférieures et supérieures de l’axe des absisses et les borenes inférieures et supérieures de l’axe des ordonnées :</p>
+<div class="sourceCode" id="cb1417"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1417-1"><a href="visualisation-de-données.html#cb1417-1" tabindex="-1"></a>plt.axis(xmin <span class="op">=</span> <span class="dv">0</span>, xmax <span class="op">=</span> <span class="dv">5</span>, ymin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, ymax <span class="op">=</span> <span class="dv">30</span>)</span></code></pre></div>
+<pre><code>## (np.float64(0.0), np.float64(5.0), np.float64(-1.0), np.float64(30.0))</code></pre>
+<p><img src="figs/pyplot/plot_axes_limites.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="marques-et-étiquettes" class="section level5 hasAnchor" number="11.1.3.2.2">
+<h5><span class="header-section-number">11.1.3.2.2</span> Marques et étiquettes<a href="#marques-et-%C3%A9tiquettes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Les fonctions <code>xticks()</code> et <code>yticks()</code> permettent d’obtenir ou de modifier les marques de l’axe des abscisses et de l’axe des ordonnées, respectivement.</p>
+<div class="sourceCode" id="cb1419"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1419-1"><a href="visualisation-de-données.html#cb1419-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1419-2"><a href="visualisation-de-données.html#cb1419-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1419-3"><a href="visualisation-de-données.html#cb1419-3" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1419-4"><a href="visualisation-de-données.html#cb1419-4" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, step <span class="op">=</span> <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x142f55190&gt;, &lt;matplotlib.axis.XTick object at 0x142f55490&gt;, &lt;matplotlib.axis.XTick object at 0x121714df0&gt;, &lt;matplotlib.axis.XTick object at 0x1609d7ca0&gt;, &lt;matplotlib.axis.XTick object at 0x160a55ca0&gt;, &lt;matplotlib.axis.XTick object at 0x1377c85b0&gt;], [Text(-10, 0, &#39;−10&#39;), Text(-6, 0, &#39;−6&#39;), Text(-2, 0, &#39;−2&#39;), Text(2, 0, &#39;2&#39;), Text(6, 0, &#39;6&#39;), Text(10, 0, &#39;10&#39;)])</code></pre>
+<p><img src="figs/pyplot/plot_ticks.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Il peut être pratique de récupérer les positions et les étiquettes d’un graphique pour pouvoir les modifier, par exemple pour définir l’espacement entre chaque marque :</p>
+<div class="sourceCode" id="cb1421"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1421-1"><a href="visualisation-de-données.html#cb1421-1" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1421-2"><a href="visualisation-de-données.html#cb1421-2" tabindex="-1"></a>locs_x, labels_x <span class="op">=</span> plt.xticks()</span>
+<span id="cb1421-3"><a href="visualisation-de-données.html#cb1421-3" tabindex="-1"></a>locs_y, labels_y <span class="op">=</span> plt.yticks()</span>
+<span id="cb1421-4"><a href="visualisation-de-données.html#cb1421-4" tabindex="-1"></a>loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb1421-5"><a href="visualisation-de-données.html#cb1421-5" tabindex="-1"></a>loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb1421-6"><a href="visualisation-de-données.html#cb1421-6" tabindex="-1"></a></span>
+<span id="cb1421-7"><a href="visualisation-de-données.html#cb1421-7" tabindex="-1"></a>plt.xticks(loc_x_new)</span>
+<span id="cb1421-8"><a href="visualisation-de-données.html#cb1421-8" tabindex="-1"></a>plt.yticks(loc_y_new)</span></code></pre></div>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x1609dcf40&gt;, &lt;matplotlib.axis.XTick object at 0x1609dc940&gt;, &lt;matplotlib.axis.XTick object at 0x160bf3c10&gt;, &lt;matplotlib.axis.XTick object at 0x142f2efd0&gt;, &lt;matplotlib.axis.XTick object at 0x142f4b700&gt;, &lt;matplotlib.axis.XTick object at 0x14155c280&gt;], [Text(-10, 0, &#39;−10&#39;), Text(-6, 0, &#39;−6&#39;), Text(-2, 0, &#39;−2&#39;), Text(2, 0, &#39;2&#39;), Text(6, 0, &#39;6&#39;), Text(10, 0, &#39;10&#39;)])</code></pre>
+<p><img src="figs/pyplot/plot_ticks_2.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut également modifier les étiquettes des marques :</p>
+<div class="sourceCode" id="cb1423"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1423-1"><a href="visualisation-de-données.html#cb1423-1" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1423-2"><a href="visualisation-de-données.html#cb1423-2" tabindex="-1"></a>locs_x, labels_x <span class="op">=</span> plt.xticks()</span>
+<span id="cb1423-3"><a href="visualisation-de-données.html#cb1423-3" tabindex="-1"></a>locs_y, labels_y <span class="op">=</span> plt.yticks()</span>
+<span id="cb1423-4"><a href="visualisation-de-données.html#cb1423-4" tabindex="-1"></a>loc_x_new <span class="op">=</span> np.arange(locs_x[<span class="dv">0</span>], locs_x[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb1423-5"><a href="visualisation-de-données.html#cb1423-5" tabindex="-1"></a>loc_y_new <span class="op">=</span> np.arange(locs_y[<span class="dv">0</span>], locs_y[<span class="op">-</span><span class="dv">1</span>], step <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb1423-6"><a href="visualisation-de-données.html#cb1423-6" tabindex="-1"></a></span>
+<span id="cb1423-7"><a href="visualisation-de-données.html#cb1423-7" tabindex="-1"></a>labels_x_new <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb1423-8"><a href="visualisation-de-données.html#cb1423-8" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(locs_x)):</span>
+<span id="cb1423-9"><a href="visualisation-de-données.html#cb1423-9" tabindex="-1"></a>        labels_x_new.append(<span class="st">&quot;x : &quot;</span> <span class="op">+</span> <span class="bu">str</span>(locs_x[i]))</span>
+<span id="cb1423-10"><a href="visualisation-de-données.html#cb1423-10" tabindex="-1"></a></span>
+<span id="cb1423-11"><a href="visualisation-de-données.html#cb1423-11" tabindex="-1"></a>plt.xticks(loc_x_new, labels_x_new)</span>
+<span id="cb1423-12"><a href="visualisation-de-données.html#cb1423-12" tabindex="-1"></a>plt.yticks(loc_y_new)</span></code></pre></div>
+<pre><code>## ValueError: The number of FixedLocator locations (5), usually from a call to set_ticks, does not match the number of labels (10).</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x142da95e0&gt;, &lt;matplotlib.axis.YTick object at 0x142dde580&gt;, &lt;matplotlib.axis.YTick object at 0x142d84a60&gt;, &lt;matplotlib.axis.YTick object at 0x160b446a0&gt;, &lt;matplotlib.axis.YTick object at 0x160c03070&gt;, &lt;matplotlib.axis.YTick object at 0x141599c70&gt;, &lt;matplotlib.axis.YTick object at 0x141599d60&gt;, &lt;matplotlib.axis.YTick object at 0x142d846d0&gt;, &lt;matplotlib.axis.YTick object at 0x1415eef40&gt;, &lt;matplotlib.axis.YTick object at 0x160c79a30&gt;, &lt;matplotlib.axis.YTick object at 0x1415dc100&gt;, &lt;matplotlib.axis.YTick object at 0x1415b7bb0&gt;, &lt;matplotlib.axis.YTick object at 0x160b448e0&gt;, &lt;matplotlib.axis.YTick object at 0x1415e0b50&gt;], [Text(0, -20.0, &#39;−20&#39;), Text(0, -10.0, &#39;−10&#39;), Text(0, 0.0, &#39;0&#39;), Text(0, 10.0, &#39;10&#39;), Text(0, 20.0, &#39;20&#39;), Text(0, 30.0, &#39;30&#39;), Text(0, 40.0, &#39;40&#39;), Text(0, 50.0, &#39;50&#39;), Text(0, 60.0, &#39;60&#39;), Text(0, 70.0, &#39;70&#39;), Text(0, 80.0, &#39;80&#39;), Text(0, 90.0, &#39;90&#39;), Text(0, 100.0, &#39;100&#39;), Text(0, 110.0, &#39;110&#39;)])</code></pre>
+<p><img src="figs/pyplot/plot_ticks_3.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+<div id="grilles" class="section level5 hasAnchor" number="11.1.3.2.3">
+<h5><span class="header-section-number">11.1.3.2.3</span> Grilles<a href="visualisation-de-données.html#grilles" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pour rajouter une grille, on utilise la fonction <code>grid()</code> :</p>
+<div class="sourceCode" id="cb1426"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1426-1"><a href="visualisation-de-données.html#cb1426-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1426-2"><a href="visualisation-de-données.html#cb1426-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1426-3"><a href="visualisation-de-données.html#cb1426-3" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1426-4"><a href="visualisation-de-données.html#cb1426-4" tabindex="-1"></a>plt.grid()</span></code></pre></div>
+<p><img src="figs/pyplot/plot_grid.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Le paramètre <code>axis</code> permet de définir si l’on désire une grille pour les deux axes (<code>both</code>, par défaut), uniquement pour les abscisses (<code>x</code>), ou uniquement pour les ordonnées (<code>y</code>) :</p>
+<div class="sourceCode" id="cb1427"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1427-1"><a href="visualisation-de-données.html#cb1427-1" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1427-2"><a href="visualisation-de-données.html#cb1427-2" tabindex="-1"></a>plt.grid(axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_grid_y.png" width="350" style="display: block; margin: auto;" /></p>
+<p>On peut paraméter les lignes majeures ou mineurs de la grille :</p>
+<div class="sourceCode" id="cb1428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1428-1"><a href="visualisation-de-données.html#cb1428-1" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb1428-2"><a href="visualisation-de-données.html#cb1428-2" tabindex="-1"></a>plt.minorticks_on()</span>
+<span id="cb1428-3"><a href="visualisation-de-données.html#cb1428-3" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;major&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb1428-4"><a href="visualisation-de-données.html#cb1428-4" tabindex="-1"></a>plt.grid(which <span class="op">=</span> <span class="st">&quot;minor&quot;</span>, axis <span class="op">=</span> <span class="st">&quot;y&quot;</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, linestyle <span class="op">=</span> <span class="st">&quot;--&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_grid_minor.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="légendes" class="section level4 hasAnchor" number="11.1.3.3">
+<h4><span class="header-section-number">11.1.3.3</span> Légendes<a href="#l%C3%A9gendes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Lorsque l’on désire ajouter une légende, on précise l’étiquette de celle-ci au paramètre <code>label</code> dans l’appel de la fonction <code>plot</code>, puis on fait appel à la fonction <code>legend()</code> :</p>
+<div class="sourceCode" id="cb1429"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1429-1"><a href="visualisation-de-données.html#cb1429-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1429-2"><a href="visualisation-de-données.html#cb1429-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1429-3"><a href="visualisation-de-données.html#cb1429-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1429-4"><a href="visualisation-de-données.html#cb1429-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
+<span id="cb1429-5"><a href="visualisation-de-données.html#cb1429-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
+<span id="cb1429-6"><a href="visualisation-de-données.html#cb1429-6" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1429-7"><a href="visualisation-de-données.html#cb1429-7" tabindex="-1"></a>plt.legend()</span></code></pre></div>
+<p><img src="figs/pyplot/plot_legende.png" width="350" style="display: block; margin: auto;" /></p>
+<p>Pour préciser la position de la légende, on peut s’appuyer sur le paramètre <code>loc</code> dans la fonction <code>legend()</code>, en indiquant une valeur telle que reportée dans le Tableau <a href="#tab:pyplot-legendes-loc">11.4</a>.</p>
+<div class="line-block">Chaîne | Code | Description |<br />
+———–: | | ———–: | ————————————————:|<br />
+<code>best</code> | <code>0</code> | Laisser Python optimiser le positonnement |<br />
+<code>upper right</code> | <code>1</code> | En haut à droite |<br />
+<code>upper left</code> | <code>2</code> | En haut à gauche |<br />
+<code>lower left</code> | <code>3</code> | En bas à gauche |<br />
+<code>lower right</code> | <code>4</code> | En bas à droite |<br />
+<code>right</code> | <code>5</code> | À droite |<br />
+<code>center left</code> | <code>6</code> | Centré au milieu à gauche |<br />
+<code>center right</code> | <code>7</code> | Centré au milieu à droite |<br />
+<code>lower center</code> | <code>8</code> | Centré en bas |<br />
+<code>upper center</code> | <code>9</code> | Centré en haut |<br />
+<code>center</code> | <code>10</code> | Centré |</div>
+<p>Table: (#tab:pyplot-legendes-loc) Formats des lignes</p>
+<p>Par exemple, pour centrer la légende au milieu, en bas du graphique :</p>
+<div class="sourceCode" id="cb1430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1430-1"><a href="visualisation-de-données.html#cb1430-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1430-2"><a href="visualisation-de-données.html#cb1430-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1430-3"><a href="visualisation-de-données.html#cb1430-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1430-4"><a href="visualisation-de-données.html#cb1430-4" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
+<span id="cb1430-5"><a href="visualisation-de-données.html#cb1430-5" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
+<span id="cb1430-6"><a href="visualisation-de-données.html#cb1430-6" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_legende_pos.png" width="350" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="dimensions-2" class="section level3 hasAnchor" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> Dimensions<a href="visualisation-de-données.html#dimensions-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour définir les dimensions d’une figure, on renseigne le paramètre <code>figsize</code> de la fonction <code>figure()</code>. On lui fournit un n-uplet d’entiers dont le premier élément correspond à la longueur et le second la hauteur (les valeurs sont en pouces) :</p>
+<div class="sourceCode" id="cb1431"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1431-1"><a href="visualisation-de-données.html#cb1431-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1431-2"><a href="visualisation-de-données.html#cb1431-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1431-3"><a href="visualisation-de-données.html#cb1431-3" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb1431-4"><a href="visualisation-de-données.html#cb1431-4" tabindex="-1"></a>plt.plot(x, y)</span></code></pre></div>
+<p><img src="figs/pyplot/plot_size.png" width="500" style="display: block; margin: auto;" /></p>
+</div>
+<div id="enregistrement" class="section level3 hasAnchor" number="11.1.5">
+<h3><span class="header-section-number">11.1.5</span> Enregistrement<a href="visualisation-de-données.html#enregistrement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour sauvegarder un grapgique, on peut utiliser la fonction <code>plt.savefig()</code>. On précise le chemin vers le fichier à créer, en indiquant l’extension du fichier désiré (<em>e.g.</em>, <code>png</code> ou <code>pdf</code>) :</p>
+<div class="sourceCode" id="cb1432"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1432-1"><a href="visualisation-de-données.html#cb1432-1" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb1432-2"><a href="visualisation-de-données.html#cb1432-2" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1432-3"><a href="visualisation-de-données.html#cb1432-3" tabindex="-1"></a>y_2 <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1432-4"><a href="visualisation-de-données.html#cb1432-4" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb1432-5"><a href="visualisation-de-données.html#cb1432-5" tabindex="-1"></a>plt.plot(x, y, label <span class="op">=</span> <span class="st">&quot;carré ($x^2$)&quot;</span>)</span>
+<span id="cb1432-6"><a href="visualisation-de-données.html#cb1432-6" tabindex="-1"></a>plt.plot(x, y_2, label <span class="op">=</span> <span class="st">&quot;cube ($x^3$)&quot;</span>)</span>
+<span id="cb1432-7"><a href="visualisation-de-données.html#cb1432-7" tabindex="-1"></a>plt.legend(loc <span class="op">=</span> <span class="st">&quot;lower center&quot;</span>)</span>
+<span id="cb1432-8"><a href="visualisation-de-données.html#cb1432-8" tabindex="-1"></a>plt.savefig(<span class="st">&quot;test.pdf&quot;</span>)</span></code></pre></div>
+<p>L’extension indiquée (dans l’exemple présent, <code>pdf</code>) détermine le format de fichier en sortie. On peut utiliser les extensions indiquées dans les clés du dictionnaire retourné par l’instruction suivante (les valeurs donnant une description du type de fichier) :</p>
+<div class="sourceCode" id="cb1433"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1433-1"><a href="visualisation-de-données.html#cb1433-1" tabindex="-1"></a><span class="bu">print</span>(fig.canvas.get_supported_filetypes())</span></code></pre></div>
+<pre><code>## {&#39;eps&#39;: &#39;Encapsulated Postscript&#39;, &#39;jpg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;jpeg&#39;: &#39;Joint Photographic Experts Group&#39;, &#39;pdf&#39;: &#39;Portable Document Format&#39;, &#39;pgf&#39;: &#39;PGF code for LaTeX&#39;, &#39;png&#39;: &#39;Portable Network Graphics&#39;, &#39;ps&#39;: &#39;Postscript&#39;, &#39;raw&#39;: &#39;Raw RGBA bitmap&#39;, &#39;rgba&#39;: &#39;Raw RGBA bitmap&#39;, &#39;svg&#39;: &#39;Scalable Vector Graphics&#39;, &#39;svgz&#39;: &#39;Scalable Vector Graphics&#39;, &#39;tif&#39;: &#39;Tagged Image File Format&#39;, &#39;tiff&#39;: &#39;Tagged Image File Format&#39;, &#39;webp&#39;: &#39;WebP Image Format&#39;}</code></pre>
+</div>
+</div>
+<div id="graphiques-avec-seaborn" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Graphiques avec seaborn<a href="visualisation-de-données.html#graphiques-avec-seaborn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cette section sera à compléter.</p>
+<p><a href="https://seaborn.pydata.org/" class="uri">https://seaborn.pydata.org/</a>
+<!-- # Programmation parallèle --></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pandas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "toc_depth": 4
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

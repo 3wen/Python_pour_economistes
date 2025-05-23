@@ -1,7 +1,7 @@
 ---
 title: "Python pour les économistes"
 author: "Ewen Gallic"
-date: "Octobre 2018"
+date: "Octobre 2018 - Dernière modification : Mai 2025"
 knit: "bookdown::render_book"
 documentclass: book
 bibliography: [biblio.bib]
@@ -15,6 +15,14 @@ monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 output:
+  bookdown::pdf_book:
+    toc_depth: 4
+    highlight: default
+    citation_package: natbib
+    biblio-style: plainnat
+    keep_tex: yes
+    includes:
+      in_header: styles/mystyle_books.tex
   bookdown::gitbook:
     css: styles/style.css
     highlight: default
@@ -27,17 +35,12 @@ output:
         after: null
       search: yes
       edit: https://github.com/3wen/Python_pour_economistes/edit/master/%s
-  bookdown::pdf_book:
-    toc_depth: 4
-    highlight: default
-    keep_tex: yes
-    includes:
-      in_header: styles/mystyle_books.tex
+      sharing: null
   bookdown::epub_book:
     stylesheet: styles/style.css
 ---
 
-```{r knitr_init, echo=FALSE, cache=FALSE, include=FALSE}
+```{r, echo=FALSE, cache=FALSE, include=FALSE}
 
 library(knitr)
 library(tidyverse)
@@ -56,16 +59,18 @@ opts_chunk$set(echo=TRUE,
 opts_knit$set(width=80)
 
 
-# library(reticulate)
+library(reticulate)
 # use_python('/anaconda3/bin/python')
 
-knitr::opts_chunk$set(engine.path = list(
-  python = '/anaconda3/bin/python'
-))
-knitr::knit_engines$set(python = reticulate::eng_python)
+# knitr::opts_chunk$set(engine.path = list(
+#   python = '/anaconda3/bin/python'
+# ))
+# knitr::knit_engines$set(python = reticulate::eng_python)
 # use_python("/anaconda3/bin/python/")
 # py_config()
 
+# virtualenv_create("myenv")
+use_virtualenv("myenv", required = TRUE)
 
 # toto <- import("pandas")
 
@@ -123,7 +128,7 @@ Bien évidemment, Python étant un langage très vaste, ces notes ne sauraient e
 Dans un premier temps, cet ouvrage s'adresse aux débutants qui souhaientent apprendre les bases en Python. Il est à destination des étudiants de l'AMSE mais pourrait intéresser des individus ayant une approche de la donnée à travers la discipline économique désirant découvrir Python.
 
 
-Merci à Adrien Pacifico pour ses commentaires instructifs.
+Merci à Adrien Pacifico pour ses commentaires instructifs. Merci à Josue Bock pour les coquilles repérées.
 
 # Introduction
 
@@ -191,7 +196,7 @@ ggplot(df_stack, aes(x = Langage, y = Pourcentage, fill = py)) +
 
 Ces notes de cours visent à fournir une introduction à Python, dans sa version 3.x. En ce sens, les exemples fournis corresponderont à cette version, non pas aux précédentes.
 
-Comparativement à la version 2.7, la version 3.0 a apporté des modofications profondes. Il faut noter que Python 2.7 prendra "[sa retraite](https://pythonclock.org/)" le premier janvier 2020. Passée cette date, le support ne sera plus assuré.
+Comparativement à la version 2.7, la version 3.0 a apporté des modifications profondes. Il faut noter que Python 2.7 prendra "[sa retraite](https://pythonclock.org/)" le premier janvier 2020. Passée cette date, le support ne sera plus assuré.
 
 ## Espace de travail
 
@@ -471,7 +476,7 @@ print(x)
 
 Le nom d'une variable peut être composé de caractères alphanumériques ainsi que du trait de soulignement (`_`) (il n'y a pas de limite sur la longueur du nom). Il est proscrit de faire commencer le nom de la variable par un nombre. Il est également interdit de faire figurer une espace dans le nom d'une variable.
 
-Pour accroitre la lisibilité du nom des variables, plusieurs méthodes existes. Nous adopterons la suivante :
+Pour accroitre la lisibilité du nom des variables, plusieurs méthodes existent. Nous adopterons la suivante :
 
 - toutes les lettres en minuscule ;
 - la séparation des termes par un trait de soulignement.
@@ -1009,6 +1014,7 @@ Les entiers (`ints`), en Python, sont des nombres entiers signés.
 On accède au type d'un objet à l'aide de la fonction `type()` en Python.
 ```
 
+
 ```{python, eval=T, echo=TRUE, error=TRUE}
 x = 2
 y = -2
@@ -1067,11 +1073,11 @@ Plusieurs méthodes sont disponibles avec les nombres complèxes. Par exemple, p
 print(z.conjugate())
 ```
 
-L'accès à la partie réelle d'un complèxe ou à sa partie imaginaire s'effectue à l'aide des méthodes `real()` et `imag()`, respectivement.
+L'accès à la partie réelle d'un complèxe ou à sa partie imaginaire s'effectue comme suit:
 ```{python, eval=T, echo=TRUE, error=TRUE}
 z = complex(1, 3)
-print(z.real())
-print(z.imag())
+print(z.real)
+print(z.imag)
 ```
 
 ### Conversions
@@ -1996,7 +2002,7 @@ print(x)
 
 ### Extraction des éléments
 
-L'extraction dans les dictionnaires repose sur le même principe que pour les listes et les n-uplets (c.f. Section\ \@ref(#structure-liste-extraction)). Toutefois, l'extraction d'un élément d'un dictionnaire ne se fait pas en fonction de sa position dans le dictionnaire, mais par sa clé :
+L'extraction dans les dictionnaires repose sur le même principe que pour les listes et les n-uplets (c.f. Section\ \@ref(structure-liste-extraction)). Toutefois, l'extraction d'un élément d'un dictionnaire ne se fait pas en fonction de sa position dans le dictionnaire, mais par sa clé :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 print(mon_dict["prenom"])
 print(mon_dict["equipes"])
@@ -2532,9 +2538,9 @@ Python dispose de nombreuses fonctions utiles pour manipuler les structures et d
 
 | Fonction | Description |
 | --------------: | --------------------------------------------: |
-| `math.ceil(x)` | Plus petits entier supérieur ou égal à `x` |
+| `math.ceil(x)` | Plus petit entier supérieur ou égal à `x` |
 | `math.copysign(x, y)` | Valeur absolue de `x` mais avec le signe de `y` |
-| `math.floor(x)` | Plus petits entier inférieur ou égal à `x` |
+| `math.floor(x)` | Plus grand entier inférieur ou égal à `x` |
 | `math.round(x, ndigits)` | Arrondi de `x` à `ndigits` décimales près |
 | `math.fabs(x)` | Valeur absolue de `x` |
 | `math.exp(x)` | Exponentielle de `x` |
@@ -2995,10 +3001,10 @@ with open(chemin, 'w') as f:
 Si on souhaite réimporter dans Python le contenu du fichier `export_json.json` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 chemin = "./fichiers_exemples/export_json.json"
-with open(chemin, "r") as f:
+with open(chemin, "r", encoding="utf-8") as f:
     data = []
     for line in f:
-        data.append(json.loads(line, encoding="utf-8"))
+        data.append(json.loads(line))
 
 print(data)
 ```
@@ -3184,20 +3190,20 @@ Soit une liste nommée `europe` contenant les valeurs suivantes, sous forme de c
 
 Soit une seconde liste, nommée `asie`, contenant sous forme de chaînes de caractères : "Vietnam", "Chine" et "Inde".
 
-L'objectif va être de créer une variable `continent` qui va indiquer soit `Europe`, `Asie` ou autre à l'issue de l'exécution du code.
+L'objectif va être de créer une variable `continent` qui va indiquer soit `"Europe"`, `"Asie"` ou `"Autre"` à l'issue de l'exécution du code.
 
 À l'aide d'instructions conditionnelles de type `if-elif`, rédiger un code qui vérifie la valeur d'une variable `pays`, et définit la valeur d'une autre variable nommée `continent` en fonction du contenu observé dans `pays` tel que :
 
-- si la valeur de pays est présente dans la liste `europe`, `continent` vaudra `Europe` ;
-- si la valeur de pays est présente dans la liste `asie`, `continent` vaudra `Asie` ;
-- si la valeur de pays n'est présente ni dans `europe` ni dans `asie`, la variable `continent` vaudra `Autre`.
+- si la valeur de pays est présente dans la liste `europe`, `continent` vaudra `"Europe"` ;
+- si la valeur de pays est présente dans la liste `asie`, `continent` vaudra `"Asie"` ;
+- si la valeur de pays n'est présente ni dans `europe` ni dans `asie`, la variable `continent` vaudra `"Autre"`.
   
 
 Pour ce faire :
 
 1. Créer les deux listes `europe` et `asie` ainsi que la variable `pays` (valant "Espagne") et la variable `continent` (initiée avec une chaîne de caractères vide).
 2. Rédiger le code permettant de réaliser l'objectif expliqué, et afficher le contenu de la variable `continent` à l'issue de l'exécution.
-3. Changer la valeur de `pays` à `Chine` puis à `Brésil` et dans chacun des cas, exécuter le code rédigé dans la question précédente.
+3. Changer la valeur de `pays` à `"Chine"` puis à `"Brésil"` et dans chacun des cas, exécuter le code rédigé dans la question précédente.
 
 ```
 
@@ -4457,7 +4463,7 @@ print("Variance: ", np.var(t_1))
 
 Si le tableau comporte des valeurs `NaN`, pour calculer la somme par exempe, si on utilise `sum()`, le résultat sera `NaN`. Pour ignorer les valeurs `NaN`, on utilise une fonction spécifique (ici, `nansum()`) :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-t_1 = np.array([[1, 2, np.NaN, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
+t_1 = np.array([[1, 2, np.nan, 4], [-1, 6, 7, 8], [9, -1, 11, 12]])
 print("somme : ", np.sum(t_1))
 print("somme en ignorant les NaN : ", np.nansum(t_1))
 ```
@@ -4661,7 +4667,7 @@ print("type de l'index de s : ", type(s.index))
 Il est possible d'attribuer un nom à la série ainsi qu'à l'index :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s.name = "ma_serie"
-s.name = "nom_index"
+s.index.name = "nom_index"
 print("nom de la série : {} , nom de l'index : {}".format(s.name, s.index.name))
 print("série s : \n", s)
 ```
@@ -4755,7 +4761,7 @@ La méthode `head()` permet d'afficher les premières lignes (les 5 premières, 
 df.head(2)
 ```
 
-Lors de la création d'un dataframe à partir d'un dictionnaire, si on précise le nom des colonnes à importer par une liste de chaînes de caractères fournie au paramètree `columns` de la fonction `DataFrame`, on peut non seulement définir les colonnes à remplir mais également leur ordre d'apparition.
+Lors de la création d'un dataframe à partir d'un dictionnaire, si on précise le nom des colonnes à importer par une liste de chaînes de caractères fournie au paramètre `columns` de la fonction `DataFrame`, on peut non seulement définir les colonnes à remplir mais également leur ordre d'apparition.
 
 Par exemple, pour n'importer que la colonne `weight` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
@@ -4893,9 +4899,9 @@ liste = [
     [111, 222, 333],
     [1111, 2222, 3333]
 ]
-tableau_np = np.array(tableau)
-print(df = pd.DataFrame(tableau_np,
-                  columns = ["a", "b", "c", "d"]))
+tableau_np = np.array(liste)
+df = pd.DataFrame(tableau_np, columns=["a", "b", "c"])
+print(df)
 ```
 
 #### Dimensions
@@ -5055,7 +5061,7 @@ print("\n", s_texte.iloc[[True, False, False, True]])
 ##### Quel est l'intérêt ?
 
 
-Pourquoi introduir de telles manières d'extraire les données et ne pas se contenter de l'extraction à l'aide des crochers sur les objets ? Regardons un exemple simple. Admettons que nous disposons de la série `s_num`, avec un indice composé d'entiers n'étant pas une séquence allant de 0 au nombre d'éléments. Dans ce cas, si nous souhaitons récupérer récupérer le 2e élément, du fait de l'indice composé de valeurs numériques, nous ne pouvons pas l'obtenir en demandant `s[1]`. Pour extraire le 2e de la série, on doit savoir que son indice vaut `0` et ainsi demander :
+Pourquoi introduire de telles manières d'extraire les données et ne pas se contenter de l'extraction à l'aide des crochets sur les objets ? Regardons un exemple simple. Admettons que nous disposons de la série `s_num`, avec un indice composé d'entiers n'étant pas une séquence allant de 0 au nombre d'éléments. Dans ce cas, si nous souhaitons récupérer récupérer le 2e élément, du fait de l'indice composé de valeurs numériques, nous ne pouvons pas l'obtenir en demandant `s[1]`. Pour extraire le 2e de la série, on doit savoir que son indice vaut `0` et ainsi demander :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 print("L'élément dont l'index vaut 0 : ", s_num[0])
 ```
@@ -5480,7 +5486,7 @@ print("\npour s_texte : \n", s_texte.drop("c"))
 
 On peut aussi aller récupérer le nom en fonction de la position, en passant par un détour en utilisant la méthode `index()` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-pritn(s.drop(s_num.index[0]))
+print(s.drop(s_num.index[0]))
 print("s_num.index[0] : ", s_num.index[0])
 print("s_texte.index[0] : ", s_texte.index[0])
 
@@ -5499,7 +5505,7 @@ print("\npour s_texte : \n", s_texte.drop(["c", "b"]))
 
 À nouveau, on peut aller récupérer le nom en fonction de la position, en passant par un détour en utilisant la méthode `index()` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-pritn(s.drop(s_num.index[0]))
+print(s.drop(s_num.index[0]))
 print("s_num.index[[0,2]] : ", s_num.index[[0,2]])
 print("s_texte.index[[0,2]] : ", s_texte.index[[0,2]])
 
@@ -5696,7 +5702,10 @@ print("df : \n", df)
 
 Pour remplacer plusieurs colonnes en même temps :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df[["x", "y"]] = [[2, 3, 4, 2, 1, 0], 1]
+df[["x", "y"]] = pd.DataFrame({
+    "x": [2, 3, 4, 2, 1, 0],
+    "y": [1]*6
+})
 print("df : \n", df)
 ```
 
@@ -5715,7 +5724,7 @@ print("df : \n", df)
 
 Il peut être plus intéressant de remplacer une observation comme suit :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df.iloc[1,:] = ["Aix", 2018, 1, 2, 3]
+df.iloc[1,:] = ["Aix", 2018, 1, 2]
 print("df : \n", df)
 ```
 
@@ -5723,8 +5732,8 @@ print("df : \n", df)
 Pour remplacer plusieurs lignes, la méthode est identique :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 df.iloc[[1,3],:] = [
-    ["Aix", 2018, 1, 2, 3],
-    ["Aix", 2018, -1, -1, -1]
+    ["Aix", 2018, 1, 2],
+    ["Aix", 2018, -1, -1]
 ]
 print("df : \n", df)
 ```
@@ -5747,30 +5756,30 @@ print("s_num : ", s_num)
 #### Ajout d'une seule valeur dans une série
 
 
-Pour ajouter une valeur, on utlise la méthode `append()`. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligé de fournir une série avec une valeur pour l'index également :
+Pour ajouter une valeur, on utlise la méthode `concat()` de pandas. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligés de fournir une série avec une valeur pour l'index également :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s_num_2 = pd.Series([1], index = [2])
 print("s_num_2 : \n", s_num_2)
-s_num = s_num.append(s_num_2)
+s_num = pd.concat([s_num, s_num_2])
 print("s_num : \n", s_num)
 ```
 
-On note que la méthode `append()` retourne une vue, et que pour répercuter l'ajout, il est nécessaire d'effectuer une nouvelle assignation.
+On note que la méthode `concat()` retourne une vue, et que pour répercuter l'ajout, il est nécessaire d'effectuer une nouvelle affectation.
 
 
-En ayant une série avec un index numérique généré automatiquement, on peut préciser la valeur `True` pour le paramètre `ignore_index` de la méthode `append()` pour indiquer de ne pas tenir compte de la valeur de l'index de l'objet que l'on ajoute :
+En ayant une série avec un index numérique généré automatiquement, on peut préciser la valeur `True` pour le paramètre `ignore_index` de la méthode `concat()` pour indiquer de ne pas tenir compte de la valeur de l'index de l'objet que l'on ajoute :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s = pd.Series([10, 2, 4])
-s = s.append(pd.Series([2]), ignore_index=True)
+s = pd.concat([s, pd.Series([2])], ignore_index=True)
 print("s : \n", s)
 ```
 
 #### Ajout de plusieurs valeurs dans une série
 
-Pour ajouter plusieurs valeurs, on utlise la méthode `append()`. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligé de fournir une série avec une valeur pour l'index également :
+Pour ajouter plusieurs valeurs, on utlise la méthode `concat()`. Ici, avec `s_num`, comme l'index est manuel, nous sommes obligé de fournir une série avec une valeur pour l'index également :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s_num_2 = pd.Series([1], index = [2])
-s_num.append(s_num_2)
+s_num = pd.concat([s_num, s_num_2])
 print("s_num : ", s_num)
 ```
 
@@ -5778,7 +5787,7 @@ print("s_num : ", s_num)
 En ayant une série avec un index numérique généré automatiquement :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 s = pd.Series([10, 2, 4])
-s.append(pd.Series([2]), ignore_index=True)
+s = pd.concat([s, pd.Series([2])], ignore_index=True)
 ```
 
 
@@ -5801,7 +5810,7 @@ print("df : \n", df)
 
 #### Ajout d'une ligne dans un dataframe {#pandas-ajout-ligne-df}
 
-Comme pour une série, pour ajouter une ligne, on utlise la méthode `append()`. Dans un premier temps, créons un nouveau dataframe avec la ligne à ajouter :
+Comme pour une série, pour ajouter une ligne, on utlise la méthode `concat()`. Dans un premier temps, créons un nouveau dataframe avec la ligne à ajouter :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 nv_ligne = pd.DataFrame([["Marseille", "2021", 2, 4]],
                        columns = df.columns)
@@ -5812,13 +5821,13 @@ On s'est assuré d'avoir le même nom de colonnes ici, en indiquant au paramètr
 
 Ajoutons la nouvelle ligne à `df` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df = df.append(nv_ligne, ignore_index=True)
+df = pd.concat([df, nv_ligne], ignore_index=True)
 ```
 
-À nouveau,la méthode `append()` appliquée à un dataframe, retourne une vue et n'affecte pas l'objet.
+À nouveau,la méthode `concat()` appliquée à un dataframe, retourne une vue et n'affecte pas l'objet.
 
 
-On peut noter que lors de l'ajout d'une ligne, si le nom des colonnes n'est pas indiqué dans le même ordre que dans le dataframe dans lequel est effectué l'ajout, il faut rajouter une indication au paramètre `sort` de la méthode `append()` :
+On peut noter que lors de l'ajout d'une ligne, si le nom des colonnes n'est pas indiqué dans le même ordre que dans le dataframe dans lequel est effectué l'ajout, il faut rajouter une indication au paramètre `sort` de la méthode `concat()` :
 
 - si `sort=True`, l'ordre des colonnes de la ligne ajoutée sera appliqué au dataframe de destination ;
 - si `sort=False`, l'odre des colonnes du dataframe de destination ne sera pas modifié.
@@ -5828,7 +5837,7 @@ nv_ligne = pd.DataFrame([["2021", "Marseille", 2, 4]],
                        columns = ["annee", "ville", "x", "y"])
 print("nv_ligne : \n", nv_ligne)
 print("avec sort=True : \n", 
-  df.append(nv_ligne, ignore_index=True, sort = True))
+  pd.concat([df, nv_ligne], ignore_index=True, sort=True))
 ```
 
 
@@ -5848,7 +5857,7 @@ print("nv_ligne : \n", nv_lignes)
 
 Puis l'insertion :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-df = df.append(nv_lignes, ignore_index=True)
+df = pd.concat([df,nv_lignes], ignore_index=True)
 ```
 
 
@@ -5857,7 +5866,7 @@ df = df.append(nv_lignes, ignore_index=True)
 Pour ajouter une colonne dans un dataframe :
 ```{python, eval=T, echo=TRUE, error=TRUE}
 from numpy import random
-df = df["z"] = random.rand(len(df.index))
+df["z"] = random.rand(len(df.index))
 print("df : \n", df)
 ```
 
@@ -5999,6 +6008,7 @@ dataframe.fonction_stat(axis, skipna)
 - `skipna` : si `True`, exclue les valeurs manquantes pour effectuer les calculs.
 
 Parmi les méthodes disponibles : 
+
 - `mean()` : moyenne ;
 - `mode()` : mode ;
 - `median()` : médiane ;
@@ -6020,21 +6030,21 @@ dico = {"height" : [58, 59, 60, 61, 62],
         "taille": [162, 156, 172, 160, 158],
         "married": [True, True, False, False, True],
         "city": ["A", "B", "B", "B", "A"]
-       } 
+       }
 df = pd.DataFrame(dico)
-print(df.mean())
+print(df.mean(numeric_only=True))
 ```
 
 Si on le souhaite, on peut faire la moyenne des valeurs en colonne (sans aucun sens ici) :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print(df.mean(axis=1))
+print(df.mean(axis=1, numeric_only=True))
 ```
 
 
 Ces fonctions peuvent s'appliquer sur une seule colonne. Par exemple, pour afficher la valeur minimum :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print("min : ", df.height.min())
+print("min : ", df.height.min(numeric_only=True))
 ```
 
 Il est aussi utile de pouvoir obtenir la position des valeurs min et max ; ce qu'on peut obtenir avec les méthodes `idxmin()` et `idxmax()`, respectivement.
@@ -6055,7 +6065,7 @@ print(df.describe())
 
 Il est aisé de trier un dataframe par ordre croissant ou décroissant d'une ou plusieurs de ses colonnes. Pour ce faire, on utilise la méthode `sort_values()`. La syntaxe est la suivante :
 
-```{python, eval=T, echo=TRUE, error=TRUE}
+```{python, eval=FALSE, echo=TRUE, error=TRUE}
 DataFrame.sort_values(by, axis=0, ascending=True,
                       inplace=False, kind="quicksort",
                       na_position="last")
@@ -6119,7 +6129,7 @@ print(pd.concat([x_1, x_2], axis = 1))
 ```
 
 
-Pour coller les dataframes les uns en-dessous des autres, on peut utiliser la méthode `append()`, comme indiqué dans la Section\ \@ref(pandas-ajout-ligne-df), ou on peut aussi utiliser la méthode `concat()`. 
+Pour coller les dataframes les uns en-dessous des autres, on peut utiliser la méthode `concat()` éaglement. 
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 x_3 = pd.DataFrame(np.random.randn(5, 2),
@@ -6276,7 +6286,7 @@ print(chomage)
 
 Comme nous l'avons vu précédemment (c.f. Section\ \@ref(pandas-statistiques-df)), on peut utiliser des méthodes permettant de calculer des statistiques simples sur l'ensemble des données. Par exemple, pour afficher la moyenne de chacune des colonnes numériques :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-print(chomage.mean())
+print(chomage.mean(numeric_only=True))
 ```
 
 
@@ -6322,7 +6332,7 @@ chomage.loc[:,["annee", "region",
 ## Stacking et unstacking
 
 
-À compléter
+À compléter un jour
 
 
 ## Exportation et importation de données
@@ -6386,7 +6396,7 @@ chomage.to_csv(chemin, decimal=";", index=False)
 
 Si on désire que le fichier CSV soit compressé dans un fichier `gzip`, on le nomme avec l'extention `.csv.gz` et on ajoute la valeur `gzip` au paramètre `compression` :
 ```{python, eval=T, echo=TRUE, error=TRUE}
-chemin = "./Python_pour_economistes/fichiers_exemples/chomage.csv.gz"
+chemin = "./fichiers_exemples/chomage.csv.gz"
 chomage.to_csv(chemin, decimal=";", index=False, compression="gzip")
 ```
 
@@ -6394,7 +6404,7 @@ chomage.to_csv(chemin, decimal=";", index=False, compression="gzip")
 ##### Vers un fichier HDF5
 
 
-Pour enregistrer les données d'un dataframe dans un fichier HDF5 utilisant HDFStore, `pandas` propose la méthode `to_hdf()` qui fonctionne de la même manière que la fonction `to_csv()` (cf. Section\ \@ref(pandas-export_csv)).
+Pour enregistrer les données d'un dataframe dans un fichier HDF5 utilisant HDFStore, `pandas` propose la méthode `to_hdf()` qui fonctionne de manière similaire à la fonction `to_csv()` (cf. Section\ \@ref(pandas-export_csv)). Make sure to install the module `tables` first (`pip install tables`).
 
 Il est nécessaire de spécifier le paramètre `path_or_buf` pour indiquer le chemin et le paramètre `key` pour identifier l'objet à enregistrer dans le fichier.
 
@@ -6402,7 +6412,7 @@ La syntaxe est la suivante :
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 chemin = "./fichiers_exemples/chomage.h5"
-chomage.to_hdf(chemin, "base_chomage", decimal=";", index=False)
+chomage.to_hdf(chemin, key="base_chomage", index=False)
 ```
 
 
@@ -6421,7 +6431,7 @@ Pour importer des données depuis un fichier CSV, `pandas` propose la fonction `
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 chemin = "./fichiers_exemples/chomage.csv"
-chomage = pd.read_csv(chemin, decimal=";", index=False)
+chomage = pd.read_csv(chemin, decimal=";")
 ```
 
 Il est possible de fournir une URL pointant vers un fichier CSV comme chemin, la fonction `read_csv()`.
@@ -6447,14 +6457,14 @@ Pour importer des fichiers Excel, `pandas` propose la fonction `read_excel()`.
 
 ```{python, eval=T, echo=TRUE, error=TRUE}
 chemin = "./fichiers_exemples/chomage.xlsx"
-chomage = pd.read_excel(chemin, skiprows=2, header=1, sheet = 1)
+chomage = pd.read_excel(chemin, skiprows=2, header=1, sheet_name = 1)
 print(chomage)
 ```
 
 Parmi les paramètres fréquemment utilisés :
 
 - `header` : numéro de ligne à utiliser comme en-tête ;
-- `sheet` : nom ou numéro de feuille ;
+- `sheet` : nom ou numéro de feuille (attention à l'index qui commence à 0) ;
 - `skiprows` : nombre de lignes à sauter au début ;
 - `thousands` : séparateur de milliers.
 
@@ -7397,12 +7407,12 @@ knitr::include_graphics("figs/pyplot/plot_axes_label.png")
 Pour contrôler les limites des axes, on utilise la fonction `axis()`, en précisant les paramètres `xmin`, `xmax`, `ymax`, `ymin` et `ymax`, désignant, respectivement, les bornes inférieures et supérieures de l'axe des absisses et les borenes inférieures et supérieures de l'axe des ordonnées :
 
 ```{python, eval=F, echo=TRUE, error=TRUE}
-plt.axis(xmin = 0, xmax = 5, ymin = -1, ymax = 30)
+plt.axis(xmin = 0, xmax = 5, ymin = -1, ymax = 30);
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
 plt.axis(xmin = 0, xmax = 5, ymin = -1, ymax = 30)
-plt.savefig("figs/pyplot/plot_axes_limites.png")
+plt.savefig("figs/pyplot/plot_axes_limites.png");
 plt.close()
 ```
 
@@ -7419,16 +7429,16 @@ Les fonctions `xticks()` et `yticks()` permettent d'obtenir ou de modifier les m
 ```{python, eval=F, echo=TRUE, error=TRUE}
 x = np.arange(-10, 11)
 y = x**2
-plt.plot(x, y)
-plt.xticks(np.arange(-10, 11, step = 4))
+plt.plot(x, y);
+plt.xticks(np.arange(-10, 11, step = 4));
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
 x = np.arange(-10, 11)
 y = x**2
-plt.plot(x, y)
-plt.xticks(np.arange(-10, 11, step = 4))
-plt.savefig("figs/pyplot/plot_ticks.png")
+plt.plot(x, y);
+plt.xticks(np.arange(-10, 11, step = 4));
+plt.savefig("figs/pyplot/plot_ticks.png");
 plt.close()
 ```
 
@@ -7447,14 +7457,14 @@ locs_y, labels_y = plt.yticks()
 loc_x_new = np.arange(locs_x[0], locs_x[-1], step = 5)
 loc_y_new = np.arange(locs_y[0], locs_y[-1], step = 10)
 
-plt.xticks(loc_x_new)
-plt.yticks(loc_y_new)
+plt.xticks(loc_x_new);
+plt.yticks(loc_y_new);
 
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
 plt.plot(x, y)
-plt.xticks(np.arange(-10, 11, step = 4))
+plt.xticks(np.arange(-10, 11, step = 4));
 plt.savefig("figs/pyplot/plot_ticks_2.png")
 plt.close()
 ```
@@ -7478,8 +7488,8 @@ labels_x_new = list()
 for i in np.arange(1, len(locs_x)):
         labels_x_new.append("x : " + str(locs_x[i]))
 
-plt.xticks(loc_x_new, labels_x_new)
-plt.yticks(loc_y_new)
+plt.xticks(loc_x_new, labels_x_new);
+plt.yticks(loc_y_new);
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
@@ -7493,9 +7503,9 @@ labels_x_new = list()
 for i in np.arange(1, len(locs_x)):
         labels_x_new.append("x : " + str(locs_x[i]))
 
-plt.xticks(loc_x_new, labels_x_new)
-plt.yticks(loc_y_new)
-plt.savefig("figs/pyplot/plot_ticks_3.png")
+plt.xticks(loc_x_new, labels_x_new);
+plt.yticks(loc_y_new);
+plt.savefig("figs/pyplot/plot_ticks_3.png");
 plt.close()
 ```
 
@@ -7511,13 +7521,13 @@ Pour rajouter une grille, on utilise la fonction `grid()` :
 ```{python, eval=F, echo=TRUE, error=TRUE}
 x = np.arange(-10, 11)
 y = x**2
-plt.plot(x, y)
-plt.grid()
+plt.plot(x, y);
+plt.grid();
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
 plt.grid()
-plt.savefig("figs/pyplot/plot_grid.png")
+plt.savefig("figs/pyplot/plot_grid.png");
 plt.close()
 ```
 
@@ -7529,14 +7539,14 @@ knitr::include_graphics("figs/pyplot/plot_grid.png")
 Le paramètre `axis` permet de définir si l'on désire une grille pour les deux axes (`both`, par défaut), uniquement pour les abscisses (`x`), ou uniquement pour les ordonnées (`y`) :
 
 ```{python, eval=F, echo=TRUE, error=TRUE}
-plt.plot(x, y)
-plt.grid(axis = "y")
+plt.plot(x, y);
+plt.grid(axis = "y");
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
-plt.plot(x, y)
-plt.grid(axis = "y")
-plt.savefig("figs/pyplot/plot_grid_y.png")
+plt.plot(x, y);
+plt.grid(axis = "y");
+plt.savefig("figs/pyplot/plot_grid_y.png");
 plt.close()
 ```
 
@@ -7548,18 +7558,18 @@ knitr::include_graphics("figs/pyplot/plot_grid_y.png")
 On peut paraméter les lignes majeures ou mineurs de la grille :
 
 ```{python, eval=F, echo=TRUE, error=TRUE}
-plt.plot(x, y)
-plt.minorticks_on()
-plt.grid(which = "major", axis = "y", color = "black")
-plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--")
+plt.plot(x, y);
+plt.minorticks_on();
+plt.grid(which = "major", axis = "y", color = "black");
+plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--");
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
-plt.plot(x, y)
-plt.minorticks_on()
-plt.grid(which = "major", axis = "y", color = "black")
-plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--")
-plt.savefig("figs/pyplot/plot_grid_minor.png")
+plt.plot(x, y);
+plt.minorticks_on();
+plt.grid(which = "major", axis = "y", color = "black");
+plt.grid(which = "minor", axis = "y", color = "red", linestyle = "--");
+plt.savefig("figs/pyplot/plot_grid_minor.png");
 plt.close()
 ```
 
@@ -7578,20 +7588,19 @@ Lorsque l'on désire ajouter une légende, on précise l'étiquette de celle-ci 
 x = np.arange(-10, 11)
 y = x**2
 y_2 = x**3
-plt.plot(x, y, label = "carré ($x^2$)")
-plt.plot(x, y_2, label = "cube ($x^3$)")
-plt.legend()
-plt.legend()
+plt.plot(x, y, label = "carré ($x^2$)");
+plt.plot(x, y_2, label = "cube ($x^3$)");
+plt.legend();
 ```
 
 ```{python, eval=T, echo=FALSE, error=TRUE}
 x = np.arange(-10, 11)
 y = x**2
 y_2 = x**3
-plt.plot(x, y, label = "carré ($x^2$)")
-plt.plot(x, y_2, label = "cube ($x^3$)")
-plt.legend()
-plt.savefig("figs/pyplot/plot_legende.png")
+plt.plot(x, y, label = "carré ($x^2$)");
+plt.plot(x, y_2, label = "cube ($x^3$)");
+plt.legend();
+plt.savefig("figs/pyplot/plot_legende.png");
 plt.close()
 ```
 

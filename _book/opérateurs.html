@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Opérateurs | Python pour les économistes</title>
+  <meta name="description" content="4 Opérateurs | Python pour les économistes" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Opérateurs | Python pour les économistes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Opérateurs | Python pour les économistes" />
+  
+  
+  
+
+<meta name="author" content="Ewen Gallic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="structures.html"/>
+<link rel="next" href="chargement-et-sauvegarde-de-données.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="propos-liminaires.html"><a href="propos-liminaires.html"><i class="fa fa-check"></i>Propos liminaires</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="propos-liminaires.html"><a href="propos-liminaires.html#objectifs"><i class="fa fa-check"></i><b>0.1</b> Objectifs</a></li>
+<li class="chapter" data-level="0.2" data-path="python_for_economists.html"><a href="#%C3%A0-qui-sadressent-ces-notes"><i class="fa fa-check"></i><b>0.2</b> À qui s’adressent ces notes ?</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#historique"><i class="fa fa-check"></i><b>1.1</b> Historique</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#versions"><i class="fa fa-check"></i><b>1.2</b> Versions</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#espace-de-travail"><i class="fa fa-check"></i><b>1.3</b> Espace de travail</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#python-dans-un-terminal"><i class="fa fa-check"></i><b>1.3.1</b> Python dans un terminal</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#ipython"><i class="fa fa-check"></i><b>1.3.2</b> IPython</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#spyder"><i class="fa fa-check"></i><b>1.3.3</b> Spyder</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#jupyter"><i class="fa fa-check"></i><b>1.3.4</b> Jupyter</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#les-variables"><i class="fa fa-check"></i><b>1.4</b> Les variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#assignation-et-suppression"><i class="fa fa-check"></i><b>1.4.1</b> Assignation et suppression</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#conventions-de-nommage"><i class="fa fa-check"></i><b>1.4.2</b> Conventions de nommage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#les-commentaires"><i class="fa fa-check"></i><b>1.5</b> Les commentaires</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#les-modules-et-les-packages"><i class="fa fa-check"></i><b>1.6</b> Les modules et les packages</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#laide"><i class="fa fa-check"></i><b>1.7</b> L’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="python_for_economists.html"><a href="#types-de-donn%C3%A9es"><i class="fa fa-check"></i><b>2</b> Types de données</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="python_for_economists.html"><a href="#cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1</b> Chaînes de caractères</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="types-de-données.html"><a href="types-de-données.html"><i class="fa fa-check"></i><b>2.1.1</b> Concaténation de chaînes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="types-de-données.html"><a href="types-de-données.html#indexation-et-extraction"><i class="fa fa-check"></i><b>2.1.2</b> Indexation et extraction</a></li>
+<li class="chapter" data-level="2.1.3" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-disponibles-avec-les-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>2.1.3</b> Méthodes disponibles avec les chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.4" data-path="types-de-données.html"><a href="types-de-données.html#conversion-chaines-caracteres"><i class="fa fa-check"></i><b>2.1.4</b> Conversion en chaînes de caractères</a></li>
+<li class="chapter" data-level="2.1.5" data-path="types-de-données.html"><a href="types-de-données.html#exercice"><i class="fa fa-check"></i><b>2.1.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="python_for_economists.html"><a href="#valeurs-num%C3%A9riques"><i class="fa fa-check"></i><b>2.2</b> Valeurs numériques</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="types-de-données.html"><a href="types-de-données.html#entiers"><i class="fa fa-check"></i><b>2.2.1</b> Entiers</a></li>
+<li class="chapter" data-level="2.2.2" data-path="python_for_economists.html"><a href="#nombre-%C3%A0-virgule-flottante"><i class="fa fa-check"></i><b>2.2.2</b> Nombre à virgule flottante</a></li>
+<li class="chapter" data-level="2.2.3" data-path="python_for_economists.html"><a href="#nombres-compl%C3%A8xes"><i class="fa fa-check"></i><b>2.2.3</b> Nombres complèxes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="types-de-données.html"><a href="types-de-données.html#conversions"><i class="fa fa-check"></i><b>2.2.4</b> Conversions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="python_for_economists.html"><a href="#bool%C3%A9ens"><i class="fa fa-check"></i><b>2.3</b> Booléens</a></li>
+<li class="chapter" data-level="2.4" data-path="types-de-données.html"><a href="types-de-données.html#objet-vide"><i class="fa fa-check"></i><b>2.4</b> Objet vide</a></li>
+<li class="chapter" data-level="2.5" data-path="types-de-données.html"><a href="types-de-données.html#dates-et-temps"><i class="fa fa-check"></i><b>2.5</b> Dates et temps</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="types-de-données.html"><a href="types-de-données.html#module-datetime"><i class="fa fa-check"></i><b>2.5.1</b> Module datetime</a></li>
+<li class="chapter" data-level="2.5.2" data-path="types-de-données.html"><a href="types-de-données.html#module-pytz"><i class="fa fa-check"></i><b>2.5.2</b> Module <code>pytz</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="types-de-données.html"><a href="types-de-données.html#exercices"><i class="fa fa-check"></i><b>2.5.3</b> Exercices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="structures.html"><a href="structures.html"><i class="fa fa-check"></i><b>3</b> Structures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="structures.html"><a href="structures.html#structures-listes"><i class="fa fa-check"></i><b>3.1</b> Listes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="structures.html"><a href="structures.html#structure-liste-extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.1.2" data-path="structures.html"><a href="structures.html#modification"><i class="fa fa-check"></i><b>3.1.2</b> Modification</a></li>
+<li class="chapter" data-level="3.1.3" data-path="structures.html"><a href="structures.html#test-dappartenance"><i class="fa fa-check"></i><b>3.1.3</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="structures.html"><a href="structures.html#copie-de-liste"><i class="fa fa-check"></i><b>3.1.4</b> Copie de liste</a></li>
+<li class="chapter" data-level="3.1.5" data-path="structures.html"><a href="structures.html#tri"><i class="fa fa-check"></i><b>3.1.5</b> Tri</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="structures.html"><a href="structures.html#n-uplets-tuples"><i class="fa fa-check"></i><b>3.2</b> N-uplets (Tuples)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments"><i class="fa fa-check"></i><b>3.2.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.2.2" data-path="structures.html"><a href="structures.html#modification-1"><i class="fa fa-check"></i><b>3.2.2</b> Modification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="structures.html"><a href="structures.html#structure-ensembles"><i class="fa fa-check"></i><b>3.3</b> Ensembles</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="structures.html"><a href="structures.html#modifications"><i class="fa fa-check"></i><b>3.3.1</b> Modifications</a></li>
+<li class="chapter" data-level="3.3.2" data-path="structures.html"><a href="structures.html#test-dappartenance-1"><i class="fa fa-check"></i><b>3.3.2</b> Test d’appartenance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="structures.html"><a href="structures.html#copie-densemble"><i class="fa fa-check"></i><b>3.3.3</b> Copie d’ensemble</a></li>
+<li class="chapter" data-level="3.3.4" data-path="structures.html"><a href="structures.html#conversion-en-liste"><i class="fa fa-check"></i><b>3.3.4</b> Conversion en liste</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="structures.html"><a href="structures.html#type-dict"><i class="fa fa-check"></i><b>3.4</b> Dictionnaires</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-1"><i class="fa fa-check"></i><b>3.4.1</b> Extraction des éléments</a></li>
+<li class="chapter" data-level="3.4.2" data-path="python_for_economists.html"><a href="#cl%C3%A9s-et-valeurs"><i class="fa fa-check"></i><b>3.4.2</b> Clés et valeurs</a></li>
+<li class="chapter" data-level="3.4.3" data-path="structures.html"><a href="structures.html#recherche-dappartenance"><i class="fa fa-check"></i><b>3.4.3</b> Recherche d’appartenance</a></li>
+<li class="chapter" data-level="3.4.4" data-path="structures.html"><a href="structures.html#modification-2"><i class="fa fa-check"></i><b>3.4.4</b> Modification</a></li>
+<li class="chapter" data-level="3.4.5" data-path="structures.html"><a href="structures.html#copie-de-dictionnaire"><i class="fa fa-check"></i><b>3.4.5</b> Copie de dictionnaire</a></li>
+<li class="chapter" data-level="3.4.6" data-path="structures.html"><a href="structures.html#exercice-1"><i class="fa fa-check"></i><b>3.4.6</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs"><i class="fa fa-check"></i><b>4</b> Opérateurs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opérateurs.html"><a href="opérateurs.html"><i class="fa fa-check"></i><b>4.1</b> Opérateurs arithmétiques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="opérateurs.html"><a href="opérateurs.html#addition"><i class="fa fa-check"></i><b>4.1.1</b> Addition</a></li>
+<li class="chapter" data-level="4.1.2" data-path="opérateurs.html"><a href="opérateurs.html#soustraction"><i class="fa fa-check"></i><b>4.1.2</b> Soustraction</a></li>
+<li class="chapter" data-level="4.1.3" data-path="opérateurs.html"><a href="opérateurs.html#multiplication"><i class="fa fa-check"></i><b>4.1.3</b> Multiplication</a></li>
+<li class="chapter" data-level="4.1.4" data-path="opérateurs.html"><a href="opérateurs.html#division"><i class="fa fa-check"></i><b>4.1.4</b> Division</a></li>
+<li class="chapter" data-level="4.1.5" data-path="opérateurs.html"><a href="opérateurs.html#modulo"><i class="fa fa-check"></i><b>4.1.5</b> Modulo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="opérateurs.html"><a href="opérateurs.html#puissance"><i class="fa fa-check"></i><b>4.1.6</b> Puissance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="opérateurs.html"><a href="opérateurs.html#ordre"><i class="fa fa-check"></i><b>4.1.7</b> Ordre</a></li>
+<li class="chapter" data-level="4.1.8" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res"><i class="fa fa-check"></i><b>4.1.8</b> Opérateurs mathématiques sur des chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets"><i class="fa fa-check"></i><b>4.1.9</b> Opérateurs mathématiques sur des listes ou des n-uplets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-comparaison"><i class="fa fa-check"></i><b>4.2</b> Opérateurs de comparaison</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="python_for_economists.html"><a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9"><i class="fa fa-check"></i><b>4.2.1</b> Égalité, inégalité</a></li>
+<li class="chapter" data-level="4.2.2" data-path="python_for_economists.html"><a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges"><i class="fa fa-check"></i><b>4.2.2</b> Infériorité et supériorité, stricts ou larges</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opérateurs.html"><a href="opérateurs.html#inclusion-et-exclusion"><i class="fa fa-check"></i><b>4.2.3</b> Inclusion et exclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="opérateurs.html"><a href="opérateurs.html#operateurs-logiques"><i class="fa fa-check"></i><b>4.3</b> Opérateurs logiques</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opérateurs.html"><a href="opérateurs.html#et-logique"><i class="fa fa-check"></i><b>4.3.1</b> Et logique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opérateurs.html"><a href="opérateurs.html#ou-logique"><i class="fa fa-check"></i><b>4.3.2</b> Ou logique</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opérateurs.html"><a href="opérateurs.html#non-logique"><i class="fa fa-check"></i><b>4.3.3</b> Non logique</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="opérateurs.html"><a href="opérateurs.html#quelques-fonctions"><i class="fa fa-check"></i><b>4.4</b> Quelques fonctions</a></li>
+<li class="chapter" data-level="4.5" data-path="opérateurs.html"><a href="opérateurs.html#quelques-constantes"><i class="fa fa-check"></i><b>4.5</b> Quelques constantes</a></li>
+<li class="chapter" data-level="4.6" data-path="opérateurs.html"><a href="opérateurs.html#exercice-2"><i class="fa fa-check"></i><b>4.6</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="python_for_economists.html"><a href="#chargement-et-sauvegarde-de-donn%C3%A9es"><i class="fa fa-check"></i><b>5</b> Chargement et sauvegarde de données</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html"><i class="fa fa-check"></i><b>5.1</b> Charger des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#import-fichiers-texte"><i class="fa fa-check"></i><b>5.1.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#importation-fichiers-csv"><i class="fa fa-check"></i><b>5.1.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json"><i class="fa fa-check"></i><b>5.1.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-excel"><i class="fa fa-check"></i><b>5.1.4</b> Fichiers Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="python_for_economists.html"><a href="#exporter-des-donn%C3%A9es"><i class="fa fa-check"></i><b>5.2</b> Exporter des données</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-textes"><i class="fa fa-check"></i><b>5.2.1</b> Fichiers textes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichiers-csv"><i class="fa fa-check"></i><b>5.2.2</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#fichier-json-1"><i class="fa fa-check"></i><b>5.2.3</b> Fichier JSON</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chargement-et-sauvegarde-de-données.html"><a href="chargement-et-sauvegarde-de-données.html#exercice-3"><i class="fa fa-check"></i><b>5.2.4</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conditions.html"><a href="conditions.html"><i class="fa fa-check"></i><b>6</b> Conditions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if"><i class="fa fa-check"></i><b>6.1</b> Les instructions conditionnelles <code>if</code></a></li>
+<li class="chapter" data-level="6.2" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-else"><i class="fa fa-check"></i><b>6.2</b> Les instructions conditionnelles <code>if-else</code></a></li>
+<li class="chapter" data-level="6.3" data-path="conditions.html"><a href="conditions.html#les-instructions-conditionnelles-if-elif"><i class="fa fa-check"></i><b>6.3</b> Les instructions conditionnelles <code>if-elif</code></a></li>
+<li class="chapter" data-level="6.4" data-path="conditions.html"><a href="conditions.html#exercice-4"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="boucles.html"><a href="boucles.html"><i class="fa fa-check"></i><b>7</b> Boucles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="boucles.html"><a href="boucles.html#boucles-avec-while"><i class="fa fa-check"></i><b>7.1</b> Boucles avec <code>while()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="boucles.html"><a href="boucles.html#boucles-avec-for"><i class="fa fa-check"></i><b>7.2</b> Boucles avec <code>for()</code></a></li>
+<li class="chapter" data-level="7.3" data-path="boucles.html"><a href="boucles.html#exercice-5"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Fonctions</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="python_for_economists.html"><a href="#d%C3%A9finition"><i class="fa fa-check"></i><b>8.1</b> Définition</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="fonctions.html"><a href="fonctions.html#ajout-dune-description"><i class="fa fa-check"></i><b>8.1.1</b> Ajout d’une description</a></li>
+<li class="chapter" data-level="8.1.2" data-path="python_for_economists.html"><a href="#param%C3%A8tres-dune-fonction"><i class="fa fa-check"></i><b>8.1.2</b> Paramètres d’une fonction</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="python_for_economists.html"><a href="#port%C3%A9e"><i class="fa fa-check"></i><b>8.2</b> Portée</a></li>
+<li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#fonctions-lambda"><i class="fa fa-check"></i><b>8.3</b> Fonctions lambda</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#retour-de-plusieurs-valeurs"><i class="fa fa-check"></i><b>8.4</b> Retour de plusieurs valeurs</a></li>
+<li class="chapter" data-level="8.5" data-path="fonctions.html"><a href="fonctions.html#exercice-6"><i class="fa fa-check"></i><b>8.5</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="numpy.html"><a href="numpy.html"><i class="fa fa-check"></i><b>9</b> Introduction à Numpy</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numpy.html"><a href="numpy.html#numpy-tableaux"><i class="fa fa-check"></i><b>9.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="python_for_economists.html"><a href="#cr%C3%A9ation"><i class="fa fa-check"></i><b>9.1.1</b> Création</a></li>
+<li class="chapter" data-level="9.1.2" data-path="numpy.html"><a href="numpy.html#dimensions"><i class="fa fa-check"></i><b>9.1.2</b> Dimensions</a></li>
+<li class="chapter" data-level="9.1.3" data-path="python_for_economists.html"><a href="#extraction-des-%C3%A9l%C3%A9ments-dun-tableau"><i class="fa fa-check"></i><b>9.1.3</b> Extraction des éléments d’un tableau</a></li>
+<li class="chapter" data-level="9.1.4" data-path="numpy.html"><a href="numpy.html#modification-3"><i class="fa fa-check"></i><b>9.1.4</b> Modification</a></li>
+<li class="chapter" data-level="9.1.5" data-path="numpy.html"><a href="numpy.html#copie-de-tableau"><i class="fa fa-check"></i><b>9.1.5</b> Copie de tableau</a></li>
+<li class="chapter" data-level="9.1.6" data-path="numpy.html"><a href="numpy.html#tri-1"><i class="fa fa-check"></i><b>9.1.6</b> Tri</a></li>
+<li class="chapter" data-level="9.1.7" data-path="numpy.html"><a href="numpy.html#transposition-tableau"><i class="fa fa-check"></i><b>9.1.7</b> Transposition</a></li>
+<li class="chapter" data-level="9.1.8" data-path="numpy.html"><a href="numpy.html#operations-tableaux"><i class="fa fa-check"></i><b>9.1.8</b> Opérations sur les tableaux</a></li>
+<li class="chapter" data-level="9.1.9" data-path="python_for_economists.html"><a href="#op%C3%A9rateurs-logiques"><i class="fa fa-check"></i><b>9.1.9</b> Opérateurs logiques</a></li>
+<li class="chapter" data-level="9.1.10" data-path="numpy.html"><a href="numpy.html#numpy-constantes"><i class="fa fa-check"></i><b>9.1.10</b> Quelques constantes</a></li>
+<li class="chapter" data-level="9.1.11" data-path="numpy.html"><a href="numpy.html#fonctions-universelles"><i class="fa fa-check"></i><b>9.1.11</b> Fonctions universelles</a></li>
+<li class="chapter" data-level="9.1.12" data-path="python_for_economists.html"><a href="#m%C3%A9thodes-et-fonctions-math%C3%A9matiques-et-statistiques"><i class="fa fa-check"></i><b>9.1.12</b> Méthodes et fonctions mathématiques et statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="python_for_economists.html"><a href="#g%C3%A9n%C3%A9ration-de-nombres-pseudo-al%C3%A9atoires"><i class="fa fa-check"></i><b>9.2</b> Génération de nombres pseudo-aléatoires</a></li>
+<li class="chapter" data-level="9.3" data-path="numpy.html"><a href="numpy.html#exercice-7"><i class="fa fa-check"></i><b>9.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>10</b> Manipulation de données avec <code>pandas</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pandas.html"><a href="pandas.html#structures-1"><i class="fa fa-check"></i><b>10.1</b> Structures</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="python_for_economists.html"><a href="#s%C3%A9ries"><i class="fa fa-check"></i><b>10.1.1</b> Séries</a></li>
+<li class="chapter" data-level="10.1.2" data-path="pandas.html"><a href="pandas.html#dataframes"><i class="fa fa-check"></i><b>10.1.2</b> Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="pandas.html"><a href="pandas.html#pandas-selection"><i class="fa fa-check"></i><b>10.2</b> Sélection</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="python_for_economists.html"><a href="#pour-les-s%C3%A9ries"><i class="fa fa-check"></i><b>10.2.1</b> Pour les séries</a></li>
+<li class="chapter" data-level="10.2.2" data-path="pandas.html"><a href="pandas.html#pour-les-dataframes"><i class="fa fa-check"></i><b>10.2.2</b> Pour les dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="pandas.html"><a href="pandas.html#renommage-des-colonnes-dans-un-dataframe"><i class="fa fa-check"></i><b>10.3</b> Renommage des colonnes dans un dataframe</a></li>
+<li class="chapter" data-level="10.4" data-path="pandas.html"><a href="pandas.html#filtrage"><i class="fa fa-check"></i><b>10.4</b> Filtrage</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="pandas.html"><a href="pandas.html#test-dappartenance-2"><i class="fa fa-check"></i><b>10.4.1</b> Test d’appartenance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pandas.html"><a href="pandas.html#valeurs-manquantes"><i class="fa fa-check"></i><b>10.5</b> Valeurs manquantes</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="python_for_economists.html"><a href="#rep%C3%A9rer-les-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.1</b> Repérer les valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pandas.html"><a href="pandas.html#retirer-les-observations-avec-valeurs-manquantes"><i class="fa fa-check"></i><b>10.5.2</b> Retirer les observations avec valeurs manquantes</a></li>
+<li class="chapter" data-level="10.5.3" data-path="pandas.html"><a href="pandas.html#retirer-les-valeurs-manquantes-par-dautres-valeurs"><i class="fa fa-check"></i><b>10.5.3</b> Retirer les valeurs manquantes par d’autres valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pandas.html"><a href="pandas.html#suppressions"><i class="fa fa-check"></i><b>10.6</b> Suppressions</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.6.1</b> Suppression d’éléments dans une série</a></li>
+<li class="chapter" data-level="10.6.2" data-path="python_for_economists.html"><a href="#suppression-d%C3%A9l%C3%A9ments-dans-un-dataframe"><i class="fa fa-check"></i><b>10.6.2</b> Suppression d’éléments dans un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="pandas.html"><a href="pandas.html#remplacement-de-valeurs"><i class="fa fa-check"></i><b>10.7</b> Remplacement de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie"><i class="fa fa-check"></i><b>10.7.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.7.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe"><i class="fa fa-check"></i><b>10.7.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="pandas.html"><a href="pandas.html#pandas-ajout-valeurs"><i class="fa fa-check"></i><b>10.8</b> Ajout de valeurs</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="python_for_economists.html"><a href="#pour-une-s%C3%A9rie-1"><i class="fa fa-check"></i><b>10.8.1</b> Pour une série</a></li>
+<li class="chapter" data-level="10.8.2" data-path="pandas.html"><a href="pandas.html#pour-un-dataframe-1"><i class="fa fa-check"></i><b>10.8.2</b> Pour un dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="python_for_economists.html"><a href="#retrait-des-valeurs-dupliqu%C3%A9es"><i class="fa fa-check"></i><b>10.9</b> Retrait des valeurs dupliquées</a></li>
+<li class="chapter" data-level="10.10" data-path="python_for_economists.html"><a href="#op%C3%A9rations"><i class="fa fa-check"></i><b>10.10</b> Opérations</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="pandas.html"><a href="pandas.html#pandas-statistiques-df"><i class="fa fa-check"></i><b>10.10.1</b> Statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="pandas.html"><a href="pandas.html#tri-2"><i class="fa fa-check"></i><b>10.11</b> Tri</a></li>
+<li class="chapter" data-level="10.12" data-path="python_for_economists.html"><a href="#concat%C3%A9nation"><i class="fa fa-check"></i><b>10.12</b> Concaténation</a></li>
+<li class="chapter" data-level="10.13" data-path="pandas.html"><a href="pandas.html#pandas-jointures"><i class="fa fa-check"></i><b>10.13</b> Jointures</a></li>
+<li class="chapter" data-level="10.14" data-path="python_for_economists.html"><a href="#agr%C3%A9gation"><i class="fa fa-check"></i><b>10.14</b> Agrégation</a>
+<ul>
+<li class="chapter" data-level="10.14.1" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-dune-seule-colonne"><i class="fa fa-check"></i><b>10.14.1</b> Agrégation selon les valeurs d’une seule colonne</a></li>
+<li class="chapter" data-level="10.14.2" data-path="python_for_economists.html"><a href="#agr%C3%A9gation-selon-les-valeurs-de-plusieurs-colonnes"><i class="fa fa-check"></i><b>10.14.2</b> Agrégation selon les valeurs de plusieurs colonnes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="pandas.html"><a href="pandas.html#stacking-et-unstacking"><i class="fa fa-check"></i><b>10.15</b> Stacking et unstacking</a></li>
+<li class="chapter" data-level="10.16" data-path="python_for_economists.html"><a href="#exportation-et-importation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16</b> Exportation et importation de données</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="python_for_economists.html"><a href="#exportation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.16.1</b> Exportation des données</a></li>
+</ul></li>
+<li class="chapter" data-level="10.17" data-path="python_for_economists.html"><a href="#importation-des-donn%C3%A9es"><i class="fa fa-check"></i><b>10.17</b> Importation des données</a>
+<ul>
+<li class="chapter" data-level="10.17.1" data-path="pandas.html"><a href="pandas.html#pandas-importation-csv"><i class="fa fa-check"></i><b>10.17.1</b> Fichiers CSV</a></li>
+<li class="chapter" data-level="10.17.2" data-path="pandas.html"><a href="pandas.html#pandas-importation-excel"><i class="fa fa-check"></i><b>10.17.2</b> Fichiers Excel</a></li>
+<li class="chapter" data-level="10.17.3" data-path="pandas.html"><a href="pandas.html#pandas-importation-hdf"><i class="fa fa-check"></i><b>10.17.3</b> Fichiers HDF5</a></li>
+</ul></li>
+<li class="chapter" data-level="10.18" data-path="pandas.html"><a href="pandas.html#exercice-8"><i class="fa fa-check"></i><b>10.18</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="python_for_economists.html"><a href="#visualisation-de-donn%C3%A9es"><i class="fa fa-check"></i><b>11</b> Visualisation de données</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html"><i class="fa fa-check"></i><b>11.1</b> Graphiques avec matplotlib</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="python_for_economists.html"><a href="#g%C3%A9om%C3%A9tries"><i class="fa fa-check"></i><b>11.1.1</b> Géométries</a></li>
+<li class="chapter" data-level="11.1.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#plusieurs-graphiques-sur-une-figure"><i class="fa fa-check"></i><b>11.1.2</b> Plusieurs graphiques sur une figure</a></li>
+<li class="chapter" data-level="11.1.3" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#pyplot-elements-graphiques"><i class="fa fa-check"></i><b>11.1.3</b> Éléments de graphiques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#dimensions-2"><i class="fa fa-check"></i><b>11.1.4</b> Dimensions</a></li>
+<li class="chapter" data-level="11.1.5" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#enregistrement"><i class="fa fa-check"></i><b>11.1.5</b> Enregistrement</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="visualisation-de-données.html"><a href="visualisation-de-données.html#graphiques-avec-seaborn"><i class="fa fa-check"></i><b>11.2</b> Graphiques avec seaborn</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python pour les économistes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="opérateurs" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Opérateurs<a href="#op%C3%A9rateurs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Python comprend différents opérateurs, permettant d’effectuer des opérations entre les opérandes, c’est-à-dire entre des variables, des littéraux ou encore des expressions.</p>
+<div id="operateurs-arithmetiques" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Opérateurs arithmétiques<a href="opérateurs.html#operateurs-arithmetiques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Les opérateurs arithmétiques de base sont intégrés dans Python.</p>
+<p>Nous avons déjà utilisé dans les chapitres précédents certains d’entre eux, pour effectuer des opérations sur les entiers ou les nombres à virgule flotante (addition, soustraction, etc.). Faisons un tour rapide des opérateurs arithmétiques les plus courants permettant de réaliser des opérations sur des nombres.</p>
+<div id="addition" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Addition<a href="opérateurs.html#addition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On effectue une addition entre deux nombres à l’aide du symbole <code>+</code> :</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb443-1"><a href="opérateurs.html#cb443-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span><span class="op">+</span><span class="dv">1</span>) <span class="co"># Addition</span></span></code></pre></div>
+<pre><code>## 2</code></pre>
+</div>
+<div id="soustraction" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Soustraction<a href="opérateurs.html#soustraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On effectue une soustraction entre deux nombres à l’aide du symbole <code>-</code> :</p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb445-1"><a href="opérateurs.html#cb445-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span><span class="op">-</span><span class="dv">1</span>) <span class="co"># Soustraction</span></span></code></pre></div>
+<pre><code>## 0</code></pre>
+</div>
+<div id="multiplication" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Multiplication<a href="opérateurs.html#multiplication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On effectue une multiplication entre deux nombres à l’aide du symbole <code>*</code> :</p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb447-1"><a href="opérateurs.html#cb447-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">2</span>) <span class="co"># Multiplication</span></span></code></pre></div>
+<pre><code>## 4</code></pre>
+</div>
+<div id="division" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Division<a href="opérateurs.html#division" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On effectue une division (réelle) entre deux nombres à l’aide du symbole <code>/</code> :</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb449-1"><a href="opérateurs.html#cb449-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>) <span class="co"># Division</span></span></code></pre></div>
+<pre><code>## 1.5</code></pre>
+<p>Pour effectuer une division entière, on double la barre oblique :</p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb451-1"><a href="opérateurs.html#cb451-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">//</span><span class="dv">2</span>) <span class="co"># Division entière</span></span></code></pre></div>
+<pre><code>## 1</code></pre>
+</div>
+<div id="modulo" class="section level3 hasAnchor" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Modulo<a href="opérateurs.html#modulo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Le modulo (reste de la division euclidienne) s’obtient à l’aide du symbole <code>%</code> :</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb453-1"><a href="opérateurs.html#cb453-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">12</span><span class="op">%</span><span class="dv">10</span>) <span class="co"># Modulo</span></span></code></pre></div>
+<pre><code>## 2</code></pre>
+</div>
+<div id="puissance" class="section level3 hasAnchor" number="4.1.6">
+<h3><span class="header-section-number">4.1.6</span> Puissance<a href="opérateurs.html#puissance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour élever un nombre à une puissance données, on utilise deux étoiles (<code>**</code>) :</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb455-1"><a href="opérateurs.html#cb455-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">**</span><span class="dv">3</span>) <span class="co"># 2 élevé à la puissance 3</span></span></code></pre></div>
+<pre><code>## 8</code></pre>
+</div>
+<div id="ordre" class="section level3 hasAnchor" number="4.1.7">
+<h3><span class="header-section-number">4.1.7</span> Ordre<a href="opérateurs.html#ordre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’ordre des opérations suit la règle PEMDAS (<em>Parentheses</em>, <em>Exponents</em>, <em>Multiplication and Division</em>, <em>Addition and Subtraction</em>).</p>
+<p>Par exemple, l’instruction suivante effectue d’abord le calcul <span class="math inline">\(2\times 2\)</span>, puis ajoute <span class="math inline">\(1\)</span> :</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb457-1"><a href="opérateurs.html#cb457-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>) </span></code></pre></div>
+<pre><code>## 5</code></pre>
+<p>L’instruction suivante, grâce aux parenthèses, effectue d’abord le calcul <span class="math inline">\(2+1\)</span>, puis la multiplication du résultat avec <span class="math inline">\(2\)</span> :</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb459-1"><a href="opérateurs.html#cb459-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">*</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)) </span></code></pre></div>
+<pre><code>## 6</code></pre>
+</div>
+<div id="opérateurs-mathématiques-sur-des-chaînes-de-caractères" class="section level3 hasAnchor" number="4.1.8">
+<h3><span class="header-section-number">4.1.8</span> Opérateurs mathématiques sur des chaînes de caractères<a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-cha%C3%AEnes-de-caract%C3%A8res" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Certains opérateurs mathématiques présentés dans la Section <a href="opérateurs.html#operateurs-arithmetiques">4.1</a> peuvent-être appliquées à des chaînes de caractères.</p>
+<p>Lorsque l’on utilise le symbole <code>+</code> entre deux chaînes de caractères, Python concatène ces deux chaînes (cf. Section <a href="types-de-données.html#type-chaines-concatenation">2.1.1</a>) :</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb461-1"><a href="opérateurs.html#cb461-1" tabindex="-1"></a>a <span class="op">=</span> <span class="st">&quot;euro&quot;</span></span>
+<span id="cb461-2"><a href="opérateurs.html#cb461-2" tabindex="-1"></a>b <span class="op">=</span> <span class="st">&quot;dollar&quot;</span></span>
+<span id="cb461-3"><a href="opérateurs.html#cb461-3" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">+</span>b)</span></code></pre></div>
+<pre><code>## eurodollar</code></pre>
+<p>Lorsqu’on “multiplie” une chaîne par un scalaire <span class="math inline">\(n\)</span>, Python répète la chaîne le nombre <span class="math inline">\(n\)</span> fois :</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb463-1"><a href="opérateurs.html#cb463-1" tabindex="-1"></a><span class="dv">2</span><span class="op">*</span>a</span></code></pre></div>
+<pre><code>## &#39;euroeuro&#39;</code></pre>
+</div>
+<div id="opérateurs-mathématiques-sur-des-listes-ou-des-n-uplets" class="section level3 hasAnchor" number="4.1.9">
+<h3><span class="header-section-number">4.1.9</span> Opérateurs mathématiques sur des listes ou des n-uplets<a href="#op%C3%A9rateurs-math%C3%A9matiques-sur-des-listes-ou-des-n-uplets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Certains opérateurs mathématiques peuvent également être appliquées à des listes.</p>
+<p>Lorsque l’on utilise le symble <code>+</code> entre deux listes, Python les concatène en une seule :</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb465-1"><a href="opérateurs.html#cb465-1" tabindex="-1"></a>l_1 <span class="op">=</span> [<span class="dv">1</span>, <span class="st">&quot;pomme&quot;</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb465-2"><a href="opérateurs.html#cb465-2" tabindex="-1"></a>l_2 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">11</span>]</span>
+<span id="cb465-3"><a href="opérateurs.html#cb465-3" tabindex="-1"></a><span class="bu">print</span>(l_1 <span class="op">+</span> l_2)</span></code></pre></div>
+<pre><code>## [1, &#39;pomme&#39;, 5, 7, 9, 11]</code></pre>
+<p>Idem avec des n-uplets :</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb467-1"><a href="opérateurs.html#cb467-1" tabindex="-1"></a>t_1 <span class="op">=</span> (<span class="dv">1</span>, <span class="st">&quot;pomme&quot;</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb467-2"><a href="opérateurs.html#cb467-2" tabindex="-1"></a>t_2 <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">11</span>)</span>
+<span id="cb467-3"><a href="opérateurs.html#cb467-3" tabindex="-1"></a><span class="bu">print</span>(t_1 <span class="op">+</span> t_2)</span></code></pre></div>
+<pre><code>## (1, &#39;pomme&#39;, 5, 7, 9, 11)</code></pre>
+<p>En “multipliant” une liste par un scalaire <span class="math inline">\(n\)</span>, Python répète <span class="math inline">\(n\)</span> fois cette liste :</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb469-1"><a href="opérateurs.html#cb469-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>l_1)</span></code></pre></div>
+<pre><code>## [1, &#39;pomme&#39;, 5, 7, 1, &#39;pomme&#39;, 5, 7, 1, &#39;pomme&#39;, 5, 7]</code></pre>
+<p>Idem avec des n-uplets :</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb471-1"><a href="opérateurs.html#cb471-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>t_1)</span></code></pre></div>
+<pre><code>## (1, &#39;pomme&#39;, 5, 7, 1, &#39;pomme&#39;, 5, 7, 1, &#39;pomme&#39;, 5, 7)</code></pre>
+</div>
+</div>
+<div id="operateurs-comparaison" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Opérateurs de comparaison<a href="opérateurs.html#operateurs-comparaison" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Les opérateurs de comparaisons permettent de comparer entre eux des objets de tous les types de base. Le résultat d’un test de comparaison produit des valeurs booléennes.</p>
+<table>
+<caption><span id="tab:operateurs-comparaison">Table 4.1: </span> Opérateurs de comparaison</caption>
+<thead>
+<tr class="header">
+<th align="right">Opérateur</th>
+<th align="right">Opérateur en Python</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><span class="math inline">\(=\)</span></td>
+<td align="right"><code>==</code></td>
+<td align="right">Égal à</td>
+</tr>
+<tr class="even">
+<td align="right"><span class="math inline">\(\ne\)</span></td>
+<td align="right"><code>!=</code> (ou <code>&lt;&gt;</code>)</td>
+<td align="right">Différent de</td>
+</tr>
+<tr class="odd">
+<td align="right"><span class="math inline">\(&gt;\)</span></td>
+<td align="right"><code>&gt;</code></td>
+<td align="right">Supérieur à</td>
+</tr>
+<tr class="even">
+<td align="right"><span class="math inline">\(\geq\)</span></td>
+<td align="right"><code>&gt;=</code></td>
+<td align="right">&amp; Supérieur ou égal à</td>
+</tr>
+<tr class="odd">
+<td align="right"><span class="math inline">\(&lt;\)</span></td>
+<td align="right"><code>&lt;</code></td>
+<td align="right">Inférieur à</td>
+</tr>
+<tr class="even">
+<td align="right"><span class="math inline">\(\leq\)</span></td>
+<td align="right"><code>&lt;=</code></td>
+<td align="right">Inférieur ou égal à</td>
+</tr>
+<tr class="odd">
+<td align="right"><span class="math inline">\(\in\)</span></td>
+<td align="right"><code>in</code></td>
+<td align="right">Dans</td>
+</tr>
+<tr class="even">
+<td align="right"><span class="math inline">\(\notin\)</span></td>
+<td align="right"><code>not in</code></td>
+<td align="right">Exclu</td>
+</tr>
+</tbody>
+</table>
+<div id="égalité-inégalité" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Égalité, inégalité<a href="#%C3%A9galit%C3%A9-in%C3%A9galit%C3%A9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour tester l’égalité de contenu entre deux objets :</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb473-1"><a href="opérateurs.html#cb473-1" tabindex="-1"></a>a <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb473-2"><a href="opérateurs.html#cb473-2" tabindex="-1"></a>b <span class="op">=</span> <span class="st">&quot;World&quot;</span></span>
+<span id="cb473-3"><a href="opérateurs.html#cb473-3" tabindex="-1"></a>c <span class="op">=</span> <span class="st">&quot;World&quot;</span></span>
+<span id="cb473-4"><a href="opérateurs.html#cb473-4" tabindex="-1"></a></span>
+<span id="cb473-5"><a href="opérateurs.html#cb473-5" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> c)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb475"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb475-1"><a href="opérateurs.html#cb475-1" tabindex="-1"></a><span class="bu">print</span>(b <span class="op">==</span> c)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>L’inégalité entre deux objets :</p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb477-1"><a href="opérateurs.html#cb477-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb477-2"><a href="opérateurs.html#cb477-2" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb477-3"><a href="opérateurs.html#cb477-3" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb477-4"><a href="opérateurs.html#cb477-4" tabindex="-1"></a></span>
+<span id="cb477-5"><a href="opérateurs.html#cb477-5" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">!=</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb479"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb479-1"><a href="opérateurs.html#cb479-1" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">!=</span> z)</span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+<div id="infériorité-et-supériorité-stricts-ou-larges" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Infériorité et supériorité, stricts ou larges<a href="#inf%C3%A9riorit%C3%A9-et-sup%C3%A9riorit%C3%A9-stricts-ou-larges" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour savoir si un objet est inférieur (strictement ou non) ou inférieur (strictement ou non) à un autre :</p>
+<div class="sourceCode" id="cb481"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb481-1"><a href="opérateurs.html#cb481-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb481-2"><a href="opérateurs.html#cb481-2" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb481-3"><a href="opérateurs.html#cb481-3" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb481-4"><a href="opérateurs.html#cb481-4" tabindex="-1"></a></span>
+<span id="cb481-5"><a href="opérateurs.html#cb481-5" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb483"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb483-1"><a href="opérateurs.html#cb483-1" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;=</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb485"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb485-1"><a href="opérateurs.html#cb485-1" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;</span> z)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb487"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb487-1"><a href="opérateurs.html#cb487-1" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;=</span> z)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>On peut également effectuer la comparaison entre deux chaînes de caractères. La comparaison s’effectue en fonction de l’ordre lexicographique :</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb489-1"><a href="opérateurs.html#cb489-1" tabindex="-1"></a>m_1 <span class="op">=</span> <span class="st">&quot;mange&quot;</span></span>
+<span id="cb489-2"><a href="opérateurs.html#cb489-2" tabindex="-1"></a>m_2 <span class="op">=</span> <span class="st">&quot;manger&quot;</span></span>
+<span id="cb489-3"><a href="opérateurs.html#cb489-3" tabindex="-1"></a>m_3 <span class="op">=</span> <span class="st">&quot;boire&quot;</span></span>
+<span id="cb489-4"><a href="opérateurs.html#cb489-4" tabindex="-1"></a><span class="bu">print</span>(m_1 <span class="op">&lt;</span> m_2) <span class="co"># mange avant manger</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb491"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb491-1"><a href="opérateurs.html#cb491-1" tabindex="-1"></a><span class="bu">print</span>(m_3 <span class="op">&gt;</span> m_1) <span class="co"># boire avant manger</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>Lorsque l’on compare deux listes entre-elles, Python fonctionne pas à pas. Regardons à travers un exemple comment cette comparaison est effectuée.</p>
+<p>Créons deux listes :</p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb493-1"><a href="opérateurs.html#cb493-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb493-2"><a href="opérateurs.html#cb493-2" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">11</span>]</span></code></pre></div>
+<p>Python va commencer par comparer les premiers éléments de chaque liste (ici, c’est possible, les deux éléments sont comparables ; dans le cas contraire, une erreur serait retournée) :</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb494-1"><a href="opérateurs.html#cb494-1" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Comme <code>1&lt;9</code>, Python retourne <code>True</code>.</p>
+<p>Changeons <code>x</code> pour que le premier élément soit supérieur au premier de <code>y</code></p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="opérateurs.html#cb496-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb496-2"><a href="opérateurs.html#cb496-2" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">11</span>]</span>
+<span id="cb496-3"><a href="opérateurs.html#cb496-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>Cette fois, comme <span class="math inline">\(10&gt;9\)</span>, Python retourne <code>False</code>.</p>
+<p>Changeons à présent le premier élément de <code>x</code> pour qu’ils soit égal à celui de <code>y</code> :</p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb498-1"><a href="opérateurs.html#cb498-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb498-2"><a href="opérateurs.html#cb498-2" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>]</span>
+<span id="cb498-3"><a href="opérateurs.html#cb498-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Cette fois, Python compare le premier élement de <code>x</code> avec celui de <code>y</code>, comme les deux sont identiques, les seconds éléments sont comparés. On peut s’en convaincre en évaluant le code suivant :</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="opérateurs.html#cb500-1" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb500-2"><a href="opérateurs.html#cb500-2" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>]</span>
+<span id="cb500-3"><a href="opérateurs.html#cb500-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+</div>
+<div id="inclusion-et-exclusion" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Inclusion et exclusion<a href="opérateurs.html#inclusion-et-exclusion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comme rencontré plusieurs fois dans le Chapitre <a href="structures.html#structures">3</a>, les tests d’inclusions s’effectuent à l’aide de l’opérateur <code>in</code>.</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb502-1"><a href="opérateurs.html#cb502-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Pour tester si un élément est exclu d’une liste, d’un n-uplet, dictionnaire, etc., on utilise <code>not in</code> :</p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="opérateurs.html#cb504-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">4</span> <span class="kw">not</span> <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb506-1"><a href="opérateurs.html#cb506-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">4</span> <span class="kw">not</span> <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>Avec un dictionnaire :</p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="opérateurs.html#cb508-1" tabindex="-1"></a>dictionnaire <span class="op">=</span> {<span class="st">&quot;nom&quot;</span>: <span class="st">&quot;Rockwell&quot;</span>, <span class="st">&quot;prenom&quot;</span>: <span class="st">&quot;Criquette&quot;</span>}</span>
+<span id="cb508-2"><a href="opérateurs.html#cb508-2" tabindex="-1"></a><span class="co">&quot;age&quot;</span> <span class="kw">not</span> <span class="kw">in</span> dictionnaire.keys()</span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+</div>
+<div id="operateurs-logiques" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Opérateurs logiques<a href="opérateurs.html#operateurs-logiques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Les opérateurs logiques opèrent sur un ou plusieurs objets de type logique (des booléens).</p>
+<div id="et-logique" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Et logique<a href="opérateurs.html#et-logique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’opérateur <code>and</code> permet d’effectuer des comparaisons “ET” logiques. On compare deux objets, <code>x</code> et <code>y</code> (ces objets peuvent résulter d’une comparaison préalable, il suffit juste que tous deux soient des booléens).</p>
+<p>Si l’un des deux objets <code>x</code> et <code>y</code> est vrai, la comparaison “ET” logique retourne vrai :</p>
+<div class="sourceCode" id="cb510"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb510-1"><a href="opérateurs.html#cb510-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb510-2"><a href="opérateurs.html#cb510-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb510-3"><a href="opérateurs.html#cb510-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">and</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Si au moins l’un des deux est faux, la comparaison “ET” logique retourne faux :</p>
+<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb512-1"><a href="opérateurs.html#cb512-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb512-2"><a href="opérateurs.html#cb512-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb512-3"><a href="opérateurs.html#cb512-3" tabindex="-1"></a></span>
+<span id="cb512-4"><a href="opérateurs.html#cb512-4" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">and</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb514-1"><a href="opérateurs.html#cb514-1" tabindex="-1"></a><span class="bu">print</span>(y <span class="kw">and</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>Si un des deux objets comparés vaut la valeur vide (<code>None</code>), alors la comparaison “ET” logique retourne :</p>
+<ul>
+<li>la valeur <code>None</code> si l’autre objet vaut <code>True</code> ou <code>None</code> ;</li>
+<li>la valeur <code>False</code> si l’autre objet vaut <code>False</code></li>
+</ul>
+<div class="sourceCode" id="cb516"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb516-1"><a href="opérateurs.html#cb516-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb516-2"><a href="opérateurs.html#cb516-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb516-3"><a href="opérateurs.html#cb516-3" tabindex="-1"></a>z <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb516-4"><a href="opérateurs.html#cb516-4" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">and</span> z)</span></code></pre></div>
+<pre><code>## None</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb518-1"><a href="opérateurs.html#cb518-1" tabindex="-1"></a><span class="bu">print</span>(y <span class="kw">and</span> z)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb520"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb520-1"><a href="opérateurs.html#cb520-1" tabindex="-1"></a><span class="bu">print</span>(z <span class="kw">and</span> z)</span></code></pre></div>
+<pre><code>## None</code></pre>
+</div>
+<div id="ou-logique" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Ou logique<a href="opérateurs.html#ou-logique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’opérateur <code>or</code> permet d’effectuer des comparaisons “OU” logiques. À nouveau, on compare deux booléens, <code>x</code> et <code>y</code>.</p>
+<p>Si au moins un des deux objets <code>x</code> et <code>y</code> est vrai, la comparaison “OU” logique retourne vrai :</p>
+<div class="sourceCode" id="cb522"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb522-1"><a href="opérateurs.html#cb522-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb522-2"><a href="opérateurs.html#cb522-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb522-3"><a href="opérateurs.html#cb522-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">or</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Si les deux sont faux, la comparaison “OU” logique retourne faux :</p>
+<div class="sourceCode" id="cb524"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb524-1"><a href="opérateurs.html#cb524-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb524-2"><a href="opérateurs.html#cb524-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb524-3"><a href="opérateurs.html#cb524-3" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">or</span> y)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<p>Si l’un des deux objets vaut <code>None</code>, la comparaison “OU” logique retourne :</p>
+<ul>
+<li><code>True</code> si l’autre objet vaut <code>True</code> ;</li>
+<li><code>None</code> si l’autre objet vaut <code>False</code> ou <code>None</code></li>
+</ul>
+<div class="sourceCode" id="cb526"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb526-1"><a href="opérateurs.html#cb526-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb526-2"><a href="opérateurs.html#cb526-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb526-3"><a href="opérateurs.html#cb526-3" tabindex="-1"></a>z <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb526-4"><a href="opérateurs.html#cb526-4" tabindex="-1"></a><span class="bu">print</span>(x <span class="kw">or</span> z)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb528"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb528-1"><a href="opérateurs.html#cb528-1" tabindex="-1"></a><span class="bu">print</span>(y <span class="kw">or</span> z)</span></code></pre></div>
+<pre><code>## None</code></pre>
+<div class="sourceCode" id="cb530"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb530-1"><a href="opérateurs.html#cb530-1" tabindex="-1"></a><span class="bu">print</span>(z <span class="kw">or</span> z)</span></code></pre></div>
+<pre><code>## None</code></pre>
+</div>
+<div id="non-logique" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Non logique<a href="opérateurs.html#non-logique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’opérateur <code>not</code>, lorsqu’appliqué à un booléen, évalue ce dernier à sa valeur opposée :</p>
+<div class="sourceCode" id="cb532"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb532-1"><a href="opérateurs.html#cb532-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb532-2"><a href="opérateurs.html#cb532-2" tabindex="-1"></a>y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb532-3"><a href="opérateurs.html#cb532-3" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> x)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb534"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb534-1"><a href="opérateurs.html#cb534-1" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> y)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Lorsque l’on utilise l’opérateur <code>not</code> sur une valeur vide (<code>None</code>), Python retourne <code>True</code> :</p>
+<div class="sourceCode" id="cb536"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb536-1"><a href="opérateurs.html#cb536-1" tabindex="-1"></a>x <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb536-2"><a href="opérateurs.html#cb536-2" tabindex="-1"></a><span class="kw">not</span> x</span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+</div>
+<div id="quelques-fonctions" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Quelques fonctions<a href="opérateurs.html#quelques-fonctions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Python dispose de nombreuses fonctions utiles pour manipuler les structures et données. Le tableau suivant en répertorie quelques-unes. Certaines nécessitent le chargement de la librairie <code>math</code>, d’autres la librairie <code>statistics</code>. Nous verrsons d’autres fonctions propres à la librairie <code>NumPy</code> au Chapitre <a href="numpy.html#numpy">9</a>.</p>
+<table>
+<caption><span id="tab:fonctions-numeriques">Table 4.2: </span> Quelques fonctions numériques</caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Fonction</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>math.ceil(x)</code></td>
+<td align="right">Plus petit entier supérieur ou égal à <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.copysign(x, y)</code></td>
+<td align="right">Valeur absolue de <code>x</code> mais avec le signe de <code>y</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.floor(x)</code></td>
+<td align="right">Plus grand entier inférieur ou égal à <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.round(x, ndigits)</code></td>
+<td align="right">Arrondi de <code>x</code> à <code>ndigits</code> décimales près</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.fabs(x)</code></td>
+<td align="right">Valeur absolue de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.exp(x)</code></td>
+<td align="right">Exponentielle de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.log(x)</code></td>
+<td align="right">Logarithme naturel de <code>x</code> (en base e)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.log(x, b)</code></td>
+<td align="right">Logarithme en base <code>b</code> de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.log10(x)</code></td>
+<td align="right">Logarithme en base 10 de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.pow(x,y)</code></td>
+<td align="right"><code>x</code> élevé à la puissance <code>y</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.sqrt(x)</code></td>
+<td align="right">Racine carrée de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.fsum()</code></td>
+<td align="right">Somme des valeurs de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.sin(x)</code></td>
+<td align="right">Sinus de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.cos(x)</code></td>
+<td align="right">Cosinus de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.tan(x)</code></td>
+<td align="right">Tangente de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.asin(x)</code></td>
+<td align="right">Arc-sinus de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.acos(x)</code></td>
+<td align="right">Arc-cosinus de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.atan(x)</code></td>
+<td align="right">Arc-tangente de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.sinh(x)</code></td>
+<td align="right">Sinus hyperbolique de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.cosh(x)</code></td>
+<td align="right">Cosinus hyperbolique de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.tanh(x)</code></td>
+<td align="right">Tangente hyperbolique de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.asinh(x)</code></td>
+<td align="right">Arc-sinus hyperbolique de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.acosh(x)</code></td>
+<td align="right">Arc-cosinus hyperbolique de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.atanh(x)</code></td>
+<td align="right">Arc-tangente hyperbolique de <code>x</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.degree(x)</code></td>
+<td align="right">Conversion de <code>x</code> de radians en degrés</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.radians(x)</code></td>
+<td align="right">Conversion de <code>x</code> de degrés en radians</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.factorial()</code></td>
+<td align="right">Factorielle de <code>x</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.gcd(x, y)</code></td>
+<td align="right">Plus grand commun diviseur de <code>x</code> et <code>y</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.isclose(x, y, rel_tol=1e-09, abs_tol=0.0)</code></td>
+<td align="right">Compare <code>x</code> et <code>y</code> et retourne s’ils sont proches au reard de la tolérance <code>rel_tol</code> (<code>abs_tol</code> est la tolérance minimum absolue)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.isfinite(x)</code></td>
+<td align="right">Retourne <code>True</code> si <code>x</code> est soit l’infini, soir <code>NaN</code></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.isinf(x)</code></td>
+<td align="right">Retourne <code>True</code> si <code>x</code> est l’infini, <code>False</code> sinon</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.isnan(x)</code></td>
+<td align="right">Retourne <code>True</code> si <code>x</code> est <code>NaN</code>, <code>False</code> sinon</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>statistics.mean(x)</code></td>
+<td align="right">Moyenne de x</td>
+</tr>
+<tr class="even">
+<td align="right"><code>statistics.median(x)</code></td>
+<td align="right">Médiane de x</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>statistics.mode(x)</code></td>
+<td align="right">Mode de x</td>
+</tr>
+<tr class="even">
+<td align="right"><code>statistics.stdev(x)</code></td>
+<td align="right">Écart-type de x</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>statistics.variance(x)</code></td>
+<td align="right">Variance de x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="quelques-constantes" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Quelques constantes<a href="opérateurs.html#quelques-constantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La librairie <code>math</code> propose quelques constantes :</p>
+<table>
+<caption><span id="tab:constantes-base">Table 4.3: </span> Quelques constantes intégrées dans Python</caption>
+<thead>
+<tr class="header">
+<th align="right">Fonction</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>math.pi</code></td>
+<td align="right">Le nombre Pi (<span class="math inline">\(\pi\)</span>)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.e</code></td>
+<td align="right">La constante <span class="math inline">\(e\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right"><code>math.tau</code></td>
+<td align="right">La constante <span class="math inline">\(\tau\)</span>, égale à <span class="math inline">\(2\pi\)</span></td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.inf</code></td>
+<td align="right">L’infini (<span class="math inline">\(\infty\)</span>)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>-math.inf</code></td>
+<td align="right">Moins l’infini (<span class="math inline">\(-\infty\)</span>)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>math.nan</code></td>
+<td align="right">Nombre à virgule flotante <em>not a number</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercice-2" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Exercice<a href="opérateurs.html#exercice-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+<div class="exframe">
+<ol style="list-style-type: decimal">
+<li>Calculer le reste de la division euclidienne de 10 par 3.</li>
+<li>Afficher le plus grand commun diviseur entre 6209 et 4435.</li>
+<li>Soient deux objets : <code>a = 18</code> et <code>b = -4</code>. Tester si:</li>
+</ol>
+<ul>
+<li><code>a</code> est inférieur à <code>b</code> strictement,</li>
+<li><code>a</code> est supérieur ou égal à <code>b</code>,</li>
+<li><code>a</code> est différent de <code>b</code>.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Soit la liste <code>x = [1, 1, 2, 3, 5, 8]</code>. Regarder si :</li>
+</ol>
+<ul>
+<li><code>1</code> est dans <code>x</code> ;</li>
+<li><code>0</code> est dans <code>x</code> ;</li>
+<li><code>1</code> et <code>0</code> sont dans <code>x</code> ;</li>
+<li><code>1</code> ou <code>0</code> sont dans <code>x</code> ;</li>
+<li><code>1</code> ou <code>0</code> n’est pas présent dans <code>x</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chargement-et-sauvegarde-de-données.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/3wen/Python_pour_economistes/edit/master/python_for_economists.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "toc_depth": 4
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

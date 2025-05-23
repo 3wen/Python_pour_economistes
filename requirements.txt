@@ -1,5 +1,1 @@
-numpy
-pandas
-matplotlib
-jupyter
-notebook
+Mise à disposition des internautes ?
